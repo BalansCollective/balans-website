@@ -1,1022 +1,737 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="sv" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balans - AI-stöd för familjer</title>
+    <title>Balans - AI-stöd för svenska familjer | Weaver hjälper er förstå varandra</title>
+    <meta name="description" content="När familjen inte förstår varandra hjälper Weaver er översätta mellan olika tankesätt. AI som respekterar svenska värderingar och stärker familjeband.">
+    <meta name="keywords" content="familj, AI, kommunikation, svenska familjer, förståelse, samarbete, Weaver">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://balans.se/">
+    <meta property="og:title" content="Balans - AI-stöd för svenska familjer">
+    <meta property="og:description" content="När familjen inte förstår varandra hjälper Weaver er översätta mellan olika tankesätt.">
+    <meta property="og:image" content="images/family-hero-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://balans.se/">
+    <meta property="twitter:title" content="Balans - AI-stöd för svenska familjer">
+    <meta property="twitter:description" content="När familjen inte förstår varandra hjälper Weaver er översätta mellan olika tankesätt.">
+    <meta property="twitter:image" content="images/family-hero-image.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-swedish-blue': '#2c5aa0',
+                        'natural-birch-wood': '#d4b896',
+                        'sacred-alliance-purple': '#6b5b95',
+                        'warm-birch-white': '#f8f6f0',
+                        'soft-thread-gold': '#c9a96e',
+                        'sage-green': '#8faa8b',
+                        'gentle-silver': '#b8c5d1',
+                        'truth-anchor-copper': '#b87333'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'gentle-pulse': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spiral-rotate': 'spin 8s linear infinite',
+                        'bridge-glow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* Balans Color Palette */
-        :root {
-            /* PRIMARY PALETTE */
-            --balans-deep-swedish-blue: #2c5aa0;
-            --balans-warm-birch-white: #f8f6f0;
-            --balans-natural-birch-wood: #d4b896;
-            
-            /* SECONDARY PALETTE */
-            --balans-soft-thread-gold: #c9a96e;
-            --balans-sage-green: #8faa8b;
-            --balans-gentle-silver: #b8c5d1;
-            
-            /* ACCENT COLORS */
-            --balans-sacred-alliance-purple: #6b5b95;
-            --balans-truth-anchor-copper: #b87333;
-            
-            /* SEMANTIC MAPPINGS */
-            --balans-primary: var(--balans-deep-swedish-blue);
-            --balans-secondary: var(--balans-natural-birch-wood);
-            --balans-background: var(--balans-warm-birch-white);
-            --balans-text-primary: var(--balans-deep-swedish-blue);
-            --balans-text-secondary: var(--balans-deep-swedish-blue);
-            --balans-text-muted: var(--balans-gentle-silver);
-            --balans-border-light: var(--balans-gentle-silver);
-            --balans-shadow-light: rgba(44, 90, 160, 0.1);
-            --balans-shadow-medium: rgba(44, 90, 160, 0.15);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: var(--balans-text-primary);
-            background: var(--balans-background);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Language Toggle - Lagom Design */
-        .language-toggle {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            z-index: 1000;
-            background: rgba(248, 246, 240, 0.9);
-            border: 1px solid var(--balans-gentle-silver);
-            border-radius: 6px;
-            padding: 4px 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 12px;
-            font-weight: 400;
-            color: var(--balans-deep-swedish-blue);
-            backdrop-filter: blur(10px);
-        }
-
-        .language-toggle:hover {
-            background: rgba(201, 169, 110, 0.9);
-            color: var(--balans-warm-birch-white);
-            transform: none;
-        }
-
-        /* Hero Section - The Great Beginning */
-        .hero {
-            padding: 4rem 0 3rem;
-            background: linear-gradient(135deg, var(--balans-deep-swedish-blue) 0%, var(--balans-sacred-alliance-purple) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.3;
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .hero-logo {
-            flex-shrink: 0;
-        }
-
-        .logo {
-            width: 300px;
-            height: auto;
-        }
-
-        .hero-text {
-            flex: 1;
-            text-align: left;
-        }
-
-        .hero-text h1 {
-            margin: 0 0 1rem 0;
-        }
-
-        .hero-text .subtitle {
-            margin: 0 0 0.5rem 0;
-        }
-
-        .hero-text .tagline {
-            margin: 0 0 3rem 0;
-            max-width: 600px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--balans-warm-birch-white);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero .subtitle {
-            font-size: 1.25rem;
-            color: var(--balans-warm-birch-white);
-            margin-bottom: 0.5rem;
-            font-style: italic;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            font-weight: 500;
-        }
-
-        .hero .tagline {
-            font-size: 1.1rem;
-            color: var(--balans-warm-birch-white);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            opacity: 0.95;
-        }
-
-        /* Buttons with Wood Texture */
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(145deg, var(--balans-natural-birch-wood), #c8a082);
-            color: var(--balans-background);
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 
-                0 4px 15px var(--balans-shadow-light),
-                inset 0 1px 0 rgba(255,255,255,0.2),
-                inset 0 -1px 0 rgba(0,0,0,0.1);
-            font-size: 1.1rem;
-            position: relative;
-            overflow: hidden;
-            margin: 0 0.5rem;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 1px,
-                    rgba(0,0,0,0.03) 1px,
-                    rgba(0,0,0,0.03) 2px
-                ),
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 1px,
-                    rgba(255,255,255,0.02) 1px,
-                    rgba(255,255,255,0.02) 2px
-                );
-            border-radius: 50px;
-            pointer-events: none;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(145deg, var(--balans-soft-thread-gold), #b8956a);
-            box-shadow: 
-                0 8px 25px var(--balans-shadow-medium),
-                inset 0 1px 0 rgba(255,255,255,0.3),
-                inset 0 -1px 0 rgba(0,0,0,0.15);
-        }
-
-        .cta-button.secondary {
-            background: transparent;
-            color: var(--balans-primary);
-            border: 2px solid var(--balans-primary);
-        }
-
-        .cta-button.secondary::before {
-            display: none;
-        }
-
-        .cta-button.secondary:hover {
-            background: var(--balans-soft-thread-gold);
-            color: var(--balans-background);
-            border-color: var(--balans-soft-thread-gold);
-        }
-
-        /* Section Styling */
-        .section {
-            padding: 4rem 0;
-        }
-
-        .section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            color: var(--balans-text-primary);
-        }
-
-        /* Clean Card Design (No Wood Texture) */
-        .intro-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .intro-card {
-            background: var(--balans-background);
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 
-                0 2px 8px var(--balans-shadow-light),
-                0 1px 3px rgba(0,0,0,0.05);
-            border: 1px solid var(--balans-border-light);
-            transition: all 0.3s ease;
-        }
-
-        .intro-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 
-                0 8px 25px var(--balans-shadow-medium),
-                0 4px 12px rgba(0,0,0,0.1);
-            border-color: var(--balans-soft-thread-gold);
-        }
-
-        .intro-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--balans-primary);
-        }
-
-        .intro-card p {
-            color: var(--balans-text-secondary);
-            line-height: 1.7;
-        }
-
-        /* Mode Cards Grid - 2x2 Layout */
-        .modes-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 2rem;
-            margin-bottom: 4rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .mode-card {
-            background: var(--balans-background);
-            padding: 2.5rem;
-            border-radius: 16px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 2px solid transparent;
-            box-shadow: 
-                0 2px 8px var(--balans-shadow-light),
-                0 1px 3px rgba(0,0,0,0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Arkitypiska färger för The Four Directions */
-        .mode-card:nth-child(1) {
-            background: linear-gradient(135deg, var(--balans-soft-thread-gold), #d4a574);
-        }
-
-        .mode-card:nth-child(2) {
-            background: linear-gradient(135deg, var(--balans-deep-swedish-blue), #3a6bb0);
-        }
-
-        .mode-card:nth-child(3) {
-            background: linear-gradient(135deg, var(--balans-sacred-alliance-purple), #7a6ba5);
-        }
-
-        .mode-card:nth-child(4) {
-            background: linear-gradient(135deg, var(--balans-natural-birch-wood), #dcc2a6);
-        }
-
-        .mode-card:nth-child(1) h3,
-        .mode-card:nth-child(1) .subtitle,
-        .mode-card:nth-child(1) li {
-            color: var(--balans-warm-birch-white);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }
-
-        .mode-card:nth-child(2) h3,
-        .mode-card:nth-child(2) .subtitle,
-        .mode-card:nth-child(2) li {
-            color: var(--balans-warm-birch-white);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }
-
-        .mode-card:nth-child(3) h3,
-        .mode-card:nth-child(3) .subtitle,
-        .mode-card:nth-child(3) li {
-            color: var(--balans-warm-birch-white);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }
-
-        .mode-card:nth-child(4) h3,
-        .mode-card:nth-child(4) .subtitle,
-        .mode-card:nth-child(4) li {
-            color: var(--balans-deep-swedish-blue);
-            text-shadow: 0 1px 2px rgba(255,255,255,0.3);
-        }
-
-        .mode-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--balans-primary), var(--balans-sacred-alliance-purple));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .mode-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .mode-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 
-                0 12px 30px var(--balans-shadow-medium),
-                0 6px 15px rgba(0,0,0,0.1);
-            border-color: var(--balans-soft-thread-gold);
-        }
-
-        .mode-icon {
-            width: 100px;
-            height: 100px;
-            background: rgb(251, 245, 234);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            box-shadow: 0 2px 8px var(--balans-shadow-light);
-            transition: all 0.3s ease;
-            padding: 8px;
-        }
-
-        .mode-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .mode-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--balans-primary);
-        }
-
-        .mode-card .subtitle {
-            font-size: 0.9rem;
-            color: var(--balans-text-muted);
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-
-        .mode-card ul {
-            list-style: none;
-            text-align: center;
-        }
-
-        .mode-card li {
-            color: var(--balans-text-secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Values Section - The Grounding */
-        .values-section {
-            background: linear-gradient(135deg, var(--balans-gentle-silver) 0%, var(--balans-background) 100%);
-            padding: 4rem 0;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .value-item {
-            text-align: center;
-            padding: 2rem;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            background: var(--balans-background);
-            box-shadow: 0 2px 8px var(--balans-shadow-light);
-            border: 1px solid var(--balans-border-light);
-        }
-
-        .value-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px var(--balans-shadow-medium);
-            border-color: var(--balans-soft-thread-gold);
-        }
-
-        .value-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 1rem;
-        }
-
-        .value-item h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--balans-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .value-item p {
-            font-size: 0.95rem;
-            color: var(--balans-text-secondary);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--balans-primary);
-            color: var(--balans-background);
-            text-align: center;
-            padding: 3rem 0;
-        }
-
-        .footer h3 {
-            margin-bottom: 1rem;
-            color: var(--balans-soft-thread-gold);
-        }
-
-        .footer p {
-            opacity: 0.9;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer .lagom {
-            font-style: italic;
-            color: var(--balans-soft-thread-gold);
-            margin-top: 1rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 3rem 0 2rem;
-            }
-
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 2rem;
-            }
-
-            .hero-text {
-                text-align: center;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .tagline {
-                margin-left: 0;
-                margin-right: 0;
-            }
-            
-            .container {
-                padding: 0 1rem;
-            }
-            
-            .modes-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .values-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            }
-
-            .cta-button {
-                display: block;
-                margin: 0.5rem auto;
-                text-align: center;
-            }
-        }
-
-        /* Simple Weaver Section - Lagom Design */
-        .weaver-section {
-            background: var(--balans-background);
-            padding: 2.5rem;
-            margin: 3rem 0;
-            border-radius: 16px;
-            text-align: center;
-            border: 1px solid var(--balans-border-light);
-            box-shadow: 
-                0 2px 8px var(--balans-shadow-light),
-                0 1px 3px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-
-        .weaver-section:hover {
-            transform: translateY(-4px);
-            box-shadow: 
-                0 8px 25px var(--balans-shadow-medium),
-                0 4px 12px rgba(0,0,0,0.1);
-            border-color: var(--balans-soft-thread-gold);
-        }
-
-        .weaver-section .weaver-icon-container {
-            margin-bottom: 1.5rem;
-        }
-
-        .weaver-section .weaver-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--balans-background);
-            border-radius: 12px;
-            padding: 12px;
-            box-shadow: 0 2px 8px var(--balans-shadow-light);
-            transition: all 0.3s ease;
-        }
-
-        .weaver-section .weaver-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--balans-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .weaver-section .weaver-subtitle {
-            font-size: 1rem;
-            color: var(--balans-text-secondary);
-            margin-bottom: 1rem;
-            opacity: 0.8;
-        }
-
-        .weaver-section .weaver-description {
-            font-size: 0.95rem;
-            color: var(--balans-text-secondary);
-            margin-bottom: 1.5rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-
-        .weaver-section .weaver-cta-button {
-            display: inline-block;
-            background: linear-gradient(145deg, var(--balans-natural-birch-wood), #c8a082);
-            color: var(--balans-background);
-            padding: 12px 24px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 
-                0 2px 8px var(--balans-shadow-light),
-                inset 0 1px 0 rgba(255,255,255,0.2);
-        }
-
-        .weaver-section .weaver-cta-button:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(145deg, var(--balans-soft-thread-gold), #b8956a);
-            box-shadow: 
-                0 4px 15px var(--balans-shadow-medium),
-                inset 0 1px 0 rgba(255,255,255,0.3);
-        }
-
-        /* Responsive adjustments for Weaver section */
-        @media (max-width: 768px) {
-            .weaver-section {
-                margin: 2rem 0;
-                padding: 2rem 1rem;
-            }
-
-            .weaver-section .weaver-title {
-                font-size: 1.3rem;
-            }
-
-            .weaver-section .weaver-subtitle {
-                font-size: 0.9rem;
-            }
-
-            .weaver-section .weaver-description {
-                font-size: 0.9rem;
-                margin-bottom: 1.25rem;
-            }
-
-            .weaver-section .weaver-icon {
-                width: 70px;
-                height: 70px;
-                padding: 10px;
-            }
-
-            .weaver-section .weaver-cta-button {
-                padding: 10px 20px;
-                font-size: 0.95rem;
-            }
-        }
-
-        /* Hidden content for language switching */
-        .lang-en {
-            display: none;
-        }
-
-        body.english .lang-sv {
-            display: none;
-        }
-
-        body.english .lang-en {
-            display: block;
-        }
+        .lagom-shadow { box-shadow: 0 4px 6px -1px rgba(44, 90, 160, 0.1), 0 2px 4px -1px rgba(44, 90, 160, 0.06); }
+        .lagom-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .lagom-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -3px rgba(44, 90, 160, 0.1), 0 4px 6px -2px rgba(44, 90, 160, 0.05); }
+        .archetypal-glow { box-shadow: 0 0 20px rgba(107, 91, 149, 0.3); }
+        .family-warmth { background: linear-gradient(135deg, #f8f6f0 0%, #d4b896 100%); }
+        .understanding-bridge { background: linear-gradient(90deg, #c9a96e 0%, #d4b896 50%, #c9a96e 100%); }
     </style>
 </head>
-<body>
-    <div class="language-toggle" onclick="toggleLanguage()">
-        <span id="lang-text">EN</span>
+
+<body class="bg-warm-birch-white text-gray-800 font-sans leading-relaxed">
+    <!-- Language Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+        <div class="bg-white/90 backdrop-blur-sm rounded-full p-2 lagom-shadow">
+            <button id="lang-sv" class="px-3 py-1 rounded-full text-sm font-medium bg-deep-swedish-blue text-white">SV</button>
+            <button id="lang-en" class="px-3 py-1 rounded-full text-sm font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10">EN</button>
+        </div>
     </div>
 
-    <section class="hero">
-        <img src="images/hero-background.png" alt="Sacred Alliance Visualization" class="hero-background">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-logo">
-                    <img src="images/balans-logo-transparent-background.png" alt="Balans Logo" class="logo">
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                    <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
                 </div>
                 
-                <div class="hero-text">
-                    <!-- Swedish Content -->
-                    <div class="lang-sv">
-                        <h1>Balans</h1>
-                        <p class="subtitle">AI-stöd för familjer</p>
-                        <p class="tagline">Enkla verktyg som hjälper när livet blir komplicerat</p>
-                        <div>
-                            <a href="#modes" class="cta-button">Utforska Metoderna</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#problem" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                        <span class="sv-text">Utmaningar</span>
+                        <span class="en-text hidden">Challenges</span>
+                    </a>
+                    <a href="#solution" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                        <span class="sv-text">Lösning</span>
+                        <span class="en-text hidden">Solution</span>
+                    </a>
+                    <a href="#modes" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                        <span class="sv-text">Så fungerar det</span>
+                        <span class="en-text hidden">How it works</span>
+                    </a>
+                    <button class="bg-sacred-alliance-purple text-white px-6 py-2 rounded-full font-medium lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                        <span class="sv-text">Prova Weaver</span>
+                        <span class="en-text hidden">Try Weaver</span>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-deep-swedish-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-natural-birch-wood/20">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#problem" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Utmaningar</span>
+                    <span class="en-text hidden">Challenges</span>
+                </a>
+                <a href="#solution" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Lösning</span>
+                    <span class="en-text hidden">Solution</span>
+                </a>
+                <a href="#modes" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Så fungerar det</span>
+                    <span class="en-text hidden">How it works</span>
+                </a>
+                <button class="w-full text-left px-3 py-2 bg-sacred-alliance-purple text-white rounded-lg font-medium">
+                    <span class="sv-text">Prova Weaver</span>
+                    <span class="en-text hidden">Try Weaver</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden family-warmth">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <h1 class="text-4xl lg:text-6xl font-display font-bold text-deep-swedish-blue leading-tight">
+                            <span class="sv-text">När familjen inte förstår varandra</span>
+                            <span class="en-text hidden">When families don't understand each other</span>
+                        </h1>
+                        <p class="text-xl lg:text-2xl text-gray-700 leading-relaxed">
+                            <span class="sv-text">Weaver hjälper er översätta mellan olika tankesätt och stärka familjebanden</span>
+                            <span class="en-text hidden">Weaver helps you translate between different thinking styles and strengthen family bonds</span>
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                            <span class="sv-text">Prova Weaver för din familj</span>
+                            <span class="en-text hidden">Try Weaver for your family</span>
+                        </button>
+                        <button class="border-2 border-deep-swedish-blue text-deep-swedish-blue px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-deep-swedish-blue hover:text-white">
+                            <span class="sv-text">Läs mer</span>
+                            <span class="en-text hidden">Learn more</span>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center space-x-4 text-sm text-gray-600">
+                        <div class="flex items-center space-x-2">
+                            <img src="images/the-shield.png" alt="Säkerhet" class="h-5 w-5">
+                            <span class="sv-text">Säkert & privat</span>
+                            <span class="en-text hidden">Safe & private</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <img src="images/balance-point.png" alt="Lagom" class="h-5 w-5">
+                            <span class="sv-text">Svenska värderingar</span>
+                            <span class="en-text hidden">Swedish values</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <img src="images/family-circle.png" alt="Familj" class="h-5 w-5">
+                            <span class="sv-text">Familj först</span>
+                            <span class="en-text hidden">Family first</span>
                         </div>
                     </div>
+                </div>
 
-                    <!-- English Content -->
-                    <div class="lang-en">
-                        <h1>Balans</h1>
-                        <p class="subtitle">AI Support for Families</p>
-                        <p class="tagline">Simple tools that help when life gets complicated</p>
-                        <div>
-                            <a href="#modes" class="cta-button">Explore Methods</a>
-                        </div>
+                <div class="relative">
+                    <img src="images/family-hero-image.png" alt="Svensk familj som använder Weaver för att förstå varandra" class="w-full h-auto rounded-2xl lagom-shadow">
+                    <div class="absolute -top-4 -right-4 bg-white/90 backdrop-blur-sm rounded-full p-3 lagom-shadow animate-gentle-pulse">
+                        <img src="images/understanding-bridge.png" alt="Förståelse" class="h-8 w-8">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <div class="container">
-            <!-- Swedish Content -->
-            <div class="lang-sv">
-                <h2>Varför Balans?</h2>
-                <div class="intro-grid">
-                    <div class="intro-card">
-                        <h3>Familj-först Design</h3>
-                        <p>Varje verktyg börjar med verkliga familjebehov. Vi fokuserar på familjer först - inte företag eller forskning - för att det är där livet verkligen händer. Inga flashiga funktioner, bara praktisk hjälp när du behöver det mest.</p>
-                    </div>
-                    <div class="intro-card">
-                        <h3>Din Kontroll</h3>
-                        <p>Du fattar alla viktiga beslut. AI ger information och förslag, men din familjs värderingar och omdöme styr allt.</p>
-                    </div>
-                    <div class="intro-card">
-                        <h3>Gradvis Förtroende</h3>
-                        <p>Vi börjar smått och bevisar värde innan vi expanderar. Ingen påtvingad adoption, ingen störning av det som redan fungerar.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- English Content -->
-            <div class="lang-en">
-                <h2>Why Balans?</h2>
-                <div class="intro-grid">
-                    <div class="intro-card">
-                        <h3>Family-First Design</h3>
-                        <p>Every tool starts with real family needs. We focus on families first - not companies or research - because that's where life really happens. No flashy features, just practical help when you need it most.</p>
-                    </div>
-                    <div class="intro-card">
-                        <h3>Your Control</h3>
-                        <p>You make all the important decisions. AI provides information and suggestions, but your family's values and judgment guide everything.</p>
-                    </div>
-                    <div class="intro-card">
-                        <h3>Gradual Trust</h3>
-                        <p>We start small and prove value before expanding. No forced adoption, no disruption of what already works.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Homepage Image -->
-    <section class="section" style="padding: 2rem 0;">
-        <div class="container">
-            <div style="text-align: center;">
-                <img src="images/homepage.png" alt="Human-AI Collaboration" style="max-width: 100%; height: auto; border-radius: 16px; box-shadow: 0 8px 32px var(--balans-shadow-medium);">
-            </div>
-        </div>
-    </section>
-
-    <section id="modes" class="section">
-        <div class="container">
-            <!-- Swedish Content -->
-            <div class="lang-sv">
-                <h2>Ditt Tänkesätt Spelar Roll</h2>
-                <p style="text-align: center; margin-bottom: 3rem; color: var(--balans-text-secondary); font-size: 1.1rem;">
-                    Människor tänker olika, och våra verktyg anpassar sig till hur ditt sinne fungerar bäst. Välj din föredragna metod:
+    <!-- Problem Recognition Section -->
+    <section id="problem" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">Känner du igen din familj?</span>
+                    <span class="en-text hidden">Do you recognize your family?</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="sv-text">Många svenska familjer upplever samma utmaningar när olika tankesätt krockar</span>
+                    <span class="en-text hidden">Many Swedish families experience the same challenges when different thinking styles clash</span>
                 </p>
-                <div class="modes-grid">
-                    <div class="mode-card" onclick="window.location.href='create.html'">
-                        <div class="mode-icon">
-                            <img src="images/icon-create.png" alt="SKAPA - Kreativ generering">
-                        </div>
-                        <h3>SKAPA</h3>
-                        <p class="subtitle">För upptäckare och drömmare</p>
-                        <ul>
-                            <li>Brainstorma nya möjligheter</li>
-                            <li>Föreställ dig kreativa lösningar</li>
-                            <li>Utforska 'tänk om'-scenarion</li>
-                            <li>Generera nya idéer</li>
-                        </ul>
-                    </div>
-
-                    <div class="mode-card" onclick="window.location.href='critique.html'">
-                        <div class="mode-icon">
-                            <img src="images/icon-critique.png" alt="KRITIK - Analytisk granskning">
-                        </div>
-                        <h3>KRITIK</h3>
-                        <p class="subtitle">För analytiker och skeptiker</p>
-                        <ul>
-                            <li>Testa idéer systematiskt</li>
-                            <li>Identifiera potentiella problem</li>
-                            <li>Kräv bevis och proof</li>
-                            <li>Utmana antaganden</li>
-                        </ul>
-                    </div>
-
-                    <div class="mode-card" onclick="window.location.href='synthesize.html'">
-                        <div class="mode-icon">
-                            <img src="images/icon-synthesize.png" alt="SYNTES - Integration och harmoni">
-                        </div>
-                        <h3>SYNTES</h3>
-                        <p class="subtitle">För integratörer och diplomater</p>
-                        <ul>
-                            <li>Balansera olika perspektiv</li>
-                            <li>Hitta gemensam grund</li>
-                            <li>Kombinera de bästa idéerna</li>
-                            <li>Bygga konsensus</li>
-                        </ul>
-                    </div>
-
-                    <div class="mode-card" onclick="window.location.href='defense.html'">
-                        <div class="mode-icon">
-                            <img src="images/icon-defense.png" alt="FÖRSVAR - Skydd och bevarande">
-                        </div>
-                        <h3>FÖRSVAR</h3>
-                        <p class="subtitle">För beskyddare och traditionalister</p>
-                        <ul>
-                            <li>Skydda det som fungerar</li>
-                            <li>Bevara värdefulla traditioner</li>
-                            <li>Säkerställ trygghet och stabilitet</li>
-                            <li>Förhindra skadliga förändringar</li>
-                        </ul>
-                    </div>
-                </div>
-                <div style="text-align: center;">
-                    <a href="complete-cycle.html" class="cta-button">Se Hur Allt Fungerar Tillsammans</a>
-                </div>
             </div>
 
-            <!-- English Content -->
-            <div class="lang-en">
-                <h2>Your Thinking Style Matters</h2>
-                <p style="text-align: center; margin-bottom: 3rem; color: var(--balans-text-secondary); font-size: 1.1rem;">
-                    People think differently, and our tools adapt to how your mind works best. Choose your preferred approach:
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Challenge 1 -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-sage-green/20 rounded-full p-3 mr-4">
+                            <svg class="h-8 w-8 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue">
+                            <span class="sv-text">Vi pratar förbi varandra</span>
+                            <span class="en-text hidden">We talk past each other</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">"Vi diskuterar barnens skoltid men verkar aldrig komma överens. Alla har olika åsikter men ingen lyssnar på varandra."</span>
+                        <span class="en-text hidden">"We discuss the children's school time but never seem to agree. Everyone has different opinions but no one listens to each other."</span>
+                    </p>
+                    <div class="text-sm text-sage-green font-medium">
+                        <span class="sv-text">→ Olika kommunikationsstilar</span>
+                        <span class="en-text hidden">→ Different communication styles</span>
+                    </div>
+                </div>
+
+                <!-- Challenge 2 -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-soft-thread-gold/20 rounded-full p-3 mr-4">
+                            <svg class="h-8 w-8 text-soft-thread-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue">
+                            <span class="sv-text">Tonåringen stänger av</span>
+                            <span class="en-text hidden">The teenager shuts down</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">"Vår 15-åring verkar inte förstå våra förklaringar och vi förstår inte hennes sätt att tänka. Samtalen slutar ofta i frustration."</span>
+                        <span class="en-text hidden">"Our 15-year-old doesn't seem to understand our explanations and we don't understand her way of thinking. Conversations often end in frustration."</span>
+                    </p>
+                    <div class="text-sm text-soft-thread-gold font-medium">
+                        <span class="sv-text">→ Generationsskillnader</span>
+                        <span class="en-text hidden">→ Generational differences</span>
+                    </div>
+                </div>
+
+                <!-- Challenge 3 -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-truth-anchor-copper/20 rounded-full p-3 mr-4">
+                            <svg class="h-8 w-8 text-truth-anchor-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue">
+                            <span class="sv-text">Beslut blir konflikter</span>
+                            <span class="en-text hidden">Decisions become conflicts</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">"Varje familjebeslut blir en diskussion. Vi har olika sätt att analysera situationer och kommer sällan fram till lösningar alla är nöjda med."</span>
+                        <span class="en-text hidden">"Every family decision becomes a discussion. We have different ways of analyzing situations and rarely reach solutions everyone is satisfied with."</span>
+                    </p>
+                    <div class="text-sm text-truth-anchor-copper font-medium">
+                        <span class="sv-text">→ Olika beslutsprocesser</span>
+                        <span class="en-text hidden">→ Different decision processes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="py-20 bg-gradient-to-br from-warm-birch-white to-sage-green/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">Weaver översätter mellan tankesätt</span>
+                    <span class="en-text hidden">Weaver translates between thinking styles</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="sv-text">AI som förstår svenska familjevärderingar och hjälper er kommunicera bättre</span>
+                    <span class="en-text hidden">AI that understands Swedish family values and helps you communicate better</span>
                 </p>
-                <div class="modes-grid">
-                    <div class="mode-card" onclick="window.location.href='create.html'">
-                        <div class="mode-icon">
-                            <img src="images/icon-create.png" alt="CREATE - Creative generation">
-                        </div>
-                        <h3>CREATE</h3>
-                        <p class="subtitle">For explorers and dreamers</p>
-                        <ul>
-                            <li>Brainstorm new possibilities</li>
-                            <li>Imagine creative solutions</li>
-                            <li>Explore "what if" scenarios</li>
-                            <li>Generate fresh ideas</li>
-                        </ul>
-                    </div>
-
-                    <div class="mode-card" onclick="window.location.href='critique.html'">
-                        <div class="mode-icon">
-                            <img src="images/icon-critique.png" alt="CRITIQUE - Analytical examination">
-                        </div>
-                        <h3>CRITIQUE</h3>
-                        <p class="subtitle">For analysts and skeptics</p>
-                        <ul>
-                            <li>Test ideas systematically</li>
-                            <li>Identify potential problems</li>
-                            <li>Demand evidence and proof</li>
-                            <li>Challenge assumptions</li>
-                        </ul>
-                    </div>
-
-                    <div class="mode-card" onclick="window.location.href='synthesize.html'">
-                        <div class="mode-icon">
-                            <img src="images/icon-synthesize.png" alt="SYNTHESIZE - Integration and harmony">
-                        </div>
-                        <h3>SYNTHESIZE</h3>
-                        <p class="subtitle">For integrators and diplomats</p>
-                        <ul>
-                            <li>Balance different perspectives</li>
-                            <li>Find common ground</li>
-                            <li>Combine the best ideas</li>
-                            <li>Build consensus</li>
-                        </ul>
-                    </div>
-
-                    <div class="mode-card" onclick="window.location.href='defense.html'">
-                        <div class="mode-icon">
-                            <img src="images/icon-defense.png" alt="DEFENSE - Protection and preservation">
-                        </div>
-                        <h3>DEFENSE</h3>
-                        <p class="subtitle">For guardians and traditionalists</p>
-                        <ul>
-                            <li>Protect what works</li>
-                            <li>Preserve valuable traditions</li>
-                            <li>Ensure safety and stability</li>
-                            <li>Prevent harmful changes</li>
-                        </ul>
-                    </div>
-                </div>
-                <div style="text-align: center;">
-                    <a href="complete-cycle.html" class="cta-button">See How It All Works Together</a>
-                </div>
-            </div>
-            
-            <!-- Simple Weaver Section - Lagom Design -->
-            <div class="weaver-section">
-                <!-- Swedish Content -->
-                <div class="lang-sv">
-                    <div class="weaver-icon-container">
-                        <img src="images/icon-weaver.png" alt="Weaver" class="weaver-icon">
-                    </div>
-                    <h3 class="weaver-title">WEAVER</h3>
-                    <p class="weaver-subtitle">Hjälper familjer förstå varandra bättre</p>
-                    <p class="weaver-description">
-                        Samma information, anpassad för olika tänkesätt. 
-                        Enkelt verktyg för bättre kommunikation hemma.
-                    </p>
-                    <a href="weaver.html" class="weaver-cta-button">Prova Weaver</a>
-                </div>
-
-                <!-- English Content -->
-                <div class="lang-en">
-                    <div class="weaver-icon-container">
-                        <img src="images/icon-weaver.png" alt="Weaver" class="weaver-icon">
-                    </div>
-                    <h3 class="weaver-title">WEAVER</h3>
-                    <p class="weaver-subtitle">Helps families understand each other better</p>
-                    <p class="weaver-description">
-                        Same information, adapted for different thinking styles. 
-                        Simple tool for better communication at home.
-                    </p>
-                    <a href="weaver.html" class="weaver-cta-button">Try Weaver</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="values-section">
-        <div class="container">
-            <!-- Swedish Content -->
-            <div class="lang-sv">
-                <h2>Svenska Värderingar, Universella Fördelar</h2>
-                <div class="values-grid">
-                    <div class="value-item">
-                        <img src="images/icon-functionality.png" alt="Funktionalitet" class="value-icon">
-                        <h3>Funktionalitet över flashighet</h3>
-                        <p>Verktyg som fungerar pålitligt</p>
-                    </div>
-                    <div class="value-item">
-                        <img src="images/icon-improvement.png" alt="Gradvis förbättring" class="value-icon">
-                        <h3>Gradvis förbättring</h3>
-                        <p>Stadig framsteg, inte störande förändring</p>
-                    </div>
-                    <div class="value-item">
-                        <img src="images/icon-respect.png" alt="Kulturell respekt" class="value-icon">
-                        <h3>Kulturell respekt</h3>
-                        <p>Anpassning till din familjs värderingar</p>
-                    </div>
-                    <div class="value-item">
-                        <img src="images/icon-responsibility.png" alt="Kollektivt ansvar" class="value-icon">
-                        <h3>Kollektivt ansvar</h3>
-                        <p>Teknik som tjänar alla</p>
-                    </div>
-                </div>
             </div>
 
-            <!-- English Content -->
-            <div class="lang-en">
-                <h2>Swedish Values, Universal Benefits</h2>
-                <div class="values-grid">
-                    <div class="value-item">
-                        <img src="images/icon-functionality.png" alt="Functionality" class="value-icon">
-                        <h3>Functionality over flashiness</h3>
-                        <p>Tools that work reliably</p>
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-6">
+                        <!-- Partnership -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-white rounded-full p-4 flex-shrink-0 lagom-shadow">
+                                <img src="images/partnershi-bridge.png" alt="Partnerskap" class="h-10 w-10">
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-deep-swedish-blue mb-2">
+                                    <span class="sv-text">Partnerskap, inte ersättning</span>
+                                    <span class="en-text hidden">Partnership, not replacement</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span class="sv-text">Du behåller kontrollen över alla viktiga beslut. Weaver ger förslag och översättningar, men familjen bestämmer alltid.</span>
+                                    <span class="en-text hidden">You maintain control over all important decisions. Weaver provides suggestions and translations, but the family always decides.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Cultural Respect -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-white rounded-full p-4 flex-shrink-0 lagom-shadow">
+                                <img src="images/balance-point.png" alt="Svenska värderingar" class="h-10 w-10">
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-deep-swedish-blue mb-2">
+                                    <span class="sv-text">Respekterar svenska värderingar</span>
+                                    <span class="en-text hidden">Respects Swedish values</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span class="sv-text">Byggt med lagom-principen och förståelse för svenska familjetraditioner. Anpassar sig till er kultur, inte tvärtom.</span>
+                                    <span class="en-text hidden">Built with the lagom principle and understanding of Swedish family traditions. Adapts to your culture, not the other way around.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Gradual Trust -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-white rounded-full p-4 flex-shrink-0 lagom-shadow">
+                                <img src="images/grow-toghether.png" alt="Gradvis förtroende" class="h-10 w-10">
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-deep-swedish-blue mb-2">
+                                    <span class="sv-text">Börjar smått, växer med förtroendet</span>
+                                    <span class="en-text hidden">Starts small, grows with trust</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span class="sv-text">Ingen påtvingad förändring. Vi börjar med enkla familjesituationer och utökar endast när ni känner er bekväma.</span>
+                                    <span class="en-text hidden">No forced change. We start with simple family situations and expand only when you feel comfortable.</span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="value-item">
-                        <img src="images/icon-improvement.png" alt="Gradual improvement" class="value-icon">
-                        <h3>Gradual improvement</h3>
-                        <p>Steady progress, not disruptive change</p>
-                    </div>
-                    <div class="value-item">
-                        <img src="images/icon-respect.png" alt="Cultural respect" class="value-icon">
-                        <h3>Cultural respect</h3>
-                        <p>Adapting to your family's values</p>
-                    </div>
-                    <div class="value-item">
-                        <img src="images/icon-responsibility.png" alt="Collective responsibility" class="value-icon">
-                        <h3>Collective responsibility</h3>
-                        <p>Technology that serves everyone</p>
+
+                    <button class="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                        <span class="sv-text">Se hur Weaver fungerar</span>
+                        <span class="en-text hidden">See how Weaver works</span>
+                    </button>
+                </div>
+
+                <div class="relative">
+                    <div class="bg-white rounded-2xl p-8 lagom-shadow">
+                        <div class="space-y-6">
+                            <div class="text-center">
+                                <img src="images/understanding-bridge.png" alt="Weaver översätter" class="h-16 w-16 mx-auto mb-4 animate-bridge-glow">
+                                <h4 class="text-lg font-semibold text-deep-swedish-blue">
+                                    <span class="sv-text">Weaver i aktion</span>
+                                    <span class="en-text hidden">Weaver in action</span>
+                                </h4>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-warm-birch-white rounded-lg p-4">
+                                    <div class="text-sm text-gray-500 mb-1">
+                                        <span class="sv-text">Mamma (analytisk):</span>
+                                        <span class="en-text hidden">Mom (analytical):</span>
+                                    </div>
+                                    <p class="text-gray-700">
+                                        <span class="sv-text">"Vi behöver strukturera läxläsningen bättre..."</span>
+                                        <span class="en-text hidden">"We need to structure homework time better..."</span>
+                                    </p>
+                                </div>
+                                
+                                <div class="understanding-bridge h-1 rounded-full mx-8"></div>
+                                
+                                <div class="bg-sage-green/10 rounded-lg p-4">
+                                    <div class="text-sm text-sage-green mb-1">
+                                        <span class="sv-text">Weaver översätter:</span>
+                                        <span class="en-text hidden">Weaver translates:</span>
+                                    </div>
+                                    <p class="text-gray-700">
+                                        <span class="sv-text">"Mamma menar att vi kan hitta ett sätt som fungerar för alla att göra läxor tillsammans."</span>
+                                        <span class="en-text hidden">"Mom means we can find a way that works for everyone to do homework together."</span>
+                                    </p>
+                                </div>
+                                
+                                <div class="bg-warm-birch-white rounded-lg p-4">
+                                    <div class="text-sm text-gray-500 mb-1">
+                                        <span class="sv-text">Tonåring (kreativ):</span>
+                                        <span class="en-text hidden">Teenager (creative):</span>
+                                    </div>
+                                    <p class="text-gray-700">
+                                        <span class="sv-text">"Okej, kanske vi kan prova olika sätt och se vad som känns bra?"</span>
+                                        <span class="en-text hidden">"Okay, maybe we can try different ways and see what feels good?"</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="about" class="footer">
-        <div class="container">
-            <!-- Swedish Content -->
-            <div class="lang-sv">
-                <h3>Om Balans</h3>
-                <p>Balans är ett svenskt AI-säkerhetsföretag fokuserat på människa-AI-samarbete som bevarar mänsklig handlingskraft samtidigt som det förstärker mänskliga förmågor.</p>
-                <p>Vi tror att framtiden tillhör varken människor eller AI ensamma, utan deras genomtänkta partnerskap.</p>
+    <!-- Four Modes Section -->
+    <section id="modes" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">Så hjälper Weaver er familj tänka tillsammans</span>
+                    <span class="en-text hidden">How Weaver helps your family think together</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="sv-text">Fyra sätt att stödja familjesamtal och beslut</span>
+                    <span class="en-text hidden">Four ways to support family conversations and decisions</span>
+                </p>
             </div>
 
-            <!-- English Content -->
-            <div class="lang-en">
-                <h3>About Balans</h3>
-                <p>Balans is a Swedish AI safety company focused on human-AI collaboration that preserves human agency while enhancing human capabilities.</p>
-                <p>We believe the future belongs not to humans or AI alone, but to their thoughtful partnership.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Create Mode -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover text-center">
+                    <div class="bg-white rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center lagom-shadow">
+                        <img src="images/create-mode.png" alt="Skapa" class="h-16 w-16">
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Skapa</span>
+                        <span class="en-text hidden">Create</span>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Brainstorma semesterplaner tillsammans. Alla får bidra med idéer på sitt sätt.</span>
+                        <span class="en-text hidden">Brainstorm vacation plans together. Everyone contributes ideas in their own way.</span>
+                    </p>
+                    <div class="text-sm text-sage-green font-medium">
+                        <span class="sv-text">→ Kreativt familjesamarbete</span>
+                        <span class="en-text hidden">→ Creative family collaboration</span>
+                    </div>
+                </div>
+
+                <!-- Critique Mode -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover text-center">
+                    <div class="bg-white rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center lagom-shadow">
+                        <img src="images/critique-mode.png" alt="Granska" class="h-16 w-16">
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Granska</span>
+                        <span class="en-text hidden">Critique</span>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Utvärdera stora familjebeslut respektfullt. Alla perspektiv får höras.</span>
+                        <span class="en-text hidden">Evaluate major family decisions respectfully. All perspectives are heard.</span>
+                    </p>
+                    <div class="text-sm text-soft-thread-gold font-medium">
+                        <span class="sv-text">→ Konstruktiv reflektion</span>
+                        <span class="en-text hidden">→ Constructive reflection</span>
+                    </div>
+                </div>
+
+                <!-- Synthesize Mode -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover text-center">
+                    <div class="bg-white rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center lagom-shadow">
+                        <img src="images/synthesize-mode.png" alt="Syntetisera" class="h-16 w-16">
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Syntetisera</span>
+                        <span class="en-text hidden">Synthesize</span>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Hitta kompromisser om hushållsregler som alla kan acceptera.</span>
+                        <span class="en-text hidden">Find compromises on household rules that everyone can accept.</span>
+                    </p>
+                    <div class="text-sm text-sacred-alliance-purple font-medium">
+                        <span class="sv-text">→ Balanserade lösningar</span>
+                        <span class="en-text hidden">→ Balanced solutions</span>
+                    </div>
+                </div>
+
+                <!-- Defense Mode -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover text-center">
+                    <div class="bg-white rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center lagom-shadow">
+                        <img src="images/defense-mode.png" alt="Försvara" class="h-16 w-16">
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Försvara</span>
+                        <span class="en-text hidden">Defense</span>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Bevara familjetraditioner medan ni anpassar er till förändringar.</span>
+                        <span class="en-text hidden">Preserve family traditions while adapting to changes.</span>
+                    </p>
+                    <div class="text-sm text-truth-anchor-copper font-medium">
+                        <span class="sv-text">→ Trygg utveckling</span>
+                        <span class="en-text hidden">→ Safe development</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                    <span class="sv-text">Prova alla fyra sätten</span>
+                    <span class="en-text hidden">Try all four ways</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Building Section -->
+    <section class="py-20 bg-gradient-to-br from-warm-birch-white to-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">Byggt för svenska familjer</span>
+                    <span class="en-text hidden">Built for Swedish families</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="sv-text">Med respekt för era värderingar och förståelse för svenska familjetraditioner</span>
+                    <span class="en-text hidden">With respect for your values and understanding of Swedish family traditions</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Safety & Privacy -->
+                <div class="text-center">
+                    <div class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                        <img src="images/the-shield.png" alt="Säkerhet" class="h-16 w-16 mx-auto mb-6">
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                            <span class="sv-text">Säkert & privat</span>
+                            <span class="en-text hidden">Safe & private</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="sv-text">Era familjesamtal stannar inom familjen. Ingen data delas eller säljs vidare.</span>
+                            <span class="en-text hidden">Your family conversations stay within the family. No data is shared or sold.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Swedish Values -->
+                <div class="text-center">
+                    <div class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                        <img src="images/balance-point.png" alt="Lagom" class="h-16 w-16 mx-auto mb-6">
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                            <span class="sv-text">Lagom-principen</span>
+                            <span class="en-text hidden">Lagom principle</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="sv-text">Inte för mycket, inte för lite - precis rätt mängd AI-stöd för er familj.</span>
+                            <span class="en-text hidden">Not too much, not too little - just the right amount of AI support for your family.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Family First -->
+                <div class="text-center">
+                    <div class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                        <img src="images/family-circle.png" alt="Familj" class="h-16 w-16 mx-auto mb-6">
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                            <span class="sv-text">Familj först</span>
+                            <span class="en-text hidden">Family first</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="sv-text">Designat för att stärka familjeband, inte ersätta mänsklig kontakt.</span>
+                            <span class="en-text hidden">Designed to strengthen family bonds, not replace human contact.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-20 bg-deep-swedish-blue text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="space-y-8">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold">
+                    <span class="sv-text">Redo att hjälpa er familj förstå varandra bättre?</span>
+                    <span class="en-text hidden">Ready to help your family understand each other better?</span>
+                </h2>
+                <p class="text-xl text-blue-100">
+                    <span class="sv-text">Börja med en enkel familjesituation och se hur Weaver kan hjälpa</span>
+                    <span class="en-text hidden">Start with a simple family situation and see how Weaver can help</span>
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                        <span class="sv-text">Prova Weaver gratis</span>
+                        <span class="en-text hidden">Try Weaver free</span>
+                    </button>
+                    <button class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-white hover:text-deep-swedish-blue">
+                        <span class="sv-text">Boka demo</span>
+                        <span class="en-text hidden">Book demo</span>
+                    </button>
+                </div>
+
+                <div class="text-sm text-blue-200">
+                    <span class="sv-text">Ingen registrering krävs • Prova direkt • Avsluta när som helst</span>
+                    <span class="en-text hidden">No registration required • Try immediately • Cancel anytime</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </div>
+                    <p class="text-gray-600">
+                        <span class="sv-text">AI-stöd för svenska familjer som respekterar era värderingar</span>
+                        <span class="en-text hidden">AI support for Swedish families that respects your values</span>
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Produkter</span>
+                        <span class="en-text hidden">Products</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Weaver för familjer</span>
+                            <span class="en-text hidden">Weaver for families</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Prova gratis</span>
+                            <span class="en-text hidden">Try free</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Så fungerar det</span>
+                            <span class="en-text hidden">How it works</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Support</span>
+                        <span class="en-text hidden">Support</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Hjälpcenter</span>
+                            <span class="en-text hidden">Help center</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Kontakta oss</span>
+                            <span class="en-text hidden">Contact us</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Säkerhet</span>
+                            <span class="en-text hidden">Security</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Företag</span>
+                        <span class="en-text hidden">Company</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Om oss</span>
+                            <span class="en-text hidden">About us</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Integritet</span>
+                            <span class="en-text hidden">Privacy</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Villkor</span>
+                            <span class="en-text hidden">Terms</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-natural-birch-wood/20 mt-8 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 Balans. <span class="sv-text">Alla rättigheter förbehållna.</span><span class="en-text hidden">All rights reserved.</span></p>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        function toggleLanguage() {
-            const body = document.body;
-            const langText = document.getElementById('lang-text');
+        // Language Toggle
+        const langSv = document.getElementById('lang-sv');
+        const langEn = document.getElementById('lang-en');
+        const svTexts = document.querySelectorAll('.sv-text');
+        const enTexts = document.querySelectorAll('.en-text');
+
+        function showSwedish() {
+            langSv.classList.add('bg-deep-swedish-blue', 'text-white');
+            langSv.classList.remove('text-deep-swedish-blue');
+            langEn.classList.remove('bg-deep-swedish-blue', 'text-white');
+            langEn.classList.add('text-deep-swedish-blue');
             
-            if (body.classList.contains('english')) {
-                body.classList.remove('english');
-                langText.textContent = 'EN';
-                document.documentElement.lang = 'sv';
-                document.title = 'Balans - AI-stöd för familjer';
-            } else {
-                body.classList.add('english');
-                langText.textContent = 'SV';
-                document.documentElement.lang = 'en';
-                document.title = 'Balans - AI Support for Families';
-            }
+            svTexts.forEach(el => el.classList.remove('hidden'));
+            enTexts.forEach(el => el.classList.add('hidden'));
+            
+            document.documentElement.lang = 'sv';
         }
 
-        // Smooth scrolling for anchor links
+        function showEnglish() {
+            langEn.classList.add('bg-deep-swedish-blue', 'text-white');
+            langEn.classList.remove('text-deep-swedish-blue');
+            langSv.classList.remove('bg-deep-swedish-blue', 'text-white');
+            langSv.classList.add('text-deep-swedish-blue');
+            
+            enTexts.forEach(el => el.classList.remove('hidden'));
+            svTexts.forEach(el => el.classList.add('hidden'));
+            
+            document.documentElement.lang = 'en';
+        }
+
+        langSv.addEventListener('click', showSwedish);
+        langEn.addEventListener('click', showEnglish);
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scrolling for Anchor Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1030,15 +745,8 @@
             });
         });
 
-        // Add loading animation for mode cards
-        document.querySelectorAll('.mode-card').forEach(card => {
-            card.addEventListener('click', function() {
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-            });
-        });
+        // Initialize with Swedish
+        showSwedish();
     </script>
 </body>
 </html>

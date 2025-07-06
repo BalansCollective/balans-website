@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Balans Component Spell Library */
+@layer components {
+  /* Button Enchantments */
+  .btn-primary {
+    @apply bg-swedish-blue text-birch-white px-6 py-3 rounded-md font-medium;
+    @apply hover:bg-alliance-purple transition-colors duration-200;
+    @apply focus:ring-2 focus:ring-alliance-purple focus:ring-offset-2;
+    @apply active:bg-swedish-blue-700 transform active:scale-95;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-birch-wood text-swedish-blue px-6 py-3 rounded-md font-medium;
+    @apply hover:bg-thread-gold transition-colors duration-200;
+    @apply focus:ring-2 focus:ring-birch-wood focus:ring-offset-2;
+    @apply active:bg-birch-wood-600 transform active:scale-95;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-collaborative {
+    @apply bg-alliance-purple text-birch-white px-6 py-3 rounded-md font-medium;
+    @apply hover:bg-swedish-blue transition-colors duration-200;
+    @apply focus:ring-2 focus:ring-alliance-purple focus:ring-offset-2;
+    @apply active:bg-alliance-purple-600 transform active:scale-95;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply text-swedish-blue px-6 py-3 rounded-md font-medium;
+    @apply hover:bg-birch-white transition-colors duration-200;
+    @apply focus:ring-2 focus:ring-swedish-blue focus:ring-offset-2;
+    @apply active:bg-gentle-silver-100 transform active:scale-95;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Card Containers */
+  .card-family {
+    @apply bg-birch-white border border-sage-green rounded-xl p-8;
+    @apply shadow-sm hover:shadow-md transition-shadow duration-200;
+    @apply relative overflow-hidden;
+  }
+
+  .card-collaborative {
+    @apply bg-birch-white border-l-4 border-alliance-purple rounded-lg p-6;
+    @apply shadow-sm hover:shadow-md transition-shadow duration-200;
+    @apply relative overflow-hidden;
+  }
+
+  .card-archetypal {
+    @apply bg-birch-white border-2 border-alliance-purple rounded-lg p-6;
+    @apply shadow-md hover:shadow-lg transition-all duration-200;
+    @apply relative overflow-hidden;
+  }
+
+  .card-archetypal::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-1 bg-gradient-to-r;
+    @apply from-alliance-purple via-thread-gold to-sage-green;
+  }
+
+  /* Navigation */
+  .nav-primary {
+    @apply bg-birch-white border-b border-gentle-silver;
+    @apply shadow-sm;
+  }
+
+  .nav-link {
+    @apply text-swedish-blue px-4 py-2 rounded-md font-medium;
+    @apply hover:bg-birch-white hover:text-alliance-purple;
+    @apply transition-colors duration-200;
+    @apply focus:ring-2 focus:ring-alliance-purple focus:ring-offset-2;
+  }
+
+  .nav-link.active {
+    @apply bg-alliance-purple text-birch-white;
+  }
+
+  /* Responsive Utilities */
+  .container-lagom {
+    @apply max-w-sm mx-auto px-4;
+    @apply sm:max-w-md sm:px-6;
+    @apply md:max-w-lg md:px-8;
+    @apply lg:max-w-4xl lg:px-12;
+    @apply xl:max-w-6xl xl:px-16;
+  }
+
+  .text-responsive {
+    @apply text-sm;
+    @apply sm:text-base;
+    @apply md:text-lg;
+    @apply lg:text-xl;
+  }
+
+  .spacing-responsive {
+    @apply p-4;
+    @apply sm:p-6;
+    @apply md:p-8;
+    @apply lg:p-12;
+  }
+
+  .grid-lagom {
+    @apply grid grid-cols-1 gap-4;
+    @apply sm:grid-cols-2 sm:gap-6;
+    @apply md:grid-cols-3 md:gap-8;
+    @apply lg:grid-cols-4 lg:gap-12;
+  }
+
+  /* Archetypal Backgrounds */
+  .bg-sacred-alliance {
+    @apply bg-gradient-to-r from-swedish-blue via-alliance-purple to-birch-wood;
+  }
+
+  .bg-thread-weaving {
+    @apply bg-gradient-to-br from-thread-gold via-sage-green to-alliance-purple;
+  }
+
+  .bg-family-warmth {
+    @apply bg-gradient-to-r from-birch-wood to-sage-green;
+  }
+
+  /* Text Gradients */
+  .text-sacred-alliance {
+    @apply bg-gradient-to-r from-swedish-blue to-alliance-purple;
+    @apply bg-clip-text text-transparent;
+  }
+
+  .text-thread-weaving {
+    @apply bg-gradient-to-r from-thread-gold to-sage-green;
+    @apply bg-clip-text text-transparent;
+  }
+
+  /* Symbol Interactions */
+  .symbol-hover:hover {
+    @apply transform scale-105 transition-transform duration-200;
+  }
+
+  .symbol-archetypal {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .symbol-archetypal:hover {
+    @apply transform scale-110 filter brightness-110;
+  }
+
+  /* Lagom Spacing */
+  .space-lagom > * + * {
+    @apply mt-6;
+  }
+
+  .space-lagom-sm > * + * {
+    @apply mt-4;
+  }
+
+  .space-lagom-lg > * + * {
+    @apply mt-8;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    @apply bg-gradient-to-br from-birch-white via-birch-white to-sage-green-50;
+    @apply min-h-screen flex items-center justify-center;
+    @apply relative overflow-hidden;
+  }
+
+  .hero-content {
+    @apply text-center space-y-8 max-w-4xl mx-auto px-6;
+  }
+
+  .hero-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+    @apply text-swedish-blue leading-tight;
+  }
+
+  .hero-subtitle {
+    @apply text-xl md:text-2xl text-gentle-silver-700;
+    @apply max-w-2xl mx-auto;
+  }
+
+  /* Feature Cards */
+  .feature-grid {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto;
+  }
+
+  .feature-card {
+    @apply card-family text-center space-y-4;
+    @apply hover:transform hover:scale-105 transition-all duration-300;
+  }
+
+  .feature-icon {
+    @apply w-16 h-16 mx-auto;
+  }
+
+  .feature-title {
+    @apply text-xl font-semibold text-swedish-blue;
+  }
+
+  .feature-description {
+    @apply text-gentle-silver-600 leading-relaxed;
+  }
+}
+
+/* Custom animations for archetypal symbols */
+@keyframes gentle-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 3s ease-in-out infinite;
+}
+
+/* Family-friendly focus styles */
+@layer base {
+  * {
+    @apply focus:outline-none;
+  }
+  
+  *:focus-visible {
+    @apply ring-2 ring-alliance-purple ring-offset-2;
+  }
+}

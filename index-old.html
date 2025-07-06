@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balans - Hjälper familjer förstå varandra</title>
+    <style>
+        /* Balans Color Palette */
+        :root {
+            /* PRIMARY PALETTE */
+            --balans-deep-swedish-blue: #2c5aa0;
+            --balans-warm-birch-white: #f8f6f0;
+            --balans-natural-birch-wood: #d4b896;
+            
+            /* SECONDARY PALETTE */
+            --balans-soft-thread-gold: #c9a96e;
+            --balans-sage-green: #8faa8b;
+            --balans-gentle-silver: #b8c5d1;
+            
+            /* ACCENT COLORS */
+            --balans-sacred-alliance-purple: #6b5b95;
+            --balans-truth-anchor-copper: #b87333;
+            
+            /* SEMANTIC MAPPINGS */
+            --balans-primary: var(--balans-deep-swedish-blue);
+            --balans-secondary: var(--balans-natural-birch-wood);
+            --balans-background: var(--balans-warm-birch-white);
+            --balans-text-primary: var(--balans-deep-swedish-blue);
+            --balans-text-secondary: var(--balans-deep-swedish-blue);
+            --balans-text-muted: var(--balans-gentle-silver);
+            --balans-border-light: var(--balans-gentle-silver);
+            --balans-shadow-light: rgba(44, 90, 160, 0.1);
+            --balans-shadow-medium: rgba(44, 90, 160, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--balans-text-primary);
+            background: var(--balans-background);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Language Toggle - Lagom Design */
+        .language-toggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+            background: rgba(248, 246, 240, 0.9);
+            border: 1px solid var(--balans-gentle-silver);
+            border-radius: 6px;
+            padding: 4px 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--balans-deep-swedish-blue);
+            backdrop-filter: blur(10px);
+        }
+
+        .language-toggle:hover {
+            background: rgba(201, 169, 110, 0.9);
+            color: var(--balans-warm-birch-white);
+        }
+
+        /* Hero Section - Family Recognition Spell */
+        .hero {
+            padding: 4rem 0 3rem;
+            background: linear-gradient(135deg, var(--balans-deep-swedish-blue) 0%, var(--balans-sacred-alliance-purple) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--balans-warm-birch-white);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .family-situation {
+            font-size: 1.5rem;
+            color: var(--balans-warm-birch-white);
+            margin-bottom: 1rem;
+            font-weight: 500;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero .weaver-solution {
+            font-size: 1.2rem;
+            color: var(--balans-warm-birch-white);
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Primary CTA - Try Weaver */
+        .primary-cta {
+            display: inline-block;
+            background: linear-gradient(145deg, var(--balans-soft-thread-gold), #b8956a);
+            color: var(--balans-background);
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 6px 20px var(--balans-shadow-medium),
+                inset 0 1px 0 rgba(255,255,255,0.3),
+                inset 0 -1px 0 rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .primary-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 1px,
+                    rgba(0,0,0,0.03) 1px,
+                    rgba(0,0,0,0.03) 2px
+                );
+            border-radius: 50px;
+            pointer-events: none;
+        }
+
+        .primary-cta:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(145deg, var(--balans-natural-birch-wood), #c8a082);
+            box-shadow: 
+                0 10px 30px var(--balans-shadow-medium),
+                inset 0 1px 0 rgba(255,255,255,0.4),
+                inset 0 -1px 0 rgba(0,0,0,0.15);
+        }
+
+        .secondary-info {
+            font-size: 0.9rem;
+            color: var(--balans-warm-birch-white);
+            opacity: 0.8;
+        }
+
+        /* Family Scenarios Section */
+        .family-scenarios {
+            padding: 4rem 0;
+        }
+
+        .family-scenarios h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--balans-text-primary);
+        }
+
+        .family-scenarios .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--balans-text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .scenario-card {
+            background: var(--balans-background);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 
+                0 2px 8px var(--balans-shadow-light),
+                0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--balans-border-light);
+            transition: all 0.3s ease;
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 8px 25px var(--balans-shadow-medium),
+                0 4px 12px rgba(0,0,0,0.1);
+            border-color: var(--balans-soft-thread-gold);
+        }
+
+        .scenario-card .family-problem {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--balans-primary);
+            margin-bottom: 1rem;
+        }
+
+        .scenario-card .weaver-help {
+            font-size: 1rem;
+            color: var(--balans-text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .scenario-cta {
+            display: inline-block;
+            background: linear-gradient(145deg, var(--balans-natural-birch-wood), #c8a082);
+            color: var(--balans-background);
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 2px 8px var(--balans-shadow-light),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+
+        .scenario-cta:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(145deg, var(--balans-soft-thread-gold), #b8956a);
+            box-shadow: 
+                0 4px 15px var(--balans-shadow-medium),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+
+        /* How Weaver Works Section */
+        .how-weaver-works {
+            background: linear-gradient(135deg, var(--balans-gentle-silver) 0%, var(--balans-background) 100%);
+            padding: 4rem 0;
+        }
+
+        .how-weaver-works h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--balans-text-primary);
+        }
+
+        .how-weaver-works .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--balans-text-secondary);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mode-card {
+            background: var(--balans-background);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 
+                0 2px 8px var(--balans-shadow-light),
+                0 1px 3px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Family-focused mode colors */
+        .mode-card:nth-child(1) {
+            background: linear-gradient(135deg, var(--balans-soft-thread-gold), #d4a574);
+        }
+
+        .mode-card:nth-child(2) {
+            background: linear-gradient(135deg, var(--balans-deep-swedish-blue), #3a6bb0);
+        }
+
+        .mode-card:nth-child(3) {
+            background: linear-gradient(135deg, var(--balans-sacred-alliance-purple), #7a6ba5);
+        }
+
+        .mode-card:nth-child(4) {
+            background: linear-gradient(135deg, var(--balans-natural-birch-wood), #dcc2a6);
+        }
+
+        .mode-card:nth-child(1) h3,
+        .mode-card:nth-child(1) .family-scenario,
+        .mode-card:nth-child(1) .mode-description {
+            color: var(--balans-warm-birch-white);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .mode-card:nth-child(2) h3,
+        .mode-card:nth-child(2) .family-scenario,
+        .mode-card:nth-child(2) .mode-description {
+            color: var(--balans-warm-birch-white);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .mode-card:nth-child(3) h3,
+        .mode-card:nth-child(3) .family-scenario,
+        .mode-card:nth-child(3) .mode-description {
+            color: var(--balans-warm-birch-white);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .mode-card:nth-child(4) h3,
+        .mode-card:nth-child(4) .family-scenario,
+        .mode-card:nth-child(4) .mode-description {
+            color: var(--balans-deep-swedish-blue);
+            text-shadow: 0 1px 2px rgba(255,255,255,0.3);
+        }
+
+        .mode-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 
+                0 12px 30px var(--balans-shadow-medium),
+                0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .mode-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(248, 246, 240, 0.9);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 2px 8px var(--balans-shadow-light);
+            transition: all 0.3s ease;
+            padding: 8px;
+        }
+
+        .mode-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .mode-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .mode-card .family-scenario {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .mode-card .mode-description {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Swedish Values Section */
+        .swedish-values {
+            padding: 4rem 0;
+        }
+
+        .swedish-values h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--balans-text-primary);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: var(--balans-background);
+            box-shadow: 0 2px 8px var(--balans-shadow-light);
+            border: 1px solid var(--balans-border-light);
+        }
+
+        .value-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px var(--balans-shadow-medium);
+            border-color: var(--balans-soft-thread-gold);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+        }
+
+        .value-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--balans-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .value-item p {
+            font-size: 0.95rem;
+            color: var(--balans-text-secondary);
+        }
+
+        /* Try Weaver Section */
+        .try-weaver {
+            background: linear-gradient(135deg, var(--balans-deep-swedish-blue) 0%, var(--balans-sacred-alliance-purple) 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .try-weaver h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--balans-warm-birch-white);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .try-weaver .subtitle {
+            font-size: 1.2rem;
+            color: var(--balans-warm-birch-white);
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--balans-primary);
+            color: var(--balans-background);
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer h3 {
+            margin-bottom: 1rem;
+            color: var(--balans-soft-thread-gold);
+        }
+
+        .footer p {
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer .lagom {
+            font-style: italic;
+            color: var(--balans-soft-thread-gold);
+            margin-top: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 0 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .family-situation {
+                font-size: 1.3rem;
+            }
+
+            .hero .weaver-solution {
+                font-size: 1.1rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .modes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .scenarios-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .values-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .primary-cta {
+                display: block;
+                margin: 0 auto 2rem;
+                text-align: center;
+                padding: 18px 35px;
+                font-size: 1.2rem;
+            }
+
+            .scenario-cta {
+                display: block;
+                text-align: center;
+                margin-top: 1rem;
+            }
+        }
+
+        /* Hidden content for language switching */
+        .lang-en {
+            display: none;
+        }
+
+        body.english .lang-sv {
+            display: none;
+        }
+
+        body.english .lang-en {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-toggle" onclick="toggleLanguage()">
+        <span id="lang-text">EN</span>
+    </div>
+
+    <!-- Hero Section - Family Recognition Spell -->
+    <section class="hero">
+        <img src="prototype/images/hero-background.png" alt="Swedish Family Collaboration" class="hero-background">
+        <div class="container">
+            <div class="hero-content">
+                <!-- Swedish Content -->
+                <div class="lang-sv">
+                    <h1>När familjen inte förstår varandra</h1>
+                    <p class="family-situation">Weaver hjälper er se samma sak från olika perspektiv</p>
+                    <p class="weaver-solution">Enkelt AI-verktyg som översätter mellan olika sätt att tänka - så att alla i familjen känner sig förstådda</p>
+                    <a href="#try-weaver" class="primary-cta">Prova Weaver för din familj</a>
+                    <p class="secondary-info">Gratis att testa • Ingen registrering krävs • Fungerar på svenska</p>
+                </div>
+
+                <!-- English Content -->
+                <div class="lang-en">
+                    <h1>When families don't understand each other</h1>
+                    <p class="family-situation">Weaver helps you see the same thing from different perspectives</p>
+                    <p class="weaver-solution">Simple AI tool that translates between different ways of thinking - so everyone in the family feels understood</p>
+                    <a href="#try-weaver" class="primary-cta">Try Weaver for your family</a>
+                    <p class="secondary-info">Free to try • No registration required • Works in English</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Family Scenarios Section -->
+    <section class="family-scenarios">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <h2>Vanliga familjesituationer där Weaver hjälper</h2>
+                <p class="subtitle">Känner du igen din familj i någon av dessa situationer?</p>
+                
+                <div class="scenarios-grid">
+                    <div class="scenario-card">
+                        <h3 class="family-problem">När ni pratar förbi varandra</h3>
+                        <p class="weaver-help">Weaver översätter samma information så att den passar hur olika familjemedlemmar föredrar att ta emot information - kreativt, analytiskt, balanserat eller praktiskt.</p>
+                        <a href="#try-weaver" class="scenario-cta">Prova för kommunikation</a>
+                    </div>
+
+                    <div class="scenario-card">
+                        <h3 class="family-problem">När ni inte kommer överens</h3>
+                        <p class="weaver-help">Weaver hjälper er förstå varför ni tänker olika om samma sak och hittar sätt att respektera varandras perspektiv utan att ge upp era egna åsikter.</p>
+                        <a href="#try-weaver" class="scenario-cta">Prova för konflikter</a>
+                    </div>
+
+                    <div class="scenario-card">
+                        <h3 class="family-problem">När beslut känns omöjliga</h3>
+                        <p class="weaver-help">Weaver visar hur samma beslut ser ut från olika tänkesätt och hjälper er hitta lösningar som alla kan känna sig okej med.</p>
+                        <a href="#try-weaver" class="scenario-cta">Prova för beslut</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <h2>Common family situations where Weaver helps</h2>
+                <p class="subtitle">Do you recognize your family in any of these situations?</p>
+                
+                <div class="scenarios-grid">
+                    <div class="scenario-card">
+                        <h3 class="family-problem">When you talk past each other</h3>
+                        <p class="weaver-help">Weaver translates the same information to fit how different family members prefer to receive information - creatively, analytically, balanced, or practically.</p>
+                        <a href="#try-weaver" class="scenario-cta">Try for communication</a>
+                    </div>
+
+                    <div class="scenario-card">
+                        <h3 class="family-problem">When you can't agree</h3>
+                        <p class="weaver-help">Weaver helps you understand why you think differently about the same thing and find ways to respect each other's perspectives without giving up your own views.</p>
+                        <a href="#try-weaver" class="scenario-cta">Try for conflicts</a>
+                    </div>
+
+                    <div class="scenario-card">
+                        <h3 class="family-problem">When decisions feel impossible</h3>
+                        <p class="weaver-help">Weaver shows how the same decision looks from different thinking styles and helps you find solutions everyone can feel okay with.</p>
+                        <a href="#try-weaver" class="scenario-cta">Try for decisions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How Weaver Works Section -->
+    <section class="how-weaver-works">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <h2>Så hjälper Weaver er familj tänka tillsammans</h2>
+                <p class="subtitle">Weaver använder fyra olika sätt att närma sig problem - precis som olika familjemedlemmar gör naturligt</p>
+                
+                <div class="modes-grid">
+                    <div class="mode-card">
+                        <div class="mode-icon">
+                            <img src="prototype/images/icon-create.png" alt="SKAPA - Familjekreativitet">
+                        </div>
+                        <h3>SKAPA</h3>
+                        <p class="family-scenario">När ni planerar sommarlovet tillsammans</p>
+                        <p class="mode-description">Hjälper familjen brainstorma nya möjligheter och hitta kreativa lösningar som alla blir glada för.</p>
+                    </div>
+
+                    <div class="mode-card">
+                        <div class="mode-icon">
+                            <img src="prototype/images/icon-critique.png" alt="KRITIK - Familjeanalys">
+                        </div>
+                        <h3>KRITIK</h3>
+                        <p class="family-scenario">När ni utvärderar ett stort familjebeslut</p>
+                        <p class="mode-description">Hjälper familjen testa idéer systematiskt och identifiera potentiella problem innan ni bestämmer.</p>
+                    </div>
+
+                    <div class="mode-card">
+                        <div class="mode-icon">
+                            <img src="prototype/images/icon-synthesize.png" alt="SYNTES - Familjebalans">
+                        </div>
+                        <h3>SYNTES</h3>
+                        <p class="family-scenario">När ni hittar kompromisser om hemregler</p>
+                        <p class="mode-description">Hjälper familjen balansera olika perspektiv och hitta lösningar som respekterar allas behov.</p>
+                    </div>
+
+                    <div class="mode-card">
+                        <div class="mode-icon">
+                            <img src="prototype/images/icon-defense.png" alt="FÖRSVAR - Familjetraditioner">
+                        </div>
+                        <h3>FÖRSVAR</h3>
+                        <p class="family-scenario">När ni skyddar familjetraditioner samtidigt som ni anpassar er</p>
+                        <p class="mode-description">Hjälper familjen bevara det som fungerar bra medan ni förändrar det som behöver förbättras.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <a href="#try-weaver" class="primary-cta">Prova alla fyra sätten</a>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <h2>How Weaver helps your family think together</h2>
+                <p class="subtitle">Weaver uses four different ways to approach problems - just like different family members do naturally</p>
+                
+                <div class="modes-grid">
+                    <div class="mode-card">
+                        <div class="mode-icon">
+                            <img src="prototype/images/icon-create.png" alt="CREATE - Family creativity">
+                        </div>
+                        <h3>CREATE</h3>
+                        <p class="family-scenario">When planning summer vacation together</p>
+                        <p class="mode-description">Helps the family brainstorm new possibilities and find creative solutions that make everyone happy.</p>
+                    </div>
+
+                    <div class="mode-card">
+                        <div class="mode-icon">
+                            <img src="prototype/images/icon-critique.png" alt="CRITIQUE - Family analysis">
+                        </div>
+                        <h3>CRITIQUE</h3>
+                        <p class="family-scenario">When evaluating a big family decision</p>
+                        <p class="mode-description">Helps the family test ideas systematically and identify potential problems before deciding.</p>
+                    </div>
+
+                    <div class="mode-card">
+                        <div class="mode-icon">
+                            <img src="prototype/images/icon-synthesize.png" alt="SYNTHESIZE - Family balance">
+                        </div>
+                        <h3>SYNTHESIZE</h3>
+                        <p class="family-scenario">When finding compromises about house rules</p>
+                        <p class="mode-description">Helps the family balance different perspectives and find solutions that respect everyone's needs.</p>
+                    </div>
+
+                    <div class="mode-card">
+                        <div class="mode-icon">
+                            <img src="prototype/images/icon-defense.png" alt="DEFENSE - Family traditions">
+                        </div>
+                        <h3>DEFENSE</h3>
+                        <p class="family-scenario">When protecting family traditions while adapting</p>
+                        <p class="mode-description">Helps the family preserve what works well while changing what needs improvement.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <a href="#try-weaver" class="primary-cta">Try all four approaches</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Swedish Values Section -->
+    <section class="swedish-values">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <h2>Svenska värderingar, universella fördelar</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <img src="prototype/images/icon-functionality.png" alt="Funktionalitet" class="value-icon">
+                        <h3>Funktionalitet först</h3>
+                        <p>Verktyg som faktiskt hjälper, inte bara ser bra ut</p>
+                    </div>
+                    <div class="value-item">
+                        <img src="prototype/images/icon-improvement.png" alt="Gradvis förbättring" class="value-icon">
+                        <h3>Gradvis förbättring</h3>
+                        <p>Stadig framsteg, inte störande förändring</p>
+                    </div>
+                    <div class="value-item">
+                        <img src="prototype/images/icon-respect.png" alt="Respekt" class="value-icon">
+                        <h3>Respekt för alla perspektiv</h3>
+                        <p>Ingen familjemedlem behöver ändra sig för att förstås</p>
+                    </div>
+                    <div class="value-item">
+                        <img src="prototype/images/icon-responsibility.png" alt="Ansvar" class="value-icon">
+                        <h3>Ansvarsfull AI</h3>
+                        <p>Transparent, säker och under er familjs kontroll</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <h2>Swedish values, universal benefits</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <img src="prototype/images/icon-functionality.png" alt="Functionality" class="value-icon">
+                        <h3>Functionality first</h3>
+                        <p>Tools that actually help, not just look good</p>
+                    </div>
+                    <div class="value-item">
+                        <img src="prototype/images/icon-improvement.png" alt="Gradual improvement" class="value-icon">
+                        <h3>Gradual improvement</h3>
+                        <p>Steady progress, not disruptive change</p>
+                    </div>
+                    <div class="value-item">
+                        <img src="prototype/images/icon-respect.png" alt="Respect" class="value-icon">
+                        <h3>Respect for all perspectives</h3>
+                        <p>No family member needs to change to be understood</p>
+                    </div>
+                    <div class="value-item">
+                        <img src="prototype/images/icon-responsibility.png" alt="Responsibility" class="value-icon">
+                        <h3>Responsible AI</h3>
+                        <p>Transparent, safe and under your family's control</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Try Weaver Section -->
+    <section class="try-weaver" id="try-weaver">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <h2>Prova Weaver idag</h2>
+                <p class="subtitle">Börja hjälpa din familj förstå varandra bättre - helt gratis</p>
+                <a href="prototype/index.html" class="primary-cta">Starta Weaver nu</a>
+                <p class="secondary-info">Fungerar direkt i webbläsaren • Ingen app att ladda ner • Helt på svenska</p>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <h2>Try Weaver today</h2>
+                <p class="subtitle">Start helping your family understand each other better - completely free</p>
+                <a href="prototype/index.html" class="primary-cta">Start Weaver now</a>
+                <p class="secondary-info">Works directly in browser • No app to download • Fully in English</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <h3>Balans</h3>
+                <p>Hjälper familjer förstå varandra</p>
+                <p>Utvecklat i Sverige med kärlek för familjer överallt</p>
+                <p class="lagom">Lagom - precis rätt mängd förståelse för din familj</p>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <h3>Balans</h3>
+                <p>Helping families understand each other</p>
+                <p>Developed in Sweden with love for families everywhere</p>
+                <p class="lagom">Lagom - just the right amount of understanding for your family</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const langText = document.getElementById('lang-text');
+            
+            if (body.classList.contains('english')) {
+                body.classList.remove('english');
+                langText.textContent = 'EN';
+                document.documentElement.lang = 'sv';
+                document.title = 'Balans - Hjälper familjer förstå varandra';
+            } else {
+                body.classList.add('english');
+                langText.textContent = 'SV';
+                document.documentElement.lang = 'en';
+                document.title = 'Balans - Helping families understand each other';
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
