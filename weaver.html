@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEAVER - AI som översätter mellan tankesätt | Balans</title>
+    <style>
+        /* Balans Color Palette */
+        :root {
+            /* PRIMARY PALETTE */
+            --balans-deep-swedish-blue: #2c5aa0;
+            --balans-warm-birch-white: #f8f6f0;
+            --balans-natural-birch-wood: #d4b896;
+            
+            /* SECONDARY PALETTE */
+            --balans-soft-thread-gold: #c9a96e;
+            --balans-sage-green: #8faa8b;
+            --balans-gentle-silver: #b8c5d1;
+            
+            /* ACCENT COLORS */
+            --balans-sacred-alliance-purple: #6b5b95;
+            --balans-truth-anchor-copper: #b87333;
+            
+            /* SEMANTIC MAPPINGS */
+            --balans-primary: var(--balans-deep-swedish-blue);
+            --balans-secondary: var(--balans-natural-birch-wood);
+            --balans-background: var(--balans-warm-birch-white);
+            --balans-text-primary: var(--balans-deep-swedish-blue);
+            --balans-text-secondary: var(--balans-deep-swedish-blue);
+            --balans-text-muted: var(--balans-gentle-silver);
+            --balans-border-light: var(--balans-gentle-silver);
+            --balans-shadow-light: rgba(44, 90, 160, 0.1);
+            --balans-shadow-medium: rgba(44, 90, 160, 0.15);
+            
+            /* WEAVER MODE SPECIFIC */
+            --weaver-primary: var(--balans-sacred-alliance-purple);
+            --weaver-thread-gold: var(--balans-soft-thread-gold);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--balans-text-primary);
+            background: var(--balans-background);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+            background: rgba(248, 246, 240, 0.9);
+            border: 1px solid var(--balans-gentle-silver);
+            border-radius: 6px;
+            padding: 4px 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--balans-deep-swedish-blue);
+            backdrop-filter: blur(10px);
+        }
+
+        .language-toggle:hover {
+            background: rgba(201, 169, 110, 0.9);
+            color: var(--balans-warm-birch-white);
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background: rgba(248, 246, 240, 0.9);
+            border: 1px solid var(--balans-gentle-silver);
+            border-radius: 6px;
+            padding: 4px 8px;
+            text-decoration: none;
+            color: var(--balans-deep-swedish-blue);
+            font-size: 12px;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-button:hover {
+            background: rgba(201, 169, 110, 0.9);
+            color: var(--balans-warm-birch-white);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 0 4rem;
+            background: linear-gradient(135deg, var(--weaver-primary) 0%, var(--weaver-thread-gold) 100%);
+            position: relative;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--balans-warm-birch-white);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--balans-warm-birch-white);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            color: var(--balans-warm-birch-white);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            opacity: 0.95;
+        }
+
+        /* CTA Buttons */
+        .cta-button {
+            display: inline-block;
+            background: var(--balans-warm-birch-white);
+            color: var(--weaver-primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin: 0 1rem 1rem;
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: var(--weaver-thread-gold);
+            color: var(--balans-warm-birch-white);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--balans-warm-birch-white);
+            border: 2px solid var(--balans-warm-birch-white);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--balans-warm-birch-white);
+            color: var(--weaver-primary);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--balans-text-primary);
+        }
+
+        /* Problem/Solution Cards */
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+            align-items: center;
+        }
+
+        .problem-card, .solution-card {
+            background: var(--balans-background);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px var(--balans-shadow-light);
+            border: 1px solid var(--balans-border-light);
+        }
+
+        .problem-card {
+            border-left: 4px solid #e74c3c;
+        }
+
+        .solution-card {
+            border-left: 4px solid var(--weaver-primary);
+        }
+
+        .problem-card h3 {
+            color: #e74c3c;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-card h3 {
+            color: var(--weaver-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Example Section */
+        .example-section {
+            background: linear-gradient(135deg, var(--weaver-primary) 0%, var(--balans-deep-swedish-blue) 100%);
+            padding: 4rem 0;
+            border-radius: 20px;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .example-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .example-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .example-section h3 {
+            color: var(--balans-warm-birch-white);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .example-section p {
+            color: var(--balans-warm-birch-white);
+            opacity: 0.95;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .translation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .translation-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .translation-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .translation-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--balans-warm-birch-white);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .translation-text {
+            background: rgba(255,255,255,0.9);
+            padding: 1.5rem;
+            border-radius: 8px;
+            color: var(--balans-text-primary);
+            font-style: italic;
+            line-height: 1.6;
+            border-left: 3px solid var(--weaver-thread-gold);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .step-card {
+            background: var(--balans-background);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px var(--balans-shadow-light);
+            border: 1px solid var(--balans-border-light);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px var(--balans-shadow-medium);
+        }
+
+        .step-number {
+            background: var(--weaver-primary);
+            color: var(--balans-warm-birch-white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 0 auto 1rem;
+        }
+
+        .step-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--weaver-primary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--balans-background);
+            padding: 4rem 3rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 2px solid var(--weaver-primary);
+            margin: 4rem 0;
+        }
+
+        .cta-section h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--weaver-primary);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--balans-text-secondary);
+        }
+
+        /* Navigation Cards */
+        .mode-navigation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .nav-card {
+            background: var(--balans-background);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--balans-text-primary);
+            border: 2px solid var(--balans-border-light);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px var(--balans-shadow-light);
+        }
+
+        .nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px var(--balans-shadow-medium);
+            border-color: var(--weaver-primary);
+        }
+
+        .nav-card .nav-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+        }
+
+        .nav-card .nav-icon img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-card p {
+            font-size: 0.9rem;
+            color: var(--balans-text-muted);
+            margin: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--weaver-primary);
+            color: var(--balans-background);
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer h3 {
+            margin-bottom: 1rem;
+            color: var(--weaver-thread-gold);
+        }
+
+        .footer p {
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer .lagom {
+            font-style: italic;
+            color: var(--weaver-thread-gold);
+            margin-top: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .problem-solution {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .translation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .how-it-works {
+                grid-template-columns: 1fr;
+            }
+
+            .mode-navigation {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-button {
+                display: block;
+                margin: 1rem auto;
+                text-align: center;
+            }
+        }
+
+        /* Hidden content for language switching */
+        .lang-en {
+            display: none;
+        }
+
+        body.english .lang-sv {
+            display: none;
+        }
+
+        body.english .lang-en {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">
+        <span class="lang-sv">← Hem</span>
+        <span class="lang-en">← Home</span>
+    </a>
+
+    <div class="language-toggle" onclick="toggleLanguage()">
+        <span id="lang-text">EN</span>
+    </div>
+
+    <section class="hero">
+        <img src="images/hero-background.png" alt="Weaver AI Translation" class="hero-background">
+        <div class="container">
+            <div class="hero-content">
+                <!-- Swedish Content -->
+                <div class="lang-sv">
+                    <h1>WEAVER</h1>
+                    <p class="subtitle">AI som översätter mellan tankesätt</p>
+                    <p class="tagline">Slutligen kan alla i familjen förstå varandra - även när ni tänker helt olika</p>
+                    <div>
+                        <a href="#cta" class="cta-button">Få Tidig Tillgång</a>
+                        <a href="#example" class="cta-button secondary">Se Hur Det Fungerar</a>
+                    </div>
+                </div>
+
+                <!-- English Content -->
+                <div class="lang-en">
+                    <h1>WEAVER</h1>
+                    <p class="subtitle">AI that translates between thinking styles</p>
+                    <p class="tagline">Finally, everyone in your family can understand each other - even when you think completely differently</p>
+                    <div>
+                        <a href="#cta" class="cta-button">Get Early Access</a>
+                        <a href="#example" class="cta-button secondary">See How It Works</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WEAVER Image Section -->
+    <section class="section" style="padding: 2rem 0;">
+        <div class="container">
+            <div style="text-align: center;">
+                <img src="images/weaver.png" alt="WEAVER - AI Translation Between Thinking Styles" style="max-width: 100%; height: auto; border-radius: 16px; box-shadow: 0 8px 32px var(--balans-shadow-medium);">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <div class="problem-solution">
+                    <div class="problem-card">
+                        <h3>Problemet</h3>
+                        <p>Din tonåring behöver "tänka högt" medan du föredrar tyst reflektion. Din partner tänker steg-för-steg medan du ser helheten. Ditt visuella barn förstår inte dina verbala förklaringar.</p>
+                        <p><strong>Resultat:</strong> Missförstånd, frustration och känslan att ni inte riktigt når varandra.</p>
+                    </div>
+                    <div class="solution-card">
+                        <h3>Lösningen</h3>
+                        <p>Weaver lär sig hur varje familjemedlem tänker och kommunicerar bäst. Sedan översätter den samma information till alla olika stilar samtidigt.</p>
+                        <p><strong>Resultat:</strong> Alla förstår, alla känner sig hörda, familjen fungerar smidigare.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <div class="problem-solution">
+                    <div class="problem-card">
+                        <h3>The Problem</h3>
+                        <p>Your teenager needs to "think out loud" while you prefer quiet reflection. Your partner thinks step-by-step while you see the big picture. Your visual child doesn't understand your verbal explanations.</p>
+                        <p><strong>Result:</strong> Misunderstandings, frustration, and feeling like you're not really connecting.</p>
+                    </div>
+                    <div class="solution-card">
+                        <h3>The Solution</h3>
+                        <p>Weaver learns how each family member thinks and communicates best. Then it translates the same information into everyone's different styles simultaneously.</p>
+                        <p><strong>Result:</strong> Everyone understands, everyone feels heard, family life runs smoother.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="example" class="example-section">
+        <div class="container">
+            <div class="example-content">
+                <!-- Swedish Content -->
+                <div class="lang-sv">
+                    <h3>Verkligt Exempel: Lisas Astmamedicin</h3>
+                    <p>Läkaren säger: "Ge Lisa 2 puffar salbutamol, morgon och kväll."</p>
+                    <p><strong>Weaver översätter automatiskt för hela familjen:</strong></p>
+                    
+                    <div class="translation-grid">
+                        <div class="translation-card">
+                            <h4>För dig (berättelsestil):</h4>
+                            <div class="translation-text">
+                                "Lisas medicin är som en hjälpsam vän för hennes lungor. Varje morgon och kväll hjälper den hennes lungor att förbli starka och friska."
+                            </div>
+                        </div>
+                        <div class="translation-card">
+                            <h4>För din partner (systemstil):</h4>
+                            <div class="translation-text">
+                                "Schema: 07:00 och 19:00 - 2 puffar salbutamol. Spåra andningssvårigheter. Kontakt: Dr. Andersson 08-xxx-xxxx"
+                            </div>
+                        </div>
+                        <div class="translation-card">
+                            <h4>För Lisa (visuell stil):</h4>
+                            <div class="translation-text">
+                                "🌅 Morgon: 2 puffar (som att blåsa ut ljus)<br>🌙 Kväll: 2 puffar<br>😊 Hjälper mina lungor vara glada"
+                            </div>
+                        </div>
+                        <div class="translation-card">
+                            <h4>För skolan (professionell):</h4>
+                            <div class="translation-text">
+                                "Medicinsk Info - Lisa Andersson. Tillstånd: Astma, välkontrollerad. Nödkontakt: Föräldrar 070-xxx-xxxx"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- English Content -->
+                <div class="lang-en">
+                    <h3>Real Example: Lisa's Asthma Medicine</h3>
+                    <p>Doctor says: "Give Lisa 2 puffs of salbutamol, morning and evening."</p>
+                    <p><strong>Weaver automatically translates for the whole family:</strong></p>
+                    
+                    <div class="translation-grid">
+                        <div class="translation-card">
+                            <h4>For you (story style):</h4>
+                            <div class="translation-text">
+                                "Lisa's medicine is like a helpful friend for her lungs. Every morning and evening, it helps her lungs stay strong and healthy."
+                            </div>
+                        </div>
+                        <div class="translation-card">
+                            <h4>For your partner (system style):</h4>
+                            <div class="translation-text">
+                                "Schedule: 07:00 and 19:00 - 2 puffs salbutamol. Track breathing difficulties. Contact: Dr. Andersson 08-xxx-xxxx"
+                            </div>
+                        </div>
+                        <div class="translation-card">
+                            <h4>For Lisa (visual style):</h4>
+                            <div class="translation-text">
+                                "🌅 Morning: 2 puffs (like blowing out candles)<br>🌙 Evening: 2 puffs<br>😊 Helps my lungs be happy"
+                            </div>
+                        </div>
+                        <div class="translation-card">
+                            <h4>For school (professional):</h4>
+                            <div class="translation-text">
+                                "Medical Info - Lisa Andersson. Condition: Asthma, well-controlled. Emergency contact: Parents 070-xxx-xxxx"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <h2>Så Här Fungerar Det</h2>
+                <div class="how-it-works">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h4>Lär Känna Din Familj</h4>
+                        <p>Weaver lär sig hur varje person föredrar att ta emot och dela information</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h4>Översätt Automatiskt</h4>
+                        <p>När någon delar något översätter Weaver det till allas föredragna stilar</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h4>Alla Förstår</h4>
+                        <p>Samma information, olika format - alla får det på sitt sätt</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <h2>How It Works</h2>
+                <div class="how-it-works">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h4>Learn Your Family</h4>
+                        <p>Weaver learns how each person prefers to receive and share information</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h4>Translate Automatically</h4>
+                        <p>When someone shares something, Weaver translates it into everyone's preferred styles</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h4>Everyone Understands</h4>
+                        <p>Same information, different formats - everyone gets it their way</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="section">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <div class="cta-section">
+                    <h3>Redo att Sluta Missförstå Varandra?</h3>
+                    <p>Gå med i väntelistan för tidig tillgång till Weaver. Vi börjar med familjer som verkligen behöver bättre kommunikation.</p>
+                    <a href="mailto:hello@balans.ai?subject=Weaver Early Access - Swedish" class="cta-button">Gå Med i Väntelistan</a>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--balans-text-muted);">
+                        Gratis för tidiga användare • Säker och privat • Familjer först
+                    </p>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <div class="cta-section">
+                    <h3>Ready to Stop Misunderstanding Each Other?</h3>
+                    <p>Join the waitlist for early access to Weaver. We're starting with families who really need better communication.</p>
+                    <a href="mailto:hello@balans.ai?subject=Weaver Early Access - English" class="cta-button">Join the Waitlist</a>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--balans-text-muted);">
+                        Free for early users • Secure and private • Families first
+                    </p>
+                </div>
+            </div>
+
+            <div class="mode-navigation">
+                <a href="create.html" class="nav-card">
+                    <div class="nav-icon">
+                        <img src="images/icon-create.png" alt="SKAPA">
+                    </div>
+                    <h4 class="lang-sv">Vill utforska nya idéer?</h4>
+                    <h4 class="lang-en">Want to Explore New Ideas?</h4>
+                    <p class="lang-sv">Prova SKAPA</p>
+                    <p class="lang-en">Try CREATE</p>
+                </a>
+                
+                <a href="critique.html" class="nav-card">
+                    <div class="nav-icon">
+                        <img src="images/icon-critique.png" alt="KRITIK">
+                    </div>
+                    <h4 class="lang-sv">Vill testa vad som fungerar?</h4>
+                    <h4 class="lang-en">Want to Test What Works?</h4>
+                    <p class="lang-sv">Prova KRITIK</p>
+                    <p class="lang-en">Try CRITIQUE</p>
+                </a>
+                
+                <a href="synthesize.html" class="nav-card">
+                    <div class="nav-icon">
+                        <img src="images/icon-synthesize.png" alt="SYNTES">
+                    </div>
+                    <h4 class="lang-sv">Vill balansera perspektiv?</h4>
+                    <h4 class="lang-en">Want to Balance Perspectives?</h4>
+                    <p class="lang-sv">Prova SYNTES</p>
+                    <p class="lang-en">Try SYNTHESIZE</p>
+                </a>
+                
+                <a href="defense.html" class="nav-card">
+                    <div class="nav-icon">
+                        <img src="images/icon-defense.png" alt="FÖRSVAR">
+                    </div>
+                    <h4 class="lang-sv">Behöver skydda det som fungerar?</h4>
+                    <h4 class="lang-en">Need to Protect What Works?</h4>
+                    <p class="lang-sv">Prova FÖRSVAR</p>
+                    <p class="lang-en">Try DEFENSE</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <h3>WEAVER</h3>
+                <p>En del av Balans AI-säkerhetsekosystemet</p>
+                <p>Designad för familjer som vill förstå varandra bättre</p>
+                <p class="lagom">Lagom översättning för verklig förståelse.</p>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <h3>WEAVER</h3>
+                <p>Part of the Balans AI Safety Ecosystem</p>
+                <p>Designed for families who want to understand each other better</p>
+                <p class="lagom">Lagom translation for real understanding.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const langText = document.getElementById('lang-text');
+            
+            if (body.classList.contains('english')) {
+                body.classList.remove('english');
+                langText.textContent = 'EN';
+                document.documentElement.lang = 'sv';
+                document.title = 'WEAVER - AI som översätter mellan tankesätt | Balans';
+            } else {
+                body.classList.add('english');
+                langText.textContent = 'SV';
+                document.documentElement.lang = 'en';
+                document.title = 'WEAVER - AI that translates between thinking styles | Balans';
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation for cards
+        document.querySelectorAll('.step-card, .nav-card, .translation-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>

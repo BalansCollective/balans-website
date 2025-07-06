@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRITIQUE - Test Your Ideas | Balans Collective</title>
+    <meta name="description" content="For analysts and skeptics who ask 'but does it really work?' Use critical thinking to test AI ideas and ensure they truly help families.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #4a90e2;
+            --deep-blue: #2c5aa0;
+            --light-blue: #e8f4fd;
+            --wood-brown: #8b7355;
+            --warm-white: #fafafa;
+            --pure-white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-medium: #5a6c7d;
+            --text-light: #8fa4b3;
+            --border-light: #e1e8ed;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --shadow-soft: 0 4px 20px rgba(74, 144, 226, 0.1);
+            --shadow-medium: 0 8px 30px rgba(74, 144, 226, 0.15);
+            --critique-gradient: linear-gradient(135deg, #667eea, #764ba2);
+            --critique-light: #f8f9ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--warm-white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--pure-white);
+            border: 1px solid var(--border-light);
+            border-radius: 25px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .language-toggle:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-1px);
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: var(--pure-white);
+            border: 1px solid var(--border-light);
+            border-radius: 25px;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .back-button:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-1px);
+        }
+
+        /* Header */
+        header {
+            background: var(--critique-gradient);
+            color: var(--pure-white);
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .mode-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .mode-title {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .mode-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        /* Main Content */
+        main {
+            padding: 80px 0;
+        }
+
+        .content-section {
+            background: var(--pure-white);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-light);
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .content-section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .content-section p {
+            font-size: 1.125rem;
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .intro-text {
+            font-size: 1.25rem;
+            color: var(--text-medium);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        /* Test Cards */
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .test-card {
+            background: var(--critique-light);
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 4px solid #667eea;
+        }
+
+        .test-card h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .test-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .test-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+
+        .test-list li.works::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+
+        .test-list li.doesnt-work::before {
+            content: "❌";
+            position: absolute;
+            left: 0;
+        }
+
+        .questions {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+        }
+
+        .questions h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .questions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .questions li {
+            margin-bottom: 0.5rem;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        .questions li::before {
+            content: "❓";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Demands Section */
+        .demands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .demand-item {
+            background: var(--critique-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #667eea;
+        }
+
+        .demand-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .demand-item p {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            margin: 0;
+        }
+
+        /* Call-to-Action */
+        .cta-section {
+            background: var(--critique-gradient);
+            color: var(--pure-white);
+            text-align: center;
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .cta-section p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Navigation */
+        .mode-navigation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .nav-card {
+            background: var(--pure-white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            border: 2px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--primary-blue);
+        }
+
+        .nav-card .nav-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-card p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .mode-title {
+                font-size: 2.5rem;
+            }
+
+            .content-section {
+                padding: 2rem;
+            }
+
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .demands-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mode-navigation {
+                grid-template-columns: 1fr;
+            }
+
+            .back-button, .language-toggle {
+                top: 15px;
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+
+            .back-button {
+                left: 15px;
+            }
+
+            .language-toggle {
+                right: 15px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button" data-en="← Home" data-sv="← Hem">← Home</a>
+    
+    <div class="language-toggle" onclick="toggleLanguage()">
+        <span id="lang-toggle-text">🇸🇪 Svenska</span>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="mode-icon">🔍</div>
+                <h1 class="mode-title" data-en="CRITIQUE" data-sv="KRITIK">CRITIQUE</h1>
+                <p class="mode-subtitle" data-en="Test Your Ideas" data-sv="Testa dina idéer">Test Your Ideas</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <p class="intro-text" data-en="For people who ask 'but does it really work?'" data-sv="För människor som frågar 'men fungerar det verkligen?'">For people who ask "but does it really work?"</p>
+
+            <div class="content-section">
+                <h2 data-en="Hi There!" data-sv="Hej där!">Hi There!</h2>
+                <p data-en="You're the kind of person who hears a new idea and thinks 'that sounds nice, but let's see if it actually works.' You want proof, not promises. You ask the hard questions that help everyone avoid mistakes. This is your space to dig deeper." data-sv="Du är den typ av person som hör en ny idé och tänker 'det låter bra, men låt oss se om det faktiskt fungerar.' Du vill ha bevis, inte löften. Du ställer de svåra frågorna som hjälper alla att undvika misstag. Det här är ditt utrymme att gräva djupare.">You're the kind of person who hears a new idea and thinks "that sounds nice, but let's see if it actually works." You want proof, not promises. You ask the hard questions that help everyone avoid mistakes. This is your space to dig deeper.</p>
+            </div>
+
+            <div class="content-section">
+                <h2 data-en="Let's Test Family AI Ideas" data-sv="Låt oss testa familje-AI-idéer">Let's Test Family AI Ideas</h2>
+                <p data-en="When someone says AI can help families, you probably think 'show me.' Let's look at what might actually work and what might not." data-sv="När någon säger att AI kan hjälpa familjer tänker du förmodligen 'visa mig.' Låt oss titta på vad som faktiskt kan fungera och vad som kanske inte gör det.">When someone says AI can help families, you probably think "show me." Let's look at what might actually work and what might not.</p>
+
+                <div class="test-grid">
+                    <div class="test-card">
+                        <h4 data-en="When Someone Gets Sick" data-sv="När någon blir sjuk">When Someone Gets Sick</h4>
+                        <p data-en="Let's be honest about what AI can and should do:" data-sv="Låt oss vara ärliga om vad AI kan och bör göra:">Let's be honest about what AI can and should do:</p>
+                        <ul class="test-list">
+                            <li class="works" data-en="AI can help you remember medicine schedules and track symptoms" data-sv="AI kan hjälpa dig komma ihåg medicinscheman och spåra symtom">AI can help you remember medicine schedules and track symptoms</li>
+                            <li class="doesnt-work" data-en="AI should not replace talking to your doctor or nurse" data-sv="AI bör inte ersätta att prata med din läkare eller sjuksköterska">AI should not replace talking to your doctor or nurse</li>
+                            <li class="works" data-en="AI can find information about treatments and side effects" data-sv="AI kan hitta information om behandlingar och biverkningar">AI can find information about treatments and side effects</li>
+                            <li class="doesnt-work" data-en="AI should not make medical decisions for your family" data-sv="AI bör inte fatta medicinska beslut för din familj">AI should not make medical decisions for your family</li>
+                        </ul>
+                        <div class="questions">
+                            <h5 data-en="Questions to ask:" data-sv="Frågor att ställa:">Questions to ask:</h5>
+                            <ul>
+                                <li data-en="How do we know the medical information is correct?" data-sv="Hur vet vi att den medicinska informationen är korrekt?">How do we know the medical information is correct?</li>
+                                <li data-en="What happens when the AI makes a mistake?" data-sv="Vad händer när AI:n gör ett misstag?">What happens when the AI makes a mistake?</li>
+                                <li data-en="Will this actually save time or just add more complexity?" data-sv="Kommer detta faktiskt spara tid eller bara lägga till mer komplexitet?">Will this actually save time or just add more complexity?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h4 data-en="School and Learning" data-sv="Skola och lärande">School and Learning</h4>
+                        <p data-en="What really works for kids:" data-sv="Vad som verkligen fungerar för barn:">What really works for kids:</p>
+                        <ul class="test-list">
+                            <li class="works" data-en="AI can adapt practice problems to how each child learns" data-sv="AI kan anpassa övningsproblem till hur varje barn lär sig">AI can adapt practice problems to how each child learns</li>
+                            <li class="doesnt-work" data-en="AI should not replace the relationship between teacher and student" data-sv="AI bör inte ersätta relationen mellan lärare och elev">AI should not replace the relationship between teacher and student</li>
+                            <li class="works" data-en="AI can help track what subjects need more work" data-sv="AI kan hjälpa till att spåra vilka ämnen som behöver mer arbete">AI can help track what subjects need more work</li>
+                            <li class="doesnt-work" data-en="AI cannot truly motivate a child who doesn't want to learn" data-sv="AI kan inte verkligen motivera ett barn som inte vill lära sig">AI cannot truly motivate a child who doesn't want to learn</li>
+                        </ul>
+                        <div class="questions">
+                            <h5 data-en="Questions to ask:" data-sv="Frågor att ställa:">Questions to ask:</h5>
+                            <ul>
+                                <li data-en="Are kids actually learning better or just entertained?" data-sv="Lär sig barn faktiskt bättre eller blir de bara underhållna?">Are kids actually learning better or just entertained?</li>
+                                <li data-en="How much screen time is too much?" data-sv="Hur mycket skärmtid är för mycket?">How much screen time is too much?</li>
+                                <li data-en="What happens to handwriting and basic skills?" data-sv="Vad händer med handstil och grundläggande färdigheter?">What happens to handwriting and basic skills?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h4 data-en="Daily Life" data-sv="Vardagslivet">Daily Life</h4>
+                        <p data-en="The reality check:" data-sv="Verklighetskontrollen:">The reality check:</p>
+                        <ul class="test-list">
+                            <li class="works" data-en="AI can help with scheduling and reminders" data-sv="AI kan hjälpa med schemaläggning och påminnelser">AI can help with scheduling and reminders</li>
+                            <li class="doesnt-work" data-en="AI cannot make family members cooperate" data-sv="AI kan inte få familjemedlemmar att samarbeta">AI cannot make family members cooperate</li>
+                            <li class="works" data-en="AI can suggest meal plans and shopping lists" data-sv="AI kan föreslå måltidsplaner och inköpslistor">AI can suggest meal plans and shopping lists</li>
+                            <li class="doesnt-work" data-en="AI cannot make kids eat vegetables" data-sv="AI kan inte få barn att äta grönsaker">AI cannot make kids eat vegetables</li>
+                        </ul>
+                        <div class="questions">
+                            <h5 data-en="Questions to ask:" data-sv="Frågor att ställa:">Questions to ask:</h5>
+                            <ul>
+                                <li data-en="Is this solving a real problem or creating a new one?" data-sv="Löser detta ett verkligt problem eller skapar det ett nytt?">Is this solving a real problem or creating a new one?</li>
+                                <li data-en="Will the whole family actually use this?" data-sv="Kommer hela familjen faktiskt att använda detta?">Will the whole family actually use this?</li>
+                                <li data-en="What's the backup plan when technology fails?" data-sv="Vad är reservplanen när tekniken fallerar?">What's the backup plan when technology fails?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 data-en="What We Need to See" data-sv="Vad vi behöver se">What We Need to See</h2>
+                <p data-en="Before trusting any AI system with our families, we should demand:" data-sv="Innan vi litar på något AI-system med våra familjer bör vi kräva:">Before trusting any AI system with our families, we should demand:</p>
+                
+                <div class="demands-grid">
+                    <div class="demand-item">
+                        <h4 data-en="Real Evidence" data-sv="Verkliga bevis">Real Evidence</h4>
+                        <p data-en="Not just stories, but actual data about what works" data-sv="Inte bara berättelser, utan faktisk data om vad som fungerar">Not just stories, but actual data about what works</p>
+                    </div>
+                    <div class="demand-item">
+                        <h4 data-en="Clear Limits" data-sv="Tydliga gränser">Clear Limits</h4>
+                        <p data-en="Honest about what the AI cannot do" data-sv="Ärlig om vad AI:n inte kan göra">Honest about what the AI cannot do</p>
+                    </div>
+                    <div class="demand-item">
+                        <h4 data-en="Easy Exit" data-sv="Enkel utväg">Easy Exit</h4>
+                        <p data-en="Simple ways to stop using it if it doesn't help" data-sv="Enkla sätt att sluta använda det om det inte hjälper">Simple ways to stop using it if it doesn't help</p>
+                    </div>
+                    <div class="demand-item">
+                        <h4 data-en="Human Backup" data-sv="Mänsklig backup">Human Backup</h4>
+                        <p data-en="Real people to talk to when things go wrong" data-sv="Riktiga människor att prata med när saker går fel">Real people to talk to when things go wrong</p>
+                    </div>
+                    <div class="demand-item">
+                        <h4 data-en="Fair Pricing" data-sv="Rättvis prissättning">Fair Pricing</h4>
+                        <p data-en="Costs that don't exclude families who need help most" data-sv="Kostnader som inte utesluter familjer som behöver hjälp mest">Costs that don't exclude families who need help most</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h3 data-en="Your Role as a Critic" data-sv="Din roll som kritiker">Your Role as a Critic</h3>
+                <p data-en="Your skepticism is valuable. When you ask tough questions, you help everyone avoid wasting time and money on things that don't work, and push developers to create better, safer systems." data-sv="Din skepsis är värdefull. När du ställer tuffa frågor hjälper du alla att undvika att slösa tid och pengar på saker som inte fungerar, och driver utvecklare att skapa bättre, säkrare system.">Your skepticism is valuable. When you ask tough questions, you help everyone avoid wasting time and money on things that don't work, and push developers to create better, safer systems.</p>
+            </div>
+
+            <div class="content-section">
+                <h2 data-en="Keep Asking Questions" data-sv="Fortsätt ställa frågor">Keep Asking Questions</h2>
+                <p data-en="What concerns you most about AI in families? What evidence would you need to see before trying it? What safeguards should be in place?" data-sv="Vad oroar dig mest med AI i familjer? Vilka bevis skulle du behöva se innan du prövade det? Vilka skyddsåtgärder bör finnas på plats?">What concerns you most about AI in families? What evidence would you need to see before trying it? What safeguards should be in place?</p>
+                
+                <p data-en="Your critical thinking helps separate real solutions from empty promises." data-sv="Ditt kritiska tänkande hjälper till att skilja verkliga lösningar från tomma löften.">Your critical thinking helps separate real solutions from empty promises.</p>
+            </div>
+
+            <div class="mode-navigation">
+                <a href="create.html" class="nav-card">
+                    <div class="nav-icon">🎨</div>
+                    <h4 data-en="Explore Ideas" data-sv="Utforska idéer">Explore Ideas</h4>
+                    <p data-en="Try CREATE to brainstorm" data-sv="Prova SKAPA för att brainstorma">Try CREATE to brainstorm</p>
+                </a>
+                
+                <a href="synthesize.html" class="nav-card">
+                    <div class="nav-icon">⚖️</div>
+                    <h4 data-en="Balance Perspectives" data-sv="Balansera perspektiv">Balance Perspectives</h4>
+                    <p data-en="Check out SYNTHESIZE" data-sv="Kolla in SYNTES">Check out SYNTHESIZE</p>
+                </a>
+                
+                <a href="defense.html" class="nav-card">
+                    <div class="nav-icon">🛡️</div>
+                    <h4 data-en="Protect What Works" data-sv="Skydda det som fungerar">Protect What Works</h4>
+                    <p data-en="Visit DEFENSE" data-sv="Besök FÖRSVAR">Visit DEFENSE</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentLanguage = 'sv';
+
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'en' ? 'sv' : 'en';
+            updateLanguage();
+        }
+
+        function updateLanguage() {
+            const elements = document.querySelectorAll('[data-en][data-sv]');
+            const toggleText = document.getElementById('lang-toggle-text');
+            
+            elements.forEach(element => {
+                element.textContent = element.getAttribute('data-' + currentLanguage);
+            });
+
+            toggleText.textContent = currentLanguage === 'en' ? '🇸🇪 Svenska' : '🇬🇧 English';
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateLanguage();
+        });
+    </script>
+</body>
+</html>

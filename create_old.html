@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CREATE - Dream Up New Ideas | Balans Collective</title>
+    <meta name="description" content="For explorers and dreamers who love to imagine new possibilities. Use your creativity to solve family challenges and discover solutions that could help everyone.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #4a90e2;
+            --deep-blue: #2c5aa0;
+            --light-blue: #e8f4fd;
+            --wood-brown: #8b7355;
+            --warm-white: #fafafa;
+            --pure-white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-medium: #5a6c7d;
+            --text-light: #8fa4b3;
+            --border-light: #e1e8ed;
+            --success: #27ae60;
+            --shadow-soft: 0 4px 20px rgba(74, 144, 226, 0.1);
+            --shadow-medium: 0 8px 30px rgba(74, 144, 226, 0.15);
+            --create-gradient: linear-gradient(135deg, #ff6b6b, #ffa726);
+            --create-light: #fff3e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--warm-white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--pure-white);
+            border: 1px solid var(--border-light);
+            border-radius: 25px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .language-toggle:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-1px);
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: var(--pure-white);
+            border: 1px solid var(--border-light);
+            border-radius: 25px;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .back-button:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-1px);
+        }
+
+        /* Header */
+        header {
+            background: var(--create-gradient);
+            color: var(--pure-white);
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .mode-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .mode-title {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .mode-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        /* Main Content */
+        main {
+            padding: 80px 0;
+        }
+
+        .content-section {
+            background: var(--pure-white);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-light);
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .content-section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .content-section p {
+            font-size: 1.125rem;
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .intro-text {
+            font-size: 1.25rem;
+            color: var(--text-medium);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        /* Challenge Cards */
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .challenge-card {
+            background: var(--create-light);
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .challenge-card h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .challenge-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .challenge-card li {
+            margin-bottom: 0.75rem;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-medium);
+        }
+
+        .challenge-card li::before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Call-to-Action */
+        .cta-section {
+            background: var(--create-gradient);
+            color: var(--pure-white);
+            text-align: center;
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .cta-section p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .try-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .try-step {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        .try-step h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .try-step p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        /* Navigation */
+        .mode-navigation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .nav-card {
+            background: var(--pure-white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            border: 2px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--primary-blue);
+        }
+
+        .nav-card .nav-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-card p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .mode-title {
+                font-size: 2.5rem;
+            }
+
+            .content-section {
+                padding: 2rem;
+            }
+
+            .challenge-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .try-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .mode-navigation {
+                grid-template-columns: 1fr;
+            }
+
+            .back-button, .language-toggle {
+                top: 15px;
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+
+            .back-button {
+                left: 15px;
+            }
+
+            .language-toggle {
+                right: 15px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button" data-en="← Home" data-sv="← Hem">← Home</a>
+    
+    <div class="language-toggle" onclick="toggleLanguage()">
+        <span id="lang-toggle-text">🇸🇪 Svenska</span>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="mode-icon">🎨</div>
+                <h1 class="mode-title" data-en="CREATE" data-sv="SKAPA">CREATE</h1>
+                <p class="mode-subtitle" data-en="Dream Up New Ideas" data-sv="Drömma upp nya idéer">Dream Up New Ideas</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <p class="intro-text" data-en="For people who love to imagine and explore" data-sv="För människor som älskar att föreställa sig och utforska">For people who love to imagine and explore</p>
+
+            <!-- CREATE Image Section -->
+            <div style="text-align: center; margin: 3rem 0;">
+                <img src="images/create.png" alt="CREATE - Creative Exploration" style="max-width: 100%; height: auto; border-radius: 16px; box-shadow: 0 8px 32px rgba(255, 107, 107, 0.2);">
+            </div>
+
+            <div class="content-section">
+                <h2 data-en="Hi There!" data-sv="Hej där!">Hi There!</h2>
+                <p data-en="You're the kind of person who sees problems and thinks 'what if we tried this instead?' You love brainstorming and coming up with new ways to make things work better. This is your space to dream big." data-sv="Du är den typ av person som ser problem och tänker 'tänk om vi prövade det här istället?' Du älskar att brainstorma och komma på nya sätt att få saker att fungera bättre. Det här är ditt utrymme att drömma stort.">You're the kind of person who sees problems and thinks "what if we tried this instead?" You love brainstorming and coming up with new ways to make things work better. This is your space to dream big.</p>
+            </div>
+
+            <div class="content-section">
+                <h2 data-en="Let's Start With Your Family" data-sv="Låt oss börja med din familj">Let's Start With Your Family</h2>
+                <p data-en="Think about the challenges your family faces right now. What if AI could help in ways you haven't thought of yet?" data-sv="Tänk på de utmaningar din familj står inför just nu. Tänk om AI kunde hjälpa på sätt du inte tänkt på än?">Think about the challenges your family faces right now. What if AI could help in ways you haven't thought of yet?</p>
+
+                <div class="challenge-grid">
+                    <div class="challenge-card">
+                        <h4 data-en="When Someone Gets Sick" data-sv="När någon blir sjuk">When Someone Gets Sick</h4>
+                        <p data-en="What if AI could help you:" data-sv="Tänk om AI kunde hjälpa dig:">What if AI could help you:</p>
+                        <ul>
+                            <li data-en="Make a simple plan for who does what when mom or dad is sick" data-sv="Göra en enkel plan för vem som gör vad när mamma eller pappa är sjuk">Make a simple plan for who does what when mom or dad is sick</li>
+                            <li data-en="Remember all the medicines and when to take them" data-sv="Komma ihåg alla mediciner och när de ska tas">Remember all the medicines and when to take them</li>
+                            <li data-en="Help explain to kids what's happening in words they understand" data-sv="Hjälpa till att förklara för barn vad som händer med ord de förstår">Help explain to kids what's happening in words they understand</li>
+                            <li data-en="Find the best times for doctor visits that work for everyone" data-sv="Hitta de bästa tiderna för läkarbesök som fungerar för alla">Find the best times for doctor visits that work for everyone</li>
+                        </ul>
+                    </div>
+
+                    <div class="challenge-card">
+                        <h4 data-en="School and Learning" data-sv="Skola och lärande">School and Learning</h4>
+                        <p data-en="What if AI could help you:" data-sv="Tänk om AI kunde hjälpa dig:">What if AI could help you:</p>
+                        <ul>
+                            <li data-en="Create fun ways to practice math that don't feel like work" data-sv="Skapa roliga sätt att öva matte som inte känns som arbete">Create fun ways to practice math that don't feel like work</li>
+                            <li data-en="Plan family projects that help kids learn without knowing it" data-sv="Planera familjeprojekt som hjälper barn att lära sig utan att veta det">Plan family projects that help kids learn without knowing it</li>
+                            <li data-en="Find new ways to talk to teachers about how your child learns best" data-sv="Hitta nya sätt att prata med lärare om hur ditt barn lär sig bäst">Find new ways to talk to teachers about how your child learns best</li>
+                            <li data-en="Make homework time less stressful for everyone" data-sv="Göra läxläsning mindre stressig för alla">Make homework time less stressful for everyone</li>
+                        </ul>
+                    </div>
+
+                    <div class="challenge-card">
+                        <h4 data-en="Daily Life" data-sv="Vardagslivet">Daily Life</h4>
+                        <p data-en="What if AI could help you:" data-sv="Tänk om AI kunde hjälpa dig:">What if AI could help you:</p>
+                        <ul>
+                            <li data-en="Design morning routines that actually work for your family" data-sv="Designa morgonrutiner som faktiskt fungerar för din familj">Design morning routines that actually work for your family</li>
+                            <li data-en="Plan meals that are healthy, quick, and kids will eat" data-sv="Planera måltider som är hälsosamma, snabba och som barn vill äta">Plan meals that are healthy, quick, and kids will eat</li>
+                            <li data-en="Create family traditions that bring everyone together" data-sv="Skapa familjetraditioner som för alla samman">Create family traditions that bring everyone together</li>
+                            <li data-en="Make chores feel more like games" data-sv="Få sysslor att kännas mer som spel">Make chores feel more like games</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 data-en="Something Interesting Happens" data-sv="Något intressant händer">Something Interesting Happens</h2>
+                <p data-en="As you think about these family ideas, you might notice something. The same creative thinking that helps families could help other people too." data-sv="När du tänker på dessa familjeidéer kanske du märker något. Samma kreativa tänkande som hjälper familjer kan hjälpa andra människor också.">As you think about these family ideas, you might notice something. The same creative thinking that helps families could help other people too.</p>
+
+                <h3 data-en="The Big Picture" data-sv="Den stora bilden">The Big Picture</h3>
+                <p data-en="Here's what's really exciting: when you use your creativity to solve family problems, you're actually discovering ideas that could help lots of people." data-sv="Här är vad som verkligen är spännande: när du använder din kreativitet för att lösa familjeproblem upptäcker du faktiskt idéer som kan hjälpa många människor.">Here's what's really exciting: when you use your creativity to solve family problems, you're actually discovering ideas that could help lots of people.</p>
+                
+                <p data-en="Your family creativity → Solutions that scale up" data-sv="Din familjekreativitet → Lösningar som kan skalas upp">Your family creativity → Solutions that scale up</p>
+                
+                <p data-en="The simple, human-centered thinking you do every day as a parent contains wisdom that could transform how we approach big challenges." data-sv="Det enkla, människocentrerade tänkandet du gör varje dag som förälder innehåller visdom som kan förändra hur vi närmar oss stora utmaningar.">The simple, human-centered thinking you do every day as a parent contains wisdom that could transform how we approach big challenges.</p>
+            </div>
+
+            <div class="cta-section">
+                <h3 data-en="Try This" data-sv="Prova det här">Try This</h3>
+                <p data-en="Start small and see where your creativity takes you" data-sv="Börja smått och se vart din kreativitet tar dig">Start small and see where your creativity takes you</p>
+                
+                <div class="try-steps">
+                    <div class="try-step">
+                        <h4 data-en="Start small" data-sv="Börja smått">Start small</h4>
+                        <p data-en="Pick one family challenge and brainstorm three new ways to handle it" data-sv="Välj en familjeutmaning och brainstorma tre nya sätt att hantera den">Pick one family challenge and brainstorm three new ways to handle it</p>
+                    </div>
+                    <div class="try-step">
+                        <h4 data-en="Think bigger" data-sv="Tänk större">Think bigger</h4>
+                        <p data-en="How might this same approach help your workplace or community?" data-sv="Hur kan samma approach hjälpa din arbetsplats eller ditt samhälle?">How might this same approach help your workplace or community?</p>
+                    </div>
+                    <div class="try-step">
+                        <h4 data-en="Share ideas" data-sv="Dela idéer">Share ideas</h4>
+                        <p data-en="Talk to other parents or friends about what you discovered" data-sv="Prata med andra föräldrar eller vänner om vad du upptäckte">Talk to other parents or friends about what you discovered</p>
+                    </div>
+                    <div class="try-step">
+                        <h4 data-en="Keep exploring" data-sv="Fortsätt utforska">Keep exploring</h4>
+                        <p data-en="What other challenges could use fresh thinking?" data-sv="Vilka andra utmaningar kan behöva nytt tänkande?">What other challenges could use fresh thinking?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 data-en="Why This Matters" data-sv="Varför det här spelar roll">Why This Matters</h2>
+                <p data-en="When we start with real human needs - like helping our families - we create solutions that actually work for people. These aren't fancy theories. They're practical ideas born from love and daily experience." data-sv="När vi börjar med verkliga mänskliga behov - som att hjälpa våra familjer - skapar vi lösningar som faktiskt fungerar för människor. Det här är inte fancy teorier. De är praktiska idéer födda ur kärlek och daglig erfarenhet.">When we start with real human needs - like helping our families - we create solutions that actually work for people. These aren't fancy theories. They're practical ideas born from love and daily experience.</p>
+                
+                <p data-en="Your creativity as a parent is valuable. The problems you solve every day matter. And the ideas you come up with could help more people than you imagine." data-sv="Din kreativitet som förälder är värdefull. Problemen du löser varje dag spelar roll. Och idéerna du kommer på kan hjälpa fler människor än du föreställer dig.">Your creativity as a parent is valuable. The problems you solve every day matter. And the ideas you come up with could help more people than you imagine.</p>
+            </div>
+
+            <div class="mode-navigation">
+                <a href="critique.html" class="nav-card">
+                    <div class="nav-icon">🔍</div>
+                    <h4 data-en="Test Your Ideas" data-sv="Testa dina idéer">Test Your Ideas</h4>
+                    <p data-en="Try CRITIQUE to see what works" data-sv="Prova KRITIK för att se vad som fungerar">Try CRITIQUE to see what works</p>
+                </a>
+                
+                <a href="synthesize.html" class="nav-card">
+                    <div class="nav-icon">⚖️</div>
+                    <h4 data-en="Put Ideas Together" data-sv="Sätt ihop idéer">Put Ideas Together</h4>
+                    <p data-en="Check out SYNTHESIZE" data-sv="Kolla in SYNTES">Check out SYNTHESIZE</p>
+                </a>
+                
+                <a href="defense.html" class="nav-card">
+                    <div class="nav-icon">🛡️</div>
+                    <h4 data-en="Protect What Works" data-sv="Skydda det som fungerar">Protect What Works</h4>
+                    <p data-en="Visit DEFENSE" data-sv="Besök FÖRSVAR">Visit DEFENSE</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentLanguage = 'sv';
+
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'en' ? 'sv' : 'en';
+            updateLanguage();
+        }
+
+        function updateLanguage() {
+            const elements = document.querySelectorAll('[data-en][data-sv]');
+            const toggleText = document.getElementById('lang-toggle-text');
+            
+            elements.forEach(element => {
+                element.textContent = element.getAttribute('data-' + currentLanguage);
+            });
+
+            toggleText.textContent = currentLanguage === 'en' ? '🇸🇪 Svenska' : '🇬🇧 English';
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateLanguage();
+        });
+    </script>
+</body>
+</html>

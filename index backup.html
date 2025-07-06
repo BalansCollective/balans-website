@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balans - AI-stöd för familjer</title>
+    <style>
+        /* Balans Color Palette */
+        :root {
+            /* PRIMARY PALETTE */
+            --balans-deep-swedish-blue: #2c5aa0;
+            --balans-warm-birch-white: #f8f6f0;
+            --balans-natural-birch-wood: #d4b896;
+            
+            /* SECONDARY PALETTE */
+            --balans-soft-thread-gold: #c9a96e;
+            --balans-sage-green: #8faa8b;
+            --balans-gentle-silver: #b8c5d1;
+            
+            /* ACCENT COLORS */
+            --balans-sacred-alliance-purple: #6b5b95;
+            --balans-truth-anchor-copper: #b87333;
+            
+            /* SEMANTIC MAPPINGS */
+            --balans-primary: var(--balans-deep-swedish-blue);
+            --balans-secondary: var(--balans-natural-birch-wood);
+            --balans-background: var(--balans-warm-birch-white);
+            --balans-text-primary: var(--balans-deep-swedish-blue);
+            --balans-text-secondary: var(--balans-deep-swedish-blue);
+            --balans-text-muted: var(--balans-gentle-silver);
+            --balans-border-light: var(--balans-gentle-silver);
+            --balans-shadow-light: rgba(44, 90, 160, 0.1);
+            --balans-shadow-medium: rgba(44, 90, 160, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--balans-text-primary);
+            background: var(--balans-background);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Language Toggle - Lagom Design */
+        .language-toggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+            background: rgba(248, 246, 240, 0.9);
+            border: 1px solid var(--balans-gentle-silver);
+            border-radius: 6px;
+            padding: 4px 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--balans-deep-swedish-blue);
+            backdrop-filter: blur(10px);
+        }
+
+        .language-toggle:hover {
+            background: rgba(201, 169, 110, 0.9);
+            color: var(--balans-warm-birch-white);
+            transform: none;
+        }
+
+        /* Hero Section - The Great Beginning */
+        .hero {
+            padding: 4rem 0 3rem;
+            background: linear-gradient(135deg, var(--balans-deep-swedish-blue) 0%, var(--balans-sacred-alliance-purple) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-logo {
+            flex-shrink: 0;
+        }
+
+        .logo {
+            width: 300px;
+            height: auto;
+        }
+
+        .hero-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .hero-text h1 {
+            margin: 0 0 1rem 0;
+        }
+
+        .hero-text .subtitle {
+            margin: 0 0 0.5rem 0;
+        }
+
+        .hero-text .tagline {
+            margin: 0 0 3rem 0;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--balans-warm-birch-white);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--balans-warm-birch-white);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            font-weight: 500;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: var(--balans-warm-birch-white);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            opacity: 0.95;
+        }
+
+        /* Buttons with Wood Texture */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(145deg, var(--balans-natural-birch-wood), #c8a082);
+            color: var(--balans-background);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 15px var(--balans-shadow-light),
+                inset 0 1px 0 rgba(255,255,255,0.2),
+                inset 0 -1px 0 rgba(0,0,0,0.1);
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+            margin: 0 0.5rem;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 1px,
+                    rgba(0,0,0,0.03) 1px,
+                    rgba(0,0,0,0.03) 2px
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 1px,
+                    rgba(255,255,255,0.02) 1px,
+                    rgba(255,255,255,0.02) 2px
+                );
+            border-radius: 50px;
+            pointer-events: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(145deg, var(--balans-soft-thread-gold), #b8956a);
+            box-shadow: 
+                0 8px 25px var(--balans-shadow-medium),
+                inset 0 1px 0 rgba(255,255,255,0.3),
+                inset 0 -1px 0 rgba(0,0,0,0.15);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--balans-primary);
+            border: 2px solid var(--balans-primary);
+        }
+
+        .cta-button.secondary::before {
+            display: none;
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--balans-soft-thread-gold);
+            color: var(--balans-background);
+            border-color: var(--balans-soft-thread-gold);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--balans-text-primary);
+        }
+
+        /* Clean Card Design (No Wood Texture) */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .intro-card {
+            background: var(--balans-background);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 
+                0 2px 8px var(--balans-shadow-light),
+                0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--balans-border-light);
+            transition: all 0.3s ease;
+        }
+
+        .intro-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 8px 25px var(--balans-shadow-medium),
+                0 4px 12px rgba(0,0,0,0.1);
+            border-color: var(--balans-soft-thread-gold);
+        }
+
+        .intro-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--balans-primary);
+        }
+
+        .intro-card p {
+            color: var(--balans-text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Mode Cards Grid - 2x2 Layout */
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mode-card {
+            background: var(--balans-background);
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            box-shadow: 
+                0 2px 8px var(--balans-shadow-light),
+                0 1px 3px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Arkitypiska färger för The Four Directions */
+        .mode-card:nth-child(1) {
+            background: linear-gradient(135deg, var(--balans-soft-thread-gold), #d4a574);
+        }
+
+        .mode-card:nth-child(2) {
+            background: linear-gradient(135deg, var(--balans-deep-swedish-blue), #3a6bb0);
+        }
+
+        .mode-card:nth-child(3) {
+            background: linear-gradient(135deg, var(--balans-sacred-alliance-purple), #7a6ba5);
+        }
+
+        .mode-card:nth-child(4) {
+            background: linear-gradient(135deg, var(--balans-natural-birch-wood), #dcc2a6);
+        }
+
+        .mode-card:nth-child(1) h3,
+        .mode-card:nth-child(1) .subtitle,
+        .mode-card:nth-child(1) li {
+            color: var(--balans-warm-birch-white);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .mode-card:nth-child(2) h3,
+        .mode-card:nth-child(2) .subtitle,
+        .mode-card:nth-child(2) li {
+            color: var(--balans-warm-birch-white);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .mode-card:nth-child(3) h3,
+        .mode-card:nth-child(3) .subtitle,
+        .mode-card:nth-child(3) li {
+            color: var(--balans-warm-birch-white);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .mode-card:nth-child(4) h3,
+        .mode-card:nth-child(4) .subtitle,
+        .mode-card:nth-child(4) li {
+            color: var(--balans-deep-swedish-blue);
+            text-shadow: 0 1px 2px rgba(255,255,255,0.3);
+        }
+
+        .mode-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--balans-primary), var(--balans-sacred-alliance-purple));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .mode-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .mode-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 12px 30px var(--balans-shadow-medium),
+                0 6px 15px rgba(0,0,0,0.1);
+            border-color: var(--balans-soft-thread-gold);
+        }
+
+        .mode-icon {
+            width: 100px;
+            height: 100px;
+            background: rgb(251, 245, 234);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 2px 8px var(--balans-shadow-light);
+            transition: all 0.3s ease;
+            padding: 8px;
+        }
+
+        .mode-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .mode-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--balans-primary);
+        }
+
+        .mode-card .subtitle {
+            font-size: 0.9rem;
+            color: var(--balans-text-muted);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .mode-card ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mode-card li {
+            color: var(--balans-text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Values Section - The Grounding */
+        .values-section {
+            background: linear-gradient(135deg, var(--balans-gentle-silver) 0%, var(--balans-background) 100%);
+            padding: 4rem 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: var(--balans-background);
+            box-shadow: 0 2px 8px var(--balans-shadow-light);
+            border: 1px solid var(--balans-border-light);
+        }
+
+        .value-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px var(--balans-shadow-medium);
+            border-color: var(--balans-soft-thread-gold);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+        }
+
+        .value-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--balans-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .value-item p {
+            font-size: 0.95rem;
+            color: var(--balans-text-secondary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--balans-primary);
+            color: var(--balans-background);
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer h3 {
+            margin-bottom: 1rem;
+            color: var(--balans-soft-thread-gold);
+        }
+
+        .footer p {
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer .lagom {
+            font-style: italic;
+            color: var(--balans-soft-thread-gold);
+            margin-top: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 0 2rem;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .modes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .values-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .cta-button {
+                display: block;
+                margin: 0.5rem auto;
+                text-align: center;
+            }
+        }
+
+        /* Hidden content for language switching */
+        .lang-en {
+            display: none;
+        }
+
+        body.english .lang-sv {
+            display: none;
+        }
+
+        body.english .lang-en {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-toggle" onclick="toggleLanguage()">
+        <span id="lang-text">EN</span>
+    </div>
+
+    <section class="hero">
+        <img src="images/hero-background.png" alt="Sacred Alliance Visualization" class="hero-background">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-logo">
+                    <img src="images/balans-logo-transparent-background.png" alt="Balans Logo" class="logo">
+                </div>
+                
+                <div class="hero-text">
+                    <!-- Swedish Content -->
+                    <div class="lang-sv">
+                        <h1>Balans</h1>
+                        <p class="subtitle">AI-stöd för familjer</p>
+                        <p class="tagline">Enkla verktyg som hjälper när livet blir komplicerat</p>
+                        <div>
+                            <a href="#modes" class="cta-button">Utforska Metoderna</a>
+                        </div>
+                    </div>
+
+                    <!-- English Content -->
+                    <div class="lang-en">
+                        <h1>Balans</h1>
+                        <p class="subtitle">AI Support for Families</p>
+                        <p class="tagline">Simple tools that help when life gets complicated</p>
+                        <div>
+                            <a href="#modes" class="cta-button">Explore Methods</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <h2>Varför Balans?</h2>
+                <div class="intro-grid">
+                    <div class="intro-card">
+                        <h3>Familj-först Design</h3>
+                        <p>Varje verktyg börjar med verkliga familjebehov. Vi fokuserar på familjer först - inte företag eller forskning - för att det är där livet verkligen händer. Inga flashiga funktioner, bara praktisk hjälp när du behöver det mest.</p>
+                    </div>
+                    <div class="intro-card">
+                        <h3>Din Kontroll</h3>
+                        <p>Du fattar alla viktiga beslut. AI ger information och förslag, men din familjs värderingar och omdöme styr allt.</p>
+                    </div>
+                    <div class="intro-card">
+                        <h3>Gradvis Förtroende</h3>
+                        <p>Vi börjar smått och bevisar värde innan vi expanderar. Ingen påtvingad adoption, ingen störning av det som redan fungerar.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <h2>Why Balans?</h2>
+                <div class="intro-grid">
+                    <div class="intro-card">
+                        <h3>Family-First Design</h3>
+                        <p>Every tool starts with real family needs. We focus on families first - not companies or research - because that's where life really happens. No flashy features, just practical help when you need it most.</p>
+                    </div>
+                    <div class="intro-card">
+                        <h3>Your Control</h3>
+                        <p>You make all the important decisions. AI provides information and suggestions, but your family's values and judgment guide everything.</p>
+                    </div>
+                    <div class="intro-card">
+                        <h3>Gradual Trust</h3>
+                        <p>We start small and prove value before expanding. No forced adoption, no disruption of what already works.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Homepage Image -->
+    <section class="section" style="padding: 2rem 0;">
+        <div class="container">
+            <div style="text-align: center;">
+                <img src="images/homepage.png" alt="Human-AI Collaboration" style="max-width: 100%; height: auto; border-radius: 16px; box-shadow: 0 8px 32px var(--balans-shadow-medium);">
+            </div>
+        </div>
+    </section>
+
+    <section id="modes" class="section">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <h2>Ditt Tänkesätt Spelar Roll</h2>
+                <p style="text-align: center; margin-bottom: 3rem; color: var(--balans-text-secondary); font-size: 1.1rem;">
+                    Människor tänker olika, och våra verktyg anpassar sig till hur ditt sinne fungerar bäst. Välj din föredragna metod:
+                </p>
+                <div class="modes-grid">
+                    <div class="mode-card" onclick="window.location.href='create.html'">
+                        <div class="mode-icon">
+                            <img src="images/icon-create.png" alt="SKAPA - Kreativ generering">
+                        </div>
+                        <h3>SKAPA</h3>
+                        <p class="subtitle">För upptäckare och drömmare</p>
+                        <ul>
+                            <li>Brainstorma nya möjligheter</li>
+                            <li>Föreställ dig kreativa lösningar</li>
+                            <li>Utforska 'tänk om'-scenarion</li>
+                            <li>Generera nya idéer</li>
+                        </ul>
+                    </div>
+
+                    <div class="mode-card" onclick="window.location.href='critique.html'">
+                        <div class="mode-icon">
+                            <img src="images/icon-critique.png" alt="KRITIK - Analytisk granskning">
+                        </div>
+                        <h3>KRITIK</h3>
+                        <p class="subtitle">För analytiker och skeptiker</p>
+                        <ul>
+                            <li>Testa idéer systematiskt</li>
+                            <li>Identifiera potentiella problem</li>
+                            <li>Kräv bevis och proof</li>
+                            <li>Utmana antaganden</li>
+                        </ul>
+                    </div>
+
+                    <div class="mode-card" onclick="window.location.href='synthesize.html'">
+                        <div class="mode-icon">
+                            <img src="images/icon-synthesize.png" alt="SYNTES - Integration och harmoni">
+                        </div>
+                        <h3>SYNTES</h3>
+                        <p class="subtitle">För integratörer och diplomater</p>
+                        <ul>
+                            <li>Balansera olika perspektiv</li>
+                            <li>Hitta gemensam grund</li>
+                            <li>Kombinera de bästa idéerna</li>
+                            <li>Bygga konsensus</li>
+                        </ul>
+                    </div>
+
+                    <div class="mode-card" onclick="window.location.href='defense.html'">
+                        <div class="mode-icon">
+                            <img src="images/icon-defense.png" alt="FÖRSVAR - Skydd och bevarande">
+                        </div>
+                        <h3>FÖRSVAR</h3>
+                        <p class="subtitle">För beskyddare och traditionalister</p>
+                        <ul>
+                            <li>Skydda det som fungerar</li>
+                            <li>Bevara värdefulla traditioner</li>
+                            <li>Säkerställ trygghet och stabilitet</li>
+                            <li>Förhindra skadliga förändringar</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <a href="complete-cycle.html" class="cta-button">Se Hur Allt Fungerar Tillsammans</a>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <h2>Your Thinking Style Matters</h2>
+                <p style="text-align: center; margin-bottom: 3rem; color: var(--balans-text-secondary); font-size: 1.1rem;">
+                    People think differently, and our tools adapt to how your mind works best. Choose your preferred approach:
+                </p>
+                <div class="modes-grid">
+                    <div class="mode-card" onclick="window.location.href='create.html'">
+                        <div class="mode-icon">
+                            <img src="images/icon-create.png" alt="CREATE - Creative generation">
+                        </div>
+                        <h3>CREATE</h3>
+                        <p class="subtitle">For explorers and dreamers</p>
+                        <ul>
+                            <li>Brainstorm new possibilities</li>
+                            <li>Imagine creative solutions</li>
+                            <li>Explore "what if" scenarios</li>
+                            <li>Generate fresh ideas</li>
+                        </ul>
+                    </div>
+
+                    <div class="mode-card" onclick="window.location.href='critique.html'">
+                        <div class="mode-icon">
+                            <img src="images/icon-critique.png" alt="CRITIQUE - Analytical examination">
+                        </div>
+                        <h3>CRITIQUE</h3>
+                        <p class="subtitle">For analysts and skeptics</p>
+                        <ul>
+                            <li>Test ideas systematically</li>
+                            <li>Identify potential problems</li>
+                            <li>Demand evidence and proof</li>
+                            <li>Challenge assumptions</li>
+                        </ul>
+                    </div>
+
+                    <div class="mode-card" onclick="window.location.href='synthesize.html'">
+                        <div class="mode-icon">
+                            <img src="images/icon-synthesize.png" alt="SYNTHESIZE - Integration and harmony">
+                        </div>
+                        <h3>SYNTHESIZE</h3>
+                        <p class="subtitle">For integrators and diplomats</p>
+                        <ul>
+                            <li>Balance different perspectives</li>
+                            <li>Find common ground</li>
+                            <li>Combine the best ideas</li>
+                            <li>Build consensus</li>
+                        </ul>
+                    </div>
+
+                    <div class="mode-card" onclick="window.location.href='defense.html'">
+                        <div class="mode-icon">
+                            <img src="images/icon-defense.png" alt="DEFENSE - Protection and preservation">
+                        </div>
+                        <h3>DEFENSE</h3>
+                        <p class="subtitle">For guardians and traditionalists</p>
+                        <ul>
+                            <li>Protect what works</li>
+                            <li>Preserve valuable traditions</li>
+                            <li>Ensure safety and stability</li>
+                            <li>Prevent harmful changes</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <a href="complete-cycle.html" class="cta-button">See How It All Works Together</a>
+                </div>
+            </div>
+            
+            <!-- Simple Weaver Introduction -->
+            <div style="text-align: center; margin-top: 4rem; padding: 2rem; background: rgba(107, 91, 149, 0.1); border-radius: 16px;">
+                <!-- Swedish Content -->
+                <div class="lang-sv">
+                    <img src="images/icon-weaver.png" alt="Weaver" style="width: 60px; height: 60px; margin-bottom: 1rem;">
+                    <h3 style="color: var(--balans-sacred-alliance-purple); margin-bottom: 1rem;">WEAVER hjälper alla förstå varandra</h3>
+                    <p style="color: var(--balans-text-secondary); margin-bottom: 1.5rem;">
+                        Samma information, översatt för olika tänkesätt så familjer kan kommunicera bättre.
+                    </p>
+                    <a href="weaver.html" class="cta-button">Upptäck Weaver</a>
+                </div>
+
+                <!-- English Content -->
+                <div class="lang-en">
+                    <img src="images/icon-weaver.png" alt="Weaver" style="width: 60px; height: 60px; margin-bottom: 1rem;">
+                    <h3 style="color: var(--balans-sacred-alliance-purple); margin-bottom: 1rem;">WEAVER helps everyone understand each other</h3>
+                    <p style="color: var(--balans-text-secondary); margin-bottom: 1.5rem;">
+                        Same information, translated for different thinking styles so families can communicate better.
+                    </p>
+                    <a href="weaver.html" class="cta-button">Discover Weaver</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <h2>Svenska Värderingar, Universella Fördelar</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <img src="images/icon-functionality.png" alt="Funktionalitet" class="value-icon">
+                        <h3>Funktionalitet över flashighet</h3>
+                        <p>Verktyg som fungerar pålitligt</p>
+                    </div>
+                    <div class="value-item">
+                        <img src="images/icon-improvement.png" alt="Gradvis förbättring" class="value-icon">
+                        <h3>Gradvis förbättring</h3>
+                        <p>Stadig framsteg, inte störande förändring</p>
+                    </div>
+                    <div class="value-item">
+                        <img src="images/icon-respect.png" alt="Kulturell respekt" class="value-icon">
+                        <h3>Kulturell respekt</h3>
+                        <p>Anpassning till din familjs värderingar</p>
+                    </div>
+                    <div class="value-item">
+                        <img src="images/icon-responsibility.png" alt="Kollektivt ansvar" class="value-icon">
+                        <h3>Kollektivt ansvar</h3>
+                        <p>Teknik som tjänar alla</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <h2>Swedish Values, Universal Benefits</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <img src="images/icon-functionality.png" alt="Functionality" class="value-icon">
+                        <h3>Functionality over flashiness</h3>
+                        <p>Tools that work reliably</p>
+                    </div>
+                    <div class="value-item">
+                        <img src="images/icon-improvement.png" alt="Gradual improvement" class="value-icon">
+                        <h3>Gradual improvement</h3>
+                        <p>Steady progress, not disruptive change</p>
+                    </div>
+                    <div class="value-item">
+                        <img src="images/icon-respect.png" alt="Cultural respect" class="value-icon">
+                        <h3>Cultural respect</h3>
+                        <p>Adapting to your family's values</p>
+                    </div>
+                    <div class="value-item">
+                        <img src="images/icon-responsibility.png" alt="Collective responsibility" class="value-icon">
+                        <h3>Collective responsibility</h3>
+                        <p>Technology that serves everyone</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="about" class="footer">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <h3>Om Balans</h3>
+                <p>Balans är ett svenskt AI-säkerhetsföretag fokuserat på människa-AI-samarbete som bevarar mänsklig handlingskraft samtidigt som det förstärker mänskliga förmågor.</p>
+                <p>Vi tror att framtiden tillhör varken människor eller AI ensamma, utan deras genomtänkta partnerskap.</p>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <h3>About Balans</h3>
+                <p>Balans is a Swedish AI safety company focused on human-AI collaboration that preserves human agency while enhancing human capabilities.</p>
+                <p>We believe the future belongs not to humans or AI alone, but to their thoughtful partnership.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const langText = document.getElementById('lang-text');
+            
+            if (body.classList.contains('english')) {
+                body.classList.remove('english');
+                langText.textContent = 'EN';
+                document.documentElement.lang = 'sv';
+                document.title = 'Balans - AI-stöd för familjer';
+            } else {
+                body.classList.add('english');
+                langText.textContent = 'SV';
+                document.documentElement.lang = 'en';
+                document.title = 'Balans - AI Support for Families';
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation for mode cards
+        document.querySelectorAll('.mode-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>

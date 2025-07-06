@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKAPA - Drömma upp nya idéer | Balans</title>
+    <meta name="description" content="För upptäckare och drömmare som älskar att föreställa sig nya möjligheter. Använd din kreativitet för att lösa familjeutmaningar och upptäcka lösningar som kan hjälpa alla.">
+    <style>
+        /* Import Balans Color Palette */
+        :root {
+            /* PRIMARY PALETTE */
+            --balans-deep-swedish-blue: #2c5aa0;
+            --balans-warm-birch-white: #f8f6f0;
+            --balans-natural-birch-wood: #d4b896;
+            
+            /* SECONDARY PALETTE */
+            --balans-soft-thread-gold: #c9a96e;
+            --balans-sage-green: #8faa8b;
+            --balans-gentle-silver: #b8c5d1;
+            
+            /* ACCENT COLORS */
+            --balans-sacred-alliance-purple: #6b5b95;
+            --balans-truth-anchor-copper: #b87333;
+            
+            /* SEMANTIC MAPPINGS */
+            --balans-primary: var(--balans-deep-swedish-blue);
+            --balans-secondary: var(--balans-natural-birch-wood);
+            --balans-background: var(--balans-warm-birch-white);
+            --balans-text-primary: var(--balans-deep-swedish-blue);
+            --balans-text-secondary: var(--balans-natural-birch-wood);
+            --balans-text-muted: var(--balans-gentle-silver);
+            --balans-border-light: var(--balans-gentle-silver);
+            --balans-shadow-light: rgba(44, 90, 160, 0.1);
+            --balans-shadow-medium: rgba(44, 90, 160, 0.15);
+            
+            /* CREATE MODE SPECIFIC */
+            --create-primary: var(--balans-soft-thread-gold);
+            --create-secondary: var(--balans-sage-green);
+            --create-accent: var(--balans-sacred-alliance-purple);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--balans-text-primary);
+            background: var(--balans-background);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Language Toggle - Lagom Design */
+        .language-toggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+            background: rgba(248, 246, 240, 0.9);
+            border: 1px solid var(--balans-gentle-silver);
+            border-radius: 6px;
+            padding: 4px 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--balans-deep-swedish-blue);
+            backdrop-filter: blur(10px);
+        }
+
+        .language-toggle:hover {
+            background: rgba(201, 169, 110, 0.9);
+            color: var(--balans-warm-birch-white);
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background: rgba(248, 246, 240, 0.9);
+            border: 1px solid var(--balans-gentle-silver);
+            border-radius: 6px;
+            padding: 4px 8px;
+            text-decoration: none;
+            color: var(--balans-deep-swedish-blue);
+            font-size: 12px;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-button:hover {
+            background: rgba(201, 169, 110, 0.9);
+            color: var(--balans-warm-birch-white);
+        }
+
+        /* Hero Section - CREATE Mode */
+        .hero {
+            background: linear-gradient(135deg, var(--create-primary) 0%, var(--create-secondary) 100%);
+            color: var(--balans-warm-birch-white);
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(255,255,255,0.05) 20px,
+                    rgba(255,255,255,0.05) 40px
+                );
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .mode-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .mode-icon img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+            opacity: 0.9;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--balans-text-primary);
+        }
+
+        .section h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--create-primary);
+        }
+
+        .section p {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: var(--balans-text-primary);
+        }
+
+        /* CREATE Image Section */
+        .create-image-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .create-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(201, 169, 110, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .create-image:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Content Cards */
+        .content-card {
+            background: var(--balans-warm-birch-white);
+            padding: 3rem;
+            border-radius: 16px;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 20px var(--balans-shadow-light);
+            border: 1px solid var(--balans-border-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--create-primary), var(--create-secondary));
+        }
+
+        /* Challenge Grid */
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .challenge-card {
+            background: linear-gradient(135deg, rgba(201, 169, 110, 0.1), rgba(143, 170, 139, 0.1));
+            padding: 2.5rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--create-primary);
+            transition: all 0.3s ease;
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px var(--balans-shadow-medium);
+            border-left-color: var(--create-secondary);
+        }
+
+        .challenge-card h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--balans-text-primary);
+        }
+
+        .challenge-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .challenge-card li {
+            margin-bottom: 0.75rem;
+            padding-left: 24px;
+            position: relative;
+            color: var(--balans-text-primary);
+            line-height: 1.6;
+        }
+
+        .challenge-card li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            color: var(--create-primary);
+        }
+
+        /* Scaling Section */
+        .scaling-section {
+            background: linear-gradient(135deg, var(--balans-sacred-alliance-purple), var(--create-accent));
+            color: var(--balans-warm-birch-white);
+            padding: 4rem 0;
+            border-radius: 20px;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scaling-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 30px,
+                    rgba(255,255,255,0.05) 30px,
+                    rgba(255,255,255,0.05) 60px
+                );
+            pointer-events: none;
+        }
+
+        .scaling-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .scaling-section h3 {
+            color: var(--balans-warm-birch-white);
+            margin-bottom: 2rem;
+        }
+
+        .scaling-section p {
+            color: var(--balans-warm-birch-white);
+            opacity: 0.95;
+        }
+
+        .scaling-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .scaling-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .scaling-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--balans-warm-birch-white);
+        }
+
+        /* Try This Section */
+        .try-section {
+            background: var(--balans-warm-birch-white);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 2px solid var(--create-primary);
+            text-align: center;
+        }
+
+        .try-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .try-step {
+            background: linear-gradient(135deg, rgba(201, 169, 110, 0.1), rgba(143, 170, 139, 0.1));
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .try-step:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--balans-shadow-light);
+        }
+
+        .try-step h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--create-primary);
+        }
+
+        .try-step p {
+            font-size: 0.95rem;
+            margin: 0;
+            color: var(--balans-text-primary);
+        }
+
+        /* Navigation */
+        .mode-navigation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .nav-card {
+            background: var(--balans-warm-birch-white);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--balans-text-primary);
+            border: 2px solid var(--balans-border-light);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--balans-deep-swedish-blue);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px var(--balans-shadow-medium);
+            border-color: var(--create-primary);
+        }
+
+        .nav-card .nav-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+        }
+
+        .nav-card .nav-icon img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-card p {
+            font-size: 0.9rem;
+            color: var(--balans-text-secondary);
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .content-card {
+                padding: 2rem;
+            }
+
+            .challenge-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .try-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .mode-navigation {
+                grid-template-columns: 1fr;
+            }
+
+            .scaling-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Hidden content for language switching */
+        .lang-en {
+            display: none;
+        }
+
+        body.english .lang-sv {
+            display: none;
+        }
+
+        body.english .lang-en {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">
+        <span class="lang-sv">← Hem</span>
+        <span class="lang-en">← Home</span>
+    </a>
+    
+    <div class="language-toggle" onclick="toggleLanguage()">
+        <span id="lang-text">EN</span>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="mode-icon">
+                    <img src="images/icon-create.png" alt="SKAPA - Kreativ generering">
+                </div>
+                
+                <!-- Swedish Content -->
+                <div class="lang-sv">
+                    <h1>SKAPA</h1>
+                    <p class="subtitle">Drömma upp nya idéer</p>
+                    <p class="tagline">För människor som älskar att föreställa sig och utforska</p>
+                </div>
+
+                <!-- English Content -->
+                <div class="lang-en">
+                    <h1>CREATE</h1>
+                    <p class="subtitle">Dream Up New Ideas</p>
+                    <p class="tagline">For people who love to imagine and explore</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- CREATE Image Section -->
+            <div class="create-image-section">
+                <img src="images/create.png" alt="CREATE - Kreativ utforskning" class="create-image">
+            </div>
+
+            <div class="content-card">
+                <!-- Swedish Content -->
+                <div class="lang-sv">
+                    <h2>Hej där!</h2>
+                    <p>Du är den typ av person som ser problem och tänker "tänk om vi prövade det här istället?" Du älskar att brainstorma och komma på nya sätt att få saker att fungera bättre. Det här är ditt utrymme att drömma stort.</p>
+                </div>
+
+                <!-- English Content -->
+                <div class="lang-en">
+                    <h2>Hi There!</h2>
+                    <p>You're the kind of person who sees problems and thinks "what if we tried this instead?" You love brainstorming and coming up with new ways to make things work better. This is your space to dream big.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <!-- Swedish Content -->
+                <div class="lang-sv">
+                    <h2>Låt oss börja med din familj</h2>
+                    <p>Tänk på de utmaningar din familj står inför just nu. Tänk om AI kunde hjälpa på sätt du inte tänkt på än?</p>
+
+                    <div class="challenge-grid">
+                        <div class="challenge-card">
+                            <h4>När någon blir sjuk</h4>
+                            <p><strong>Tänk om AI kunde hjälpa dig:</strong></p>
+                            <ul>
+                                <li>Göra en enkel plan för vem som gör vad när mamma eller pappa är sjuk</li>
+                                <li>Komma ihåg alla mediciner och när de ska tas</li>
+                                <li>Hjälpa till att förklara för barn vad som händer med ord de förstår</li>
+                                <li>Hitta de bästa tiderna för läkarbesök som fungerar för alla</li>
+                                <li>Tänka på sätt att göra tillfrisknandet bekvämare</li>
+                            </ul>
+                        </div>
+
+                        <div class="challenge-card">
+                            <h4>Skola och lärande</h4>
+                            <p><strong>Tänk om AI kunde hjälpa dig:</strong></p>
+                            <ul>
+                                <li>Skapa roliga sätt att öva matte som inte känns som arbete</li>
+                                <li>Planera familjeprojekt som hjälper barn att lära sig utan att veta det</li>
+                                <li>Hitta nya sätt att prata med lärare om hur ditt barn lär sig bäst</li>
+                                <li>Göra läxläsning mindre stressig för alla</li>
+                            </ul>
+                        </div>
+
+                        <div class="challenge-card">
+                            <h4>Vardagslivet</h4>
+                            <p><strong>Tänk om AI kunde hjälpa dig:</strong></p>
+                            <ul>
+                                <li>Designa morgonrutiner som faktiskt fungerar för din familj</li>
+                                <li>Planera måltider som är hälsosamma, snabba och som barn vill äta</li>
+                                <li>Skapa familjetraditioner som för alla samman</li>
+                                <li>Få sysslor att kännas mer som spel</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- English Content -->
+                <div class="lang-en">
+                    <h2>Let's Start With Your Family</h2>
+                    <p>Think about the challenges your family faces right now. What if AI could help in ways you haven't thought of yet?</p>
+
+                    <div class="challenge-grid">
+                        <div class="challenge-card">
+                            <h4>When Someone Gets Sick</h4>
+                            <p><strong>What if AI could help you:</strong></p>
+                            <ul>
+                                <li>Make a simple plan for who does what when mom or dad is sick</li>
+                                <li>Remember all the medicines and when to take them</li>
+                                <li>Help explain to kids what's happening in words they understand</li>
+                                <li>Find the best times for doctor visits that work for everyone</li>
+                                <li>Think of ways to make recovery more comfortable</li>
+                            </ul>
+                        </div>
+
+                        <div class="challenge-card">
+                            <h4>School and Learning</h4>
+                            <p><strong>What if AI could help you:</strong></p>
+                            <ul>
+                                <li>Create fun ways to practice math that don't feel like work</li>
+                                <li>Plan family projects that help kids learn without knowing it</li>
+                                <li>Find new ways to talk to teachers about how your child learns best</li>
+                                <li>Make homework time less stressful for everyone</li>
+                            </ul>
+                        </div>
+
+                        <div class="challenge-card">
+                            <h4>Daily Life</h4>
+                            <p><strong>What if AI could help you:</strong></p>
+                            <ul>
+                                <li>Design morning routines that actually work for your family</li>
+                                <li>Plan meals that are healthy, quick, and kids will eat</li>
+                                <li>Create family traditions that bring everyone together</li>
+                                <li>Make chores feel more like games</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scaling-section">
+                <div class="container">
+                    <div class="scaling-content">
+                        <!-- Swedish Content -->
+                        <div class="lang-sv">
+                            <h3>Något intressant händer</h3>
+                            <p>När du tänker på dessa familjeidéer kanske du märker något. Samma kreativa tänkande som hjälper familjer kan hjälpa andra människor också.</p>
+                            
+                            <div class="scaling-grid">
+                                <div class="scaling-card">
+                                    <h4>Lärare i skolan</h4>
+                                    <p>Inlärningsidéerna du drömde upp för dina barn? Lärare kan använda liknande tänkande för att skapa nya sätt att hjälpa varje elev lära sig bättre.</p>
+                                </div>
+                                <div class="scaling-card">
+                                    <h4>Läkare och sjuksköterskor</h4>
+                                    <p>Vårdplanerna du föreställde dig för din familj? Medicinska team kan använda liknande idéer för att hjälpa patienter förstå sin behandling bättre.</p>
+                                </div>
+                                <div class="scaling-card">
+                                    <h4>Människor på jobbet</h4>
+                                    <p>Organisationssystemen du skapade för hemmet? Arbetsteam kan tillämpa dessa för att lösa problem som fastnat i år.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- English Content -->
+                        <div class="lang-en">
+                            <h3>Something Interesting Happens</h3>
+                            <p>As you think about these family ideas, you might notice something. The same creative thinking that helps families could help other people too.</p>
+                            
+                            <div class="scaling-grid">
+                                <div class="scaling-card">
+                                    <h4>Teachers at School</h4>
+                                    <p>The learning ideas you dreamed up for your kids? Teachers could use similar thinking to create new ways to help every student learn better.</p>
+                                </div>
+                                <div class="scaling-card">
+                                    <h4>Doctors and Nurses</h4>
+                                    <p>The care plans you imagined for your family? Medical teams could use similar ideas to help patients understand their treatment better.</p>
+                                </div>
+                                <div class="scaling-card">
+                                    <h4>People at Work</h4>
+                                    <p>The organization systems you created for home? Work teams could apply these to solve problems that have been stuck for years.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <!-- Swedish Content -->
+                <div class="lang-sv">
+                    <h3>Den stora bilden</h3>
+                    <p>Här är vad som verkligen är spännande: när du använder din kreativitet för att lösa familjeproblem upptäcker du faktiskt idéer som kan hjälpa många människor.</p>
+                    
+                    <p style="text-align: center; font-size: 1.3rem; font-weight: 600; color: var(--create-primary); margin: 2rem 0;">
+                        Din familjekreativitet → Lösningar som kan skalas upp
+                    </p>
+                    
+                    <p>Det enkla, människocentrerade tänkandet du gör varje dag som förälder innehåller visdom som kan förändra hur vi närmar oss stora utmaningar.</p>
+                </div>
+
+                <!-- English Content -->
+                <div class="lang-en">
+                    <h3>The Big Picture</h3>
+                    <p>Here's what's really exciting: when you use your creativity to solve family problems, you're actually discovering ideas that could help lots of people.</p>
+                    
+                    <p style="text-align: center; font-size: 1.3rem; font-weight: 600; color: var(--create-primary); margin: 2rem 0;">
+                        Your family creativity → Solutions that scale up
+                    </p>
+                    
+                    <p>The simple, human-centered thinking you do every day as a parent contains wisdom that could transform how we approach big challenges.</p>
+                </div>
+            </div>
+
+            <div class="try-section">
+                <!-- Swedish Content -->
+                <div class="lang-sv">
+                    <h3>Prova det här</h3>
+                    <p>Börja smått och se vart din kreativitet tar dig</p>
+                    
+                    <div class="try-steps">
+                        <div class="try-step">
+                            <h4>Börja smått</h4>
+                            <p>Välj en familjeutmaning och brainstorma tre nya sätt att hantera den</p>
+                        </div>
+                        <div class="try-step">
+                            <h4>Tänk större</h4>
+                            <p>Hur kan samma approach hjälpa din arbetsplats eller ditt samhälle?</p>
+                        </div>
+                        <div class="try-step">
+                            <h4>Dela idéer</h4>
+                            <p>Prata med andra föräldrar eller vänner om vad du upptäckte</p>
+                        </div>
+                        <div class="try-step">
+                            <h4>Fortsätt utforska</h4>
+                            <p>Vilka andra utmaningar kan behöva nytt tänkande?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- English Content -->
+                <div class="lang-en">
+                    <h3>Try This</h3>
+                    <p>Start small and see where your creativity takes you</p>
+                    
+                    <div class="try-steps">
+                        <div class="try-step">
+                            <h4>Start small</h4>
+                            <p>Pick one family challenge and brainstorm three new ways to handle it</p>
+                        </div>
+                        <div class="try-step">
+                            <h4>Think bigger</h4>
+                            <p>How might this same approach help your workplace or community?</p>
+                        </div>
+                        <div class="try-step">
+                            <h4>Share ideas</h4>
+                            <p>Talk to other parents or friends about what you discovered</p>
+                        </div>
+                        <div class="try-step">
+                            <h4>Keep exploring</h4>
+                            <p>What other challenges could use fresh thinking?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <!-- Swedish Content -->
+                <div class="lang-sv">
+                    <h3>Varför det här spelar roll</h3>
+                    <p>När vi börjar med verkliga mänskliga behov - som att hjälpa våra familjer - skapar vi lösningar som faktiskt fungerar för människor. Det här är inte fancy teorier. De är praktiska idéer födda ur kärlek och daglig erfarenhet.</p>
+                    
+                    <p>Din kreativitet som förälder är värdefull. Problemen du löser varje dag spelar roll. Och idéerna du kommer på kan hjälpa fler människor än du föreställer dig.</p>
+                </div>
+
+                <!-- English Content -->
+                <div class="lang-en">
+                    <h3>Why This Matters</h3>
+                    <p>When we start with real human needs - like helping our families - we create solutions that actually work for people. These aren't fancy theories. They're practical ideas born from love and daily experience.</p>
+                    
+                    <p>Your creativity as a parent is valuable. The problems you solve every day matter. And the ideas you come up with could help more people than you imagine.</p>
+                </div>
+            </div>
+
+            <div class="mode-navigation">
+                <a href="critique.html" class="nav-card">
+                    <div class="nav-icon">
+                        <img src="images/icon-critique.png" alt="KRITIK">
+                    </div>
+                    <h4 class="lang-sv">Testa dina idéer</h4>
+                    <h4 class="lang-en">Test Your Ideas</h4>
+                    <p class="lang-sv">Prova KRITIK för att se vad som fungerar</p>
+                    <p class="lang-en">Try CRITIQUE to see what works</p>
+                </a>
+                
+                <a href="synthesize.html" class="nav-card">
+                    <div class="nav-icon">
+                        <img src="images/icon-synthesize.png" alt="SYNTES">
+                    </div>
+                    <h4 class="lang-sv">Sätt ihop idéer</h4>
+                    <h4 class="lang-en">Put Ideas Together</h4>
+                    <p class="lang-sv">Kolla in SYNTES</p>
+                    <p class="lang-en">Check out SYNTHESIZE</p>
+                </a>
+                
+                <a href="defense.html" class="nav-card">
+                    <div class="nav-icon">
+                        <img src="images/icon-defense.png" alt="FÖRSVAR">
+                    </div>
+                    <h4 class="lang-sv">Skydda det som fungerar</h4>
+                    <h4 class="lang-en">Protect What Works</h4>
+                    <p class="lang-sv">Besök FÖRSVAR</p>
+                    <p class="lang-en">Visit DEFENSE</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const langText = document.getElementById('lang-text');
+            
+            if (body.classList.contains('english')) {
+                body.classList.remove('english');
+                langText.textContent = 'EN';
+                document.documentElement.lang = 'sv';
+                document.title = 'SKAPA - Drömma upp nya idéer | Balans';
+            } else {
+                body.classList.add('english');
+                langText.textContent = 'SV';
+                document.documentElement.lang = 'en';
+                document.title = 'CREATE - Dream Up New Ideas | Balans';
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation for cards
+        document.querySelectorAll('.challenge-card, .try-step, .nav-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>

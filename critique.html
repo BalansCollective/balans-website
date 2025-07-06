@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRITIK - Testa dina idéer | Balans</title>
+    <style>
+        /* Balans Color Palette */
+        :root {
+            /* PRIMARY PALETTE */
+            --balans-deep-swedish-blue: #2c5aa0;
+            --balans-warm-birch-white: #f8f6f0;
+            --balans-natural-birch-wood: #d4b896;
+            
+            /* SECONDARY PALETTE */
+            --balans-soft-thread-gold: #c9a96e;
+            --balans-sage-green: #8faa8b;
+            --balans-gentle-silver: #b8c5d1;
+            
+            /* ACCENT COLORS */
+            --balans-sacred-alliance-purple: #6b5b95;
+            --balans-truth-anchor-copper: #b87333;
+            
+            /* SEMANTIC MAPPINGS */
+            --balans-primary: var(--balans-deep-swedish-blue);
+            --balans-secondary: var(--balans-natural-birch-wood);
+            --balans-background: var(--balans-warm-birch-white);
+            --balans-text-primary: var(--balans-deep-swedish-blue);
+            --balans-text-secondary: var(--balans-deep-swedish-blue);
+            --balans-text-muted: var(--balans-gentle-silver);
+            --balans-border-light: var(--balans-gentle-silver);
+            --balans-shadow-light: rgba(44, 90, 160, 0.1);
+            --balans-shadow-medium: rgba(44, 90, 160, 0.15);
+            
+            /* CRITIQUE MODE SPECIFIC */
+            --critique-primary: var(--balans-deep-swedish-blue);
+            --critique-secondary: var(--balans-truth-anchor-copper);
+            --critique-validation: var(--balans-sacred-alliance-purple);
+            --critique-precision: var(--balans-gentle-silver);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--balans-text-primary);
+            background: var(--balans-background);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Language Toggle - Lagom Design */
+        .language-toggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+            background: rgba(248, 246, 240, 0.9);
+            border: 1px solid var(--balans-gentle-silver);
+            border-radius: 6px;
+            padding: 4px 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--balans-deep-swedish-blue);
+            backdrop-filter: blur(10px);
+        }
+
+        .language-toggle:hover {
+            background: rgba(201, 169, 110, 0.9);
+            color: var(--balans-warm-birch-white);
+            transform: none;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background: rgba(248, 246, 240, 0.9);
+            border: 1px solid var(--balans-gentle-silver);
+            border-radius: 6px;
+            padding: 4px 8px;
+            text-decoration: none;
+            color: var(--balans-deep-swedish-blue);
+            font-size: 12px;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-button:hover {
+            background: rgba(201, 169, 110, 0.9);
+            color: var(--balans-warm-birch-white);
+        }
+
+        /* Hero Section - CRITIQUE Mode */
+        .hero {
+            text-align: center;
+            padding: 6rem 0 4rem;
+            background: linear-gradient(135deg, var(--critique-primary) 0%, var(--critique-secondary) 100%);
+            position: relative;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--balans-warm-birch-white);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--balans-warm-birch-white);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            opacity: 0.9;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: var(--balans-warm-birch-white);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            opacity: 0.95;
+        }
+
+        /* Analytical Buttons */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(145deg, var(--critique-primary), #1e4080);
+            color: var(--balans-background);
+            padding: 15px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 15px var(--balans-shadow-light),
+                inset 0 1px 0 rgba(255,255,255,0.2),
+                inset 0 -1px 0 rgba(0,0,0,0.1);
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+            margin: 0 0.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255,255,255,0.05) 2px,
+                    rgba(255,255,255,0.05) 4px
+                );
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(145deg, var(--critique-secondary), #9a5f29);
+            box-shadow: 
+                0 8px 25px var(--balans-shadow-medium),
+                inset 0 1px 0 rgba(255,255,255,0.3),
+                inset 0 -1px 0 rgba(0,0,0,0.15);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--balans-text-primary);
+        }
+
+        /* Clean Card Design */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .intro-card {
+            background: var(--balans-background);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 
+                0 2px 8px var(--balans-shadow-light),
+                0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--balans-border-light);
+            border-left: 4px solid var(--critique-primary);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .intro-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--critique-precision), transparent);
+            border-radius: 0 12px 0 40px;
+            opacity: 0.3;
+        }
+
+        .intro-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 8px 25px var(--balans-shadow-medium),
+                0 4px 12px rgba(0,0,0,0.1);
+            border-left-color: var(--critique-secondary);
+        }
+
+        .intro-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--critique-primary);
+        }
+
+        .intro-card p {
+            color: var(--balans-text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Analysis Cards */
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .analysis-card {
+            background: var(--balans-background);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 
+                0 2px 8px var(--balans-shadow-light),
+                0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--balans-border-light);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .analysis-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--critique-primary), var(--critique-secondary));
+        }
+
+        .analysis-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 8px 25px var(--balans-shadow-medium),
+                0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .analysis-card h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--critique-primary);
+        }
+
+        .analysis-card h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 1.5rem 0 1rem;
+            color: var(--critique-secondary);
+        }
+
+        .analysis-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .analysis-card li {
+            margin-bottom: 0.75rem;
+            padding-left: 28px;
+            position: relative;
+            color: var(--balans-text-primary);
+            line-height: 1.6;
+        }
+
+        .analysis-card li.positive::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+            color: var(--balans-sage-green);
+        }
+
+        .analysis-card li.negative::before {
+            content: "❌";
+            position: absolute;
+            left: 0;
+            color: var(--critique-secondary);
+        }
+
+        .analysis-card li.question::before {
+            content: "❓";
+            position: absolute;
+            left: 0;
+            color: var(--critique-validation);
+        }
+
+        /* Testing Section */
+        .testing-section {
+            background: linear-gradient(135deg, var(--critique-validation) 0%, var(--critique-primary) 100%);
+            padding: 4rem 0;
+            border-radius: 16px;
+            margin: 4rem 0;
+        }
+
+        .testing-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .testing-section h3 {
+            color: var(--balans-warm-birch-white);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .testing-section p {
+            color: var(--balans-warm-birch-white);
+            opacity: 0.95;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .testing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testing-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .testing-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .testing-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--balans-warm-birch-white);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .testing-card p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Questions Section */
+        .questions-section {
+            background: var(--balans-background);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 2px solid var(--critique-precision);
+            text-align: center;
+            box-shadow: 
+                0 2px 8px var(--balans-shadow-light),
+                0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .question-category {
+            background: rgba(44, 90, 160, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--balans-border-light);
+        }
+
+        .question-category:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--balans-shadow-light);
+            border-color: var(--critique-primary);
+        }
+
+        .question-category h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--critique-primary);
+        }
+
+        .question-category ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .question-category li {
+            margin-bottom: 0.5rem;
+            padding-left: 20px;
+            position: relative;
+            color: var(--balans-text-primary);
+            font-size: 0.95rem;
+        }
+
+        .question-category li::before {
+            content: "?";
+            position: absolute;
+            left: 0;
+            color: var(--critique-validation);
+            font-weight: bold;
+        }
+
+        /* Evidence Section */
+        .evidence-section {
+            background: var(--balans-background);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 2px solid var(--critique-secondary);
+            margin: 3rem 0;
+        }
+
+        .evidence-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .evidence-item {
+            background: rgba(184, 115, 51, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--critique-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .evidence-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--balans-shadow-light);
+        }
+
+        .evidence-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--critique-secondary);
+        }
+
+        .evidence-item p {
+            font-size: 0.9rem;
+            margin: 0;
+            color: var(--balans-text-primary);
+        }
+
+        /* Navigation Cards */
+        .mode-navigation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .nav-card {
+            background: var(--balans-background);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--balans-text-primary);
+            border: 2px solid var(--balans-border-light);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 2px 8px var(--balans-shadow-light),
+                0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--critique-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 8px 25px var(--balans-shadow-medium),
+                0 4px 12px rgba(0,0,0,0.1);
+            border-color: var(--critique-primary);
+        }
+
+        .nav-card .nav-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+        }
+
+        .nav-card .nav-icon img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-card p {
+            font-size: 0.9rem;
+            color: var(--balans-text-muted);
+            margin: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--critique-primary);
+            color: var(--balans-background);
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer h3 {
+            margin-bottom: 1rem;
+            color: var(--critique-secondary);
+        }
+
+        .footer p {
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer .lagom {
+            font-style: italic;
+            color: var(--critique-secondary);
+            margin-top: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .questions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mode-navigation {
+                grid-template-columns: 1fr;
+            }
+
+            .testing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .evidence-list {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-button {
+                display: block;
+                margin: 0.5rem auto;
+                text-align: center;
+            }
+        }
+
+        /* Hidden content for language switching */
+        .lang-en {
+            display: none;
+        }
+
+        body.english .lang-sv {
+            display: none;
+        }
+
+        body.english .lang-en {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">
+        <span class="lang-sv">← Hem</span>
+        <span class="lang-en">← Home</span>
+    </a>
+
+    <div class="language-toggle" onclick="toggleLanguage()">
+        <span id="lang-text">EN</span>
+    </div>
+
+    <section class="hero">
+        <img src="images/hero-background.png" alt="Analytical Visualization" class="hero-background">
+        <div class="container">
+            <div class="hero-content">
+                <!-- Swedish Content -->
+                <div class="lang-sv">
+                    <h1>KRITIK</h1>
+                    <p class="subtitle">Testa dina idéer</p>
+                    <p class="tagline">För människor som frågar "men fungerar det verkligen?"</p>
+                    <div>
+                        <a href="#content" class="cta-button">Börja Analysera</a>
+                    </div>
+                </div>
+
+                <!-- English Content -->
+                <div class="lang-en">
+                    <h1>CRITIQUE</h1>
+                    <p class="subtitle">Test Your Ideas</p>
+                    <p class="tagline">For people who ask "but does it really work?"</p>
+                    <div>
+                        <a href="#content" class="cta-button">Start Analyzing</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CRITIQUE Image Section -->
+    <section class="section" style="padding: 2rem 0;">
+        <div class="container">
+            <div style="text-align: center;">
+                <img src="images/critique.png" alt="CRITIQUE - Systematisk analys och validering" style="max-width: 100%; height: auto; border-radius: 16px; box-shadow: 0 8px 32px var(--balans-shadow-medium);">
+            </div>
+        </div>
+    </section>
+
+    <section id="content" class="section">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <h2>Hej där!</h2>
+                <div class="intro-grid">
+                    <div class="intro-card">
+                        <h3>Din Analytiska Kraft</h3>
+                        <p>Du är den typ av person som hör en ny idé och tänker "det låter bra, men låt oss se om det faktiskt fungerar." Du vill ha bevis, inte löften.</p>
+                    </div>
+                    <div class="intro-card">
+                        <h3>Ditt Utrymme att Granska</h3>
+                        <p>Du ställer de svåra frågorna som hjälper alla att undvika misstag. Det här är ditt utrymme att gräva djupare.</p>
+                    </div>
+                    <div class="intro-card">
+                        <h3>Värdet av Skepticism</h3>
+                        <p>Din skepticism är värdefull. När du ställer tuffa frågor hjälper du alla att undvika att slösa tid och pengar på saker som inte fungerar.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <h2>Hi There!</h2>
+                <div class="intro-grid">
+                    <div class="intro-card">
+                        <h3>Your Analytical Power</h3>
+                        <p>You're the kind of person who hears a new idea and thinks "that sounds nice, but let's see if it actually works." You want proof, not promises.</p>
+                    </div>
+                    <div class="intro-card">
+                        <h3>Your Space to Examine</h3>
+                        <p>You ask the hard questions that help everyone avoid mistakes. This is your space to dig deeper.</p>
+                    </div>
+                    <div class="intro-card">
+                        <h3>Value of Skepticism</h3>
+                        <p>Your skepticism is valuable. When you ask tough questions, you help everyone avoid wasting time and money on things that don't work.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <h2>Låt oss testa familje-AI-idéer</h2>
+                <p style="text-align: center; margin-bottom: 3rem; color: var(--balans-text-secondary); font-size: 1.1rem;">
+                    När någon säger att AI kan hjälpa familjer tänker du förmodligen "visa mig." Låt oss titta på vad som faktiskt kan fungera och vad som kanske inte gör det.
+                </p>
+
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <h4>När någon blir sjuk</h4>
+                        <h5>Låt oss vara ärliga om vad AI kan och bör göra:</h5>
+                        <ul>
+                            <li class="positive">AI kan hjälpa dig komma ihåg medicintider och spåra symtom</li>
+                            <li class="negative">AI bör inte ersätta att prata med din läkare eller sjuksköterska</li>
+                            <li class="positive">AI kan hitta information om behandlingar och biverkningar</li>
+                            <li class="negative">AI bör inte fatta medicinska beslut för din familj</li>
+                            <li class="positive">AI kan hjälpa till att organisera tider och journaler</li>
+                            <li class="negative">AI bör inte vara din huvudsakliga källa för känslomässigt stöd</li>
+                        </ul>
+                        <h5>Frågor att ställa:</h5>
+                        <ul>
+                            <li class="question">Hur vet vi att den medicinska informationen är korrekt?</li>
+                            <li class="question">Vad händer när AI:n gör ett misstag?</li>
+                            <li class="question">Kommer detta faktiskt spara tid eller bara lägga till mer komplexitet?</li>
+                        </ul>
+                    </div>
+
+                    <div class="analysis-card">
+                        <h4>Skola och lärande</h4>
+                        <h5>Vad som verkligen fungerar för barn:</h5>
+                        <ul>
+                            <li class="positive">AI kan anpassa övningsuppgifter till hur varje barn lär sig</li>
+                            <li class="negative">AI bör inte ersätta relationen mellan lärare och elev</li>
+                            <li class="positive">AI kan hjälpa till att spåra vilka ämnen som behöver mer arbete för familjen</li>
+                            <li class="negative">AI bör inte vara den primära läraren av värderingar, kreativitet eller sociala färdigheter</li>
+                            <li class="positive">AI kan göra vissa inlärningsuppgifter mer engagerande</li>
+                            <li class="negative">AI kan inte verkligen motivera ett barn som inte vill lära sig (detta är en verklig begränsning)</li>
+                        </ul>
+                        <h5>Frågor att ställa:</h5>
+                        <ul>
+                            <li class="question">Lär sig barn faktiskt bättre eller blir de bara underhållna?</li>
+                            <li class="question">Hur mycket skärmtid är för mycket?</li>
+                            <li class="question">Vad händer med handskrift och grundläggande färdigheter?</li>
+                        </ul>
+                    </div>
+
+                    <div class="analysis-card">
+                        <h4>Vardagslivet</h4>
+                        <h5>Verklighetskontrollen:</h5>
+                        <ul>
+                            <li class="positive">AI kan hjälpa med schemaläggning och påminnelser</li>
+                            <li class="negative">AI kan inte få familjemedlemmar att samarbeta (verklig begränsning)</li>
+                            <li class="positive">AI kan föreslå måltidsplaner och inköpslistor</li>
+                            <li class="negative">AI kan inte få barn att äta grönsaker (verklig begränsning)</li>
+                            <li class="positive">AI kan spåra budgetar och utgifter</li>
+                            <li class="negative">AI bör inte kontrollera familjens utgiftsbeslut</li>
+                        </ul>
+                        <h5>Frågor att ställa:</h5>
+                        <ul>
+                            <li class="question">Löser detta ett verkligt problem eller skapar det ett nytt?</li>
+                            <li class="question">Kommer hela familjen faktiskt att använda detta?</li>
+                            <li class="question">Vad är reservplanen när tekniken fallerar?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <h2>Let's Test Family AI Ideas</h2>
+                <p style="text-align: center; margin-bottom: 3rem; color: var(--balans-text-secondary); font-size: 1.1rem;">
+                    When someone says AI can help families, you probably think "show me." Let's look at what might actually work and what might not.
+                </p>
+
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <h4>When Someone Gets Sick</h4>
+                        <h5>Let's be honest about what AI can and should do:</h5>
+                        <ul>
+                            <li class="positive">AI can help you remember medicine schedules and track symptoms</li>
+                            <li class="negative">AI should not replace talking to your doctor or nurse</li>
+                            <li class="positive">AI can find information about treatments and side effects</li>
+                            <li class="negative">AI should not make medical decisions for your family</li>
+                            <li class="positive">AI can help organize appointments and medical records</li>
+                            <li class="negative">AI should not be your main source of emotional support</li>
+                        </ul>
+                        <h5>Questions to ask:</h5>
+                        <ul>
+                            <li class="question">How do we know the medical information is correct?</li>
+                            <li class="question">What happens when the AI makes a mistake?</li>
+                            <li class="question">Will this actually save time or just add more complexity?</li>
+                        </ul>
+                    </div>
+
+                    <div class="analysis-card">
+                        <h4>School and Learning</h4>
+                        <h5>What really works for kids:</h5>
+                        <ul>
+                            <li class="positive">AI can adapt practice problems to how each child learns</li>
+                            <li class="negative">AI should not replace the relationship between teacher and student</li>
+                            <li class="positive">AI can help track what subjects need more work</li>
+                            <li class="negative">AI should not be the primary teacher of values, creativity, or social skills</li>
+                            <li class="positive">AI can make some learning tasks more engaging</li>
+                            <li class="negative">AI cannot truly motivate a child who doesn't want to learn (real limitation)</li>
+                        </ul>
+                        <h5>Questions to ask:</h5>
+                        <ul>
+                            <li class="question">Are kids actually learning better or just entertained?</li>
+                            <li class="question">How much screen time is too much?</li>
+                            <li class="question">What happens to handwriting and basic skills?</li>
+                        </ul>
+                    </div>
+
+                    <div class="analysis-card">
+                        <h4>Daily Life</h4>
+                        <h5>The reality check:</h5>
+                        <ul>
+                            <li class="positive">AI can help with scheduling and reminders</li>
+                            <li class="negative">AI cannot make family members cooperate (real limitation)</li>
+                            <li class="positive">AI can suggest meal plans and shopping lists</li>
+                            <li class="negative">AI cannot make kids eat vegetables (real limitation)</li>
+                            <li class="positive">AI can track budgets and expenses</li>
+                            <li class="negative">AI should not control family spending decisions</li>
+                        </ul>
+                        <h5>Questions to ask:</h5>
+                        <ul>
+                            <li class="question">Is this solving a real problem or creating a new one?</li>
+                            <li class="question">Will the whole family actually use this?</li>
+                            <li class="question">What's the backup plan when technology fails?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testing-section">
+        <div class="container">
+            <div class="testing-content">
+                <!-- Swedish Content -->
+                <div class="lang-sv">
+                    <h3>Testa de större påståendena</h3>
+                    <p>Folk säger att dessa familje-AI-idéer kan fungera på andra platser också. Låt oss undersöka det påståendet.</p>
+                    
+                    <div class="testing-grid">
+                        <div class="testing-card">
+                            <h4>Skolor och lärare</h4>
+                            <p>Vad som kan överföras: Idén om att anpassa till olika inlärningsstilar. Vad som ska ifrågasättas: Kan skolor ha råd med denna teknik?</p>
+                        </div>
+                        <div class="testing-card">
+                            <h4>Sjukhus och kliniker</h4>
+                            <p>Vad som kan fungera: Bättre koordination mellan läkare. Vad som ska betvivlas: Medicinska system är komplexa och långsamma att förändra.</p>
+                        </div>
+                        <div class="testing-card">
+                            <h4>Arbetsplatser</h4>
+                            <p>Vad som kan hjälpa: Bättre projektkoordination. Vad som ska utmanas: Kommer detta faktiskt göra arbetet bättre eller bara annorlunda?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- English Content -->
+                <div class="lang-en">
+                    <h3>Testing the Bigger Claims</h3>
+                    <p>People say these family AI ideas could work in other places too. Let's examine that claim.</p>
+                    
+                    <div class="testing-grid">
+                        <div class="testing-card">
+                            <h4>Schools and Teachers</h4>
+                            <p>What might transfer: The idea of adapting to different learning styles. What to question: Can schools afford this technology?</p>
+                        </div>
+                        <div class="testing-card">
+                            <h4>Hospitals and Clinics</h4>
+                            <p>What might work: Better coordination between doctors. What to doubt: Medical systems are complex and slow to change.</p>
+                        </div>
+                        <div class="testing-card">
+                            <h4>Workplaces</h4>
+                            <p>What could help: Better project coordination. What to challenge: Will this actually make work better or just different?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <div class="questions-section">
+                    <h3>De svåra frågorna</h3>
+                    <p>Här är frågorna vi bör ställa om alla AI-system:</p>
+                    
+                    <div class="questions-grid">
+                        <div class="question-category">
+                            <h4>Säkerhet och integritet</h4>
+                            <ul>
+                                <li>Vem har tillgång till vår familjs information?</li>
+                                <li>Vad händer om systemet blir hackat?</li>
+                                <li>Kan vi radera vår data om vi vill sluta använda det?</li>
+                            </ul>
+                        </div>
+                        <div class="question-category">
+                            <h4>Verkliga fördelar</h4>
+                            <ul>
+                                <li>Löser detta faktiskt ett problem vi har?</li>
+                                <li>Spenderar vi mer tid på att hantera AI:n än den sparar oss?</li>
+                                <li>Kan vi få samma fördelar på enklare sätt?</li>
+                            </ul>
+                        </div>
+                        <div class="question-category">
+                            <h4>Rättvisa</h4>
+                            <ul>
+                                <li>Fungerar detta för familjer med olika inkomster?</li>
+                                <li>Vad sägs om familjer som talar olika språk?</li>
+                                <li>Gör vi vissa människors liv svårare medan vi hjälper andra?</li>
+                            </ul>
+                        </div>
+                        <div class="question-category">
+                            <h4>Långsiktiga effekter</h4>
+                            <ul>
+                                <li>Vilka färdigheter kan vi förlora om vi förlitar oss för mycket på AI?</li>
+                                <li>Hur kommer detta att påverka våra barns utveckling?</li>
+                                <li>Vad händer när företaget ändras eller går i konkurs?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <div class="questions-section">
+                    <h3>The Hard Questions</h3>
+                    <p>Here are the questions we should ask about any AI system:</p>
+                    
+                    <div class="questions-grid">
+                        <div class="question-category">
+                            <h4>Safety and Privacy</h4>
+                            <ul>
+                                <li>Who has access to our family's information?</li>
+                                <li>What happens if the system gets hacked?</li>
+                                <li>Can we delete our data if we want to stop using it?</li>
+                            </ul>
+                        </div>
+                        <div class="question-category">
+                            <h4>Real Benefits</h4>
+                            <ul>
+                                <li>Is this actually solving a problem we have?</li>
+                                <li>Are we spending more time managing the AI than it saves us?</li>
+                                <li>Could we get the same benefits in simpler ways?</li>
+                            </ul>
+                        </div>
+                        <div class="question-category">
+                            <h4>Fairness</h4>
+                            <ul>
+                                <li>Does this work for families with different incomes?</li>
+                                <li>What about families who speak different languages?</li>
+                                <li>Are we making some people's lives harder while helping others?</li>
+                            </ul>
+                        </div>
+                        <div class="question-category">
+                            <h4>Long-term Effects</h4>
+                            <ul>
+                                <li>What skills might we lose if we rely on AI too much?</li>
+                                <li>How will this affect our children's development?</li>
+                                <li>What happens when the company changes or goes out of business?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evidence Section -->
+            <div style="margin-top: 4rem;">
+                <!-- Swedish Content -->
+                <div class="lang-sv">
+                    <div class="evidence-section">
+                        <h3>Vad vi behöver se</h3>
+                        <p>Innan vi litar på något AI-system med våra familjer bör vi kräva:</p>
+                        
+                        <div class="evidence-list">
+                            <div class="evidence-item">
+                                <h4>Verkliga bevis</h4>
+                                <p>Inte bara berättelser, utan faktisk data om vad som fungerar</p>
+                            </div>
+                            <div class="evidence-item">
+                                <h4>Tydliga gränser</h4>
+                                <p>Ärligt om vad AI:n inte kan göra</p>
+                            </div>
+                            <div class="evidence-item">
+                                <h4>Enkel utväg</h4>
+                                <p>Enkla sätt att sluta använda det om det inte hjälper</p>
+                            </div>
+                            <div class="evidence-item">
+                                <h4>Mänsklig backup</h4>
+                                <p>Riktiga människor att prata med när saker går fel</p>
+                            </div>
+                            <div class="evidence-item">
+                                <h4>Rättvis prissättning</h4>
+                                <p>Kostnader som inte utesluter familjer som behöver hjälp mest</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- English Content -->
+                <div class="lang-en">
+                    <div class="evidence-section">
+                        <h3>What We Need to See</h3>
+                        <p>Before trusting any AI system with our families, we should demand:</p>
+                        
+                        <div class="evidence-list">
+                            <div class="evidence-item">
+                                <h4>Real Evidence</h4>
+                                <p>Not just stories, but actual data about what works</p>
+                            </div>
+                            <div class="evidence-item">
+                                <h4>Clear Limits</h4>
+                                <p>Honest about what the AI cannot do</p>
+                            </div>
+                            <div class="evidence-item">
+                                <h4>Easy Exit</h4>
+                                <p>Simple ways to stop using it if it doesn't help</p>
+                            </div>
+                            <div class="evidence-item">
+                                <h4>Human Backup</h4>
+                                <p>Real people to talk to when things go wrong</p>
+                            </div>
+                            <div class="evidence-item">
+                                <h4>Fair Pricing</h4>
+                                <p>Costs that don't exclude families who need help most</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Role Section -->
+            <div style="margin-top: 4rem;">
+                <!-- Swedish Content -->
+                <div class="lang-sv">
+                    <div class="intro-card" style="text-align: center;">
+                        <h3>Din roll som kritiker</h3>
+                        <p>Din skepticism är värdefull. När du ställer tuffa frågor hjälper du alla att undvika att slösa tid och pengar på saker som inte fungerar, driver utvecklare att skapa bättre och säkrare system, och skyddar familjer från att bli utnyttjade.</p>
+                        
+                        <p style="margin-top: 1.5rem;">Fortsätt ställa frågor. Vad oroar dig mest om AI i familjer? Vilka bevis skulle du behöva se innan du provar det? Din kritiska tänkande hjälper till att skilja verkliga lösningar från tomma löften.</p>
+                    </div>
+                </div>
+
+                <!-- English Content -->
+                <div class="lang-en">
+                    <div class="intro-card" style="text-align: center;">
+                        <h3>Your Role as a Critic</h3>
+                        <p>Your skepticism is valuable. When you ask tough questions, you help everyone avoid wasting time and money on things that don't work, push developers to create better and safer systems, and protect families from being taken advantage of.</p>
+                        
+                        <p style="margin-top: 1.5rem;">Keep asking questions. What concerns you most about AI in families? What evidence would you need to see before trying it? Your critical thinking helps separate real solutions from empty promises.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mode-navigation">
+                <a href="create.html" class="nav-card">
+                    <div class="nav-icon">
+                        <img src="images/icon-create.png" alt="SKAPA">
+                    </div>
+                    <h4 class="lang-sv">Redo att utforska idéer?</h4>
+                    <h4 class="lang-en">Ready to Explore Ideas?</h4>
+                    <p class="lang-sv">Prova SKAPA för att brainstorma</p>
+                    <p class="lang-en">Try CREATE to brainstorm</p>
+                </a>
+                
+                <a href="synthesize.html" class="nav-card">
+                    <div class="nav-icon">
+                        <img src="images/icon-synthesize.png" alt="SYNTES">
+                    </div>
+                    <h4 class="lang-sv">Vill du balansera perspektiv?</h4>
+                    <h4 class="lang-en">Want to Balance Perspectives?</h4>
+                    <p class="lang-sv">Kolla in SYNTES</p>
+                    <p class="lang-en">Check out SYNTHESIZE</p>
+                </a>
+                
+                <a href="defense.html" class="nav-card">
+                    <div class="nav-icon">
+                        <img src="images/icon-defense.png" alt="FÖRSVAR">
+                    </div>
+                    <h4 class="lang-sv">Behöver skydda det som fungerar?</h4>
+                    <h4 class="lang-en">Need to Protect What Works?</h4>
+                    <p class="lang-sv">Besök FÖRSVAR</p>
+                    <p class="lang-en">Visit DEFENSE</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <!-- Swedish Content -->
+            <div class="lang-sv">
+                <h3>KRITIK Mode</h3>
+                <p>En del av Balans AI-säkerhetsekosystemet</p>
+                <p>Designad för analytiker, skeptiker och sanningssökare</p>
+                <p class="lagom">Lagom skepticism för verklig validering.</p>
+            </div>
+
+            <!-- English Content -->
+            <div class="lang-en">
+                <h3>CRITIQUE Mode</h3>
+                <p>Part of the Balans AI Safety Ecosystem</p>
+                <p>Designed for analysts, skeptics, and truth-seekers</p>
+                <p class="lagom">Lagom skepticism for real validation.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const langText = document.getElementById('lang-text');
+            
+            if (body.classList.contains('english')) {
+                body.classList.remove('english');
+                langText.textContent = 'EN';
+                document.documentElement.lang = 'sv';
+                document.title = 'KRITIK - Testa dina idéer | Balans';
+            } else {
+                body.classList.add('english');
+                langText.textContent = 'SV';
+                document.documentElement.lang = 'en';
+                document.title = 'CRITIQUE - Test Your Ideas | Balans';
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation for cards
+        document.querySelectorAll('.analysis-card, .question-category, .nav-card, .evidence-item').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>

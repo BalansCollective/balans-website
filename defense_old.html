@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEFENSE - Protect What Works | Balans Collective</title>
+    <meta name="description" content="For guardians and traditionalists who value what we already have. Protect family traditions, relationships, and systems that have proven themselves over time.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #4a90e2;
+            --deep-blue: #2c5aa0;
+            --light-blue: #e8f4fd;
+            --wood-brown: #8b7355;
+            --warm-white: #fafafa;
+            --pure-white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-medium: #5a6c7d;
+            --text-light: #8fa4b3;
+            --border-light: #e1e8ed;
+            --success: #27ae60;
+            --shadow-soft: 0 4px 20px rgba(74, 144, 226, 0.1);
+            --shadow-medium: 0 8px 30px rgba(74, 144, 226, 0.15);
+            --defense-gradient: linear-gradient(135deg, #8b7355, #a0845c);
+            --defense-light: #faf8f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--warm-white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--pure-white);
+            border: 1px solid var(--border-light);
+            border-radius: 25px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .language-toggle:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-1px);
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: var(--pure-white);
+            border: 1px solid var(--border-light);
+            border-radius: 25px;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .back-button:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-1px);
+        }
+
+        /* Header */
+        header {
+            background: var(--defense-gradient);
+            color: var(--pure-white);
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .mode-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .mode-title {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .mode-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        /* Main Content */
+        main {
+            padding: 80px 0;
+        }
+
+        .content-section {
+            background: var(--pure-white);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-light);
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .content-section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--wood-brown);
+        }
+
+        .content-section p {
+            font-size: 1.125rem;
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .intro-text {
+            font-size: 1.25rem;
+            color: var(--text-medium);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        /* Protection Cards */
+        .protection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .protection-card {
+            background: var(--defense-light);
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--wood-brown);
+        }
+
+        .protection-card h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .protection-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .protection-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+
+        .protection-list li::before {
+            content: "🛡️";
+            position: absolute;
+            left: 0;
+        }
+
+        .protect-box {
+            background: rgba(139, 115, 85, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+        }
+
+        .protect-box h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .protect-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .protect-box li {
+            margin-bottom: 0.5rem;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        .protect-box li::before {
+            content: "⚠️";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Wisdom Cards */
+        .wisdom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .wisdom-card {
+            background: var(--defense-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid var(--wood-brown);
+        }
+
+        .wisdom-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .wisdom-card ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .wisdom-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        .wisdom-card li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--wood-brown);
+            font-weight: bold;
+        }
+
+        /* Call-to-Action */
+        .cta-section {
+            background: var(--defense-gradient);
+            color: var(--pure-white);
+            text-align: center;
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .cta-section p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Questions Box */
+        .questions-box {
+            background: var(--defense-light);
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--wood-brown);
+            margin: 2rem 0;
+        }
+
+        .questions-box h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .questions-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .questions-box li {
+            margin-bottom: 0.75rem;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-medium);
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        .questions-box li::before {
+            content: "❓";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Navigation */
+        .mode-navigation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .nav-card {
+            background: var(--pure-white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            border: 2px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--primary-blue);
+        }
+
+        .nav-card .nav-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-card p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .mode-title {
+                font-size: 2.5rem;
+            }
+
+            .content-section {
+                padding: 2rem;
+            }
+
+            .protection-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .wisdom-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mode-navigation {
+                grid-template-columns: 1fr;
+            }
+
+            .back-button, .language-toggle {
+                top: 15px;
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+
+            .back-button {
+                left: 15px;
+            }
+
+            .language-toggle {
+                right: 15px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button" data-en="← Home" data-sv="← Hem">← Home</a>
+    
+    <div class="language-toggle" onclick="toggleLanguage()">
+        <span id="lang-toggle-text">🇸🇪 Svenska</span>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="mode-icon">🛡️</div>
+                <h1 class="mode-title" data-en="DEFENSE" data-sv="FÖRSVAR">DEFENSE</h1>
+                <p class="mode-subtitle" data-en="Protect What Works" data-sv="Skydda det som fungerar">Protect What Works</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <p class="intro-text" data-en="For people who value what we already have" data-sv="För människor som värdesätter det vi redan har">For people who value what we already have</p>
+
+            <div class="content-section">
+                <h2 data-en="Hi There!" data-sv="Hej där!">Hi There!</h2>
+                <p data-en="You're the kind of person who knows that not all change is good change. You've seen what happens when people rush into new things without thinking about what they might lose. You value traditions, relationships, and systems that have proven themselves over time. This is your space to protect what matters." data-sv="Du är den typ av person som vet att inte all förändring är bra förändring. Du har sett vad som händer när människor rusar in i nya saker utan att tänka på vad de kan förlora. Du värdesätter traditioner, relationer och system som har bevisat sig över tid. Det här är ditt utrymme att skydda det som spelar roll.">You're the kind of person who knows that not all change is good change. You've seen what happens when people rush into new things without thinking about what they might lose. You value traditions, relationships, and systems that have proven themselves over time. This is your space to protect what matters.</p>
+            </div>
+
+            <div class="content-section">
+                <h2 data-en="What's Already Working in Families" data-sv="Vad som redan fungerar i familjer">What's Already Working in Families</h2>
+                <p data-en="Before we talk about adding AI to family life, let's recognize what families already do well." data-sv="Innan vi pratar om att lägga till AI i familjelivet, låt oss erkänna vad familjer redan gör bra.">Before we talk about adding AI to family life, let's recognize what families already do well.</p>
+
+                <div class="protection-grid">
+                    <div class="protection-card">
+                        <h4 data-en="When Someone Gets Sick" data-sv="När någon blir sjuk">When Someone Gets Sick</h4>
+                        <p data-en="What families already have:" data-sv="Vad familjer redan har:">What families already have:</p>
+                        <ul class="protection-list">
+                            <li data-en="Love and emotional support that no technology can replace" data-sv="Kärlek och känslomässigt stöd som ingen teknik kan ersätta">Love and emotional support that no technology can replace</li>
+                            <li data-en="Intuition about family members that comes from years of caring" data-sv="Intuition om familjemedlemmar som kommer från år av omtanke">Intuition about family members that comes from years of caring</li>
+                            <li data-en="Traditions and rituals that provide comfort during hard times" data-sv="Traditioner och ritualer som ger tröst under svåra tider">Traditions and rituals that provide comfort during hard times</li>
+                            <li data-en="Networks of friends, neighbors, and extended family" data-sv="Nätverk av vänner, grannar och utvidgad familj">Networks of friends, neighbors, and extended family</li>
+                        </ul>
+                        <div class="protect-box">
+                            <h5 data-en="What we must protect:" data-sv="Vad vi måste skydda:">What we must protect:</h5>
+                            <ul>
+                                <li data-en="The human touch in caregiving" data-sv="Den mänskliga beröringen i omvårdnad">The human touch in caregiving</li>
+                                <li data-en="Family decision-making authority" data-sv="Familjens beslutsfattande auktoritet">Family decision-making authority</li>
+                                <li data-en="Privacy about personal health matters" data-sv="Integritet om personliga hälsofrågor">Privacy about personal health matters</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="protection-card">
+                        <h4 data-en="School and Learning" data-sv="Skola och lärande">School and Learning</h4>
+                        <p data-en="What's working now:" data-sv="Vad som fungerar nu:">What's working now:</p>
+                        <ul class="protection-list">
+                            <li data-en="Teachers who know and care about individual students" data-sv="Lärare som känner och bryr sig om enskilda elever">Teachers who know and care about individual students</li>
+                            <li data-en="Parents who understand their children's unique needs" data-sv="Föräldrar som förstår sina barns unika behov">Parents who understand their children's unique needs</li>
+                            <li data-en="Proven methods that have helped generations learn" data-sv="Beprövade metoder som har hjälpt generationer att lära sig">Proven methods that have helped generations learn</li>
+                            <li data-en="Books, handwriting, and basic skills that build strong foundations" data-sv="Böcker, handstil och grundläggande färdigheter som bygger starka fundament">Books, handwriting, and basic skills that build strong foundations</li>
+                        </ul>
+                        <div class="protect-box">
+                            <h5 data-en="What we must preserve:" data-sv="Vad vi måste bevara:">What we must preserve:</h5>
+                            <ul>
+                                <li data-en="The teacher-student relationship" data-sv="Lärare-elev-relationen">The teacher-student relationship</li>
+                                <li data-en="Parent involvement in education" data-sv="Föräldrarnas engagemang i utbildning">Parent involvement in education</li>
+                                <li data-en="Time for play, creativity, and imagination" data-sv="Tid för lek, kreativitet och fantasi">Time for play, creativity, and imagination</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="protection-card">
+                        <h4 data-en="Daily Life" data-sv="Vardagslivet">Daily Life</h4>
+                        <p data-en="What families do well:" data-sv="Vad familjer gör bra:">What families do well:</p>
+                        <ul class="protection-list">
+                            <li data-en="Create routines that work for their specific situation" data-sv="Skapa rutiner som fungerar för deras specifika situation">Create routines that work for their specific situation</li>
+                            <li data-en="Teach children responsibility through chores and expectations" data-sv="Lära barn ansvar genom sysslor och förväntningar">Teach children responsibility through chores and expectations</li>
+                            <li data-en="Pass down family traditions and values" data-sv="Föra vidare familjetraditioner och värderingar">Pass down family traditions and values</li>
+                            <li data-en="Build memories through shared experiences" data-sv="Bygga minnen genom delade upplevelser">Build memories through shared experiences</li>
+                        </ul>
+                        <div class="protect-box">
+                            <h5 data-en="What we cannot lose:" data-sv="Vad vi inte kan förlora:">What we cannot lose:</h5>
+                            <ul>
+                                <li data-en="Family time without screens or distractions" data-sv="Familjetid utan skärmar eller distraktioner">Family time without screens or distractions</li>
+                                <li data-en="Children learning to handle boredom and frustration" data-sv="Barn som lär sig hantera tristess och frustration">Children learning to handle boredom and frustration</li>
+                                <li data-en="The messiness and unpredictability that makes families human" data-sv="Röran och oförutsägbarheten som gör familjer mänskliga">The messiness and unpredictability that makes families human</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 data-en="Protecting Against AI Risks" data-sv="Skydda mot AI-risker">Protecting Against AI Risks</h2>
+                
+                <div class="wisdom-grid">
+                    <div class="wisdom-card">
+                        <h4 data-en="Privacy and Safety" data-sv="Integritet och säkerhet">Privacy and Safety</h4>
+                        <ul>
+                            <li data-en="Family information staying within the family" data-sv="Familjeinformation stannar inom familjen">Family information staying within the family</li>
+                            <li data-en="Children's data not being collected and sold" data-sv="Barns data samlas inte in och säljs">Children's data not being collected and sold</li>
+                            <li data-en="Protection from hackers and identity theft" data-sv="Skydd från hackare och identitetsstöld">Protection from hackers and identity theft</li>
+                            <li data-en="Freedom from constant monitoring" data-sv="Frihet från konstant övervakning">Freedom from constant monitoring</li>
+                        </ul>
+                    </div>
+
+                    <div class="wisdom-card">
+                        <h4 data-en="Human Skills" data-sv="Mänskliga färdigheter">Human Skills</h4>
+                        <ul>
+                            <li data-en="Children learning to think for themselves" data-sv="Barn lär sig tänka själva">Children learning to think for themselves</li>
+                            <li data-en="Parents developing intuition about their kids" data-sv="Föräldrar utvecklar intuition om sina barn">Parents developing intuition about their kids</li>
+                            <li data-en="Family members talking through problems together" data-sv="Familjemedlemmar pratar igenom problem tillsammans">Family members talking through problems together</li>
+                            <li data-en="Building character through real-world challenges" data-sv="Bygga karaktär genom verkliga utmaningar">Building character through real-world challenges</li>
+                        </ul>
+                    </div>
+
+                    <div class="wisdom-card">
+                        <h4 data-en="Family Values" data-sv="Familjevärderingar">Family Values</h4>
+                        <ul>
+                            <li data-en="How children are raised and what they're taught" data-sv="Hur barn uppfostras och vad de lärs">How children are raised and what they're taught</li>
+                            <li data-en="Family traditions and religious practices" data-sv="Familjetraditioner och religiösa sedvänjor">Family traditions and religious practices</li>
+                            <li data-en="Decisions about what's right and wrong" data-sv="Beslut om vad som är rätt och fel">Decisions about what's right and wrong</li>
+                            <li data-en="The choice to live simply without technology" data-sv="Valet att leva enkelt utan teknik">The choice to live simply without technology</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="questions-box">
+                <h4 data-en="Questions to Keep Asking" data-sv="Frågor att fortsätta ställa">Questions to Keep Asking</h4>
+                <ul>
+                    <li data-en="Is this change really necessary?" data-sv="Är denna förändring verkligen nödvändig?">Is this change really necessary?</li>
+                    <li data-en="What are we giving up to get this benefit?" data-sv="Vad ger vi upp för att få denna fördel?">What are we giving up to get this benefit?</li>
+                    <li data-en="Who profits from families adopting this technology?" data-sv="Vem tjänar på att familjer adopterar denna teknik?">Who profits from families adopting this technology?</li>
+                    <li data-en="What happens to families who can't or won't use it?" data-sv="Vad händer med familjer som inte kan eller vill använda det?">What happens to families who can't or won't use it?</li>
+                    <li data-en="Are we solving real problems or creating new ones?" data-sv="Löser vi verkliga problem eller skapar vi nya?">Are we solving real problems or creating new ones?</li>
+                </ul>
+            </div>
+
+            <div class="cta-section">
+                <h3 data-en="Your Important Role" data-sv="Din viktiga roll">Your Important Role</h3>
+                <p data-en="Society needs people who remember what worked before, ask 'why change?' instead of 'why not change?', and ensure that progress doesn't leave anyone behind. Your instinct to protect and preserve is valuable. Trust it." data-sv="Samhället behöver människor som kommer ihåg vad som fungerade förut, frågar 'varför förändra?' istället för 'varför inte förändra?', och säkerställer att framsteg inte lämnar någon efter. Din instinkt att skydda och bevara är värdefull. Lita på den.">Society needs people who remember what worked before, ask "why change?" instead of "why not change?", and ensure that progress doesn't leave anyone behind. Your instinct to protect and preserve is valuable. Trust it.</p>
+            </div>
+
+            <div class="content-section">
+                <h2 data-en="The Wisdom of Caution" data-sv="Försiktighetens visdom">The Wisdom of Caution</h2>
+                <p data-en="Sometimes the best choice is to say no. Sometimes protecting what you have is more important than getting something new. Sometimes the old ways are better than the new ways." data-sv="Ibland är det bästa valet att säga nej. Ibland är det viktigare att skydda det du har än att få något nytt. Ibland är de gamla sätten bättre än de nya sätten.">Sometimes the best choice is to say no. Sometimes protecting what you have is more important than getting something new. Sometimes the old ways are better than the new ways.</p>
+                
+                <p data-en="Remember: you are not required to adopt any technology. Your family's well-being comes first." data-sv="Kom ihåg: du är inte skyldig att adoptera någon teknik. Din familjs välbefinnande kommer först.">Remember: you are not required to adopt any technology. Your family's well-being comes first.</p>
+            </div>
+
+            <div class="mode-navigation">
+                <a href="create.html" class="nav-card">
+                    <div class="nav-icon">🎨</div>
+                    <h4 data-en="Explore Possibilities" data-sv="Utforska möjligheter">Explore Possibilities</h4>
+                    <p data-en="Try CREATE to imagine options" data-sv="Prova SKAPA för att föreställa dig alternativ">Try CREATE to imagine options</p>
+                </a>
+                
+                <a href="critique.html" class="nav-card">
+                    <div class="nav-icon">🔍</div>
+                    <h4 data-en="Test Ideas Carefully" data-sv="Testa idéer försiktigt">Test Ideas Carefully</h4>
+                    <p data-en="Check out CRITIQUE for analysis" data-sv="Kolla in KRITIK för analys">Check out CRITIQUE for analysis</p>
+                </a>
+                
+                <a href="synthesize.html" class="nav-card">
+                    <div class="nav-icon">⚖️</div>
+                    <h4 data-en="Find Balance" data-sv="Hitta balans">Find Balance</h4>
+                    <p data-en="Visit SYNTHESIZE" data-sv="Besök SYNTES">Visit SYNTHESIZE</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentLanguage = 'sv';
+
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'en' ? 'sv' : 'en';
+            updateLanguage();
+        }
+
+        function updateLanguage() {
+            const elements = document.querySelectorAll('[data-en][data-sv]');
+            const toggleText = document.getElementById('lang-toggle-text');
+            
+            elements.forEach(element => {
+                element.textContent = element.getAttribute('data-' + currentLanguage);
+            });
+
+            toggleText.textContent = currentLanguage === 'en' ? '🇸🇪 Svenska' : '🇬🇧 English';
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateLanguage();
+        });
+    </script>
+</body>
+</html>
