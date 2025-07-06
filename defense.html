@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Försvara Mode - Balans | Skydda familjens värderingar med Weaver</title>
+    <meta name="description" content="Försvara mode hjälper familjer skydda sina värderingar och beslut när de utmanas. Weaver stödjer respektfull kommunikation med respekt för svenska värderingar.">
+    <meta name="keywords" content="familj, försvar, värderingar, AI, svenska familjer, kommunikation, Weaver">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://balans.se/defense">
+    <meta property="og:title" content="Försvara Mode - Skydda familjens värderingar">
+    <meta property="og:description" content="Försvara mode hjälper familjer skydda sina värderingar och beslut när de utmanas med Weaver.">
+    <meta property="og:image" content="images/defense-mode.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://balans.se/defense">
+    <meta property="twitter:title" content="Försvara Mode - Skydda familjens värderingar">
+    <meta property="twitter:description" content="Försvara mode hjälper familjer skydda sina värderingar och beslut när de utmanas med Weaver.">
+    <meta property="twitter:image" content="images/defense-mode.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-swedish-blue': '#2c5aa0',
+                        'natural-birch-wood': '#d4b896',
+                        'sacred-alliance-purple': '#6b5b95',
+                        'warm-birch-white': '#f8f6f0',
+                        'soft-thread-gold': '#c9a96e',
+                        'sage-green': '#8faa8b',
+                        'gentle-silver': '#b8c5d1',
+                        'truth-anchor-copper': '#b87333'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'gentle-pulse': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spiral-rotate': 'spin 8s linear infinite',
+                        'bridge-glow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .lagom-shadow { box-shadow: 0 4px 6px -1px rgba(44, 90, 160, 0.1), 0 2px 4px -1px rgba(44, 90, 160, 0.06); }
+        .lagom-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .lagom-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -3px rgba(44, 90, 160, 0.1), 0 4px 6px -2px rgba(44, 90, 160, 0.05); }
+        .archetypal-glow { box-shadow: 0 0 20px rgba(107, 91, 149, 0.3); }
+        .defense-warmth { background: linear-gradient(135deg, #b8c5d1 0%, #f8f6f0 100%); }
+        .defense-accent { background: linear-gradient(90deg, #b8c5d1 0%, #2c5aa0 50%, #b8c5d1 100%); }
+    </style>
+</head>
+
+<body class="bg-warm-birch-white text-gray-800 font-sans leading-relaxed">
+    <!-- Language Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+        <div class="bg-white/90 backdrop-blur-sm rounded-full p-2 lagom-shadow">
+            <button id="lang-sv" class="px-3 py-1 rounded-full text-sm font-medium bg-deep-swedish-blue text-white">SV</button>
+            <button id="lang-en" class="px-3 py-1 rounded-full text-sm font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10">EN</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2 lagom-hover">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                        <span class="sv-text">Hem</span>
+                        <span class="en-text hidden">Home</span>
+                    </a>
+                    <div class="flex items-center space-x-4">
+                        <a href="create.html" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                            <span class="sv-text">Skapa</span>
+                            <span class="en-text hidden">Create</span>
+                        </a>
+                        <a href="critique.html" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                            <span class="sv-text">Granska</span>
+                            <span class="en-text hidden">Critique</span>
+                        </a>
+                        <a href="synthesize.html" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                            <span class="sv-text">Syntetisera</span>
+                            <span class="en-text hidden">Synthesize</span>
+                        </a>
+                        <a href="defense.html" class="text-gentle-silver font-medium">
+                            <span class="sv-text">Försvara</span>
+                            <span class="en-text hidden">Defense</span>
+                        </a>
+                    </div>
+                    <button class="bg-sacred-alliance-purple text-white px-6 py-2 rounded-full font-medium lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                        <span class="sv-text">Prova Weaver</span>
+                        <span class="en-text hidden">Try Weaver</span>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-deep-swedish-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-natural-birch-wood/20">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Hem</span>
+                    <span class="en-text hidden">Home</span>
+                </a>
+                <a href="create.html" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Skapa</span>
+                    <span class="en-text hidden">Create</span>
+                </a>
+                <a href="critique.html" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Granska</span>
+                    <span class="en-text hidden">Critique</span>
+                </a>
+                <a href="synthesize.html" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Syntetisera</span>
+                    <span class="en-text hidden">Synthesize</span>
+                </a>
+                <a href="defense.html" class="block px-3 py-2 text-gentle-silver font-medium">
+                    <span class="sv-text">Försvara</span>
+                    <span class="en-text hidden">Defense</span>
+                </a>
+                <button class="w-full text-left px-3 py-2 bg-sacred-alliance-purple text-white rounded-lg font-medium">
+                    <span class="sv-text">Prova Weaver</span>
+                    <span class="en-text hidden">Try Weaver</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden defense-warmth">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="bg-white rounded-full p-6 lagom-shadow">
+                            <img src="images/defense-mode.png" alt="Försvara Mode" class="h-16 w-16">
+                        </div>
+                        <div>
+                            <h1 class="text-4xl lg:text-5xl font-display font-bold text-deep-swedish-blue">
+                                <span class="sv-text">Försvara Mode</span>
+                                <span class="en-text hidden">Defense Mode</span>
+                            </h1>
+                            <p class="text-xl text-gentle-silver font-medium">
+                                <span class="sv-text">Skydda familjens värderingar</span>
+                                <span class="en-text hidden">Protect family values</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-xl lg:text-2xl text-gray-700 leading-relaxed">
+                        <span class="sv-text">När familjens värderingar eller beslut utmanas hjälper Weaver er kommunicera er ståndpunkt med respekt och klarhet</span>
+                        <span class="en-text hidden">When the family's values or decisions are challenged, Weaver helps you communicate your position with respect and clarity</span>
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                            <span class="sv-text">Prova Försvara Mode</span>
+                            <span class="en-text hidden">Try Defense Mode</span>
+                        </button>
+                        <a href="index.html" class="border-2 border-deep-swedish-blue text-deep-swedish-blue px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-deep-swedish-blue hover:text-white text-center">
+                            <span class="sv-text">Tillbaka till hem</span>
+                            <span class="en-text hidden">Back to home</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="bg-white rounded-2xl p-8 lagom-shadow">
+                        <div class="text-center mb-6">
+                            <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                                <span class="sv-text">Familjeexempel: Försvara skärmtidsregler</span>
+                                <span class="en-text hidden">Family example: Defending screen time rules</span>
+                            </h3>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-gentle-silver/10 rounded-lg p-4">
+                                <div class="text-sm text-gentle-silver mb-1">
+                                    <span class="sv-text">Weaver hjälper försvara:</span>
+                                    <span class="en-text hidden">Weaver helps defend:</span>
+                                </div>
+                                <p class="text-gray-700">
+                                    <span class="sv-text">"Jag förstår att andra familjer har andra regler. För oss handlar det om att skapa balans mellan skärmtid och familjetid, vilket hjälper våra barn utvecklas på bästa sätt."</span>
+                                    <span class="en-text hidden">"I understand that other families have different rules. For us, it's about creating balance between screen time and family time, which helps our children develop in the best way."</span>
+                                </p>
+                            </div>
+                            
+                            <div class="defense-accent h-1 rounded-full mx-8"></div>
+                            
+                            <div class="bg-warm-birch-white rounded-lg p-4">
+                                <div class="text-sm text-gray-500 mb-1">
+                                    <span class="sv-text">Resultatet:</span>
+                                    <span class="en-text hidden">The result:</span>
+                                </div>
+                                <p class="text-gray-700">
+                                    <span class="sv-text">Respektfull kommunikation som förklarar familjens val utan att döma andra, vilket skapar förståelse istället för konflikt.</span>
+                                    <span class="en-text hidden">Respectful communication that explains the family's choices without judging others, creating understanding instead of conflict.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- When to Use Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">När använder familjer Försvara Mode?</span>
+                    <span class="en-text hidden">When do families use Defense Mode?</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="sv-text">Perfekt när familjens värderingar eller beslut ifrågasätts och ni behöver kommunicera er ståndpunkt</span>
+                    <span class="en-text hidden">Perfect when the family's values or decisions are questioned and you need to communicate your position</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Scenario 1 -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-gentle-silver/20 rounded-full p-3 mr-4">
+                            <svg class="h-8 w-8 text-gentle-silver" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue">
+                            <span class="sv-text">Försvara familjeregler</span>
+                            <span class="en-text hidden">Defend family rules</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">När andra ifrågasätter familjens regler kring skärmtid, läggdags eller aktiviteter behöver familjen förklara sina val respektfullt.</span>
+                        <span class="en-text hidden">When others question the family's rules about screen time, bedtime, or activities, the family needs to explain their choices respectfully.</span>
+                    </p>
+                    <div class="text-sm text-gentle-silver font-medium">
+                        <span class="sv-text">→ Tydlig kommunikation</span>
+                        <span class="en-text hidden">→ Clear communication</span>
+                    </div>
+                </div>
+
+                <!-- Scenario 2 -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-deep-swedish-blue/20 rounded-full p-3 mr-4">
+                            <svg class="h-8 w-8 text-deep-swedish-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue">
+                            <span class="sv-text">Skydda familjens värderingar</span>
+                            <span class="en-text hidden">Protect family values</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">När familjens grundläggande värderingar utmanas av vänner, skola eller samhälle behöver familjen stå upp för sina övertygelser.</span>
+                        <span class="en-text hidden">When the family's fundamental values are challenged by friends, school, or society, the family needs to stand up for their convictions.</span>
+                    </p>
+                    <div class="text-sm text-deep-swedish-blue font-medium">
+                        <span class="sv-text">→ Värderingsbaserat försvar</span>
+                        <span class="en-text hidden">→ Values-based defense</span>
+                    </div>
+                </div>
+
+                <!-- Scenario 3 -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-truth-anchor-copper/20 rounded-full p-3 mr-4">
+                            <svg class="h-8 w-8 text-truth-anchor-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue">
+                            <span class="sv-text">Hantera grupptryck</span>
+                            <span class="en-text hidden">Handle peer pressure</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">När barn eller föräldrar känner press att ändra familjens sätt att göra saker för att passa in med andra familjer.</span>
+                        <span class="en-text hidden">When children or parents feel pressure to change the family's way of doing things to fit in with other families.</span>
+                    </p>
+                    <div class="text-sm text-truth-anchor-copper font-medium">
+                        <span class="sv-text">→ Motstå grupptryck</span>
+                        <span class="en-text hidden">→ Resist peer pressure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-20 bg-gradient-to-br from-warm-birch-white to-gentle-silver/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">Så fungerar Försvara Mode</span>
+                    <span class="en-text hidden">How Defense Mode works</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="sv-text">Weaver hjälper familjen kommunicera sina värderingar med respekt och klarhet</span>
+                    <span class="en-text hidden">Weaver helps the family communicate their values with respect and clarity</span>
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-6">
+                        <!-- Step 1 -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-white rounded-full p-4 flex-shrink-0 lagom-shadow">
+                                <span class="text-2xl font-bold text-gentle-silver">1</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-deep-swedish-blue mb-2">
+                                    <span class="sv-text">Förstå utmaningen</span>
+                                    <span class="en-text hidden">Understand the challenge</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span class="sv-text">Weaver hjälper familjen förstå vad som verkligen ifrågasätts och varför, så ni kan svara på rätt sätt.</span>
+                                    <span class="en-text hidden">Weaver helps the family understand what is really being questioned and why, so you can respond appropriately.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-white rounded-full p-4 flex-shrink-0 lagom-shadow">
+                                <span class="text-2xl font-bold text-gentle-silver">2</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-deep-swedish-blue mb-2">
+                                    <span class="sv-text">Formulera kärnbudskapet</span>
+                                    <span class="en-text hidden">Formulate core message</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span class="sv-text">Tillsammans identifierar ni de viktigaste värdena och skälen bakom familjens val, så budskapet blir tydligt och övertygande.</span>
+                                    <span class="en-text hidden">Together you identify the most important values and reasons behind the family's choices, so the message becomes clear and convincing.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-white rounded-full p-4 flex-shrink-0 lagom-shadow">
+                                <span class="text-2xl font-bold text-gentle-silver">3</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-deep-swedish-blue mb-2">
+                                    <span class="sv-text">Respektfull kommunikation</span>
+                                    <span class="en-text hidden">Respectful communication</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span class="sv-text">Weaver hjälper er uttrycka er ståndpunkt på ett sätt som respekterar andra samtidigt som ni står fast vid era värderingar.</span>
+                                    <span class="en-text hidden">Weaver helps you express your position in a way that respects others while standing firm in your values.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="bg-white rounded-2xl p-8 lagom-shadow">
+                        <div class="text-center mb-6">
+                            <img src="images/defense-mode.png" alt="Försvara Mode" class="h-20 w-20 mx-auto mb-4 animate-gentle-pulse">
+                            <h4 class="text-lg font-semibold text-deep-swedish-blue">
+                                <span class="sv-text">Försvarsprocess i aktion</span>
+                                <span class="en-text hidden">Defense process in action</span>
+                            </h4>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-gentle-silver/10 rounded-lg p-4">
+                                <div class="text-sm text-gentle-silver mb-1">
+                                    <span class="sv-text">Weaver guidar:</span>
+                                    <span class="en-text hidden">Weaver guides:</span>
+                                </div>
+                                <p class="text-gray-700 text-sm">
+                                    <span class="sv-text">"Jag hör att ni känner er ifrågasatta om era regler. Låt oss fokusera på vad som är viktigast för er familj och hur ni kan förklara det på ett sätt som skapar förståelse."</span>
+                                    <span class="en-text hidden">"I hear that you feel questioned about your rules. Let's focus on what's most important to your family and how you can explain it in a way that creates understanding."</span>
+                                </p>
+                            </div>
+                            
+                            <div class="defense-accent h-1 rounded-full mx-4"></div>
+                            
+                            <div class="bg-warm-birch-white rounded-lg p-4">
+                                <div class="text-sm text-gray-500 mb-1">
+                                    <span class="sv-text">Familjen svarar:</span>
+                                    <span class="en-text hidden">Family responds:</span>
+                                </div>
+                                <p class="text-gray-700 text-sm">
+                                    <span class="sv-text">"Vi förstår att alla familjer är olika. För oss handlar det om att skapa trygghet och balans för våra barn, vilket vi tror hjälper dem växa och utvecklas bäst."</span>
+                                    <span class="en-text hidden">"We understand that all families are different. For us, it's about creating security and balance for our children, which we believe helps them grow and develop best."</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">Varför Försvara Mode fungerar för svenska familjer</span>
+                    <span class="en-text hidden">Why Defense Mode works for Swedish families</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="text-center">
+                    <div class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                        <img src="images/the-shield.png" alt="Skydd" class="h-16 w-16 mx-auto mb-6">
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                            <span class="sv-text">Respektfull ståndpunkt</span>
+                            <span class="en-text hidden">Respectful stance</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="sv-text">Försvara Mode hjälper familjer kommunicera sina värderingar utan att verka aggressiva eller dömande mot andra.</span>
+                            <span class="en-text hidden">Defense Mode helps families communicate their values without appearing aggressive or judgmental toward others.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="text-center">
+                    <div class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                        <img src="images/understanding-bridge.png" alt="Förståelse" class="h-16 w-16 mx-auto mb-6">
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                            <span class="sv-text">Skapar förståelse</span>
+                            <span class="en-text hidden">Creates understanding</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="sv-text">Istället för att skapa konflikter hjälper Försvara Mode familjer förklara sina val på ett sätt som andra kan förstå och respektera.</span>
+                            <span class="en-text hidden">Instead of creating conflicts, Defense Mode helps families explain their choices in a way others can understand and respect.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="text-center">
+                    <div class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                        <img src="images/family-circle.png" alt="Familj" class="h-16 w-16 mx-auto mb-6">
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                            <span class="sv-text">Stärker familjen</span>
+                            <span class="en-text hidden">Strengthens family</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="sv-text">Genom att stå upp för sina värderingar tillsammans blir familjen mer enad och trygg i sina val.</span>
+                            <span class="en-text hidden">By standing up for their values together, the family becomes more united and confident in their choices.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-20 bg-deep-swedish-blue text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="space-y-8">
+                <div class="flex items-center justify-center space-x-4 mb-6">
+                    <img src="images/defense-mode.png" alt="Försvara Mode" class="h-16 w-16">
+                    <h2 class="text-3xl lg:text-4xl font-display font-bold">
+                        <span class="sv-text">Redo att försvara era värderingar?</span>
+                        <span class="en-text hidden">Ready to defend your values?</span>
+                    </h2>
+                </div>
+                <p class="text-xl text-blue-100">
+                    <span class="sv-text">Lär er kommunicera era familjeval med respekt och klarhet när de utmanas</span>
+                    <span class="en-text hidden">Learn to communicate your family choices with respect and clarity when they are challenged</span>
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                        <span class="sv-text">Prova Försvara Mode nu</span>
+                        <span class="en-text hidden">Try Defense Mode now</span>
+                    </button>
+                    <a href="index.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-white hover:text-deep-swedish-blue">
+                        <span class="sv-text">Utforska andra modes</span>
+                        <span class="en-text hidden">Explore other modes</span>
+                    </a>
+                </div>
+
+                <div class="text-sm text-blue-200">
+                    <span class="sv-text">Ingen registrering krävs • Prova direkt • Familjevänligt</span>
+                    <span class="en-text hidden">No registration required • Try immediately • Family-friendly</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </div>
+                    <p class="text-gray-600">
+                        <span class="sv-text">AI-stöd för svenska familjer som respekterar era värderingar</span>
+                        <span class="en-text hidden">AI support for Swedish families that respects your values</span>
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Modes</span>
+                        <span class="en-text hidden">Modes</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="create.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Skapa</span>
+                            <span class="en-text hidden">Create</span>
+                        </a></li>
+                        <li><a href="critique.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Granska</span>
+                            <span class="en-text hidden">Critique</span>
+                        </a></li>
+                        <li><a href="synthesize.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Syntetisera</span>
+                            <span class="en-text hidden">Synthesize</span>
+                        </a></li>
+                        <li><a href="defense.html" class="lagom-hover hover:text-deep-swedish-blue text-gentle-silver font-medium">
+                            <span class="sv-text">Försvara</span>
+                            <span class="en-text hidden">Defense</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Support</span>
+                        <span class="en-text hidden">Support</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Hjälpcenter</span>
+                            <span class="en-text hidden">Help center</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Kontakta oss</span>
+                            <span class="en-text hidden">Contact us</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Säkerhet</span>
+                            <span class="en-text hidden">Security</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Företag</span>
+                        <span class="en-text hidden">Company</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="index.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Hem</span>
+                            <span class="en-text hidden">Home</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Om oss</span>
+                            <span class="en-text hidden">About us</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Integritet</span>
+                            <span class="en-text hidden">Privacy</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-natural-birch-wood/20 mt-8 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 Balans. <span class="sv-text">Alla rättigheter förbehållna.</span><span class="en-text hidden">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Language Toggle
+        const langSv = document.getElementById('lang-sv');
+        const langEn = document.getElementById('lang-en');
+        const svTexts = document.querySelectorAll('.sv-text');
+        const enTexts = document.querySelectorAll('.en-text');
+
+        function showSwedish() {
+            langSv.classList.add('bg-deep-swedish-blue', 'text-white');
+            langSv.classList.remove('text-deep-swedish-blue');
+            langEn.classList.remove('bg-deep-swedish-blue', 'text-white');
+            langEn.classList.add('text-deep-swedish-blue');
+            
+            svTexts.forEach(el => el.classList.remove('hidden'));
+            enTexts.forEach(el => el.classList.add('hidden'));
+            
+            document.documentElement.lang = 'sv';
+        }
+
+        function showEnglish() {
+            langEn.classList.add('bg-deep-swedish-blue', 'text-white');
+            langEn.classList.remove('text-deep-swedish-blue');
+            langSv.classList.remove('bg-deep-swedish-blue', 'text-white');
+            langSv.classList.add('text-deep-swedish-blue');
+            
+            enTexts.forEach(el => el.classList.remove('hidden'));
+            svTexts.forEach(el => el.classList.add('hidden'));
+            
+            document.documentElement.lang = 'en';
+        }
+
+        langSv.addEventListener('click', showSwedish);
+        langEn.addEventListener('click', showEnglish);
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize with Swedish
+        showSwedish();
+    </script>
+</body>
+</html>

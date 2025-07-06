@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skapa - Balans | Kreativ familjesamverkan med Weaver</title>
+    <meta name="description" content="Skapa hjälper familjer brainstorma och utveckla idéer tillsammans. Weaver stödjer kreativ familjesamverkan med respekt för svenska värderingar.">
+    <meta name="keywords" content="familj, kreativitet, brainstorming, AI, svenska familjer, samarbete, Weaver">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://balans.se/create">
+    <meta property="og:title" content="Skapa - Kreativ familjesamverkan">
+    <meta property="og:description" content="Skapa hjälper familjer brainstorma och utveckla idéer tillsammans med Weaver.">
+    <meta property="og:image" content="images/create-mode.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://balans.se/create">
+    <meta property="twitter:title" content="Skapa - Kreativ familjesamverkan">
+    <meta property="twitter:description" content="Skapa hjälper familjer brainstorma och utveckla idéer tillsammans med Weaver.">
+    <meta property="twitter:image" content="images/create-mode.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-swedish-blue': '#2c5aa0',
+                        'natural-birch-wood': '#d4b896',
+                        'sacred-alliance-purple': '#6b5b95',
+                        'warm-birch-white': '#f8f6f0',
+                        'soft-thread-gold': '#c9a96e',
+                        'sage-green': '#8faa8b',
+                        'gentle-silver': '#b8c5d1',
+                        'truth-anchor-copper': '#b87333'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'gentle-pulse': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spiral-rotate': 'spin 8s linear infinite',
+                        'bridge-glow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .lagom-shadow { box-shadow: 0 4px 6px -1px rgba(44, 90, 160, 0.1), 0 2px 4px -1px rgba(44, 90, 160, 0.06); }
+        .lagom-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .lagom-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -3px rgba(44, 90, 160, 0.1), 0 4px 6px -2px rgba(44, 90, 160, 0.05); }
+        .archetypal-glow { box-shadow: 0 0 20px rgba(107, 91, 149, 0.3); }
+        .create-warmth { background: linear-gradient(135deg, #f8f6f0 0%, #8faa8b 100%); }
+        .create-accent { background: linear-gradient(90deg, #8faa8b 0%, #c9a96e 50%, #8faa8b 100%); }
+    </style>
+</head>
+
+<body class="bg-warm-birch-white text-gray-800 font-sans leading-relaxed">
+    <!-- Language Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+        <div class="bg-white/90 backdrop-blur-sm rounded-full p-2 lagom-shadow">
+            <button id="lang-sv" class="px-3 py-1 rounded-full text-sm font-medium bg-deep-swedish-blue text-white">SV</button>
+            <button id="lang-en" class="px-3 py-1 rounded-full text-sm font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10">EN</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2 lagom-hover">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                        <span class="sv-text">Hem</span>
+                        <span class="en-text hidden">Home</span>
+                    </a>
+                    <div class="flex items-center space-x-4">
+                        <a href="create.html" class="text-sage-green font-medium">
+                            <span class="sv-text">Skapa</span>
+                            <span class="en-text hidden">Create</span>
+                        </a>
+                        <a href="critique.html" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                            <span class="sv-text">Granska</span>
+                            <span class="en-text hidden">Critique</span>
+                        </a>
+                        <a href="synthesize.html" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                            <span class="sv-text">Syntetisera</span>
+                            <span class="en-text hidden">Synthesize</span>
+                        </a>
+                        <a href="defense.html" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                            <span class="sv-text">Försvara</span>
+                            <span class="en-text hidden">Defense</span>
+                        </a>
+                    </div>
+                    <button class="bg-sacred-alliance-purple text-white px-6 py-2 rounded-full font-medium lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                        <span class="sv-text">Prova Weaver</span>
+                        <span class="en-text hidden">Try Weaver</span>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-deep-swedish-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-natural-birch-wood/20">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Hem</span>
+                    <span class="en-text hidden">Home</span>
+                </a>
+                <a href="create.html" class="block px-3 py-2 text-sage-green font-medium">
+                    <span class="sv-text">Skapa</span>
+                    <span class="en-text hidden">Create</span>
+                </a>
+                <a href="critique.html" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Granska</span>
+                    <span class="en-text hidden">Critique</span>
+                </a>
+                <a href="synthesize.html" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Syntetisera</span>
+                    <span class="en-text hidden">Synthesize</span>
+                </a>
+                <a href="defense.html" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Försvara</span>
+                    <span class="en-text hidden">Defense</span>
+                </a>
+                <button class="w-full text-left px-3 py-2 bg-sacred-alliance-purple text-white rounded-lg font-medium">
+                    <span class="sv-text">Prova Weaver</span>
+                    <span class="en-text hidden">Try Weaver</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden create-warmth">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="bg-white rounded-full p-6 lagom-shadow">
+                            <img src="images/create-mode.png" alt="Skapa Mode" class="h-16 w-16">
+                        </div>
+                        <div>
+                            <h1 class="text-4xl lg:text-5xl font-display font-bold text-deep-swedish-blue">
+                                <span class="sv-text">Skapa</span>
+                                <span class="en-text hidden">Create</span>
+                            </h1>
+                            <p class="text-xl text-sage-green font-medium">
+                                <span class="sv-text">Kreativ familjesamverkan</span>
+                                <span class="en-text hidden">Creative family collaboration</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-xl lg:text-2xl text-gray-700 leading-relaxed">
+                        <span class="sv-text">När familjen behöver brainstorma tillsammans hjälper Weaver er upptäcka kopplingar och möjligheter som ingen såg ensam</span>
+                        <span class="en-text hidden">When families need to brainstorm together, Weaver helps you discover connections and possibilities that no one saw alone</span>
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                            <span class="sv-text">Prova Skapa</span>
+                            <span class="en-text hidden">Try Create</span>
+                        </button>
+                        <a href="index.html" class="border-2 border-deep-swedish-blue text-deep-swedish-blue px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-deep-swedish-blue hover:text-white text-center">
+                            <span class="sv-text">Tillbaka till hem</span>
+                            <span class="en-text hidden">Back to home</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="bg-white rounded-2xl p-8 lagom-shadow">
+                        <div class="text-center mb-6">
+                            <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                                <span class="sv-text">Familjeexempel: Planera sommaraktiviteter</span>
+                                <span class="en-text hidden">Family example: Planning summer activities</span>
+                            </h3>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-sage-green/10 rounded-lg p-4">
+                                <div class="text-sm text-sage-green mb-1">
+                                    <span class="sv-text">Weaver ser mönster:</span>
+                                    <span class="en-text hidden">Weaver sees patterns:</span>
+                                </div>
+                                <p class="text-gray-700">
+                                    <span class="sv-text">"Intressant! Anna vill utforska naturen, Erik älskar historia, och Maja vill lära sig något nytt. Jag ser en koppling här..."</span>
+                                    <span class="en-text hidden">"Interesting! Anna wants to explore nature, Erik loves history, and Maja wants to learn something new. I see a connection here..."</span>
+                                </p>
+                            </div>
+                            
+                            <div class="create-accent h-1 rounded-full mx-8"></div>
+                            
+                            <div class="bg-warm-birch-white rounded-lg p-4">
+                                <div class="text-sm text-gray-500 mb-1">
+                                    <span class="sv-text">Familjen upptäcker tillsammans:</span>
+                                    <span class="en-text hidden">Family discovers together:</span>
+                                </div>
+                                <p class="text-gray-700">
+                                    <span class="sv-text">"Historiska naturområden! Vi kan utforska gamla fästen i skogen och lära oss om både natur och historia!"</span>
+                                    <span class="en-text hidden">"Historical nature areas! We can explore old fortresses in the forest and learn about both nature and history!"</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- When to Use Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">När använder familjer Skapa?</span>
+                    <span class="en-text hidden">When do families use Create?</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="sv-text">Perfekt för situationer där familjen behöver komma på nya idéer tillsammans</span>
+                    <span class="en-text hidden">Perfect for situations where families need to come up with new ideas together</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Scenario 1 -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-sage-green/20 rounded-full p-3 mr-4">
+                            <svg class="h-8 w-8 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue">
+                            <span class="sv-text">Semesterplanering</span>
+                            <span class="en-text hidden">Vacation planning</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Alla har olika önskemål för familjesemestern. Weaver hjälper er samla idéer och hitta kreativa kompromisser.</span>
+                        <span class="en-text hidden">Everyone has different wishes for the family vacation. Weaver helps you gather ideas and find creative compromises.</span>
+                    </p>
+                    <div class="text-sm text-sage-green font-medium">
+                        <span class="sv-text">→ Brainstorming utan press</span>
+                        <span class="en-text hidden">→ Pressure-free brainstorming</span>
+                    </div>
+                </div>
+
+                <!-- Scenario 2 -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-soft-thread-gold/20 rounded-full p-3 mr-4">
+                            <svg class="h-8 w-8 text-soft-thread-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue">
+                            <span class="sv-text">Hemförbättringar</span>
+                            <span class="en-text hidden">Home improvements</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Familjen vill förändra hemmet men vet inte riktigt hur. Skapa Mode hjälper alla bidra med inspiration.</span>
+                        <span class="en-text hidden">The family wants to change the home but doesn't know exactly how. Create Mode helps everyone contribute inspiration.</span>
+                    </p>
+                    <div class="text-sm text-soft-thread-gold font-medium">
+                        <span class="sv-text">→ Alla perspektiv välkomnas</span>
+                        <span class="en-text hidden">→ All perspectives welcomed</span>
+                    </div>
+                </div>
+
+                <!-- Scenario 3 -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-truth-anchor-copper/20 rounded-full p-3 mr-4">
+                            <svg class="h-8 w-8 text-truth-anchor-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue">
+                            <span class="sv-text">Nya traditioner</span>
+                            <span class="en-text hidden">New traditions</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Familjen vill skapa nya traditioner som passar alla. Weaver faciliterar kreativa sessioner där alla känner sig hörda.</span>
+                        <span class="en-text hidden">The family wants to create new traditions that suit everyone. Weaver facilitates creative sessions where everyone feels heard.</span>
+                    </p>
+                    <div class="text-sm text-truth-anchor-copper font-medium">
+                        <span class="sv-text">→ Meningsfulla ritualer</span>
+                        <span class="en-text hidden">→ Meaningful rituals</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-20 bg-gradient-to-br from-warm-birch-white to-sage-green/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">Så fungerar Skapa</span>
+                    <span class="en-text hidden">How Create works</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="sv-text">Weaver guidar familjen genom en strukturerad kreativ process</span>
+                    <span class="en-text hidden">Weaver guides the family through a structured creative process</span>
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-6">
+                        <!-- Step 1 -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-white rounded-full p-4 flex-shrink-0 lagom-shadow">
+                                <span class="text-2xl font-bold text-sage-green">1</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-deep-swedish-blue mb-2">
+                                    <span class="sv-text">Trygg idéutforskning</span>
+                                    <span class="en-text hidden">Safe idea exploration</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span class="sv-text">Weaver skapar en miljö där alla vågar dela sina vildaste idéer. Genom att se varje bidrag som värdefull byggsten upptäcker familjen nya möjligheter.</span>
+                                    <span class="en-text hidden">Weaver creates an environment where everyone dares to share their wildest ideas. By seeing each contribution as a valuable building block, the family discovers new possibilities.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-white rounded-full p-4 flex-shrink-0 lagom-shadow">
+                                <span class="text-2xl font-bold text-sage-green">2</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-deep-swedish-blue mb-2">
+                                    <span class="sv-text">Mönsterigenkänning tillsammans</span>
+                                    <span class="en-text hidden">Pattern recognition together</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span class="sv-text">Här sker magin - Weaver hjälper familjen se dolda samband mellan idéer som verkade helt olika. Tillsammans upptäcker ni lösningar som ingen tänkt på ensam.</span>
+                                    <span class="en-text hidden">Here's where the magic happens - Weaver helps the family see hidden connections between ideas that seemed completely different. Together you discover solutions no one thought of alone.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-white rounded-full p-4 flex-shrink-0 lagom-shadow">
+                                <span class="text-2xl font-bold text-sage-green">3</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-deep-swedish-blue mb-2">
+                                    <span class="sv-text">Utveckla tillsammans</span>
+                                    <span class="en-text hidden">Develop together</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span class="sv-text">Familjen bygger vidare på de bästa idéerna tillsammans, med Weavers stöd för att hålla processen konstruktiv.</span>
+                                    <span class="en-text hidden">The family builds on the best ideas together, with Weaver's support to keep the process constructive.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="bg-white rounded-2xl p-8 lagom-shadow">
+                        <div class="text-center mb-6">
+                            <img src="images/create-mode.png" alt="Skapa Mode" class="h-20 w-20 mx-auto mb-4 animate-gentle-pulse">
+                            <h4 class="text-lg font-semibold text-deep-swedish-blue">
+                                <span class="sv-text">Kreativ process i aktion</span>
+                                <span class="en-text hidden">Creative process in action</span>
+                            </h4>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-sage-green/10 rounded-lg p-4">
+                                <div class="text-sm text-sage-green mb-1">
+                                    <span class="sv-text">Weaver faciliterar:</span>
+                                    <span class="en-text hidden">Weaver facilitates:</span>
+                                </div>
+                                <p class="text-gray-700 text-sm">
+                                    <span class="sv-text">"Jag märker något fascinerande - alla era idéer har en gemensam kärna: upptäckarglädje. Anna vill utforska, Erik vill förstå, Maja vill lära. Vad händer om vi väver ihop dessa?"</span>
+                                    <span class="en-text hidden">"I notice something fascinating - all your ideas have a common core: the joy of discovery. Anna wants to explore, Erik wants to understand, Maja wants to learn. What if we weave these together?"</span>
+                                </p>
+                            </div>
+                            
+                            <div class="create-accent h-1 rounded-full mx-4"></div>
+                            
+                            <div class="bg-warm-birch-white rounded-lg p-4">
+                                <div class="text-sm text-gray-500 mb-1">
+                                    <span class="sv-text">Familjen upptäcker:</span>
+                                    <span class="en-text hidden">Family discovers:</span>
+                                </div>
+                                <p class="text-gray-700 text-sm">
+                                    <span class="sv-text">"Wow! Historiska naturäventyr - varför tänkte vi inte på det tidigare? Nu ser vi hur alla våra önskemål faktiskt passar ihop perfekt!"</span>
+                                    <span class="en-text hidden">"Wow! Historical nature adventures - why didn't we think of that before? Now we see how all our wishes actually fit together perfectly!"</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">Varför Skapa Mode fungerar för svenska familjer</span>
+                    <span class="en-text hidden">Why Create Mode works for Swedish families</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="text-center">
+                    <div class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                        <img src="images/family-circle.png" alt="Inkludering" class="h-16 w-16 mx-auto mb-6">
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                            <span class="sv-text">Alla röster hörs</span>
+                            <span class="en-text hidden">All voices heard</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="sv-text">Skapa Mode säkerställer att alla familjemedlemmar känner sig välkomna att bidra, oavsett ålder eller personlighet.</span>
+                            <span class="en-text hidden">Create Mode ensures all family members feel welcome to contribute, regardless of age or personality.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="text-center">
+                    <div class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                        <img src="images/balance-point.png" alt="Lagom" class="h-16 w-16 mx-auto mb-6">
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                            <span class="sv-text">Lagom kreativitet</span>
+                            <span class="en-text hidden">Lagom creativity</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="sv-text">Inte för vild, inte för tråkig - precis rätt nivå av kreativitet för svenska familjer.</span>
+                            <span class="en-text hidden">Not too wild, not too boring - just the right level of creativity for Swedish families.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="text-center">
+                    <div class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                        <img src="images/grow-toghether.png" alt="Tillväxt" class="h-16 w-16 mx-auto mb-6">
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                            <span class="sv-text">Stärker banden</span>
+                            <span class="en-text hidden">Strengthens bonds</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="sv-text">Gemensam kreativitet bygger förståelse och närmare relationer mellan familjemedlemmar.</span>
+                            <span class="en-text hidden">Shared creativity builds understanding and closer relationships between family members.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-20 bg-deep-swedish-blue text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="space-y-8">
+                <div class="flex items-center justify-center space-x-4 mb-6">
+                    <img src="images/create-mode.png" alt="Skapa Mode" class="h-16 w-16">
+                    <h2 class="text-3xl lg:text-4xl font-display font-bold">
+                        <span class="sv-text">Redo att skapa tillsammans?</span>
+                        <span class="en-text hidden">Ready to create together?</span>
+                    </h2>
+                </div>
+                <p class="text-xl text-blue-100">
+                    <span class="sv-text">Börja med en enkel brainstorming-session och upplev hur Weaver kan hjälpa er familj</span>
+                    <span class="en-text hidden">Start with a simple brainstorming session and experience how Weaver can help your family</span>
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                        <span class="sv-text">Prova Skapa nu</span>
+                        <span class="en-text hidden">Try Create now</span>
+                    </button>
+                    <a href="index.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-white hover:text-deep-swedish-blue">
+                        <span class="sv-text">Utforska andra modes</span>
+                        <span class="en-text hidden">Explore other modes</span>
+                    </a>
+                </div>
+
+                <div class="text-sm text-blue-200">
+                    <span class="sv-text">Ingen registrering krävs • Prova direkt • Familjevänligt</span>
+                    <span class="en-text hidden">No registration required • Try immediately • Family-friendly</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </div>
+                    <p class="text-gray-600">
+                        <span class="sv-text">AI-stöd för svenska familjer som respekterar era värderingar</span>
+                        <span class="en-text hidden">AI support for Swedish families that respects your values</span>
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Modes</span>
+                        <span class="en-text hidden">Modes</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="create.html" class="lagom-hover hover:text-deep-swedish-blue text-sage-green font-medium">
+                            <span class="sv-text">Skapa</span>
+                            <span class="en-text hidden">Create</span>
+                        </a></li>
+                        <li><a href="critique.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Granska</span>
+                            <span class="en-text hidden">Critique</span>
+                        </a></li>
+                        <li><a href="synthesize.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Syntetisera</span>
+                            <span class="en-text hidden">Synthesize</span>
+                        </a></li>
+                        <li><a href="defense.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Försvara</span>
+                            <span class="en-text hidden">Defense</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Support</span>
+                        <span class="en-text hidden">Support</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Hjälpcenter</span>
+                            <span class="en-text hidden">Help center</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Kontakta oss</span>
+                            <span class="en-text hidden">Contact us</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Säkerhet</span>
+                            <span class="en-text hidden">Security</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Företag</span>
+                        <span class="en-text hidden">Company</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="index.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Hem</span>
+                            <span class="en-text hidden">Home</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Om oss</span>
+                            <span class="en-text hidden">About us</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Integritet</span>
+                            <span class="en-text hidden">Privacy</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-natural-birch-wood/20 mt-8 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 Balans. <span class="sv-text">Alla rättigheter förbehållna.</span><span class="en-text hidden">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Language Toggle
+        const langSv = document.getElementById('lang-sv');
+        const langEn = document.getElementById('lang-en');
+        const svTexts = document.querySelectorAll('.sv-text');
+        const enTexts = document.querySelectorAll('.en-text');
+
+        function showSwedish() {
+            langSv.classList.add('bg-deep-swedish-blue', 'text-white');
+            langSv.classList.remove('text-deep-swedish-blue');
+            langEn.classList.remove('bg-deep-swedish-blue', 'text-white');
+            langEn.classList.add('text-deep-swedish-blue');
+            
+            svTexts.forEach(el => el.classList.remove('hidden'));
+            enTexts.forEach(el => el.classList.add('hidden'));
+            
+            document.documentElement.lang = 'sv';
+        }
+
+        function showEnglish() {
+            langEn.classList.add('bg-deep-swedish-blue', 'text-white');
+            langEn.classList.remove('text-deep-swedish-blue');
+            langSv.classList.remove('bg-deep-swedish-blue', 'text-white');
+            langSv.classList.add('text-deep-swedish-blue');
+            
+            enTexts.forEach(el => el.classList.remove('hidden'));
+            svTexts.forEach(el => el.classList.add('hidden'));
+            
+            document.documentElement.lang = 'en';
+        }
+
+        langSv.addEventListener('click', showSwedish);
+        langEn.addEventListener('click', showEnglish);
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize with Swedish
+        showSwedish();
+    </script>
+</body>
+</html>
