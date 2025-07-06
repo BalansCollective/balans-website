@@ -131,14 +131,15 @@
         .mode-icon {
             width: 120px;
             height: 120px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 2rem;
             box-shadow: 0 2px 8px var(--balans-shadow-light);
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .mode-icon img {
@@ -202,19 +203,11 @@
             right: 0;
             bottom: 0;
             background: 
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 1px,
-                    rgba(0,0,0,0.03) 1px,
-                    rgba(0,0,0,0.03) 2px
-                ),
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 1px,
-                    rgba(255,255,255,0.02) 1px,
-                    rgba(255,255,255,0.02) 2px
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.1) 0%,
+                    transparent 50%,
+                    rgba(0,0,0,0.05) 100%
                 );
             border-radius: 50px;
             pointer-events: none;
@@ -342,7 +335,7 @@
             background: linear-gradient(135deg, var(--balans-sacred-alliance-purple) 0%, var(--create-primary) 100%);
             padding: 4rem 0;
             position: relative;
-            border-radius: 20px;
+            border-radius: 16px;
             margin: 4rem 0;
             overflow: hidden;
         }
@@ -355,12 +348,15 @@
             right: 0;
             bottom: 0;
             background: 
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 20px,
-                    rgba(255,255,255,0.05) 20px,
-                    rgba(255,255,255,0.05) 40px
+                radial-gradient(
+                    circle at 20% 80%,
+                    rgba(255,255,255,0.03) 0%,
+                    transparent 50%
+                ),
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(255,255,255,0.03) 0%,
+                    transparent 50%
                 );
             pointer-events: none;
         }
@@ -395,17 +391,18 @@
         }
 
         .scaling-card {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.08);
             padding: 2rem;
             border-radius: 12px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.15);
             transition: all 0.3s ease;
         }
 
         .scaling-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.25);
         }
 
         .scaling-card h4 {
@@ -441,17 +438,18 @@
         }
 
         .try-step {
-            background: rgba(201, 169, 110, 0.1);
+            background: rgba(201, 169, 110, 0.08);
             padding: 2rem;
             border-radius: 12px;
             transition: all 0.3s ease;
-            border: 1px solid var(--balans-border-light);
+            border: 1px solid rgba(201, 169, 110, 0.2);
         }
 
         .try-step:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 15px var(--balans-shadow-light);
             border-color: var(--create-primary);
+            background: rgba(201, 169, 110, 0.12);
         }
 
         .try-step h4 {
