@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hjälp mig välja - Balans | Hitta rätt Weaver-version för din familj</title>
+    <meta name="description" content="Osäker på vilken Weaver-version som passar er familj? Svara på några enkla frågor så hjälper vi dig välja mellan Balans Hosted, WeaverMesh och Weaver Home Hub.">
+    <meta name="keywords" content="hjälp välja, weaver version, familj AI, balans hosted, weavermesh, home hub, svenska familjer">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-swedish-blue': '#2c5aa0',
+                        'natural-birch-wood': '#d4b896',
+                        'sacred-alliance-purple': '#6b5b95',
+                        'warm-birch-white': '#f8f6f0',
+                        'soft-thread-gold': '#c9a96e',
+                        'sage-green': '#8faa8b',
+                        'gentle-silver': '#b8c5d1',
+                        'truth-anchor-copper': '#b87333'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'gentle-pulse': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bridge-glow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .lagom-shadow { box-shadow: 0 4px 6px -1px rgba(44, 90, 160, 0.1), 0 2px 4px -1px rgba(44, 90, 160, 0.06); }
+        .lagom-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .lagom-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -3px rgba(44, 90, 160, 0.1), 0 4px 6px -2px rgba(44, 90, 160, 0.05); }
+        .archetypal-glow { box-shadow: 0 0 20px rgba(107, 91, 149, 0.3); }
+        .family-warmth { background: linear-gradient(135deg, #f8f6f0 0%, #d4b896 100%); }
+        .understanding-bridge { background: linear-gradient(90deg, #c9a96e 0%, #d4b896 50%, #c9a96e 100%); }
+        .quiz-option { transition: all 0.3s ease; }
+        .quiz-option:hover { transform: translateY(-2px); }
+        .quiz-option.selected { border-color: #6b5b95; background-color: rgba(107, 91, 149, 0.05); }
+    </style>
+</head>
+
+<body class="bg-warm-birch-white text-gray-800 font-sans leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#solution" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                        <span class="sv-text">Så fungerar det</span>
+                        <span class="en-text hidden">How it works</span>
+                    </a>
+                    <a href="prova-weaver.html" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                        <span class="sv-text">Prova Weaver</span>
+                        <span class="en-text hidden">Try Weaver</span>
+                    </a>
+                    
+                    <!-- Language Toggle -->
+                    <div class="bg-gray-100 rounded-full p-1">
+                        <button id="lang-sv" class="px-3 py-1 rounded-full text-sm font-medium bg-deep-swedish-blue text-white transition-all duration-200">SV</button>
+                        <button id="lang-en" class="px-3 py-1 rounded-full text-sm font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10 transition-all duration-200">EN</button>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button and language toggle -->
+                <div class="md:hidden flex items-center space-x-3">
+                    <!-- Mobile Language Toggle -->
+                    <div class="bg-gray-100 rounded-full p-0.5">
+                        <button id="lang-sv-mobile-header" class="px-2 py-0.5 rounded-full text-xs font-medium bg-deep-swedish-blue text-white transition-all duration-200">SV</button>
+                        <button id="lang-en-mobile-header" class="px-2 py-0.5 rounded-full text-xs font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10 transition-all duration-200">EN</button>
+                    </div>
+                    
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-deep-swedish-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-natural-birch-wood/20">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html#solution" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Så fungerar det</span>
+                    <span class="en-text hidden">How it works</span>
+                </a>
+                <a href="prova-weaver.html" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Prova Weaver</span>
+                    <span class="en-text hidden">Try Weaver</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden family-warmth">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+            <div class="text-center space-y-8">
+                <div class="space-y-4">
+                    <h1 class="text-4xl lg:text-5xl font-display font-bold text-deep-swedish-blue leading-tight">
+                        <span class="sv-text">Hjälp mig välja rätt version</span>
+                        <span class="en-text hidden">Help me choose the right version</span>
+                    </h1>
+                    <p class="text-xl lg:text-2xl text-gray-700 leading-relaxed">
+                        <span class="sv-text">Svara på några enkla frågor så rekommenderar vi den bästa Weaver-versionen för er familj</span>
+                        <span class="en-text hidden">Answer a few simple questions and we'll recommend the best Weaver version for your family</span>
+                    </p>
+                </div>
+
+                <div class="flex items-center justify-center space-x-4 text-sm text-gray-600">
+                    <div class="flex items-center space-x-2">
+                        <svg class="h-5 w-5 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span class="sv-text">2 minuter</span>
+                        <span class="en-text hidden">2 minutes</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <svg class="h-5 w-5 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span class="sv-text">Personlig rekommendation</span>
+                        <span class="en-text hidden">Personal recommendation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="quiz-container">
+                <!-- Progress Bar -->
+                <div class="mb-12">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium text-deep-swedish-blue">
+                            <span class="sv-text">Fråga <span id="current-question">1</span> av 5</span>
+                            <span class="en-text hidden">Question <span id="current-question-en">1</span> of 5</span>
+                        </span>
+                        <span class="text-sm text-gray-500">
+                            <span id="progress-percent">20</span>%
+                        </span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div id="progress-bar" class="bg-sacred-alliance-purple h-2 rounded-full transition-all duration-300" style="width: 20%"></div>
+                    </div>
+                </div>
+
+                <!-- Question 1: Technical Comfort -->
+                <div id="question-1" class="quiz-question">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-display font-bold text-deep-swedish-blue mb-4">
+                            <span class="sv-text">Hur bekväma är ni med teknik?</span>
+                            <span class="en-text hidden">How comfortable are you with technology?</span>
+                        </h2>
+                        <p class="text-lg text-gray-600">
+                            <span class="sv-text">Detta hjälper oss förstå vilken nivå av teknisk komplexitet som passar er</span>
+                            <span class="en-text hidden">This helps us understand what level of technical complexity suits you</span>
+                        </p>
+                    </div>
+
+                    <div class="grid gap-4">
+                        <button class="quiz-option bg-white border-2 border-gray-200 rounded-xl p-6 text-left lagom-hover" data-value="beginner">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-sage-green/20 rounded-full p-3 flex-shrink-0">
+                                    <svg class="h-6 w-6 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-deep-swedish-blue mb-2">
+                                        <span class="sv-text">Vi vill ha det enkelt</span>
+                                        <span class="en-text hidden">We want it simple</span>
+                                    </h3>
+                                    <p class="text-gray-600">
+                                        <span class="sv-text">Vi vill bara att det ska fungera utan krångel. Installationer och tekniska inställningar är inte vårt område.</span>
+                                        <span class="en-text hidden">We just want it to work without hassle. Installations and technical settings are not our thing.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button class="quiz-option bg-white border-2 border-gray-200 rounded-xl p-6 text-left lagom-hover" data-value="intermediate">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-soft-thread-gold/20 rounded-full p-3 flex-shrink-0">
+                                    <svg class="h-6 w-6 text-soft-thread-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-deep-swedish-blue mb-2">
+                                        <span class="sv-text">Vi klarar grundläggande teknik</span>
+                                        <span class="en-text hidden">We can handle basic technology</span>
+                                    </h3>
+                                    <p class="text-gray-600">
+                                        <span class="sv-text">Vi kan följa instruktioner och installera program, men vill inte behöva felsöka komplicerade tekniska problem.</span>
+                                        <span class="en-text hidden">We can follow instructions and install programs, but don't want to troubleshoot complicated technical problems.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button class="quiz-option bg-white border-2 border-gray-200 rounded-xl p-6 text-left lagom-hover" data-value="advanced">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-truth-anchor-copper/20 rounded-full p-3 flex-shrink-0">
+                                    <svg class="h-6 w-6 text-truth-anchor-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-deep-swedish-blue mb-2">
+                                        <span class="sv-text">Vi är tekniskt kunniga</span>
+                                        <span class="en-text hidden">We are technically skilled</span>
+                                    </h3>
+                                    <p class="text-gray-600">
+                                        <span class="sv-text">Vi gillar att ha kontroll över vår teknik och är bekväma med att installera och konfigurera system själva.</span>
+                                        <span class="en-text hidden">We like to have control over our technology and are comfortable installing and configuring systems ourselves.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 2: Privacy Concerns -->
+                <div id="question-2" class="quiz-question hidden">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-display font-bold text-deep-swedish-blue mb-4">
+                            <span class="sv-text">Hur viktigt är det att all data stannar hemma?</span>
+                            <span class="en-text hidden">How important is it that all data stays at home?</span>
+                        </h2>
+                        <p class="text-lg text-gray-600">
+                            <span class="sv-text">Detta påverkar vilken typ av hosting som passar er bäst</span>
+                            <span class="en-text hidden">This affects what type of hosting suits you best</span>
+                        </p>
+                    </div>
+
+                    <div class="grid gap-4">
+                        <button class="quiz-option bg-white border-2 border-gray-200 rounded-xl p-6 text-left lagom-hover" data-value="cloud-ok">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-sage-green/20 rounded-full p-3 flex-shrink-0">
+                                    <svg class="h-6 w-6 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-deep-swedish-blue mb-2">
+                                        <span class="sv-text">Molnlösning är okej</span>
+                                        <span class="en-text hidden">Cloud solution is okay</span>
+                                    </h3>
+                                    <p class="text-gray-600">
+                                        <span class="sv-text">Vi litar på säkra molntjänster i Sverige och vill ha bekvämligheten av att inte behöva hantera tekniken själva.</span>
+                                        <span class="en-text hidden">We trust secure cloud services in Sweden and want the convenience of not having to handle the technology ourselves.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button class="quiz-option bg-white border-2 border-gray-200 rounded-xl p-6 text-left lagom-hover" data-value="prefer-local">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-soft-thread-gold/20 rounded-full p-3 flex-shrink-0">
+                                    <svg class="h-6 w-6 text-soft-thread-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-deep-swedish-blue mb-2">
+                                        <span class="sv-text">Helst lokalt hemma</span>
+                                        <span class="en-text hidden">Preferably local at home</span>
+                                    </h3>
+                                    <p class="text-gray-600">
+                                        <span class="sv-text">Vi föredrar att ha kontrollen över vår data, men kan acceptera säkra molntjänster om det behövs.</span>
+                                        <span class="en-text hidden">We prefer to have control over our data, but can accept secure cloud services if needed.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button class="quiz-option bg-white border-2 border-gray-200 rounded-xl p-6 text-left lagom-hover" data-value="must-be-local">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-truth-anchor-copper/20 rounded-full p-3 flex-shrink-0">
+                                    <svg class="h-6 w-6 text-truth-anchor-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-deep-swedish-blue mb-2">
+                                        <span class="sv-text">Måste vara lokalt</span>
+                                        <span class="en-text hidden">Must be local</span>
+                                    </h3>
+                                    <p class="text-gray-600">
+                                        <span class="sv-text">Vår familjedata får aldrig lämna vårt hem. Vi vill ha full kontroll över säkerheten.</span>
+                                        <span class="en-text hidden">Our family data must never leave our home. We want full control over security.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 3: Budget -->
+                <div id="question-3" class="quiz-question hidden">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-display font-bold text-deep-swedish-blue mb-4">
+                            <span class="sv-text">Vad är er budget för Weaver?</span>
+                            <span class="en-text hidden">What is your budget for Weaver?</span>
+                        </h2>
+                        <p class="text-lg text-gray-600">
+                            <span class="sv-text">Detta hjälper oss rekommendera rätt prisnivå</span>
+                            <span class="en-text hidden">This helps us recommend the right price level</span>
+                        </p>
+                    </div>
+
+                    <div class="grid gap-4">
+                        <button class="quiz-option bg-white border-2 border-gray-200 rounded-xl p-6 text-left lagom-hover" data-value="free">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-sage-green/20 rounded-full p-3 flex-shrink-0">
+                                    <svg class="h-6 w-6 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-deep-swedish-blue mb-2">
+                                        <span class="sv-text">Gratis</span>
+                                        <span class="en-text hidden">Free</span>
+                                    </h3>
+                                    <p class="text-gray-600">
+                                        <span class="sv-text">Vi vill prova utan kostnad först, eller använder helst gratis lösningar.</span>
+                                        <span class="en-text hidden">We want to try without cost first, or prefer free solutions.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button class="quiz-option bg-white border-2 border-gray-200 rounded-xl p-6 text-left lagom-hover" data-value="low-cost">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-soft-thread-gold/20 rounded-full p-3 flex-shrink-0">
+                                    <svg class="h-6 w-6 text-soft-thread-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-deep-swedish-blue mb-2">
+                                        <span class="sv-text">Låg kostnad (100-300 kr/månad)</span>
+                                        <span class="en-text hidden">Low cost (100-300 SEK/month)</span>
+                                    </h3>
+                                    <p class="text-gray-600">
+                                        <span class="sv-text">Vi kan betala en rimlig månadsavgift för en bra tjänst som fungerar smidigt.</span>
+                                        <span class="en-text hidden">We can pay a reasonable monthly fee for a good service that works smoothly.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button class="quiz-option bg-white border-2 border-gray-200 rounded-xl p-6 text-left lagom-hover" data-value="premium">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-truth-anchor-copper/20 rounded-full p-3 flex-shrink-0">
+                                    <svg class="h-6 w-6 text-truth-anchor-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-deep-swedish-blue mb-2">
+                                        <span class="sv-text">Premium (500+ kr/månad eller engångskostnad)</span>
+                                        <span class="en-text hidden">Premium (500+ SEK/month or one-time cost)</span>
+                                    </h3>
+                                    <p class="text-gray-600">
+                                        <span class="sv-text">Vi vill ha den bästa lösningen och är villiga att investera för maximal kvalitet och kontroll.</span>
+                                        <span class="en-text hidden">We want the best solution and are willing to invest for maximum quality and control.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div id="results" class="hidden">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-display font-bold text-deep-swedish-blue mb-4">
+                            <span class="sv-text">Vår rekommendation för er familj</span>
+                            <span class="en-text hidden">Our recommendation for your family</span>
+                        </h2>
+                        <p class="text-lg text-gray-600">
+                            <span class="sv-text">Baserat på era svar rekommenderar vi följande Weaver-version</span>
+                            <span class="en-text hidden">Based on your answers, we recommend the following Weaver version</span>
+                        </p>
+                    </div>
+
+                    <div id="recommendation-card" class="bg-white rounded-2xl p-8 lagom-shadow border-2 max-w-2xl mx-auto">
+                        <!-- Dynamic content will be inserted here -->
+                    </div>
+
+                    <div class="text-center mt-12 space-y-4">
+                        <button id="restart-quiz" class="border-2 border-deep-swedish-blue text-deep-swedish-blue px-8 py-3 rounded-full font-semibold lagom-hover hover:bg-deep-swedish-blue hover:text-white">
+                            <span class="sv-text">Gör om testet</span>
+                            <span class="en-text hidden">Retake the quiz</span>
+                        </button>
+                        <p class="text-sm text-gray-500">
+                            <span class="sv-text">Eller kontakta oss för personlig rådgivning</span>
+                            <span class="en-text hidden">Or contact us for personal guidance</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </div>
+                    <p class="text-gray-600">
+                        <span class="sv-text">AI-stöd för svenska familjer som respekterar era värderingar</span>
+                        <span class="en-text hidden">AI support for Swedish families that respects your values</span>
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Produkter</span>
+                        <span class="en-text hidden">Products</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="prova-weaver.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Prova Weaver</span>
+                            <span class="en-text hidden">Try Weaver</span>
+                        </a></li>
+                        <li><a href="index.html#solution" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Så fungerar det</span>
+                            <span class="en-text hidden">How it works</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Support</span>
+                        <span class="en-text hidden">Support</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Hjälpcenter</span>
+                            <span class="en-text hidden">Help center</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Kontakta oss</span>
+                            <span class="en-text hidden">Contact us</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Företag</span>
+                        <span class="en-text hidden">Company</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="om-oss.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Om oss</span>
+                            <span class="en-text hidden">About us</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Integritet</span>
+                            <span class="en-text hidden">Privacy</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-natural-birch-wood/20 mt-8 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 Balans. <span class="sv-text">Alla rättigheter förbehållna.</span><span class="en-text hidden">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Language Toggle
+        const langSv = document.getElementById('lang-sv');
+        const langEn = document.getElementById('lang-en');
+        const langSvMobileHeader = document.getElementById('lang-sv-mobile-header');
+        const langEnMobileHeader = document.getElementById('lang-en-mobile-header');
+        const svTexts = document.querySelectorAll('.sv-text');
+        const enTexts = document.querySelectorAll('.en-text');
+
+        function showSwedish() {
+            if (langSv) {
+                langSv.classList.add('bg-deep-swedish-blue', 'text-white');
+                langSv.classList.remove('text-deep-swedish-blue');
+            }
+            if (langEn) {
+                langEn.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langEn.classList.add('text-deep-swedish-blue');
+            }
+            if (langSvMobileHeader) {
+                langSvMobileHeader.classList.add('bg-deep-swedish-blue', 'text-white');
+                langSvMobileHeader.classList.remove('text-deep-swedish-blue');
+            }
+            if (langEnMobileHeader) {
+                langEnMobileHeader.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langEnMobileHeader.classList.add('text-deep-swedish-blue');
+            }
+            
+            svTexts.forEach(el => el.classList.remove('hidden'));
+            enTexts.forEach(el => el.classList.add('hidden'));
+            document.documentElement.lang = 'sv';
+        }
+
+        function showEnglish() {
+            if (langEn) {
+                langEn.classList.add('bg-deep-swedish-blue', 'text-white');
+                langEn.classList.remove('text-deep-swedish-blue');
+            }
+            if (langSv) {
+                langSv.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langSv.classList.add('text-deep-swedish-blue');
+            }
+            if (langEnMobileHeader) {
+                langEnMobileHeader.classList.add('bg-deep-swedish-blue', 'text-white');
+                langEnMobileHeader.classList.remove('text-deep-swedish-blue');
+            }
+            if (langSvMobileHeader) {
+                langSvMobileHeader.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langSvMobileHeader.classList.add('text-deep-swedish-blue');
+            }
+            
+            enTexts.forEach(el => el.classList.remove('hidden'));
+            svTexts.forEach(el => el.classList.add('hidden'));
+            document.documentElement.lang = 'en';
+        }
+
+        if (langSv) langSv.addEventListener('click', showSwedish);
+        if (langEn) langEn.addEventListener('click', showEnglish);
+        if (langSvMobileHeader) langSvMobileHeader.addEventListener('click', showSwedish);
+        if (langEnMobileHeader) langEnMobileHeader.addEventListener('click', showEnglish);
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Quiz Logic
+        let currentQuestion = 1;
+        let answers = {};
+
+        const questions = document.querySelectorAll('.quiz-question');
+        const progressBar = document.getElementById('progress-bar');
+        const progressPercent = document.getElementById('progress-percent');
+        const currentQuestionSpan = document.getElementById('current-question');
+        const currentQuestionEnSpan = document.getElementById('current-question-en');
+
+        function updateProgress() {
+            const progress = (currentQuestion / 5) * 100;
+            progressBar.style.width = progress + '%';
+            progressPercent.textContent = Math.round(progress);
+            currentQuestionSpan.textContent = currentQuestion;
+            currentQuestionEnSpan.textContent = currentQuestion;
+        }
+
+        function showQuestion(questionNum) {
+            questions.forEach(q => q.classList.add('hidden'));
+            const targetQuestion = document.getElementById(`question-${questionNum}`);
+            if (targetQuestion) {
+                targetQuestion.classList.remove('hidden');
+            }
+            updateProgress();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < 3) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            questions.forEach(q => q.classList.add('hidden'));
+            document.getElementById('results').classList.remove('hidden');
+            
+            // Hide progress bar
+            document.querySelector('.mb-12').style.display = 'none';
+            
+            generateRecommendation();
+        }
+
+        function generateRecommendation() {
+            const card = document.getElementById('recommendation-card');
+            let recommendation = '';
+            
+            // Simple recommendation logic based on answers
+            if (answers.tech === 'beginner' && answers.privacy === 'cloud-ok') {
+                recommendation = `
+                    <div class="border-sacred-alliance-purple/20">
+                        <div class="text-center mb-6">
+                            <div class="bg-sacred-alliance-purple/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                                <svg class="h-10 w-10 text-sacred-alliance-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-deep-swedish-blue mb-2">
+                                <span class="sv-text">Balans Hosted</span>
+                                <span class="en-text hidden">Balans Hosted</span>
+                            </h3>
+                            <p class="text-sacred-alliance-purple font-medium">
+                                <span class="sv-text">Perfekt för er familj!</span>
+                                <span class="en-text hidden">Perfect for your family!</span>
+                            </p>
+                        </div>
+                        <p class="text-gray-600 mb-6">
+                            <span class="sv-text">Baserat på era svar passar Balans Hosted er bäst. Ni får en enkel, säker lösning som fungerar direkt utan teknisk installation.</span>
+                            <span class="en-text hidden">Based on your answers, Balans Hosted suits you best. You get a simple, secure solution that works immediately without technical installation.</span>
+                        </p>
+                        <a href="prova-weaver.html" class="w-full bg-sacred-alliance-purple text-white px-6 py-3 rounded-full font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow block text-center">
+                            <span class="sv-text">Kom igång nu</span>
+                            <span class="en-text hidden">Get started now</span>
+                        </a>
+                    </div>
+                `;
+            } else if (answers.tech === 'advanced' || answers.privacy === 'must-be-local') {
+                recommendation = `
+                    <div class="border-sage-green/20">
+                        <div class="text-center mb-6">
+                            <div class="bg-sage-green/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                                <svg class="h-10 w-10 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-deep-swedish-blue mb-2">
+                                <span class="sv-text">WeaverMesh</span>
+                                <span class="en-text hidden">WeaverMesh</span>
+                            </h3>
+                            <p class="text-sage-green font-medium">
+                                <span class="sv-text">Perfekt för er familj!</span>
+                                <span class="en-text hidden">Perfect for your family!</span>
+                            </p>
+                        </div>
+                        <p class="text-gray-600 mb-6">
+                            <span class="sv-text">WeaverMesh ger er full kontroll över data och teknik. Som tekniskt kunniga kommer ni uppskatta flexibiliteten och möjligheten att anpassa systemet.</span>
+                            <span class="en-text hidden">WeaverMesh gives you full control over data and technology. As technically skilled users, you'll appreciate the flexibility and ability to customize the system.</span>
+                        </p>
+                        <a href="prova-weaver.html" class="w-full bg-sage-green text-white px-6 py-3 rounded-full font-semibold lagom-hover hover:bg-sage-green/90 block text-center">
+                            <span class="sv-text">Ladda ner WeaverMesh</span>
+                            <span class="en-text hidden">Download WeaverMesh</span>
+                        </a>
+                    </div>
+                `;
+            } else {
+                recommendation = `
+                    <div class="border-truth-anchor-copper/20">
+                        <div class="text-center mb-6">
+                            <div class="bg-truth-anchor-copper/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                                <svg class="h-10 w-10 text-truth-anchor-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-deep-swedish-blue mb-2">
+                                <span class="sv-text">Weaver Home Hub</span>
+                                <span class="en-text hidden">Weaver Home Hub</span>
+                            </h3>
+                            <p class="text-truth-anchor-copper font-medium">
+                                <span class="sv-text">Kommer 2026 - anmäl intresse!</span>
+                                <span class="en-text hidden">Coming 2026 - register interest!</span>
+                            </p>
+                        </div>
+                        <p class="text-gray-600 mb-6">
+                            <span class="sv-text">Baserat på era önskemål om lokal kontroll och premium-kvalitet kommer Weaver Home Hub vara perfekt för er. Anmäl intresse så hör vi av oss när den blir tillgänglig.</span>
+                            <span class="en-text hidden">Based on your desire for local control and premium quality, Weaver Home Hub will be perfect for you. Register interest and we'll contact you when it becomes available.</span>
+                        </p>
+                        <a href="prova-weaver.html" class="w-full bg-truth-anchor-copper text-white px-6 py-3 rounded-full font-semibold lagom-hover hover:bg-truth-anchor-copper/90 block text-center">
+                            <span class="sv-text">Anmäl intresse</span>
+                            <span class="en-text hidden">Register interest</span>
+                        </a>
+                    </div>
+                `;
+            }
+            
+            card.innerHTML = recommendation;
+        }
+
+        // Add click handlers to quiz options
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.quiz-option')) {
+                const option = e.target.closest('.quiz-option');
+                const question = option.closest('.quiz-question');
+                const questionId = question.id;
+                const value = option.dataset.value;
+                
+                // Remove selected class from all options in this question
+                question.querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                option.classList.add('selected');
+                
+                // Store answer
+                if (questionId === 'question-1') {
+                    answers.tech = value;
+                } else if (questionId === 'question-2') {
+                    answers.privacy = value;
+                } else if (questionId === 'question-3') {
+                    answers.budget = value;
+                }
+                
+                // Auto-advance after a short delay
+                setTimeout(() => {
+                    nextQuestion();
+                }, 800);
+            }
+        });
+
+        // Restart quiz
+        document.addEventListener('click', function(e) {
+            if (e.target.id === 'restart-quiz') {
+                currentQuestion = 1;
+                answers = {};
+                document.getElementById('results').classList.add('hidden');
+                document.querySelector('.mb-12').style.display = 'block';
+                showQuestion(1);
+                
+                // Reset all selections
+                document.querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+            }
+        });
+
+        // Initialize
+        showSwedish();
+        showQuestion(1);
+    </script>
+</body>
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Om oss - Balans | Vår approach till AI för svenska familjer</title>
+    <meta name="description" content="Lär dig mer om Balans approach till AI-stöd för svenska familjer. Byggt med svenska värderingar och lagom-principen för att stärka familjeband.">
+    <meta name="keywords" content="Balans, om oss, svenska värderingar, lagom, AI-utveckling, familj, design filosofi">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-swedish-blue': '#2c5aa0',
+                        'natural-birch-wood': '#d4b896',
+                        'sacred-alliance-purple': '#6b5b95',
+                        'warm-birch-white': '#f8f6f0',
+                        'soft-thread-gold': '#c9a96e',
+                        'sage-green': '#8faa8b',
+                        'gentle-silver': '#b8c5d1',
+                        'truth-anchor-copper': '#b87333'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .lagom-shadow { box-shadow: 0 4px 6px -1px rgba(44, 90, 160, 0.1), 0 2px 4px -1px rgba(44, 90, 160, 0.06); }
+        .lagom-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .lagom-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -3px rgba(44, 90, 160, 0.1), 0 4px 6px -2px rgba(44, 90, 160, 0.05); }
+        .family-warmth { background: linear-gradient(135deg, #f8f6f0 0%, #d4b896 100%); }
+    </style>
+</head>
+
+<body class="bg-warm-birch-white text-gray-800 font-sans leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#solution" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                        <span class="sv-text">Så fungerar det</span>
+                        <span class="en-text hidden">How it works</span>
+                    </a>
+                    <a href="index.html#technology" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                        <span class="sv-text">Välj version</span>
+                        <span class="en-text hidden">Choose version</span>
+                    </a>
+                    
+                    <!-- Language Toggle -->
+                    <div class="bg-gray-100 rounded-full p-1">
+                        <button id="lang-sv" class="px-3 py-1 rounded-full text-sm font-medium bg-deep-swedish-blue text-white transition-all duration-200">SV</button>
+                        <button id="lang-en" class="px-3 py-1 rounded-full text-sm font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10 transition-all duration-200">EN</button>
+                    </div>
+                    
+                    <a href="index.html" class="bg-sacred-alliance-purple text-white px-6 py-2 rounded-full font-medium lagom-hover hover:bg-sacred-alliance-purple/90">
+                        <span class="sv-text">Prova Weaver</span>
+                        <span class="en-text hidden">Try Weaver</span>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center space-x-3">
+                    <div class="bg-gray-100 rounded-full p-0.5">
+                        <button id="lang-sv-mobile" class="px-2 py-0.5 rounded-full text-xs font-medium bg-deep-swedish-blue text-white transition-all duration-200">SV</button>
+                        <button id="lang-en-mobile" class="px-2 py-0.5 rounded-full text-xs font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10 transition-all duration-200">EN</button>
+                    </div>
+                    
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-deep-swedish-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-natural-birch-wood/20">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html#solution" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Så fungerar det</span>
+                    <span class="en-text hidden">How it works</span>
+                </a>
+                <a href="index.html#technology" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Välj version</span>
+                    <span class="en-text hidden">Choose version</span>
+                </a>
+                <a href="index.html" class="block px-3 py-2 bg-sacred-alliance-purple text-white rounded-lg font-medium">
+                    <span class="sv-text">Prova Weaver</span>
+                    <span class="en-text hidden">Try Weaver</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden family-warmth">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 text-center">
+            <div class="space-y-8">
+                <h1 class="text-4xl lg:text-6xl font-display font-bold text-deep-swedish-blue leading-tight">
+                    <span class="sv-text">Vår approach</span>
+                    <span class="en-text hidden">Our approach</span>
+                </h1>
+                <p class="text-xl lg:text-2xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+                    <span class="sv-text">Hur vi bygger AI-stöd som respekterar svenska värderingar och stärker familjeband</span>
+                    <span class="en-text hidden">How we build AI support that respects Swedish values and strengthens family bonds</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Swedish Values Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">Svenska värderingar i praktiken</span>
+                    <span class="en-text hidden">Swedish values in practice</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="sv-text">Vi bygger teknik som känns naturlig för svenska familjer</span>
+                    <span class="en-text hidden">We build technology that feels natural for Swedish families</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Lagom Principle -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover text-center">
+                    <img src="images/balance-point.png" alt="Lagom" class="h-16 w-16 mx-auto mb-6">
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Lagom-principen</span>
+                        <span class="en-text hidden">The Lagom principle</span>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Inte för mycket, inte för lite - precis rätt mängd AI-stöd. Vi tror på balans mellan teknisk innovation och mänsklig kontakt.</span>
+                        <span class="en-text hidden">Not too much, not too little - just the right amount of AI support. We believe in balance between technical innovation and human contact.</span>
+                    </p>
+                    <div class="text-sm text-sage-green font-medium">
+                        <span class="sv-text">→ Balanserad teknologi</span>
+                        <span class="en-text hidden">→ Balanced technology</span>
+                    </div>
+                </div>
+
+                <!-- Privacy & Trust -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover text-center">
+                    <img src="images/the-shield.png" alt="Integritet" class="h-16 w-16 mx-auto mb-6">
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Integritet & förtroende</span>
+                        <span class="en-text hidden">Privacy & trust</span>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Era familjesamtal stannar inom familjen. Vi bygger med GDPR-kompatibilitet och svensk datahantering som grund.</span>
+                        <span class="en-text hidden">Your family conversations stay within the family. We build with GDPR compliance and Swedish data handling as foundation.</span>
+                    </p>
+                    <div class="text-sm text-truth-anchor-copper font-medium">
+                        <span class="sv-text">→ Trygg datahantering</span>
+                        <span class="en-text hidden">→ Secure data handling</span>
+                    </div>
+                </div>
+
+                <!-- Family First -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover text-center">
+                    <img src="images/family-circle.png" alt="Familj först" class="h-16 w-16 mx-auto mb-6">
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Familj först</span>
+                        <span class="en-text hidden">Family first</span>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Teknologi ska stärka familjeband, inte ersätta dem. Vi designar för att förbättra mänsklig kommunikation, inte ta över den.</span>
+                        <span class="en-text hidden">Technology should strengthen family bonds, not replace them. We design to improve human communication, not take it over.</span>
+                    </p>
+                    <div class="text-sm text-soft-thread-gold font-medium">
+                        <span class="sv-text">→ Mänsklig kommunikation</span>
+                        <span class="en-text hidden">→ Human communication</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Philosophy Section -->
+    <section class="py-20 bg-gradient-to-br from-warm-birch-white to-sage-green/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue">
+                            <span class="sv-text">Designfilosofi</span>
+                            <span class="en-text hidden">Design philosophy</span>
+                        </h2>
+                        <p class="text-xl text-gray-600">
+                            <span class="sv-text">Hur vi tänker när vi skapar AI som känns naturligt för svenska familjer</span>
+                            <span class="en-text hidden">How we think when creating AI that feels natural for Swedish families</span>
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-sage-green/20 rounded-full p-3 flex-shrink-0">
+                                <svg class="h-6 w-6 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-deep-swedish-blue mb-2">
+                                    <span class="sv-text">Enkel yta, djup förståelse</span>
+                                    <span class="en-text hidden">Simple surface, deep understanding</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span class="sv-text">Weaver ska kännas enkelt att använda medan den bakomliggande teknologin förstår komplexa familjedynamiker.</span>
+                                    <span class="en-text hidden">Weaver should feel simple to use while the underlying technology understands complex family dynamics.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-soft-thread-gold/20 rounded-full p-3 flex-shrink-0">
+                                <svg class="h-6 w-6 text-soft-thread-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-deep-swedish-blue mb-2">
+                                    <span class="sv-text">Mänsklig-AI samarbete</span>
+                                    <span class="en-text hidden">Human-AI collaboration</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span class="sv-text">Vi bygger partnerskap mellan människor och AI, där båda bidrar med sina styrkor för bättre familjesamtal.</span>
+                                    <span class="en-text hidden">We build partnerships between humans and AI, where both contribute their strengths for better family conversations.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-sacred-alliance-purple/20 rounded-full p-3 flex-shrink-0">
+                                <svg class="h-6 w-6 text-sacred-alliance-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-deep-swedish-blue mb-2">
+                                    <span class="sv-text">Kulturell känslighet</span>
+                                    <span class="en-text hidden">Cultural sensitivity</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span class="sv-text">Byggt med förståelse för svenska familjetraditioner, kommunikationsstilar och värderingar.</span>
+                                    <span class="en-text hidden">Built with understanding of Swedish family traditions, communication styles and values.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="bg-white rounded-2xl p-8 lagom-shadow">
+                        <h4 class="text-lg font-semibold text-deep-swedish-blue mb-6">
+                            <span class="sv-text">Våra designprinciper</span>
+                            <span class="en-text hidden">Our design principles</span>
+                        </h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-sage-green rounded-full"></div>
+                                <span class="text-gray-700">
+                                    <span class="sv-text">Funktionalitet före flashighet</span>
+                                    <span class="en-text hidden">Functionality before flashiness</span>
+                                </span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-soft-thread-gold rounded-full"></div>
+                                <span class="text-gray-700">
+                                    <span class="sv-text">Transparens i AI-beslut</span>
+                                    <span class="en-text hidden">Transparency in AI decisions</span>
+                                </span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-sacred-alliance-purple rounded-full"></div>
+                                <span class="text-gray-700">
+                                    <span class="sv-text">Respekt för familjeautonomi</span>
+                                    <span class="en-text hidden">Respect for family autonomy</span>
+                                </span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-truth-anchor-copper rounded-full"></div>
+                                <span class="text-gray-700">
+                                    <span class="sv-text">Evidensbaserad utveckling</span>
+                                    <span class="en-text hidden">Evidence-based development</span>
+                                </span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-2 h-2 bg-deep-swedish-blue rounded-full"></div>
+                                <span class="text-gray-700">
+                                    <span class="sv-text">Långsiktig hållbarhet</span>
+                                    <span class="en-text hidden">Long-term sustainability</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Approach Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">Hur vi utvecklar</span>
+                    <span class="en-text hidden">How we develop</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="sv-text">Vår utvecklingsprocess bygger på svenska värderingar och vetenskaplig grund</span>
+                    <span class="en-text hidden">Our development process builds on Swedish values and scientific foundation</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Research Foundation -->
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-truth-anchor-copper/20 rounded-full p-4">
+                            <svg class="h-8 w-8 text-truth-anchor-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-deep-swedish-blue">
+                            <span class="sv-text">Forskningsgrund</span>
+                            <span class="en-text hidden">Research foundation</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 text-lg">
+                        <span class="sv-text">Vi bygger på etablerad forskning inom familjepsykologi, kommunikationsteori och kognitiv mångfald. Varje funktion har vetenskaplig grund.</span>
+                        <span class="en-text hidden">We build on established research in family psychology, communication theory and cognitive diversity. Every feature has scientific foundation.</span>
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Familjeterapi och systemisk förståelse</span>
+                                <span class="en-text hidden">Family therapy and systemic understanding</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Kognitiv mångfald och kommunikationsstilar</span>
+                                <span class="en-text hidden">Cognitive diversity and communication styles</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Kulturell psykologi och svenska familjetraditioner</span>
+                                <span class="en-text hidden">Cultural psychology and Swedish family traditions</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Iterative Development -->
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-sage-green/20 rounded-full p-4">
+                            <svg class="h-8 w-8 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-deep-swedish-blue">
+                            <span class="sv-text">Iterativ utveckling</span>
+                            <span class="en-text hidden">Iterative development</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 text-lg">
+                        <span class="sv-text">Vi utvecklar tillsammans med svenska familjer. Feedback och verkliga behov styr utvecklingen, inte tekniska möjligheter.</span>
+                        <span class="en-text hidden">We develop together with Swedish families. Feedback and real needs guide development, not technical possibilities.</span>
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Gradvis utbyggnad av funktioner</span>
+                                <span class="en-text hidden">Gradual expansion of features</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Säkerhet och integritet i fokus</span>
+                                <span class="en-text hidden">Security and privacy in focus</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-20 bg-deep-swedish-blue text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="space-y-8">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold">
+                    <span class="sv-text">Vill du veta mer om vår approach?</span>
+                    <span class="en-text hidden">Want to know more about our approach?</span>
+                </h2>
+                <p class="text-xl text-blue-100">
+                    <span class="sv-text">Prova Weaver och upplev hur svenska värderingar kan forma AI-utveckling</span>
+                    <span class="en-text hidden">Try Weaver and experience how Swedish values can shape AI development</span>
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="index.html" class="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-sacred-alliance-purple/90">
+                        <span class="sv-text">Prova Weaver</span>
+                        <span class="en-text hidden">Try Weaver</span>
+                    </a>
+                    <a href="index.html#solution" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-white hover:text-deep-swedish-blue">
+                        <span class="sv-text">Se hur det fungerar</span>
+                        <span class="en-text hidden">See how it works</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </div>
+                    <p class="text-gray-600">
+                        <span class="sv-text">AI-stöd för svenska familjer som respekterar era värderingar</span>
+                        <span class="en-text hidden">AI support for Swedish families that respects your values</span>
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Produkter</span>
+                        <span class="en-text hidden">Products</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="index.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Weaver för familjer</span>
+                            <span class="en-text hidden">Weaver for families</span>
+                        </a></li>
+                        <li><a href="index.html#solution" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Så fungerar det</span>
+                            <span class="en-text hidden">How it works</span>
+                        </a></li>
+                        <li><a href="index.html#technology" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Välj version</span>
+                            <span class="en-text hidden">Choose version</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Support</span>
+                        <span class="en-text hidden">Support</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Hjälpcenter</span>
+                            <span class="en-text hidden">Help center</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Kontakta oss</span>
+                            <span class="en-text hidden">Contact us</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Säkerhet</span>
+                            <span class="en-text hidden">Security</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Företag</span>
+                        <span class="en-text hidden">Company</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="om-oss.html" class="lagom-hover hover:text-deep-swedish-blue font-medium">
+                            <span class="sv-text">Om oss</span>
+                            <span class="en-text hidden">About us</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Integritet</span>
+                            <span class="en-text hidden">Privacy</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Villkor</span>
+                            <span class="en-text hidden">Terms</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-natural-birch-wood/20 mt-8 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 Balans. <span class="sv-text">Alla rättigheter förbehållna.</span><span class="en-text hidden">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Language Toggle
+        const langSv = document.getElementById('lang-sv');
+        const langEn = document.getElementById('lang-en');
+        const langSvMobile = document.getElementById('lang-sv-mobile');
+        const langEnMobile = document.getElementById('lang-en-mobile');
+        const svTexts = document.querySelectorAll('.sv-text');
+        const enTexts = document.querySelectorAll('.en-text');
+
+        function showSwedish() {
+            // Desktop toggle
+            if (langSv) {
+                langSv.classList.add('bg-deep-swedish-blue', 'text-white');
+                langSv.classList.remove('text-deep-swedish-blue');
+            }
+            if (langEn) {
+                langEn.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langEn.classList.add('text-deep-swedish-blue');
+            }
+            
+            // Mobile toggle
+            if (langSvMobile) {
+                langSvMobile.classList.add('bg-deep-swedish-blue', 'text-white');
+                langSvMobile.classList.remove('text-deep-swedish-blue');
+            }
+            if (langEnMobile) {
+                langEnMobile.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langEnMobile.classList.add('text-deep-swedish-blue');
+            }
+            
+            svTexts.forEach(el => el.classList.remove('hidden'));
+            enTexts.forEach(el => el.classList.add('hidden'));
+            
+            document.documentElement.lang = 'sv';
+        }
+
+        function showEnglish() {
+            // Desktop toggle
+            if (langEn) {
+                langEn.classList.add('bg-deep-swedish-blue', 'text-white');
+                langEn.classList.remove('text-deep-swedish-blue');
+            }
+            if (langSv) {
+                langSv.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langSv.classList.add('text-deep-swedish-blue');
+            }
+            
+            // Mobile toggle
+            if (langEnMobile) {
+                langEnMobile.classList.add('bg-deep-swedish-blue', 'text-white');
+                langEnMobile.classList.remove('text-deep-swedish-blue');
+            }
+            if (langSvMobile) {
+                langSvMobile.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langSvMobile.classList.add('text-deep-swedish-blue');
+            }
+            
+            enTexts.forEach(el => el.classList.remove('hidden'));
+            svTexts.forEach(el => el.classList.add('hidden'));
+            
+            document.documentElement.lang = 'en';
+        }
+
+        // Add event listeners for language toggle buttons
+        if (langSv) langSv.addEventListener('click', showSwedish);
+        if (langEn) langEn.addEventListener('click', showEnglish);
+        if (langSvMobile) langSvMobile.addEventListener('click', showSwedish);
+        if (langEnMobile) langEnMobile.addEventListener('click', showEnglish);
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Initialize with Swedish
+        showSwedish();
+    </script>
+</body>
+</html>

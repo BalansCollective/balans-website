@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova Weaver - Balans | Kom igång med AI-stöd för din familj</title>
+    <meta name="description" content="Börja använda Weaver idag. Välj mellan Balans Hosted, WeaverMesh eller anmäl intresse för Weaver Home Hub. Gratis att prova.">
+    <meta name="keywords" content="prova weaver, familj AI, kom igång, balans hosted, weavermesh, svenska familjer">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-swedish-blue': '#2c5aa0',
+                        'natural-birch-wood': '#d4b896',
+                        'sacred-alliance-purple': '#6b5b95',
+                        'warm-birch-white': '#f8f6f0',
+                        'soft-thread-gold': '#c9a96e',
+                        'sage-green': '#8faa8b',
+                        'gentle-silver': '#b8c5d1',
+                        'truth-anchor-copper': '#b87333'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'gentle-pulse': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bridge-glow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .lagom-shadow { box-shadow: 0 4px 6px -1px rgba(44, 90, 160, 0.1), 0 2px 4px -1px rgba(44, 90, 160, 0.06); }
+        .lagom-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .lagom-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -3px rgba(44, 90, 160, 0.1), 0 4px 6px -2px rgba(44, 90, 160, 0.05); }
+        .archetypal-glow { box-shadow: 0 0 20px rgba(107, 91, 149, 0.3); }
+        .family-warmth { background: linear-gradient(135deg, #f8f6f0 0%, #d4b896 100%); }
+        .understanding-bridge { background: linear-gradient(90deg, #c9a96e 0%, #d4b896 50%, #c9a96e 100%); }
+    </style>
+</head>
+
+<body class="bg-warm-birch-white text-gray-800 font-sans leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#solution" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                        <span class="sv-text">Så fungerar det</span>
+                        <span class="en-text hidden">How it works</span>
+                    </a>
+                    <a href="index.html#technology" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                        <span class="sv-text">Välj version</span>
+                        <span class="en-text hidden">Choose version</span>
+                    </a>
+                    
+                    <!-- Language Toggle -->
+                    <div class="bg-gray-100 rounded-full p-1">
+                        <button id="lang-sv" class="px-3 py-1 rounded-full text-sm font-medium bg-deep-swedish-blue text-white transition-all duration-200">SV</button>
+                        <button id="lang-en" class="px-3 py-1 rounded-full text-sm font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10 transition-all duration-200">EN</button>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button and language toggle -->
+                <div class="md:hidden flex items-center space-x-3">
+                    <!-- Mobile Language Toggle -->
+                    <div class="bg-gray-100 rounded-full p-0.5">
+                        <button id="lang-sv-mobile-header" class="px-2 py-0.5 rounded-full text-xs font-medium bg-deep-swedish-blue text-white transition-all duration-200">SV</button>
+                        <button id="lang-en-mobile-header" class="px-2 py-0.5 rounded-full text-xs font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10 transition-all duration-200">EN</button>
+                    </div>
+                    
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-deep-swedish-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-natural-birch-wood/20">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html#solution" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Så fungerar det</span>
+                    <span class="en-text hidden">How it works</span>
+                </a>
+                <a href="index.html#technology" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Välj version</span>
+                    <span class="en-text hidden">Choose version</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden family-warmth">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+            <div class="text-center space-y-8">
+                <div class="space-y-4">
+                    <h1 class="text-4xl lg:text-6xl font-display font-bold text-deep-swedish-blue leading-tight">
+                        <span class="sv-text">Kom igång med Weaver</span>
+                        <span class="en-text hidden">Get started with Weaver</span>
+                    </h1>
+                    <p class="text-xl lg:text-2xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
+                        <span class="sv-text">Välj det alternativ som passar er familj bäst. Alla versioner hjälper er förstå varandra bättre.</span>
+                        <span class="en-text hidden">Choose the option that best suits your family. All versions help you understand each other better.</span>
+                    </p>
+                </div>
+
+                <div class="flex items-center justify-center space-x-4 text-sm text-gray-600">
+                    <div class="flex items-center space-x-2">
+                        <img src="images/the-shield.png" alt="Säkerhet" class="h-5 w-5">
+                        <span class="sv-text">Säkert & privat</span>
+                        <span class="en-text hidden">Safe & private</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <img src="images/balance-point.png" alt="Lagom" class="h-5 w-5">
+                        <span class="sv-text">Svenska värderingar</span>
+                        <span class="en-text hidden">Swedish values</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <img src="images/family-circle.png" alt="Familj" class="h-5 w-5">
+                        <span class="sv-text">Familj först</span>
+                        <span class="en-text hidden">Family first</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Options Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Balans Hosted -->
+                <div class="bg-gradient-to-br from-sacred-alliance-purple/5 to-sacred-alliance-purple/10 rounded-2xl p-8 lagom-shadow lagom-hover border-2 border-sacred-alliance-purple/20 relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-sacred-alliance-purple text-white px-4 py-1 rounded-full text-sm font-medium">
+                            <span class="sv-text">Rekommenderat</span>
+                            <span class="en-text hidden">Recommended</span>
+                        </span>
+                    </div>
+                    
+                    <div class="text-center mb-6 pt-4">
+                        <div class="bg-sacred-alliance-purple/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                            <svg class="h-10 w-10 text-sacred-alliance-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-deep-swedish-blue mb-2">
+                            <span class="sv-text">Balans Hosted</span>
+                            <span class="en-text hidden">Balans Hosted</span>
+                        </h3>
+                        <p class="text-sacred-alliance-purple font-medium">
+                            <span class="sv-text">Enklast att komma igång</span>
+                            <span class="en-text hidden">Easiest to get started</span>
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Kom igång på 5 minuter</span>
+                                <span class="en-text hidden">Get started in 5 minutes</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Automatiska uppdateringar</span>
+                                <span class="en-text hidden">Automatic updates</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">24/7 support</span>
+                                <span class="en-text hidden">24/7 support</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">GDPR-kompatibel hosting i Sverige</span>
+                                <span class="en-text hidden">GDPR-compliant hosting in Sweden</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-deep-swedish-blue">
+                                <span class="sv-text">Gratis</span>
+                                <span class="en-text hidden">Free</span>
+                            </div>
+                            <div class="text-sm text-gray-600">
+                                <span class="sv-text">första månaden</span>
+                                <span class="en-text hidden">first month</span>
+                            </div>
+                        </div>
+                        
+                        <button id="start-hosted" class="w-full bg-sacred-alliance-purple text-white px-6 py-3 rounded-full font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                            <span class="sv-text">Börja nu - gratis</span>
+                            <span class="en-text hidden">Start now - free</span>
+                        </button>
+                        
+                        <div class="text-xs text-gray-500 text-center">
+                            <span class="sv-text">Ingen registrering krävs för att prova</span>
+                            <span class="en-text hidden">No registration required to try</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WeaverMesh Open Source -->
+                <div class="bg-gradient-to-br from-sage-green/5 to-sage-green/10 rounded-2xl p-8 lagom-shadow lagom-hover border-2 border-sage-green/20">
+                    <div class="text-center mb-6">
+                        <div class="bg-sage-green/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                            <svg class="h-10 w-10 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-deep-swedish-blue mb-2">
+                            <span class="sv-text">WeaverMesh</span>
+                            <span class="en-text hidden">WeaverMesh</span>
+                        </h3>
+                        <p class="text-sage-green font-medium">
+                            <span class="sv-text">Open source, egen kontroll</span>
+                            <span class="en-text hidden">Open source, own control</span>
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">100% kontroll över din data</span>
+                                <span class="en-text hidden">100% control over your data</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Anpassa efter dina behov</span>
+                                <span class="en-text hidden">Customize to your needs</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Gratis och öppen källkod</span>
+                                <span class="en-text hidden">Free and open source</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-soft-thread-gold mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Kräver teknisk kunskap</span>
+                                <span class="en-text hidden">Requires technical knowledge</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-deep-swedish-blue">
+                                <span class="sv-text">Gratis</span>
+                                <span class="en-text hidden">Free</span>
+                            </div>
+                            <div class="text-sm text-gray-600">
+                                <span class="sv-text">alltid</span>
+                                <span class="en-text hidden">always</span>
+                            </div>
+                        </div>
+                        
+                        <button id="download-mesh" class="w-full bg-sage-green text-white px-6 py-3 rounded-full font-semibold lagom-hover hover:bg-sage-green/90">
+                            <span class="sv-text">Ladda ner WeaverMesh</span>
+                            <span class="en-text hidden">Download WeaverMesh</span>
+                        </button>
+                        
+                        <div class="text-xs text-gray-500 text-center">
+                            <span class="sv-text">GitHub repository med installationsguide</span>
+                            <span class="en-text hidden">GitHub repository with installation guide</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Home Appliance -->
+                <div class="bg-gradient-to-br from-truth-anchor-copper/5 to-truth-anchor-copper/10 rounded-2xl p-8 lagom-shadow lagom-hover border-2 border-truth-anchor-copper/20">
+                    <div class="text-center mb-6">
+                        <div class="bg-truth-anchor-copper/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                            <svg class="h-10 w-10 text-truth-anchor-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-deep-swedish-blue mb-2">
+                            <span class="sv-text">Weaver Home Hub</span>
+                            <span class="en-text hidden">Weaver Home Hub</span>
+                        </h3>
+                        <p class="text-truth-anchor-copper font-medium">
+                            <span class="sv-text">Kommer 2026</span>
+                            <span class="en-text hidden">Coming 2026</span>
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Plug-and-play installation</span>
+                                <span class="en-text hidden">Plug-and-play installation</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">All data stannar hemma</span>
+                                <span class="en-text hidden">All data stays at home</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">AI-processor för snabb bearbetning</span>
+                                <span class="en-text hidden">AI processor for fast processing</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Diskret design för hemmet</span>
+                                <span class="en-text hidden">Discreet design for the home</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-deep-swedish-blue">
+                                <span class="sv-text">TBA</span>
+                                <span class="en-text hidden">TBA</span>
+                            </div>
+                            <div class="text-sm text-gray-600">
+                                <span class="sv-text">pris kommer senare</span>
+                                <span class="en-text hidden">price coming later</span>
+                            </div>
+                        </div>
+                        
+                        <button id="register-interest" class="w-full bg-truth-anchor-copper text-white px-6 py-3 rounded-full font-semibold lagom-hover hover:bg-truth-anchor-copper/90">
+                            <span class="sv-text">Anmäl intresse</span>
+                            <span class="en-text hidden">Register interest</span>
+                        </button>
+                        
+                        <div class="text-xs text-gray-500 text-center">
+                            <span class="sv-text">Få besked när den blir tillgänglig</span>
+                            <span class="en-text hidden">Get notified when it becomes available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-6">
+                    <span class="sv-text">Osäker på vilket alternativ som passar er familj?</span>
+                    <span class="en-text hidden">Unsure which option suits your family?</span>
+                </p>
+                <a href="hjalp-mig-valja.html" class="border-2 border-deep-swedish-blue text-deep-swedish-blue px-8 py-3 rounded-full font-semibold lagom-hover hover:bg-deep-swedish-blue hover:text-white">
+                    <span class="sv-text">Hjälp mig välja</span>
+                    <span class="en-text hidden">Help me choose</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Demo Section -->
+    <section class="py-20 bg-gradient-to-br from-warm-birch-white to-sage-green/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">Prova Weaver direkt</span>
+                    <span class="en-text hidden">Try Weaver right now</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="sv-text">Testa de fyra sätten Weaver kan hjälpa er familj tänka tillsammans</span>
+                    <span class="en-text hidden">Test the four ways Weaver can help your family think together</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Create Mode -->
+                <a href="create.html" class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover text-center block">
+                    <div class="bg-warm-birch-white rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center lagom-shadow">
+                        <img src="images/create-mode.png" alt="Skapa" class="h-16 w-16">
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Skapa</span>
+                        <span class="en-text hidden">Create</span>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Brainstorma semesterplaner tillsammans</span>
+                        <span class="en-text hidden">Brainstorm vacation plans together</span>
+                    </p>
+                    <div class="text-sm text-sage-green font-medium">
+                        <span class="sv-text">→ Prova nu</span>
+                        <span class="en-text hidden">→ Try now</span>
+                    </div>
+                </a>
+
+                <!-- Critique Mode -->
+                <a href="critique.html" class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover text-center block">
+                    <div class="bg-warm-birch-white rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center lagom-shadow">
+                        <img src="images/critique-mode.png" alt="Granska" class="h-16 w-16">
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Granska</span>
+                        <span class="en-text hidden">Critique</span>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Utvärdera stora familjebeslut</span>
+                        <span class="en-text hidden">Evaluate major family decisions</span>
+                    </p>
+                    <div class="text-sm text-soft-thread-gold font-medium">
+                        <span class="sv-text">→ Prova nu</span>
+                        <span class="en-text hidden">→ Try now</span>
+                    </div>
+                </a>
+
+                <!-- Synthesize Mode -->
+                <a href="synthesize.html" class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover text-center block">
+                    <div class="bg-warm-birch-white rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center lagom-shadow">
+                        <img src="images/synthesize-mode.png" alt="Syntetisera" class="h-16 w-16">
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Syntetisera</span>
+                        <span class="en-text hidden">Synthesize</span>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Hitta kompromisser som alla accepterar</span>
+                        <span class="en-text hidden">Find compromises everyone accepts</span>
+                    </p>
+                    <div class="text-sm text-sacred-alliance-purple font-medium">
+                        <span class="sv-text">→ Prova nu</span>
+                        <span class="en-text hidden">→ Try now</span>
+                    </div>
+                </a>
+
+                <!-- Defense Mode -->
+                <a href="defense.html" class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover text-center block">
+                    <div class="bg-warm-birch-white rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center lagom-shadow">
+                        <img src="images/defense-mode.png" alt="Försvara" class="h-16 w-16">
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Försvara</span>
+                        <span class="en-text hidden">Defense</span>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Bevara familjetraditioner</span>
+                        <span class="en-text hidden">Preserve family traditions</span>
+                    </p>
+                    <div class="text-sm text-truth-anchor-copper font-medium">
+                        <span class="sv-text">→ Prova nu</span>
+                        <span class="en-text hidden">→ Try now</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-20 bg-deep-swedish-blue text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="space-y-8">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold">
+                    <span class="sv-text">Redo att börja?</span>
+                    <span class="en-text hidden">Ready to start?</span>
+                </h2>
+                <p class="text-xl text-blue-100">
+                    <span class="sv-text">Välj det alternativ som passar er familj bäst och kom igång idag</span>
+                    <span class="en-text hidden">Choose the option that best suits your family and get started today</span>
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button id="cta-hosted" class="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                        <span class="sv-text">Börja med Balans Hosted</span>
+                        <span class="en-text hidden">Start with Balans Hosted</span>
+                    </button>
+                    <button id="cta-mesh" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-white hover:text-deep-swedish-blue">
+                        <span class="sv-text">Ladda ner WeaverMesh</span>
+                        <span class="en-text hidden">Download WeaverMesh</span>
+                    </button>
+                </div>
+
+                <div class="text-sm text-blue-200">
+                    <span class="sv-text">Gratis att prova • Ingen registrering krävs • Avsluta när som helst</span>
+                    <span class="en-text hidden">Free to try • No registration required • Cancel anytime</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </div>
+                    <p class="text-gray-600">
+                        <span class="sv-text">AI-stöd för svenska familjer som respekterar era värderingar</span>
+                        <span class="en-text hidden">AI support for Swedish families that respects your values</span>
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Produkter</span>
+                        <span class="en-text hidden">Products</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="index.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Weaver för familjer</span>
+                            <span class="en-text hidden">Weaver for families</span>
+                        </a></li>
+                        <li><a href="index.html#solution" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Så fungerar det</span>
+                            <span class="en-text hidden">How it works</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Support</span>
+                        <span class="en-text hidden">Support</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Hjälpcenter</span>
+                            <span class="en-text hidden">Help center</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Kontakta oss</span>
+                            <span class="en-text hidden">Contact us</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Företag</span>
+                        <span class="en-text hidden">Company</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="om-oss.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Om oss</span>
+                            <span class="en-text hidden">About us</span>
+                        </a></li>
+                        <li><a href="#" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Integritet</span>
+                            <span class="en-text hidden">Privacy</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-natural-birch-wood/20 mt-8 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 Balans. <span class="sv-text">Alla rättigheter förbehållna.</span><span class="en-text hidden">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Language Toggle
+        const langSv = document.getElementById('lang-sv');
+        const langEn = document.getElementById('lang-en');
+        const langSvMobileHeader = document.getElementById('lang-sv-mobile-header');
+        const langEnMobileHeader = document.getElementById('lang-en-mobile-header');
+        const svTexts = document.querySelectorAll('.sv-text');
+        const enTexts = document.querySelectorAll('.en-text');
+
+        function showSwedish() {
+            if (langSv) {
+                langSv.classList.add('bg-deep-swedish-blue', 'text-white');
+                langSv.classList.remove('text-deep-swedish-blue');
+            }
+            if (langEn) {
+                langEn.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langEn.classList.add('text-deep-swedish-blue');
+            }
+            if (langSvMobileHeader) {
+                langSvMobileHeader.classList.add('bg-deep-swedish-blue', 'text-white');
+                langSvMobileHeader.classList.remove('text-deep-swedish-blue');
+            }
+            if (langEnMobileHeader) {
+                langEnMobileHeader.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langEnMobileHeader.classList.add('text-deep-swedish-blue');
+            }
+            
+            svTexts.forEach(el => el.classList.remove('hidden'));
+            enTexts.forEach(el => el.classList.add('hidden'));
+            document.documentElement.lang = 'sv';
+        }
+
+        function showEnglish() {
+            if (langEn) {
+                langEn.classList.add('bg-deep-swedish-blue', 'text-white');
+                langEn.classList.remove('text-deep-swedish-blue');
+            }
+            if (langSv) {
+                langSv.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langSv.classList.add('text-deep-swedish-blue');
+            }
+            if (langEnMobileHeader) {
+                langEnMobileHeader.classList.add('bg-deep-swedish-blue', 'text-white');
+                langEnMobileHeader.classList.remove('text-deep-swedish-blue');
+            }
+            if (langSvMobileHeader) {
+                langSvMobileHeader.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langSvMobileHeader.classList.add('text-deep-swedish-blue');
+            }
+            
+            enTexts.forEach(el => el.classList.remove('hidden'));
+            svTexts.forEach(el => el.classList.add('hidden'));
+            document.documentElement.lang = 'en';
+        }
+
+        if (langSv) langSv.addEventListener('click', showSwedish);
+        if (langEn) langEn.addEventListener('click', showEnglish);
+        if (langSvMobileHeader) langSvMobileHeader.addEventListener('click', showSwedish);
+        if (langEnMobileHeader) langEnMobileHeader.addEventListener('click', showEnglish);
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Button Actions (placeholder functionality)
+        document.getElementById('start-hosted')?.addEventListener('click', () => {
+            alert('Balans Hosted kommer snart! Tack för ditt intresse.');
+        });
+
+        document.getElementById('download-mesh')?.addEventListener('click', () => {
+            alert('WeaverMesh kommer snart! Tack för ditt intresse.');
+        });
+
+        document.getElementById('register-interest')?.addEventListener('click', () => {
+            alert('Tack för ditt intresse i Weaver Home Hub! Vi hör av oss när den blir tillgänglig.');
+        });
+
+        document.getElementById('cta-hosted')?.addEventListener('click', () => {
+            alert('Balans Hosted kommer snart! Tack för ditt intresse.');
+        });
+
+        document.getElementById('cta-mesh')?.addEventListener('click', () => {
+            alert('WeaverMesh kommer snart! Tack för ditt intresse.');
+        });
+
+        // Initialize with Swedish
+        showSwedish();
+    </script>
+</body>
+</html>
