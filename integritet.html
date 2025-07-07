@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integritetspolicy - Balans | Så hanterar vi er familjedata</title>
+    <meta name="description" content="Läs vår integritetspolicy och förstå exakt hur Balans hanterar er familjedata enligt GDPR och svenska lagar.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-swedish-blue': '#2c5aa0',
+                        'natural-birch-wood': '#d4b896',
+                        'sacred-alliance-purple': '#6b5b95',
+                        'warm-birch-white': '#f8f6f0',
+                        'soft-thread-gold': '#c9a96e',
+                        'sage-green': '#8faa8b',
+                        'gentle-silver': '#b8c5d1',
+                        'truth-anchor-copper': '#b87333'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .lagom-shadow { box-shadow: 0 4px 6px -1px rgba(44, 90, 160, 0.1), 0 2px 4px -1px rgba(44, 90, 160, 0.06); }
+        .lagom-hover { transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1); }
+        .lagom-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -3px rgba(44, 90, 160, 0.1), 0 4px 6px -2px rgba(44, 90, 160, 0.05); }
+        .family-warmth { background: linear-gradient(135deg, #f8f6f0 0%, #d4b896 100%); }
+    </style>
+</head>
+
+<body class="bg-warm-birch-white text-gray-800 font-sans leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#solution" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">Så fungerar det</a>
+                    <a href="index.html#technology" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">Välj version</a>
+                    <a href="prova-weaver.html" class="bg-sacred-alliance-purple text-white px-6 py-2 rounded-full font-medium lagom-hover hover:bg-sacred-alliance-purple/90">Prova Weaver</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-deep-swedish-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="family-warmth py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl lg:text-5xl font-display font-bold text-deep-swedish-blue mb-6">
+                Integritetspolicy
+            </h1>
+            <p class="text-xl text-gray-700 mb-8">
+                Så hanterar vi er familjedata enligt GDPR och svenska lagar
+            </p>
+            <p class="text-sm text-gray-600">
+                Senast uppdaterad: 7 januari 2025
+            </p>
+        </div>
+    </section>
+
+    <!-- Privacy Policy Content -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Introduction -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Introduktion</h2>
+                <p class="text-gray-700 mb-4">
+                    Balans Collective AB ("vi", "oss", "vårt") respekterar er familjs integritet och är engagerade i att skydda era personuppgifter. Denna integritetspolicy förklarar hur vi samlar in, använder, lagrar och skyddar information när ni använder Weaver och våra tjänster.
+                </p>
+                <p class="text-gray-700">
+                    Vi följer GDPR (Dataskyddsförordningen) och svenska dataskyddslagar. Er familjs integritet och säkerhet är vår högsta prioritet.
+                </p>
+            </div>
+
+            <!-- What Data We Collect -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Vilken data vi samlar in</h2>
+                
+                <div class="space-y-6">
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Familjesamtal och meddelanden</h3>
+                        <p class="text-gray-700 mb-3">
+                            För att Weaver ska kunna hjälpa er familj kommunicera bättre samlar vi in:
+                        </p>
+                        <ul class="text-gray-700 space-y-1 ml-4">
+                            <li>• Textmeddelanden i familjechatten</li>
+                            <li>• Ljudinspelningar från ambient lyssning (endast när aktiverat)</li>
+                            <li>• Kontext om familjesamtal för att förstå kommunikationsmönster</li>
+                        </ul>
+                        <p class="text-sm text-gray-600 mt-3">
+                            <strong>Viktigt:</strong> Vi sparar aldrig personliga identifierare eller känslig information utan ert uttryckliga medgivande.
+                        </p>
+                    </div>
+
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Teknisk information</h3>
+                        <p class="text-gray-700 mb-3">
+                            För att säkerställa att tjänsten fungerar optimalt samlar vi in:
+                        </p>
+                        <ul class="text-gray-700 space-y-1 ml-4">
+                            <li>• Enhetstyp och operativsystem</li>
+                            <li>• IP-adress (anonymiserad efter 24 timmar)</li>
+                            <li>• Användningsstatistik för att förbättra tjänsten</li>
+                            <li>• Felloggar för teknisk support</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Kontoinformation</h3>
+                        <p class="text-gray-700 mb-3">
+                            För att administrera ert konto samlar vi in:
+                        </p>
+                        <ul class="text-gray-700 space-y-1 ml-4">
+                            <li>• E-postadress för kontoadministration</li>
+                            <li>• Familjemedlemmars förnamn (inga efternamn krävs)</li>
+                            <li>• Betalningsinformation (hanteras av säker tredjepartstjänst)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How We Use Data -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Hur vi använder er data</h2>
+                
+                <div class="space-y-4">
+                    <div class="flex items-start space-x-3">
+                        <svg class="h-6 w-6 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <h3 class="font-semibold text-deep-swedish-blue">Förbättra familjekommunikation</h3>
+                            <p class="text-gray-700">Analysera kommunikationsmönster för att ge relevanta förslag och stöd</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <svg class="h-6 w-6 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <h3 class="font-semibold text-deep-swedish-blue">Personalisera Weaver</h3>
+                            <p class="text-gray-700">Anpassa AI-assistenten efter er familjs unika kommunikationsstil</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <svg class="h-6 w-6 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <h3 class="font-semibold text-deep-swedish-blue">Teknisk support</h3>
+                            <p class="text-gray-700">Lösa tekniska problem och förbättra tjänstens prestanda</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <svg class="h-6 w-6 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <div>
+                            <h3 class="font-semibold text-deep-swedish-blue">Säkerhet och säkerhetsövervakning</h3>
+                            <p class="text-gray-700">Skydda er familjs data och förhindra missbruk av tjänsten</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-red-50 border border-red-200 rounded-lg p-4 mt-6">
+                    <h3 class="font-semibold text-red-800 mb-2">Vad vi ALDRIG gör med er data:</h3>
+                    <ul class="text-red-700 space-y-1">
+                        <li>• Säljer eller delar er data med tredje part för marknadsföring</li>
+                        <li>• Använder er data för att träna AI-modeller för andra kunder</li>
+                        <li>• Läser era meddelanden för andra ändamål än att hjälpa er familj</li>
+                        <li>• Sparar data längre än nödvändigt</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Data Storage and Security -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Datalagring och säkerhet</h2>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Var vi lagrar data</h3>
+                        <ul class="text-gray-700 space-y-2">
+                            <li>• Svenska datacenter (Stockholm)</li>
+                            <li>• GDPR-certifierade hosting-partners</li>
+                            <li>• Krypterade databaser</li>
+                            <li>• Backup i Sverige</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Hur länge vi sparar data</h3>
+                        <ul class="text-gray-700 space-y-2">
+                            <li>• Familjesamtal: Permanent (del av er familjs "beginning of infinity")</li>
+                            <li>• Kontoinformation: Tills ni avslutar kontot</li>
+                            <li>• Tekniska loggar: 30 dagar</li>
+                            <li>• Anonymiserad statistik: Permanent för kontinuerlig förbättring</li>
+                        </ul>
+                        <p class="text-sm text-gray-600 mt-3">
+                            <strong>Viktigt:</strong> Ni kan när som helst begära radering av specifik data eller all er familjedata.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Your Rights -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Era rättigheter enligt GDPR</h2>
+                
+                <div class="space-y-4">
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Rätt till information och tillgång</h3>
+                        <p class="text-gray-700">
+                            Ni har rätt att få information om vilken data vi har om er familj och hur vi använder den. Kontakta oss på <a href="mailto:privacy@balans-collective.com" class="text-deep-swedish-blue hover:underline">privacy@balans-collective.com</a> för att begära en kopia av era data.
+                        </p>
+                    </div>
+
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Rätt till rättelse och radering</h3>
+                        <p class="text-gray-700">
+                            Ni kan när som helst begära att vi rättar felaktig information eller raderar era data. Detta kan göras direkt i appen eller genom att kontakta oss.
+                        </p>
+                    </div>
+
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Rätt till dataportabilitet</h3>
+                        <p class="text-gray-700">
+                            Ni har rätt att få era data i ett strukturerat, allmänt använt format om ni vill flytta till en annan tjänst.
+                        </p>
+                    </div>
+
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Rätt att återkalla samtycke</h3>
+                        <p class="text-gray-700">
+                            Ni kan när som helst återkalla ert samtycke till databehandling. Detta påverkar inte lagligheten av behandling som skedde innan samtycket återkallades.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Children's Privacy -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Barns integritet</h2>
+                <div class="bg-warm-birch-white rounded-lg p-6">
+                    <p class="text-gray-700 mb-4">
+                        Vi tar barns integritet på största allvar. För familjemedlemmar under 16 år krävs föräldrarnas samtycke enligt GDPR.
+                    </p>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>• Föräldrar har full kontroll över barnens data</li>
+                        <li>• Särskilda säkerhetsåtgärder för minderåriga</li>
+                        <li>• Inga riktade annonser till barn</li>
+                        <li>• Begränsad datasamling för minderåriga</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Kontakta oss</h2>
+                <div class="bg-warm-birch-white rounded-lg p-6">
+                    <p class="text-gray-700 mb-4">
+                        Om ni har frågor om denna integritetspolicy eller hur vi hanterar era data, kontakta oss:
+                    </p>
+                    <div class="space-y-2 text-gray-700">
+                        <p><strong>E-post:</strong> <a href="mailto:privacy@balans-collective.com" class="text-deep-swedish-blue hover:underline">privacy@balans-collective.com</a></p>
+                        <p><strong>Postadress:</strong> Balans Collective AB, Box 123, 111 22 Stockholm</p>
+                        <p><strong>Dataskyddsombud:</strong> <a href="mailto:dpo@balans-collective.com" class="text-deep-swedish-blue hover:underline">dpo@balans-collective.com</a></p>
+                    </div>
+                    <p class="text-gray-700 mt-4">
+                        Ni har också rätt att lämna in klagomål till Integritetsskyddsmyndigheten (IMY) om ni anser att vi behandlar era personuppgifter på ett felaktigt sätt.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Changes to Policy -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Ändringar av denna policy</h2>
+                <div class="bg-warm-birch-white rounded-lg p-6">
+                    <p class="text-gray-700">
+                        Vi kan uppdatera denna integritetspolicy från tid till annan. Väsentliga ändringar kommer att meddelas via e-post och i appen minst 30 dagar innan de träder i kraft. Den senaste versionen finns alltid tillgänglig på vår webbplats.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                    <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                    <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                </div>
+                <p class="text-gray-600 mb-6">AI-stöd för svenska familjer som respekterar era värderingar</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Hem</a>
+                    <a href="om-oss.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Om oss</a>
+                    <a href="sakerhet.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Säkerhet</a>
+                    <a href="villkor.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Villkor</a>
+                </div>
+                <div class="border-t border-natural-birch-wood/20 mt-8 pt-8 text-gray-500">
+                    <p>&copy; 2025 Balans. Alla rättigheter förbehållna.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+</html>

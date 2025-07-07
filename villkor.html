@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Användarvillkor - Balans | Villkor för Weaver</title>
+    <meta name="description" content="Läs våra användarvillkor för Weaver och Balans tjänster. Tydliga villkor enligt svensk lag.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-swedish-blue': '#2c5aa0',
+                        'natural-birch-wood': '#d4b896',
+                        'sacred-alliance-purple': '#6b5b95',
+                        'warm-birch-white': '#f8f6f0',
+                        'soft-thread-gold': '#c9a96e',
+                        'sage-green': '#8faa8b',
+                        'gentle-silver': '#b8c5d1',
+                        'truth-anchor-copper': '#b87333'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .lagom-shadow { box-shadow: 0 4px 6px -1px rgba(44, 90, 160, 0.1), 0 2px 4px -1px rgba(44, 90, 160, 0.06); }
+        .lagom-hover { transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1); }
+        .lagom-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -3px rgba(44, 90, 160, 0.1), 0 4px 6px -2px rgba(44, 90, 160, 0.05); }
+        .family-warmth { background: linear-gradient(135deg, #f8f6f0 0%, #d4b896 100%); }
+    </style>
+</head>
+
+<body class="bg-warm-birch-white text-gray-800 font-sans leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#solution" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">Så fungerar det</a>
+                    <a href="index.html#technology" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">Välj version</a>
+                    <a href="prova-weaver.html" class="bg-sacred-alliance-purple text-white px-6 py-2 rounded-full font-medium lagom-hover hover:bg-sacred-alliance-purple/90">Prova Weaver</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-deep-swedish-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="family-warmth py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl lg:text-5xl font-display font-bold text-deep-swedish-blue mb-6">
+                Användarvillkor
+            </h1>
+            <p class="text-xl text-gray-700 mb-8">
+                Villkor för användning av Weaver och Balans tjänster
+            </p>
+            <p class="text-sm text-gray-600">
+                Senast uppdaterad: 7 januari 2025
+            </p>
+        </div>
+    </section>
+
+    <!-- Terms Content -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Introduction -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Välkommen till Balans</h2>
+                <p class="text-gray-700 mb-4">
+                    Dessa användarvillkor ("Villkor") reglerar er användning av Weaver och andra tjänster som tillhandahålls av Balans Collective AB ("Balans", "vi", "oss", "vårt"). Genom att använda våra tjänster godkänner ni dessa villkor.
+                </p>
+                <p class="text-gray-700">
+                    Dessa villkor följer svensk lag och är utformade enligt lagom-principen - tydliga, rättvisa och balanserade för både er familj och oss.
+                </p>
+            </div>
+
+            <!-- Service Description -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Våra tjänster</h2>
+                
+                <div class="bg-warm-birch-white rounded-lg p-6 mb-6">
+                    <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Weaver - AI-familjeassistent</h3>
+                    <p class="text-gray-700 mb-3">
+                        Weaver är en AI-driven tjänst som hjälper svenska familjer kommunicera bättre genom:
+                    </p>
+                    <ul class="text-gray-700 space-y-1 ml-4">
+                        <li>• Smart familjechat med kommunikationsförslag</li>
+                        <li>• Ambient lyssning för familjesamtal (när aktiverat)</li>
+                        <li>• Fyra tänkande sätt för bättre beslutsfattande</li>
+                        <li>• Personaliserat stöd baserat på er familjs kommunikationsstil</li>
+                    </ul>
+                </div>
+
+                <div class="bg-warm-birch-white rounded-lg p-6">
+                    <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Tillgängliga alternativ</h3>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>• <strong>Balans Hosted:</strong> Molnbaserad tjänst med svensk hosting</li>
+                        <li>• <strong>WeaverMesh:</strong> Öppen källkod för lokal installation</li>
+                        <li>• <strong>Weaver Home Hub:</strong> Hårdvarulösning (lanseras 2026)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- User Responsibilities -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Era ansvar som användare</h2>
+                
+                <div class="space-y-4">
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Lämplig användning</h3>
+                        <p class="text-gray-700 mb-3">Ni förbinder er att använda Weaver:</p>
+                        <ul class="text-gray-700 space-y-1 ml-4">
+                            <li>• För att förbättra familjekommunikation och förståelse</li>
+                            <li>• I enlighet med svenska lagar och värderingar</li>
+                            <li>• På ett sätt som respekterar alla familjemedlemmars integritet</li>
+                            <li>• Utan att skada eller störa tjänsten för andra användare</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Förbjuden användning</h3>
+                        <p class="text-gray-700 mb-3">Ni får INTE använda Weaver för att:</p>
+                        <ul class="text-gray-700 space-y-1 ml-4">
+                            <li>• Dela olämpligt, skadligt eller olagligt innehåll</li>
+                            <li>• Kränka andra personers rättigheter eller integritet</li>
+                            <li>• Försöka komma åt andra familjers data</li>
+                            <li>• Störa eller skada tjänstens tekniska funktioner</li>
+                            <li>• Utgå er för att vara officiella Balans-representanter utan vårt medgivande</li>
+                        </ul>
+                        <div class="mt-4 p-4 bg-sage-green/10 rounded-lg border-l-4 border-sage-green">
+                            <p class="text-sm text-gray-700">
+                                <strong>Vi uppmuntrar er att:</strong> Dela Weaver med andra familjer och hjälpa dem upptäcka hur det kan förbättra deras kommunikation. Familj-till-familj-rekommendationer är det bästa sättet för Weaver att växa och hjälpa fler svenska familjer.
+                            </p>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-3">
+                            <strong>Obs:</strong> Ni är välkomna att använda Weaver för att stödja era egna familjeföretag, kreativa projekt eller utbildningsinitiativ.
+                        </p>
+                    </div>
+
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Kontosäkerhet</h3>
+                        <p class="text-gray-700">
+                            Ni ansvarar för att hålla era inloggningsuppgifter säkra och för all aktivitet som sker under ert konto. Meddela oss omedelbart om ni misstänker obehörig åtkomst.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Our Responsibilities -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Våra åtaganden</h2>
+                
+                <div class="space-y-4">
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Tjänsteleverans</h3>
+                        <p class="text-gray-700">
+                            Vi strävar efter att tillhandahålla Weaver med 99,5% drifttid för Balans Hosted. Vi arbetar kontinuerligt för att förbättra tjänsten och åtgärda tekniska problem snabbt.
+                        </p>
+                    </div>
+
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Datasäkerhet</h3>
+                        <p class="text-gray-700">
+                            Vi åtar oss att skydda er familjedata enligt vår integritetspolicy och svenska säkerhetsstandarder. Era data behandlas konfidentiellt och delas aldrig med tredje part utan ert medgivande.
+                        </p>
+                    </div>
+
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Support</h3>
+                        <p class="text-gray-700">
+                            Vi tillhandahåller teknisk support via e-post och vårt hjälpcenter. För Balans Hosted erbjuder vi prioriterad support under svenska arbetstider.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing and Payment -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Priser och betalning</h2>
+                
+                <div class="space-y-4">
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Balans Hosted</h3>
+                        <ul class="text-gray-700 space-y-2">
+                            <li>• Månadsavgift enligt aktuell prislista</li>
+                            <li>• 30 dagars gratis provperiod</li>
+                            <li>• Betalning via säker tredjepartstjänst</li>
+                            <li>• Automatisk förnyelse (kan avbrytas när som helst)</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">WeaverMesh</h3>
+                        <p class="text-gray-700">
+                            Helt gratis och öppen källkod. Ni ansvarar för egen hosting och teknisk support.
+                        </p>
+                    </div>
+
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Weaver Home Hub</h3>
+                        <p class="text-gray-700">
+                            Engångskostnad vid köp (lanseras 2026). Inga löpande avgifter efter köp.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cancellation and Refunds -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Uppsägning och återbetalning</h2>
+                
+                <div class="bg-warm-birch-white rounded-lg p-6">
+                    <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Uppsägning</h3>
+                    <p class="text-gray-700 mb-4">
+                        Ni kan avsluta ert Balans Hosted-konto när som helst utan uppsägningstid. Tjänsten fortsätter till slutet av den betalda perioden.
+                    </p>
+                    
+                    <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Återbetalning</h3>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>• 30 dagars pengarna-tillbaka-garanti för nya kunder</li>
+                        <li>• Proportionell återbetalning vid tekniska problem som vi inte kan lösa</li>
+                        <li>• Inga återbetalningar för WeaverMesh (gratis tjänst)</li>
+                        <li>• Weaver Home Hub: 14 dagars ångerrätt enligt konsumentköplagen</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Intellectual Property -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Immaterialrätt</h2>
+                
+                <div class="space-y-4">
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Balans rättigheter</h3>
+                        <p class="text-gray-700">
+                            Weaver, Balans varumärken, och all relaterad teknologi ägs av Balans Collective AB. Ni får en begränsad licens att använda tjänsten enligt dessa villkor.
+                        </p>
+                    </div>
+
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">Era rättigheter</h3>
+                        <p class="text-gray-700">
+                            Ni behåller alla rättigheter till ert familjeinnehåll. Vi gör aldrig anspråk på äganderätt till era meddelanden eller familjedata.
+                        </p>
+                    </div>
+
+                    <div class="bg-warm-birch-white rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue mb-3">WeaverMesh öppen källkod</h3>
+                        <p class="text-gray-700">
+                            WeaverMesh släpps under MIT-licens. Ni kan fritt använda, modifiera och distribuera koden enligt licensvillkoren.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Limitation of Liability -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Ansvarsbegränsning</h2>
+                
+                <div class="bg-warm-birch-white rounded-lg p-6">
+                    <p class="text-gray-700 mb-4">
+                        Weaver är ett verktyg för att förbättra familjekommunikation, inte en ersättning för professionell rådgivning eller terapi. Vi ansvarar inte för:
+                    </p>
+                    <ul class="text-gray-700 space-y-2 mb-4">
+                        <li>• Beslut som fattas baserat på Weavers förslag</li>
+                        <li>• Familjekonflikt som kan uppstå trots användning av tjänsten</li>
+                        <li>• Tekniska problem hos tredje part (internetleverantörer, enheter, etc.)</li>
+                        <li>• Dataförlust på grund av användarfel eller force majeure</li>
+                    </ul>
+                    <p class="text-gray-700">
+                        Vårt totala ansvar begränsas till det belopp ni betalat för tjänsten under de senaste 12 månaderna.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Governing Law -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Tillämplig lag och tvister</h2>
+                
+                <div class="bg-warm-birch-white rounded-lg p-6">
+                    <p class="text-gray-700 mb-4">
+                        Dessa villkor regleras av svensk lag. Eventuella tvister ska i första hand lösas genom dialog och förhandling i enlighet med svenska värderingar om samförstånd.
+                    </p>
+                    <p class="text-gray-700">
+                        Om en tvist inte kan lösas genom förhandling ska den avgöras av svensk domstol, med Stockholms tingsrätt som första instans.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Changes to Terms -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Ändringar av villkoren</h2>
+                
+                <div class="bg-warm-birch-white rounded-lg p-6">
+                    <p class="text-gray-700 mb-4">
+                        Vi kan uppdatera dessa villkor för att återspegla förändringar i tjänsten eller juridiska krav. Väsentliga ändringar meddelas minst 30 dagar i förväg via:
+                    </p>
+                    <ul class="text-gray-700 space-y-1 ml-4 mb-4">
+                        <li>• E-post till ert registrerade konto</li>
+                        <li>• Meddelande i Weaver-appen</li>
+                        <li>• Uppdatering på vår webbplats</li>
+                    </ul>
+                    <p class="text-gray-700">
+                        Fortsatt användning efter att ändringarna trätt i kraft innebär att ni accepterar de nya villkoren.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-deep-swedish-blue mb-4">Kontakta oss</h2>
+                
+                <div class="bg-warm-birch-white rounded-lg p-6">
+                    <p class="text-gray-700 mb-4">
+                        Om ni har frågor om dessa användarvillkor, kontakta oss:
+                    </p>
+                    <div class="space-y-2 text-gray-700">
+                        <p><strong>E-post:</strong> <a href="mailto:legal@balans-collective.com" class="text-deep-swedish-blue hover:underline">legal@balans-collective.com</a></p>
+                        <p><strong>Postadress:</strong> Balans Collective AB, Box 123, 111 22 Stockholm</p>
+                        <p><strong>Organisationsnummer:</strong> 559123-4567</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                    <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                    <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                </div>
+                <p class="text-gray-600 mb-6">AI-stöd för svenska familjer som respekterar era värderingar</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Hem</a>
+                    <a href="om-oss.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Om oss</a>
+                    <a href="sakerhet.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Säkerhet</a>
+                    <a href="integritet.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Integritet</a>
+                </div>
+                <div class="border-t border-natural-birch-wood/20 mt-8 pt-8 text-gray-500">
+                    <p>&copy; 2025 Balans. Alla rättigheter förbehållna.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+</html>

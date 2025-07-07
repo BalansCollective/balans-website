@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakta oss - Balans | Vi hjälper svenska familjer</title>
+    <meta name="description" content="Kontakta Balans för support, frågor eller feedback. Vi finns här för att hjälpa er familj få ut det mesta av Weaver.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-swedish-blue': '#2c5aa0',
+                        'natural-birch-wood': '#d4b896',
+                        'sacred-alliance-purple': '#6b5b95',
+                        'warm-birch-white': '#f8f6f0',
+                        'soft-thread-gold': '#c9a96e',
+                        'sage-green': '#8faa8b',
+                        'gentle-silver': '#b8c5d1',
+                        'truth-anchor-copper': '#b87333'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .lagom-shadow { box-shadow: 0 4px 6px -1px rgba(44, 90, 160, 0.1), 0 2px 4px -1px rgba(44, 90, 160, 0.06); }
+        .lagom-hover { transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1); }
+        .lagom-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -3px rgba(44, 90, 160, 0.1), 0 4px 6px -2px rgba(44, 90, 160, 0.05); }
+        .family-warmth { background: linear-gradient(135deg, #f8f6f0 0%, #d4b896 100%); }
+    </style>
+</head>
+
+<body class="bg-warm-birch-white text-gray-800 font-sans leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#solution" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">Så fungerar det</a>
+                    <a href="index.html#technology" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">Välj version</a>
+                    <a href="prova-weaver.html" class="bg-sacred-alliance-purple text-white px-6 py-2 rounded-full font-medium lagom-hover hover:bg-sacred-alliance-purple/90">Prova Weaver</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-deep-swedish-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="family-warmth py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl lg:text-5xl font-display font-bold text-deep-swedish-blue mb-6">
+                Kontakta oss
+            </h1>
+            <p class="text-xl text-gray-700 mb-8">
+                Vi finns här för att hjälpa er familj få ut det mesta av Weaver
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Options -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Support -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover text-center">
+                    <div class="bg-sage-green/20 rounded-full p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                        <svg class="h-8 w-8 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 110 19.5 9.75 9.75 0 010-19.5z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">Support & Hjälp</h3>
+                    <p class="text-gray-600 mb-6">Behöver du hjälp med Weaver eller har tekniska frågor?</p>
+                    <a href="mailto:support@balans-collective.com" class="bg-sage-green text-white px-4 py-3 rounded-full font-medium lagom-hover hover:bg-sage-green/90 text-sm break-all">
+                        support@balans-collective.com
+                    </a>
+                </div>
+
+                <!-- Sales -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover text-center">
+                    <div class="bg-sacred-alliance-purple/20 rounded-full p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                        <svg class="h-8 w-8 text-sacred-alliance-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">Försäljning & Demo</h3>
+                    <p class="text-gray-600 mb-6">Vill du veta mer om Weaver eller boka en demo för er familj?</p>
+                    <a href="mailto:hej@balans-collective.com" class="bg-sacred-alliance-purple text-white px-4 py-3 rounded-full font-medium lagom-hover hover:bg-sacred-alliance-purple/90 text-sm break-all">
+                        hej@balans-collective.com
+                    </a>
+                </div>
+
+                <!-- Feedback -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover text-center">
+                    <div class="bg-soft-thread-gold/20 rounded-full p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                        <svg class="h-8 w-8 text-soft-thread-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">Feedback & Förslag</h3>
+                    <p class="text-gray-600 mb-6">Har du idéer för hur vi kan förbättra Weaver för svenska familjer?</p>
+                    <a href="mailto:feedback@balans-collective.com" class="bg-soft-thread-gold text-white px-4 py-3 rounded-full font-medium lagom-hover hover:bg-soft-thread-gold/90 text-sm break-all">
+                        feedback@balans-collective.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="py-20 bg-gradient-to-br from-warm-birch-white to-natural-birch-wood/20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-display font-bold text-deep-swedish-blue mb-4">
+                    Skicka oss ett meddelande
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Vi svarar vanligtvis inom 24 timmar
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 lagom-shadow">
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Namn</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deep-swedish-blue focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">E-post</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deep-swedish-blue focus:border-transparent">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Ämne</label>
+                        <select id="subject" name="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deep-swedish-blue focus:border-transparent">
+                            <option value="">Välj ämne</option>
+                            <option value="support">Support & teknisk hjälp</option>
+                            <option value="demo">Demo & försäljning</option>
+                            <option value="feedback">Feedback & förslag</option>
+                            <option value="partnership">Partnerskap</option>
+                            <option value="other">Annat</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Meddelande</label>
+                        <textarea id="message" name="message" rows="6" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-deep-swedish-blue focus:border-transparent" placeholder="Berätta hur vi kan hjälpa er familj..."></textarea>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="bg-deep-swedish-blue text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-deep-swedish-blue/90">
+                            Skicka meddelande
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                    <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                    <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                </div>
+                <p class="text-gray-600 mb-6">AI-stöd för svenska familjer som respekterar era värderingar</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Hem</a>
+                    <a href="om-oss.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Om oss</a>
+                    <a href="integritet.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Integritet</a>
+                    <a href="villkor.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Villkor</a>
+                </div>
+                <div class="border-t border-natural-birch-wood/20 mt-8 pt-8 text-gray-500">
+                    <p>&copy; 2025 Balans. Alla rättigheter förbehållna.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+</html>

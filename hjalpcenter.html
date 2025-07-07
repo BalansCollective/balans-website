@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hjälpcenter - Balans | Få hjälp med Weaver</title>
+    <meta name="description" content="Hitta svar på vanliga frågor om Weaver och få hjälp med att använda AI-stödet för er familj.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-swedish-blue': '#2c5aa0',
+                        'natural-birch-wood': '#d4b896',
+                        'sacred-alliance-purple': '#6b5b95',
+                        'warm-birch-white': '#f8f6f0',
+                        'soft-thread-gold': '#c9a96e',
+                        'sage-green': '#8faa8b',
+                        'gentle-silver': '#b8c5d1',
+                        'truth-anchor-copper': '#b87333'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .lagom-shadow { box-shadow: 0 4px 6px -1px rgba(44, 90, 160, 0.1), 0 2px 4px -1px rgba(44, 90, 160, 0.06); }
+        .lagom-hover { transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1); }
+        .lagom-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -3px rgba(44, 90, 160, 0.1), 0 4px 6px -2px rgba(44, 90, 160, 0.05); }
+        .family-warmth { background: linear-gradient(135deg, #f8f6f0 0%, #d4b896 100%); }
+    </style>
+</head>
+
+<body class="bg-warm-birch-white text-gray-800 font-sans leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#solution" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">Så fungerar det</a>
+                    <a href="index.html#technology" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">Välj version</a>
+                    <a href="prova-weaver.html" class="bg-sacred-alliance-purple text-white px-6 py-2 rounded-full font-medium lagom-hover hover:bg-sacred-alliance-purple/90">Prova Weaver</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-deep-swedish-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="family-warmth py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl lg:text-5xl font-display font-bold text-deep-swedish-blue mb-6">
+                Hjälpcenter
+            </h1>
+            <p class="text-xl text-gray-700 mb-8">
+                Hitta svar på vanliga frågor och få hjälp med Weaver
+            </p>
+            
+            <!-- Search Box -->
+            <div class="max-w-2xl mx-auto">
+                <div class="relative">
+                    <input type="text" placeholder="Sök efter hjälp..." class="w-full px-6 py-4 text-lg border border-gray-300 rounded-full focus:ring-2 focus:ring-deep-swedish-blue focus:border-transparent">
+                    <button class="absolute right-2 top-2 bg-deep-swedish-blue text-white p-2 rounded-full">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Help Categories -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-display font-bold text-deep-swedish-blue mb-4">
+                    Populära hjälpämnen
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Getting Started -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <div class="bg-sage-green/20 rounded-full p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                        <svg class="h-8 w-8 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4 text-center">Komma igång</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li><a href="#" class="hover:text-deep-swedish-blue">Hur sätter jag upp Weaver för min familj?</a></li>
+                        <li><a href="#" class="hover:text-deep-swedish-blue">Första steget med familjechatten</a></li>
+                        <li><a href="#" class="hover:text-deep-swedish-blue">Installera appen på alla enheter</a></li>
+                        <li><a href="#" class="hover:text-deep-swedish-blue">Grundläggande inställningar</a></li>
+                    </ul>
+                </div>
+
+                <!-- Using Weaver -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <div class="bg-sacred-alliance-purple/20 rounded-full p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                        <svg class="h-8 w-8 text-sacred-alliance-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4 text-center">Använda Weaver</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li><a href="#" class="hover:text-deep-swedish-blue">Förstå Weavers förslag</a></li>
+                        <li><a href="#" class="hover:text-deep-swedish-blue">De fyra tänkande sätten</a></li>
+                        <li><a href="#" class="hover:text-deep-swedish-blue">Ambient lyssning runt köksbordet</a></li>
+                        <li><a href="#" class="hover:text-deep-swedish-blue">Anpassa för er familj</a></li>
+                    </ul>
+                </div>
+
+                <!-- Privacy & Security -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <div class="bg-truth-anchor-copper/20 rounded-full p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                        <svg class="h-8 w-8 text-truth-anchor-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4 text-center">Säkerhet & Integritet</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li><a href="#" class="hover:text-deep-swedish-blue">Hur skyddas vår familjedata?</a></li>
+                        <li><a href="#" class="hover:text-deep-swedish-blue">Vad sparas och vad sparas inte?</a></li>
+                        <li><a href="#" class="hover:text-deep-swedish-blue">GDPR och svenska lagar</a></li>
+                        <li><a href="#" class="hover:text-deep-swedish-blue">Radera familjedata</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gradient-to-br from-warm-birch-white to-natural-birch-wood/20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-display font-bold text-deep-swedish-blue mb-4">
+                    Vanliga frågor
+                </h2>
+            </div>
+
+            <div class="space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-2xl p-6 lagom-shadow">
+                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(1)">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue">Hur fungerar Weaver egentligen?</h3>
+                        <svg id="faq-icon-1" class="h-6 w-6 text-gray-400 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="faq-content-1" class="hidden mt-4 text-gray-600">
+                        <p>Weaver analyserar er familjekommunikation och hjälper er förstå varandras olika sätt att tänka. Den fungerar på två sätt: genom att ge förslag i er familjechat och genom ambient lyssning när ni diskuterar runt köksbordet. Weaver respekterar svenska värderingar och lagom-principen.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-2xl p-6 lagom-shadow">
+                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(2)">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue">Är vår familjedata säker?</h3>
+                        <svg id="faq-icon-2" class="h-6 w-6 text-gray-400 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="faq-content-2" class="hidden mt-4 text-gray-600">
+                        <p>Ja, er familjedata är helt säker. Vi följer GDPR och svenska dataskyddslagar. Era samtal stannar inom familjen och delas aldrig med tredje part. Du kan välja mellan molnbaserad hosting i Sverige eller köra Weaver helt lokalt hemma.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-2xl p-6 lagom-shadow">
+                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(3)">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue">Kostar Weaver något?</h3>
+                        <svg id="faq-icon-3" class="h-6 w-6 text-gray-400 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="faq-content-3" class="hidden mt-4 text-gray-600">
+                        <p>Du kan prova Weaver gratis för att se om det passar er familj. Balans Hosted har en månadsavgift, medan WeaverMesh är helt gratis och öppen källkod. Weaver Home Hub kommer att ha en engångskostnad när den lanseras 2026.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white rounded-2xl p-6 lagom-shadow">
+                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(4)">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue">Fungerar Weaver för alla åldrar?</h3>
+                        <svg id="faq-icon-4" class="h-6 w-6 text-gray-400 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="faq-content-4" class="hidden mt-4 text-gray-600">
+                        <p>Ja, Weaver är designad för hela familjen. Den hjälper särskilt med kommunikation mellan generationer - till exempel när tonåringar och föräldrar har olika sätt att uttrycka sig. Weaver förstår svenska familjedynamik och kulturella värderingar.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="bg-white rounded-2xl p-6 lagom-shadow">
+                    <button class="w-full text-left flex justify-between items-center" onclick="toggleFAQ(5)">
+                        <h3 class="text-lg font-semibold text-deep-swedish-blue">Kan jag stänga av Weaver när jag vill?</h3>
+                        <svg id="faq-icon-5" class="h-6 w-6 text-gray-400 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="faq-content-5" class="hidden mt-4 text-gray-600">
+                        <p>Absolut. Du har full kontroll över när Weaver är aktiv. Du kan stänga av ambient lyssning, pausa chatförslag, eller helt avsluta tjänsten när som helst. Weaver följer lagom-principen - den finns där när ni behöver den, men är aldrig påträngande.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Support -->
+    <section class="py-20 bg-deep-swedish-blue text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-display font-bold mb-4">
+                Hittade du inte svaret?
+            </h2>
+            <p class="text-xl text-blue-100 mb-8">
+                Vårt supportteam hjälper gärna er familj
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="kontakt.html" class="bg-white text-deep-swedish-blue px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-gray-100">
+                    Kontakta support
+                </a>
+                <a href="mailto:support@balans.se" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-white hover:text-deep-swedish-blue">
+                    support@balans.se
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                    <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                    <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                </div>
+                <p class="text-gray-600 mb-6">AI-stöd för svenska familjer som respekterar era värderingar</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Hem</a>
+                    <a href="om-oss.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Om oss</a>
+                    <a href="integritet.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Integritet</a>
+                    <a href="villkor.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Villkor</a>
+                </div>
+                <div class="border-t border-natural-birch-wood/20 mt-8 pt-8 text-gray-500">
+                    <p>&copy; 2025 Balans. Alla rättigheter förbehållna.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // FAQ Toggle
+        function toggleFAQ(id) {
+            const content = document.getElementById(`faq-content-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>

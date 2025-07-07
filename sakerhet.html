@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Säkerhet - Balans | Så skyddar vi er familjedata</title>
+    <meta name="description" content="Läs om hur Balans skyddar er familjedata med svenska säkerhetsstandarder, GDPR-efterlevnad och lagom-principen.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-swedish-blue': '#2c5aa0',
+                        'natural-birch-wood': '#d4b896',
+                        'sacred-alliance-purple': '#6b5b95',
+                        'warm-birch-white': '#f8f6f0',
+                        'soft-thread-gold': '#c9a96e',
+                        'sage-green': '#8faa8b',
+                        'gentle-silver': '#b8c5d1',
+                        'truth-anchor-copper': '#b87333'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .lagom-shadow { box-shadow: 0 4px 6px -1px rgba(44, 90, 160, 0.1), 0 2px 4px -1px rgba(44, 90, 160, 0.06); }
+        .lagom-hover { transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1); }
+        .lagom-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -3px rgba(44, 90, 160, 0.1), 0 4px 6px -2px rgba(44, 90, 160, 0.05); }
+        .family-warmth { background: linear-gradient(135deg, #f8f6f0 0%, #d4b896 100%); }
+    </style>
+</head>
+
+<body class="bg-warm-birch-white text-gray-800 font-sans leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#solution" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">Så fungerar det</a>
+                    <a href="index.html#technology" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">Välj version</a>
+                    <a href="prova-weaver.html" class="bg-sacred-alliance-purple text-white px-6 py-2 rounded-full font-medium lagom-hover hover:bg-sacred-alliance-purple/90">Prova Weaver</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-deep-swedish-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="family-warmth py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-truth-anchor-copper/20 rounded-full p-4 w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                <svg class="h-10 w-10 text-truth-anchor-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+            </div>
+            <h1 class="text-4xl lg:text-5xl font-display font-bold text-deep-swedish-blue mb-6">
+                Säkerhet & Integritet
+            </h1>
+            <p class="text-xl text-gray-700 mb-8">
+                Er familjedata är trygg med oss - byggt enligt svenska säkerhetsstandarder
+            </p>
+        </div>
+    </section>
+
+    <!-- Security Principles -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-display font-bold text-deep-swedish-blue mb-4">
+                    Våra säkerhetsprinciper
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Balans är byggt med svenska värderingar i fokus - er integritet och familjesäkerhet kommer alltid först
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Family First -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover text-center">
+                    <div class="bg-sage-green/20 rounded-full p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                        <svg class="h-8 w-8 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">Familj först</h3>
+                    <p class="text-gray-600">
+                        Era familjesamtal stannar inom familjen. Vi delar aldrig, säljer aldrig eller använder er data för andra ändamål än att hjälpa er kommunicera bättre.
+                    </p>
+                </div>
+
+                <!-- Swedish Standards -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover text-center">
+                    <div class="bg-deep-swedish-blue/20 rounded-full p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                        <svg class="h-8 w-8 text-deep-swedish-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">Svenska standarder</h3>
+                    <p class="text-gray-600">
+                        Vi följer GDPR, svenska dataskyddslagar och använder säkra svenska datacenter. Er data lämnar aldrig Sverige utan ert uttryckliga medgivande.
+                    </p>
+                </div>
+
+                <!-- Lagom Principle -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover text-center">
+                    <div class="bg-soft-thread-gold/20 rounded-full p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+                        <svg class="h-8 w-8 text-soft-thread-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">Lagom-principen</h3>
+                    <p class="text-gray-600">
+                        Vi samlar bara den data som behövs för att hjälpa er familj. Inte mer, inte mindre - precis lagom för att ge er bästa möjliga stöd.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Security -->
+    <section class="py-20 bg-gradient-to-br from-warm-birch-white to-natural-birch-wood/20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-display font-bold text-deep-swedish-blue mb-4">
+                    Teknisk säkerhet
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Så skyddar vi er familjedata tekniskt
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Encryption -->
+                <div class="bg-white rounded-2xl p-8 lagom-shadow">
+                    <div class="flex items-start space-x-6">
+                        <div class="bg-truth-anchor-copper/20 rounded-full p-3 flex-shrink-0">
+                            <svg class="h-8 w-8 text-truth-anchor-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-deep-swedish-blue mb-3">End-to-end kryptering</h3>
+                            <p class="text-gray-600 mb-4">
+                                All kommunikation mellan er familj och Weaver är krypterad med AES-256 standard. Era meddelanden kan bara läsas av er familj och Weaver - ingen annan, inte ens vi på Balans.
+                            </p>
+                            <ul class="text-sm text-gray-500 space-y-1">
+                                <li>• AES-256 kryptering för all data</li>
+                                <li>• TLS 1.3 för all nätverkstrafik</li>
+                                <li>• Krypterade databaser i svenska datacenter</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Minimization -->
+                <div class="bg-white rounded-2xl p-8 lagom-shadow">
+                    <div class="flex items-start space-x-6">
+                        <div class="bg-sage-green/20 rounded-full p-3 flex-shrink-0">
+                            <svg class="h-8 w-8 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-deep-swedish-blue mb-3">Dataminimering</h3>
+                            <p class="text-gray-600 mb-4">
+                                Vi sparar bara det som behövs för att Weaver ska kunna hjälpa er familj. Gammal data raderas automatiskt och ni kan när som helst be oss radera all er data.
+                            </p>
+                            <ul class="text-sm text-gray-500 space-y-1">
+                                <li>• Automatisk radering efter 90 dagar</li>
+                                <li>• Ni äger er data och kan radera den när som helst</li>
+                                <li>• Inga personuppgifter sparas utan ert medgivande</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Access Control -->
+                <div class="bg-white rounded-2xl p-8 lagom-shadow">
+                    <div class="flex items-start space-x-6">
+                        <div class="bg-sacred-alliance-purple/20 rounded-full p-3 flex-shrink-0">
+                            <svg class="h-8 w-8 text-sacred-alliance-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-deep-swedish-blue mb-3">Åtkomstkontroll</h3>
+                            <p class="text-gray-600 mb-4">
+                                Bara ni i familjen har tillgång till er data. Våra tekniker kan aldrig läsa era meddelanden och all åtkomst loggas och övervakas enligt svenska säkerhetsstandarder.
+                            </p>
+                            <ul class="text-sm text-gray-500 space-y-1">
+                                <li>• Tvåfaktorsautentisering för alla konton</li>
+                                <li>• Rollbaserad åtkomst inom familjen</li>
+                                <li>• Fullständig loggning av all systemåtkomst</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deployment Options Security -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-display font-bold text-deep-swedish-blue mb-4">
+                    Säkerhet för olika alternativ
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Välj den säkerhetsnivå som passar er familj
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Balans Hosted -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">Balans Hosted</h3>
+                    <div class="space-y-3 text-gray-600 mb-6">
+                        <div class="flex items-center space-x-2">
+                            <svg class="h-5 w-5 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Svenska datacenter (Stockholm)</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="h-5 w-5 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>GDPR-certifierad hosting</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="h-5 w-5 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>24/7 säkerhetsövervakning</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="h-5 w-5 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Automatiska säkerhetsuppdateringar</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500">Rekommenderat för de flesta familjer</p>
+                </div>
+
+                <!-- WeaverMesh -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">WeaverMesh</h3>
+                    <div class="space-y-3 text-gray-600 mb-6">
+                        <div class="flex items-center space-x-2">
+                            <svg class="h-5 w-5 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>100% lokal installation</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="h-5 w-5 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Ingen data lämnar hemmet</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="h-5 w-5 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Öppen källkod - granskningsbar</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="h-5 w-5 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Full kontroll över säkerhet</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500">För tekniskt kunniga familjer</p>
+                </div>
+
+                <!-- Home Hub -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">Weaver Home Hub</h3>
+                    <div class="space-y-3 text-gray-600 mb-6">
+                        <div class="flex items-center space-x-2">
+                            <svg class="h-5 w-5 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Plug-and-play säkerhet</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="h-5 w-5 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Hårdvarukryptering</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="h-5 w-5 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Ingen internetuppkoppling nödvändig</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="h-5 w-5 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Fysisk säkerhet hemma</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500">Kommer 2026 - maximal säkerhet</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Security -->
+    <section class="py-20 bg-deep-swedish-blue text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-display font-bold mb-4">
+                Frågor om säkerhet?
+            </h2>
+            <p class="text-xl text-blue-100 mb-8">
+                Vi svarar gärna på alla era säkerhetsfrågor
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="kontakt.html" class="bg-white text-deep-swedish-blue px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-gray-100">
+                    Kontakta oss
+                </a>
+                <a href="mailto:security@balans.se" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-white hover:text-deep-swedish-blue">
+                    security@balans.se
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                    <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                    <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                </div>
+                <p class="text-gray-600 mb-6">AI-stöd för svenska familjer som respekterar era värderingar</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Hem</a>
+                    <a href="om-oss.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Om oss</a>
+                    <a href="integritet.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Integritet</a>
+                    <a href="villkor.html" class="text-gray-600 hover:text-deep-swedish-blue lagom-hover">Villkor</a>
+                </div>
+                <div class="border-t border-natural-birch-wood/20 mt-8 pt-8 text-gray-500">
+                    <p>&copy; 2025 Balans. Alla rättigheter förbehållna.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+</html>
