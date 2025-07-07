@@ -1271,6 +1271,9 @@
             enTexts.forEach(el => el.classList.add('hidden'));
             
             document.documentElement.lang = 'sv';
+            
+            // Update dynamic chat messages
+            updateChatLanguage();
         }
 
         function showEnglish() {
@@ -1298,6 +1301,9 @@
             svTexts.forEach(el => el.classList.add('hidden'));
             
             document.documentElement.lang = 'en';
+            
+            // Update dynamic chat messages
+            updateChatLanguage();
         }
 
         // Add event listeners for language toggle buttons
@@ -1511,6 +1517,7 @@
 
         // Dynamic Family Chat Animation
         let chatAnimationTriggered = false;
+        let currentChatMessages = [];
         
         const chatObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1524,12 +1531,39 @@
             rootMargin: '0px 0px -100px 0px'
         });
 
+        function updateChatLanguage() {
+            // Update language for dynamically created chat messages
+            const chatContainer = document.getElementById('chat-messages');
+            if (chatContainer) {
+                const isSwedish = document.documentElement.lang === 'sv';
+                const svTexts = chatContainer.querySelectorAll('.sv-text');
+                const enTexts = chatContainer.querySelectorAll('.en-text');
+                
+                svTexts.forEach(el => {
+                    if (isSwedish) {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                });
+                
+                enTexts.forEach(el => {
+                    if (isSwedish) {
+                        el.classList.add('hidden');
+                    } else {
+                        el.classList.remove('hidden');
+                    }
+                });
+            }
+        }
+
         function startFamilyChatAnimation() {
             const chatContainer = document.getElementById('chat-messages');
             if (!chatContainer) return;
 
             // Clear any existing content
             chatContainer.innerHTML = '';
+            currentChatMessages = [];
 
             // Create typing indicator
             function createTypingIndicator() {
@@ -1575,7 +1609,11 @@
                         // Emma's message
                         const emmaMessage = createMessage('whatever', 'Emma (15)');
                         chatContainer.appendChild(emmaMessage);
-                        setTimeout(() => emmaMessage.classList.add('appear'), 50);
+                        currentChatMessages.push(emmaMessage);
+                        setTimeout(() => {
+                            emmaMessage.classList.add('appear');
+                            updateChatLanguage();
+                        }, 50);
                     }
                 },
                 {
@@ -1595,7 +1633,11 @@
                                 true
                             );
                             chatContainer.appendChild(weaverMessage);
-                            setTimeout(() => weaverMessage.classList.add('appear'), 50);
+                            currentChatMessages.push(weaverMessage);
+                            setTimeout(() => {
+                                weaverMessage.classList.add('appear');
+                                updateChatLanguage();
+                            }, 50);
                         }, 1000);
                     }
                 },
@@ -1612,12 +1654,16 @@
                             chatContainer.removeChild(typing);
                             const momMessage = createMessage(
                                 '<span class="sv-text">Hej älskling, låter som en tuff dag. Vill du prata eller ska jag bara ge dig lite utrymme? ❤️</span><span class="en-text hidden">Hey sweetheart, sounds like a tough day. Want to talk or should I just give you some space? ❤️</span>',
-                                'Mamma',
+                                '<span class="sv-text">Mamma</span><span class="en-text hidden">Mom</span>',
                                 false,
                                 'right'
                             );
                             chatContainer.appendChild(momMessage);
-                            setTimeout(() => momMessage.classList.add('appear'), 50);
+                            currentChatMessages.push(momMessage);
+                            setTimeout(() => {
+                                momMessage.classList.add('appear');
+                                updateChatLanguage();
+                            }, 50);
                         }, 1200);
                     }
                 }
