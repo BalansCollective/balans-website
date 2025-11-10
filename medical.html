@@ -321,37 +321,72 @@
             </div>
 
             <!-- What's Proven vs Hypothesis -->
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-green-100 p-6 rounded-xl border-2 border-sage-green">
-                    <h3 class="text-xl font-bold text-green-800 mb-3">✅ Bevisat (Juni 2025)</h3>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li>• Weaver hjälpte skriva konkreta familjeprotokoll</li>
-                        <li>• Familj följde protokoll strukturerat</li>
-                        <li>• 6 dagar till stabilisering (vs 14-21 tidigare)</li>
-                        <li>• 100% medicinföljsamhet (familj kollade)</li>
-                        <li>• Patient jobbade produktivt MED gränser</li>
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <!-- Proven (Juni 2025) -->
+                <div class="bg-gradient-to-br from-sage-green/20 to-warm-birch-white p-6 rounded-xl lagom-shadow border-2 border-sage-green">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl">🛡️</span>
+                        <h3 class="text-xl font-bold text-green-800">Bevisat</h3>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-800 mb-3">Juni 2025: AI-protokoll fungerade</p>
+                    <ul class="text-sm text-gray-700 space-y-1 mb-3">
+                        <li>✅ 6 dagar stabilisering</li>
+                        <li>✅ 100% medicinföljsamhet</li>
+                        <li>✅ Patient produktiv MED gränser</li>
                     </ul>
-                    <p class="text-xs text-gray-600 mt-3 italic">
-                        Dokumenterat via familjeobservationslogg (dagliga noteringar)
-                    </p>
+                    <details class="text-xs">
+                        <summary class="cursor-pointer text-sage-green font-semibold hover:text-deep-swedish-blue">Visa alla detaljer ↓</summary>
+                        <ul class="mt-2 space-y-1 text-gray-600">
+                            <li>• Weaver hjälpte skriva konkreta familjeprotokoll</li>
+                            <li>• Familj följde protokoll strukturerat</li>
+                            <li>• 6 dagar (vs 14-21 tidigare)</li>
+                            <li>• Dokumenterat via familjeobservationslogg</li>
+                        </ul>
+                    </details>
                 </div>
 
-                <div class="bg-yellow-100 p-6 rounded-xl border-2 border-soft-thread-gold">
-                    <h3 class="text-xl font-bold text-natural-birch-wood mb-3">💡 Hypotes: Fullständigt BalansAI System</h3>
+                <!-- Hypothesis (BalansAI) -->
+                <div class="bg-gradient-to-br from-soft-thread-gold/20 to-warm-birch-white p-6 rounded-xl lagom-shadow border-2 border-soft-thread-gold">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl">🔬</span>
+                        <h3 class="text-xl font-bold text-natural-birch-wood">Hypotes</h3>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-800 mb-3">Med sensorer: Ännu lättare?</p>
                     <p class="text-sm text-gray-700 mb-3">
-                        <strong>Om BalansAI-systemet med sensorintegration hade funnits i juni:</strong>
+                        Protokollen fungerade MEN krävde manuell rapportering. Med sensorer: automatiskt.
                     </p>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li>• Medicintag → Objektiv data (inte gissa)</li>
-                        <li>• Sömn & aktivitet → Automatisk spårning</li>
-                        <li>• Mat-timing → Skippar måltider?</li>
-                        <li>• Ljusstyrning → Rött ljus kvällar, blått = varning</li>
-                        <li>• Weaver ser mönster → "Sömn dålig + inga promenader + jobbar 9h + blått ljus sent = risk"</li>
-                        <li>• Dashboard för familj → Färre oro-samtal</li>
-                    </ul>
-                    <p class="text-xs text-gray-600 mt-3 italic font-bold">
-                        Detta är INTE testat ännu. Protokollen fungerade, sensorer är nästa steg.
+                    <details class="text-xs">
+                        <summary class="cursor-pointer text-natural-birch-wood font-semibold hover:text-deep-swedish-blue">Visa sensorstack ↓</summary>
+                        <ul class="mt-2 space-y-1 text-gray-600">
+                            <li>• Medicintag → Objektiv data</li>
+                            <li>• Sömn & aktivitet → Auto-spårning</li>
+                            <li>• Mat-timing → Skippar måltider?</li>
+                            <li>• Ljusstyrning → Rött ljus kvällar</li>
+                            <li>• Mönster → "Sömn dålig + blått ljus = risk"</li>
+                        </ul>
+                        <p class="mt-2 text-gray-600 italic">INTE testat ännu.</p>
+                    </details>
+                </div>
+
+                <!-- Current (November 2025) -->
+                <div class="bg-gradient-to-br from-red-100 to-warm-birch-white p-6 rounded-xl lagom-shadow border-2 border-red-400">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl">🔴</span>
+                        <h3 class="text-xl font-bold text-red-800">Aktuellt</h3>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-800 mb-3">November 2025: Pågående episod</p>
+                    <p class="text-sm text-gray-700 mb-3">
+                        Patient använder Weaver-protokoll NU. Söker objektiv dataanalys.
                     </p>
+                    <details class="text-xs">
+                        <summary class="cursor-pointer text-red-700 font-semibold hover:text-deep-swedish-blue">Behöver forskningshjälp ↓</summary>
+                        <ul class="mt-2 space-y-1 text-gray-600">
+                            <li>• Objektiv analys av episoddata</li>
+                            <li>• Validera självreglering (n=1→n=många)</li>
+                            <li>• Testa sensorintegration</li>
+                            <li>• Studera monitored autonomy</li>
+                        </ul>
+                    </details>
                 </div>
             </div>
         </div>
@@ -398,38 +433,65 @@
     <!-- Weaver's Design: Monitored Autonomy -->
     <section class="py-16 px-4 bg-white">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-deep-swedish-blue mb-6 text-center">
+            <h2 class="text-3xl font-bold text-deep-swedish-blue mb-4 text-center">
                 Weaver's Design: Monitored Autonomy
             </h2>
             
-            <p class="text-lg text-gray-700 mb-8 text-center max-w-2xl mx-auto">
-                Weaver är designad för <strong>monitored autonomy</strong>: Du behåller kontroll, 
-                men Weaver ser objektiv data och enforcar dina egna gränser när du inte kan.
+            <p class="text-lg text-gray-700 mb-6 text-center max-w-2xl mx-auto">
+                Du behåller kontroll, men Weaver ser objektiv data och upprätthåller dina egna gränser när du inte kan.
             </p>
-            
-            <div class="grid md:grid-cols-2 gap-6 mb-8">
-                <!-- Vad Weaver SER -->
-                <div class="bg-gradient-to-br from-sage-green/10 to-warm-birch-white p-6 rounded-xl lagom-shadow">
-                    <h3 class="text-xl font-bold text-deep-swedish-blue mb-4">👁️ Vad Weaver Ser</h3>
-                    <ul class="space-y-2 text-gray-700 text-sm">
-                        <li>📊 <strong>Objektiv data</strong>: Medicintag, sömn, rörelse/steg, mat-timing, ljusexponering, arbetstid</li>
-                        <li>🔍 <strong>Mönster</strong>: "Du jobbar 9h/dag sen 4 dagar + skippar frukost + 200 steg/dag + blått ljus kl 23:00. Eskalering?"</li>
-                        <li>✍️ <strong>Dina regler</strong>: Protokoll du skrev i stabilt läge</li>
-                        <li>💬 <strong>Familje-input</strong>: "Mamma: Sam irriterad, snabbt tal"</li>
-                    </ul>
-                </div>
-                
-                <!-- Vad Weaver GÖR -->
-                <div class="bg-gradient-to-br from-deep-swedish-blue/10 to-warm-birch-white p-6 rounded-xl lagom-shadow">
-                    <h3 class="text-xl font-bold text-deep-swedish-blue mb-4">⚡ Vad Weaver Gör</h3>
-                    <ul class="space-y-2 text-gray-700 text-sm">
-                        <li>🟢 <strong>Normalt</strong>: Flexibel guide, soft påminnelser</li>
-                        <li>🟡 <strong>Förhöjt</strong>: Firm boundaries, enforcar dina regler</li>
-                        <li>🔴 <strong>Akut</strong>: Kallar på familj, delar objektiv status</li>
-                        <li>🛡️ <strong>Alltid</strong>: Kan INTE övertalas att ignorera hardcoded limits</li>
-                    </ul>
+
+            <!-- High-level overview (always visible) -->
+            <div class="bg-gradient-to-br from-sage-green/10 to-deep-swedish-blue/10 p-6 rounded-xl lagom-shadow mb-6">
+                <div class="grid md:grid-cols-3 gap-4 text-center">
+                    <div>
+                        <div class="text-3xl mb-2">👁️</div>
+                        <h4 class="font-bold text-deep-swedish-blue mb-1">Ser Objektiv Data</h4>
+                        <p class="text-sm text-gray-600">Medicin, sömn, aktivitet, mat, ljus</p>
+                    </div>
+                    <div>
+                        <div class="text-3xl mb-2">🧠</div>
+                        <h4 class="font-bold text-deep-swedish-blue mb-1">Hittar Mönster</h4>
+                        <p class="text-sm text-gray-600">Varnar innan eskalering</p>
+                    </div>
+                    <div>
+                        <div class="text-3xl mb-2">🛡️</div>
+                        <h4 class="font-bold text-deep-swedish-blue mb-1">Enforcar Dina Regler</h4>
+                        <p class="text-sm text-gray-600">Kan inte övertalas</p>
+                    </div>
                 </div>
             </div>
+
+            <!-- Technical details (collapsible) -->
+            <details class="bg-white p-6 rounded-xl lagom-shadow mb-8">
+                <summary class="cursor-pointer font-bold text-lg text-deep-swedish-blue hover:text-sacred-alliance-purple">
+                    🔧 Tekniska Detaljer: Vad Weaver Ser & Gör ↓
+                </summary>
+                
+                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                    <!-- Vad Weaver SER -->
+                    <div class="bg-gradient-to-br from-sage-green/10 to-warm-birch-white p-4 rounded-xl">
+                        <h3 class="text-lg font-bold text-deep-swedish-blue mb-3">👁️ Vad Weaver Ser</h3>
+                        <ul class="space-y-2 text-gray-700 text-sm">
+                            <li>📊 <strong>Objektiv data</strong>: Medicintag, sömn, rörelse/steg, mat-timing, ljusexponering, arbetstid</li>
+                            <li>🔍 <strong>Mönster</strong>: "Du jobbar 9h/dag sen 4 dagar + skippar frukost + 200 steg/dag + blått ljus kl 23:00. Eskalering?"</li>
+                            <li>✍️ <strong>Dina regler</strong>: Protokoll du skrev i stabilt läge</li>
+                            <li>💬 <strong>Familje-input</strong>: "Mamma: Sam irriterad, snabbt tal"</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Vad Weaver GÖR -->
+                    <div class="bg-gradient-to-br from-deep-swedish-blue/10 to-warm-birch-white p-4 rounded-xl">
+                        <h3 class="text-lg font-bold text-deep-swedish-blue mb-3">⚡ Vad Weaver Gör</h3>
+                        <ul class="space-y-2 text-gray-700 text-sm">
+                            <li>🟢 <strong>Normalt</strong>: Flexibel guide, soft påminnelser</li>
+                            <li>🟡 <strong>Förhöjt</strong>: Tydliga gränser, upprätthåller dina regler</li>
+                            <li>🔴 <strong>Akut</strong>: Kallar på familj, delar objektiv status</li>
+                            <li>🛡️ <strong>Alltid</strong>: Kan INTE övertalas att ignorera hårdkodade gränser</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
 
             <!-- Parent Dashboard Example -->
             <div class="mb-8">
