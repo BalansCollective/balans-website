@@ -327,10 +327,10 @@
                         <strong>Om BalansAI-systemet med sensorintegration hade funnits i juni:</strong>
                     </p>
                     <ul class="space-y-2 text-sm text-gray-700">
-                        <li>• Pillerburk-sensorer → Objektiv medicindata (inte gissa)</li>
-                        <li>• Fitbit/Garmin → Sömnkvalitet, steg, aktivitet automatiskt</li>
-                        <li>• MyFitnessPal → Mattiming, kalorier (skippar måltider?)</li>
-                        <li>• Philips Hue → Ljusstyrning, blått ljus på kvällen = varning</li>
+                        <li>• Medicintag → Objektiv data (inte gissa)</li>
+                        <li>• Sömn & aktivitet → Automatisk spårning</li>
+                        <li>• Mat-timing → Skippar måltider?</li>
+                        <li>• Ljusstyrning → Rött ljus kvällar, blått = varning</li>
                         <li>• Weaver ser mönster → "Sömn dålig + inga promenader + jobbar 9h + blått ljus sent = risk"</li>
                         <li>• Dashboard för familj → Färre oro-samtal</li>
                     </ul>
@@ -383,7 +383,7 @@
                 <div class="bg-gradient-to-br from-sage-green/10 to-warm-birch-white p-6 rounded-xl lagom-shadow">
                     <h3 class="text-xl font-bold text-deep-swedish-blue mb-4">👁️ Vad Weaver Ser</h3>
                     <ul class="space-y-2 text-gray-700 text-sm">
-                        <li>📊 <strong>Objektiv data</strong>: Pillerburk (medicin?), Fitbit/Garmin (sömn, steg, aktivitet), MyFitnessPal (mat), Philips Hue (ljus), arbetstid</li>
+                        <li>📊 <strong>Objektiv data</strong>: Medicintag, sömn, rörelse/steg, mat-timing, ljusexponering, arbetstid</li>
                         <li>🔍 <strong>Mönster</strong>: "Du jobbar 9h/dag sen 4 dagar + skippar frukost + 200 steg/dag + blått ljus kl 23:00. Eskalering?"</li>
                         <li>✍️ <strong>Dina regler</strong>: Protokoll du skrev i stabilt läge</li>
                         <li>💬 <strong>Familje-input</strong>: "Mamma: Sam irriterad, snabbt tal"</li>
@@ -454,10 +454,10 @@
                 <div class="bg-gradient-to-br from-sage-green/20 to-deep-swedish-blue/10 p-6 rounded-xl lagom-shadow">
                     <h3 class="text-xl font-bold text-deep-swedish-blue mb-4">🤖 Med Sensorer: Automatiskt</h3>
                     <ul class="space-y-2 text-sm text-gray-700">
-                        <li>✅ Pillerburk-sensor → Weaver ser om medicin tagen</li>
-                        <li>✅ Fitbit/Garmin → Sömn, steg, puls till dashboard automatiskt</li>
-                        <li>✅ MyFitnessPal → Mat-timing spårad (skippar frukost?)</li>
-                        <li>✅ Philips Hue → Ljusstyrning automatisk (rött ljus 21:00+, blått = varning)</li>
+                        <li>✅ Medicintag-sensor → Weaver ser om medicin tagen</li>
+                        <li>✅ Aktivitetstracker → Sömn, steg, puls automatiskt till dashboard</li>
+                        <li>✅ Mat-app → Mat-timing spårad (skippar frukost?)</li>
+                        <li>✅ Smart belysning → Ljusstyrning automatisk (rött ljus 21:00+, blått = varning)</li>
                         <li>✅ Arbetstid spårad → Weaver upprätthåller 6h-gräns</li>
                         <li>✅ Dashboard visar status → Färre oro-samtal</li>
                     </ul>
@@ -481,7 +481,7 @@
                         <ul class="text-sm text-gray-700 space-y-1">
                         <li>• <strong>Self-hosted möjligt</strong>: GDPR-säker från grunden</li>
                         <li>• <strong>Zenoh pub/sub</strong>: Realtids sensor-dataströmning</li>
-                            <li>• <strong>Plugin architecture</strong>: Pillerburkar, Fitbit, Garmin, MyFitnessPal, Philips Hue, kalender</li>
+                            <li>• <strong>Plugin architecture</strong>: Flexibel sensorintegration (pillerburkar, aktivitet, mat, ljus)</li>
                             <li>• <strong>Öppen källkod</strong>: Granskbar, modifierbar</li>
                         </ul>
                     </div>
@@ -572,7 +572,7 @@
                 </div>
                 <div class="bg-white/10 p-4 rounded-lg">
                     <h3 class="font-bold text-lg mb-2">📊 Sensorintegration</h3>
-                    <p class="text-sm text-blue-200">Pillerburkar, Fitbit/Garmin (sömn, steg), MyFitnessPal (mat), Philips Hue (ljus). Automatisera objektiv datainsamling.</p>
+                    <p class="text-sm text-blue-200">Medicin, sömn, aktivitet, mat, ljus. Automatisera objektiv datainsamling.</p>
                 </div>
                 <div class="bg-white/10 p-4 rounded-lg">
                     <h3 class="font-bold text-lg mb-2">💬 Säker Kommunikation</h3>
