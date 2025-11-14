@@ -50,7 +50,7 @@ Zopiklon 7,5mg vid sömnbehov
 • Aktivering >8 som inte går ner med medicin
 
 📞 Litiumsköterskor: 090-123 45 67
-📅 Nästa kontroll: 15 december 2024`,lastModified:"7 nov 2024",modifiedBy:"Pia Andersson (Psykiatriker)"},history:[{id:3,date:"7 nov 2024",modifiedBy:"Pia Andersson",content:`Patient: Samuel Lindgren (910206-1554)
+📅 Nästa kontroll: 15 december 2024`,lastModified:"7 nov 2024",modifiedBy:"Pia Nordanskog (Psykiatriker)"},history:[{id:3,date:"7 nov 2024",modifiedBy:"Pia Nordanskog",content:`Patient: Samuel Lindgren (910206-1554)
 
 Lithium 600mg morgon (08:00) + kväll (20:00)
 Olanzapin 15mg vid aktivering >7 (kan öka till 20mg vid behov)
@@ -62,7 +62,7 @@ Zopiklon 7,5mg vid sömnbehov
 • Aktivering >8 som inte går ner med medicin
 
 📞 Litiumsköterskor: 090-123 45 67
-📅 Nästa kontroll: 15 december 2024`,note:"Justerade olanzapin-dos baserat på sommarens episod"},{id:2,date:"23 juni 2024",modifiedBy:"Pia Andersson",content:`Lithium 600mg morgon + kväll
+📅 Nästa kontroll: 15 december 2024`,note:"Justerade olanzapin-dos baserat på sommarens episod"},{id:2,date:"23 juni 2024",modifiedBy:"Pia Nordanskog",content:`Lithium 600mg morgon + kväll
 Olanzapin 10mg vid behov (maxdos 20mg)
 Zopiklon 7,5mg vid sömnproblem
 
@@ -71,7 +71,7 @@ Ring vid:
 • Missar medicin
 • Känner dig mycket aktiverad
 
-Kontakt: Litiumsköterskor 090-123 45 67`,note:"Akut justering under hypoman episod"},{id:1,date:"15 mars 2024",modifiedBy:"Pia Andersson",content:`Lithium 600mg morgon + kväll
+Kontakt: Litiumsköterskor 090-123 45 67`,note:"Akut justering under hypoman episod"},{id:1,date:"15 mars 2024",modifiedBy:"Pia Nordanskog",content:`Lithium 600mg morgon + kväll
 Olanzapin 10mg vid behov
 
 Ring vid frågor: Litiumsköterskor 090-123 45 67
