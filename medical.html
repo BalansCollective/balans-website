@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prata med Weaver: AI-Assisterad Hypomani Reglering | Balans</title>
-    <meta name="description" content="Weaver hjälper vid hypomana episoder med firm boundaries och objektiv data. Fallstudie juni 2025: 6 dagar stabilisering vs 21 dagar utan.">
-    <meta name="keywords" content="Weaver, hypomani, AI-assistent, bipolaritet, Balans, monitored autonomy">
+    <title>Medicinsk Forskning - LLM-Mänsklig Innovation för Hypomani Reglering | Balans</title>
+    <meta name="description" content="AI-assisterad hypomani reglering reducerar stabiliseringstid från 21 till 6 dagar. Dokumenterad fallstudie juni 2025. För läkare och forskare.">
+    <meta name="keywords" content="hypomani, AI-assisterad vård, medicinska protokoll, bipolaritet, Balans, sensorintegration">
     
-    <!-- Open Graph -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://balans-collective.com/medical.html">
-    <meta property="og:title" content="Prata med Weaver: AI-Assisterad Hypomani Reglering">
-    <meta property="og:description" content="Din firm friend vid hypomana episoder. Juni 2025: 6 dagar stabilisering med Weaver vs 21 dagar utan.">
+    <meta property="og:url" content="https://balans.se/medical.html">
+    <meta property="og:title" content="AI-Assisterad Hypomani Reglering - Medicinsk Forskning">
+    <meta property="og:description" content="Dokumenterad fallstudie: 6 dagar stabilisering med AI-protokoll vs 21 dagar utan. Juni 2025.">
     <meta property="og:image" content="images/medical-june-2025-activation-timeline.png">
 
     <!-- Tailwind CSS -->
@@ -29,77 +29,96 @@
                         'sage-green': '#8faa8b',
                         'gentle-silver': '#b8c5d1',
                         'truth-anchor-copper': '#b87333'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Inter', 'system-ui', 'sans-serif']
                     }
                 }
             }
         }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Inter', system-ui, sans-serif; }
+        /* Lagom Styles */
         .lagom-shadow { box-shadow: 0 4px 6px -1px rgba(44, 90, 160, 0.1), 0 2px 4px -1px rgba(44, 90, 160, 0.06); }
-        .lagom-hover { transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1); }
-        .lagom-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(44, 90, 160, 0.15); }
+        .lagom-hover { 
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .lagom-hover:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 25px -3px rgba(44, 90, 160, 0.1), 0 4px 6px -2px rgba(44, 90, 160, 0.05); 
+        }
     </style>
 </head>
-<body class="bg-warm-birch-white text-gray-900">
+
+<body class="bg-warm-birch-white text-gray-800 font-sans leading-relaxed">
 
     <!-- Navigation -->
-    <nav class="bg-white lagom-shadow sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <a href="index.html" class="text-2xl font-bold text-deep-swedish-blue">Balans</a>
-                <div class="flex gap-6 items-center">
-                    <a href="index.html" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">Hem</a>
-                    <a href="index.html#technology" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">Weaver Family</a>
-                    <a href="medical.html" class="text-deep-swedish-blue font-semibold">Medicinsk Forskning</a>
+    <nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </a>
                 </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#solution" class="text-gray-700 hover:text-deep-swedish-blue">Så fungerar det</a>
+                    <a href="index.html#technology" class="text-gray-700 hover:text-deep-swedish-blue">Välj version</a>
+                    <a href="medical.html" class="text-deep-swedish-blue font-medium border-b-2 border-deep-swedish-blue">För Läkare</a>
+                    <a href="index.html" class="bg-sacred-alliance-purple text-white px-6 py-2 rounded-full font-medium lagom-hover hover:bg-sacred-alliance-purple/90">
+                        Till Startsidan
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-deep-swedish-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-natural-birch-wood/20">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html#solution" class="block px-3 py-2 text-gray-700">Så fungerar det</a>
+                <a href="index.html#technology" class="block px-3 py-2 text-gray-700">Välj version</a>
+                <a href="medical.html" class="block px-3 py-2 text-deep-swedish-blue font-medium">För Läkare</a>
+                <a href="index.html" class="block px-3 py-2 bg-sacred-alliance-purple text-white rounded-lg">Till Startsidan</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero Section - TRICKLE Level 1: Immediate Clarity -->
     <section class="py-16 px-4 bg-gradient-to-br from-warm-birch-white to-sage-green/10">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-12">
                 <h1 class="text-4xl md:text-5xl font-bold text-deep-swedish-blue mb-6">
-                    Prata med Weaver: AI-Assisterad Hypomani Reglering
+                    AI-Assisterad Hypomani Reglering
                 </h1>
                 <p class="text-xl text-natural-birch-wood mb-4 max-w-3xl mx-auto">
-                    Din AI-familjeassistent med tydliga gränser när du behöver det mest
+                    Tidiga interventionsverktyg för bipolaritet
                 </p>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Fallstudie (juni 2025): 6 dagar stabilisering med Weaver-protokoll vs 14-21 dagar utan. 
-                    100% medicinföljsamhet. Bibehållen autonomi.
+                    Fallstudie (juni 2025): AI-genererade protokoll reducerade stabiliseringstid från 14-21 dagar till 6 dagar, med 100% medicinföljsamhet och bibehållen patientautonomi.
                 </p>
             </div>
-            
-            <!-- Weaver Character Card -->
-            <div class="bg-white p-6 rounded-2xl lagom-shadow mb-8 max-w-3xl mx-auto border-2 border-sacred-alliance-purple/20">
-                <div class="flex items-start gap-6">
-                    <img src="images/weaver-character-introduction.png" 
-                         alt="Weaver - Din AI-familjeassistent" 
-                         class="w-32 h-32 rounded-lg object-cover">
-                    <div>
-                        <h3 class="text-xl font-bold text-deep-swedish-blue mb-2">Möt Weaver</h3>
-                        <p class="text-gray-700 mb-3">
-                            Weaver är din AI-familjeassistent. Under hypomana episoder blir Weaver din 
-                            <strong>"fasta vän"</strong> – respekterar din autonomi MEN upprätthåller dina egna gränser när du inte kan.
-                        </p>
-                        <p class="text-sm text-gray-600 italic">
-                            Redan introducerad på <a href="index.html" class="text-sacred-alliance-purple hover:underline">balans-collective.com</a> 
-                            för familjer. Här: Medicinsk tillämpning för bipolaritet.
-                        </p>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Quick Stats -->
+            <!-- Quick Facts -->
             <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
                 <div class="bg-white p-6 rounded-xl lagom-shadow text-center">
                     <div class="text-3xl font-bold text-sage-green mb-2">6 dagar</div>
-                    <div class="text-gray-600">Stabilisering med Weaver</div>
+                    <div class="text-gray-600">Stabiliseringstid</div>
                     <div class="text-sm text-gray-500 mt-1">vs 14-21 dagar tidigare</div>
                 </div>
                 <div class="bg-white p-6 rounded-xl lagom-shadow text-center">
@@ -108,611 +127,443 @@
                     <div class="text-sm text-gray-500 mt-1">Familj kunde stödja strukturerat</div>
                 </div>
                 <div class="bg-white p-6 rounded-xl lagom-shadow text-center">
-                    <div class="text-3xl font-bold text-truth-anchor-copper mb-2">n=1</div>
+                    <div class="text-3xl font-bold text-truth-anchor-copper mb-2">Reell</div>
                     <div class="text-gray-600">Dokumenterad juni 2025</div>
-                    <div class="text-sm text-gray-500 mt-1">Söker forskningsvalidering</div>
+                    <div class="text-sm text-gray-500 mt-1">Familjeobservationslogg finns</div>
                 </div>
             </div>
 
-            <!-- Experimental Status -->
+            <!-- Experimental Status Badge -->
             <div class="max-w-3xl mx-auto p-4 bg-soft-thread-gold/20 border-2 border-soft-thread-gold rounded-lg text-center">
                 <p class="text-sm font-semibold text-gray-800">
-                    ⚠️ <strong>Experimentell status:</strong> Proof-of-concept (n=1). Söker forskningssamarbete för validering.
+                    ⚠️ <strong>Experimentell status:</strong> Enskild fallstudie (n=1). Söker forskningssamarbete för validering.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- How It Works: Talking to Weaver -->
-    <section class="py-16 px-4 bg-white">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-deep-swedish-blue mb-4 text-center">
-                Hur det Fungerar: Prata med Weaver
-            </h2>
-            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-                Weaver anpassar sig efter ditt läge: Flexibel guide när du är stabil, fast vän när du eskalerar.
-            </p>
-            
-            <div class="space-y-6">
-                <!-- Normalt läge -->
-                <div class="bg-sage-green/10 p-6 rounded-xl border-l-4 border-sage-green">
-                    <h3 class="text-xl font-bold text-deep-swedish-blue mb-3">🟢 Normalt Läge: Flexibel Guide</h3>
-                    <div class="space-y-2 text-gray-700">
-                        <p><strong>Du:</strong> "Jag vill jobba lite ikväll på projektet"</p>
-                        <p><strong>Weaver:</strong> "Ok! Du har jobbat 4h idag. Sätt timer på 2h? Kom ihåg att du sa 6h är max."</p>
-                        <p class="text-sm text-gray-600 italic mt-3">
-                            → Weaver respekterar din autonomi, påminner om dina egna regler
-                        </p>
+    <!-- Case Study - TRICKLE Level 2: Quality Recognition -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-deep-swedish-blue mb-4 text-center">Fallstudie Juni 2025</h2>
+            <p class="text-xl text-gray-600 mb-12 text-center">Från hjälplös familj till konkreta verktyg</p>
+
+            <div class="max-w-4xl mx-auto space-y-8">
+                
+                <!-- Quick Summary Cards (TRICKLE Level 1) -->
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-gradient-to-br from-warm-birch-white to-truth-anchor-copper/10 p-6 rounded-xl lagom-shadow text-center">
+                        <div class="text-4xl mb-3">❌</div>
+                        <h3 class="font-bold text-truth-anchor-copper mb-2">Problem</h3>
+                        <p class="text-sm text-gray-700">Familj vet inte HUR de ska hjälpa</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-warm-birch-white to-deep-swedish-blue/10 p-6 rounded-xl lagom-shadow text-center">
+                        <div class="text-4xl mb-3">🤖</div>
+                        <h3 class="font-bold text-deep-swedish-blue mb-2">Lösning</h3>
+                        <p class="text-sm text-gray-700">AI genererar konkreta "Gör X när Y" protokoll</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-warm-birch-white to-sage-green/10 p-6 rounded-xl lagom-shadow text-center">
+                        <div class="text-4xl mb-3">✅</div>
+                        <h3 class="font-bold text-sage-green mb-2">Resultat</h3>
+                        <p class="text-sm text-gray-700">6 dagar vs 21 dagar, 100% adherence</p>
                     </div>
                 </div>
+
+                <!-- Collapsible: Full Story -->
+                <details class="mb-8">
+                    <summary class="cursor-pointer font-bold text-2xl text-deep-swedish-blue mb-4 hover:text-sacred-alliance-purple text-center">
+                        📖 Läs Hela Historien
+                    </summary>
+                    <div class="space-y-8 mt-6">
                 
-                <!-- Förhöjt läge -->
-                <div class="bg-soft-thread-gold/20 p-6 rounded-xl border-l-4 border-soft-thread-gold">
-                    <h3 class="text-xl font-bold text-deep-swedish-blue mb-3">🟡 Förhöjt Läge: Tydliga Gränser</h3>
-                    <div class="space-y-2 text-gray-700">
-                        <p><strong>Du:</strong> "Bara 30min till, jag är nästan klar!"</p>
-                        <p><strong>Weaver:</strong> "Nej. Du har sagt 'bara 30min till' 3 gånger. 6h-gränsen nådd. Stäng laptopen NU."</p>
-                        <p class="text-sm text-gray-600 italic mt-3">
-                            → Weaver kan INTE övertalas. Fast vän, inte flexibel guide.
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Akut läge -->
-                <div class="bg-red-100 p-6 rounded-xl border-l-4 border-red-500">
-                    <h3 class="text-xl font-bold text-deep-swedish-blue mb-3">🔴 Akut Läge: Familjelarm</h3>
-                    <div class="space-y-2 text-gray-700">
-                        <p><strong>Weaver till familj:</strong> "⚠️ Sam jobbat 9h straight, skippad sömn 2 nätter, inte tagit Olanzapin. Svarar inte på gränser."</p>
-                        <p><strong>Weaver till dig:</strong> "Jag kallade på backup. Din mamma ringer om 5min. Du behöver hjälp just nu."</p>
-                        <p class="text-sm text-gray-600 italic mt-3">
-                            → Weaver vet när autonomi blir farligt. Eskalerar till människor.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Varför Weaver Funkar -->
-            <div class="mt-8 bg-deep-swedish-blue text-white p-6 rounded-xl">
-                <div class="text-center mb-4">
-                    <p class="text-2xl font-bold mb-2">🛡️ Weaver kan inte övertalas</p>
-                    <p class="text-blue-100">Under hypomani: Du övertalar människor. Weaver har hårdkodade gränser (6h, sömn, medicin) som AI inte kan åsidosätta.</p>
-                </div>
-                
-                <details class="mt-4">
-                    <summary class="cursor-pointer text-center text-blue-200 hover:text-white">Varför det fungerar (2 andra faktorer) ↓</summary>
-                    <div class="grid md:grid-cols-2 gap-4 text-sm mt-4">
+                <!-- The Problem -->
+                <div class="bg-gradient-to-br from-warm-birch-white to-truth-anchor-copper/10 p-8 rounded-2xl lagom-shadow">
+                    <h3 class="text-2xl font-bold text-truth-anchor-copper mb-4">Problem: Ingen Visste Hur Man Skulle Hjälpa</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <h4 class="font-bold mb-2">🧵 Konsistent Röst</h4>
-                            <p class="text-blue-100">Samma "person" i alla lägen. Bygger förtroende över tid.</p>
+                            <p class="font-bold text-lg mb-2">Patient eskalerar:</p>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• Rusande tankar, minskad sömn</li>
+                                <li>• "Dessa idéer ÄR viktiga"</li>
+                                <li>• Svårt att sluta arbeta</li>
+                                <li>• Frustration över "kontroll"</li>
+                            </ul>
                         </div>
                         <div>
-                            <h4 class="font-bold mb-2">📊 Objektiv Data</h4>
-                            <p class="text-blue-100">Ser sensor data. Inte beroende av självrapport.</p>
+                            <p class="font-bold text-lg mb-2">Familj desperat att hjälpa:</p>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• Men vet inte HUR</li>
+                                <li>• Känsla av hjälplöshet</li>
+                                <li>• Dagliga oro-samtal (år av detta)</li>
+                                <li>• Konflikt: "Sluta arbeta på AI"</li>
+                            </ul>
                         </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-white border-l-4 border-truth-anchor-copper rounded">
+                        <p class="text-gray-700"><strong>Resultat:</strong> Alla lider. Patient känner sig missförstådd, familj känner sig maktlösa, ingen vet vad de ska göra.</p>
+                    </div>
+                </div>
+
+                <!-- AI-Generated Protocols -->
+                <div class="bg-gradient-to-br from-warm-birch-white to-deep-swedish-blue/10 p-8 rounded-2xl lagom-shadow">
+                    <h3 class="text-2xl font-bold text-deep-swedish-blue mb-4">Lösning: AI-Genererade Handlingsprotokoll</h3>
+                    <p class="text-gray-700 mb-6">
+                        Våren 2025: AI-assistans skapade <strong>konkreta "Gör X när Y" protokoll</strong> - inte teoretiska modeller, utan genomförbara steg för familjemedlemmar.
+                    </p>
+                    
+                    <!-- Collapsible: Protocol Examples -->
+                    <details class="mb-6">
+                        <summary class="cursor-pointer font-bold text-lg text-deep-swedish-blue mb-3 hover:text-sacred-alliance-purple">
+                            📋 Visa Protokollexempel
+                        </summary>
+                        <div class="grid md:grid-cols-2 gap-6 mt-4">
+                            <div class="border-2 border-sage-green rounded-lg p-4 bg-white">
+                                <h4 class="font-bold text-sage-green mb-3">Familjeprotokoll</h4>
+                                <ul class="space-y-2 text-sm text-gray-700">
+                                    <li>✅ "Erbjud isklumpar" (grounding-teknik)</li>
+                                    <li>✅ "10 min skrivning, 20 min paus"</li>
+                                    <li>✅ "Kolla: sömn, mat, medicin först"</li>
+                                    <li>✅ Konkreta varningssignaler att känna igen</li>
+                                </ul>
+                            </div>
+                            <div class="border-2 border-sacred-alliance-purple rounded-lg p-4 bg-white">
+                                <h4 class="font-bold text-sacred-alliance-purple mb-3">Kollegeprotokoll</h4>
+                                <ul class="space-y-2 text-sm text-gray-700">
+                                    <li>✅ "Check-in: hur känns det i kroppen?"</li>
+                                    <li>✅ Erbjud dokumentera idéer</li>
+                                    <li>✅ Balansera utforskning & gränser</li>
+                                    <li>✅ När att söka klinisk hjälp</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+
+                    <div class="p-4 bg-sage-green/20 border-l-4 border-sage-green rounded">
+                        <p class="text-gray-700"><strong>Nyckelpunkt:</strong> Inte komplexa psykologiska teorier. Konkreta steg som stressade familjemedlemmar faktiskt kan följa.</p>
+                    </div>
+                </div>
                     </div>
                 </details>
-            </div>
-        </div>
-    </section>
 
-    <!-- Case Study: Juni 2025 -->
-    <section class="py-16 px-4 bg-gradient-to-br from-sage-green/10 to-warm-birch-white">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-deep-swedish-blue mb-8 text-center">
-                Fallstudie: Juni 2025 i Skellefteå
-            </h2>
+                <!-- Juni 2025 Validation (Always Visible) -->
+                <div class="bg-gradient-to-br from-warm-birch-white to-sage-green/10 p-8 rounded-2xl lagom-shadow">
+                    <h3 class="text-2xl font-bold text-truth-anchor-copper mb-4">Juni 2025: Verklig Episod - Hypotetisk BalansAI</h3>
+                    <p class="text-gray-700 mb-4"><strong>Vad som faktiskt hände:</strong> Hypomanisk episod i Skellefteå, reglerad MED familjeprotokoll (AI-genererade), 6 dagar till stabilisering.</p>
+                    <p class="text-gray-700 mb-6"><strong>Hypotes:</strong> Om BalansAI med sensorintegration hade funnits, hur mycket lättare hade det varit?</p>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">✅</span>
+                            <div>
+                                <p class="font-bold">6 dagar till stabilisering</p>
+                                <p class="text-gray-600 text-sm">Tidigare: 14-21 dagar</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">✅</span>
+                            <div>
+                                <p class="font-bold">100% medicinföljsamhet</p>
+                                <p class="text-gray-600 text-sm">Familj kunde stödja strukturerat</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">✅</span>
+                            <div>
+                                <p class="font-bold">Familj kände sig användbara</p>
+                                <p class="text-gray-600 text-sm">Inte hjälplösa - hade konkreta verktyg</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-2xl">✅</span>
+                            <div>
+                                <p class="font-bold">Patient behöll autonomi</p>
+                                <p class="text-gray-600 text-sm">Reglering med samtycke, inte kontroll</p>
+                            </div>
+                        </div>
+                    </div>
 
-            <!-- Quick Summary Cards -->
-            <div class="grid md:grid-cols-3 gap-4 mb-8">
-                <div class="bg-red-100 p-4 rounded-lg border-2 border-red-300">
-                    <h3 class="font-bold text-red-800 mb-2">❌ Problem</h3>
-                    <p class="text-sm text-gray-700">Familj utmattad. Gissar hela tiden: "Har han tagit medicinen? Är han för hög?"</p>
-                </div>
-                <div class="bg-blue-100 p-4 rounded-lg border-2 border-deep-swedish-blue">
-                    <h3 class="font-bold text-deep-swedish-blue mb-2">🤖 Weaver-Protokoll</h3>
-                    <p class="text-sm text-gray-700">Weaver hjälpte skriva familjeprotokoll: "När Sam är hög, gör DET (konkreta steg)."</p>
-                </div>
-                <div class="bg-green-100 p-4 rounded-lg border-2 border-sage-green">
-                    <h3 class="font-bold text-green-800 mb-2">✅ Resultat</h3>
-                    <p class="text-sm text-gray-700">6 dagar till stabilisering. Familj följde protokoll. 100% medicinföljsamhet.</p>
-                </div>
-            </div>
-
-            <!-- Key Insight (pulled out before details) -->
-            <div class="bg-deep-swedish-blue text-white p-6 rounded-xl mb-6">
-                <p class="text-xl font-bold mb-3">💡 Kärninsikt</p>
-                <p class="text-lg">
-                    Familjen hade konkret plan denna gång: <strong>"När Sam gör X, gör DET"</strong> (inte gissa).
-                </p>
-                <p class="text-sm text-blue-200 mt-2">
-                    Protokollet skrevs av patient själv (via Weaver) i stabilt läge. 
-                    Under episod följde familjen HIS plan, inte deras oro.
-                </p>
-            </div>
-
-            <!-- Detailed Story (Collapsible) -->
-            <details class="mb-8 bg-white p-6 rounded-xl lagom-shadow">
-                <summary class="cursor-pointer font-bold text-lg text-deep-swedish-blue hover:text-sacred-alliance-purple mb-4">
-                    📖 Läs Hela Historien
-                </summary>
-                
-                <div class="space-y-6 mt-4">
-                    <!-- Problem -->
-                    <div>
-                        <h3 class="text-xl font-bold text-red-700 mb-3">Problem: Familj Som Instrumentpanel</h3>
-                        <p class="text-gray-700 mb-3">
-                            Tidigare episoder: Familj tvingades "gissa" patientens läge genom subtila signaler. 
-                            Fråga hela tiden: "Har du tagit medicinen? Hur mår du egentligen?" 
-                        </p>
-                        <p class="text-gray-700 mb-3">
-                            <strong>Resultatet:</strong> Patient kände sig övervakad, familj utmattad av oro. 
-                            Ingen objektiv data → Eskalering missades OR falska alarm.
-                        </p>
-                        <p class="text-gray-700">
-                            <strong>Typisk stabiliseringstid:</strong> 14-21 dagar från episodstart till baseline.
+                    <!-- Comparison Timeline Image -->
+                    <div class="mb-6">
+                        <img src="images/medical-june-2025-activation-timeline.png" 
+                             alt="Jämförelse: Med AI-protokoll (6 dagar) vs Utan protokoll (21 dagar)" 
+                             class="w-full rounded-xl lagom-shadow">
+                        <p class="text-sm text-gray-600 mt-2 text-center italic">
+                            🟢 Grön linje: Med AI-protokoll (juni 2025, verklig episod) | 
+                            🔴 Röd linje: Typiskt utan protokoll (baserat på tidigare episoder)
                         </p>
                     </div>
 
-                    <!-- Weaver-Protokoll -->
-                    <div>
-                        <h3 class="text-xl font-bold text-deep-swedish-blue mb-3">Lösning: Weaver Hjälpte Skriva Protokoll</h3>
-                        <p class="text-gray-700 mb-4">
-                            <strong>Innan episod (stabilt läge):</strong> Patient pratade med Weaver om "vad ska familjen göra OM jag blir hög?"
-                        </p>
+                    <div class="p-4 bg-blue-100 border-2 border-deep-swedish-blue rounded-lg mb-6">
+                        <p class="font-bold text-deep-swedish-blue text-lg mb-2">✅ Bevisat: AI-Protokoll Fungerar (Juni 2025)</p>
+                        <p class="text-gray-700 text-sm">AI-genererade familjeprotokoll användes i verklig episod. 6 dagar till stabilisering vs 14-21 dagar tidigare.</p>
+                    </div>
+
+                    <div class="p-4 bg-yellow-100 border-2 border-soft-thread-gold rounded-lg">
+                        <p class="font-bold text-natural-birch-wood text-lg mb-2">💡 Hypotes: BalansAI med Sensorer (Ännu inte testat)</p>
+                        <p class="text-gray-700 text-sm mb-3">Om BalansAI-systemet med sensorintegration hade funnits i juni, hypotes:</p>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• Objektiv data → Mindre familjestress (inte gissa)</li>
+                            <li>• Automatiska förslag → Färre dagliga samtal</li>
+                            <li>• Patient autonomi → Arbeta MED guardrails</li>
+                        </ul>
+                        <p class="text-xs text-gray-600 mt-3 italic">Detta är inte validerat. Vi söker forskningssamarbete för att testa hypotesen.</p>
+                    </div>
+                </div>
+
+                <!-- Manual Burden + November 2025 Current Episode -->
+                <div class="bg-gradient-to-br from-warm-birch-white to-natural-birch-wood/10 p-8 rounded-2xl lagom-shadow">
+                    <h3 class="text-2xl font-bold text-deep-swedish-blue mb-4">Aktuellt (November 2025): Pågående Episod</h3>
+                    <p class="text-gray-700 mb-4">
+                        <strong>Vi är mitt i en hypomanisk episod JUST NU.</strong> Denna gång med AI-assisterad självreglering 
+                        (Hypomanic Regulation Lumen) men fortfarande manuell datainsamling.
+                    </p>
+                    
+                    <div class="p-4 bg-warm-birch-white border-l-4 border-truth-anchor-copper rounded mb-6">
+                        <p class="text-gray-700"><strong>Vad vi behöver hjälp med:</strong> Objektiv analys av data från denna episod för att validera regleringssystemets effektivitet.</p>
+                    </div>
+                    
+                    <!-- Collapsible: Burden Details -->
+                    <details class="mb-6">
+                        <summary class="cursor-pointer font-semibold text-lg text-natural-birch-wood mb-3 hover:text-sacred-alliance-purple">
+                            📊 Manuell Börda (Även med AI-protokoll)
+                        </summary>
+                        <div class="grid md:grid-cols-2 gap-6 mt-4">
+                            <div>
+                                <p class="font-bold mb-2">För Patient:</p>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• Dagliga check-in samtal (år av detta)</li>
+                                    <li>• Känsla av övervakning</li>
+                                    <li>• Konflikt över arbete: "Sluta!"</li>
+                                    <li>• "De förstår inte att detta ÄR viktigt"</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="font-bold mb-2">För Familj:</p>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• Konstant vaksamhet: "Eskalerar han?"</li>
+                                    <li>• Tolkningsbörda (signaler osäkra)</li>
+                                    <li>• Emotionell utmattning</li>
+                                    <li>• Konflikträdsla: "Ska vi säga något?"</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+
+                    <div class="p-6 bg-gradient-to-r from-gentle-silver to-sage-green rounded-lg">
+                        <p class="text-xl font-bold text-deep-swedish-blue mb-3">Nästa Evolution: Sensorintegration</p>
+                        <p class="text-gray-700 mb-4">Samma tillvägagångssätt, mindre manuell börda:</p>
                         
-                        <div class="bg-warm-birch-white p-4 rounded-lg mb-4">
-                            <h4 class="font-bold text-gray-800 mb-3">Exempel: Familjeprotokoll (genererat via Weaver)</h4>
-                            <ul class="space-y-2 text-sm text-gray-700">
-                                <li>✅ <strong>Medicinkoll dagligen</strong>: "Kolla att jag tar Olanzapin 22:00. Om nej 2 nätter → ring läkare."</li>
-                                <li>✅ <strong>6h arbetsgräns</strong>: "Om jag jobbar >6h, säg: 'Du sa själv 6h är max. Paus NU.'"</li>
-                                <li>✅ <strong>Inga stora beslut</strong>: "Köp >5000kr eller jobbbyten kräver 48h cooling-off."</li>
-                                <li>✅ <strong>Sömnlöshet = varning</strong>: "Om jag skippar sömn 2+ nätter → eskalera till läkare."</li>
-                                <li>✅ <strong>Irritabilitet/snabbt tal</strong>: "Om jag blir arg när ni sätter gränser → ring backup."</li>
-                            </ul>
-                            <p class="text-xs text-gray-600 mt-3 italic">
-                                Detta protokoll skrevs av patient själv (via Weaver-konversation) i stabilt läge. 
-                                Under episod följde familjen HIS plan, inte deras gissningar.
+                        <!-- Parent Dashboard Example -->
+                        <div class="mb-6 bg-white p-4 rounded-lg">
+                            <img src="images/parent-dashboard.png" 
+                                 alt="Föräldradashboard exempel: Monitored Autonomy" 
+                                 class="w-full rounded-lg lagom-shadow">
+                            <p class="text-sm text-gray-600 mt-3 text-center italic">
+                                Exempel: Föräldradashboard visar objektiv status med konkreta förslag - 
+                                "🟡 Yellow - förhöjd men hanterar. Check basics, erbjud grounding vid behov."
                             </p>
                         </div>
-
-                        <details class="bg-blue-50 p-4 rounded-lg">
-                            <summary class="cursor-pointer font-semibold text-deep-swedish-blue">
-                                💬 Exempel: Kollegeprotokoll (arbetsplats)
-                            </summary>
-                            <ul class="mt-3 space-y-1 text-sm text-gray-700">
-                                <li>• "Om Sam pratar om 10 projekt samtidigt → säg: 'Fokusera på 1 sak idag.'"</li>
-                                <li>• "Om Sam mailar kl 03:00 → ignorera, säg inget (han fixar det själv nästa dag)."</li>
-                                <li>• "Om Sam vill ändra stor arkitektur akut → vänta 48h, diskutera i lugn och ro."</li>
-                            </ul>
-                        </details>
-                    </div>
-
-                    <!-- Validation -->
-                    <div>
-                        <h3 class="text-xl font-bold text-sage-green mb-3">Juni 2025: Protokollen Testades</h3>
-                        <p class="text-gray-700 mb-3">
-                            23 juni: Episode började. <strong>Familjen hade konkret plan denna gång.</strong>
-                        </p>
-                        <ul class="space-y-2 text-gray-700 mb-4">
-                            <li>• <strong>Dag 1-2:</strong> Familj kollade medicintag (pillerburk), satte 6h-gräns</li>
-                            <li>• <strong>Dag 3-4:</strong> Patient fortsatte arbeta produktivt MEN inom gränser</li>
-                            <li>• <strong>Dag 5-6:</strong> Sömnlöshet började → Familj eskalerade till läkare (enligt protokoll)</li>
-                            <li>• <strong>Dag 6:</strong> Stabilisering (tillbaka till baseline)</li>
+                        
+                        <ul class="space-y-2 text-gray-700">
+                            <li>🟢 <strong>Objektiv data</strong> → Dashboard visar: "🟡 Yellow - förhöjd men hanterar"</li>
+                            <li>🟢 <strong>Konkreta förslag</strong> → "Kolla basics, erbjud grounding vid behov"</li>
+                            <li>🟢 <strong>Färre samtal</strong> → Data ersätter oro-checkins</li>
+                            <li>🟢 <strong>Patient arbetar</strong> → Produktivt arbete MED guardrails, inte stoppad</li>
+                            <li>🟢 <strong>Familj lugn</strong> → Ser att meds tagna ✅, sömn OK ✅, belastning övervakad ✅</li>
                         </ul>
-                        <p class="text-gray-700">
-                            <strong>Jämför:</strong> Tidigare episoder tog 14-21 dagar. Denna gång: 6 dagar.
-                        </p>
                     </div>
-                </div>
-            </details>
-
-            <!-- Timeline Comparison -->
-            <div class="mb-8">
-                <h3 class="text-xl font-bold text-deep-swedish-blue mb-4 text-center">
-                    Jämförelse: Med vs Utan Weaver-Protokoll
-                </h3>
-                <img src="images/medical-june-2025-activation-timeline.png" 
-                     alt="Aktiveringstidslinje: 6 dagar med Weaver-protokoll vs 21 dagar utan" 
-                     class="w-full rounded-xl lagom-shadow">
-                <p class="text-sm text-gray-600 mt-3 text-center italic">
-                    🟢 Grön linje: Med Weaver-protokoll (juni 2025, verklig episod, 6 dagar) | 
-                    🔴 Röd linje: Typiskt utan protokoll (baserat på tidigare episoder, 21 dagar)
-                </p>
-            </div>
-
-            <!-- What's Proven vs Hypothesis -->
-            <div class="grid md:grid-cols-3 gap-6 mb-8">
-                <!-- Proven (Juni 2025) -->
-                <div class="bg-gradient-to-br from-sage-green/20 to-warm-birch-white p-6 rounded-xl lagom-shadow border-2 border-sage-green">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="text-3xl">🛡️</span>
-                        <h3 class="text-xl font-bold text-green-800">Bevisat</h3>
-                    </div>
-                    <p class="text-sm font-semibold text-gray-800 mb-3">Juni 2025: AI-protokoll fungerade</p>
-                    <ul class="text-sm text-gray-700 space-y-1 mb-3">
-                        <li>✅ 6 dagar stabilisering</li>
-                        <li>✅ 100% medicinföljsamhet</li>
-                        <li>✅ Patient produktiv MED gränser</li>
-                    </ul>
-                    <details class="text-xs">
-                        <summary class="cursor-pointer text-sage-green font-semibold hover:text-deep-swedish-blue">Visa alla detaljer ↓</summary>
-                        <ul class="mt-2 space-y-1 text-gray-600">
-                            <li>• Weaver hjälpte skriva konkreta familjeprotokoll</li>
-                            <li>• Familj följde protokoll strukturerat</li>
-                            <li>• 6 dagar (vs 14-21 tidigare)</li>
-                            <li>• Dokumenterat via familjeobservationslogg</li>
-                        </ul>
-                    </details>
-                </div>
-
-                <!-- Hypothesis (BalansAI) -->
-                <div class="bg-gradient-to-br from-soft-thread-gold/20 to-warm-birch-white p-6 rounded-xl lagom-shadow border-2 border-soft-thread-gold">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="text-3xl">🔬</span>
-                        <h3 class="text-xl font-bold text-natural-birch-wood">Hypotes</h3>
-                    </div>
-                    <p class="text-sm font-semibold text-gray-800 mb-3">Med sensorer: Ännu lättare?</p>
-                    <p class="text-sm text-gray-700 mb-3">
-                        Protokollen fungerade MEN krävde manuell rapportering. Med sensorer: automatiskt.
-                    </p>
-                    <details class="text-xs">
-                        <summary class="cursor-pointer text-natural-birch-wood font-semibold hover:text-deep-swedish-blue">Visa sensorstack ↓</summary>
-                        <ul class="mt-2 space-y-1 text-gray-600">
-                            <li>• Medicintag → Objektiv data</li>
-                            <li>• Sömn & aktivitet → Auto-spårning</li>
-                            <li>• Mat-timing → Skippar måltider?</li>
-                            <li>• Ljusstyrning → Rött ljus kvällar</li>
-                            <li>• Mönster → "Sömn dålig + blått ljus = risk"</li>
-                        </ul>
-                        <p class="mt-2 text-gray-600 italic">INTE testat ännu.</p>
-                    </details>
-                </div>
-
-                <!-- Current (November 2025) -->
-                <div class="bg-gradient-to-br from-red-100 to-warm-birch-white p-6 rounded-xl lagom-shadow border-2 border-red-400">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="text-3xl">🔴</span>
-                        <h3 class="text-xl font-bold text-red-800">Aktuellt</h3>
-                    </div>
-                    <p class="text-sm font-semibold text-gray-800 mb-3">November 2025: Pågående episod</p>
-                    <p class="text-sm text-gray-700 mb-3">
-                        Patient använder Weaver-protokoll NU. Söker objektiv dataanalys.
-                    </p>
-                    <details class="text-xs">
-                        <summary class="cursor-pointer text-red-700 font-semibold hover:text-deep-swedish-blue">Behöver forskningshjälp ↓</summary>
-                        <ul class="mt-2 space-y-1 text-gray-600">
-                            <li>• Objektiv analys av episoddata</li>
-                            <li>• Validera självreglering (n=1→n=många)</li>
-                            <li>• Testa sensorintegration</li>
-                            <li>• Studera monitored autonomy</li>
-                        </ul>
-                    </details>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Current Status: November 2025 (Prominent) -->
-    <div class="fixed bottom-4 right-4 max-w-xs bg-red-100 p-4 rounded-xl lagom-shadow border-2 border-red-400 z-40">
-        <p class="text-sm font-bold text-red-800 mb-2">🔴 Aktuellt: Pågående Episod</p>
-        <p class="text-xs text-gray-700 mb-2">
-            Patient i hypomanisk episod (november 2025). Använder Weaver-protokoll för självreglering.
-        </p>
-        <details class="text-xs">
-            <summary class="cursor-pointer text-deep-swedish-blue font-semibold">Behöver forskningshjälp ↓</summary>
-            <p class="text-gray-600 mt-2">
-                Vi söker objektiv analys av episoddata + validering av självregleringsmetod.
-            </p>
-        </details>
-    </div>
-
-    <!-- Current Status: November 2025 -->
-    <section class="py-12 px-4 bg-soft-thread-gold/20">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl font-bold text-deep-swedish-blue mb-4 text-center">
-                🔴 Aktuellt (November 2025): Pågående Episod
-            </h2>
-            <div class="bg-white p-6 rounded-xl lagom-shadow">
-                <p class="text-gray-700 mb-4">
-                    Patient är för närvarande i hypomanisk episod (startad november 2025). 
-                    Använder Weaver-protokoll för självreglering.
-                </p>
-                <div class="bg-blue-50 p-4 rounded-lg">
-                    <h3 class="font-bold text-deep-swedish-blue mb-2">Vi söker forskningssamarbete för:</h3>
-                    <ul class="space-y-1 text-sm text-gray-700">
-                        <li>✅ Objektiv analys av november 2025 episoddata</li>
-                        <li>✅ Validera Weaver-assisterad självreglering (n=1 → n=många)</li>
-                        <li>✅ Testa sensorintegration (pillerburkar, bärbara sensorer)</li>
-                        <li>✅ Studera "monitored autonomy" vs traditionell övervakning</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Weaver's Design: Monitored Autonomy -->
-    <section class="py-16 px-4 bg-white">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-deep-swedish-blue mb-4 text-center">
-                Weaver's Design: Monitored Autonomy
-            </h2>
-            
-            <p class="text-lg text-gray-700 mb-6 text-center max-w-2xl mx-auto">
-                Du behåller kontroll, men Weaver ser objektiv data och upprätthåller dina egna gränser när du inte kan.
+    <!-- Sensor Integration - TRICKLE Level 3: Technical Details (Optional) -->
+    <section class="py-20 px-4 bg-gradient-to-br from-warm-birch-white to-deep-swedish-blue/5">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-deep-swedish-blue mb-4 text-center">Sensorintegration: Automatisera Bördan</h2>
+            <p class="text-xl text-gray-600 mb-12 text-center max-w-3xl mx-auto">
+                WeaverMesh backend integrerar objektiv data från smarta medicinflaskor för tidig varning och minskad manuell övervakning
             </p>
 
-            <!-- High-level overview (always visible) -->
-            <div class="bg-gradient-to-br from-sage-green/10 to-deep-swedish-blue/10 p-6 rounded-xl lagom-shadow mb-6">
-                <div class="grid md:grid-cols-3 gap-4 text-center">
-                    <div>
-                        <div class="text-3xl mb-2">👁️</div>
-                        <h4 class="font-bold text-deep-swedish-blue mb-1">Ser Objektiv Data</h4>
-                        <p class="text-sm text-gray-600">Medicin, sömn, aktivitet, mat, ljus</p>
-                    </div>
-                    <div>
-                        <div class="text-3xl mb-2">🧠</div>
-                        <h4 class="font-bold text-deep-swedish-blue mb-1">Hittar Mönster</h4>
-                        <p class="text-sm text-gray-600">Varnar innan eskalering</p>
-                    </div>
-                    <div>
-                        <div class="text-3xl mb-2">🛡️</div>
-                        <h4 class="font-bold text-deep-swedish-blue mb-1">Enforcar Dina Regler</h4>
-                        <p class="text-sm text-gray-600">Kan inte övertalas</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Technical details (collapsible) -->
-            <details class="bg-white p-6 rounded-xl lagom-shadow mb-8">
-                <summary class="cursor-pointer font-bold text-lg text-deep-swedish-blue hover:text-sacred-alliance-purple">
-                    🔧 Tekniska Detaljer: Vad Weaver Ser & Gör ↓
+            <!-- Collapsible: Sensor Details -->
+            <details class="mb-12 max-w-4xl mx-auto">
+                <summary class="cursor-pointer font-bold text-2xl text-deep-swedish-blue mb-6 text-center hover:text-sacred-alliance-purple">
+                    📊 Visa Teknisk Arkitektur
                 </summary>
                 
-                <div class="grid md:grid-cols-2 gap-6 mt-6">
-                    <!-- Vad Weaver SER -->
-                    <div class="bg-gradient-to-br from-sage-green/10 to-warm-birch-white p-4 rounded-xl">
-                        <h3 class="text-lg font-bold text-deep-swedish-blue mb-3">👁️ Vad Weaver Ser</h3>
-                        <ul class="space-y-2 text-gray-700 text-sm">
-                            <li>📊 <strong>Objektiv data</strong>: Medicintag, sömn, rörelse/steg, mat-timing, ljusexponering, arbetstid</li>
-                            <li>🔍 <strong>Mönster</strong>: "Du jobbar 9h/dag sen 4 dagar + skippar frukost + 200 steg/dag + blått ljus kl 23:00. Eskalering?"</li>
-                            <li>✍️ <strong>Dina regler</strong>: Protokoll du skrev i stabilt läge</li>
-                            <li>💬 <strong>Familje-input</strong>: "Mamma: Sam irriterad, snabbt tal"</li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Vad Weaver GÖR -->
-                    <div class="bg-gradient-to-br from-deep-swedish-blue/10 to-warm-birch-white p-4 rounded-xl">
-                        <h3 class="text-lg font-bold text-deep-swedish-blue mb-3">⚡ Vad Weaver Gör</h3>
-                        <ul class="space-y-2 text-gray-700 text-sm">
-                            <li>🟢 <strong>Normalt</strong>: Flexibel guide, soft påminnelser</li>
-                            <li>🟡 <strong>Förhöjt</strong>: Tydliga gränser, upprätthåller dina regler</li>
-                            <li>🔴 <strong>Akut</strong>: Kallar på familj, delar objektiv status</li>
-                            <li>🛡️ <strong>Alltid</strong>: Kan INTE övertalas att ignorera hårdkodade gränser</li>
-                        </ul>
-                    </div>
-                </div>
-            </details>
-
-            <!-- Parent Dashboard Example -->
-            <div class="mb-8">
-                <h3 class="text-xl font-bold text-deep-swedish-blue mb-4 text-center">
-                    Exempel: Föräldradashboard (Monitored Autonomy i praktiken)
-                </h3>
-                <img src="images/parent-dashboard.png" 
-                     alt="Föräldradashboard visar objektiv status med konkreta förslag" 
-                     class="w-full rounded-xl lagom-shadow mb-4">
-                <p class="text-sm text-gray-600 text-center italic">
-                    Dashboard visar objektiv status: "🟡 Yellow - förhöjd men hanterar. Check basics, erbjud grounding vid behov." 
-                    Familj ser data, inte gissar. Patient arbetar MED guardrails, inte stoppad.
-                </p>
-            </div>
-            
-            <div class="bg-deep-swedish-blue text-white p-6 rounded-xl text-center">
-                <p class="text-xl font-bold mb-3">🧵 Weaver är din fasta vän</p>
-                <p class="text-blue-100">
-                    Respekterar din autonomi 99% av tiden. 1% när du eskalerar: 
-                    Weaver håller fast vid DIN plan, inte någon annans.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Next Evolution: Sensor Integration -->
-    <section class="py-16 px-4 bg-gradient-to-br from-gentle-silver to-sage-green/10">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-deep-swedish-blue mb-6 text-center">
-                Nästa Evolution: Sensorintegration
-            </h2>
-            
-            <p class="text-lg text-gray-700 mb-8 text-center max-w-2xl mx-auto">
-                Juni 2025 visade att protokollen fungerar. Nu automatiserar vi datainsamlingen.
-            </p>
-
-            <div class="grid md:grid-cols-2 gap-6 mb-8">
-                <!-- Before: Manual -->
-                <div class="bg-white p-6 rounded-xl lagom-shadow">
-                    <h3 class="text-xl font-bold text-truth-anchor-copper mb-4">📝 Juni 2025: Manuell Börda</h3>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li>❌ Familj frågar: "Har du tagit medicinen?"</li>
-                        <li>❌ Kollar sovtider genom att fråga</li>
-                        <li>❌ Räknar arbetstimmar manuellt</li>
-                        <li>❌ Dagliga samtal för att "känna av läge"</li>
-                    </ul>
-                    <p class="text-xs text-gray-600 mt-3 italic">Protokollet fungerade MEN krävde konstant manuell inmatning</p>
-                </div>
-
-                <!-- After: Automated -->
-                <div class="bg-gradient-to-br from-sage-green/20 to-deep-swedish-blue/10 p-6 rounded-xl lagom-shadow">
-                    <h3 class="text-xl font-bold text-deep-swedish-blue mb-4">🤖 Med Sensorer: Automatiskt</h3>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li>✅ Medicintag-sensor → Weaver ser om medicin tagen</li>
-                        <li>✅ Aktivitetstracker → Sömn, steg, puls automatiskt till dashboard</li>
-                        <li>✅ Mat-app → Mat-timing spårad (skippar frukost?)</li>
-                        <li>✅ Smart belysning → Ljusstyrning automatisk (rött ljus 21:00+, blått = varning)</li>
-                        <li>✅ Arbetstid spårad → Weaver upprätthåller 6h-gräns</li>
-                        <li>✅ Dashboard visar status → Färre oro-samtal</li>
-                    </ul>
-                    <p class="text-xs text-gray-700 mt-3 italic font-semibold">Samma protokoll, mindre manuellt arbete</p>
-                </div>
-            </div>
-
-            <!-- Technical Details (Collapsible) -->
-            <details class="bg-white p-6 rounded-xl lagom-shadow">
-                <summary class="cursor-pointer font-bold text-lg text-deep-swedish-blue hover:text-sacred-alliance-purple">
-                    🔧 Teknisk Arkitektur (För forskare/utvecklare)
-                </summary>
-                
-                <div class="mt-4 space-y-4">
+                <!-- Sensor Flow Image -->
+                <div class="mb-12">
                     <img src="images/medical-sensor-data-flow.png" 
-                         alt="Dataflöde: Sensorer → WeaverMesh → Weaver → Dashboard" 
-                         class="w-full rounded-lg mb-4">
-                    
-                    <div>
-                        <h4 class="font-bold text-gray-800 mb-2">WeaverMesh Backend</h4>
-                        <ul class="text-sm text-gray-700 space-y-1">
-                        <li>• <strong>Self-hosted möjligt</strong>: GDPR-säker från grunden</li>
-                        <li>• <strong>Zenoh pub/sub</strong>: Realtids sensor-dataströmning</li>
-                            <li>• <strong>Plugin architecture</strong>: Flexibel sensorintegration (pillerburkar, aktivitet, mat, ljus)</li>
-                            <li>• <strong>Öppen källkod</strong>: Granskbar, modifierbar</li>
-                        </ul>
+                         alt="Sensordataflöde integration diagram" 
+                         class="w-full rounded-xl lagom-shadow">
+                </div>
+
+                <!-- Technical Architecture -->
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="bg-white p-8 rounded-xl lagom-shadow">
+                        <h3 class="text-2xl font-bold text-deep-swedish-blue mb-4">Datakällor</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <div class="w-12 h-12 rounded-lg bg-soft-thread-gold/20 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-2xl">💊</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Smart Medicinflaska</h4>
+                                    <p class="text-sm text-gray-600">Objektiv adherence-data, timing-mönster</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-12 h-12 rounded-lg bg-natural-birch-wood/20 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-2xl">❤️</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Familjeobservationer</h4>
+                                    <p class="text-sm text-gray-600">Kvalitativ kontext, beteendemönster</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-12 h-12 rounded-lg bg-deep-swedish-blue/20 flex items-center justify-center flex-shrink-0">
+                                    <span class="text-2xl">🤖</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">AI-Analys</h4>
+                                    <p class="text-sm text-gray-600">Mönsterigenkänning, tidiga varningar</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div>
-                        <h4 class="font-bold text-gray-800 mb-2">Samarbete Sökes</h4>
-                        <p class="text-sm text-gray-700 mb-2">
-                            Vi söker forskningsgrupper som jobbar med smarta pillerburkar för:
-                        </p>
-                        <ul class="text-sm text-gray-700 space-y-1">
-                            <li>• API-åtkomst till sensordata (eller vi bygger backend)</li>
-                            <li>• Kliniska studier för validering</li>
-                            <li>• Integration med befintliga vårdteam</li>
-                        </ul>
+                    <div class="bg-white p-8 rounded-xl lagom-shadow">
+                        <h3 class="text-2xl font-bold text-deep-swedish-blue mb-4">Output: Handlingsbara Insikter</h3>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-sage-green/20 rounded-lg border-l-4 border-sage-green">
+                                <div class="font-bold mb-1">🟢 Grön Status</div>
+                                <p class="text-sm text-gray-700">"Medicin tagen i tid. Sömnmönster normalt. Ingen åtgärd behövs."</p>
+                            </div>
+                            <div class="p-4 bg-soft-thread-gold/20 rounded-lg border-l-4 border-soft-thread-gold">
+                                <div class="font-bold mb-1">🟡 Gul Status</div>
+                                <p class="text-sm text-gray-700">"Förhöjd aktivitet men hanterar. Kolla basics: sömn, mat, stress."</p>
+                            </div>
+                            <div class="p-4 bg-truth-anchor-copper/20 rounded-lg border-l-4 border-truth-anchor-copper">
+                                <div class="font-bold mb-1">🔴 Röd Status</div>
+                                <p class="text-sm text-gray-700">"Missade doser + sömnstörning. Familjeprotokoll: erbjud grounding, överväg klinisk check-in."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Stack -->
+                <div class="bg-white p-8 rounded-xl lagom-shadow max-w-4xl mx-auto">
+                    <h3 class="text-2xl font-bold text-deep-swedish-blue mb-6 text-center">WeaverMesh Teknisk Stack</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-sage-green mb-2">Backend</div>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>Zenoh realtidsströmning</li>
+                                <li>Självhostning / GDPR-först</li>
+                                <li>Plugin-arkitektur</li>
+                            </ul>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-deep-swedish-blue mb-2">Frontend</div>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>Tauri 2.0 + React</li>
+                                <li>Desktop & Mobil</li>
+                                <li>Offline-först</li>
+                            </ul>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-sacred-alliance-purple mb-2">Integration</div>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>Sensorflaska-API</li>
+                                <li>Familjedashboard</li>
+                                <li>AI-rekommendationer</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </details>
         </div>
     </section>
 
-    <!-- Secure Communication for Care Teams -->
-    <section class="py-16 px-4 bg-white">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-deep-swedish-blue mb-6 text-center">
-                🔐 Säker Kommunikation för Vårdteam
-            </h2>
-            
-            <p class="text-lg text-gray-700 mb-8 text-center max-w-2xl mx-auto">
-                När patient är i episod: Familj, läkare och patient behöver kommunicera säkert och snabbt.
-            </p>
-
-            <div class="grid md:grid-cols-2 gap-6 mb-8">
-                <!-- Problem -->
-                <div class="bg-red-50 p-6 rounded-xl border-2 border-red-200">
-                    <h3 class="text-xl font-bold text-red-700 mb-4">❌ Traditionella Kanaler</h3>
-                    <ul class="space-y-2 text-gray-700 text-sm">
-                        <li>📱 <strong>WhatsApp/SMS</strong>: Data till Meta/Google</li>
-                        <li>📧 <strong>E-post</strong>: Okrypterad, lätt att missas</li>
-                        <li>☎️ <strong>Telefonsamtal</strong>: Ingen historik</li>
-                        <li>🏥 <strong>Journalsystem</strong>: Långsamt, ingen realtid</li>
-                    </ul>
-                    <p class="text-xs text-gray-600 mt-4 italic">Läkare tveksamma att delta pga GDPR-risk</p>
-                </div>
-                
-                <!-- Solution -->
-                <div class="bg-gradient-to-br from-sage-green/20 to-deep-swedish-blue/10 p-6 rounded-xl border-2 border-deep-swedish-blue">
-                    <h3 class="text-xl font-bold text-deep-swedish-blue mb-4">✅ Weaver Family Chat</h3>
-                    <ul class="space-y-2 text-gray-700 text-sm">
-                        <li>🔒 <strong>End-to-end kryptering</strong>: Bara teamet läser</li>
-                        <li>🏠 <strong>Self-hosted möjligt</strong>: Data i Sverige/EU</li>
-                        <li>👨‍⚕️ <strong>Läkare kan delta</strong>: GDPR-säkert</li>
-                        <li>📊 <strong>Kontext delbart</strong>: Dashboard, meds, sömn synligt</li>
-                        <li>🕐 <strong>Historik</strong>: Replay vid behov</li>
-                    </ul>
-                    <p class="text-xs text-gray-700 mt-4 italic font-semibold">Säker kanal för känsliga situationer</p>
-                </div>
-            </div>
-
-            <div class="bg-deep-swedish-blue text-white p-6 rounded-xl">
-                <h3 class="text-xl font-bold mb-3">För Läkare: Varför Weaver Chat är Säker</h3>
-                <ul class="space-y-2 text-blue-100 text-sm">
-                    <li>✅ <strong>Ände-till-ände-kryptering</strong>: Endast deltagare kan läsa</li>
-                    <li>✅ <strong>Self-hosted alternativ</strong>: Data stannar på patientens server eller sjukhus</li>
-                    <li>✅ <strong>GDPR-säker från grunden</strong>: Ingen tredje part</li>
-                    <li>✅ <strong>Öppen källkod backend</strong>: WeaverMesh kan granskas</li>
-                    <li>✅ <strong>Revisionsspår</strong>: Loggbar för journalsystem</li>
-                </ul>
-                <p class="text-sm text-blue-200 mt-4">
-                    <strong>Användning:</strong> Läkare får invite från patient/familj. Deltar i krypterad chatt. 
-                    Kan se dashboard (om delat). Ingen data lämnar teamet.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="py-16 px-4 bg-gradient-to-br from-deep-swedish-blue to-sacred-alliance-purple text-white">
+    <!-- Call to Action - For Researchers/Doctors -->
+    <section class="py-20 px-4 bg-deep-swedish-blue text-white">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-4xl font-bold mb-6">Intresserad av Forskning eller Samarbete?</h2>
-            <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            <p class="text-xl text-blue-100 mb-4 max-w-2xl mx-auto">
                 Vi söker läkare och forskare för att:
             </p>
-            
-            <div class="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto mb-8 text-left">
-                <div class="bg-white/10 p-4 rounded-lg">
-                    <h3 class="font-bold text-lg mb-2">🔬 Validera Weaver-Protokoll</h3>
-                    <p class="text-sm text-blue-200">n=1 → n=många. Juni 2025 + November 2025 data finns.</p>
-                </div>
-                <div class="bg-white/10 p-4 rounded-lg">
-                    <h3 class="font-bold text-lg mb-2">📊 Sensorintegration</h3>
-                    <p class="text-sm text-blue-200">Medicin, sömn, aktivitet, mat, ljus. Automatisera objektiv datainsamling.</p>
-                </div>
-                <div class="bg-white/10 p-4 rounded-lg">
-                    <h3 class="font-bold text-lg mb-2">💬 Säker Kommunikation</h3>
-                    <p class="text-sm text-blue-200">Testa Weaver Family Chat i klinisk miljö.</p>
-                </div>
-                <div class="bg-white/10 p-4 rounded-lg">
-                    <h3 class="font-bold text-lg mb-2">🧠 Monitored Autonomy</h3>
-                    <p class="text-sm text-blue-200">Applicera designprinciper på andra tillstånd (demens, ADHD).</p>
-                </div>
-            </div>
-            
+            <ul class="text-lg text-blue-100 mb-8 max-w-2xl mx-auto text-left">
+                <li>• Objektivt analysera data från pågående episod (november 2025)</li>
+                <li>• Validera effektiviteten av AI-assisterad självreglering</li>
+                <li>• Samarbeta kring sensorintegration för framtida episoder</li>
+            </ul>
             <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <a href="https://balans-collective.com" target="_blank" 
-                   class="bg-sage-green text-white px-8 py-4 rounded-full font-bold text-lg lagom-hover hover:bg-sage-green/90">
+                <a href="https://balans-collective.com" target="_blank" class="bg-sage-green text-white px-8 py-4 rounded-full font-bold text-lg lagom-hover hover:bg-sage-green/90">
                     Se Demo (Timeline-App)
                 </a>
-                <a href="mailto:samuel@balans-collective.com" 
-                   class="bg-white text-deep-swedish-blue px-8 py-4 rounded-full font-bold text-lg lagom-hover hover:bg-warm-birch-white">
+                <a href="mailto:samuel@balans-collective.com" class="bg-white text-deep-swedish-blue px-8 py-4 rounded-full font-bold text-lg lagom-hover hover:bg-warm-birch-white">
                     Kontakta Oss
                 </a>
             </div>
-            
-            <div class="text-sm text-blue-200 space-y-1">
-                <p>✅ Öppen Källkod WeaverMesh Backend (Self-hosted)</p>
-                <p>✅ GDPR-Först Design (Du äger din data)</p>
-                <p>✅ Verklig Data (Juni 2025 + November 2025)</p>
-                <p>✅ Ände-till-Ände-Kryptering (Weaver Chat)</p>
+            <div class="text-sm text-blue-200">
+                <p>✅ Open Source WeaverMesh-Kärna</p>
+                <p>✅ GDPR-Kompatibel Arkitektur</p>
+                <p>✅ Verklig Data från Juni 2025</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-deep-swedish-blue text-white py-12 px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <h3 class="text-2xl font-bold mb-4">Balans</h3>
-            <p class="text-blue-100 mb-6">
-                AI-assisterad medicinsk innovation för bipolaritet och hypomani reglering.
-            </p>
-            <div class="flex justify-center gap-8 mb-6 text-sm">
-                <a href="index.html" class="text-blue-100 hover:text-white lagom-hover">Hem</a>
-                <a href="index.html#technology" class="text-blue-100 hover:text-white lagom-hover">Weaver Family</a>
-                <a href="medical.html" class="text-blue-100 hover:text-white lagom-hover">Medicinsk Forskning</a>
-                <a href="mailto:samuel@balans-collective.com" class="text-blue-100 hover:text-white lagom-hover">Kontakt</a>
+    <footer class="bg-white border-t border-natural-birch-wood/20 py-12 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="mb-6">
+                <a href="index.html" class="inline-flex items-center space-x-2 mb-4">
+                    <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                    <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                </a>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    AI-assisterad medicinsk innovation för bipolaritet och hypomani reglering.
+                </p>
             </div>
-            <p class="text-sm text-blue-200">
-                Svenska Värderingar. Open Source Kärna. Familjen Först.
-            </p>
+            <div class="flex flex-wrap justify-center gap-6 mb-6">
+                <a href="index.html" class="text-gray-600 hover:text-deep-swedish-blue">Startsida</a>
+                <a href="medical.html" class="text-deep-swedish-blue font-medium">Medicinsk Forskning</a>
+                <a href="https://github.com/balans-collective" target="_blank" class="text-gray-600 hover:text-deep-swedish-blue">GitHub</a>
+                <a href="mailto:samuel@balans-collective.com" class="text-gray-600 hover:text-deep-swedish-blue">Kontakt</a>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>&copy; 2025 Balans Collective. Svenska Värderingar. Open Source Kärna. Familjen Först.</p>
+            </div>
         </div>
     </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
