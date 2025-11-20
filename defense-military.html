@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Försvar & Säkerhet - Balans</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #0a0e14;
+            color: #e8eaed;
+        }
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .defense-gradient {
+            background: linear-gradient(135deg, #0a0e14 0%, #1a1f26 50%, #2c3e50 100%);
+        }
+        .red-cell-glow {
+            box-shadow: 0 0 40px rgba(220, 38, 38, 0.3);
+        }
+        .classification-badge {
+            background: linear-gradient(135deg, #991b1b 0%, #dc2626 100%);
+            border: 1px solid #ef4444;
+        }
+    </style>
+</head>
+<body class="defense-gradient">
+    <!-- Navigation -->
+    <nav class="bg-gray-900/95 border-b border-gray-800 sticky top-0 z-50 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-3">
+                    <img src="images/balans-logo.png" alt="Balans" class="h-10 w-auto brightness-0 invert">
+                    <span class="font-display font-bold text-2xl text-white">Balans</span>
+                    <span class="text-xs text-red-500 font-mono">// DEFENSE</span>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Hem</a>
+                    <a href="guardian-protocol.html" class="text-gray-300 hover:text-white transition-colors">Guardian</a>
+                    <a href="forge-protocol.html" class="text-gray-300 hover:text-white transition-colors">Forge</a>
+                    
+                    <div class="bg-gray-800 rounded-full p-1">
+                        <button id="lang-sv" class="px-3 py-1 rounded-full text-sm font-medium bg-red-700 text-white transition-all duration-200">SV</button>
+                        <button id="lang-en" class="px-3 py-1 rounded-full text-sm font-medium text-gray-300 hover:bg-gray-700 transition-all duration-200">EN</button>
+                    </div>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-300 hover:text-white">Hem</a>
+                <a href="guardian-protocol.html" class="block px-3 py-2 text-gray-300 hover:text-white">Guardian</a>
+                <a href="forge-protocol.html" class="block px-3 py-2 text-gray-300 hover:text-white">Forge</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 lg:py-32 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, #dc2626 1px, transparent 1px); background-size: 40px 40px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="inline-block">
+                        <div class="classification-badge px-4 py-2 rounded-full font-mono text-sm font-semibold uppercase tracking-wider">
+                            Classification-Aware AI Development
+                        </div>
+                    </div>
+                    
+                    <h1 class="font-display text-5xl lg:text-7xl font-bold text-white leading-tight">
+                        Red Cell
+                    </h1>
+                    
+                    <p class="text-xl lg:text-2xl text-gray-300 leading-relaxed">
+                        Säker AI-utveckling för försvar och säkerhetskritiska tillämpningar.<br>
+                        <span class="text-red-400">What vs. How</span> – dela kapabilitet, skydda implementering.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                        <a href="#red-cell" class="px-8 py-4 bg-red-700 text-white font-semibold rounded-lg hover:bg-red-600 transition-all duration-200 shadow-lg hover:shadow-xl">
+                            Utforska Red Cell
+                        </a>
+                        <a href="#protocols" class="px-8 py-4 border-2 border-red-700 text-red-400 font-semibold rounded-lg hover:bg-red-700 hover:text-white transition-all duration-200">
+                            Se Protokollen
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <img src="images/defence-hero.png" alt="Red Cell Classification-Aware Development" class="rounded-2xl shadow-2xl red-cell-glow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classification Principle -->
+    <section class="py-16 bg-gray-900/50">
+        <div class="max-w-4xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-4xl font-bold text-white mb-6">Dual Classification</h2>
+                <p class="text-xl text-gray-300">
+                    Innovation kräver att vi delar <span class="text-blue-400">vad</span> system kan göra,<br>
+                    medan vi skyddar <span class="text-red-400">hur</span> de gör det.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-blue-900/20 border-2 border-blue-700/50 rounded-xl p-8">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <svg class="w-8 h-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        <h3 class="text-2xl font-bold text-blue-400">WHAT</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        <strong>Kapabilitet:</strong> Vad systemet kan göra
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>• Funktionella krav</li>
+                        <li>• API-specifikationer</li>
+                        <li>• Prestanda-garantier</li>
+                        <li>• Säkerhetsegenskaper</li>
+                    </ul>
+                    <p class="text-xs text-blue-400 mt-4 font-mono">→ Kan delas (UNCLASSIFIED)</p>
+                </div>
+
+                <div class="bg-red-900/20 border-2 border-red-700/50 rounded-xl p-8">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <svg class="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                        <h3 class="text-2xl font-bold text-red-400">HOW</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        <strong>Implementering:</strong> Hur systemet gör det
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>• Källkod & algoritmer</li>
+                        <li>• Träningsdata</li>
+                        <li>• Modellarkitektur</li>
+                        <li>• Deployment-detaljer</li>
+                    </ul>
+                    <p class="text-xs text-red-400 mt-4 font-mono">→ Måste skyddas (SECRET)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Red Cell Section -->
+    <section id="red-cell" class="py-20">
+        <div class="max-w-6xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-6">Red Cell Environment</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Säker utvecklingsmiljö för hemligstämplad AI-utveckling med automatisk classification-awareness.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                <div class="bg-gray-800/50 border border-red-900/50 rounded-xl p-8 red-cell-glow">
+                    <h3 class="text-2xl font-bold text-red-400 mb-4">Data Diode Enforcement</h3>
+                    <p class="text-gray-300 mb-6">
+                        Hårdvaru-tvingad informationsflöde: RED → ORANGE → YELLOW → GREEN. Ingen väg tillbaka.
+                    </p>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center space-x-3">
+                            <span class="font-mono text-red-500">RED</span>
+                            <span class="text-gray-500">→</span>
+                            <span class="text-gray-400">SECRET implementation</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="font-mono text-orange-500">ORANGE</span>
+                            <span class="text-gray-500">→</span>
+                            <span class="text-gray-400">CONFIDENTIAL specs</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="font-mono text-yellow-500">YELLOW</span>
+                            <span class="text-gray-500">→</span>
+                            <span class="text-gray-400">COMPANY INTERNAL</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="font-mono text-green-500">GREEN</span>
+                            <span class="text-gray-500">→</span>
+                            <span class="text-gray-400">UNCLASSIFIED (public)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800/50 border border-red-900/50 rounded-xl p-8">
+                    <h3 class="text-2xl font-bold text-red-400 mb-4">LLM Classification Awareness</h3>
+                    <p class="text-gray-300 mb-6">
+                        AI-assistenter som förstår när de arbetar med hemlig information och justerar sitt beteende.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-start space-x-2">
+                            <svg class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Känner av klassificeringsnivå från kontext</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <svg class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Föreslår automatiskt korrekta nedgraderingsvägar</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <svg class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Validerar att WHAT/HOW-separationen bibehålls</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <svg class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Vägrar generera output med högre klassificering än input</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Interactive Demo CTA -->
+            <div class="bg-gradient-to-br from-red-900/30 to-gray-900/30 border-2 border-red-700/50 rounded-2xl p-8 text-center">
+                <h3 class="text-3xl font-bold text-white mb-4">Se Red Cell i Aktion</h3>
+                <p class="text-gray-300 mb-6">
+                    Interaktiv in-browser IDE med LLM-integration som visar classification-aware design i praktiken.
+                </p>
+                <a href="#" class="inline-flex items-center px-8 py-4 bg-red-700 text-white font-semibold rounded-lg hover:bg-red-600 transition-all duration-200 shadow-lg">
+                    <span>Öppna Interactive Demo</span>
+                    <svg class="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </a>
+                <p class="text-xs text-gray-500 mt-4">Demo kommer snart – registrera intresse via kontakt</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Protocols Section -->
+    <section id="protocols" class="py-20 bg-gray-900/50">
+        <div class="max-w-6xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-6">Säkerhetsprotokoll</h2>
+                <p class="text-xl text-gray-300">
+                    Två kompletterande protokoll för säker AI-utveckling
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <a href="guardian-protocol.html" class="group bg-gray-800/50 border border-blue-900/50 rounded-xl p-8 hover:border-blue-700 transition-all duration-200 hover:scale-105">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <svg class="w-10 h-10 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        <h3 class="text-2xl font-bold text-white">Guardian Protocol</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Systematisk säkerhetsvalidering för AI-system. Bygger Guardian-Magician perspektiv för att fånga både tekniska risker och användarupplevelse.
+                    </p>
+                    <div class="flex items-center text-blue-400 group-hover:text-blue-300">
+                        <span class="text-sm font-semibold">Läs mer</span>
+                        <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </a>
+
+                <a href="forge-protocol.html" class="group bg-gray-800/50 border border-orange-900/50 rounded-xl p-8 hover:border-orange-700 transition-all duration-200 hover:scale-105">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <svg class="w-10 h-10 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+                        </svg>
+                        <h3 class="text-2xl font-bold text-white">Forge Protocol</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Classification-Aware Development för försvar. Möjliggör samarbete mellan SECRET-miljöer och öppen innovation genom strukturerad nedgradering.
+                    </p>
+                    <div class="flex items-center text-orange-400 group-hover:text-orange-300">
+                        <span class="text-sm font-semibold">Läs mer</span>
+                        <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="py-20">
+        <div class="max-w-6xl mx-auto px-6 lg:px-12">
+            <h2 class="font-display text-4xl font-bold text-white text-center mb-12">Tillämpningar</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gray-800/30 border border-gray-700 rounded-xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-3">🎯 Försvarsindustri</h3>
+                    <p class="text-sm text-gray-400">
+                        Utveckla AI för vapensystem där WHAT (träffsäkerhet) kan delas men HOW (sensordata, algoritmer) är SECRET.
+                    </p>
+                </div>
+
+                <div class="bg-gray-800/30 border border-gray-700 rounded-xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-3">🔬 Säkerhetsforskning</h3>
+                    <p class="text-sm text-gray-400">
+                        Försvarsforskning kan samarbeta med akademiker genom att dela CONFIDENTIAL specs medan SECRET implementation stannar intern.
+                    </p>
+                </div>
+
+                <div class="bg-gray-800/30 border border-gray-700 rounded-xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-3">🚀 NATO DIANA Startups</h3>
+                    <p class="text-sm text-gray-400">
+                        Snabb innovation utan egen SÄPO-godkännande. Utveckla i Red Cell, deployer när klart.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-red-900/20 to-gray-900">
+        <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center">
+            <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-6">
+                Intresserad av Red Cell?
+            </h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Kontakta oss för demonstration, pilot-projekt eller partnerskap.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="mailto:samuel@dynorobotics.se?subject=Red Cell förfrågan" class="px-8 py-4 bg-red-700 text-white font-semibold rounded-lg hover:bg-red-600 transition-colors">
+                    Kontakta oss
+                </a>
+                <a href="index.html" class="px-8 py-4 border-2 border-red-700 text-red-400 font-semibold rounded-lg hover:bg-red-700 hover:text-white transition-colors">
+                    Tillbaka till startsidan
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 border-t border-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto brightness-0 invert">
+                        <span class="font-display font-bold text-xl text-white">Balans</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Classification-Aware AI Development
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white mb-4">Protokoll</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="guardian-protocol.html" class="hover:text-white transition-colors">Guardian Protocol</a></li>
+                        <li><a href="forge-protocol.html" class="hover:text-white transition-colors">Forge Protocol</a></li>
+                        <li><a href="narratives.html" class="hover:text-white transition-colors">Design-Narrativ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-white mb-4">Kontakt</h3>
+                    <p class="text-gray-400">
+                        <a href="mailto:samuel@dynorobotics.se" class="hover:text-white transition-colors">samuel@dynorobotics.se</a>
+                    </p>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500">
+                <p>&copy; 2025 Balans. Classification-aware design för säker AI-utveckling.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const langEn = document.getElementById('lang-en');
+        langEn.addEventListener('click', () => {
+            window.location.href = 'defense-english.html';
+        });
+    </script>
+</body>
+</html>

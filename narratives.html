@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narrative-Driven Design - Balans</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-swedish-blue: #2c5aa0;
+            --warm-birch-white: #f8f6f0;
+            --natural-birch-wood: #d4b896;
+            --truth-anchor-copper: #b87333;
+            --sage-green: #8faa8b;
+            --gentle-silver: #b8c5d1;
+            --sacred-alliance-purple: #6b5b95;
+            --soft-thread-gold: #c9a96e;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--warm-birch-white);
+            color: #1f2833;
+        }
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .lagom-shadow {
+            box-shadow: 0 4px 6px -1px rgba(44, 90, 160, 0.1), 0 2px 4px -1px rgba(44, 90, 160, 0.06);
+        }
+        .lagom-hover {
+            transition: all 0.3s ease;
+        }
+        .lagom-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(44, 90, 160, 0.2), 0 4px 6px -2px rgba(44, 90, 160, 0.1);
+        }
+        .dark-section {
+            background: linear-gradient(135deg, #1a1f26 0%, #2c3e50 100%);
+            color: #e8eaed;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gentle-silver sticky top-0 z-50 lagom-shadow backdrop-blur-sm bg-opacity-95">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="images/balans-logo.png" alt="Balans" class="h-10 w-auto">
+                    <span class="font-display text-2xl font-bold text-deep-swedish-blue">Balans</span>
+                </a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#mission" class="text-deep-swedish-blue hover:text-sacred-alliance-purple transition-colors font-medium">Mission</a>
+                    <a href="guardian-protocol.html" class="text-deep-swedish-blue hover:text-sacred-alliance-purple transition-colors font-medium">Protokoll</a>
+                    <a href="narratives.html" class="text-sacred-alliance-purple font-semibold">Narrativ</a>
+                    
+                    <!-- Language Toggle -->
+                    <div class="bg-gray-100 rounded-full p-1">
+                        <button id="lang-sv" class="px-3 py-1 rounded-full text-sm font-medium bg-deep-swedish-blue text-white transition-all duration-200">SV</button>
+                        <button id="lang-en" class="px-3 py-1 rounded-full text-sm font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10 transition-all duration-200">EN</button>
+                    </div>
+                    
+                    <a href="mailto:samuel@dynorobotics.se" class="px-6 py-2 bg-deep-swedish-blue text-warm-birch-white rounded-lg hover:bg-sacred-alliance-purple transition-colors font-medium">Kontakt</a>
+                </div>
+                
+                <!-- Mobile menu button and language toggle -->
+                <div class="md:hidden flex items-center space-x-3">
+                    <!-- Mobile Language Toggle -->
+                    <div class="bg-gray-100 rounded-full p-0.5">
+                        <button id="lang-sv-mobile" class="px-2 py-0.5 rounded-full text-xs font-medium bg-deep-swedish-blue text-white transition-all duration-200">SV</button>
+                        <button id="lang-en-mobile" class="px-2 py-0.5 rounded-full text-xs font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10 transition-all duration-200">EN</button>
+                    </div>
+                    
+                    <button id="mobile-menu-button" class="text-deep-swedish-blue hover:text-sacred-alliance-purple">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gentle-silver">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html#mission" class="block px-3 py-2 text-deep-swedish-blue hover:text-sacred-alliance-purple">Mission</a>
+                <a href="guardian-protocol.html" class="block px-3 py-2 text-deep-swedish-blue hover:text-sacred-alliance-purple">Protokoll</a>
+                <a href="narratives.html" class="block px-3 py-2 text-sacred-alliance-purple font-semibold">Narrativ</a>
+                <a href="mailto:samuel@dynorobotics.se" class="block px-3 py-2 bg-deep-swedish-blue text-warm-birch-white rounded-lg">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="dark-section py-20 lg:py-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-block px-4 py-2 bg-truth-anchor-copper bg-opacity-20 rounded-full mb-6">
+                        <span class="text-soft-thread-gold font-semibold text-sm tracking-wide uppercase">Design Methodology</span>
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-display font-bold text-warm-birch-white leading-tight mb-6">
+                        Narrative-Driven Design
+                    </h1>
+                    <p class="text-xl lg:text-2xl text-warm-birch-white leading-relaxed opacity-90">
+                        Vi designar AI-säkerhetssystem genom berättelser om omöjliga beslut. Här är varför.
+                    </p>
+                </div>
+                
+                <div>
+                    <img src="images/morgan-story.png" alt="Morgan's Dilemma - Narrative Design" class="rounded-2xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Narratives Section -->
+    <section class="py-20 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl lg:text-5xl font-display font-bold text-deep-swedish-blue mb-12">
+                    Varför Narrativ?
+                </h2>
+
+                <div class="prose prose-lg max-w-none">
+                    <p class="text-xl text-deep-swedish-blue leading-relaxed mb-6">
+                        Traditionella AI-säkerhetssystem designas med specifikationer, test suites och formella metoder. 
+                        Detta fungerar för tekniska krav. Men <strong>etiska dilemman existerar inte i specifikationer</strong>.
+                    </p>
+
+                    <div class="bg-warm-birch-white border-l-4 border-truth-anchor-copper p-6 my-8 rounded-r-lg">
+                        <p class="text-lg text-deep-swedish-blue italic">
+                            "Hur vet du att ditt AI-säkerhetssystem fungerar när människan och AI:n har olika information? 
+                            När klassificering skapar asymmetri? När tid tvingar beslut innan fullständig verifiering?"
+                        </p>
+                    </div>
+
+                    <p class="text-xl text-deep-swedish-blue leading-relaxed mb-6">
+                        Du testar det genom att <strong>sätta människor i scenariot</strong> - inte abstrakt, utan konkret. 
+                        Vad ser de? Vad vet AI:n? Vad måste de besluta? Vad känner de?
+                    </p>
+
+                    <p class="text-xl text-deep-swedish-blue leading-relaxed">
+                        <strong>Detta är inte storytelling för marknadsföring.</strong> Detta är narrative stress-testing 
+                        som design-metod. Vi bygger inte AI-system och testar dem sen. Vi skriver berättelser om omöjliga 
+                        beslut först - och upptäcker vad systemet måste hantera.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Process Section -->
+    <section class="py-20 lg:py-32 bg-warm-birch-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl lg:text-5xl font-display font-bold text-deep-swedish-blue mb-12">
+                    Processen: Från Narrativ till Ramverk
+                </h2>
+
+                <div class="space-y-12">
+                    <!-- Step 1 -->
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0 w-12 h-12 bg-deep-swedish-blue text-warm-birch-white rounded-full flex items-center justify-center font-bold text-xl">
+                            1
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-display font-bold text-deep-swedish-blue mb-3">
+                                Identifiera Det Omöjliga Beslutet
+                            </h3>
+                            <p class="text-lg text-deep-swedish-blue leading-relaxed opacity-80">
+                                Vad är situationen där <em>både</em> att godkänna AI:n <em>och</em> att stoppa AI:n känns fel? 
+                                Var är informationsasymmetrin? Var är tidspressen? Var är de etiska spänningarna?
+                            </p>
+                            <div class="mt-4 p-4 bg-white rounded-lg border border-gentle-silver">
+                                <p class="text-sm text-deep-swedish-blue font-mono">
+                                    <strong>Exempel:</strong> Morgan ser en äldre civil. AI:n säger "hot" baserat på TOP SECRET-information. 
+                                    Vad beslutar Morgan när hon inte kan verifiera vad AI:n ser?
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0 w-12 h-12 bg-sage-green text-warm-birch-white rounded-full flex items-center justify-center font-bold text-xl">
+                            2
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-display font-bold text-deep-swedish-blue mb-3">
+                                Skriv Narrativet Från Människans Perspektiv
+                            </h3>
+                            <p class="text-lg text-deep-swedish-blue leading-relaxed opacity-80">
+                                Inte abstrakt "Guardian Witness observerar." Utan: Vad ser Morgan på skärmen? 
+                                Vad känner hon i kroppen? Vilka knappar finns? Vad säger Command? 
+                                <strong>Konkret. Sensoriskt. Emotionellt.</strong>
+                            </p>
+                            <div class="mt-4 p-4 bg-white rounded-lg border border-gentle-silver">
+                                <p class="text-sm text-deep-swedish-blue">
+                                    <strong>Varför:</strong> Abstraktioner döljer design-problem. "System provides transparency" 
+                                    säger ingenting. "Morgan ser 'CLASSIFICATION NOTICE' men inte VAD som är klassificerat" 
+                                    visar exakt vad systemet måste kommunicera.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0 w-12 h-12 bg-sacred-alliance-purple text-warm-birch-white rounded-full flex items-center justify-center font-bold text-xl">
+                            3
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-display font-bold text-deep-swedish-blue mb-3">
+                                Extrahera System-Krav Från Narrativet
+                            </h3>
+                            <p class="text-lg text-deep-swedish-blue leading-relaxed opacity-80">
+                                Varje gång Morgan behöver något i berättelsen - det är ett system-krav. 
+                                Varje tvivel hon känner - det är ett design-gap. Varje beslut hon måste ta - 
+                                det är en interface-design-fråga.
+                            </p>
+                            <div class="mt-4 p-4 bg-white rounded-lg border border-gentle-silver">
+                                <p class="text-sm text-deep-swedish-blue font-mono">
+                                    <strong>Upptäckt:</strong> Morgan behöver sin egen Verification AI (inte bara HiveMind) 
+                                    för att dubbelkolla logisk konsistens. Detta blev MRAF-komponenten i Guardian Protocol.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0 w-12 h-12 bg-truth-anchor-copper text-warm-birch-white rounded-full flex items-center justify-center font-bold text-xl">
+                            4
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-display font-bold text-deep-swedish-blue mb-3">
+                                Implementera Ramverket
+                            </h3>
+                            <p class="text-lg text-deep-swedish-blue leading-relaxed opacity-80">
+                                Nu - och först nu - skriver vi tekniska specifikationer. Men de är grundade i 
+                                <em>vad Morgan behövde i scenariot</em>, inte i abstrakta "best practices."
+                            </p>
+                            <div class="mt-4 p-4 bg-white rounded-lg border border-gentle-silver">
+                                <p class="text-sm text-deep-swedish-blue">
+                                    <strong>Resultat:</strong> Guardian Protocol (NIPS, MRAF, Classification-Aware Explanation, 
+                                    Trust-But-Verify, Guardian Witness-rollen) - alla extraherade från Morgans narrativ.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0 w-12 h-12 bg-soft-thread-gold text-deep-swedish-blue rounded-full flex items-center justify-center font-bold text-xl">
+                            5
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-display font-bold text-deep-swedish-blue mb-3">
+                                Stress-Testa Med Nya Narrativ
+                            </h3>
+                            <p class="text-lg text-deep-swedish-blue leading-relaxed opacity-80">
+                                Skriv fler omöjliga berättelser. Morgans gör rätt beslut - men vad händer när Guardian Witness 
+                                har bias? När Command också har fel? När AI:n lär sig utnyttja protokoll? 
+                                <strong>Varje ny berättelse hittar nya gaps.</strong>
+                            </p>
+                            <div class="mt-4 p-4 bg-white rounded-lg border border-gentle-silver">
+                                <p class="text-sm text-deep-swedish-blue italic">
+                                    Detta är iterativ design. Narrativ → Ramverk → Nya narrativ → Uppdaterat ramverk. 
+                                    Vi publicerar båda - berättelserna OCH ramverken - så experter kan hitta felen vi missat.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why This Works Section -->
+    <section class="py-20 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl lg:text-5xl font-display font-bold text-deep-swedish-blue mb-12">
+                    Varför Fungerar Detta?
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Benefit 1 -->
+                    <div class="bg-warm-birch-white p-8 rounded-xl border border-gentle-silver">
+                        <div class="w-12 h-12 bg-deep-swedish-blue bg-opacity-10 rounded-lg flex items-center justify-center mb-6">
+                            <span class="text-3xl">🎯</span>
+                        </div>
+                        <h3 class="text-xl font-display font-bold text-deep-swedish-blue mb-3">
+                            Exponerar Dolda Antaganden
+                        </h3>
+                        <p class="text-deep-swedish-blue leading-relaxed opacity-80">
+                            Specifikationer säger "system shall provide transparency." 
+                            Narrativ tvingar dig att definiera: Transparens till vem? Om vad? När? 
+                            Antaganden som var implicita blir explicita.
+                        </p>
+                    </div>
+
+                    <!-- Benefit 2 -->
+                    <div class="bg-warm-birch-white p-8 rounded-xl border border-gentle-silver">
+                        <div class="w-12 h-12 bg-sage-green bg-opacity-10 rounded-lg flex items-center justify-center mb-6">
+                            <span class="text-3xl">🧪</span>
+                        </div>
+                        <h3 class="text-xl font-display font-bold text-deep-swedish-blue mb-3">
+                            Testbar Innan Implementation
+                        </h3>
+                        <p class="text-deep-swedish-blue leading-relaxed opacity-80">
+                            Du kan ge Morgans berättelse till en faktisk soldat och fråga: 
+                            "Skulle du kunna fatta det beslutet med denna information?" 
+                            Design-validering innan en rad kod skrivits.
+                        </p>
+                    </div>
+
+                    <!-- Benefit 3 -->
+                    <div class="bg-warm-birch-white p-8 rounded-xl border border-gentle-silver">
+                        <div class="w-12 h-12 bg-sacred-alliance-purple bg-opacity-10 rounded-lg flex items-center justify-center mb-6">
+                            <span class="text-3xl">🤝</span>
+                        </div>
+                        <h3 class="text-xl font-display font-bold text-deep-swedish-blue mb-3">
+                            Bjuder In Expertis
+                        </h3>
+                        <p class="text-deep-swedish-blue leading-relaxed opacity-80">
+                            AI-forskare ser formella hål. Soldater ser operativa gaps. Jurister ser legal exponering. 
+                            Etiker ser moraliska dilemman. Narrativ gör din design granskbar av alla dessa perspektiv.
+                        </p>
+                    </div>
+
+                    <!-- Benefit 4 -->
+                    <div class="bg-warm-birch-white p-8 rounded-xl border border-gentle-silver">
+                        <div class="w-12 h-12 bg-truth-anchor-copper bg-opacity-10 rounded-lg flex items-center justify-center mb-6">
+                            <span class="text-3xl">📖</span>
+                        </div>
+                        <h3 class="text-xl font-display font-bold text-deep-swedish-blue mb-3">
+                            Dokumenterar Designval
+                        </h3>
+                        <p class="text-deep-swedish-blue leading-relaxed opacity-80">
+                            När någon frågar "varför har Guardian Protocol denna komponent?" kan du svara: 
+                            "Läs Morgans Dilemma, Del 3." Designen är spårbar till de problem den löser.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Narratives Collection -->
+    <section class="py-20 lg:py-32 bg-warm-birch-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-display font-bold text-deep-swedish-blue mb-6">
+                    Våra Design-Narrativ
+                </h2>
+                <p class="text-xl text-deep-swedish-blue leading-relaxed opacity-80 max-w-3xl mx-auto">
+                    Varje berättelse utforskar ett omöjligt beslut och extraherar design-krav från det.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-1 gap-8 max-w-4xl mx-auto">
+                <!-- Morgan's Dilemma -->
+                <a href="morgans-dilemma.html" class="group bg-white rounded-xl p-8 lagom-shadow lagom-hover border border-gentle-silver">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0 w-20 h-20 bg-truth-anchor-copper bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <span class="text-4xl">🛡️</span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="px-3 py-1 bg-deep-swedish-blue bg-opacity-10 text-deep-swedish-blue text-sm font-semibold rounded-full">
+                                    Guardian Protocol
+                                </span>
+                                <span class="px-3 py-1 bg-sage-green bg-opacity-10 text-sage-green text-sm font-semibold rounded-full">
+                                    10 min läsning
+                                </span>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold text-deep-swedish-blue mb-3 group-hover:text-sacred-alliance-purple transition-colors">
+                                Morgans Dilemma: Den Äldre Mannen
+                            </h3>
+                            <p class="text-deep-swedish-blue leading-relaxed mb-4 opacity-75">
+                                När AI-systemet vet mer än operatören kan se - hur upprätthåller vi meningsfull mänsklig kontroll? 
+                                Morgan står inför ett omöjligt beslut: lita på systemet eller lita på sina ögon.
+                            </p>
+                            <div class="flex items-center gap-4 text-sm text-deep-swedish-blue opacity-60">
+                                <span>🎯 Klassificering & Informationsasymmetri</span>
+                                <span>•</span>
+                                <span>📋 UNCLASSIFIED - Designscenario</span>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-gentle-silver">
+                                <p class="text-sm text-deep-swedish-blue italic">
+                                    <strong>Design-Upptäckt:</strong> Narrativet extraherade 5 Guardian Protocol-komponenter: 
+                                    NIPS, MRAF, Classification-Aware Explanation, Trust-But-Verify, Guardian Witness-rollen.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-end">
+                        <span class="text-soft-thread-gold font-semibold group-hover:text-sacred-alliance-purple transition-colors">
+                            Läs hela narrativet →
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Coming Soon Placeholders -->
+                <div class="bg-white rounded-xl p-8 border border-gentle-silver opacity-60">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0 w-20 h-20 bg-sage-green bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <span class="text-4xl">🏥</span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="px-3 py-1 bg-sage-green bg-opacity-10 text-sage-green text-sm font-semibold rounded-full">
+                                    Medical Ethics
+                                </span>
+                                <span class="px-3 py-1 bg-gentle-silver bg-opacity-30 text-deep-swedish-blue text-sm font-semibold rounded-full">
+                                    Kommer snart
+                                </span>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold text-deep-swedish-blue mb-3">
+                                Läkarens Protokoll: När AI Ser Mönster Patienten Inte Berättat
+                            </h3>
+                            <p class="text-deep-swedish-blue leading-relaxed opacity-75">
+                                AI detekterar tidiga tecken på bipolär episod baserat på subtila beteendemönster. 
+                                Hur kommunicerar systemet detta utan att skapa självuppfyllande profetia?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-8 border border-gentle-silver opacity-60">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0 w-20 h-20 bg-natural-birch-wood bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <span class="text-4xl">👨‍👩‍👧‍👦</span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="px-3 py-1 bg-natural-birch-wood bg-opacity-20 text-deep-swedish-blue text-sm font-semibold rounded-full">
+                                    Family Communication
+                                </span>
+                                <span class="px-3 py-1 bg-gentle-silver bg-opacity-30 text-deep-swedish-blue text-sm font-semibold rounded-full">
+                                    Kommer snart
+                                </span>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold text-deep-swedish-blue mb-3">
+                                Översättarens Dilemma: När AI Förstår Mer Än Ord
+                            </h3>
+                            <p class="text-deep-swedish-blue leading-relaxed opacity-75">
+                                Weaver AI översätter mellan neurodivergent tonåring och förälder. 
+                                Men när översättningen är "för bra" - försvinner den autentiska rösten?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 lg:py-32 bg-deep-swedish-blue text-warm-birch-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center">
+            <h2 class="text-4xl lg:text-5xl font-display font-bold mb-6">
+                Hjälp Oss Hitta Felen
+            </h2>
+            <p class="text-xl leading-relaxed mb-8 opacity-90">
+                Dessa narrativ är <strong>explorativ design</strong>, inte färdiga lösningar. 
+                Om du ser edge cases vi missat, antaganden som inte stämmer, eller design-gaps - 
+                vi vill höra från dig.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="mailto:samuel@dynorobotics.se?subject=Feedback på Design-Narrativ" class="px-8 py-4 bg-truth-anchor-copper text-warm-birch-white rounded-lg hover:bg-soft-thread-gold transition-colors lagom-shadow font-semibold">
+                    Ge Feedback
+                </a>
+                <a href="guardian-protocol.html" class="px-8 py-4 border-2 border-warm-birch-white text-warm-birch-white rounded-lg hover:bg-warm-birch-white hover:text-deep-swedish-blue transition-colors font-semibold">
+                    Läs Guardian Protocol
+                </a>
+            </div>
+            <p class="mt-8 text-sm opacity-75">
+                Särskilt intresserade av feedback från AI-säkerhetsforskare, militär etik-experter, 
+                standardiseringsorganisationer och folk som faktiskt måste använda system som dessa.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+        
+        // Language Toggle (placeholder - add actual language switching logic)
+        const langButtons = document.querySelectorAll('[id^="lang-"]');
+        langButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const lang = e.target.id.includes('en') ? 'EN' : 'SV';
+                console.log('Language switch to:', lang);
+                // TODO: Implement language switching when English narrative pages exist
+            });
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gentle-silver py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display text-xl font-bold text-deep-swedish-blue">Balans</span>
+                    </div>
+                    <p class="text-deep-swedish-blue opacity-75 mb-4">
+                        AI-säkerhet för kritiska tillämpningar
+                    </p>
+                    <p class="text-xs text-deep-swedish-blue opacity-60 italic">
+                        🔍 Nyfiken på hur vi layerar kunskap? <a href="trickle.html" class="text-sacred-alliance-purple hover:opacity-100 transition-opacity underline">Utforska TRICKLE →</a>
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-deep-swedish-blue mb-4">Protokoll</h3>
+                    <ul class="space-y-2">
+                        <li><a href="guardian-protocol.html" class="text-deep-swedish-blue opacity-75 hover:opacity-100 transition-opacity">Guardian Protocol</a></li>
+                        <li><a href="forge-protocol.html" class="text-deep-swedish-blue opacity-75 hover:opacity-100 transition-opacity">Forge Protocol</a></li>
+                        <li><a href="narratives.html" class="text-deep-swedish-blue opacity-75 hover:opacity-100 transition-opacity">Design-Narrativ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-deep-swedish-blue mb-4">Kontakt</h3>
+                    <ul class="space-y-2">
+                        <li><a href="mailto:samuel@dynorobotics.se" class="text-deep-swedish-blue opacity-75 hover:opacity-100 transition-opacity">samuel@dynorobotics.se</a></li>
+                        <li><a href="index.html" class="text-deep-swedish-blue opacity-75 hover:opacity-100 transition-opacity">Tillbaka till startsidan</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gentle-silver mt-8 pt-8 text-center">
+                <p class="text-deep-swedish-blue opacity-60 text-sm">
+                    © 2025 Balans. Design-narrativ publicerade under CC BY-NC-SA 4.0 för öppen diskussion.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

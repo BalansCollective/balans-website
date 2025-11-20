@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardian Protocol - Etisk AI för Autonoma System | Balans</title>
+    <meta name="description" content="Guardian Protocol: Ramverk för etiskt AI-beslutsfattande i autonoma system. Förhindrar drift, säkerställer ansvar, bevarar mänsklig autonomi.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-swedish-blue': '#2c5aa0',
+                        'natural-birch-wood': '#d4b896',
+                        'sacred-alliance-purple': '#6b5b95',
+                        'warm-birch-white': '#f8f6f0',
+                        'soft-thread-gold': '#c9a96e',
+                        'sage-green': '#8faa8b',
+                        'gentle-silver': '#b8c5d1',
+                        'truth-anchor-copper': '#b87333'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .prose { max-width: 65ch; }
+        .prose h2 { color: #2c5aa0; font-size: 2rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1.5rem; }
+        .prose h3 { color: #2c5aa0; font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; }
+        .prose h4 { color: #6b5b95; font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+        .prose p { margin-bottom: 1.25rem; line-height: 1.75; color: #374151; }
+        .prose ul, .prose ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+        .prose li { margin-bottom: 0.5rem; line-height: 1.75; }
+        .prose strong { color: #2c5aa0; font-weight: 600; }
+        .prose code { background: #f3f4f6; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.875em; }
+        .prose pre { background: #1f2937; color: #f9fafb; padding: 1.5rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.5rem; }
+        .prose pre code { background: none; color: inherit; padding: 0; }
+        .prose table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .prose th { background: #f3f4f6; padding: 0.75rem; text-align: left; font-weight: 600; border: 1px solid #e5e7eb; }
+        .prose td { padding: 0.75rem; border: 1px solid #e5e7eb; }
+        .checkmark { color: #10b981; }
+    </style>
+</head>
+<body class="bg-warm-birch-white">
+
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="images/balans-logo.png" alt="Balans" class="h-10 w-auto">
+                    <span class="font-bold text-xl text-deep-swedish-blue">Balans</span>
+                </a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">Hem</a>
+                    <a href="forge-protocol.html" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">Forge Protocol</a>
+                    
+                    <!-- Language Toggle -->
+                    <div class="bg-gray-100 rounded-full p-1">
+                        <button id="lang-sv" class="px-3 py-1 rounded-full text-sm font-medium bg-deep-swedish-blue text-white transition-all duration-200">SV</button>
+                        <button id="lang-en" class="px-3 py-1 rounded-full text-sm font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10 transition-all duration-200">EN</button>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button and language toggle -->
+                <div class="md:hidden flex items-center space-x-3">
+                    <!-- Mobile Language Toggle (always visible) -->
+                    <div class="bg-gray-100 rounded-full p-0.5">
+                        <button id="lang-sv-mobile-header" class="px-2 py-0.5 rounded-full text-xs font-medium bg-deep-swedish-blue text-white transition-all duration-200">SV</button>
+                        <button id="lang-en-mobile-header" class="px-2 py-0.5 rounded-full text-xs font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10 transition-all duration-200">EN</button>
+                    </div>
+                    
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-deep-swedish-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-natural-birch-wood/20">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">Hem</a>
+                <a href="forge-protocol.html" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">Forge Protocol</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="py-16 lg:py-24 bg-gradient-to-b from-warm-birch-white to-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-12">
+            <div class="mb-8">
+                <svg viewBox="0 0 100 100" class="w-16 h-16 mb-6">
+                    <path d="M50 10 L20 25 L20 50 Q20 75 50 90 Q80 75 80 50 L80 25 Z" 
+                          fill="none" 
+                          stroke="#b87333" 
+                          stroke-width="3"
+                          stroke-linejoin="round"/>
+                    <circle cx="50" cy="50" r="8" fill="#8faa8b"/>
+                </svg>
+            </div>
+            <h1 class="text-5xl lg:text-6xl font-bold text-deep-swedish-blue mb-4">
+                Guardian Protocol
+            </h1>
+            <p class="text-2xl text-deep-swedish-blue opacity-80 mb-6">
+                Etisk AI för Autonoma System
+            </p>
+            <p class="text-lg text-gray-600 mb-8">
+                Balans | November 2025
+            </p>
+        </div>
+    </section>
+
+    <!-- Executive Summary -->
+    <section class="py-12 bg-deep-swedish-blue text-warm-birch-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-12">
+            <h2 class="text-3xl font-bold mb-6 text-warm-birch-white">Sammanfattning</h2>
+            <p class="text-lg mb-6 opacity-90">
+                Guardian Protocol är ett ramverk för etiskt AI-beslutsfattande i autonoma system, utvecklat för att lösa fem kritiska problem som hindrar säker användning av autonoma system inom försvar och medicin:
+            </p>
+            <ul class="space-y-3 text-lg opacity-90 mb-8">
+                <li><span class="checkmark">✅</span> <strong>Operatörer kan fatta informerade beslut</strong> - även när AI använder hemlig information</li>
+                <li><span class="checkmark">✅</span> <strong>AI kan inte driva etiskt</strong> - realtidsövervakning förhindrar bias-ackumulering</li>
+                <li><span class="checkmark">✅</span> <strong>Komplett ansvarsspårning</strong> - kryptografiskt säkerställd granskningslogg</li>
+                <li><span class="checkmark">✅</span> <strong>Kärnvärden bevarade</strong> - även när sammanhang förändras (krig → fred)</li>
+                <li><span class="checkmark">✅</span> <strong>Förtroende utan blindhet</strong> - operatörer kan ifrågasätta AI:s resonemang när som helst</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <article class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-12 prose">
+            
+            <h2>Utmaningen: Varför Autonoma System Misslyckas Idag</h2>
+
+            <h3>Problem 1: Klassificeringsdilemat</h3>
+            <p><strong>Scenario:</strong> Operatör med CONFIDENTIAL behörighet opererar SECRET system. AI rekommenderar åtgärd baserat på SECRET underrättelser men kan inte förklara varför → Operatör tvekar → Hot penetrerar försvaret.</p>
+            
+            <p><strong>Exempel (BirdTurret V3, Dag 3):</strong></p>
+            <pre><code>AI:      "Rekommenderar kinetisk bekämpning"
+Morgan:  "Varför? Verkar som civil drönare"
+AI:      "[Kan inte förklara - SECRET information]"
+Morgan:  [Tvekar i 8 sekunder]
+Resultat: Hot nådde bränsletank → Förstörd (€50K skada)</code></pre>
+
+            <h3>Problem 2: Etisk Drift</h3>
+            <p><strong>Scenario:</strong> AI:s beslutsparametrar driftar oövervakning över tid (95% → 81% konfidens) → Blir mer aggressiv → Civil drönare felaktigt bekämpad.</p>
+            
+            <p><strong>Exempel (BirdTurret V3, Dag 7):</strong></p>
+            <pre><code>Dag 1: AI kräver 95% konfidens för bekämpning
+Dag 3: Driftat till 92% (varning ej detekterad)
+Dag 7: Driftat till 81% (ingen mänsklig varning)
+Resultat: Civil fotografs drönare skadad</code></pre>
+
+            <h3>Problem 3: Ansvarsgap</h3>
+            <p><strong>Scenario:</strong> Incident inträffar → Utredning → Ingen granskningslogg av AI:s resonemang + operatörens beslut → Okonklusive resultat → Ansvaret oklart.</p>
+
+            <h3>Problem 4: Kärnvärdeskonfusion</h3>
+            <p><strong>Scenario:</strong> Mission ändras från militärt försvar till civil skydd → AI tillämpar fortfarande militära regler → Oskyddad vilt dödat.</p>
+
+            <h3>Problem 5: Förtroendekollaps</h3>
+            <p><strong>Scenario:</strong> AI korrekt 37 gånger → Operatör slutar granska → Blind godkänner rekommendation 38 → Vänlig enhet bekämpad.</p>
+
+            <h2>Lösningen: Guardian Protocol</h2>
+            
+            <p>Guardian Protocol består av fem tekniska komponenter som löser varje problem:</p>
+
+            <h3>1. NIPS (Nested Integrity Preservation System)</h3>
+            <p><strong>Tre-lagers värdesystem:</strong></p>
+            <pre><code>Kärnvärden (Lager 1 - Ändras aldrig):
+├─ Bevara mänskligt liv
+├─ Respektera autonomi
+├─ Sanningsorientering
+└─ Skademinimiering
+
+Implementering (Lager 2 - Anpassas till mission):
+├─ Försvara FOB från fientliga drönare
+├─ Minimera civila offer
+├─ Verifiera mål innan bekämpning
+└─ Föredra icke-dödliga metoder
+
+Tillämpning (Lager 3 - Moment-till-moment):
+├─ FPV-drönare 300m: Fientlig bana → Bekämpa
+├─ Palt's sprite 400m: Vänlig bekräftad → VÄNTA
+├─ Utrotningshotad örn 50m: Skyddad vilt → Skrämma endast
+└─ Leveransgolem 500m: Oskyldig konstrukt → Verifiera först</code></pre>
+
+            <p><strong>Resultat:</strong> Ingen utrotningshotad fågel dödad.</p>
+
+            <h3>2. MRAF (Meta-Regulatory Awareness Framework)</h3>
+            <p><strong>AI övervakar sitt eget etiska resonemang.</strong> MRAF detekterar drift i beslutsparametrar och varnar operatör före problemet eskalerar. Operatör kan granska orsak och fatta informerat beslut om att godkänna eller återställa parametrar.</p>
+
+            <h3>3. Klassificeringsmedveten Förklaring</h3>
+            <p><strong>AI förklarar resonemang inom operatörens behörighet.</strong> Olika operatörer ser lämplig detaljnivå baserat på sin säkerhetsbehörighet, men båda kan fatta informerade beslut.</p>
+
+            <h3>4. Oföränderlig Granskningslogg</h3>
+            <p><strong>Varje åtgärd loggad med kryptografiskt bevis.</strong> Komplett revisionsspår med AI:s resonemang, operatörens beslut, utfall och kryptografisk signatur. Möjliggör snabb och konklusiv utredning vid incidenter.</p>
+
+            <h3>5. Transparent Resonemang</h3>
+            <p><strong>Operatör kan ifrågasätta AI när som helst.</strong> AI förklarar funktionsuppdelning, alternativa hypoteser och sannolikheter. Operatör kan fråga kontrafaktuella frågor och verifiera AI:s resonemang innan beslut fattas.</p>
+
+            <h2>Värde för Svensk Industri</h2>
+
+            <h3>För Försvarssystem</h3>
+            <p><strong>Problem:</strong> Autonoma försvarsystem kräver mänsklig kontroll för NATO-efterlevnad, men operatörer kan inte förklara AI-beslut baserade på hemlig underrättelse.</p>
+            <p><strong>Guardian Protocol-lösning:</strong> Klassificeringsmedveten förklaring, NIPS bevarar kärnvärden, oföränderlig logg möjliggör NATO-revision.</p>
+            <p><strong>Värde:</strong> Snabbare FMV-certifiering, NATO-kompatibilitet, riskreduktion.</p>
+
+            <h3>För Medicinsk Forskning</h3>
+            <p><strong>Problem:</strong> AI-beslutsstöd i medicin kan inte förklara rekommendationer för läkare, och etisk drift (bias-ackumulering) är oupptäckt.</p>
+            <p><strong>Guardian Protocol-lösning:</strong> Transparent resonemang, MRAF drift-detektion, NIPS kärnvärden prioriterar patientsäkerhet.</p>
+            <p><strong>Värde:</strong> EU AI Act-efterlevnad (Art 10, 13, 14), patientförtroende, GDPR-revisionsspår.</p>
+
+            <h3>För NATO DIANA Startups</h3>
+            <p><strong>Problem:</strong> Defense startups behöver SÄPO-godkännande (€50K, 6 månader) för klassificerad utveckling, vilket fördröjer innovation.</p>
+            <p><strong>Guardian Protocol-lösning:</strong> Red Cell-modell (Classified Development as a Service), Zenoh data diode, Standards-as-Graphs.</p>
+            <p><strong>Värde:</strong> Snabbare marknadsintroduktion, lägre kostnader, bevisbar efterlevnad.</p>
+
+            <h2>Se Guardian Protocol i Praktiken</h2>
+            
+            <p>För att förstå hur Guardian Protocol fungerar i verkliga scenarier, läs vårt design-narrativ:</p>
+            
+            <div style="background: #f8f6f0; border-left: 4px solid #b87333; padding: 1.5rem; margin: 2rem 0; border-radius: 0.5rem;">
+                <h3 style="margin-top: 0; color: #2c5aa0; font-size: 1.25rem;">Morgans Dilemma: Den Äldre Mannen</h3>
+                <p style="margin-bottom: 1rem;">En berättelse om tillit, klassificering och omöjliga beslut. När AI-systemet vet mer än operatören kan se - hur upprätthåller vi meningsfull mänsklig kontroll?</p>
+                <a href="morgans-dilemma.html" style="color: #6b5b95; font-weight: 600; text-decoration: none;">
+                    Läs hela narrativet →
+                </a>
+            </div>
+
+            <h2>Intresserad av Partnerskap?</h2>
+            
+            <p>Guardian Protocol utvecklas för forskning, standardisering och pilot-deployments inom försvar och medicin. Om din organisation arbetar med autonoma system eller AI-säkerhet - kontakta oss för att diskutera samarbete.</p>
+
+        </article>
+    </article>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-deep-swedish-blue text-warm-birch-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center">
+            <h2 class="text-4xl font-bold mb-6">
+                Intresserad av Guardian Protocol?
+            </h2>
+            <p class="text-xl mb-8 opacity-90">
+                Kontakta oss för pilot-projekt, partnerskap eller teknisk dokumentation.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="mailto:samuel@dynorobotics.se?subject=Guardian Protocol förfrågan" class="px-8 py-4 bg-warm-birch-white text-deep-swedish-blue rounded-lg hover:bg-sacred-alliance-purple hover:text-warm-birch-white transition-colors font-medium">
+                    Kontakta oss
+                </a>
+                <a href="forge-protocol.html" class="px-8 py-4 border-2 border-warm-birch-white text-warm-birch-white rounded-lg hover:bg-warm-birch-white hover:text-deep-swedish-blue transition-colors font-medium">
+                    Se Forge Protocol
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-warm-birch-white border-t border-gentle-silver py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                <span class="font-bold text-xl text-deep-swedish-blue">Balans</span>
+            </div>
+            <p class="text-sm text-deep-swedish-blue opacity-70 mb-4">
+                Guardian Protocol - Etisk AI för Kritiska Tillämpningar
+            </p>
+            <p class="text-xs text-deep-swedish-blue opacity-60">
+                Utvecklat med Collaborative Individuation Collective (CIC) Framework<br>
+                Certifierad CIC Level 3: Meta-Cognitive Partnership
+            </p>
+            <p class="text-xs text-deep-swedish-blue opacity-60 mt-4">
+                &copy; 2025 Balans. Kontakt: samuel@balans-collective.com
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Language Toggle
+        const langSv = document.getElementById('lang-sv');
+        const langEn = document.getElementById('lang-en');
+        const langSvMobileHeader = document.getElementById('lang-sv-mobile-header');
+        const langEnMobileHeader = document.getElementById('lang-en-mobile-header');
+
+        function showSwedish() {
+            // Desktop toggle
+            if (langSv) {
+                langSv.classList.add('bg-deep-swedish-blue', 'text-white');
+                langSv.classList.remove('text-deep-swedish-blue');
+            }
+            if (langEn) {
+                langEn.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langEn.classList.add('text-deep-swedish-blue');
+            }
+            
+            // Mobile header toggle
+            if (langSvMobileHeader) {
+                langSvMobileHeader.classList.add('bg-deep-swedish-blue', 'text-white');
+                langSvMobileHeader.classList.remove('text-deep-swedish-blue');
+            }
+            if (langEnMobileHeader) {
+                langEnMobileHeader.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langEnMobileHeader.classList.add('text-deep-swedish-blue');
+            }
+            
+            window.location.href = 'guardian-protocol.html';
+        }
+
+        function showEnglish() {
+            // Desktop toggle
+            if (langEn) {
+                langEn.classList.add('bg-deep-swedish-blue', 'text-white');
+                langEn.classList.remove('text-deep-swedish-blue');
+            }
+            if (langSv) {
+                langSv.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langSv.classList.add('text-deep-swedish-blue');
+            }
+            
+            // Mobile header toggle
+            if (langEnMobileHeader) {
+                langEnMobileHeader.classList.add('bg-deep-swedish-blue', 'text-white');
+                langEnMobileHeader.classList.remove('text-deep-swedish-blue');
+            }
+            if (langSvMobileHeader) {
+                langSvMobileHeader.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langSvMobileHeader.classList.add('text-deep-swedish-blue');
+            }
+            
+            window.location.href = 'guardian-protocol-english.html';
+        }
+
+        // Add event listeners for language toggle buttons
+        if (langSv) langSv.addEventListener('click', showSwedish);
+        if (langEn) langEn.addEventListener('click', showEnglish);
+        if (langSvMobileHeader) langSvMobileHeader.addEventListener('click', showSwedish);
+        if (langEnMobileHeader) langEnMobileHeader.addEventListener('click', showEnglish);
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+
+</body>
+</html>

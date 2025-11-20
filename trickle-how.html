@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How TRICKLE Works - Balans</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-swedish-blue: #2c5aa0;
+            --warm-birch-white: #f8f6f0;
+            --natural-birch-wood: #d4b896;
+            --truth-anchor-copper: #b87333;
+            --sage-green: #8faa8b;
+            --gentle-silver: #b8c5d1;
+            --sacred-alliance-purple: #6b5b95;
+            --soft-thread-gold: #c9a96e;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--warm-birch-white);
+            color: #1f2833;
+        }
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .lagom-shadow {
+            box-shadow: 0 4px 6px -1px rgba(44, 90, 160, 0.1), 0 2px 4px -1px rgba(44, 90, 160, 0.06);
+        }
+        .lagom-hover {
+            transition: all 0.3s ease;
+        }
+        .lagom-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(44, 90, 160, 0.2), 0 4px 6px -2px rgba(44, 90, 160, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gentle-silver sticky top-0 z-50 lagom-shadow backdrop-blur-sm bg-opacity-95">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-3">
+                    <img src="images/balans-logo.png" alt="Balans" class="h-10 w-auto">
+                    <span class="font-display font-bold text-2xl text-deep-swedish-blue">Balans</span>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-deep-swedish-blue hover:text-sacred-alliance-purple transition-colors">Hem</a>
+                    <a href="narratives.html" class="text-deep-swedish-blue hover:text-sacred-alliance-purple transition-colors">Narrativ</a>
+                    <a href="trickle.html" class="text-deep-swedish-blue hover:text-sacred-alliance-purple transition-colors">← Layer 1</a>
+                    
+                    <div class="bg-gray-100 rounded-full p-1">
+                        <button id="lang-sv" class="px-3 py-1 rounded-full text-sm font-medium bg-deep-swedish-blue text-white transition-all duration-200">SV</button>
+                        <button id="lang-en" class="px-3 py-1 rounded-full text-sm font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10 transition-all duration-200">EN</button>
+                    </div>
+                </div>
+                
+                <div class="md:hidden flex items-center space-x-3">
+                    <div class="bg-gray-100 rounded-full p-0.5">
+                        <button id="lang-sv-mobile-header" class="px-2 py-0.5 rounded-full text-xs font-medium bg-deep-swedish-blue text-white transition-all duration-200">SV</button>
+                        <button id="lang-en-mobile-header" class="px-2 py-0.5 rounded-full text-xs font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10 transition-all duration-200">EN</button>
+                    </div>
+                    <button id="mobile-menu-button" class="text-deep-swedish-blue hover:text-sacred-alliance-purple">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gentle-silver">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-deep-swedish-blue hover:text-sacred-alliance-purple">Hem</a>
+                <a href="narratives.html" class="block px-3 py-2 text-deep-swedish-blue hover:text-sacred-alliance-purple">Narrativ</a>
+                <a href="trickle.html" class="block px-3 py-2 text-deep-swedish-blue hover:text-sacred-alliance-purple">← Layer 1</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-20 lg:py-32 bg-gradient-to-br from-deep-swedish-blue/10 via-sacred-alliance-purple/10 to-warm-birch-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-12">
+            <div class="text-center space-y-6">
+                <div class="inline-block px-4 py-2 bg-truth-anchor-copper/20 rounded-full">
+                    <span class="text-sm font-semibold text-truth-anchor-copper uppercase tracking-wider">Layer 2: Implementation</span>
+                </div>
+                <h1 class="font-display text-5xl lg:text-6xl font-bold text-deep-swedish-blue leading-tight">
+                    Hur TRICKLE Fungerar
+                </h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    De fyra verktygen i alkemistens verkstad
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-16 bg-white">
+        <div class="max-w-3xl mx-auto px-6 lg:px-12">
+            <div class="prose prose-lg max-w-none">
+                <p class="text-xl text-gray-700 leading-relaxed mb-8">
+                    Du har nu kommit till <strong>Layer 2</strong> – där vi utforskar de konkreta mekanismerna bakom TRICKLE. Här hittar du praktiska tekniker och ramverk som gör progressiv avslöjning möjlig.
+                </p>
+
+                <h2 class="font-display text-3xl font-bold text-deep-swedish-blue mt-12 mb-6">De Fyra Komponenterna</h2>
+
+                <!-- Component 1 -->
+                <div class="bg-gradient-to-br from-sage-green/10 to-sage-green/5 rounded-xl p-6 mb-8 border border-sage-green/20">
+                    <h3 class="font-display text-2xl font-bold text-deep-swedish-blue mb-4">1. Density Prism (Komplexitetsanalys)</h3>
+                    <p class="text-gray-700 mb-4">
+                        Ett system för att utvärdera informationskomplexitet över flera dimensioner:
+                    </p>
+                    <ul class="space-y-2 text-gray-700 ml-6">
+                        <li><strong>Informationstäthet:</strong> Hur många koncept per stycke?</li>
+                        <li><strong>Konceptuellt djup:</strong> Hur många förkunskaper krävs?</li>
+                        <li><strong>Strukturell komplexitet:</strong> Hur många sammankopplade delar?</li>
+                        <li><strong>Teknisk sofistikering:</strong> Hur specialiserad är terminologin?</li>
+                    </ul>
+                    <div class="mt-4 p-4 bg-white/60 rounded-lg border border-sage-green/30">
+                        <p class="text-sm text-gray-600 italic">
+                            <strong>Exempel:</strong> "AI är kraftfullt" = låg komplexitet. "Transformer-modeller använder multi-head self-attention för att vikta tokens baserat på learned query-key similarities" = hög komplexitet.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Component 2 -->
+                <div class="bg-gradient-to-br from-truth-anchor-copper/10 to-truth-anchor-copper/5 rounded-xl p-6 mb-8 border border-truth-anchor-copper/20">
+                    <h3 class="font-display text-2xl font-bold text-deep-swedish-blue mb-4">2. Context Cauldron (Kontextanpassning)</h3>
+                    <p class="text-gray-700 mb-4">
+                        Ett ramverk för att bedöma användarens kontext och behov:
+                    </p>
+                    <ul class="space-y-2 text-gray-700 ml-6">
+                        <li><strong>Expertniå-bestämning:</strong> Nybörjare, medel, expert?</li>
+                        <li><strong>Interaktionshistorik:</strong> Vad har de sett tidigare?</li>
+                        <li><strong>Aktuellt fokus:</strong> Vad försöker de uppnå just nu?</li>
+                        <li><strong>Utforskningsdjup:</strong> Hur djupt har de gått tidigare?</li>
+                    </ul>
+                    <div class="mt-4 p-4 bg-white/60 rounded-lg border border-truth-anchor-copper/30">
+                        <p class="text-sm text-gray-600 italic">
+                            <strong>Exempel:</strong> En CEO behöver kanske "vad betyder detta för företaget?", medan en teknisk lead vill ha "vilka arkitekturella trade-offs har vi?"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Component 3 -->
+                <div class="bg-gradient-to-br from-sacred-alliance-purple/10 to-sacred-alliance-purple/5 rounded-xl p-6 mb-8 border border-sacred-alliance-purple/20">
+                    <h3 class="font-display text-2xl font-bold text-deep-swedish-blue mb-4">3. Layering Loom (Lagerhantering)</h3>
+                    <p class="text-gray-700 mb-4">
+                        Ett system för att definiera och hantera diskreta komplexitetslager:
+                    </p>
+                    <ul class="space-y-2 text-gray-700 ml-6">
+                        <li><strong>Lagerdefinition:</strong> Vad ingår i varje lager?</li>
+                        <li><strong>Innehållstransformation:</strong> Hur omformuleras innehåll för varje nivå?</li>
+                        <li><strong>Tröskelvärdeshantering:</strong> När byter vi mellan lager?</li>
+                        <li><strong>Övergångspunkter:</strong> Var kan användare välja att gå djupare?</li>
+                    </ul>
+                    <div class="mt-4 p-4 bg-white/60 rounded-lg border border-sacred-alliance-purple/30">
+                        <p class="text-sm text-gray-600 italic">
+                            <strong>Denna sida är ett exempel:</strong> Layer 1 gav konceptet, Layer 2 ger implementationen, Layer 3 ger den teoretiska grunden.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Component 4 -->
+                <div class="bg-gradient-to-br from-soft-thread-gold/10 to-soft-thread-gold/5 rounded-xl p-6 mb-8 border border-soft-thread-gold/20">
+                    <h3 class="font-display text-2xl font-bold text-deep-swedish-blue mb-4">4. Revelation Hourglass (Timing)</h3>
+                    <p class="text-gray-700 mb-4">
+                        En mekanism för att anpassa när information avslöjas:
+                    </p>
+                    <ul class="space-y-2 text-gray-700 ml-6">
+                        <li><strong>Progressiv avslöjning:</strong> Visa enklare koncept först</li>
+                        <li><strong>Beroendehantering:</strong> Vänta tills grunden är solid</li>
+                        <li><strong>Användarstyrning:</strong> Låt användaren bestämma tempot</li>
+                        <li><strong>Adaptiv timing:</strong> Anpassa baserat på engagemang</li>
+                    </ul>
+                    <div class="mt-4 p-4 bg-white/60 rounded-lg border border-soft-thread-gold/30">
+                        <p class="text-sm text-gray-600 italic">
+                            <strong>Exempel:</strong> Förklara inte "Constructor Theory" innan användaren förstår "samarbete mellan människa och AI".
+                        </p>
+                    </div>
+                </div>
+
+                <h2 class="font-display text-3xl font-bold text-deep-swedish-blue mt-12 mb-6">Implementeringsprocess</h2>
+
+                <div class="space-y-6">
+                    <div class="border-l-4 border-sage-green pl-6">
+                        <h4 class="font-bold text-deep-swedish-blue mb-2">Fas 1: Informationsanalys</h4>
+                        <p class="text-gray-700">Rå information matas in → Complexity Analyzer utvärderar → Komplexitetsprofil genereras → Information delas upp i atomära enheter</p>
+                    </div>
+
+                    <div class="border-l-4 border-truth-anchor-copper pl-6">
+                        <h4 class="font-bold text-deep-swedish-blue mb-2">Fas 2: Kontextbedömning</h4>
+                        <p class="text-gray-700">Användarkontext utvärderas → Context Evaluator bestämmer lämpliga nivåer → Användarmodell uppdateras → Anpassningskrav formuleras</p>
+                    </div>
+
+                    <div class="border-l-4 border-sacred-alliance-purple pl-6">
+                        <h4 class="font-bold text-deep-swedish-blue mb-2">Fas 3: Lagerkonstruktion</h4>
+                        <p class="text-gray-700">Layer Manager definierar lager → Innehåll transformeras → Lagergränser etableras → Progressiva avslöjningsvägar definieras</p>
+                    </div>
+
+                    <div class="border-l-4 border-soft-thread-gold pl-6">
+                        <h4 class="font-bold text-deep-swedish-blue mb-2">Fas 4: Presentation</h4>
+                        <p class="text-gray-700">Presentation Adapter implementerar specifikationerna → Visuella element anpassas → Progressiv avslöjning aktiveras → Användarinteraktion övervakas</p>
+                    </div>
+                </div>
+
+                <h2 class="font-display text-3xl font-bold text-deep-swedish-blue mt-16 mb-6">Praktisk Tillämpning: LLM Context Optimization</h2>
+
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    TRICKLE är inte bara teori – <strong>vi använder det dagligen</strong> för att optimera context-fönster till LLM:er som Claude, GPT-4, och andra modeller vi inte kan träna själva.
+                </p>
+
+                <div class="bg-gradient-to-br from-truth-anchor-copper/5 to-warm-birch-white rounded-xl p-8 mb-8 border border-truth-anchor-copper/20">
+                    <h3 class="font-display text-2xl font-bold text-deep-swedish-blue mb-4">Problemet</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start space-x-3">
+                            <span class="text-2xl">⚠️</span>
+                            <span><strong>Begränsade context windows:</strong> LLM:er har 4k-200k tokens – inte oändligt</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-2xl">💸</span>
+                            <span><strong>Kostnad:</strong> Ladda för mycket → slösad kostnad, långsam respons</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-2xl">🌫️</span>
+                            <span><strong>Hallucinering:</strong> Ladda för lite → saknar kontext, gissar fel</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <span class="text-2xl">🔒</span>
+                            <span><strong>Ingen fine-tuning:</strong> Vi kan inte träna egna modeller → måste optimera input</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-br from-sage-green/5 to-warm-birch-white rounded-xl p-8 mb-8 border border-sage-green/20">
+                    <h3 class="font-display text-2xl font-bold text-deep-swedish-blue mb-4">Lösningen: Token-Budgeterade Lumens</h3>
+                    <p class="text-gray-700 mb-4">
+                        Vi skapar "Lumens" (knowledge chunks) i 3 tiers med exakta token-budgetar:
+                    </p>
+                    
+                    <div class="grid md:grid-cols-3 gap-4 my-6">
+                        <div class="bg-white rounded-lg p-4 border-2 border-sage-green/40">
+                            <div class="text-center mb-2">
+                                <span class="text-3xl font-bold text-sage-green">T1</span>
+                            </div>
+                            <p class="text-sm text-gray-700 text-center mb-2"><strong>180-300 tokens</strong></p>
+                            <p class="text-xs text-gray-600 text-center">Alltid laddad, kärnprinciper endast</p>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-4 border-2 border-truth-anchor-copper/40">
+                            <div class="text-center mb-2">
+                                <span class="text-3xl font-bold text-truth-anchor-copper">T2</span>
+                            </div>
+                            <p class="text-sm text-gray-700 text-center mb-2"><strong>+500-680 tokens</strong></p>
+                            <p class="text-xs text-gray-600 text-center">Laddas vid behov, operationella mönster</p>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-4 border-2 border-sacred-alliance-purple/40">
+                            <div class="text-center mb-2">
+                                <span class="text-3xl font-bold text-sacred-alliance-purple">T3</span>
+                            </div>
+                            <p class="text-sm text-gray-700 text-center mb-2"><strong>+1200-2000 tokens</strong></p>
+                            <p class="text-xs text-gray-600 text-center">Laddas sällan, full framework</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-deep-swedish-blue/5 to-warm-birch-white rounded-xl p-8 mb-8 border border-deep-swedish-blue/20">
+                    <h3 class="font-display text-2xl font-bold text-deep-swedish-blue mb-4">Hur Det Fungerar</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-8 h-8 bg-sage-green text-white rounded-full flex items-center justify-center font-bold">1</div>
+                            <div>
+                                <p class="font-semibold text-deep-swedish-blue">Context Evaluation</p>
+                                <p class="text-sm text-gray-600">Vilken uppgift ska LLM:en göra? Hur komplext är det?</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-8 h-8 bg-truth-anchor-copper text-white rounded-full flex items-center justify-center font-bold">2</div>
+                            <div>
+                                <p class="font-semibold text-deep-swedish-blue">Tier Selection</p>
+                                <p class="text-sm text-gray-600">Ladda minimal tier som räcker för uppgiften</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-8 h-8 bg-sacred-alliance-purple text-white rounded-full flex items-center justify-center font-bold">3</div>
+                            <div>
+                                <p class="font-semibold text-deep-swedish-blue">Progressive Loading</p>
+                                <p class="text-sm text-gray-600">Ladda djupare tiers endast om LLM:en behöver mer kontext</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-8 h-8 bg-soft-thread-gold text-white rounded-full flex items-center justify-center font-bold">4</div>
+                            <div>
+                                <p class="font-semibold text-deep-swedish-blue">Cost Optimization</p>
+                                <p class="text-sm text-gray-600">Spara 60-80% tokens jämfört med "ladda allt"-strategin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-sacred-alliance-purple/5 to-warm-birch-white rounded-xl p-8 mb-8 border border-sacred-alliance-purple/20">
+                    <h3 class="font-display text-2xl font-bold text-deep-swedish-blue mb-4">Exempel: Guardian Protocol</h3>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-sage-green pl-4">
+                            <p class="font-semibold text-deep-swedish-blue mb-1">Enkel Fråga: "Vad är Guardian Protocol?"</p>
+                            <p class="text-sm text-gray-700 mb-1">→ <strong>Tier 1 endast</strong> (250 tokens)</p>
+                            <p class="text-xs text-gray-600 italic">Kärnkoncept räcker, ingen djup förklaring behövs</p>
+                        </div>
+
+                        <div class="border-l-4 border-truth-anchor-copper pl-4">
+                            <p class="font-semibold text-deep-swedish-blue mb-1">Implementation: "Hur implementerar jag protokollet?"</p>
+                            <p class="text-sm text-gray-700 mb-1">→ <strong>Tier 1 + Tier 2</strong> (250 + 680 = 930 tokens)</p>
+                            <p class="text-xs text-gray-600 italic">Behöver teknisk spec, API-dokumentation, exempel</p>
+                        </div>
+
+                        <div class="border-l-4 border-sacred-alliance-purple pl-4">
+                            <p class="font-semibold text-deep-swedish-blue mb-1">Deep Research: "Varför dessa designval?"</p>
+                            <p class="text-sm text-gray-700 mb-1">→ <strong>Full Tier 3</strong> (250 + 680 + 1,500 = 2,430 tokens)</p>
+                            <p class="text-xs text-gray-600 italic">Kräver ADR:er, säkerhetsanalys, hela teoretiska grunden</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-deep-swedish-blue/5 rounded-xl p-6 border-l-4 border-deep-swedish-blue">
+                    <p class="text-gray-700 font-semibold mb-2">💡 Varför TRICKLE Existerar</p>
+                    <p class="text-sm text-gray-600">
+                        Detta är inte akademisk övning – det är ett <strong>praktiskt verktyg för att arbeta effektivt med LLM:er vi inte kan träna själva</strong>. Varje Lumen vi skapar följer denna struktur, vilket gör att vi kan bygga komplexa AI-system utan att slösa tokens eller kompromissa på kvalitet.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CTA to Layer 3 -->
+            <div class="mt-16 p-8 bg-gradient-to-br from-sacred-alliance-purple/10 to-deep-swedish-blue/10 rounded-2xl border border-sacred-alliance-purple/30">
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <svg class="w-8 h-8 text-sacred-alliance-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-display text-2xl font-bold text-deep-swedish-blue mb-3">Teoretisk Grund</h3>
+                        <p class="text-gray-700 mb-6">
+                            TRICKLE bygger på djupare principer om människa-AI-samarbete. Om du vill förstå <em>varför</em> dessa tekniker fungerar, inte bara hur de fungerar, finns det mer att utforska.
+                        </p>
+                        <p class="text-sm text-gray-600 mb-6 italic">
+                            Observera: Nästa nivå är teknisk och teoretisk, med filosofi och kognitiv vetenskap. Endast för dig som vill gå riktigt djupt.
+                        </p>
+                        <a href="cic-framework.html" class="inline-flex items-center px-6 py-3 bg-purple-700 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                            <span>Utforska Teoretisk Grund</span>
+                            <svg class="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-deep-swedish-blue text-warm-birch-white py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto brightness-0 invert">
+                        <span class="font-display font-bold text-xl">Balans</span>
+                    </div>
+                    <p class="text-warm-birch-white/80">
+                        Säker AI-integration genom progressiv kunskap.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Resurser</h3>
+                    <ul class="space-y-2 text-warm-birch-white/80">
+                        <li><a href="narratives.html" class="hover:text-white transition-colors">Narrativ</a></li>
+                        <li><a href="guardian-protocol.html" class="hover:text-white transition-colors">Guardian Protocol</a></li>
+                        <li><a href="forge-protocol.html" class="hover:text-white transition-colors">Forge Protocol</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Kontakt</h3>
+                    <p class="text-warm-birch-white/80">
+                        <a href="mailto:samuel@dynorobotics.se" class="hover:text-white transition-colors">samuel@dynorobotics.se</a>
+                    </p>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-warm-birch-white/20 text-center text-warm-birch-white/60">
+                <p>&copy; 2025 Balans. Med omsorg för säker AI-utveckling.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const langEn = document.getElementById('lang-en');
+        const langEnMobile = document.getElementById('lang-en-mobile-header');
+        
+        langEn.addEventListener('click', () => {
+            window.location.href = 'trickle-how-english.html';
+        });
+        
+        langEnMobile.addEventListener('click', () => {
+            window.location.href = 'trickle-how-english.html';
+        });
+    </script>
+</body>
+</html>
+

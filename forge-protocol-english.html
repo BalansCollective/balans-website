@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forge Protocol - Classification-Aware AI Development | Balans</title>
+    <meta name="description" content="Forge Protocol: Framework for building AI systems across security boundaries. Enables classified development without security breaches.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-swedish-blue': '#2c5aa0',
+                        'natural-birch-wood': '#d4b896',
+                        'sacred-alliance-purple': '#6b5b95',
+                        'warm-birch-white': '#f8f6f0',
+                        'soft-thread-gold': '#c9a96e',
+                        'sage-green': '#8faa8b',
+                        'gentle-silver': '#b8c5d1',
+                        'truth-anchor-copper': '#b87333'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .prose { max-width: 65ch; }
+        .prose h2 { color: #2c5aa0; font-size: 2rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1.5rem; }
+        .prose h3 { color: #2c5aa0; font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; }
+        .prose h4 { color: #6b5b95; font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+        .prose p { margin-bottom: 1.25rem; line-height: 1.75; color: #374151; }
+        .prose ul, .prose ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+        .prose li { margin-bottom: 0.5rem; line-height: 1.75; }
+        .prose strong { color: #2c5aa0; font-weight: 600; }
+        .prose code { background: #f3f4f6; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.875em; }
+        .prose pre { background: #1f2937; color: #f9fafb; padding: 1.5rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.5rem; }
+        .prose pre code { background: none; color: inherit; padding: 0; }
+        .prose table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .prose th { background: #f3f4f6; padding: 0.75rem; text-align: left; font-weight: 600; border: 1px solid #e5e7eb; }
+        .prose td { padding: 0.75rem; border: 1px solid #e5e7eb; }
+        .checkmark { color: #10b981; }
+    </style>
+</head>
+<body class="bg-warm-birch-white">
+
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="images/balans-logo.png" alt="Balans" class="h-10 w-auto">
+                    <span class="font-bold text-xl text-deep-swedish-blue">Balans</span>
+                </a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">Home</a>
+                    <a href="guardian-protocol-english.html" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">Guardian Protocol</a>
+                    
+                    <!-- Language Toggle -->
+                    <div class="bg-gray-100 rounded-full p-1">
+                        <button id="lang-sv" class="px-3 py-1 rounded-full text-sm font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10 transition-all duration-200">SV</button>
+                        <button id="lang-en" class="px-3 py-1 rounded-full text-sm font-medium bg-deep-swedish-blue text-white transition-all duration-200">EN</button>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button and language toggle -->
+                <div class="md:hidden flex items-center space-x-3">
+                    <!-- Mobile Language Toggle (always visible) -->
+                    <div class="bg-gray-100 rounded-full p-0.5">
+                        <button id="lang-sv-mobile-header" class="px-2 py-0.5 rounded-full text-xs font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10 transition-all duration-200">SV</button>
+                        <button id="lang-en-mobile-header" class="px-2 py-0.5 rounded-full text-xs font-medium bg-deep-swedish-blue text-white transition-all duration-200">EN</button>
+                    </div>
+                    
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-deep-swedish-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-natural-birch-wood/20">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">Home</a>
+                <a href="guardian-protocol-english.html" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">Guardian Protocol</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="py-16 lg:py-24 bg-gradient-to-b from-warm-birch-white to-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-12">
+            <div class="mb-8">
+                <svg viewBox="0 0 100 100" class="w-16 h-16 mb-6">
+                    <circle cx="50" cy="30" r="8" fill="#7b5ea7"/>
+                    <circle cx="30" cy="70" r="8" fill="#7b5ea7"/>
+                    <circle cx="70" cy="70" r="8" fill="#7b5ea7"/>
+                    <path d="M50 30 L30 70 M50 30 L70 70 M30 70 L70 70" 
+                          stroke="#7b5ea7" 
+                          stroke-width="2"/>
+                </svg>
+            </div>
+            <h1 class="text-5xl lg:text-6xl font-bold text-deep-swedish-blue mb-4">
+                Forge Protocol
+            </h1>
+            <p class="text-2xl text-deep-swedish-blue opacity-80 mb-6">
+                Classification-Aware AI Development
+            </p>
+            <p class="text-lg text-gray-600 mb-8">
+                Balans | November 2025
+            </p>
+        </div>
+    </section>
+
+    <!-- Executive Summary -->
+    <section class="py-12 bg-sacred-alliance-purple text-warm-birch-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-12">
+            <h2 class="text-3xl font-bold mb-6 text-warm-birch-white">Executive Summary</h2>
+            <p class="text-lg mb-6 opacity-90">
+                Forge Protocol is a framework for building AI systems across security boundaries, developed to solve five critical problems that hinder secure AI development in defense:
+            </p>
+            <ul class="space-y-3 text-lg opacity-90 mb-8">
+                <li><span class="checkmark">✅</span> <strong>Developers with different clearances can collaborate</strong> - without leaking secrets</li>
+                <li><span class="checkmark">✅</span> <strong>Code can be built and tested</strong> - even when specifications are classified</li>
+                <li><span class="checkmark">✅</span> <strong>Compliance is provable</strong> - automatic validation against standards</li>
+                <li><span class="checkmark">✅</span> <strong>Auditing is complete</strong> - full provenance from requirements to deployment</li>
+                <li><span class="checkmark">✅</span> <strong>Innovation accelerated</strong> - no 6-month SÄPO wait for every startup</li>
+            </ul>
+            <p class="text-lg mt-6 opacity-90">
+                <strong>Sister Protocol:</strong> Guardian Protocol handles operational security (deployed AI). Forge Protocol handles development-time security (building AI).
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <article class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-12 prose">
+            
+            <h2>The Challenge: Why Classified AI Development Fails Today</h2>
+
+            <h3>Problem 1: The Clearance Paradox</h3>
+            <p><strong>Scenario:</strong> Senior developer (CONFIDENTIAL clearance) receives requirement: "Implement SECRET algorithm from specification doc-00423." Cannot read spec → Cannot implement correctly → System is insecure.</p>
+            
+            <p><strong>Example (BirdTurret V3, Iteration 2):</strong></p>
+            <pre><code>Senior Dev:  "Implement fiber-optic FPV detection"
+SECRET Spec: [RF signature ABSENT = fiber-optic]
+Dev:         [Cannot read spec, guesses RF signature required]
+Result:      Algorithm implemented incorrectly, missed 40% fiber-optic threats</code></pre>
+
+            <h3>Problem 2: The Data Diode Gap</h3>
+            <p><strong>Scenario:</strong> AI trained on SECRET data in "Red Cell" (secure environment). Must test performance → Data OUT of Red Cell → Security breach.</p>
+
+            <h3>Problem 3: Standards Compliance Gap</h3>
+            <p><strong>Scenario:</strong> FMV requires proof of EU AI Act compliance. Development team has documentation in Word/PDF → FMV auditor must manually correlate requirements → 4 hours of review per incident.</p>
+
+            <h3>Problem 4: Provenance Loss</h3>
+            <p><strong>Scenario:</strong> Security incident → Investigation needs to know "Who changed this parameter? Why? Was it approved?" → Git log lacks context → Inconclusive investigation.</p>
+
+            <h3>Problem 5: Startup Innovation Barrier</h3>
+            <p><strong>Scenario:</strong> NATO DIANA startup wants to build AI solution for defense → Needs SÄPO approval (€50K, 6 months) for classified development → Cannot iterate quickly → Loses contract to established player.</p>
+
+            <h2>The Solution: Forge Protocol</h2>
+            
+            <p>Forge Protocol consists of five technical components that solve each development-time problem:</p>
+
+            <h3>1. Red Cell Architecture (Classified Development Environment)</h3>
+            <p><strong>Secure "sandbox" for classified AI development:</strong></p>
+            <pre><code>┌─────────────────────────────────────────────────┐
+│ RED CELL (Physically Secured Environment)      │
+│                                                  │
+│  ┌──────────────────────────────────────┐      │
+│  │ Data Diode (IN only, never OUT)     │      │
+│  │  ↓                                   │      │
+│  │  SECRET Specs → Local LLM → Impl    │      │
+│  │  ↓                                   │      │
+│  │  SECRET Training Data → Model        │      │
+│  │  ↓                                   │      │
+│  │  Test Results (metrics only) → OUT  │      │
+│  └──────────────────────────────────────┘      │
+│                                                  │
+│  Physical Security:                             │
+│  - Locked door (RFID access)                   │
+│  - No USB ports (hardware disabled)             │
+│  - No WiFi (faraday cage)                      │
+│  - Video surveillance                           │
+└─────────────────────────────────────────────────┘</code></pre>
+
+            <p><strong>How it solves problem 2:</strong> SECRET data never leaves Red Cell (data diode IN only), test metrics can be exported (no secrets), developers get feedback for iteration without seeing classified data. <strong>Result:</strong> BirdTurret V4 fully tested, 0 security incidents.</p>
+
+            <h3>2. Classification-Aware Development Flows</h3>
+            <p><strong>Developers with different clearances collaborate without leakage.</strong></p>
+            <p>CONFIDENTIAL developers see filtered specifications with SECRET sections removed. SECRET spec writers work in Red Cell with full detail. Compliance Plugin automatically filters content based on clearance level.</p>
+
+            <h3>3. Standards-as-Graphs (Queryable Compliance Requirements)</h3>
+            <p><strong>EU AI Act requirements stored as queryable graphs (Neo4j).</strong></p>
+            <p>Instead of manual PDF review, FMV auditors run Cypher queries for instant compliance validation. Automatic deployment gates prevent deployment without complete evidence.</p>
+
+            <h3>4. Git Provenance Tracking</h3>
+            <p><strong>Every code change tracked with AI-contribution + human-review.</strong></p>
+            <p>MCP Git Tool captures: who changed what, why, confidence level, AI vs. human contribution percentage, review cycles, compliance links. Complete context enables rapid incident investigation.</p>
+
+            <h3>5. Zenoh Data Diode Enforcement</h3>
+            <p><strong>Information flows IN to Red Cell, never OUT (except metrics).</strong></p>
+            <p>Compliance Plugin (Rust WASM) intercepts ALL Zenoh operations. Whitelist approach: only precision, recall, F1, latency, throughput metrics allowed out. Images, RF profiles, coordinates blocked automatically.</p>
+
+            <h2>Value for Swedish Industry</h2>
+
+            <h3>For Defense Industry</h3>
+            <p><strong>Problem:</strong> Developing AI systems across security boundaries requires expensive, separate teams for each clearance level → Slow iteration, difficult collaboration.</p>
+            <p><strong>Forge Protocol solution:</strong> Senior devs (CONFIDENTIAL) implement from filtered specs, SECRET spec writers work in Red Cell, automatic compliance validation.</p>
+            <p><strong>Value:</strong> Faster time-to-market, lower development costs (one team, different clearances), easier FMV certification.</p>
+
+            <h3>For Smaller Defense Actors</h3>
+            <p><strong>Problem:</strong> Need SÄPO approval (€50K, 6 months) for classified AI development → Cannot compete with established players.</p>
+            <p><strong>Forge Protocol solution:</strong> Share Red Cell environment (Classified Development as a Service), no own SÄPO application, pay-per-use model (€5K/month vs. €50K capex).</p>
+            <p><strong>Value:</strong> Faster innovation (iteration from day 1), lower entry cost, FMV access.</p>
+
+            <h3>For Defense Research</h3>
+            <p><strong>Problem:</strong> Research on classified threats requires secure environment → researchers cannot collaborate with external academics.</p>
+            <p><strong>Forge Protocol solution:</strong> Write SECRET specs in Red Cell, external researchers implement from CONFIDENTIAL specs, Standards-as-Graphs enables publication (share results, not secrets).</p>
+            <p><strong>Value:</strong> Broader collaboration, faster publication, easier EU funding.</p>
+
+        </article>
+    </article>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-deep-swedish-blue text-warm-birch-white">
+        <div class="max-w-4xl mx-auto px-6 lg:px-12 text-center">
+            <h2 class="text-4xl font-bold mb-6">
+                Interested in Forge Protocol?
+            </h2>
+            <p class="text-xl mb-8 opacity-90">
+                Contact us for Red Cell access, pilot projects, or partnerships.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="mailto:samuel@dynorobotics.se?subject=Forge Protocol Inquiry" class="px-8 py-4 bg-warm-birch-white text-deep-swedish-blue rounded-lg hover:bg-sacred-alliance-purple hover:text-warm-birch-white transition-colors font-medium">
+                    Contact Us
+                </a>
+                <a href="guardian-protocol.html" class="px-8 py-4 border-2 border-warm-birch-white text-warm-birch-white rounded-lg hover:bg-warm-birch-white hover:text-deep-swedish-blue transition-colors font-medium">
+                    View Guardian Protocol
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-warm-birch-white border-t border-gentle-silver py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                <span class="font-bold text-xl text-deep-swedish-blue">Balans</span>
+            </div>
+            <p class="text-sm text-deep-swedish-blue opacity-70 mb-4">
+                Forge Protocol - Classification-Aware AI Development
+            </p>
+            <p class="text-xs text-deep-swedish-blue opacity-60">
+                Sister Protocol to Guardian Protocol (Operational AI Safety)<br>
+                Developed with Collaborative Individuation Collective (CIC) Framework<br>
+                EU AI Act compliant (Art 9: Risk Management, Art 10: Data Governance)
+            </p>
+            <p class="text-xs text-deep-swedish-blue opacity-60 mt-4">
+                &copy; 2025 Balans. Contact: samuel@balans-collective.com
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Language Toggle
+        const langSv = document.getElementById('lang-sv');
+        const langEn = document.getElementById('lang-en');
+        const langSvMobileHeader = document.getElementById('lang-sv-mobile-header');
+        const langEnMobileHeader = document.getElementById('lang-en-mobile-header');
+
+        function showSwedish() {
+            // Desktop toggle
+            if (langSv) {
+                langSv.classList.add('bg-deep-swedish-blue', 'text-white');
+                langSv.classList.remove('text-deep-swedish-blue');
+            }
+            if (langEn) {
+                langEn.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langEn.classList.add('text-deep-swedish-blue');
+            }
+            
+            // Mobile header toggle
+            if (langSvMobileHeader) {
+                langSvMobileHeader.classList.add('bg-deep-swedish-blue', 'text-white');
+                langSvMobileHeader.classList.remove('text-deep-swedish-blue');
+            }
+            if (langEnMobileHeader) {
+                langEnMobileHeader.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langEnMobileHeader.classList.add('text-deep-swedish-blue');
+            }
+            
+            window.location.href = 'forge-protocol.html';
+        }
+
+        function showEnglish() {
+            // Desktop toggle
+            if (langEn) {
+                langEn.classList.add('bg-deep-swedish-blue', 'text-white');
+                langEn.classList.remove('text-deep-swedish-blue');
+            }
+            if (langSv) {
+                langSv.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langSv.classList.add('text-deep-swedish-blue');
+            }
+            
+            // Mobile header toggle
+            if (langEnMobileHeader) {
+                langEnMobileHeader.classList.add('bg-deep-swedish-blue', 'text-white');
+                langEnMobileHeader.classList.remove('text-deep-swedish-blue');
+            }
+            if (langSvMobileHeader) {
+                langSvMobileHeader.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langSvMobileHeader.classList.add('text-deep-swedish-blue');
+            }
+            
+            window.location.href = 'forge-protocol-english.html';
+        }
+
+        // Add event listeners for language toggle buttons
+        if (langSv) langSv.addEventListener('click', showSwedish);
+        if (langEn) langEn.addEventListener('click', showEnglish);
+        if (langSvMobileHeader) langSvMobileHeader.addEventListener('click', showSwedish);
+        if (langEnMobileHeader) langEnMobileHeader.addEventListener('click', showEnglish);
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+
+</body>
+</html>
+
