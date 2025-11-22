@@ -88,12 +88,12 @@ export function Navigation() {
                 >
                   {t('navigation.products')}
                 </button>
-                <button
-                  onClick={() => scrollToSection('approach')}
+                <a
+                  href="/family"
                   className="text-gray-700 hover:text-swedish-blue transition-colors"
                 >
-                  {t('navigation.approach')}
-                </button>
+                  {t('navigation.family', 'För Familjer')}
+                </a>
                 <a
                   href="/narratives"
                   className="text-gray-700 hover:text-swedish-blue transition-colors"

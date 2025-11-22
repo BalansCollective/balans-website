@@ -8,6 +8,7 @@ import { ForgeProtocolPage } from './pages/website/ForgeProtocolPage';
 import NarrativesPage from './pages/website/NarrativesPage';
 import { GroundAssaultPage } from './pages/website/GroundAssaultPage';
 import { MorgansDilemmaPage } from './pages/website/MorgansDilemmaPage';
+import FamilyPage from './pages/website/FamilyPage';
 import { MedicalDashboardPage } from './pages/MedicalDashboardPage';
 import './i18n'; // Initialize i18n
 import './App.css';
@@ -18,6 +19,7 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/family" element={<FamilyPage />} />
         <Route path="/defense" element={<DefensePage />} />
         <Route path="/red-forge" element={<RedForgePage />} />
         <Route path="/guardian-protocol" element={<GuardianProtocolPage />} />

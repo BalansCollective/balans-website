@@ -2,162 +2,103 @@
   "hero": {
     "title": "When families don't understand each other",
     "subtitle": "Weaver helps you translate between different thinking styles and strengthen family bonds",
-    "cta": {
-      "primary": "Get started now",
-      "secondary": "Choose your version"
-    },
-    "trust_badges": {
-      "security": "Safe & private",
-      "values": "Swedish values",
-      "family_first": "Family first"
-    }
+    "cta_primary": "Get started now",
+    "cta_secondary": "Choose your version",
+    "feature1": "Safe & private",
+    "feature2": "Swedish values",
+    "feature3": "Family first"
   },
-  "problems": {
+  "problem": {
     "title": "Do you recognize your family?",
     "subtitle": "Many Swedish families experience the same challenges when different thinking styles clash",
-    "talking_past": {
-      "title": "We talk past each other",
-      "description": "\"We discuss the children's school time but never seem to agree. Everyone has different opinions but no one listens to each other.\"",
-      "label": "→ Different communication styles"
-    },
-    "teenager_shuts_down": {
-      "title": "The teenager shuts down",
-      "description": "\"Our 15-year-old doesn't seem to understand our explanations and we don't understand her way of thinking. Conversations often end in frustration.\"",
-      "label": "→ Generational differences"
-    },
-    "decisions_become_conflicts": {
-      "title": "Decisions become conflicts",
-      "description": "\"Every family decision becomes a discussion. We have different ways of analyzing situations and rarely reach solutions everyone is satisfied with.\"",
-      "label": "→ Different decision processes"
-    }
+    "challenge1_title": "We talk past each other",
+    "challenge1_description": "\"We discuss the children's school time but never seem to agree. Everyone has different opinions but no one listens to each other.\"",
+    "challenge1_tag": "Different communication styles",
+    "challenge2_title": "The teenager shuts down",
+    "challenge2_description": "\"Our 15-year-old doesn't seem to understand our explanations and we don't understand her way of thinking. Conversations often end in frustration.\"",
+    "challenge2_tag": "Generational differences",
+    "challenge3_title": "Decisions become conflicts",
+    "challenge3_description": "\"Every family decision becomes a discussion. We have different ways of analyzing situations and rarely reach solutions everyone is satisfied with.\"",
+    "challenge3_tag": "Different decision processes"
   },
-  "meet_weaver": {
+  "weaver": {
     "title": "Meet Weaver",
     "subtitle": "Your AI family assistant that helps you understand each other better",
-    "features": {
-      "translates": {
-        "title": "Translates between thinking styles",
-        "description": "Weaver understands that everyone in the family thinks differently and helps you communicate in a way everyone understands."
-      },
-      "swedish_values": {
-        "title": "Respects Swedish values",
-        "description": "Built with the lagom principle and deep understanding of Swedish family traditions and values."
-      },
-      "strengthens_bonds": {
-        "title": "Strengthens family bonds",
-        "description": "Helps you not only communicate better, but also understand and appreciate each other's unique ways of thinking."
-      }
-    },
+    "feature1_title": "Translates between thinking styles",
+    "feature1_description": "Weaver understands that everyone in the family thinks differently and helps you communicate in a way everyone understands.",
+    "feature2_title": "Respects Swedish values",
+    "feature2_description": "Built with the lagom principle and deep understanding of Swedish family traditions and values.",
+    "feature3_title": "Strengthens family bonds",
+    "feature3_description": "Helps you not only communicate better, but also understand and appreciate each other's unique ways of thinking.",
     "cta": "Start talking with Weaver"
   },
-  "how_it_helps": {
+  "solution": {
     "title": "Weaver helps you in everyday life",
     "subtitle": "Two concrete ways Weaver supports your family every day",
-    "family_chat": {
-      "title": "Smart family chat with Weaver's comments",
-      "description": "Weaver reads your family chat and provides discreet suggestions to improve communication. No intrusive AI - just helpful tips when you need them.",
-      "features": [
-        "Helps interpret teenager's \"whatever\" and suggests how to respond",
-        "Suggests when it might be good to call instead of text",
-        "Reminds about important family activities in a natural way"
-      ]
-    },
-    "ambient_listening": {
-      "title": "Around the kitchen table - ambient listening",
-      "description": "When the family discusses, Weaver can analyze the conversation and suggest solutions that consider everyone's wishes. Focuses on what is said, not who says it.",
-      "features": [
-        "Analyzes conversation content to find different wishes",
-        "Suggests creative compromises based on what is discussed",
-        "Only activated when the family chooses to use the feature"
-      ]
-    },
+    "feature1_title": "Smart family chat with Weaver's comments",
+    "feature1_description": "Weaver reads your family chat and provides discreet suggestions to improve communication. No intrusive AI - just helpful tips when you need them.",
+    "feature1_benefit1": "Helps interpret teenager's \"whatever\" and suggests how to respond",
+    "feature1_benefit2": "Suggests when it might be good to call instead of text",
+    "feature1_benefit3": "Reminds about important family activities in a natural way",
+    "chat_title": "Family Chat",
+    "feature2_title": "Around the kitchen table - ambient listening",
+    "feature2_description": "When the family discusses, Weaver can analyze the conversation and suggest solutions that consider everyone's wishes. Focuses on what is said, not who says it.",
+    "feature2_benefit1": "Analyzes conversation content to find different wishes",
+    "feature2_benefit2": "Suggests creative compromises based on what is discussed",
+    "feature2_benefit3": "Only activated when the family chooses to use the feature",
+    "feature2_demo_title": "Around the kitchen table",
+    "feature2_example1": "\"I think we should go to the mountains this weekend\"",
+    "feature2_example2": "\"Ugh, I wanted to paint...\"",
+    "weaver_suggests": "Weaver suggests",
+    "feature2_suggestion": "\"I hear someone wants to go to the mountains and someone else wants to paint. How about bringing painting supplies to the mountain cabin?\"",
     "cta": "Try both features"
   },
-  "modes": {
-    "title": "How Weaver helps your family think together",
-    "subtitle": "Four ways to support family conversations and decisions",
-    "create": {
-      "title": "Create",
-      "description": "Brainstorm vacation plans together. Everyone contributes ideas in their own way.",
-      "label": "→ Creative family collaboration"
-    },
-    "critique": {
-      "title": "Critique",
-      "description": "Evaluate major family decisions respectfully. All perspectives are heard.",
-      "label": "→ Constructive reflection"
-    },
-    "synthesize": {
-      "title": "Synthesize",
-      "description": "Find compromises on household rules that everyone can accept.",
-      "label": "→ Balanced solutions"
-    },
-    "defense": {
-      "title": "Defense",
-      "description": "Preserve family traditions while adapting to changes.",
-      "label": "→ Safe development"
-    },
-    "cta": "Try all four ways"
+  "chat": {
+    "weaver_suggests": "Weaver suggests",
+    "weaver_message": "\"Emma seems frustrated. Maybe ask if she needs to talk or just wants some space?\"",
+    "mom": "Mom",
+    "mom_message": "Hey sweetheart, sounds like a tough day. Want to talk or should I just give you some space? ❤️"
   },
   "technology": {
     "title": "Choose how you want to use Weaver",
     "subtitle": "Three options that suit different families and technical needs",
-    "balans_hosted": {
-      "title": "Balans Hosted",
-      "badge": "Recommended for most families",
-      "features": [
-        "Get started in 5 minutes",
-        "Automatic updates",
-        "24/7 support",
-        "GDPR-compliant hosting in Sweden"
-      ],
-      "cta": "Try Balans Hosted"
-    },
-    "weavermesh": {
-      "title": "WeaverMesh",
-      "badge": "Open source, own control",
-      "features": [
-        "100% control over your data",
-        "Customize to your needs",
-        "Free and open source",
-        "Requires technical knowledge"
-      ],
-      "cta": "Download WeaverMesh"
-    },
-    "home_hub": {
-      "title": "Weaver Home Hub",
-      "badge": "Coming 2026",
-      "features": [
-        "Plug-and-play installation - just plug in",
-        "All data stays at home - no cloud connection",
-        "AI processor for fast local processing",
-        "Discreet design for kitchen or living room"
-      ],
-      "cta": "Register interest"
-    },
-    "help": {
-      "question": "Unsure which option suits your family?",
-      "cta": "Help me choose"
-    }
+    "option1_title": "Balans Hosted",
+    "option1_badge": "Recommended for most families",
+    "option1_feature1": "Get started in 5 minutes",
+    "option1_feature2": "Automatic updates",
+    "option1_feature3": "24/7 support",
+    "option1_feature4": "GDPR-compliant hosting in Sweden",
+    "option1_cta": "Try Balans Hosted",
+    "option2_title": "WeaverMesh",
+    "option2_badge": "Open source, own control",
+    "option2_feature1": "100% control over your data",
+    "option2_feature2": "Customize to your needs",
+    "option2_feature3": "Free and open source",
+    "option2_warning": "Requires technical knowledge",
+    "option2_cta": "Download WeaverMesh",
+    "option3_title": "Weaver Home Hub",
+    "option3_badge": "Coming 2026",
+    "option3_feature1": "Plug-and-play installation - just plug in",
+    "option3_feature2": "All data stays at home - no cloud connection",
+    "option3_feature3": "AI processor for fast local processing",
+    "option3_feature4": "Discreet design for kitchen or living room",
+    "option3_cta": "Register interest",
+    "help_text": "Unsure which option suits your family?",
+    "help_cta": "Help me choose"
   },
   "trust": {
     "title": "Built for Swedish families",
     "subtitle": "With respect for your values and understanding of Swedish family traditions",
-    "security": {
-      "title": "Safe & private",
-      "description": "Your family conversations stay within the family. No data is shared or sold."
-    },
-    "lagom": {
-      "title": "Lagom principle",
-      "description": "Not too much, not too little - just the right amount of AI support for your family."
-    },
-    "family_first": {
-      "title": "Family first",
-      "description": "Designed to strengthen family bonds, not replace human contact."
-    }
+    "feature1_title": "Safe & private",
+    "feature1_description": "Your family conversations stay within the family. No data is shared or sold.",
+    "feature2_title": "Lagom principle",
+    "feature2_description": "Not too much, not too little - just the right amount of AI support for your family.",
+    "feature3_title": "Family first",
+    "feature3_description": "Designed to strengthen family bonds, not replace human contact."
   },
   "cta": {
     "title": "Ready to help your family understand each other better?",
-    "description": "Start with a simple family situation and see how Weaver can help",
+    "subtitle": "Start with a simple family situation and see how Weaver can help",
     "primary": "Try Weaver free",
     "secondary": "Book demo",
     "note": "No registration required • Try immediately • Cancel anytime"
