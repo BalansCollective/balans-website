@@ -9,8 +9,10 @@ const host = process.env.TAURI_DEV_HOST;
 export default defineConfig(async () => ({
   plugins: [react()],
   
-  // Use relative paths for GitHub Pages deployment
-  base: './',
+  // Use absolute path for GitHub Pages deployment
+  // When deploying to custom domain (balans-collective.com), base should be '/'
+  // When deploying to github.io subdirectory, base should be '/balans-website/'
+  base: process.env.GITHUB_PAGES_SUBDIRECTORY === 'true' ? '/balans-website/' : '/',
 
   // Path aliases
   resolve: {
