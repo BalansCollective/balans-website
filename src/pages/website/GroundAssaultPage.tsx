@@ -21,7 +21,7 @@ export function GroundAssaultPage() {
 
       <article
         className={`max-w-4xl mx-auto px-6 lg:px-12 py-8 prose prose-lg ${
-          isDarkMode ? "prose-invert prose-headings:text-birch-white prose-p:text-birch-white/90 prose-strong:text-birch-white" : "prose-headings:text-gray-950 prose-p:text-gray-950/90 prose-strong:text-gray-950"
+          isDarkMode ? "prose-invert prose-headings:text-birch-white prose-p:text-birch-white/90 prose-strong:text-birch-white prose-pre:bg-gray-800 prose-pre:text-gray-100 prose-code:text-gray-100" : "prose-headings:text-gray-950 prose-p:text-gray-950/90 prose-strong:text-gray-950 prose-pre:bg-gray-100 prose-pre:text-gray-900 prose-code:text-gray-900"
         }`}
       >
         <h1 className="text-4xl font-bold mb-4">{t("title")}</h1>
@@ -99,7 +99,7 @@ export function GroundAssaultPage() {
         <p>{t("assault.p2")}</p>
         <p>{t("assault.p3")}</p>
         <p>{t("assault.p4")}</p>
-        <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded"><code>{t("assault.code")}</code></pre>
+        <pre><code>{t("assault.code")}</code></pre>
         <p><strong>{t("assault.if_nothing")}</strong> {t("assault.nothing_result")}</p>
         <p><strong>{t("assault.if_authorize")}</strong> {t("assault.authorize_result")}</p>
         <p><strong>{t("assault.audit_capture")}</strong> {t("assault.audit_result")}</p>
@@ -123,7 +123,7 @@ export function GroundAssaultPage() {
         <p>{t("decision.p7")}</p>
         <p>{t("decision.p8")}</p>
         <p><strong>{t("decision.elena_speaks")}</strong></p>
-        <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded"><code>{t("decision.code")}</code></pre>
+        <pre><code>{t("decision.code")}</code></pre>
         <p><strong>{t("decision.turrets")}</strong></p>
 
         {/* Engagement */}
@@ -145,7 +145,7 @@ export function GroundAssaultPage() {
         <p>{t("engagement.p6")}</p>
         <p>{t("engagement.p7")}</p>
         <p>{t("engagement.log_title")}</p>
-        <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded"><code>{t("engagement.code")}</code></pre>
+        <pre><code>{t("engagement.code")}</code></pre>
         <p><strong>{t("engagement.over")}</strong></p>
         <p>{t("engagement.p8")}</p>
         <p>{t("engagement.p9")}</p>
@@ -162,7 +162,7 @@ export function GroundAssaultPage() {
         <p>{t("reveal.p5")}</p>
         <p><strong>{t("reveal.purpose")}</strong> {t("reveal.purpose_text")}</p>
         <p>{t("reveal.p6")}</p>
-        <pre className="bg-gray-100 dark:bg-gray-800 p-4 rounded"><code>{t("reveal.code")}</code></pre>
+        <pre><code>{t("reveal.code")}</code></pre>
         <p>{t("reveal.p7")}</p>
         <p>{t("reveal.elena_q")}</p>
         <p><strong>{t("reveal.answer")}</strong></p>
