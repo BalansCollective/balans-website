@@ -1,0 +1,99 @@
+{
+  "hero": {
+    "title": "Forge Protocol",
+    "subtitle": "Classification-Aware AI Development",
+    "byline": "Balans | November 2025"
+  },
+  "summary": {
+    "title": "Executive Summary",
+    "description": "Forge Protocol is a framework for building AI systems across security boundaries, developed to solve five critical problems preventing secure AI development in defense:",
+    "benefits": [
+      "Developers with different clearances can collaborate - without leaking secrets",
+      "Code can be built and tested - even when specifications are classified",
+      "Compliance is provable - automatic validation against standards",
+      "Audit is complete - full provenance from requirements to deployment",
+      "Innovation accelerated - no 6-month SÄPO wait for each startup"
+    ],
+    "sister_protocol": "Sister Protocol: Guardian Protocol handles operational security (deployed AI). Forge Protocol handles development-time security (building AI)."
+  },
+  "problem": {
+    "title": "The Challenge: Why Classified AI Development Fails Today",
+    "items": [
+      {
+        "title": "Problem 1: Clearance Paradox",
+        "description": "Senior developer (CONFIDENTIAL clearance) receives requirement: 'Implement SECRET algorithm from specification doc-00423.' Cannot read spec → Cannot implement correctly → System is unsafe."
+      },
+      {
+        "title": "Problem 2: Data Diode Gap",
+        "description": "AI trained on SECRET data in Red Forge. Must test performance → Data OUT of Red Forge → Security breach."
+      },
+      {
+        "title": "Problem 3: Standards Compliance Gap",
+        "description": "FMV requires proof of EU AI Act compliance. Development team has documentation in Word/PDF → FMV auditor must manually correlate requirements → 4 hours review per incident."
+      },
+      {
+        "title": "Problem 4: Provenance Loss",
+        "description": "Security incident → Investigation needs to know 'Who changed this parameter? Why? Was it approved?' → Git log lacks context → Inconclusive investigation."
+      },
+      {
+        "title": "Problem 5: Startup Innovation Barrier",
+        "description": "NATO DIANA startup wants to build AI solution for defense → Needs SÄPO approval (€50K, 6 months) for classified development → Cannot iterate quickly → Loses contract to established player."
+      }
+    ]
+  },
+  "solution": {
+    "title": "The Solution: Forge Protocol",
+    "components": [
+      {
+        "title": "1. Red Forge Architecture",
+        "description": "Secure environment for classified AI development. SECRET data never leaves Red Forge (data diode IN only), test metrics can be exported (no secrets), developers get feedback for iteration without seeing classified data."
+      },
+      {
+        "title": "2. Classification-Aware Development",
+        "description": "Developers with different clearances collaborate without leakage. CONFIDENTIAL developers see filtered specifications with SECRET sections removed. SECRET spec writers work in Red Forge with full detail."
+      },
+      {
+        "title": "3. Standards-as-Graphs",
+        "description": "EU AI Act requirements stored as queryable graphs (Neo4j). Instead of manual PDF review, FMV auditors can run Cypher queries for immediate compliance validation. Automatic deployment gates prevent deployment without complete proof."
+      },
+      {
+        "title": "4. Git Provenance Tracking",
+        "description": "Every code change tracked with AI-contribution + human-review. MCP Git Tool captures: who changed what, why, confidence level, AI vs. human contribution percent, review cycles, compliance links."
+      },
+      {
+        "title": "5. Data Diode Enforcement",
+        "description": "Information flows IN to Red Forge, never OUT (except metrics). Compliance Plugin intercepts ALL operations. Whitelist approach: only precision, recall, F1, latency, throughput metrics allowed out."
+      }
+    ]
+  },
+  "value": {
+    "title": "Value for Swedish Industry",
+    "sectors": [
+      {
+        "title": "For Defense Industry",
+        "problem": "Developing AI systems across security boundaries requires expensive, separate teams for each clearance level → Slow iteration, difficult collaboration.",
+        "solution": "Senior devs (CONFIDENTIAL) implement from filtered specs, SECRET spec writers write full detail in Red Forge, automatic compliance validation.",
+        "benefit": "Faster time-to-market, lower development costs, easier FMV certification."
+      },
+      {
+        "title": "For NATO DIANA Startups",
+        "problem": "Need SÄPO approval (€50K, 6 months) for classified AI development → Cannot compete with established players.",
+        "solution": "Share Red Forge environment (Classified Development as a Service), no own SÄPO application, pay-per-use model (€5K/month vs. €50K capex).",
+        "benefit": "Faster innovation (iteration from day 1), lower entry cost, FMV access."
+      },
+      {
+        "title": "For Defense Research",
+        "problem": "Research on classified threats requires secure environment → researchers cannot collaborate with external academics.",
+        "solution": "Write SECRET specs in Red Forge, external researchers implement from CONFIDENTIAL specs, Standards-as-Graphs enables publication (shares results, not secrets).",
+        "benefit": "Broader collaboration, faster publication, easier EU funding."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Interested in Forge Protocol?",
+    "description": "Contact us for Red Forge access, pilot projects, or partnerships.",
+    "primary": "Contact Us",
+    "secondary": "See Guardian Protocol"
+  }
+}
+

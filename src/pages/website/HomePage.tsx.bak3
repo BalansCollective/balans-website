@@ -1,0 +1,355 @@
+import { useTranslation } from 'react-i18next';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Button } from '@/components/ui/Button';
+
+export function HomePage() {
+  const { t } = useTranslation('homepage');
+
+  return (
+    <div className="min-h-screen bg-[#f8f6f0]">
+      {/* Hero Section */}
+      <section className="alliance-pattern py-20 lg:py-32 bg-[#f8f6f0]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <h1 className="text-5xl lg:text-7xl font-display font-bold text-swedish-blue dark:text-swedish-blue-dark leading-tight mb-6">
+                {t('hero.title')}
+              </h1>
+              <p className="text-xl lg:text-2xl text-swedish-blue dark:text-swedish-blue-dark mb-8 leading-relaxed opacity-80">
+                {t('hero.subtitle')}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+                <Button variant="primary" size="lg" as="a" href="mailto:samuel@dynorobotics.se">
+                  {t('hero.cta_primary')}
+                </Button>
+                <Button variant="secondary" size="lg" as="a" href="#approach">
+                  {t('hero.cta_secondary')}
+                </Button>
+              </div>
+            </div>
+
+            <div className="relative">
+              <img 
+                src="/images/balans-collective-hero.png" 
+                alt="Balans AI-säkerhet" 
+                className="w-full h-auto rounded-2xl lagom-shadow"
+              />
+              <div className="absolute -top-4 -right-4 bg-white/90 backdrop-blur-sm rounded-full p-3 lagom-shadow shield-breathing">
+                <svg viewBox="0 0 100 100" className="h-8 w-8">
+                  <path d="M50 10 L20 25 L20 50 Q20 75 50 90 Q80 75 80 50 L80 25 Z" 
+                        fill="none" 
+                        stroke="#b87333" 
+                        strokeWidth="3"
+                        strokeLinejoin="round"/>
+                  <circle cx="50" cy="50" r="8" fill="#8faa8b"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission Section - Warm Birch White */}
+      <section id="mission" className="py-20 lg:py-32 bg-[#f8f6f0]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+              <h2 className="text-4xl lg:text-5xl font-display font-bold text-swedish-blue dark:text-swedish-blue-dark mb-6">
+                {t('mission.title')}
+              </h2>
+              <p className="text-xl text-swedish-blue dark:text-swedish-blue-dark leading-relaxed opacity-80">
+                {t('mission.subtitle')}
+              </p>
+            </div>
+            <div>
+              <img 
+                src="/images/safety-mission.png" 
+                alt="AI-säkerhet" 
+                className="w-full h-auto rounded-2xl lagom-shadow"
+              />
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+            {/* Safety First */}
+            <Card variant="flat" className="text-center">
+              <div className="w-20 h-20 mx-auto mb-6 bg-swedish-blue/10 dark:bg-swedish-blue-dark/10 rounded-2xl flex items-center justify-center">
+                <svg viewBox="15 5 70 90" className="w-12 h-12">
+                  <path d="M50 10 L20 30 L20 60 Q20 80 50 90 Q80 80 80 60 L80 30 Z" 
+                        fill="none" 
+                        stroke="currentColor"
+                        className="text-swedish-blue dark:text-swedish-blue-dark"
+                        strokeWidth="3"/>
+                  <path d="M35 50 L45 60 L65 40" 
+                        fill="none" 
+                        stroke="currentColor"
+                        className="text-swedish-blue dark:text-swedish-blue-dark"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <CardTitle className="text-2xl mb-4">{t('mission.safety_first.title')}</CardTitle>
+              <p className="text-gray-700 dark:text-birch-white-dark/70 leading-relaxed">
+                {t('mission.safety_first.description')}
+              </p>
+            </Card>
+
+            {/* Human Alignment */}
+            <Card variant="flat" className="text-center">
+              <div className="w-20 h-20 mx-auto mb-6 bg-alliance-purple/10 dark:bg-alliance-purple-dark/10 rounded-2xl flex items-center justify-center">
+                <svg viewBox="25 25 50 50" className="w-12 h-12">
+                  <path d="M30 50 Q30 30 50 30 Q70 30 70 50" 
+                        fill="none" 
+                        stroke="currentColor"
+                        className="text-alliance-purple dark:text-alliance-purple-dark"
+                        strokeWidth="3"/>
+                  <path d="M30 50 Q30 70 50 70 Q70 70 70 50" 
+                        fill="none" 
+                        stroke="currentColor"
+                        className="text-alliance-purple dark:text-alliance-purple-dark"
+                        strokeWidth="3"/>
+                  <circle cx="50" cy="50" r="4" fill="currentColor" className="text-alliance-purple dark:text-alliance-purple-dark"/>
+                </svg>
+              </div>
+              <CardTitle className="text-2xl mb-4">{t('mission.human_alignment.title')}</CardTitle>
+              <p className="text-gray-700 dark:text-birch-white-dark/70 leading-relaxed">
+                {t('mission.human_alignment.description')}
+              </p>
+            </Card>
+
+            {/* Proven Methods */}
+            <Card variant="flat" className="text-center">
+              <div className="w-20 h-20 mx-auto mb-6 bg-sage-green/10 dark:bg-sage-green-dark/10 rounded-2xl flex items-center justify-center">
+                <svg viewBox="25 25 50 50" className="w-12 h-12">
+                  <circle cx="30" cy="50" r="5" fill="currentColor" className="text-sage-green dark:text-sage-green-dark"/>
+                  <circle cx="50" cy="30" r="5" fill="currentColor" className="text-sage-green dark:text-sage-green-dark"/>
+                  <circle cx="50" cy="70" r="5" fill="currentColor" className="text-sage-green dark:text-sage-green-dark"/>
+                  <circle cx="70" cy="50" r="5" fill="currentColor" className="text-sage-green dark:text-sage-green-dark"/>
+                  <path d="M30 50 L50 30 L70 50 L50 70 Z" 
+                        fill="none" 
+                        stroke="currentColor"
+                        className="text-sage-green dark:text-sage-green-dark"
+                        strokeWidth="2"/>
+                </svg>
+              </div>
+              <CardTitle className="text-2xl mb-4">{t('mission.proven_methods.title')}</CardTitle>
+              <p className="text-gray-700 dark:text-birch-white-dark/70 leading-relaxed">
+                {t('mission.proven_methods.description')}
+              </p>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Narrative-Driven Design Section - Warm Birch White */}
+      <section className="py-20 lg:py-32 bg-[#f8f6f0]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <img 
+                src="/images/morgan-story.png" 
+                alt="Narrative-Driven Design" 
+                className="rounded-2xl shadow-2xl"
+              />
+            </div>
+            
+            <div className="order-1 lg:order-2 space-y-6">
+              <div className="inline-block px-4 py-2 bg-sage-green/20 dark:bg-sage-green-dark/20 rounded-full">
+                <span className="text-sm font-semibold text-sage-green dark:text-sage-green-dark uppercase tracking-wider">
+                  {t('narrative.badge')}
+                </span>
+              </div>
+              
+              <h2 className="text-4xl lg:text-5xl font-display font-bold text-swedish-blue dark:text-swedish-blue-dark leading-tight">
+                {t('narrative.title')}
+              </h2>
+              
+              <p className="text-xl text-gray-700 dark:text-birch-white-dark/70 leading-relaxed">
+                {t('narrative.description')}
+              </p>
+              
+              <div className="space-y-4">
+                {(t('narrative.benefits', { returnObjects: true }) as Array<{ title: string, description: string }>).map((benefit, i) => (
+                  <div key={i} className="flex items-start space-x-3">
+                    <svg className="w-6 h-6 text-sage-green dark:text-sage-green-dark flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-swedish-blue dark:text-swedish-blue-dark">{benefit.title}</p>
+                      <p className="text-sm text-gray-600 dark:text-birch-white-dark/60">{benefit.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              <Button variant="sage" size="lg" as="a" href="/narratives">
+                {t('narrative.cta')}
+                <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Products Section - Warm Birch White */}
+      <section id="products" className="py-20 lg:py-32 bg-[#f8f6f0]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-display font-bold text-swedish-blue dark:text-swedish-blue-dark mb-6">
+              {t('products.title')}
+            </h2>
+            <p className="text-xl text-swedish-blue dark:text-swedish-blue-dark leading-relaxed opacity-80">
+              {t('products.subtitle')}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Family Product */}
+            <Card variant="elevated" className="lagom-hover group overflow-hidden">
+              <div className="bg-[#f8f6f0] dark:bg-birch-wood/10">
+                <img 
+                  src="/images/family-domain.png" 
+                  alt="Family domain"
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+              <CardHeader>
+                <CardTitle>{t('products.family.title')}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-700 dark:text-birch-white-dark/70 mb-4">
+                  {t('products.family.description')}
+                </p>
+                <Button variant="primary" fullWidth as="a" href="/family">
+                  {t('products.family.cta')} →
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Medical Product */}
+            <Card variant="elevated" className="lagom-hover group overflow-hidden">
+              <div className="bg-[#f8f6f0] dark:bg-birch-wood/10">
+                <img 
+                  src="/images/medIcal-domain.png" 
+                  alt="Medical domain"
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+              <CardHeader>
+                <CardTitle>{t('products.medical.title')}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-700 dark:text-birch-white-dark/70 mb-4">
+                  {t('products.medical.description')}
+                </p>
+                <Button variant="primary" fullWidth as="a" href="https://balans-collective.com/demo" target="_blank" rel="noopener noreferrer">
+                  {t('products.medical.cta')} →
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Defense Product */}
+            <Card variant="elevated" className="lagom-hover group overflow-hidden">
+              <div className="bg-[#f8f6f0] dark:bg-birch-wood/10">
+                <img 
+                  src="/images/defence-domain.png" 
+                  alt="Defense domain"
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+              <CardHeader>
+                <CardTitle>{t('products.defense.title')}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-700 dark:text-birch-white-dark/70 mb-4">
+                  {t('products.defense.description')}
+                </p>
+                <Button variant="primary" fullWidth as="a" href="/defense">
+                  {t('products.defense.cta')} →
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Approach Section - Warm Birch White */}
+      <section id="approach" className="py-20 lg:py-32 bg-[#f8f6f0]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+              <h2 className="text-4xl lg:text-5xl font-display font-bold text-swedish-blue dark:text-swedish-blue-dark mb-6">
+                {t('approach.title')}
+              </h2>
+              <p className="text-xl text-swedish-blue dark:text-swedish-blue-dark leading-relaxed opacity-80">
+                {t('approach.subtitle')}
+              </p>
+            </div>
+            <div>
+              <img 
+                src="/images/dual-protocols.png" 
+                alt="Guardian och Forge protokoll" 
+                className="w-full h-auto rounded-2xl lagom-shadow"
+              />
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Guardian Protocol */}
+            <Card variant="elevated" className="lagom-hover group">
+              <CardHeader>
+                <CardTitle className="text-2xl">{t('approach.guardian.title')}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-700 dark:text-birch-white-dark/70 mb-4">
+                  {t('approach.guardian.description')}
+                </p>
+                <Button variant="primary" fullWidth as="a" href="/guardian-protocol">
+                  {t('approach.guardian.cta')} →
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Forge Protocol */}
+            <Card variant="elevated" className="lagom-hover group">
+              <CardHeader>
+                <CardTitle className="text-2xl">{t('approach.forge.title')}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-700 dark:text-birch-white-dark/70 mb-4">
+                  {t('approach.forge.description')}
+                </p>
+                <Button variant="primary" fullWidth as="a" href="/forge-protocol">
+                  {t('approach.forge.cta')} →
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 lg:py-32 bg-swedish-blue dark:bg-swedish-blue-dark text-birch-white dark:text-birch-white-dark">
+        <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
+          <h2 className="text-4xl lg:text-5xl font-display font-bold mb-6">
+            {t('cta.title')}
+          </h2>
+          <p className="text-xl text-birch-white dark:text-birch-white-dark mb-8 leading-relaxed opacity-90">
+            {t('cta.subtitle')}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="birch" size="lg" as="a" href="mailto:samuel@dynorobotics.se">
+              {t('cta.primary')}
+            </Button>
+            <Button variant="outline" size="lg" as="a" href="#products" className="border-birch-white text-birch-white hover:bg-birch-white hover:text-swedish-blue">
+              {t('cta.secondary')}
+            </Button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

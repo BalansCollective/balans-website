@@ -1,0 +1,53 @@
+{
+  "dashboard": {
+    "title": "Medicinsk Dashboard",
+    "subtitle": "Övervakning och hantering av hälsa",
+    "demo_warning": "⚠️ Detta är en <strong>prototyp/demo</strong> med mockdata. Systemet är inte i produktion ännu."
+  },
+  "tabs": {
+    "medicine": "📟 Min Medicin",
+    "timeline": "📊 Tidslinje",
+    "careplan": "📋 Vårdplan",
+    "doctor": "👩‍⚕️ Läkardashboard",
+    "family": "👨‍👩‍👦 Familjevy",
+    "weaver": "🧠 Weaver CLI",
+    "threads": "✨ Gyllene Trådar"
+  },
+  "medication": {
+    "title": "Min Medicin",
+    "taken": "Tagen",
+    "missed": "Missad",
+    "upcoming": "Kommande",
+    "dose": "Dos",
+    "time": "Tid",
+    "log": "Logg medicin",
+    "history": "Historik"
+  },
+  "timeline": {
+    "title": "Tidslinje",
+    "events": "Händelser",
+    "mood": "Humör",
+    "sleep": "Sömn",
+    "energy": "Energi",
+    "medications": "Mediciner",
+    "filter": "Filtrera"
+  },
+  "careplan": {
+    "title": "Vårdplan",
+    "active": "Aktiv plan",
+    "goals": "Mål",
+    "actions": "Åtgärder",
+    "review": "Granskning"
+  },
+  "guardian": {
+    "mode": {
+      "active": "Guardianläge aktivt",
+      "inactive": "Guardianläge inaktivt",
+      "toggle": "Växla Guardian"
+    },
+    "enforcement": "Genomdrivning",
+    "alerts": "Varningar",
+    "overrides": "Åsidosättningar"
+  }
+}
+

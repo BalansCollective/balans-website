@@ -1,0 +1,66 @@
+{
+  "hero": {
+    "title": "Balans Family",
+    "subtitle": "AI support for the whole family",
+    "description": "Navigate health challenges together with AI-assisted tools designed for families."
+  },
+  "overview": {
+    "title": "Why Balans Family?",
+    "description": "When a family member manages bipolar disorder, hypomania, or other health challenges, it affects everyone. Balans Family gives the whole family tools to understand, support, and navigate together.",
+    "keyFeatures": "Key Features"
+  },
+  "features": {
+    "sharedTimeline": {
+      "title": "Shared Timeline",
+      "description": "Everyone sees the same information in real-time",
+      "details": "Medication intake, sleep patterns, mood changes - synchronized across family devices."
+    },
+    "aiProtocols": {
+      "title": "AI-Generated Protocols",
+      "description": "Concrete \"Do X when Y\" instructions",
+      "details": "Not theoretical models - actionable steps for stressed family members."
+    },
+    "guardianMode": {
+      "title": "Guardian Mode",
+      "description": "Crisis support when it's really needed",
+      "details": "Reminders, structured checklists, and escalation protocols."
+    },
+    "privacyFirst": {
+      "title": "Privacy First",
+      "description": "Local-first design, you own your data",
+      "details": "Runs on your devices. Optional cloud backup for sync."
+    }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "steps": [
+      {
+        "title": "Track Together",
+        "description": "Medicine, sleep, mood, warning signs"
+      },
+      {
+        "title": "AI Analyzes Patterns",
+        "description": "Identify early warning signs automatically"
+      },
+      {
+        "title": "Get Concrete Protocols",
+        "description": "\"If X happens, do Y\" instructions for the family"
+      },
+      {
+        "title": "Navigate Together",
+        "description": "Whole family knows what's happening and how they can help"
+      }
+    ]
+  },
+  "testimonial": {
+    "quote": "First time we had tools instead of just worry. The protocols gave us concrete steps to take.",
+    "author": "Family from June 2025 pilot"
+  },
+  "cta": {
+    "title": "Try Balans Family",
+    "description": "We're looking for beta testers for our family portal.",
+    "beta": "Apply As Beta Tester",
+    "demo": "See Demo"
+  }
+}
+

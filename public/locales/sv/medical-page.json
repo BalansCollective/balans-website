@@ -1,0 +1,178 @@
+{
+  "page": {
+    "title": "Familjens Vårdportal",
+    "subtitle": "Dela vårdplaner, protokoll och medicinspårning säkert inom familjen",
+    "description": "Kör lokalt på era enheter eller använd Balans Hosted backup. Familjen ser samma information i realtid."
+  },
+  "navigation": {
+    "demo": "Prova Demo",
+    "howItWorks": "Hur det fungerar",
+    "forFamilies": "För Familjer",
+    "toHomepage": "Till Startsidan"
+  },
+  "quickFacts": {
+    "local": {
+      "title": "🏠 Lokal",
+      "subtitle": "Körs på era enheter",
+      "description": "Max integritet, ingen molnlagring"
+    },
+    "family": {
+      "title": "👨‍👩‍👧 Familj",
+      "subtitle": "Synkroniserad vy",
+      "description": "Alla ser samma vårdplan & tidslinje"
+    },
+    "secure": {
+      "title": "🔒 Säker",
+      "subtitle": "GDPR-första design",
+      "description": "Du äger och kontrollerar all data"
+    }
+  },
+  "sharing": {
+    "title": "Vad Kan Ni Dela?",
+    "medication": {
+      "title": "Medicinspårning",
+      "description": "Tagit medicin, biverkningar, dosjusteringar"
+    },
+    "careplans": {
+      "title": "Vårdplaner & Protokoll",
+      "description": "\"Gör X när Y\" instruktioner från läkare"
+    },
+    "timelines": {
+      "title": "Tidslinjer",
+      "description": "Sömn, aktivitet, välmående över tid"
+    },
+    "warnings": {
+      "title": "Varningssignaler",
+      "description": "Tidiga tecken som familjen kan känna igen"
+    }
+  },
+  "caseStudy": {
+    "title": "Fallstudie Juni 2025",
+    "subtitle": "Från hjälplös familj till konkreta verktyg",
+    "problem": {
+      "title": "Problem",
+      "description": "Familj vet inte HUR de ska hjälpa"
+    },
+    "solution": {
+      "title": "Lösning",
+      "description": "AI genererar konkreta \"Gör X när Y\" protokoll"
+    },
+    "result": {
+      "title": "Resultat",
+      "description": "6 dagar vs 21 dagar, 100% adherence"
+    },
+    "readFullStory": "Läs Hela Historien",
+    "hideFullStory": "Dölj Hela Historien",
+    "fullStory": {
+      "problemTitle": "Problem: Ingen Visste Hur Man Skulle Hjälpa",
+      "patientEscalates": "Patient eskalerar:",
+      "patientSymptoms": [
+        "Rusande tankar, minskad sömn",
+        "\"Dessa idéer ÄR viktiga\"",
+        "Svårt att sluta arbeta",
+        "Frustration över \"kontroll\""
+      ],
+      "familyDesperate": "Familj desperat att hjälpa:",
+      "familySymptoms": [
+        "Men vet inte HUR",
+        "Känsla av hjälplöshet",
+        "Dagliga oro-samtal (år av detta)",
+        "Konflikt: \"Sluta arbeta på AI\""
+      ],
+      "problemResult": "Alla lider. Patient känner sig missförstådd, familj känner sig maktlösa, ingen vet vad de ska göra.",
+      "solutionTitle": "Lösning: AI-Genererade Handlingsprotokoll",
+      "solutionDescription": "Våren 2025: AI-assistans skapade **konkreta \"Gör X när Y\" protokoll** - inte teoretiska modeller, utan genomförbara steg för familjemedlemmar.",
+      "showProtocols": "Visa Protokollexempel",
+      "hideProtocols": "Dölj Protokollexempel",
+      "familyProtocol": "Familjeprotokoll",
+      "familySteps": [
+        "\"Erbjud isklumpar\" (grounding-teknik)",
+        "\"10 min skrivning, 20 min paus\"",
+        "\"Kolla: sömn, mat, medicin först\"",
+        "Konkreta varningssignaler att känna igen"
+      ],
+      "colleagueProtocol": "Kollegeprotokoll",
+      "colleagueSteps": [
+        "\"Check-in: hur känns det i kroppen?\"",
+        "Erbjud dokumentera idéer",
+        "Balansera utforskning & gränser",
+        "När att söka klinisk hjälp"
+      ],
+      "keyPoint": "Inte komplexa psykologiska teorier. Konkreta steg som stressade familjemedlemmar faktiskt kan följa."
+    },
+    "validation": {
+      "title": "Juni 2025: Verklig Episod - Hypotetisk BalansAI",
+      "whatHappened": "Hypomanisk episod i Skellefteå, reglerad MED familjeprotokoll (AI-genererade), 6 dagar till stabilisering.",
+      "hypothesis": "Om BalansAI med sensorintegration hade funnits, hur mycket lättare hade det varit?",
+      "results": [
+        {
+          "title": "6 dagar till stabilisering",
+          "subtitle": "Tidigare: 14-21 dagar"
+        },
+        {
+          "title": "100% medicinföljsamhet",
+          "subtitle": "Familj kunde stödja strukturerat"
+        },
+        {
+          "title": "Familj kände sig användbara",
+          "subtitle": "Inte hjälplösa - hade konkreta verktyg"
+        },
+        {
+          "title": "Patient behöll autonomi",
+          "subtitle": "Reglering med samtycke, inte kontroll"
+        }
+      ],
+      "imageAlt": "Jämförelse: Med AI-protokoll (6 dagar) vs Utan protokoll (21 dagar)",
+      "imageCaption": "🟢 Grön linje: Med AI-protokoll (juni 2025, verklig episod) | 🔴 Röd linje: Typiskt utan protokoll (baserat på tidigare episoder)",
+      "proven": "Bevisat: AI-Protokoll Fungerar (Juni 2025)",
+      "provenDescription": "AI-genererade familjeprotokoll användes i verklig episod. 6 dagar till stabilisering vs 14-21 dagar tidigare."
+    }
+  },
+  "demo": {
+    "title": "Prova BalansAI Demo",
+    "subtitle": "Interaktiv tidslinje med verklig data från juni 2025. Se hur AI-assisterad spårning fungerar i praktiken.",
+    "startDemo": "Starta Interaktiv Demo",
+    "closeDemo": "Stäng Demo",
+    "quickButtons": {
+      "title": "Snabbknappar",
+      "description": "Tryck för att logga medicin, arbete eller varningssignaler."
+    },
+    "howItWorks": {
+      "title": "Hur det fungerar",
+      "realtime": {
+        "title": "Realtidsspårning",
+        "description": "Tidslinje uppdateras automatiskt när du trycker på knappar"
+      },
+      "aiAnalysis": {
+        "title": "AI-analys",
+        "description": "Mönsterigenkänning identifierar tidiga varningssignaler"
+      },
+      "shareable": {
+        "title": "Delbar med läkare",
+        "description": "Exportera data för samtal med vårdteam"
+      }
+    }
+  },
+  "cta": {
+    "title": "Vill Du Prova BalansAI?",
+    "subtitle": "Vi söker betatesters som vill:",
+    "requirements": [
+      "Spåra medicin, sömn och välmående dagligen",
+      "Ge feedback på AI-analys och mönsterigenkänning",
+      "Hjälpa oss förbättra verktyget för framtida användare"
+    ],
+    "tryDemo": "Prova Demo Direkt",
+    "applyBeta": "Ansök Som Betatestare",
+    "benefits": [
+      "Gratis under betatest",
+      "GDPR-säker svensk lagring",
+      "Du äger all din data"
+    ]
+  },
+  "footer": {
+    "description": "AI-assisterad medicinsk innovation för bipolaritet och hypomani reglering.",
+    "medicalResearch": "Medicinsk Forskning",
+    "copyright": "Svenska Värderingar. Open Source Kärna. Familjen Först."
+  }
+}
+

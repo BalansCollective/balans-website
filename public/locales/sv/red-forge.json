@@ -1,0 +1,109 @@
+{
+  "hero": {
+    "badge": "Kommer 2026",
+    "title": "Red Forge",
+    "subtitle": "Säker AI-utveckling för försvarssektorn. Premium startup-miljö med seriös säkerhet.",
+    "cta_primary": "Intresseanmälan",
+    "cta_secondary": "Se plats",
+    "image_alt": "Red Forge samarbetsyta"
+  },
+  "vision": {
+    "title": "Varför Red Forge?",
+    "subtitle": "Premium miljö för klassificerad utveckling. Som en cool startup, fast med passerkort.",
+    "principles": {
+      "startup_culture": {
+        "title": "Premium Startup-Miljö",
+        "description": "Espresso, stående skrivbord, bra belysning. Inte en tråkig entreprenör – ett tech-företag som råkar jobba med försvar."
+      },
+      "serious_security": {
+        "title": "Seriös Säkerhet",
+        "description": "Badgeläsare, data diode, fysiskt separerade zoner. Säkerhet som ser avsiktlig ut, inte paranoid."
+      },
+      "collaboration": {
+        "title": "Öppet + Säkert",
+        "description": "Kundmöten i öppen zon. Fika i gemensamt utrymme. Djup arbete bakom röda dörren. Smidigt flöde."
+      },
+      "tech_hub": {
+        "title": "Sveriges Tech-Ekosystem",
+        "description": "Nära Saab, FOI, universitet och försvarets innovationsmiljö. Del av svensk defensiv tech-tradition."
+      }
+    }
+  },
+  "facility": {
+    "title": "Lokalen",
+    "subtitle": "Tre zoner: Öppen samverkan, professionella presentationer, säker utveckling (~80-100 kvm totalt).",
+    "floor_plan_alt": "Red Forge planlösning",
+    "zones": {
+      "common_area": {
+        "title": "Gemensamt Utrymme",
+        "image_alt": "Red Forge gemensamt kök och lounge",
+        "description": "Där teamet samarbetar, fikar och brainstormar. La Marzocco espresso, moderna möbler, whiteboards.",
+        "features": [
+          "Öppet kök med professionell espresso",
+          "Lounge med mid-century modern design",
+          "Whiteboard-vägg för tekniska diskussioner"
+        ]
+      },
+      "meeting_room": {
+        "title": "Mötesrum",
+        "badge": "ÖPPEN ZON",
+        "image_alt": "Red Forge mötesrum",
+        "description": "Kundpresentationer och demos. Ingen säkerhetskontroll krävs för besökare. Professionellt men tillgängligt.",
+        "features": [
+          "85\" 4K-display för presentationer",
+          "Video conferencing för hybrid-möten",
+          "Diskret säkerhet (kamera, badge vid dörr)"
+        ]
+      },
+      "secure_dev": {
+        "title": "Säker Utveckling",
+        "badge": "SÄKRAD",
+        "image_alt": "Red Forge säkra dörren",
+        "description": "För känsligt arbete. Endast teammedlemmar med access. Premium utvecklingsmiljö med data diode.",
+        "features": [
+          "Tre premium arbetsstationer (Mac, PC, Ubuntu)",
+          "Data diode hårdvara (envägs dataflöde)",
+          "Inga fönster, klimatkontroll, LED-accent"
+        ]
+      }
+    }
+  },
+  "location": {
+    "title": "Plats: Linköping",
+    "description": "Science park-miljö med närhet till Saab, FOI och försvarsindustrin. Etablerad säkerhetskultur.",
+    "options": {
+      "ebbe_park": {
+        "title": "Ebbe Park",
+        "description": "Science park i Linköping. Närhet till Saab, FOI och universitetet. Optimal för defensiv tech."
+      },
+      "remote_first": {
+        "title": "Distansarbete Initially",
+        "description": "Fas 1 är distansarbete med säker infrastruktur. Fysisk facility öppnar 2026."
+      }
+    },
+    "timeline": {
+      "title": "Tidslinje",
+      "phases": [
+        {
+          "title": "Fas 1: Nu (2025)",
+          "description": "Distansarbete med säker infrastruktur. Testar koncept, bygger team."
+        },
+        {
+          "title": "Fas 2: 2026 Q2",
+          "description": "Fysisk facility öppnar. Börjar med gemensamt utrymme + mötesrum."
+        },
+        {
+          "title": "Fas 3: 2026 Q4",
+          "description": "Säkrad utvecklingszon färdig. Full operativ kapacitet."
+        }
+      ]
+    }
+  },
+  "cta": {
+    "title": "Intresserad av Red Forge?",
+    "description": "Vi söker partners, kunder och teammedlemmar som delar vår vision för defensiv tech.",
+    "primary": "Kontakta oss",
+    "secondary": "Tillbaka till Defense"
+  }
+}
+

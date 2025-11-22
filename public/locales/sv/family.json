@@ -1,0 +1,165 @@
+{
+  "hero": {
+    "title": "När familjen inte förstår varandra",
+    "subtitle": "Weaver hjälper er översätta mellan olika tankesätt och stärka familjebanden",
+    "cta": {
+      "primary": "Kom igång nu",
+      "secondary": "Välj din version"
+    },
+    "trust_badges": {
+      "security": "Säkert & privat",
+      "values": "Svenska värderingar",
+      "family_first": "Familj först"
+    }
+  },
+  "problems": {
+    "title": "Känner du igen din familj?",
+    "subtitle": "Många svenska familjer upplever samma utmaningar när olika tankesätt krockar",
+    "talking_past": {
+      "title": "Vi pratar förbi varandra",
+      "description": "\"Vi diskuterar barnens skoltid men verkar aldrig komma överens. Alla har olika åsikter men ingen lyssnar på varandra.\"",
+      "label": "→ Olika kommunikationsstilar"
+    },
+    "teenager_shuts_down": {
+      "title": "Tonåringen stänger av",
+      "description": "\"Vår 15-åring verkar inte förstå våra förklaringar och vi förstår inte hennes sätt att tänka. Samtalen slutar ofta i frustration.\"",
+      "label": "→ Generationsskillnader"
+    },
+    "decisions_become_conflicts": {
+      "title": "Beslut blir konflikter",
+      "description": "\"Varje familjebeslut blir en diskussion. Vi har olika sätt att analysera situationer och kommer sällan fram till lösningar alla är nöjda med.\"",
+      "label": "→ Olika beslutsprocesser"
+    }
+  },
+  "meet_weaver": {
+    "title": "Träffa Weaver",
+    "subtitle": "Er AI-familjeassistent som hjälper er förstå varandra bättre",
+    "features": {
+      "translates": {
+        "title": "Översätter mellan tankesätt",
+        "description": "Weaver förstår att alla i familjen tänker olika och hjälper er kommunicera på ett sätt som alla förstår."
+      },
+      "swedish_values": {
+        "title": "Respekterar svenska värderingar",
+        "description": "Byggt med lagom-principen och djup förståelse för svenska familjetraditioner och värderingar."
+      },
+      "strengthens_bonds": {
+        "title": "Stärker familjeband",
+        "description": "Hjälper er inte bara att kommunicera bättre, utan också att förstå och uppskatta varandras unika sätt att tänka."
+      }
+    },
+    "cta": "Börja prata med Weaver"
+  },
+  "how_it_helps": {
+    "title": "Weaver hjälper er i vardagen",
+    "subtitle": "Två konkreta sätt som Weaver stödjer er familj varje dag",
+    "family_chat": {
+      "title": "Smart familjechat med Weavers kommentarer",
+      "description": "Weaver läser er familjechat och ger diskreta förslag för att förbättra kommunikationen. Ingen påträngande AI - bara hjälpsamma tips när ni behöver dem.",
+      "features": [
+        "Hjälper tolka tonåringens \"whatever\" och föreslår hur man kan svara",
+        "Föreslår när det kan vara bra att ringa istället för att skriva",
+        "Påminner om viktiga familjeaktiviteter på ett naturligt sätt"
+      ]
+    },
+    "ambient_listening": {
+      "title": "Runt köksbordet - ambient lyssning",
+      "description": "När familjen diskuterar kan Weaver analysera samtalet och föreslå lösningar som tar hänsyn till allas önskemål. Fokuserar på vad som sägs, inte vem som säger det.",
+      "features": [
+        "Analyserar samtalsinnehåll för att hitta olika önskemål",
+        "Föreslår kreativa kompromisser baserat på vad som diskuteras",
+        "Aktiveras endast när familjen väljer att använda funktionen"
+      ]
+    },
+    "cta": "Prova båda funktionerna"
+  },
+  "modes": {
+    "title": "Så hjälper Weaver er familj tänka tillsammans",
+    "subtitle": "Fyra sätt att stödja familjesamtal och beslut",
+    "create": {
+      "title": "Skapa",
+      "description": "Brainstorma semesterplaner tillsammans. Alla får bidra med idéer på sitt sätt.",
+      "label": "→ Kreativt familjesamarbete"
+    },
+    "critique": {
+      "title": "Granska",
+      "description": "Utvärdera stora familjebeslut respektfullt. Alla perspektiv får höras.",
+      "label": "→ Konstruktiv reflektion"
+    },
+    "synthesize": {
+      "title": "Syntetisera",
+      "description": "Hitta kompromisser om hushållsregler som alla kan acceptera.",
+      "label": "→ Balanserade lösningar"
+    },
+    "defense": {
+      "title": "Försvara",
+      "description": "Bevara familjetraditioner medan ni anpassar er till förändringar.",
+      "label": "→ Trygg utveckling"
+    },
+    "cta": "Prova alla fyra sätten"
+  },
+  "technology": {
+    "title": "Välj hur du vill använda Weaver",
+    "subtitle": "Tre alternativ som passar olika familjer och tekniska behov",
+    "balans_hosted": {
+      "title": "Balans Hosted",
+      "badge": "Rekommenderat för de flesta familjer",
+      "features": [
+        "Kom igång på 5 minuter",
+        "Automatiska uppdateringar",
+        "24/7 support",
+        "GDPR-kompatibel hosting i Sverige"
+      ],
+      "cta": "Prova Balans Hosted"
+    },
+    "weavermesh": {
+      "title": "WeaverMesh",
+      "badge": "Open source, egen kontroll",
+      "features": [
+        "100% kontroll över din data",
+        "Anpassa efter dina behov",
+        "Gratis och öppen källkod",
+        "Kräver teknisk kunskap"
+      ],
+      "cta": "Ladda ner WeaverMesh"
+    },
+    "home_hub": {
+      "title": "Weaver Home Hub",
+      "badge": "Kommer 2026",
+      "features": [
+        "Plug-and-play installation - bara koppla in",
+        "All data stannar hemma - ingen molnuppkoppling",
+        "AI-processor för snabb lokal bearbetning",
+        "Diskret design för köket eller vardagsrummet"
+      ],
+      "cta": "Anmäl intresse"
+    },
+    "help": {
+      "question": "Osäker på vilket alternativ som passar er familj?",
+      "cta": "Hjälp mig välja"
+    }
+  },
+  "trust": {
+    "title": "Byggt för svenska familjer",
+    "subtitle": "Med respekt för era värderingar och förståelse för svenska familjetraditioner",
+    "security": {
+      "title": "Säkert & privat",
+      "description": "Era familjesamtal stannar inom familjen. Ingen data delas eller säljs vidare."
+    },
+    "lagom": {
+      "title": "Lagom-principen",
+      "description": "Inte för mycket, inte för lite - precis rätt mängd AI-stöd för er familj."
+    },
+    "family_first": {
+      "title": "Familj först",
+      "description": "Designat för att stärka familjeband, inte ersätta mänsklig kontakt."
+    }
+  },
+  "cta": {
+    "title": "Redo att hjälpa er familj förstå varandra bättre?",
+    "description": "Börja med en enkel familjesituation och se hur Weaver kan hjälpa",
+    "primary": "Prova Weaver gratis",
+    "secondary": "Boka demo",
+    "note": "Ingen registrering krävs • Prova direkt • Avsluta när som helst"
+  }
+}

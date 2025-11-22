@@ -1,0 +1,449 @@
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { MedicalTimeline } from '../../components/MedicalTimeline';
+import { ButtonPanel } from '../../components/ButtonPanel';
+
+export function MedicalPage() {
+  const [showFullStory, setShowFullStory] = useState(false);
+  const [showProtocols, setShowProtocols] = useState(false);
+  const [showTechDetails, setShowTechDetails] = useState(false);
+  const [showDemo, setShowDemo] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-warm-birch-white">
+      {/* Navigation */}
+      <nav className="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-natural-birch-wood/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center space-x-2">
+              <Link to="/" className="flex items-center space-x-2">
+                <img src="/images/balans-logo.png" alt="Balans" className="h-8 w-auto" />
+                <span className="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+              </Link>
+            </div>
+            
+            <div className="hidden md:flex items-center space-x-8">
+              <a href="#demo" className="text-gray-700 hover:text-deep-swedish-blue transition-colors duration-300">
+                Prova Demo
+              </a>
+              <a href="#how-it-works" className="text-gray-700 hover:text-deep-swedish-blue transition-colors duration-300">
+                Hur det fungerar
+              </a>
+              <Link to="/family" className="text-gray-700 hover:text-deep-swedish-blue transition-colors duration-300">
+                För Familjer
+              </Link>
+              <Link 
+                to="/" 
+                className="bg-sacred-alliance-purple text-white px-6 py-2 rounded-full font-medium lagom-hover hover:bg-sacred-alliance-purple/90"
+              >
+                Till Startsidan
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="py-16 px-4 bg-gradient-to-br from-warm-birch-white to-sage-green/10">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold text-deep-swedish-blue mb-6">
+              Familjens Vårdportal
+            </h1>
+            <p className="text-xl text-natural-birch-wood mb-4 max-w-3xl mx-auto">
+              Dela vårdplaner, protokoll och medicinspårning säkert inom familjen
+            </p>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Kör lokalt på era enheter eller använd Balans Hosted backup. Familjen ser samma information i realtid.
+            </p>
+          </div>
+
+          {/* Quick Facts */}
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
+            <div className="bg-white p-6 rounded-xl lagom-shadow text-center">
+              <div className="text-3xl font-bold text-sage-green mb-2">🏠 Lokal</div>
+              <div className="text-gray-600">Körs på era enheter</div>
+              <div className="text-sm text-gray-500 mt-1">Max integritet, ingen molnlagring</div>
+            </div>
+            <div className="bg-white p-6 rounded-xl lagom-shadow text-center">
+              <div className="text-3xl font-bold text-deep-swedish-blue mb-2">👨‍👩‍👧 Familj</div>
+              <div className="text-gray-600">Synkroniserad vy</div>
+              <div className="text-sm text-gray-500 mt-1">Alla ser samma vårdplan & tidslinje</div>
+            </div>
+            <div className="bg-white p-6 rounded-xl lagom-shadow text-center">
+              <div className="text-3xl font-bold text-truth-anchor-copper mb-2">🔒 Säker</div>
+              <div className="text-gray-600">GDPR-första design</div>
+              <div className="text-sm text-gray-500 mt-1">Du äger och kontrollerar all data</div>
+            </div>
+          </div>
+
+          {/* What You Can Share */}
+          <div className="max-w-3xl mx-auto p-6 bg-white rounded-xl lagom-shadow">
+            <h3 className="text-2xl font-bold text-deep-swedish-blue mb-4 text-center">Vad Kan Ni Dela?</h3>
+            <div className="grid md:grid-cols-2 gap-4 text-gray-700">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl">💊</span>
+                <div>
+                  <p className="font-semibold">Medicinspårning</p>
+                  <p className="text-sm">Tagit medicin, biverkningar, dosjusteringar</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl">📋</span>
+                <div>
+                  <p className="font-semibold">Vårdplaner & Protokoll</p>
+                  <p className="text-sm">"Gör X när Y" instruktioner från läkare</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl">📊</span>
+                <div>
+                  <p className="font-semibold">Tidslinjer</p>
+                  <p className="text-sm">Sömn, aktivitet, välmående över tid</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl">⚠️</span>
+                <div>
+                  <p className="font-semibold">Varningssignaler</p>
+                  <p className="text-sm">Tidiga tecken som familjen kan känna igen</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Study */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-deep-swedish-blue mb-4 text-center">
+            Fallstudie Juni 2025
+          </h2>
+          <p className="text-xl text-gray-600 mb-12 text-center">
+            Från hjälplös familj till konkreta verktyg
+          </p>
+
+          <div className="max-w-4xl mx-auto space-y-8">
+            {/* Quick Summary Cards */}
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="bg-gradient-to-br from-warm-birch-white to-truth-anchor-copper/10 p-6 rounded-xl lagom-shadow text-center">
+                <div className="text-4xl mb-3">❌</div>
+                <h3 className="font-bold text-truth-anchor-copper mb-2">Problem</h3>
+                <p className="text-sm text-gray-700">Familj vet inte HUR de ska hjälpa</p>
+              </div>
+              <div className="bg-gradient-to-br from-warm-birch-white to-deep-swedish-blue/10 p-6 rounded-xl lagom-shadow text-center">
+                <div className="text-4xl mb-3">🤖</div>
+                <h3 className="font-bold text-deep-swedish-blue mb-2">Lösning</h3>
+                <p className="text-sm text-gray-700">AI genererar konkreta "Gör X när Y" protokoll</p>
+              </div>
+              <div className="bg-gradient-to-br from-warm-birch-white to-sage-green/10 p-6 rounded-xl lagom-shadow text-center">
+                <div className="text-4xl mb-3">✅</div>
+                <h3 className="font-bold text-sage-green mb-2">Resultat</h3>
+                <p className="text-sm text-gray-700">6 dagar vs 21 dagar, 100% adherence</p>
+              </div>
+            </div>
+
+            {/* Collapsible: Full Story */}
+            <div className="mb-8">
+              <button
+                onClick={() => setShowFullStory(!showFullStory)}
+                className="w-full text-center cursor-pointer font-bold text-2xl text-deep-swedish-blue hover:text-sacred-alliance-purple transition-colors duration-300"
+              >
+                📖 {showFullStory ? 'Dölj' : 'Läs'} Hela Historien
+              </button>
+              
+              {showFullStory && (
+                <div className="space-y-8 mt-6">
+                  {/* The Problem */}
+                  <div className="bg-gradient-to-br from-warm-birch-white to-truth-anchor-copper/10 p-8 rounded-2xl lagom-shadow">
+                    <h3 className="text-2xl font-bold text-truth-anchor-copper mb-4">
+                      Problem: Ingen Visste Hur Man Skulle Hjälpa
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <p className="font-bold text-lg mb-2">Patient eskalerar:</p>
+                        <ul className="space-y-2 text-gray-700">
+                          <li>• Rusande tankar, minskad sömn</li>
+                          <li>• "Dessa idéer ÄR viktiga"</li>
+                          <li>• Svårt att sluta arbeta</li>
+                          <li>• Frustration över "kontroll"</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <p className="font-bold text-lg mb-2">Familj desperat att hjälpa:</p>
+                        <ul className="space-y-2 text-gray-700">
+                          <li>• Men vet inte HUR</li>
+                          <li>• Känsla av hjälplöshet</li>
+                          <li>• Dagliga oro-samtal (år av detta)</li>
+                          <li>• Konflikt: "Sluta arbeta på AI"</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div className="mt-6 p-4 bg-white border-l-4 border-truth-anchor-copper rounded">
+                      <p className="text-gray-700">
+                        <strong>Resultat:</strong> Alla lider. Patient känner sig missförstådd, familj känner sig maktlösa, ingen vet vad de ska göra.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* AI-Generated Protocols */}
+                  <div className="bg-gradient-to-br from-warm-birch-white to-deep-swedish-blue/10 p-8 rounded-2xl lagom-shadow">
+                    <h3 className="text-2xl font-bold text-deep-swedish-blue mb-4">
+                      Lösning: AI-Genererade Handlingsprotokoll
+                    </h3>
+                    <p className="text-gray-700 mb-6">
+                      Våren 2025: AI-assistans skapade <strong>konkreta "Gör X när Y" protokoll</strong> - inte teoretiska modeller, utan genomförbara steg för familjemedlemmar.
+                    </p>
+                    
+                    {/* Protocol Examples */}
+                    <button
+                      onClick={() => setShowProtocols(!showProtocols)}
+                      className="font-bold text-lg text-deep-swedish-blue mb-3 hover:text-sacred-alliance-purple transition-colors duration-300"
+                    >
+                      📋 {showProtocols ? 'Dölj' : 'Visa'} Protokollexempel
+                    </button>
+                    
+                    {showProtocols && (
+                      <div className="grid md:grid-cols-2 gap-6 mt-4">
+                        <div className="border-2 border-sage-green rounded-lg p-4 bg-white">
+                          <h4 className="font-bold text-sage-green mb-3">Familjeprotokoll</h4>
+                          <ul className="space-y-2 text-sm text-gray-700">
+                            <li>✅ "Erbjud isklumpar" (grounding-teknik)</li>
+                            <li>✅ "10 min skrivning, 20 min paus"</li>
+                            <li>✅ "Kolla: sömn, mat, medicin först"</li>
+                            <li>✅ Konkreta varningssignaler att känna igen</li>
+                          </ul>
+                        </div>
+                        <div className="border-2 border-sacred-alliance-purple rounded-lg p-4 bg-white">
+                          <h4 className="font-bold text-sacred-alliance-purple mb-3">Kollegeprotokoll</h4>
+                          <ul className="space-y-2 text-sm text-gray-700">
+                            <li>✅ "Check-in: hur känns det i kroppen?"</li>
+                            <li>✅ Erbjud dokumentera idéer</li>
+                            <li>✅ Balansera utforskning & gränser</li>
+                            <li>✅ När att söka klinisk hjälp</li>
+                          </ul>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="p-4 bg-sage-green/20 border-l-4 border-sage-green rounded mt-4">
+                      <p className="text-gray-700">
+                        <strong>Nyckelpunkt:</strong> Inte komplexa psykologiska teorier. Konkreta steg som stressade familjemedlemmar faktiskt kan följa.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Juni 2025 Validation (Always Visible) */}
+            <div className="bg-gradient-to-br from-warm-birch-white to-sage-green/10 p-8 rounded-2xl lagom-shadow">
+              <h3 className="text-2xl font-bold text-truth-anchor-copper mb-4">
+                Juni 2025: Verklig Episod - Hypotetisk BalansAI
+              </h3>
+              <p className="text-gray-700 mb-4">
+                <strong>Vad som faktiskt hände:</strong> Hypomanisk episod i Skellefteå, reglerad MED familjeprotokoll (AI-genererade), 6 dagar till stabilisering.
+              </p>
+              <p className="text-gray-700 mb-6">
+                <strong>Hypotes:</strong> Om BalansAI med sensorintegration hade funnits, hur mycket lättare hade det varit?
+              </p>
+              
+              <div className="space-y-3 mb-6">
+                {[
+                  { title: '6 dagar till stabilisering', subtitle: 'Tidigare: 14-21 dagar' },
+                  { title: '100% medicinföljsamhet', subtitle: 'Familj kunde stödja strukturerat' },
+                  { title: 'Familj kände sig användbara', subtitle: 'Inte hjälplösa - hade konkreta verktyg' },
+                  { title: 'Patient behöll autonomi', subtitle: 'Reglering med samtycke, inte kontroll' }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span className="text-2xl">✅</span>
+                    <div>
+                      <p className="font-bold">{item.title}</p>
+                      <p className="text-gray-600 text-sm">{item.subtitle}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Comparison Timeline Image */}
+              <div className="mb-6">
+                <img 
+                  src="/images/medical-june-2025-activation-timeline.png" 
+                  alt="Jämförelse: Med AI-protokoll (6 dagar) vs Utan protokoll (21 dagar)" 
+                  className="w-full rounded-xl lagom-shadow"
+                />
+                <p className="text-sm text-gray-600 mt-2 text-center italic">
+                  🟢 Grön linje: Med AI-protokoll (juni 2025, verklig episod) | 
+                  🔴 Röd linje: Typiskt utan protokoll (baserat på tidigare episoder)
+                </p>
+              </div>
+
+              <div className="p-4 bg-blue-100 border-2 border-deep-swedish-blue rounded-lg">
+                <p className="font-bold text-deep-swedish-blue text-lg mb-2">
+                  ✅ Bevisat: AI-Protokoll Fungerar (Juni 2025)
+                </p>
+                <p className="text-gray-700 text-sm">
+                  AI-genererade familjeprotokoll användes i verklig episod. 6 dagar till stabilisering vs 14-21 dagar tidigare.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive Demo Section */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-deep-swedish-blue mb-6">
+              Prova BalansAI Demo
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Interaktiv tidslinje med verklig data från juni 2025. Se hur AI-assisterad spårning fungerar i praktiken.
+            </p>
+          </div>
+
+          {!showDemo ? (
+            <div className="text-center">
+              <button
+                onClick={() => setShowDemo(true)}
+                className="px-8 py-4 bg-[#8faa8b] text-white rounded-full font-bold text-lg hover:bg-[#7a9976] transition-colors shadow-lg"
+              >
+                Starta Interaktiv Demo
+              </button>
+            </div>
+          ) : (
+            <div className="space-y-8">
+              <div className="bg-gray-50 rounded-2xl p-6 border-2 border-[#8faa8b]">
+                <MedicalTimeline />
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-white rounded-xl shadow-lg p-6 border-2 border-[#8faa8b]">
+                  <h3 className="text-2xl font-bold text-deep-swedish-blue mb-4">Snabbknappar</h3>
+                  <p className="text-gray-600 mb-6">Tryck för att logga medicin, arbete eller varningssignaler.</p>
+                  <ButtonPanel />
+                </div>
+                
+                <div className="bg-gradient-to-br from-[#8faa8b]/10 to-white rounded-xl shadow-lg p-6 border-2 border-[#8faa8b]">
+                  <h3 className="text-2xl font-bold text-deep-swedish-blue mb-4">Hur det fungerar</h3>
+                  <div className="space-y-4 text-gray-700">
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl">📊</span>
+                      <div>
+                        <p className="font-semibold">Realtidsspårning</p>
+                        <p className="text-sm">Tidslinje uppdateras automatiskt när du trycker på knappar</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl">🤖</span>
+                      <div>
+                        <p className="font-semibold">AI-analys</p>
+                        <p className="text-sm">Mönsterigenkänning identifierar tidiga varningssignaler</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl">👨‍⚕️</span>
+                      <div>
+                        <p className="font-semibold">Delbar med läkare</p>
+                        <p className="text-sm">Exportera data för samtal med vårdteam</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="text-center">
+                <button
+                  onClick={() => setShowDemo(false)}
+                  className="px-6 py-3 border-2 border-[#8faa8b] text-[#8faa8b] rounded-full font-medium hover:bg-[#8faa8b]/10 transition-colors"
+                >
+                  Stäng Demo
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-20 px-4 bg-[#8faa8b] text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-6">
+            Vill Du Prova BalansAI?
+          </h2>
+          <p className="text-xl text-white mb-4 max-w-2xl mx-auto">
+            Vi söker betatesters som vill:
+          </p>
+          <ul className="text-lg text-white mb-8 max-w-2xl mx-auto text-left list-disc pl-6">
+            <li>Spåra medicin, sömn och välmående dagligen</li>
+            <li>Ge feedback på AI-analys och mönsterigenkänning</li>
+            <li>Hjälpa oss förbättra verktyget för framtida användare</li>
+          </ul>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <a 
+              href="https://balans-collective.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-white text-[#8faa8b] px-8 py-4 rounded-full font-bold text-lg lagom-hover hover:bg-[#f8f6f0]"
+            >
+              Prova Demo Direkt
+            </a>
+            <a 
+              href="mailto:samuel@dynorobotics.se?subject=Betatest BalansAI" 
+              className="bg-white text-[#8faa8b] px-8 py-4 rounded-full font-bold text-lg lagom-hover hover:bg-[#f8f6f0]"
+            >
+              Ansök Som Betatestare
+            </a>
+          </div>
+          <div className="text-sm text-white space-y-1">
+            <p>✅ Gratis under betatest</p>
+            <p>✅ GDPR-säker svensk lagring</p>
+            <p>✅ Du äger all din data</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-white border-t border-natural-birch-wood/20 py-12 px-4">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="mb-6">
+            <Link to="/" className="inline-flex items-center space-x-2 mb-4">
+              <img src="/images/balans-logo.png" alt="Balans" className="h-8 w-auto" />
+              <span className="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+            </Link>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              AI-assisterad medicinsk innovation för bipolaritet och hypomani reglering.
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-6 mb-6">
+            <Link to="/" className="text-gray-600 hover:text-deep-swedish-blue transition-colors duration-300">
+              Startsida
+            </Link>
+            <Link to="/medical" className="text-deep-swedish-blue font-medium">
+              Medicinsk Forskning
+            </Link>
+            <a 
+              href="https://github.com/balans-collective" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-deep-swedish-blue transition-colors duration-300"
+            >
+              GitHub
+            </a>
+            <a 
+              href="mailto:samuel@dynorobotics.se" 
+              className="text-gray-600 hover:text-deep-swedish-blue transition-colors duration-300"
+            >
+              Kontakt
+            </a>
+          </div>
+          <div className="text-sm text-gray-500">
+            <p>&copy; 2025 Balans. Svenska Värderingar. Open Source Kärna. Familjen Först.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

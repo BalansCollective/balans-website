@@ -1,0 +1,46 @@
+{
+  "app": {
+    "name": "Balans",
+    "tagline": "Balans mellan människa och maskin"
+  },
+  "navigation": {
+    "home": "Hem",
+    "mission": "Mission",
+    "about": "Om oss",
+    "products": "Produkter",
+    "approach": "Tillvägagångssätt",
+    "narratives": "Narrativ",
+    "contact": "Kontakt",
+    "try_demo": "Prova demo"
+  },
+  "language": {
+    "select": "Välj språk",
+    "current": "Svenska"
+  },
+  "theme": {
+    "light": "Ljust läge",
+    "dark": "Mörkt läge",
+    "toggle": "Växla tema"
+  },
+  "common": {
+    "loading": "Laddar...",
+    "error": "Ett fel uppstod",
+    "retry": "Försök igen",
+    "cancel": "Avbryt",
+    "save": "Spara",
+    "close": "Stäng",
+    "back": "Tillbaka",
+    "next": "Nästa",
+    "submit": "Skicka",
+    "delete": "Ta bort",
+    "edit": "Redigera",
+    "view": "Visa",
+    "download": "Ladda ner"
+  },
+  "footer": {
+    "copyright": "© {{year}} Balans Collective. Alla rättigheter förbehållna.",
+    "privacy": "Integritetspolicy",
+    "terms": "Användarvillkor"
+  }
+}
+

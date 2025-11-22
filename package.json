@@ -1,27 +1,52 @@
 {
-  "name": "balans-website",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "tauri-app",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "@headlessui/react": "^2.2.9",
+    "@heroicons/react": "^2.2.0",
+    "@mdx-js/mdx": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-opener": "^2",
+    "@tauri-apps/plugin-shell": "^2.3.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "i18next": "^25.6.3",
+    "i18next-browser-languagedetector": "^8.2.0",
+    "i18next-http-backend": "^3.0.2",
+    "mermaid": "^11.12.1",
+    "openai": "^6.9.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-i18next": "^16.3.5",
+    "react-router-dom": "^7.9.6",
+    "reactflow": "^11.11.4",
+    "recharts": "^3.4.1",
+    "rehype-mermaid": "^3.0.0",
+    "tailwind-merge": "^3.4.0"
+  },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.10",
-    "@tailwindcss/typography": "^0.5.16",
-    "tailwindcss": "^3.4.17"
-  },
-  "dependencies": {
-    "cssesc": "^3.0.0",
-    "lodash.castarray": "^4.4.0",
-    "lodash.isplainobject": "^4.0.6",
-    "lodash.merge": "^4.6.2",
-    "mini-svg-data-uri": "^1.4.4",
-    "postcss-selector-parser": "^6.0.10",
-    "util-deprecate": "^1.0.2"
-  },
-  "description": ""
+    "@tailwindcss/postcss": "^4.1.17",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tauri-apps/cli": "^2",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.17",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.4"
+  }
 }

@@ -1,0 +1,66 @@
+{
+  "hero": {
+    "title": "Balans Familj",
+    "subtitle": "AI-stöd för hela familjen",
+    "description": "Navigera hälsoutmaningar tillsammans med AI-assisterade verktyg designade för familjer."
+  },
+  "overview": {
+    "title": "Varför Balans Familj?",
+    "description": "När en familjemedlem hanterar bipolaritet, hypomani eller andra hälsoutmaningar, påverkar det alla. Balans Familj ger hela familjen verktyg för att förstå, stödja och navigera tillsammans.",
+    "keyFeatures": "Nyckelfunktioner"
+  },
+  "features": {
+    "sharedTimeline": {
+      "title": "Delad Tidslinje",
+      "description": "Alla ser samma information i realtid",
+      "details": "Medicinintag, sömnmönster, stämningsförändringar - synkroniserat över familjens enheter."
+    },
+    "aiProtocols": {
+      "title": "AI-Genererade Protokoll",
+      "description": "Konkreta \"Gör X när Y\" instruktioner",
+      "details": "Inte teoretiska modeller - genomförbara steg för stressade familjemedlemmar."
+    },
+    "guardianMode": {
+      "title": "Guardian-läge",
+      "description": "Krisstöd när det verkligen behövs",
+      "details": "Påminnelser, strukturerade checklistor och eskaleringsprotokoll."
+    },
+    "privacyFirst": {
+      "title": "Integritet Först",
+      "description": "Lokal-först design, du äger din data",
+      "details": "Körs på era enheter. Valfri molnbackup för synkronisering."
+    }
+  },
+  "howItWorks": {
+    "title": "Hur Det Fungerar",
+    "steps": [
+      {
+        "title": "Spåra Tillsammans",
+        "description": "Medicin, sömn, stämning, varningssignaler"
+      },
+      {
+        "title": "AI Analyserar Mönster",
+        "description": "Identifiera tidiga varningssignaler automatiskt"
+      },
+      {
+        "title": "Få Konkreta Protokoll",
+        "description": "\"Om X händer, gör Y\" instruktioner för familjen"
+      },
+      {
+        "title": "Navigera Tillsammans",
+        "description": "Hela familjen vet vad som händer och hur de kan hjälpa"
+      }
+    ]
+  },
+  "testimonial": {
+    "quote": "Första gången vi hade verktyg istället för bara oro. Protokollen gav oss konkreta steg att ta.",
+    "author": "Familj från Juni 2025-piloten"
+  },
+  "cta": {
+    "title": "Prova Balans Familj",
+    "description": "Vi söker betatesters för vår familjeportal.",
+    "beta": "Ansök Som Betatestare",
+    "demo": "Se Demo"
+  }
+}
+

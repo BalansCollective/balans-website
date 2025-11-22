@@ -1,0 +1,53 @@
+{
+  "dashboard": {
+    "title": "Medical Dashboard",
+    "subtitle": "Health monitoring and management",
+    "demo_warning": "⚠️ This is a <strong>prototype/demo</strong> with mock data. The system is not in production yet."
+  },
+  "tabs": {
+    "medicine": "📟 My Medicine",
+    "timeline": "📊 Timeline",
+    "careplan": "📋 Care Plan",
+    "doctor": "👩‍⚕️ Doctor Dashboard",
+    "family": "👨‍👩‍👦 Family View",
+    "weaver": "🧠 Weaver CLI",
+    "threads": "✨ Golden Threads"
+  },
+  "medication": {
+    "title": "My Medicine",
+    "taken": "Taken",
+    "missed": "Missed",
+    "upcoming": "Upcoming",
+    "dose": "Dose",
+    "time": "Time",
+    "log": "Log medication",
+    "history": "History"
+  },
+  "timeline": {
+    "title": "Timeline",
+    "events": "Events",
+    "mood": "Mood",
+    "sleep": "Sleep",
+    "energy": "Energy",
+    "medications": "Medications",
+    "filter": "Filter"
+  },
+  "careplan": {
+    "title": "Care Plan",
+    "active": "Active plan",
+    "goals": "Goals",
+    "actions": "Actions",
+    "review": "Review"
+  },
+  "guardian": {
+    "mode": {
+      "active": "Guardian mode active",
+      "inactive": "Guardian mode inactive",
+      "toggle": "Toggle Guardian"
+    },
+    "enforcement": "Enforcement",
+    "alerts": "Alerts",
+    "overrides": "Overrides"
+  }
+}
+

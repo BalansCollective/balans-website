@@ -1,0 +1,83 @@
+{
+  "hero": {
+    "title": "AI safety is our mission",
+    "subtitle": "AI systems that humans can audit and control.",
+    "cta_primary": "Learn about our approach",
+    "cta_secondary": "Explore products"
+  },
+  "mission": {
+    "title": "Transparent collaboration between human and AI",
+    "subtitle": "We develop methods for AI that explain their decisions and respect human control.",
+    "safety_first": {
+      "title": "Systematic Validation",
+      "description": "We verify AI systems systematically. Humans audit, AI explains."
+    },
+    "human_alignment": {
+      "title": "Collaboration with Control",
+      "description": "Humans retain responsibility. AI explains its suggestions. Collaboration without losing control."
+    },
+    "proven_methods": {
+      "title": "Continuous Improvement",
+      "description": "We test AI systems under real conditions and document results. Systems improve through measurable steps."
+    }
+  },
+  "narrative": {
+    "badge": "Our Method",
+    "title": "Narratives for Validation",
+    "description": "We write detailed scenarios where AI systems are tested under stress. These stories reveal design problems before we build the systems.",
+    "benefits": [
+      {
+        "title": "Find problems early",
+        "description": "Design flaws cost less to fix than production failures"
+      },
+      {
+        "title": "Realistic constraints",
+        "description": "Batteries die, networks fail, humans panic"
+      },
+      {
+        "title": "Iterative improvement",
+        "description": "Each narrative stress-tests solutions from the previous one"
+      }
+    ],
+    "cta": "Explore our narratives"
+  },
+  "products": {
+    "title": "Safety in practice",
+    "subtitle": "Same safety protocols, different applications",
+    "family": {
+      "title": "For families",
+      "description": "Weaver helps families translate between different mindsets. Safe AI for everyday communication.",
+      "cta": "Read more"
+    },
+    "medical": {
+      "title": "For healthcare",
+      "description": "AI protocols for medical care and therapeutic applications.",
+      "cta": "Read more"
+    },
+    "defense": {
+      "title": "For defense",
+      "description": "Red Cell for classification-aware AI development. Secure classified innovation.",
+      "cta": "Read more"
+    }
+  },
+  "approach": {
+    "title": "Guardian & Forge Protocols",
+    "subtitle": "Two complementary frameworks for AI safety in critical applications",
+    "guardian": {
+      "title": "Guardian Protocol",
+      "description": "Gain control over AI decision-making. Guardian makes AI reasoning visible and auditable.",
+      "cta": "Read whitepaper"
+    },
+    "forge": {
+      "title": "Forge Protocol",
+      "description": "Use AI to develop sensitive systems without sharing implementation. Collaborate securely despite confidentiality.",
+      "cta": "Read whitepaper"
+    }
+  },
+  "cta": {
+    "title": "Evaluate Balans for your organization",
+    "subtitle": "Contact us for technical documentation and demonstrations.",
+    "primary": "Contact us",
+    "secondary": "Explore products"
+  }
+}

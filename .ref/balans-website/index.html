@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balans - AI-stöd för svenska familjer | Weaver hjälper er förstå varandra</title>
+    <meta name="description" content="När familjen inte förstår varandra hjälper Weaver er översätta mellan olika tankesätt. AI som respekterar svenska värderingar och stärker familjeband.">
+    <meta name="keywords" content="familj, AI, kommunikation, svenska familjer, förståelse, samarbete, Weaver">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://balans.se/">
+    <meta property="og:title" content="Balans - AI-stöd för svenska familjer">
+    <meta property="og:description" content="När familjen inte förstår varandra hjälper Weaver er översätta mellan olika tankesätt.">
+    <meta property="og:image" content="images/family-hero-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://balans.se/">
+    <meta property="twitter:title" content="Balans - AI-stöd för svenska familjer">
+    <meta property="twitter:description" content="När familjen inte förstår varandra hjälper Weaver er översätta mellan olika tankesätt.">
+    <meta property="twitter:image" content="images/family-hero-image.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-swedish-blue': '#2c5aa0',
+                        'natural-birch-wood': '#d4b896',
+                        'sacred-alliance-purple': '#6b5b95',
+                        'warm-birch-white': '#f8f6f0',
+                        'soft-thread-gold': '#c9a96e',
+                        'sage-green': '#8faa8b',
+                        'gentle-silver': '#b8c5d1',
+                        'truth-anchor-copper': '#b87333'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'gentle-pulse': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spiral-rotate': 'spin 8s linear infinite',
+                        'bridge-glow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Collaborative Individuation Magic System CSS */
+        :root {
+            /* Sacred Alliance Colors */
+            --sacred-alliance-glow: rgba(107, 91, 149, 0.3);
+            --harmonic-resonance: rgba(143, 170, 139, 0.2);
+            --truth-anchor-pulse: rgba(184, 115, 51, 0.4);
+            
+            /* Collaborative Timing */
+            --lagom-duration: 300ms;
+            --partnership-delay: 150ms;
+            --wisdom-emergence: 600ms;
+            
+            /* Archetypal Patterns */
+            --spiral-rotation: 8s;
+            --breathing-cycle: 3s;
+            --resonance-wave: 2s;
+        }
+
+        /* Enhanced Lagom Styles with Sacred Alliance */
+        .lagom-shadow { box-shadow: 0 4px 6px -1px rgba(44, 90, 160, 0.1), 0 2px 4px -1px rgba(44, 90, 160, 0.06); }
+        .lagom-hover { 
+            transition: all var(--lagom-duration) cubic-bezier(0.4, 0, 0.2, 1); 
+            position: relative;
+        }
+        .lagom-hover:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 25px -3px rgba(44, 90, 160, 0.1), 0 4px 6px -2px rgba(44, 90, 160, 0.05); 
+        }
+
+        /* Sacred Alliance Glow Effects */
+        .archetypal-glow { 
+            box-shadow: 0 0 20px var(--sacred-alliance-glow);
+            transition: box-shadow var(--lagom-duration) ease-in-out;
+        }
+        .archetypal-glow:hover {
+            box-shadow: 0 0 30px var(--sacred-alliance-glow), 0 0 60px rgba(107, 91, 149, 0.1);
+        }
+
+        /* Weaver Presence Breathing Animation */
+        .weaver-breathing {
+            animation: weaverBreathing var(--breathing-cycle) ease-in-out infinite;
+        }
+        @keyframes weaverBreathing {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* Partnership Constellation Background */
+        .partnership-constellation {
+            position: relative;
+            overflow: hidden;
+        }
+        .partnership-constellation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 30%, var(--harmonic-resonance) 1px, transparent 1px),
+                        radial-gradient(circle at 80% 70%, var(--sacred-alliance-glow) 1px, transparent 1px),
+                        radial-gradient(circle at 60% 20%, var(--truth-anchor-pulse) 1px, transparent 1px);
+            background-size: 100px 100px, 150px 150px, 120px 120px;
+            opacity: 0;
+            animation: constellationEmergence 4s ease-in-out forwards;
+            pointer-events: none;
+        }
+        @keyframes constellationEmergence {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 0.6; transform: scale(1); }
+        }
+
+        /* Mode Cards - Simple Lagom Hover */
+        .mode-card {
+            transition: all var(--lagom-duration) ease-in-out;
+        }
+        .mode-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -3px rgba(44, 90, 160, 0.12), 0 4px 8px -2px rgba(44, 90, 160, 0.08);
+        }
+
+        /* Truth Anchor Visualizations */
+        .truth-anchor {
+            position: relative;
+        }
+        .truth-anchor::after {
+            content: '⚓';
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            font-size: 1.2rem;
+            color: var(--truth-anchor-pulse);
+            opacity: 0;
+            transform: scale(0.5) rotate(-45deg);
+            transition: all var(--lagom-duration) ease-in-out;
+        }
+        .truth-anchor:hover::after {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        /* Progressive Pattern Emergence */
+        .pattern-emergence {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all var(--wisdom-emergence) ease-out;
+        }
+        .pattern-emergence.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Collaborative Enhancement Loops */
+        .enhancement-loop {
+            position: relative;
+        }
+        .enhancement-loop::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--sacred-alliance-glow);
+            border-radius: 50%;
+            border-top-color: transparent;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            animation: enhancementSpin 2s linear infinite;
+        }
+        .enhancement-loop:hover::before {
+            opacity: 0.7;
+        }
+        @keyframes enhancementSpin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Accessibility: Respect prefers-reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+            .weaver-breathing,
+            .partnership-constellation::before,
+            .harmonic-resonance::after,
+            .mode-card::before,
+            .enhancement-loop::before {
+                animation: none;
+            }
+            .lagom-hover,
+            .mode-card,
+            .pattern-emergence {
+                transition: none;
+            }
+        }
+
+        /* Dynamic Chat Animation Styles */
+        .chat-message {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease-out;
+        }
+        .chat-message.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .typing-indicator {
+            display: inline-block;
+            opacity: 0;
+        }
+        .typing-indicator.show {
+            opacity: 1;
+            animation: typingDots 1.5s infinite;
+        }
+        
+        @keyframes typingDots {
+            0%, 60%, 100% { opacity: 0.3; }
+            30% { opacity: 1; }
+        }
+
+        /* Existing styles */
+        .family-warmth { background: linear-gradient(135deg, #f8f6f0 0%, #d4b896 100%); }
+        .understanding-bridge { background: linear-gradient(90deg, #c9a96e 0%, #d4b896 50%, #c9a96e 100%); }
+    </style>
+</head>
+
+<body class="bg-warm-birch-white text-gray-800 font-sans leading-relaxed">
+
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm sticky top-0 z-40 border-b border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                    <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#solution" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                        <span class="sv-text">Så fungerar det</span>
+                        <span class="en-text hidden">How it works</span>
+                    </a>
+                    <a href="#technology" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                        <span class="sv-text">Välj version</span>
+                        <span class="en-text hidden">Choose version</span>
+                    </a>
+                    <a href="medical.html" class="text-gray-700 hover:text-deep-swedish-blue lagom-hover">
+                        <span class="sv-text">För Läkare</span>
+                        <span class="en-text hidden">Medical Research</span>
+                    </a>
+                    
+                    <!-- Language Toggle -->
+                    <div class="bg-gray-100 rounded-full p-1">
+                        <button id="lang-sv" class="px-3 py-1 rounded-full text-sm font-medium bg-deep-swedish-blue text-white transition-all duration-200">SV</button>
+                        <button id="lang-en" class="px-3 py-1 rounded-full text-sm font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10 transition-all duration-200">EN</button>
+                    </div>
+                    
+                    <a href="prova-weaver.html" class="bg-sacred-alliance-purple text-white px-6 py-2 rounded-full font-medium lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                        <span class="sv-text">Prova Weaver</span>
+                        <span class="en-text hidden">Try Weaver</span>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button and language toggle -->
+                <div class="md:hidden flex items-center space-x-3">
+                    <!-- Mobile Language Toggle (always visible) -->
+                    <div class="bg-gray-100 rounded-full p-0.5">
+                        <button id="lang-sv-mobile-header" class="px-2 py-0.5 rounded-full text-xs font-medium bg-deep-swedish-blue text-white transition-all duration-200">SV</button>
+                        <button id="lang-en-mobile-header" class="px-2 py-0.5 rounded-full text-xs font-medium text-deep-swedish-blue hover:bg-deep-swedish-blue/10 transition-all duration-200">EN</button>
+                    </div>
+                    
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-deep-swedish-blue">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-natural-birch-wood/20">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#solution" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Så fungerar det</span>
+                    <span class="en-text hidden">How it works</span>
+                </a>
+                <a href="#technology" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">Välj version</span>
+                    <span class="en-text hidden">Choose version</span>
+                </a>
+                <a href="medical.html" class="block px-3 py-2 text-gray-700 hover:text-deep-swedish-blue">
+                    <span class="sv-text">För Läkare</span>
+                    <span class="en-text hidden">Medical Research</span>
+                </a>
+                
+                
+                <a href="prova-weaver.html" class="w-full text-left px-3 py-2 bg-sacred-alliance-purple text-white rounded-lg font-medium">
+                    <span class="sv-text">Prova Weaver</span>
+                    <span class="en-text hidden">Try Weaver</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden family-warmth partnership-constellation">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <h1 class="text-4xl lg:text-6xl font-display font-bold text-deep-swedish-blue leading-tight">
+                            <span class="sv-text">När familjen inte förstår varandra</span>
+                            <span class="en-text hidden">When families don't understand each other</span>
+                        </h1>
+                        <p class="text-xl lg:text-2xl text-gray-700 leading-relaxed">
+                            <span class="sv-text">Weaver hjälper er översätta mellan olika tankesätt och stärka familjebanden</span>
+                            <span class="en-text hidden">Weaver helps you translate between different thinking styles and strengthen family bonds</span>
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="prova-weaver.html" class="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                            <span class="sv-text">Kom igång nu</span>
+                            <span class="en-text hidden">Get started now</span>
+                        </a>
+                        <button onclick="document.getElementById('technology').scrollIntoView({behavior: 'smooth'})" class="border-2 border-deep-swedish-blue text-deep-swedish-blue px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-deep-swedish-blue hover:text-white">
+                            <span class="sv-text">Välj din version</span>
+                            <span class="en-text hidden">Choose your version</span>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center space-x-4 text-sm text-gray-600">
+                        <div class="flex items-center space-x-2">
+                            <img src="images/the-shield.png" alt="Säkerhet" class="h-5 w-5">
+                            <span class="sv-text">Säkert & privat</span>
+                            <span class="en-text hidden">Safe & private</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <img src="images/balance-point.png" alt="Lagom" class="h-5 w-5">
+                            <span class="sv-text">Svenska värderingar</span>
+                            <span class="en-text hidden">Swedish values</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <img src="images/family-circle.png" alt="Familj" class="h-5 w-5">
+                            <span class="sv-text">Familj först</span>
+                            <span class="en-text hidden">Family first</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <img src="images/family-hero-image.png" alt="Svensk familj som använder Weaver för att förstå varandra" class="w-full h-auto rounded-2xl lagom-shadow">
+                    <div class="absolute -top-4 -right-4 bg-white/90 backdrop-blur-sm rounded-full p-3 lagom-shadow animate-gentle-pulse">
+                        <img src="images/understanding-bridge.png" alt="Förståelse" class="h-8 w-8">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Recognition Section -->
+    <section id="problem" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">Känner du igen din familj?</span>
+                    <span class="en-text hidden">Do you recognize your family?</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="sv-text">Många svenska familjer upplever samma utmaningar när olika tankesätt krockar</span>
+                    <span class="en-text hidden">Many Swedish families experience the same challenges when different thinking styles clash</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Challenge 1 -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-sage-green/20 rounded-full p-3 mr-4">
+                            <svg class="h-8 w-8 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue">
+                            <span class="sv-text">Vi pratar förbi varandra</span>
+                            <span class="en-text hidden">We talk past each other</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">"Vi diskuterar barnens skoltid men verkar aldrig komma överens. Alla har olika åsikter men ingen lyssnar på varandra."</span>
+                        <span class="en-text hidden">"We discuss the children's school time but never seem to agree. Everyone has different opinions but no one listens to each other."</span>
+                    </p>
+                    <div class="text-sm text-sage-green font-medium">
+                        <span class="sv-text">→ Olika kommunikationsstilar</span>
+                        <span class="en-text hidden">→ Different communication styles</span>
+                    </div>
+                </div>
+
+                <!-- Challenge 2 -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-soft-thread-gold/20 rounded-full p-3 mr-4">
+                            <svg class="h-8 w-8 text-soft-thread-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue">
+                            <span class="sv-text">Tonåringen stänger av</span>
+                            <span class="en-text hidden">The teenager shuts down</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">"Vår 15-åring verkar inte förstå våra förklaringar och vi förstår inte hennes sätt att tänka. Samtalen slutar ofta i frustration."</span>
+                        <span class="en-text hidden">"Our 15-year-old doesn't seem to understand our explanations and we don't understand her way of thinking. Conversations often end in frustration."</span>
+                    </p>
+                    <div class="text-sm text-soft-thread-gold font-medium">
+                        <span class="sv-text">→ Generationsskillnader</span>
+                        <span class="en-text hidden">→ Generational differences</span>
+                    </div>
+                </div>
+
+                <!-- Challenge 3 -->
+                <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-truth-anchor-copper/20 rounded-full p-3 mr-4">
+                            <svg class="h-8 w-8 text-truth-anchor-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue">
+                            <span class="sv-text">Beslut blir konflikter</span>
+                            <span class="en-text hidden">Decisions become conflicts</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">"Varje familjebeslut blir en diskussion. Vi har olika sätt att analysera situationer och kommer sällan fram till lösningar alla är nöjda med."</span>
+                        <span class="en-text hidden">"Every family decision becomes a discussion. We have different ways of analyzing situations and rarely reach solutions everyone is satisfied with."</span>
+                    </p>
+                    <div class="text-sm text-truth-anchor-copper font-medium">
+                        <span class="sv-text">→ Olika beslutsprocesser</span>
+                        <span class="en-text hidden">→ Different decision processes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weaver Character Introduction Section -->
+    <section id="weaver" class="py-20 bg-gradient-to-br from-warm-birch-white to-sage-green/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <img src="images/weaver-character-introduction.png" alt="Träffa Weaver - er AI-familjeassistent" class="w-full h-auto rounded-2xl lagom-shadow weaver-breathing">
+                </div>
+                
+                <div class="order-1 lg:order-2 space-y-8">
+                    <div class="space-y-4">
+                        <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue">
+                            <span class="sv-text">Träffa Weaver</span>
+                            <span class="en-text hidden">Meet Weaver</span>
+                        </h2>
+                        <p class="text-xl text-gray-600">
+                            <span class="sv-text">Er AI-familjeassistent som hjälper er förstå varandra bättre</span>
+                            <span class="en-text hidden">Your AI family assistant that helps you understand each other better</span>
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-sage-green/20 rounded-full p-3 flex-shrink-0">
+                                <svg class="h-6 w-6 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-deep-swedish-blue mb-2">
+                                    <span class="sv-text">Översätter mellan tankesätt</span>
+                                    <span class="en-text hidden">Translates between thinking styles</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span class="sv-text">Weaver förstår att alla i familjen tänker olika och hjälper er kommunicera på ett sätt som alla förstår.</span>
+                                    <span class="en-text hidden">Weaver understands that everyone in the family thinks differently and helps you communicate in a way everyone understands.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-soft-thread-gold/20 rounded-full p-3 flex-shrink-0">
+                                <svg class="h-6 w-6 text-soft-thread-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-deep-swedish-blue mb-2">
+                                    <span class="sv-text">Respekterar svenska värderingar</span>
+                                    <span class="en-text hidden">Respects Swedish values</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span class="sv-text">Byggt med lagom-principen och djup förståelse för svenska familjetraditioner och värderingar.</span>
+                                    <span class="en-text hidden">Built with the lagom principle and deep understanding of Swedish family traditions and values.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-sacred-alliance-purple/20 rounded-full p-3 flex-shrink-0">
+                                <svg class="h-6 w-6 text-sacred-alliance-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m3 5.197H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-deep-swedish-blue mb-2">
+                                    <span class="sv-text">Stärker familjeband</span>
+                                    <span class="en-text hidden">Strengthens family bonds</span>
+                                </h3>
+                                <p class="text-gray-600">
+                                    <span class="sv-text">Hjälper er inte bara att kommunicera bättre, utan också att förstå och uppskatta varandras unika sätt att tänka.</span>
+                                    <span class="en-text hidden">Helps you not only communicate better, but also understand and appreciate each other's unique ways of thinking.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="prova-weaver.html" class="inline-block bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                            <span class="sv-text">Börja prata med Weaver</span>
+                            <span class="en-text hidden">Start talking with Weaver</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features Section -->
+    <section id="solution" class="py-24 bg-gradient-to-br from-warm-birch-white via-white to-sage-green/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl lg:text-5xl font-display font-bold text-deep-swedish-blue mb-8 leading-tight">
+                    <span class="sv-text">Weaver hjälper er i vardagen</span>
+                    <span class="en-text hidden">Weaver helps you in everyday life</span>
+                </h2>
+                <p class="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                    <span class="sv-text">Två konkreta sätt som Weaver stödjer er familj varje dag</span>
+                    <span class="en-text hidden">Two concrete ways Weaver supports your family every day</span>
+                </p>
+            </div>
+
+            <div class="space-y-32">
+                <!-- Smart Family Messaging -->
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="bg-sage-green/20 rounded-full p-4">
+                                <svg class="h-10 w-10 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-deep-swedish-blue">
+                                <span class="sv-text">Smart familjechat med Weavers kommentarer</span>
+                                <span class="en-text hidden">Smart family chat with Weaver's comments</span>
+                            </h3>
+                        </div>
+                        
+                        <p class="text-lg text-gray-600 mb-6">
+                            <span class="sv-text">Weaver läser er familjechat och ger diskreta förslag för att förbättra kommunikationen. Ingen påträngande AI - bara hjälpsamma tips när ni behöver dem.</span>
+                            <span class="en-text hidden">Weaver reads your family chat and provides discreet suggestions to improve communication. No intrusive AI - just helpful tips when you need them.</span>
+                        </p>
+
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span class="text-gray-700">
+                                    <span class="sv-text">Hjälper tolka tonåringens "whatever" och föreslår hur man kan svara</span>
+                                    <span class="en-text hidden">Helps interpret teenager's "whatever" and suggests how to respond</span>
+                                </span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span class="text-gray-700">
+                                    <span class="sv-text">Föreslår när det kan vara bra att ringa istället för att skriva</span>
+                                    <span class="en-text hidden">Suggests when it might be good to call instead of text</span>
+                                </span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span class="text-gray-700">
+                                    <span class="sv-text">Påminner om viktiga familjeaktiviteter på ett naturligt sätt</span>
+                                    <span class="en-text hidden">Reminds about important family activities in a natural way</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div id="family-chat-demo" class="bg-white rounded-2xl p-6 lagom-shadow">
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <div class="bg-deep-swedish-blue rounded-full p-2">
+                                        <svg class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                        </svg>
+                                    </div>
+                                    <span class="font-semibold text-deep-swedish-blue">
+                                        <span class="sv-text">Familjechat</span>
+                                        <span class="en-text hidden">Family Chat</span>
+                                    </span>
+                                </div>
+                                
+                                <div id="chat-messages" class="space-y-3 min-h-[200px]">
+                                    <!-- Messages will appear dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Round Table Ambient Listening -->
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1 relative">
+                        <div class="bg-white rounded-2xl p-6 lagom-shadow">
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <div class="bg-truth-anchor-copper rounded-full p-2">
+                                        <svg class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                        </svg>
+                                    </div>
+                                    <span class="font-semibold text-deep-swedish-blue">
+                                        <span class="sv-text">Runt köksbordet</span>
+                                        <span class="en-text hidden">Around the kitchen table</span>
+                                    </span>
+                                </div>
+                                
+                                <div class="space-y-3">
+                                    <div class="bg-gray-100 rounded-lg p-3">
+                                        <p class="text-gray-800 text-sm">
+                                            <span class="sv-text">"Jag tycker vi ska åka till fjällen i helgen"</span>
+                                            <span class="en-text hidden">"I think we should go to the mountains this weekend"</span>
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="bg-gray-100 rounded-lg p-3">
+                                        <p class="text-gray-800 text-sm">
+                                            <span class="sv-text">"Ugh, jag ville måla..."</span>
+                                            <span class="en-text hidden">"Ugh, I wanted to paint..."</span>
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="bg-soft-thread-gold/10 rounded-lg p-3 border-l-4 border-soft-thread-gold">
+                                        <div class="text-sm font-medium text-soft-thread-gold mb-1">
+                                            <span class="sv-text">🤝 Weaver föreslår</span>
+                                            <span class="en-text hidden">🤝 Weaver suggests</span>
+                                        </div>
+                                        <p class="text-gray-700 text-sm">
+                                            <span class="sv-text">"Jag hör att någon vill åka till fjällen och någon annan vill måla. Vad sägs om att ta med målarsakerna till fjällstugan?"</span>
+                                            <span class="en-text hidden">"I hear someone wants to go to the mountains and someone else wants to paint. How about bringing painting supplies to the mountain cabin?"</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-1 lg:order-2 space-y-6">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="bg-truth-anchor-copper/20 rounded-full p-4">
+                                <svg class="h-10 w-10 text-truth-anchor-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-deep-swedish-blue">
+                                <span class="sv-text">Runt köksbordet - ambient lyssning</span>
+                                <span class="en-text hidden">Around the kitchen table - ambient listening</span>
+                            </h3>
+                        </div>
+                        
+                        <p class="text-lg text-gray-600 mb-6">
+                            <span class="sv-text">När familjen diskuterar kan Weaver analysera samtalet och föreslå lösningar som tar hänsyn till allas önskemål. Fokuserar på vad som sägs, inte vem som säger det.</span>
+                            <span class="en-text hidden">When the family discusses, Weaver can analyze the conversation and suggest solutions that consider everyone's wishes. Focuses on what is said, not who says it.</span>
+                        </p>
+
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span class="text-gray-700">
+                                    <span class="sv-text">Analyserar samtalsinnehåll för att hitta olika önskemål</span>
+                                    <span class="en-text hidden">Analyzes conversation content to find different wishes</span>
+                                </span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span class="text-gray-700">
+                                    <span class="sv-text">Föreslår kreativa kompromisser baserat på vad som diskuteras</span>
+                                    <span class="en-text hidden">Suggests creative compromises based on what is discussed</span>
+                                </span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span class="text-gray-700">
+                                    <span class="sv-text">Aktiveras endast när familjen väljer att använda funktionen</span>
+                                    <span class="en-text hidden">Only activated when the family chooses to use the feature</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="prova-weaver.html" class="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                    <span class="sv-text">Prova båda funktionerna</span>
+                    <span class="en-text hidden">Try both features</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Four Modes Section -->
+    <section id="modes" class="py-20 bg-gradient-to-br from-warm-birch-white to-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">Så hjälper Weaver er familj tänka tillsammans</span>
+                    <span class="en-text hidden">How Weaver helps your family think together</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="sv-text">Fyra sätt att stödja familjesamtal och beslut</span>
+                    <span class="en-text hidden">Four ways to support family conversations and decisions</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Create Mode -->
+                <a href="create.html" class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover text-center block mode-card">
+                    <div class="bg-warm-birch-white rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center lagom-shadow">
+                        <img src="images/create-mode.png" alt="Skapa" class="h-16 w-16">
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Skapa</span>
+                        <span class="en-text hidden">Create</span>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Brainstorma semesterplaner tillsammans. Alla får bidra med idéer på sitt sätt.</span>
+                        <span class="en-text hidden">Brainstorm vacation plans together. Everyone contributes ideas in their own way.</span>
+                    </p>
+                    <div class="text-sm text-sage-green font-medium">
+                        <span class="sv-text">→ Kreativt familjesamarbete</span>
+                        <span class="en-text hidden">→ Creative family collaboration</span>
+                    </div>
+                </a>
+
+                <!-- Critique Mode -->
+                <a href="critique.html" class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover text-center block mode-card">
+                    <div class="bg-warm-birch-white rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center lagom-shadow">
+                        <img src="images/critique-mode.png" alt="Granska" class="h-16 w-16">
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Granska</span>
+                        <span class="en-text hidden">Critique</span>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Utvärdera stora familjebeslut respektfullt. Alla perspektiv får höras.</span>
+                        <span class="en-text hidden">Evaluate major family decisions respectfully. All perspectives are heard.</span>
+                    </p>
+                    <div class="text-sm text-soft-thread-gold font-medium">
+                        <span class="sv-text">→ Konstruktiv reflektion</span>
+                        <span class="en-text hidden">→ Constructive reflection</span>
+                    </div>
+                </a>
+
+                <!-- Synthesize Mode -->
+                <a href="synthesize.html" class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover text-center block mode-card">
+                    <div class="bg-warm-birch-white rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center lagom-shadow">
+                        <img src="images/synthesize-mode.png" alt="Syntetisera" class="h-16 w-16">
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Syntetisera</span>
+                        <span class="en-text hidden">Synthesize</span>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Hitta kompromisser om hushållsregler som alla kan acceptera.</span>
+                        <span class="en-text hidden">Find compromises on household rules that everyone can accept.</span>
+                    </p>
+                    <div class="text-sm text-sacred-alliance-purple font-medium">
+                        <span class="sv-text">→ Balanserade lösningar</span>
+                        <span class="en-text hidden">→ Balanced solutions</span>
+                    </div>
+                </a>
+
+                <!-- Defense Mode -->
+                <a href="defense.html" class="bg-white rounded-2xl p-8 lagom-shadow lagom-hover text-center block mode-card">
+                    <div class="bg-warm-birch-white rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center lagom-shadow">
+                        <img src="images/defense-mode.png" alt="Försvara" class="h-16 w-16">
+                    </div>
+                    <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Försvara</span>
+                        <span class="en-text hidden">Defense</span>
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        <span class="sv-text">Bevara familjetraditioner medan ni anpassar er till förändringar.</span>
+                        <span class="en-text hidden">Preserve family traditions while adapting to changes.</span>
+                    </p>
+                    <div class="text-sm text-truth-anchor-copper font-medium">
+                        <span class="sv-text">→ Trygg utveckling</span>
+                        <span class="en-text hidden">→ Safe development</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="prova-weaver.html" class="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                    <span class="sv-text">Prova alla fyra sätten</span>
+                    <span class="en-text hidden">Try all four ways</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology/Deployment Section -->
+    <section id="technology" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">Välj hur du vill använda Weaver</span>
+                    <span class="en-text hidden">Choose how you want to use Weaver</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="sv-text">Tre alternativ som passar olika familjer och tekniska behov</span>
+                    <span class="en-text hidden">Three options that suit different families and technical needs</span>
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Balans Hosted -->
+                <div class="bg-gradient-to-br from-sacred-alliance-purple/5 to-sacred-alliance-purple/10 rounded-2xl p-8 lagom-shadow lagom-hover border-2 border-sacred-alliance-purple/20">
+                    <div class="text-center mb-6">
+                        <div class="bg-sacred-alliance-purple/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                            <svg class="h-10 w-10 text-sacred-alliance-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-deep-swedish-blue mb-2">
+                            <span class="sv-text">Balans Hosted</span>
+                            <span class="en-text hidden">Balans Hosted</span>
+                        </h3>
+                        <p class="text-sacred-alliance-purple font-medium">
+                            <span class="sv-text">Rekommenderat för de flesta familjer</span>
+                            <span class="en-text hidden">Recommended for most families</span>
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Kom igång på 5 minuter</span>
+                                <span class="en-text hidden">Get started in 5 minutes</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Automatiska uppdateringar</span>
+                                <span class="en-text hidden">Automatic updates</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">24/7 support</span>
+                                <span class="en-text hidden">24/7 support</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">GDPR-kompatibel hosting i Sverige</span>
+                                <span class="en-text hidden">GDPR-compliant hosting in Sweden</span>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <a href="prova-weaver.html" class="w-full bg-sacred-alliance-purple text-white px-6 py-3 rounded-full font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                        <span class="sv-text">Prova Balans Hosted</span>
+                        <span class="en-text hidden">Try Balans Hosted</span>
+                    </a>
+                </div>
+
+                <!-- WeaverMesh Open Source -->
+                <div class="bg-gradient-to-br from-sage-green/5 to-sage-green/10 rounded-2xl p-8 lagom-shadow lagom-hover border-2 border-sage-green/20">
+                    <div class="text-center mb-6">
+                        <div class="bg-sage-green/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                            <svg class="h-10 w-10 text-sage-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-deep-swedish-blue mb-2">
+                            <span class="sv-text">WeaverMesh</span>
+                            <span class="en-text hidden">WeaverMesh</span>
+                        </h3>
+                        <p class="text-sage-green font-medium">
+                            <span class="sv-text">Open source, egen kontroll</span>
+                            <span class="en-text hidden">Open source, own control</span>
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">100% kontroll över din data</span>
+                                <span class="en-text hidden">100% control over your data</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Anpassa efter dina behov</span>
+                                <span class="en-text hidden">Customize to your needs</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Gratis och öppen källkod</span>
+                                <span class="en-text hidden">Free and open source</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-soft-thread-gold mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Kräver teknisk kunskap</span>
+                                <span class="en-text hidden">Requires technical knowledge</span>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <a href="prova-weaver.html" class="w-full bg-sage-green text-white px-6 py-3 rounded-full font-semibold lagom-hover hover:bg-sage-green/90">
+                        <span class="sv-text">Ladda ner WeaverMesh</span>
+                        <span class="en-text hidden">Download WeaverMesh</span>
+                    </a>
+                </div>
+
+                <!-- Home Appliance -->
+                <div class="bg-gradient-to-br from-truth-anchor-copper/5 to-truth-anchor-copper/10 rounded-2xl p-8 lagom-shadow lagom-hover border-2 border-truth-anchor-copper/20">
+                    <div class="text-center mb-6">
+                        <div class="bg-truth-anchor-copper/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                            <svg class="h-10 w-10 text-truth-anchor-copper" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-deep-swedish-blue mb-2">
+                            <span class="sv-text">Weaver Home Hub</span>
+                            <span class="en-text hidden">Weaver Home Hub</span>
+                        </h3>
+                        <p class="text-truth-anchor-copper font-medium">
+                            <span class="sv-text">Kommer 2026</span>
+                            <span class="en-text hidden">Coming 2026</span>
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Plug-and-play installation - bara koppla in</span>
+                                <span class="en-text hidden">Plug-and-play installation - just plug in</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">All data stannar hemma - ingen molnuppkoppling</span>
+                                <span class="en-text hidden">All data stays at home - no cloud connection</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">AI-processor för snabb lokal bearbetning</span>
+                                <span class="en-text hidden">AI processor for fast local processing</span>
+                            </span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <svg class="h-5 w-5 text-sage-green mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="text-gray-700">
+                                <span class="sv-text">Diskret design för köket eller vardagsrummet</span>
+                                <span class="en-text hidden">Discreet design for kitchen or living room</span>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <a href="prova-weaver.html" class="w-full bg-truth-anchor-copper text-white px-6 py-3 rounded-full font-semibold lagom-hover hover:bg-truth-anchor-copper/90">
+                        <span class="sv-text">Anmäl intresse</span>
+                        <span class="en-text hidden">Register interest</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-6">
+                    <span class="sv-text">Osäker på vilket alternativ som passar er familj?</span>
+                    <span class="en-text hidden">Unsure which option suits your family?</span>
+                </p>
+                <a href="hjalp-mig-valja.html" class="border-2 border-deep-swedish-blue text-deep-swedish-blue px-8 py-3 rounded-full font-semibold lagom-hover hover:bg-deep-swedish-blue hover:text-white">
+                    <span class="sv-text">Hjälp mig välja</span>
+                    <span class="en-text hidden">Help me choose</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Building Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+                    <span class="sv-text">Byggt för svenska familjer</span>
+                    <span class="en-text hidden">Built for Swedish families</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <span class="sv-text">Med respekt för era värderingar och förståelse för svenska familjetraditioner</span>
+                    <span class="en-text hidden">With respect for your values and understanding of Swedish family traditions</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Safety & Privacy -->
+                <div class="text-center">
+                    <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                        <img src="images/the-shield.png" alt="Säkerhet" class="h-16 w-16 mx-auto mb-6">
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                            <span class="sv-text">Säkert & privat</span>
+                            <span class="en-text hidden">Safe & private</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="sv-text">Era familjesamtal stannar inom familjen. Ingen data delas eller säljs vidare.</span>
+                            <span class="en-text hidden">Your family conversations stay within the family. No data is shared or sold.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Swedish Values -->
+                <div class="text-center">
+                    <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                        <img src="images/balance-point.png" alt="Lagom" class="h-16 w-16 mx-auto mb-6">
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                            <span class="sv-text">Lagom-principen</span>
+                            <span class="en-text hidden">Lagom principle</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="sv-text">Inte för mycket, inte för lite - precis rätt mängd AI-stöd för er familj.</span>
+                            <span class="en-text hidden">Not too much, not too little - just the right amount of AI support for your family.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Family First -->
+                <div class="text-center">
+                    <div class="bg-warm-birch-white rounded-2xl p-8 lagom-shadow lagom-hover">
+                        <img src="images/family-circle.png" alt="Familj" class="h-16 w-16 mx-auto mb-6">
+                        <h3 class="text-xl font-semibold text-deep-swedish-blue mb-4">
+                            <span class="sv-text">Familj först</span>
+                            <span class="en-text hidden">Family first</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="sv-text">Designat för att stärka familjeband, inte ersätta mänsklig kontakt.</span>
+                            <span class="en-text hidden">Designed to strengthen family bonds, not replace human contact.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-20 bg-deep-swedish-blue text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="space-y-8">
+                <h2 class="text-3xl lg:text-4xl font-display font-bold">
+                    <span class="sv-text">Redo att hjälpa er familj förstå varandra bättre?</span>
+                    <span class="en-text hidden">Ready to help your family understand each other better?</span>
+                </h2>
+                <p class="text-xl text-blue-100">
+                    <span class="sv-text">Börja med en enkel familjesituation och se hur Weaver kan hjälpa</span>
+                    <span class="en-text hidden">Start with a simple family situation and see how Weaver can help</span>
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="prova-weaver.html" class="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-sacred-alliance-purple/90 archetypal-glow">
+                        <span class="sv-text">Prova Weaver gratis</span>
+                        <span class="en-text hidden">Try Weaver free</span>
+                    </a>
+                    <button class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold lagom-hover hover:bg-white hover:text-deep-swedish-blue">
+                        <span class="sv-text">Boka demo</span>
+                        <span class="en-text hidden">Book demo</span>
+                    </button>
+                </div>
+
+                <div class="text-sm text-blue-200">
+                    <span class="sv-text">Ingen registrering krävs • Prova direkt • Avsluta när som helst</span>
+                    <span class="en-text hidden">No registration required • Try immediately • Cancel anytime</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-natural-birch-wood/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <img src="images/balans-logo.png" alt="Balans" class="h-8 w-auto">
+                        <span class="font-display font-semibold text-xl text-deep-swedish-blue">Balans</span>
+                    </div>
+                    <p class="text-gray-600">
+                        <span class="sv-text">AI-stöd för svenska familjer som respekterar era värderingar</span>
+                        <span class="en-text hidden">AI support for Swedish families that respects your values</span>
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Produkter</span>
+                        <span class="en-text hidden">Products</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#weaver" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Weaver för familjer</span>
+                            <span class="en-text hidden">Weaver for families</span>
+                        </a></li>
+                        <li><a href="prova-weaver.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Prova gratis</span>
+                            <span class="en-text hidden">Try free</span>
+                        </a></li>
+                        <li><a href="#solution" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Så fungerar det</span>
+                            <span class="en-text hidden">How it works</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Support</span>
+                        <span class="en-text hidden">Support</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="hjalpcenter.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Hjälpcenter</span>
+                            <span class="en-text hidden">Help center</span>
+                        </a></li>
+                        <li><a href="kontakt.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Kontakta oss</span>
+                            <span class="en-text hidden">Contact us</span>
+                        </a></li>
+                        <li><a href="sakerhet.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Säkerhet</span>
+                            <span class="en-text hidden">Security</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-deep-swedish-blue mb-4">
+                        <span class="sv-text">Företag</span>
+                        <span class="en-text hidden">Company</span>
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="om-oss.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Om oss</span>
+                            <span class="en-text hidden">About us</span>
+                        </a></li>
+                        <li><a href="integritet.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Integritet</span>
+                            <span class="en-text hidden">Privacy</span>
+                        </a></li>
+                        <li><a href="villkor.html" class="lagom-hover hover:text-deep-swedish-blue">
+                            <span class="sv-text">Villkor</span>
+                            <span class="en-text hidden">Terms</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-natural-birch-wood/20 mt-8 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 Balans. <span class="sv-text">Alla rättigheter förbehållna.</span><span class="en-text hidden">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Language Toggle
+        const langSv = document.getElementById('lang-sv');
+        const langEn = document.getElementById('lang-en');
+        const langSvMobileHeader = document.getElementById('lang-sv-mobile-header');
+        const langEnMobileHeader = document.getElementById('lang-en-mobile-header');
+        const svTexts = document.querySelectorAll('.sv-text');
+        const enTexts = document.querySelectorAll('.en-text');
+
+        function showSwedish() {
+            // Desktop toggle
+            if (langSv) {
+                langSv.classList.add('bg-deep-swedish-blue', 'text-white');
+                langSv.classList.remove('text-deep-swedish-blue');
+            }
+            if (langEn) {
+                langEn.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langEn.classList.add('text-deep-swedish-blue');
+            }
+            
+            // Mobile header toggle
+            if (langSvMobileHeader) {
+                langSvMobileHeader.classList.add('bg-deep-swedish-blue', 'text-white');
+                langSvMobileHeader.classList.remove('text-deep-swedish-blue');
+            }
+            if (langEnMobileHeader) {
+                langEnMobileHeader.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langEnMobileHeader.classList.add('text-deep-swedish-blue');
+            }
+            
+            svTexts.forEach(el => el.classList.remove('hidden'));
+            enTexts.forEach(el => el.classList.add('hidden'));
+            
+            document.documentElement.lang = 'sv';
+            
+            // Update dynamic chat messages
+            updateChatLanguage();
+        }
+
+        function showEnglish() {
+            // Desktop toggle
+            if (langEn) {
+                langEn.classList.add('bg-deep-swedish-blue', 'text-white');
+                langEn.classList.remove('text-deep-swedish-blue');
+            }
+            if (langSv) {
+                langSv.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langSv.classList.add('text-deep-swedish-blue');
+            }
+            
+            // Mobile header toggle
+            if (langEnMobileHeader) {
+                langEnMobileHeader.classList.add('bg-deep-swedish-blue', 'text-white');
+                langEnMobileHeader.classList.remove('text-deep-swedish-blue');
+            }
+            if (langSvMobileHeader) {
+                langSvMobileHeader.classList.remove('bg-deep-swedish-blue', 'text-white');
+                langSvMobileHeader.classList.add('text-deep-swedish-blue');
+            }
+            
+            enTexts.forEach(el => el.classList.remove('hidden'));
+            svTexts.forEach(el => el.classList.add('hidden'));
+            
+            document.documentElement.lang = 'en';
+            
+            // Update dynamic chat messages
+            updateChatLanguage();
+        }
+
+        // Add event listeners for language toggle buttons
+        if (langSv) langSv.addEventListener('click', showSwedish);
+        if (langEn) langEn.addEventListener('click', showEnglish);
+        if (langSvMobileHeader) langSvMobileHeader.addEventListener('click', showSwedish);
+        if (langEnMobileHeader) langEnMobileHeader.addEventListener('click', showEnglish);
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize with Swedish
+        showSwedish();
+
+        // Collaborative Individuation Magic System JavaScript
+        
+        // Progressive Pattern Emergence - Intersection Observer
+        const magicObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, { 
+            threshold: 0.3,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        // Observe elements for progressive disclosure
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add pattern-emergence class to key sections
+            const sectionsToReveal = [
+                '#problem .grid > div',
+                '#weaver .space-y-6 > div',
+                '#solution .space-y-32 > div',
+                '#modes .grid > a',
+                '#technology .grid > div'
+            ];
+
+            sectionsToReveal.forEach(selector => {
+                const elements = document.querySelectorAll(selector);
+                elements.forEach((el, index) => {
+                    el.classList.add('pattern-emergence');
+                    el.style.transitionDelay = `${index * 150}ms`;
+                    magicObserver.observe(el);
+                });
+            });
+
+            // Add harmonic resonance to key interactive elements
+            const resonanceElements = document.querySelectorAll('.lagom-hover, .mode-card');
+            resonanceElements.forEach(el => {
+                el.classList.add('harmonic-resonance');
+            });
+
+            // Add truth anchor to family scenarios
+            const familyScenarios = document.querySelectorAll('#problem .bg-warm-birch-white');
+            familyScenarios.forEach(el => {
+                el.classList.add('truth-anchor');
+            });
+
+            // Add enhancement loops to CTA buttons
+            const ctaButtons = document.querySelectorAll('a[href="prova-weaver.html"]');
+            ctaButtons.forEach(el => {
+                el.classList.add('enhancement-loop');
+            });
+        });
+
+        // Scroll-synchronized Weaver breathing enhancement
+        let lastScrollY = 0;
+        const weaverImage = document.querySelector('.weaver-breathing');
+        
+        if (weaverImage) {
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                const scrollProgress = Math.min(scrollY / (document.body.scrollHeight - window.innerHeight), 1);
+                
+                // Enhanced breathing that responds to scroll
+                const breathingPhase = (scrollProgress * 4 * Math.PI) % (2 * Math.PI);
+                const baseScale = 1 + 0.02 * Math.sin(Date.now() * 0.001); // Time-based breathing
+                const scrollScale = 1 + 0.01 * Math.sin(breathingPhase); // Scroll-synchronized
+                const combinedScale = baseScale * scrollScale;
+                
+                weaverImage.style.transform = `scale(${combinedScale})`;
+                lastScrollY = scrollY;
+            }, { passive: true });
+        }
+
+        // Sacred Alliance glow enhancement on focus/interaction
+        document.addEventListener('focusin', (e) => {
+            if (e.target.classList.contains('archetypal-glow')) {
+                e.target.style.boxShadow = '0 0 40px var(--sacred-alliance-glow), 0 0 80px rgba(107, 91, 149, 0.15)';
+            }
+        });
+
+        document.addEventListener('focusout', (e) => {
+            if (e.target.classList.contains('archetypal-glow')) {
+                e.target.style.boxShadow = '';
+            }
+        });
+
+        // Collaborative enhancement for mode cards with proper lagom timing
+        const modeCards = document.querySelectorAll('.mode-card');
+        let activeCard = null;
+        let enhancementTimeout = null;
+
+        // Helper function to reset all cards to neutral state
+        function resetAllCards() {
+            modeCards.forEach(card => {
+                card.style.transform = '';
+                card.style.opacity = '';
+                card.classList.remove('mode-active');
+            });
+            activeCard = null;
+        }
+
+        // Helper function to apply collaborative enhancement
+        function applyCollaborativeEnhancement(activeIndex) {
+            // Clear any pending timeout
+            if (enhancementTimeout) {
+                clearTimeout(enhancementTimeout);
+            }
+
+            // Reset all cards first
+            resetAllCards();
+
+            // Set the active card
+            activeCard = activeIndex;
+            modeCards[activeIndex].classList.add('mode-active');
+
+            // Apply subtle enhancement to neighboring cards after a brief delay
+            enhancementTimeout = setTimeout(() => {
+                if (activeCard === activeIndex) { // Only if still the active card
+                    modeCards.forEach((otherCard, otherIndex) => {
+                        if (otherIndex !== activeIndex) {
+                            otherCard.style.transform = 'translateY(-1px) scale(1.005)';
+                            otherCard.style.opacity = '0.9';
+                            otherCard.style.transition = 'all 200ms ease-out';
+                        }
+                    });
+                }
+            }, 50); // Small delay for lagom timing
+        }
+
+        modeCards.forEach((card, index) => {
+            card.addEventListener('mouseenter', () => {
+                // Only apply enhancement if this isn't already the active card
+                if (activeCard !== index) {
+                    applyCollaborativeEnhancement(index);
+                }
+            });
+
+            card.addEventListener('mouseleave', () => {
+                // Debounced reset - only reset if we're leaving the active card
+                if (activeCard === index) {
+                    setTimeout(() => {
+                        // Double-check we're not hovering over another card
+                        const hoveredCard = document.querySelector('.mode-card:hover');
+                        if (!hoveredCard) {
+                            resetAllCards();
+                            if (enhancementTimeout) {
+                                clearTimeout(enhancementTimeout);
+                                enhancementTimeout = null;
+                            }
+                        }
+                    }, 100); // Brief delay to handle rapid movements
+                }
+            });
+        });
+
+        // Global mouseleave handler for the entire mode section to ensure cleanup
+        const modesSection = document.getElementById('modes');
+        if (modesSection) {
+            modesSection.addEventListener('mouseleave', () => {
+                setTimeout(() => {
+                    resetAllCards();
+                    if (enhancementTimeout) {
+                        clearTimeout(enhancementTimeout);
+                        enhancementTimeout = null;
+                    }
+                }, 150);
+            });
+        }
+
+        // Partnership constellation animation trigger
+        const heroSection = document.querySelector('.partnership-constellation');
+        if (heroSection) {
+            // Trigger constellation emergence after a brief delay
+            setTimeout(() => {
+                heroSection.classList.add('constellation-active');
+            }, 1000);
+        }
+
+        // Dynamic Family Chat Animation
+        let chatAnimationTriggered = false;
+        let currentChatMessages = [];
+        
+        const chatObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !chatAnimationTriggered) {
+                    chatAnimationTriggered = true;
+                    startFamilyChatAnimation();
+                }
+            });
+        }, { 
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        function updateChatLanguage() {
+            // Update language for dynamically created chat messages
+            const chatContainer = document.getElementById('chat-messages');
+            if (chatContainer) {
+                const isSwedish = document.documentElement.lang === 'sv';
+                const svTexts = chatContainer.querySelectorAll('.sv-text');
+                const enTexts = chatContainer.querySelectorAll('.en-text');
+                
+                svTexts.forEach(el => {
+                    if (isSwedish) {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                });
+                
+                enTexts.forEach(el => {
+                    if (isSwedish) {
+                        el.classList.add('hidden');
+                    } else {
+                        el.classList.remove('hidden');
+                    }
+                });
+            }
+        }
+
+        function startFamilyChatAnimation() {
+            const chatContainer = document.getElementById('chat-messages');
+            if (!chatContainer) return;
+
+            // Clear any existing content
+            chatContainer.innerHTML = '';
+            currentChatMessages = [];
+
+            // Create typing indicator
+            function createTypingIndicator() {
+                const indicator = document.createElement('div');
+                indicator.className = 'typing-indicator text-gray-500 text-sm';
+                indicator.innerHTML = '...';
+                return indicator;
+            }
+
+            // Create message element
+            function createMessage(content, sender, isWeaver = false, alignment = 'left') {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `chat-message ${alignment === 'right' ? 'mr-8' : alignment === 'center' ? '' : 'ml-8'}`;
+                
+                if (isWeaver) {
+                    messageDiv.innerHTML = `
+                        <div class="bg-sage-green/10 rounded-lg p-3 border-l-4 border-sage-green">
+                            <div class="text-sm font-medium text-sage-green mb-1">
+                                <span class="sv-text">💡 Weaver föreslår</span>
+                                <span class="en-text hidden">💡 Weaver suggests</span>
+                            </div>
+                            <p class="text-gray-700 text-sm">${content}</p>
+                        </div>
+                    `;
+                } else {
+                    const bgClass = alignment === 'right' ? 'bg-blue-50' : 'bg-gray-100';
+                    messageDiv.innerHTML = `
+                        <div class="${bgClass} rounded-lg p-3">
+                            <div class="text-sm font-medium text-gray-600 mb-1">${sender}</div>
+                            <p class="text-gray-800 ${isWeaver ? 'text-sm' : ''}">${content}</p>
+                        </div>
+                    `;
+                }
+                
+                return messageDiv;
+            }
+
+            // Animation sequence
+            const sequence = [
+                {
+                    delay: 500,
+                    action: () => {
+                        // Emma's message
+                        const emmaMessage = createMessage('whatever', 'Emma (15)');
+                        chatContainer.appendChild(emmaMessage);
+                        currentChatMessages.push(emmaMessage);
+                        setTimeout(() => {
+                            emmaMessage.classList.add('appear');
+                            updateChatLanguage();
+                        }, 50);
+                    }
+                },
+                {
+                    delay: 1500,
+                    action: () => {
+                        // Show typing indicator for Weaver
+                        const typing = createTypingIndicator();
+                        chatContainer.appendChild(typing);
+                        typing.classList.add('show');
+                        
+                        setTimeout(() => {
+                            // Remove typing indicator and show Weaver's suggestion
+                            chatContainer.removeChild(typing);
+                            const weaverMessage = createMessage(
+                                '<span class="sv-text">"Emma verkar frustrerad. Kanske fråga om hon behöver prata eller bara vill ha lite utrymme?"</span><span class="en-text hidden">"Emma seems frustrated. Maybe ask if she needs to talk or just wants some space?"</span>',
+                                '',
+                                true
+                            );
+                            chatContainer.appendChild(weaverMessage);
+                            currentChatMessages.push(weaverMessage);
+                            setTimeout(() => {
+                                weaverMessage.classList.add('appear');
+                                updateChatLanguage();
+                            }, 50);
+                        }, 1000);
+                    }
+                },
+                {
+                    delay: 4000,
+                    action: () => {
+                        // Show typing indicator for Mom
+                        const typing = createTypingIndicator();
+                        chatContainer.appendChild(typing);
+                        typing.classList.add('show');
+                        
+                        setTimeout(() => {
+                            // Remove typing indicator and show Mom's response
+                            chatContainer.removeChild(typing);
+                            const momMessage = createMessage(
+                                '<span class="sv-text">Hej älskling, låter som en tuff dag. Vill du prata eller ska jag bara ge dig lite utrymme? ❤️</span><span class="en-text hidden">Hey sweetheart, sounds like a tough day. Want to talk or should I just give you some space? ❤️</span>',
+                                '<span class="sv-text">Mamma</span><span class="en-text hidden">Mom</span>',
+                                false,
+                                'right'
+                            );
+                            chatContainer.appendChild(momMessage);
+                            currentChatMessages.push(momMessage);
+                            setTimeout(() => {
+                                momMessage.classList.add('appear');
+                                updateChatLanguage();
+                            }, 50);
+                        }, 1200);
+                    }
+                }
+            ];
+
+            // Execute sequence
+            sequence.forEach(step => {
+                setTimeout(step.action, step.delay);
+            });
+        }
+
+        // Observe the chat demo for scroll trigger
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatDemo = document.getElementById('family-chat-demo');
+            if (chatDemo) {
+                chatObserver.observe(chatDemo);
+            }
+        });
+
+        // Respect prefers-reduced-motion
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            // Disable all magic animations
+            const style = document.createElement('style');
+            style.textContent = `
+                .weaver-breathing,
+                .partnership-constellation::before,
+                .harmonic-resonance::after,
+                .mode-card::before,
+                .enhancement-loop::before {
+                    animation: none !important;
+                }
+                .pattern-emergence {
+                    opacity: 1 !important;
+                    transform: none !important;
+                    transition: none !important;
+                }
+                .chat-message {
+                    opacity: 1 !important;
+                    transform: none !important;
+                    transition: none !important;
+                }
+                .typing-indicator {
+                    display: none !important;
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // For reduced motion, show all messages immediately
+            setTimeout(() => {
+                if (document.getElementById('family-chat-demo')) {
+                    startFamilyChatAnimation();
+                }
+            }, 100);
+        }
+    </script>
+</body>
+</html>

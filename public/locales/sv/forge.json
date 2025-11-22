@@ -1,0 +1,99 @@
+{
+  "hero": {
+    "title": "Forge Protocol",
+    "subtitle": "Klassificeringsmedveten AI-Utveckling",
+    "byline": "Balans | November 2025"
+  },
+  "summary": {
+    "title": "Sammanfattning",
+    "description": "Forge Protocol är ett ramverk för att bygga AI-system över säkerhetsgränser, utvecklat för att lösa fem kritiska problem som hindrar säker AI-utveckling inom försvar:",
+    "benefits": [
+      "Utvecklare med olika behörigheter kan samarbeta - utan att läcka hemligheter",
+      "Kod kan byggas och testas - även när specifikationer är hemliga",
+      "Efterlevnad är bevisbar - automatisk validering mot standarder",
+      "Revision är komplett - full provenance från krav till deployment",
+      "Innovation accelererad - ingen 6-månaders SÄPO-väntan för varje startup"
+    ],
+    "sister_protocol": "Sister Protocol: Guardian Protocol hanterar operativ säkerhet (deployed AI). Forge Protocol hanterar utvecklingstidssäkerhet (building AI)."
+  },
+  "problem": {
+    "title": "Utmaningen: Varför Klassificerad AI-Utveckling Misslyckas Idag",
+    "items": [
+      {
+        "title": "Problem 1: Behörighetsparadoxen",
+        "description": "Senior utvecklare (CONFIDENTIAL behörighet) får krav: 'Implementera SECRET algoritm från specifikation doc-00423.' Kan inte läsa spec → Kan inte implementera korrekt → Systemet är osäkert."
+      },
+      {
+        "title": "Problem 2: Data Diode-gapet",
+        "description": "AI tränas på SECRET data i Red Forge. Måste testa performance → Data UT ur Red Forge → Säkerhetsbrott."
+      },
+      {
+        "title": "Problem 3: Standardefterlevnadsgap",
+        "description": "FMV kräver bevis för EU AI Act-efterlevnad. Utvecklingsteam har dokumentation i Word/PDF → FMV-revisor måste manuellt korrelera krav → 4 timmars granskning per incident."
+      },
+      {
+        "title": "Problem 4: Provenance-förlust",
+        "description": "Säkerhetsincident → Utredning behöver veta 'Vem ändrade denna parameter? Varför? Godkändes det?' → Git-loggen saknar kontext → Okonklusiv utredning."
+      },
+      {
+        "title": "Problem 5: Startup-innovationshinder",
+        "description": "NATO DIANA startup vill bygga AI-lösning för försvar → Behöver SÄPO-godkännande (€50K, 6 månader) för klassificerad utveckling → Kan inte iterera snabbt → Förlorar kontrakt till etablerad aktör."
+      }
+    ]
+  },
+  "solution": {
+    "title": "Lösningen: Forge Protocol",
+    "components": [
+      {
+        "title": "1. Red Forge Architecture",
+        "description": "Säker miljö för klassificerad AI-utveckling. SECRET data lämnar aldrig Red Forge (data diode IN endast), test metrics kan exporteras (inga hemligheter), utvecklare får feedback för iteration utan att se hemlig data."
+      },
+      {
+        "title": "2. Classification-Aware Development",
+        "description": "Utvecklare med olika behörigheter samarbetar utan läckage. CONFIDENTIAL utvecklare ser filtrerade specifikationer med SECRET sektioner borttagna. SECRET spec-författare arbetar i Red Forge med full detalj."
+      },
+      {
+        "title": "3. Standards-as-Graphs",
+        "description": "EU AI Act-krav lagras som frågebara grafer (Neo4j). Istället för manuell PDF-granskning kan FMV-revisorer köra Cypher-queries för omedelbar efterlevnadsvalidering. Automatiska deployment gates förhindrar deployment utan komplett bevis."
+      },
+      {
+        "title": "4. Git Provenance Tracking",
+        "description": "Varje kodändring spårad med AI-contribution + human-review. MCP Git Tool fångar: vem ändrade vad, varför, konfidensnivå, AI vs. mänsklig contribution procent, granskningscykler, efterlevnadslänkar."
+      },
+      {
+        "title": "5. Data Diode Enforcement",
+        "description": "Information flödar IN till Red Forge, aldrig UT (utom metrics). Compliance Plugin interceptar ALLA operationer. Whitelist-approach: endast precision, recall, F1, latency, throughput metrics tillåtna ut."
+      }
+    ]
+  },
+  "value": {
+    "title": "Värde för Svensk Industri",
+    "sectors": [
+      {
+        "title": "För Försvarsindustri",
+        "problem": "Utveckla AI-system över säkerhetsgränser kräver dyra, separata team för varje behörighetsnivå → Långsam iteration, svårt samarbeta.",
+        "solution": "Senior devs (CONFIDENTIAL) implementerar från filtrerade specs, SECRET spec writers skriver full detalj i Red Forge, automatisk efterlevnadsvalidering.",
+        "benefit": "Snabbare marknadsintroduktion, lägre utvecklingskostnader, enklare FMV-certifiering."
+      },
+      {
+        "title": "För NATO DIANA Startups",
+        "problem": "Behöver SÄPO-godkännande (€50K, 6 månader) för klassificerad AI-utveckling → Kan inte konkurrera med etablerade aktörer.",
+        "solution": "Dela Red Forge-miljö (Classified Development as a Service), ingen egen SÄPO-ansökan, pay-per-use modell (€5K/månad vs. €50K capex).",
+        "benefit": "Snabbare innovation (iteration från dag 1), lägre entry cost, FMV-access."
+      },
+      {
+        "title": "För Försvarsforskning",
+        "problem": "Forskning på hemliga hot kräver säker miljö → forskare kan inte samarbeta med externa akademiker.",
+        "solution": "Skriv SECRET specs i Red Forge, externa forskare implementerar från CONFIDENTIAL specs, Standards-as-Graphs möjliggör publikation (delar resultat, inte hemligheter).",
+        "benefit": "Bredare samarbete, snabbare publikation, enklare EU-finansiering."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Intresserad av Forge Protocol?",
+    "description": "Kontakta oss för Red Forge-access, pilot-projekt eller partnerskap.",
+    "primary": "Kontakta oss",
+    "secondary": "Se Guardian Protocol"
+  }
+}
+

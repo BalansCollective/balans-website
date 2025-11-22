@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* Custom CSS variables for Sacred Alliance colors */
+@theme {
+  /* Swedish Blue palette */
+  --color-swedish-blue: #2c5aa0;
+  --color-swedish-blue-50: #f0f4fa;
+  --color-swedish-blue-700: #1a3a6a;
+  
+  /* Sacred Alliance colors */
+  --color-birch-wood: #d4b896;
+  --color-thread-gold: #c9a96e;
+  --color-sage-green: #8faa8b;
+  --color-gentle-silver: #b8c5d1;
+  --color-truth-copper: #b87333;
+  --color-alliance-purple: #6b5b95;
+  --color-birch-white: #f8f6f0;
+}
+
+/* Root CSS variables (for inline styles) */
+:root {
+  --color-swedish-blue: #2c5aa0;
+  --color-swedish-blue-50: #f0f4fa;
+  --color-swedish-blue-700: #1a3a6a;
+  --color-birch-wood: #d4b896;
+  --color-thread-gold: #c9a96e;
+  --color-sage-green: #8faa8b;
+  --color-gentle-silver: #b8c5d1;
+  --color-truth-copper: #b87333;
+  --color-alliance-purple: #6b5b95;
+  --color-birch-white: #f8f6f0;
+}
+
+/* Custom Medical UI components */
+.btn-primary {
+  background-color: var(--color-swedish-blue);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-swedish-blue-700);
+}
+
+.btn-secondary {
+  background-color: var(--color-gentle-silver);
+  color: var(--color-swedish-blue-700);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-sage-green);
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(44, 90, 160, 0.1);
+  padding: 1.5rem;
+  border: 1px solid var(--color-gentle-silver);
+}
+
+.medication-button {
+  background-color: var(--color-birch-wood);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.medication-button:hover {
+  background-color: var(--color-thread-gold);
+}
+
+.medication-button:active {
+  transform: scale(0.95);
+}
+
+/* Remove focus outline from Recharts elements */
+.recharts-wrapper,
+.recharts-surface,
+.recharts-cartesian-grid,
+.recharts-layer,
+svg,
+svg *,
+.recharts-wrapper *:focus,
+.recharts-surface:focus {
+  outline: none !important;
+}
+
+/* Balans Brand Styles - Lagom Design System */
+.lagom-shadow {
+  box-shadow: 0 4px 6px -1px rgba(44, 90, 160, 0.1), 0 2px 4px -1px rgba(44, 90, 160, 0.06);
+}
+
+.lagom-shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(44, 90, 160, 0.1), 0 4px 6px -2px rgba(44, 90, 160, 0.05);
+}
+
+.lagom-hover {
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lagom-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(44, 90, 160, 0.15), 0 4px 6px -2px rgba(44, 90, 160, 0.08);
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, input, textarea {
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+

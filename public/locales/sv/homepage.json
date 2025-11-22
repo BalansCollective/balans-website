@@ -1,0 +1,83 @@
+{
+  "hero": {
+    "title": "AI-säkerhet är vårt uppdrag",
+    "subtitle": "AI-system som människor kan granska och styra.",
+    "cta_primary": "Läs mer om vårt tillvägagångssätt",
+    "cta_secondary": "Utforska produkter"
+  },
+  "mission": {
+    "title": "Transparent samarbete mellan människa och AI",
+    "subtitle": "Vi utvecklar metoder för AI som förklarar sina beslut och respekterar mänsklig kontroll.",
+    "safety_first": {
+      "title": "Systematisk Validering",
+      "description": "Vi verifierar AI-system systematiskt. Människor granskar, AI förklarar."
+    },
+    "human_alignment": {
+      "title": "Samverkan med Kontroll",
+      "description": "Människor behåller ansvar. AI förklarar sina förslag. Samarbete utan att tappa kontrollen."
+    },
+    "proven_methods": {
+      "title": "Kontinuerlig Förbättring",
+      "description": "Vi testar AI-system under verkliga förhållanden och dokumenterar resultaten. Systemen förbättras genom mätbara steg."
+    }
+  },
+  "narrative": {
+    "badge": "Vår Metod",
+    "title": "Narrativ för Validering",
+    "description": "Vi skriver detaljerade scenarion där AI-system testas under stress. Dessa berättelser avslöjar designproblem innan vi bygger systemen.",
+    "benefits": [
+      {
+        "title": "Hitta problem tidigt",
+        "description": "Designfel kostar mindre att fixa än produktionsfel"
+      },
+      {
+        "title": "Realistiska begränsningar",
+        "description": "Batterier dör, nätverk fallerar, människor paniker"
+      },
+      {
+        "title": "Iterativ förbättring",
+        "description": "Varje narrativ stress-testar lösningar från föregående"
+      }
+    ],
+    "cta": "Utforska våra narrativ"
+  },
+  "products": {
+    "title": "Säkerhet i praktiken",
+    "subtitle": "Samma säkerhetsprotokoll, olika tillämpningar",
+    "family": {
+      "title": "För familjer",
+      "description": "Weaver hjälper familjer översätta mellan olika tankesätt. Säker AI för vardagskommunikation.",
+      "cta": "Läs mer"
+    },
+    "medical": {
+      "title": "För vård",
+      "description": "AI-protokoll för medicinsk vård och terapeutiska tillämpningar.",
+      "cta": "Läs mer"
+    },
+    "defense": {
+      "title": "För försvar",
+      "description": "Red Cell för classification-aware AI-utveckling. Säker hemligstämplad innovation.",
+      "cta": "Läs mer"
+    }
+  },
+  "approach": {
+    "title": "Guardian & Forge Protokoll",
+    "subtitle": "Två kompletterande ramverk för AI-säkerhet i kritiska tillämpningar",
+    "guardian": {
+      "title": "Guardian Protocol",
+      "description": "Få kontroll över AI:ns beslutsfattande. Guardian gör AI:ns resonemang synligt och granskningsbart.",
+      "cta": "Läs whitepaper"
+    },
+    "forge": {
+      "title": "Forge Protocol",
+      "description": "Använd AI för att utveckla känsliga system utan att dela implementation. Samarbeta säkert trots sekretess.",
+      "cta": "Läs whitepaper"
+    }
+  },
+  "cta": {
+    "title": "Utvärdera Balans för er organisation",
+    "subtitle": "Kontakta oss för teknisk dokumentation och demonstrationer.",
+    "primary": "Kontakta oss",
+    "secondary": "Utforska produkter"
+  }
+}

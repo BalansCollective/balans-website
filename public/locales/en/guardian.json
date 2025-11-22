@@ -1,0 +1,104 @@
+{
+  "hero": {
+    "title": "Guardian Protocol",
+    "subtitle": "Ethical AI for Autonomous Systems",
+    "byline": "Balans | November 2025"
+  },
+  "summary": {
+    "title": "Executive Summary",
+    "description": "Guardian Protocol is a framework for ethical AI decision-making in autonomous systems, developed to solve five critical problems preventing safe use of autonomous systems in defense and medicine:",
+    "benefits": [
+      "Operators can make informed decisions - even when AI uses classified information",
+      "AI cannot drift ethically - real-time monitoring prevents bias accumulation",
+      "Complete accountability tracking - cryptographically secured audit log",
+      "Core values preserved - even when context changes (war → peace)",
+      "Trust without blindness - operators can question AI's reasoning anytime"
+    ]
+  },
+  "problem": {
+    "title": "The Challenge: Why Autonomous Systems Fail Today",
+    "items": [
+      {
+        "title": "Problem 1: Classification Dilemma",
+        "description": "Operator with CONFIDENTIAL clearance operates SECRET system. AI recommends action based on SECRET intelligence but cannot explain why → Operator hesitates → Threat penetrates defense."
+      },
+      {
+        "title": "Problem 2: Ethical Drift",
+        "description": "AI's decision parameters drift over time without oversight (95% → 81% confidence) → Becomes more aggressive → Civilian drone incorrectly engaged."
+      },
+      {
+        "title": "Problem 3: Accountability Gap",
+        "description": "Incident occurs → Investigation → No audit log of AI's reasoning + operator's decision → Inconclusive results → Accountability unclear."
+      },
+      {
+        "title": "Problem 4: Core Values Confusion",
+        "description": "Mission changes from military defense to civilian protection → AI still applies military rules → Protected wildlife killed."
+      },
+      {
+        "title": "Problem 5: Trust Collapse",
+        "description": "AI correct 37 times → Operator stops reviewing → Blindly approves recommendation 38 → Friendly unit engaged."
+      }
+    ]
+  },
+  "solution": {
+    "title": "The Solution: Guardian Protocol",
+    "components": [
+      {
+        "title": "1. NIPS (Nested Integrity Preservation System)",
+        "description": "Three-layer value system where core values (preserve life, respect autonomy) never change, implementation adapts to mission, and application occurs moment-to-moment. Ensures AI ethics remain consistent even when context changes."
+      },
+      {
+        "title": "2. MRAF (Meta-Regulatory Awareness Framework)",
+        "description": "AI monitors its own ethical reasoning. MRAF detects drift in decision parameters and warns operator before problem escalates. Operator can review cause and make informed decision to approve or restore parameters."
+      },
+      {
+        "title": "3. Classification-Aware Explanation",
+        "description": "AI explains reasoning within operator's clearance. Different operators see appropriate detail level based on their security clearance, but both can make informed decisions."
+      },
+      {
+        "title": "4. Immutable Audit Log",
+        "description": "Every action logged with cryptographic proof. Complete audit trail with AI's reasoning, operator's decision, outcome, and cryptographic signature. Enables rapid and conclusive investigation of incidents."
+      },
+      {
+        "title": "5. Transparent Reasoning",
+        "description": "Operator can question AI anytime. AI explains feature breakdown, alternative hypotheses, and probabilities. Operator can ask counterfactual questions and verify AI's reasoning before decision."
+      }
+    ]
+  },
+  "value": {
+    "title": "Value for Swedish Industry",
+    "sectors": [
+      {
+        "title": "For Defense Systems",
+        "problem": "Autonomous defense systems require human control for NATO compliance, but operators cannot explain AI decisions based on classified intelligence.",
+        "solution": "Classification-aware explanation, NIPS preserves core values, immutable log enables NATO audit.",
+        "benefit": "Faster FMV certification, NATO compatibility, risk reduction."
+      },
+      {
+        "title": "For Medical Research",
+        "problem": "AI decision support in medicine cannot explain recommendations to doctors, and ethical drift (bias accumulation) is undetected.",
+        "solution": "Transparent reasoning, MRAF drift detection, NIPS core values prioritize patient safety.",
+        "benefit": "EU AI Act compliance, patient trust, GDPR audit trail."
+      },
+      {
+        "title": "For NATO DIANA Startups",
+        "problem": "Defense startups need SÄPO approval (€50K, 6 months) for classified development, delaying innovation.",
+        "solution": "Red Forge model (Classification-Aware Development), data diode enforcement.",
+        "benefit": "Faster time-to-market, lower costs, provable compliance."
+      }
+    ]
+  },
+  "narrative": {
+    "title": "Morgan's Dilemma: The Elderly Man",
+    "description": "A story about trust, classification, and impossible decisions. When the AI system knows more than the operator can see - how do we maintain meaningful human control?",
+    "cta": "Read the full narrative",
+    "link": "/morgans-dilemma"
+  },
+  "cta": {
+    "title": "Interested in Partnership?",
+    "description": "Contact us for demonstrations, pilot studies, or licensing discussions.",
+    "primary": "Contact Us",
+    "secondary": "Back to Defense"
+  }
+}
+

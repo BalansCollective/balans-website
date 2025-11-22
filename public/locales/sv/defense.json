@@ -1,0 +1,135 @@
+{
+  "hero": {
+    "badge": "Classification-Aware AI Development",
+    "title": "Red Forge",
+    "subtitle_line1": "Säker AI-utveckling för försvar. Utan bunker-känsla.",
+    "subtitle_line2": "What vs. How – dela kapabilitet, skydda implementering.",
+    "cta_primary": "Utforska Red Forge",
+    "cta_secondary": "Se Protokollen",
+    "image_alt": "Red Forge Classification-Aware Development"
+  },
+  "classification": {
+    "title": "Dual Classification",
+    "subtitle_part1": "Innovation kräver att vi delar",
+    "what": "vad",
+    "subtitle_part2": "system kan göra",
+    "subtitle_part3": "medan vi skyddar",
+    "how": "hur",
+    "subtitle_part4": "de gör det",
+    "what_title": "Kapabilitet:",
+    "what_description": "Vad systemet kan göra",
+    "what_items": [
+      "Funktionella krav",
+      "API-specifikationer",
+      "Prestanda-garantier",
+      "Säkerhetsegenskaper"
+    ],
+    "what_classification": "Kan delas (UNCLASSIFIED)",
+    "how_title": "Implementering:",
+    "how_description": "Hur systemet gör det",
+    "how_items": [
+      "Källkod & algoritmer",
+      "Träningsdata",
+      "Modellarkitektur",
+      "Deployment-detaljer"
+    ],
+    "how_classification": "Måste skyddas (SECRET)"
+  },
+  "redcell": {
+    "title": "Red Forge: Komplett Säker Utvecklingsstack",
+    "description": "Klassificerad AI-utveckling från verktyg till fysisk anläggning. Tre lager av säkerhet för försvarsinnovation.",
+    "phase1_label": "Phase 1:",
+    "phase1_description": "UNCLASSIFIED showroom för demos och kundvalidering",
+    "phase2_label": "Phase 2:",
+    "phase2_description": "Full GUL/RÖD-certifierad anläggning vid bevisad efterfrågan",
+    "classification_ide": {
+      "title": "Classification-Aware IDE",
+      "description": "LLM-accelererad miljö som förstår klassificeringsnivåer och tvingar WHAT/HOW-separation.",
+      "items": [
+        "AI-assistans som känner av klassificering från kontext",
+        "Automatisk validering av WHAT/HOW-gränser",
+        "Föreslår säkra nedgraderingsvägar",
+        "Integrerad med Guardian Protocol"
+      ]
+    },
+    "secure_llm": {
+      "title": "Secure LLM Servers",
+      "description": "On-prem språkmodeller. Ingen data lämnar din miljö. Isolerat från internet när det behövs.",
+      "items": [
+        "Lokalt hostade modeller (ingen molndata)",
+        "Air-gapped från internet",
+        "Audit logs för alla LLM-interaktioner",
+        "Custom fine-tuning på klassificerad data"
+      ]
+    },
+    "physical_facility": {
+      "title": "Physical Secure Facility",
+      "description": "Dedikerad lokal i Linköping med proper kaffe och access control. Phase 2: Full certifiering vid bevisad efterfrågan.",
+      "items": [
+        "Phase 1: Fysisk access control, single-tenant",
+        "Phase 2: Biometrics + intrångsskydd",
+        "Data diodes: RED → ORANGE → YELLOW → GREEN",
+        "Separata nätverk per klassificeringsnivå"
+      ]
+    },
+    "data_diode": {
+      "title": "Data Diode Enforcement",
+      "description": "Hårdvaru-tvingad informationsflöde: GREEN → YELLOW → ORANGE → RED. One-way street in, no ICE required.",
+      "red": "SECRET implementation",
+      "orange": "CONFIDENTIAL specs",
+      "yellow": "COMPANY INTERNAL",
+      "green": "UNCLASSIFIED (public)"
+    },
+    "llm_awareness": {
+      "title": "LLM Classification Awareness",
+      "description": "AI-assistenter som förstår när de arbetar med hemlig information och justerar sitt beteende.",
+      "items": [
+        "Känner av klassificeringsnivå från kontext",
+        "Föreslår automatiskt korrekta nedgraderingsvägar",
+        "Validerar att WHAT/HOW-separationen bibehålls",
+        "Vägrar generera output med högre klassificering än input"
+      ]
+    },
+    "demo": {
+      "title": "Se Red Forge i Aktion",
+      "description": "Interaktiv in-browser IDE med LLM-integration som visar classification-aware design i praktiken.",
+      "cta": "Öppna Interactive Demo",
+      "note": "Demo kommer snart – registrera intresse via kontakt"
+    }
+  },
+  "protocols": {
+    "title": "Säkerhetsprotokoll",
+    "subtitle": "Två kompletterande protokoll för säker AI-utveckling",
+    "guardian": {
+      "description": "Granska AI-beslut innan de får konsekvenser. Dokumenterar vad AI kan se, vad den föreslår, och hur människan behåller kontrollen.",
+      "cta": "Läs mer"
+    },
+    "forge": {
+      "description": "Bygg klassificerad AI med öppna verktyg. Automatisk downgrading från SECRET-kod till UNCLASSIFIED specifikationer.",
+      "cta": "Läs mer"
+    }
+  },
+  "usecases": {
+    "title": "Tillämpningar",
+    "items": [
+      {
+        "title": "🎯 Försvarsindustri",
+        "description": "Utveckla AI för vapensystem där WHAT (träffsäkerhet) kan delas men HOW (sensordata, algoritmer) är SECRET."
+      },
+      {
+        "title": "🔬 Säkerhetsforskning",
+        "description": "Försvarsforskning kan samarbeta med akademiker genom att dela CONFIDENTIAL specs medan SECRET implementation stannar intern."
+      },
+      {
+        "title": "🚀 NATO DIANA Startups",
+        "description": "Snabb innovation utan egen clearance. Utveckla i Red Forge, deploy när klart."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Intresserad av Red Forge?",
+    "subtitle": "Vi bygger det här om det behövs. Kontakta oss för demonstration eller pilot.",
+    "primary": "Kontakta oss",
+    "secondary": "Tillbaka till startsidan"
+  }
+}

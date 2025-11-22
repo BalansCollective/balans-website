@@ -1,0 +1,113 @@
+{
+  "hero": {
+    "badge": "Coming 2026",
+    "title": "Red Forge Facility",
+    "subtitle": "Secure AI development for defense. Premium startup environment with serious security.",
+    "cta_primary": "Register Interest",
+    "cta_secondary": "See Location",
+    "image_alt": "Red Forge collaborative workspace"
+  },
+  "vision": {
+    "title": "Why Red Forge?",
+    "subtitle": "We combine Anduril aesthetics with Swedish security culture. Cool defense tech without the bunker feel.",
+    "principles": {
+      "startup_culture": {
+        "title": "Premium Startup Environment",
+        "description": "Espresso, standing desks, good lighting. Not a boring contractor – a tech company that happens to work on defense."
+      },
+      "serious_security": {
+        "title": "Serious Security",
+        "description": "Badge readers, data diode, physically separated zones. Security that looks intentional, not paranoid."
+      },
+      "collaboration": {
+        "title": "Open + Secure",
+        "description": "Client meetings in open zone. Fika in common area. Deep work behind the red door. Smooth flow."
+      },
+      "tech_hub": {
+        "title": "Sweden's Tech Ecosystem",
+        "description": "Close to Saab, FOI, universities and defense innovation environment. Part of Swedish defense tech tradition."
+      }
+    }
+  },
+  "facility": {
+    "title": "The Facility",
+    "subtitle": "Three zones: Open collaboration, professional presentations, secure development.",
+    "floor_plan_alt": "Red Forge floor plan",
+    "zones": {
+      "common_area": {
+        "title": "Common Area",
+        "image_alt": "Red Forge common kitchen and lounge",
+        "description": "Where the team collaborates, does fika, and brainstorms. La Marzocco espresso, modern furniture, whiteboards.",
+        "features": [
+          "Open kitchen with professional espresso",
+          "Lounge with mid-century modern design",
+          "Whiteboard wall for technical discussions"
+        ]
+      },
+      "meeting_room": {
+        "title": "Meeting Room",
+        "badge": "OPEN ZONE",
+        "image_alt": "Red Forge meeting room",
+        "description": "Client presentations and demos. No security clearance required for visitors. Professional but accessible.",
+        "features": [
+          "85\" 4K display for presentations",
+          "Video conferencing for hybrid meetings",
+          "Discrete security (camera, badge at door)"
+        ]
+      },
+      "secure_dev": {
+        "title": "Secure Development",
+        "badge": "CLASSIFIED",
+        "image_alt": "Red Forge secure door",
+        "description": "For sensitive work. Only team members with access. Premium development environment with data diode.",
+        "features": [
+          "Three premium workstations (Mac, PC, Ubuntu)",
+          "Data diode hardware (one-way data flow)",
+          "No windows, climate control, LED accents"
+        ]
+      }
+    }
+  },
+  "location": {
+    "title": "Location: Linköping",
+    "description": "Science park environment with proximity to Saab, FOI, and defense industry. Established security culture.",
+    "options": {
+      "ebbe_park": {
+        "title": "Ebbe Park",
+        "description": "Science park in Linköping. Close to Saab, FOI, and the university. Optimal for defense tech."
+      },
+      "linkoping_alt": {
+        "title": "Alternative Linköping Location",
+        "description": "We're open to alternative locations in Linköping with the right security level and infrastructure."
+      },
+      "custom": {
+        "title": "Remote Work Initially",
+        "description": "Phase 1 is remote work with secure infrastructure. Physical facility opens 2026."
+      }
+    },
+    "timeline": {
+      "title": "Timeline",
+      "phases": [
+        {
+          "title": "Phase 1: Now (2025)",
+          "description": "Remote work with secure infrastructure. Testing concepts, building team."
+        },
+        {
+          "title": "Phase 2: 2026 Q2",
+          "description": "Physical facility opens. Starting with common area + meeting room."
+        },
+        {
+          "title": "Phase 3: 2026 Q4",
+          "description": "Secure development zone complete. Full operational capacity."
+        }
+      ]
+    }
+  },
+  "cta": {
+    "title": "Interested in Red Forge?",
+    "description": "We're looking for partners, customers, and team members who share our vision for defense tech.",
+    "primary": "Contact Us",
+    "secondary": "Back to Defense"
+  }
+}
+

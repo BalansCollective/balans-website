@@ -1,0 +1,46 @@
+{
+  "app": {
+    "name": "Balans",
+    "tagline": "Balance between human and machine"
+  },
+  "navigation": {
+    "home": "Home",
+    "mission": "Mission",
+    "about": "About",
+    "products": "Products",
+    "approach": "Approach",
+    "narratives": "Narratives",
+    "contact": "Contact",
+    "try_demo": "Try demo"
+  },
+  "language": {
+    "select": "Select language",
+    "current": "English"
+  },
+  "theme": {
+    "light": "Light mode",
+    "dark": "Dark mode",
+    "toggle": "Toggle theme"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Try again",
+    "cancel": "Cancel",
+    "save": "Save",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "download": "Download"
+  },
+  "footer": {
+    "copyright": "© {{year}} Balans Collective. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  }
+}
+

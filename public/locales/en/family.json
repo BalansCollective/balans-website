@@ -1,0 +1,165 @@
+{
+  "hero": {
+    "title": "When families don't understand each other",
+    "subtitle": "Weaver helps you translate between different thinking styles and strengthen family bonds",
+    "cta": {
+      "primary": "Get started now",
+      "secondary": "Choose your version"
+    },
+    "trust_badges": {
+      "security": "Safe & private",
+      "values": "Swedish values",
+      "family_first": "Family first"
+    }
+  },
+  "problems": {
+    "title": "Do you recognize your family?",
+    "subtitle": "Many Swedish families experience the same challenges when different thinking styles clash",
+    "talking_past": {
+      "title": "We talk past each other",
+      "description": "\"We discuss the children's school time but never seem to agree. Everyone has different opinions but no one listens to each other.\"",
+      "label": "→ Different communication styles"
+    },
+    "teenager_shuts_down": {
+      "title": "The teenager shuts down",
+      "description": "\"Our 15-year-old doesn't seem to understand our explanations and we don't understand her way of thinking. Conversations often end in frustration.\"",
+      "label": "→ Generational differences"
+    },
+    "decisions_become_conflicts": {
+      "title": "Decisions become conflicts",
+      "description": "\"Every family decision becomes a discussion. We have different ways of analyzing situations and rarely reach solutions everyone is satisfied with.\"",
+      "label": "→ Different decision processes"
+    }
+  },
+  "meet_weaver": {
+    "title": "Meet Weaver",
+    "subtitle": "Your AI family assistant that helps you understand each other better",
+    "features": {
+      "translates": {
+        "title": "Translates between thinking styles",
+        "description": "Weaver understands that everyone in the family thinks differently and helps you communicate in a way everyone understands."
+      },
+      "swedish_values": {
+        "title": "Respects Swedish values",
+        "description": "Built with the lagom principle and deep understanding of Swedish family traditions and values."
+      },
+      "strengthens_bonds": {
+        "title": "Strengthens family bonds",
+        "description": "Helps you not only communicate better, but also understand and appreciate each other's unique ways of thinking."
+      }
+    },
+    "cta": "Start talking with Weaver"
+  },
+  "how_it_helps": {
+    "title": "Weaver helps you in everyday life",
+    "subtitle": "Two concrete ways Weaver supports your family every day",
+    "family_chat": {
+      "title": "Smart family chat with Weaver's comments",
+      "description": "Weaver reads your family chat and provides discreet suggestions to improve communication. No intrusive AI - just helpful tips when you need them.",
+      "features": [
+        "Helps interpret teenager's \"whatever\" and suggests how to respond",
+        "Suggests when it might be good to call instead of text",
+        "Reminds about important family activities in a natural way"
+      ]
+    },
+    "ambient_listening": {
+      "title": "Around the kitchen table - ambient listening",
+      "description": "When the family discusses, Weaver can analyze the conversation and suggest solutions that consider everyone's wishes. Focuses on what is said, not who says it.",
+      "features": [
+        "Analyzes conversation content to find different wishes",
+        "Suggests creative compromises based on what is discussed",
+        "Only activated when the family chooses to use the feature"
+      ]
+    },
+    "cta": "Try both features"
+  },
+  "modes": {
+    "title": "How Weaver helps your family think together",
+    "subtitle": "Four ways to support family conversations and decisions",
+    "create": {
+      "title": "Create",
+      "description": "Brainstorm vacation plans together. Everyone contributes ideas in their own way.",
+      "label": "→ Creative family collaboration"
+    },
+    "critique": {
+      "title": "Critique",
+      "description": "Evaluate major family decisions respectfully. All perspectives are heard.",
+      "label": "→ Constructive reflection"
+    },
+    "synthesize": {
+      "title": "Synthesize",
+      "description": "Find compromises on household rules that everyone can accept.",
+      "label": "→ Balanced solutions"
+    },
+    "defense": {
+      "title": "Defense",
+      "description": "Preserve family traditions while adapting to changes.",
+      "label": "→ Safe development"
+    },
+    "cta": "Try all four ways"
+  },
+  "technology": {
+    "title": "Choose how you want to use Weaver",
+    "subtitle": "Three options that suit different families and technical needs",
+    "balans_hosted": {
+      "title": "Balans Hosted",
+      "badge": "Recommended for most families",
+      "features": [
+        "Get started in 5 minutes",
+        "Automatic updates",
+        "24/7 support",
+        "GDPR-compliant hosting in Sweden"
+      ],
+      "cta": "Try Balans Hosted"
+    },
+    "weavermesh": {
+      "title": "WeaverMesh",
+      "badge": "Open source, own control",
+      "features": [
+        "100% control over your data",
+        "Customize to your needs",
+        "Free and open source",
+        "Requires technical knowledge"
+      ],
+      "cta": "Download WeaverMesh"
+    },
+    "home_hub": {
+      "title": "Weaver Home Hub",
+      "badge": "Coming 2026",
+      "features": [
+        "Plug-and-play installation - just plug in",
+        "All data stays at home - no cloud connection",
+        "AI processor for fast local processing",
+        "Discreet design for kitchen or living room"
+      ],
+      "cta": "Register interest"
+    },
+    "help": {
+      "question": "Unsure which option suits your family?",
+      "cta": "Help me choose"
+    }
+  },
+  "trust": {
+    "title": "Built for Swedish families",
+    "subtitle": "With respect for your values and understanding of Swedish family traditions",
+    "security": {
+      "title": "Safe & private",
+      "description": "Your family conversations stay within the family. No data is shared or sold."
+    },
+    "lagom": {
+      "title": "Lagom principle",
+      "description": "Not too much, not too little - just the right amount of AI support for your family."
+    },
+    "family_first": {
+      "title": "Family first",
+      "description": "Designed to strengthen family bonds, not replace human contact."
+    }
+  },
+  "cta": {
+    "title": "Ready to help your family understand each other better?",
+    "description": "Start with a simple family situation and see how Weaver can help",
+    "primary": "Try Weaver free",
+    "secondary": "Book demo",
+    "note": "No registration required • Try immediately • Cancel anytime"
+  }
+}
