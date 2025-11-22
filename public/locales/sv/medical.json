@@ -1,53 +1,190 @@
 {
-  "dashboard": {
-    "title": "Medicinsk Dashboard",
-    "subtitle": "Övervakning och hantering av hälsa",
-    "demo_warning": "⚠️ Detta är en <strong>prototyp/demo</strong> med mockdata. Systemet är inte i produktion ännu."
+  "hero": {
+    "title": "Familjens Vårdportal",
+    "subtitle": "Dela vårdplaner, protokoll och medicinspårning säkert inom familjen",
+    "description": "Kör lokalt på era enheter eller använd Balans Hosted backup. Familjen ser samma information i realtid."
   },
-  "tabs": {
-    "medicine": "📟 Min Medicin",
-    "timeline": "📊 Tidslinje",
-    "careplan": "📋 Vårdplan",
-    "doctor": "👩‍⚕️ Läkardashboard",
-    "family": "👨‍👩‍👦 Familjevy",
-    "weaver": "🧠 Weaver CLI",
-    "threads": "✨ Gyllene Trådar"
-  },
-  "medication": {
-    "title": "Min Medicin",
-    "taken": "Tagen",
-    "missed": "Missad",
-    "upcoming": "Kommande",
-    "dose": "Dos",
-    "time": "Tid",
-    "log": "Logg medicin",
-    "history": "Historik"
-  },
-  "timeline": {
-    "title": "Tidslinje",
-    "events": "Händelser",
-    "mood": "Humör",
-    "sleep": "Sömn",
-    "energy": "Energi",
-    "medications": "Mediciner",
-    "filter": "Filtrera"
-  },
-  "careplan": {
-    "title": "Vårdplan",
-    "active": "Aktiv plan",
-    "goals": "Mål",
-    "actions": "Åtgärder",
-    "review": "Granskning"
-  },
-  "guardian": {
-    "mode": {
-      "active": "Guardianläge aktivt",
-      "inactive": "Guardianläge inaktivt",
-      "toggle": "Växla Guardian"
+  "facts": {
+    "local": {
+      "title": "Lokal",
+      "subtitle": "Körs på era enheter",
+      "description": "Max integritet, ingen molnlagring"
     },
-    "enforcement": "Genomdrivning",
-    "alerts": "Varningar",
-    "overrides": "Åsidosättningar"
+    "family": {
+      "title": "Familj",
+      "subtitle": "Synkroniserad vy",
+      "description": "Alla ser samma vårdplan & tidslinje"
+    },
+    "secure": {
+      "title": "Säker",
+      "subtitle": "GDPR-första design",
+      "description": "Du äger och kontrollerar all data"
+    }
+  },
+  "share": {
+    "title": "Vad Kan Ni Dela?",
+    "medication": {
+      "title": "Medicinspårning",
+      "description": "Tagit medicin, biverkningar, dosjusteringar"
+    },
+    "care_plans": {
+      "title": "Vårdplaner & Protokoll",
+      "description": "\"Gör X när Y\" instruktioner från läkare"
+    },
+    "timelines": {
+      "title": "Tidslinjer",
+      "description": "Sömn, aktivitet, välmående över tid"
+    },
+    "warnings": {
+      "title": "Varningssignaler",
+      "description": "Tidiga tecken som familjen kan känna igen"
+    }
+  },
+  "case_study": {
+    "title": "Fallstudie Juni 2025",
+    "subtitle": "Från hjälplös familj till konkreta verktyg",
+    "summary": {
+      "problem": {
+        "title": "Problem",
+        "description": "Familj vet inte HUR de ska hjälpa"
+      },
+      "solution": {
+        "title": "Lösning",
+        "description": "AI genererar konkreta \"Gör X när Y\" protokoll"
+      },
+      "result": {
+        "title": "Resultat",
+        "description": "6 dagar vs 21 dagar, 100% adherence"
+      }
+    },
+    "full_story": {
+      "show": "Läs Hela Historien",
+      "hide": "Dölj"
+    },
+    "problem": {
+      "title": "Problem: Ingen Visste Hur Man Skulle Hjälpa",
+      "patient": {
+        "title": "Patient eskalerar",
+        "symptom1": "Rusande tankar, minskad sömn",
+        "symptom2": "\"Dessa idéer ÄR viktiga\"",
+        "symptom3": "Svårt att sluta arbeta",
+        "symptom4": "Frustration över \"kontroll\""
+      },
+      "family": {
+        "title": "Familj desperat att hjälpa",
+        "issue1": "Men vet inte HUR",
+        "issue2": "Känsla av hjälplöshet",
+        "issue3": "Dagliga oro-samtal (år av detta)",
+        "issue4": "Konflikt: \"Sluta arbeta på AI\""
+      },
+      "result": {
+        "label": "Resultat",
+        "text": "Alla lider. Patient känner sig missförstådd, familj känner sig maktlösa, ingen vet vad de ska göra."
+      }
+    },
+    "solution": {
+      "title": "Lösning: AI-Genererade Handlingsprotokoll",
+      "description": "Våren 2025: AI-assistans skapade konkreta \"Gör X när Y\" protokoll - inte teoretiska modeller, utan genomförbara steg för familjemedlemmar.",
+      "key_point": {
+        "label": "Nyckelpunkt",
+        "text": "Inte komplexa psykologiska teorier. Konkreta steg som stressade familjemedlemmar faktiskt kan följa."
+      }
+    },
+    "protocols": {
+      "show": "Visa Protokollexempel",
+      "hide": "Dölj",
+      "family": {
+        "title": "Familjeprotokoll",
+        "item1": "\"Erbjud isklumpar\" (grounding-teknik)",
+        "item2": "\"10 min skrivning, 20 min paus\"",
+        "item3": "\"Kolla: sömn, mat, medicin först\"",
+        "item4": "Konkreta varningssignaler att känna igen"
+      },
+      "colleague": {
+        "title": "Kollegeprotokoll",
+        "item1": "\"Check-in: hur känns det i kroppen?\"",
+        "item2": "Erbjud dokumentera idéer",
+        "item3": "Balansera utforskning & gränser",
+        "item4": "När att söka klinisk hjälp"
+      }
+    },
+    "validation": {
+      "title": "Juni 2025: Verklig Episod - Hypotetisk BalansAI",
+      "what_happened": {
+        "label": "Vad som faktiskt hände",
+        "text": "Hypomanisk episod i Skellefteå, reglerad MED familjeprotokoll (AI-genererade), 6 dagar till stabilisering."
+      },
+      "hypothesis": {
+        "label": "Hypotes",
+        "text": "Om BalansAI med sensorintegration hade funnits, hur mycket lättare hade det varit?"
+      },
+      "results": {
+        "stabilization": {
+          "title": "6 dagar till stabilisering",
+          "subtitle": "Tidigare: 14-21 dagar"
+        },
+        "adherence": {
+          "title": "100% medicinföljsamhet",
+          "subtitle": "Familj kunde stödja strukturerat"
+        },
+        "empowerment": {
+          "title": "Familj kände sig användbara",
+          "subtitle": "Inte hjälplösa - hade konkreta verktyg"
+        },
+        "autonomy": {
+          "title": "Patient behöll autonomi",
+          "subtitle": "Reglering med samtycke, inte kontroll"
+        }
+      },
+      "timeline_alt": "Jämförelse: Med AI-protokoll (6 dagar) vs Utan protokoll (21 dagar)",
+      "timeline_caption": "🟢 Grön linje: Med AI-protokoll (juni 2025, verklig episod) | 🔴 Röd linje: Typiskt utan protokoll (baserat på tidigare episoder)",
+      "proven": {
+        "title": "✅ Bevisat: AI-Protokoll Fungerar (Juni 2025)",
+        "description": "AI-genererade familjeprotokoll användes i verklig episod. 6 dagar till stabilisering vs 14-21 dagar tidigare."
+      }
+    }
+  },
+  "demo": {
+    "title": "Prova BalansAI Demo",
+    "description": "Interaktiv tidslinje med verklig data från juni 2025. Se hur AI-assisterad spårning fungerar i praktiken.",
+    "start_button": "Starta Interaktiv Demo",
+    "close_button": "Stäng Demo",
+    "quick_buttons": {
+      "title": "Snabbknappar",
+      "description": "Tryck för att logga medicin, arbete eller varningssignaler."
+    },
+    "how_it_works": {
+      "title": "Hur det fungerar",
+      "realtime": {
+        "title": "Realtidsspårning",
+        "description": "Tidslinje uppdateras automatiskt när du trycker på knappar"
+      },
+      "ai": {
+        "title": "AI-analys",
+        "description": "Mönsterigenkänning identifierar tidiga varningssignaler"
+      },
+      "shareable": {
+        "title": "Delbar med läkare",
+        "description": "Exportera data för samtal med vårdteam"
+      }
+    }
+  },
+  "cta": {
+    "title": "Vill Du Prova BalansAI?",
+    "subtitle": "Vi söker betatesters som vill:",
+    "list": {
+      "item1": "Spåra medicin, sömn och välmående dagligen",
+      "item2": "Ge feedback på AI-analys och mönsterigenkänning",
+      "item3": "Hjälpa oss förbättra verktyget för framtida användare"
+    },
+    "buttons": {
+      "demo": "Prova Demo Direkt",
+      "betatest": "Ansök Som Betatestare"
+    },
+    "benefits": {
+      "free": "Gratis under betatest",
+      "gdpr": "GDPR-säker svensk lagring",
+      "ownership": "Du äger all din data"
+    }
   }
 }
-

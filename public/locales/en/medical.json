@@ -1,53 +1,190 @@
 {
-  "dashboard": {
-    "title": "Medical Dashboard",
-    "subtitle": "Health monitoring and management",
-    "demo_warning": "⚠️ This is a <strong>prototype/demo</strong> with mock data. The system is not in production yet."
+  "hero": {
+    "title": "Family Care Portal",
+    "subtitle": "Share care plans, protocols, and medication tracking securely within the family",
+    "description": "Run locally on your devices or use Balans Hosted backup. The family sees the same information in real-time."
   },
-  "tabs": {
-    "medicine": "📟 My Medicine",
-    "timeline": "📊 Timeline",
-    "careplan": "📋 Care Plan",
-    "doctor": "👩‍⚕️ Doctor Dashboard",
-    "family": "👨‍👩‍👦 Family View",
-    "weaver": "🧠 Weaver CLI",
-    "threads": "✨ Golden Threads"
-  },
-  "medication": {
-    "title": "My Medicine",
-    "taken": "Taken",
-    "missed": "Missed",
-    "upcoming": "Upcoming",
-    "dose": "Dose",
-    "time": "Time",
-    "log": "Log medication",
-    "history": "History"
-  },
-  "timeline": {
-    "title": "Timeline",
-    "events": "Events",
-    "mood": "Mood",
-    "sleep": "Sleep",
-    "energy": "Energy",
-    "medications": "Medications",
-    "filter": "Filter"
-  },
-  "careplan": {
-    "title": "Care Plan",
-    "active": "Active plan",
-    "goals": "Goals",
-    "actions": "Actions",
-    "review": "Review"
-  },
-  "guardian": {
-    "mode": {
-      "active": "Guardian mode active",
-      "inactive": "Guardian mode inactive",
-      "toggle": "Toggle Guardian"
+  "facts": {
+    "local": {
+      "title": "Local",
+      "subtitle": "Runs on your devices",
+      "description": "Maximum privacy, no cloud storage"
     },
-    "enforcement": "Enforcement",
-    "alerts": "Alerts",
-    "overrides": "Overrides"
+    "family": {
+      "title": "Family",
+      "subtitle": "Synchronized view",
+      "description": "Everyone sees the same care plan & timeline"
+    },
+    "secure": {
+      "title": "Secure",
+      "subtitle": "GDPR-first design",
+      "description": "You own and control all data"
+    }
+  },
+  "share": {
+    "title": "What Can You Share?",
+    "medication": {
+      "title": "Medication Tracking",
+      "description": "Taken medication, side effects, dose adjustments"
+    },
+    "care_plans": {
+      "title": "Care Plans & Protocols",
+      "description": "\"Do X when Y\" instructions from doctors"
+    },
+    "timelines": {
+      "title": "Timelines",
+      "description": "Sleep, activity, well-being over time"
+    },
+    "warnings": {
+      "title": "Warning Signs",
+      "description": "Early signs the family can recognize"
+    }
+  },
+  "case_study": {
+    "title": "June 2025 Case Study",
+    "subtitle": "From helpless family to concrete tools",
+    "summary": {
+      "problem": {
+        "title": "Problem",
+        "description": "Family doesn't know HOW to help"
+      },
+      "solution": {
+        "title": "Solution",
+        "description": "AI generates concrete \"Do X when Y\" protocols"
+      },
+      "result": {
+        "title": "Result",
+        "description": "6 days vs 21 days, 100% adherence"
+      }
+    },
+    "full_story": {
+      "show": "Read Full Story",
+      "hide": "Hide"
+    },
+    "problem": {
+      "title": "Problem: Nobody Knew How to Help",
+      "patient": {
+        "title": "Patient escalating",
+        "symptom1": "Racing thoughts, decreased sleep",
+        "symptom2": "\"These ideas ARE important\"",
+        "symptom3": "Hard to stop working",
+        "symptom4": "Frustration about \"control\""
+      },
+      "family": {
+        "title": "Family desperate to help",
+        "issue1": "But don't know HOW",
+        "issue2": "Feeling of helplessness",
+        "issue3": "Daily worry calls (years of this)",
+        "issue4": "Conflict: \"Stop working on AI\""
+      },
+      "result": {
+        "label": "Result",
+        "text": "Everyone suffers. Patient feels misunderstood, family feels powerless, nobody knows what to do."
+      }
+    },
+    "solution": {
+      "title": "Solution: AI-Generated Action Protocols",
+      "description": "Spring 2025: AI assistance created concrete \"Do X when Y\" protocols - not theoretical models, but actionable steps for family members.",
+      "key_point": {
+        "label": "Key Point",
+        "text": "Not complex psychological theories. Concrete steps that stressed family members can actually follow."
+      }
+    },
+    "protocols": {
+      "show": "Show Protocol Examples",
+      "hide": "Hide",
+      "family": {
+        "title": "Family Protocol",
+        "item1": "\"Offer ice cubes\" (grounding technique)",
+        "item2": "\"10 min writing, 20 min break\"",
+        "item3": "\"Check: sleep, food, medication first\"",
+        "item4": "Concrete warning signs to recognize"
+      },
+      "colleague": {
+        "title": "Colleague Protocol",
+        "item1": "\"Check-in: how does it feel in the body?\"",
+        "item2": "Offer to document ideas",
+        "item3": "Balance exploration & boundaries",
+        "item4": "When to seek clinical help"
+      }
+    },
+    "validation": {
+      "title": "June 2025: Real Episode - Hypothetical BalansAI",
+      "what_happened": {
+        "label": "What actually happened",
+        "text": "Hypomanic episode in Skellefteå, regulated WITH family protocols (AI-generated), 6 days to stabilization."
+      },
+      "hypothesis": {
+        "label": "Hypothesis",
+        "text": "If BalansAI with sensor integration had existed, how much easier would it have been?"
+      },
+      "results": {
+        "stabilization": {
+          "title": "6 days to stabilization",
+          "subtitle": "Previously: 14-21 days"
+        },
+        "adherence": {
+          "title": "100% medication adherence",
+          "subtitle": "Family could support structurally"
+        },
+        "empowerment": {
+          "title": "Family felt useful",
+          "subtitle": "Not helpless - had concrete tools"
+        },
+        "autonomy": {
+          "title": "Patient maintained autonomy",
+          "subtitle": "Regulation with consent, not control"
+        }
+      },
+      "timeline_alt": "Comparison: With AI protocols (6 days) vs Without protocols (21 days)",
+      "timeline_caption": "🟢 Green line: With AI protocols (June 2025, real episode) | 🔴 Red line: Typical without protocols (based on previous episodes)",
+      "proven": {
+        "title": "✅ Proven: AI Protocols Work (June 2025)",
+        "description": "AI-generated family protocols were used in real episode. 6 days to stabilization vs 14-21 days previously."
+      }
+    }
+  },
+  "demo": {
+    "title": "Try BalansAI Demo",
+    "description": "Interactive timeline with real data from June 2025. See how AI-assisted tracking works in practice.",
+    "start_button": "Start Interactive Demo",
+    "close_button": "Close Demo",
+    "quick_buttons": {
+      "title": "Quick Buttons",
+      "description": "Press to log medication, work, or warning signs."
+    },
+    "how_it_works": {
+      "title": "How it works",
+      "realtime": {
+        "title": "Real-time tracking",
+        "description": "Timeline updates automatically when you press buttons"
+      },
+      "ai": {
+        "title": "AI analysis",
+        "description": "Pattern recognition identifies early warning signs"
+      },
+      "shareable": {
+        "title": "Shareable with doctors",
+        "description": "Export data for conversations with care team"
+      }
+    }
+  },
+  "cta": {
+    "title": "Want to Try BalansAI?",
+    "subtitle": "We're looking for beta testers who want to:",
+    "list": {
+      "item1": "Track medication, sleep, and well-being daily",
+      "item2": "Provide feedback on AI analysis and pattern recognition",
+      "item3": "Help us improve the tool for future users"
+    },
+    "buttons": {
+      "demo": "Try Demo Now",
+      "betatest": "Apply as Beta Tester"
+    },
+    "benefits": {
+      "free": "Free during beta",
+      "gdpr": "GDPR-safe Swedish storage",
+      "ownership": "You own all your data"
+    }
   }
 }
-
