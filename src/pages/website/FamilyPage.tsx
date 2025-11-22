@@ -33,9 +33,16 @@ export default function FamilyPage() {
 
     chatContainer.innerHTML = '';
 
+    const createTypingIndicator = () => {
+      const indicator = document.createElement('div');
+      indicator.className = 'text-gray-500 text-sm animate-pulse';
+      indicator.innerHTML = '...';
+      return indicator;
+    };
+
     const createMessage = (content: string, sender: string, isWeaver = false, alignment = 'left') => {
       const messageDiv = document.createElement('div');
-      messageDiv.className = `opacity-0 transform translate-y-5 transition-all duration-400 ${alignment === 'right' ? 'mr-8' : 'ml-8'}`;
+      messageDiv.className = `chat-message opacity-0 transform translate-y-5 transition-all duration-400 ${alignment === 'right' ? 'mr-8' : alignment === 'center' ? '' : 'ml-8'}`;
 
       if (isWeaver) {
         messageDiv.innerHTML = `
@@ -67,19 +74,31 @@ export default function FamilyPage() {
         },
       },
       {
-        delay: 2000,
+        delay: 1500,
         action: () => {
-          const msg = createMessage(t('chat.weaver_message'), '', true);
-          chatContainer.appendChild(msg);
-          setTimeout(() => msg.classList.remove('opacity-0', 'translate-y-5'), 50);
+          const typing = createTypingIndicator();
+          chatContainer.appendChild(typing);
+          
+          setTimeout(() => {
+            chatContainer.removeChild(typing);
+            const msg = createMessage(t('chat.weaver_message'), '', true);
+            chatContainer.appendChild(msg);
+            setTimeout(() => msg.classList.remove('opacity-0', 'translate-y-5'), 50);
+          }, 1000);
         },
       },
       {
         delay: 4000,
         action: () => {
-          const msg = createMessage(t('chat.mom_message'), t('chat.mom'), false, 'right');
-          chatContainer.appendChild(msg);
-          setTimeout(() => msg.classList.remove('opacity-0', 'translate-y-5'), 50);
+          const typing = createTypingIndicator();
+          chatContainer.appendChild(typing);
+          
+          setTimeout(() => {
+            chatContainer.removeChild(typing);
+            const msg = createMessage(t('chat.mom_message'), t('chat.mom'), false, 'right');
+            chatContainer.appendChild(msg);
+            setTimeout(() => msg.classList.remove('opacity-0', 'translate-y-5'), 50);
+          }, 1200);
         },
       },
     ];
@@ -122,23 +141,28 @@ export default function FamilyPage() {
 
               <div className="flex items-center space-x-4 text-sm text-gray-600">
                 <div className="flex items-center space-x-2">
-                  <span className="text-2xl">🛡️</span>
+                  <img src="/images/the-shield.png" alt="Säkerhet" className="h-5 w-5" />
                   <span>{t('hero.feature1')}</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <span className="text-2xl">⚖️</span>
+                  <img src="/images/balance-point.png" alt="Lagom" className="h-5 w-5" />
                   <span>{t('hero.feature2')}</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <span className="text-2xl">👨‍👩‍👧‍👦</span>
+                  <img src="/images/family-circle.png" alt="Familj" className="h-5 w-5" />
                   <span>{t('hero.feature3')}</span>
                 </div>
               </div>
             </div>
 
             <div className="relative">
-              <div className="w-full h-auto rounded-2xl shadow-lg bg-gradient-to-br from-sage-green/20 to-sacred-alliance-purple/20 aspect-square flex items-center justify-center">
-                <span className="text-6xl">👨‍👩‍👧‍👦</span>
+              <img 
+                src="/images/family-hero-image.png" 
+                alt="Svensk familj som använder Weaver för att förstå varandra" 
+                className="w-full h-auto rounded-2xl shadow-lg"
+              />
+              <div className="absolute -top-4 -right-4 bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg animate-pulse">
+                <img src="/images/understanding-bridge.png" alt="Förståelse" className="h-8 w-8" />
               </div>
             </div>
           </div>
@@ -185,9 +209,12 @@ export default function FamilyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
-              <div className="w-full h-auto rounded-2xl shadow-lg bg-gradient-to-br from-sacred-alliance-purple/20 to-sage-green/20 aspect-square flex items-center justify-center">
-                <span className="text-6xl">🤖</span>
-              </div>
+              <img 
+                src="/images/weaver-character-introduction.png" 
+                alt="Träffa Weaver - er AI-familjeassistent" 
+                className="w-full h-auto rounded-2xl shadow-lg animate-pulse"
+                style={{ animationDuration: '3s' }}
+              />
             </div>
 
             <div className="order-1 lg:order-2 space-y-8">
@@ -492,9 +519,11 @@ export default function FamilyPage() {
             {[1, 2, 3].map((num) => (
               <div key={num} className="text-center">
                 <div className="bg-warm-birch-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  <div className="text-5xl mb-6">
-                    {num === 1 ? '🛡️' : num === 2 ? '⚖️' : '👨‍👩‍👧‍👦'}
-                  </div>
+                  <img 
+                    src={num === 1 ? '/images/the-shield.png' : num === 2 ? '/images/balance-point.png' : '/images/family-circle.png'} 
+                    alt={num === 1 ? 'Säkerhet' : num === 2 ? 'Lagom' : 'Familj'} 
+                    className="h-16 w-16 mx-auto mb-6" 
+                  />
                   <h3 className="text-xl font-semibold text-deep-swedish-blue mb-4">
                     {t(`trust.feature${num}_title`)}
                   </h3>
