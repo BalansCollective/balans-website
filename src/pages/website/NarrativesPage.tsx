@@ -173,16 +173,18 @@ export default function NarrativesPage() {
                     When Drones Weren't the Problem
                   </h3>
                   <p className="text-[#2c5aa0] leading-relaxed mb-4 opacity-75">
-                    An anti-drone system works perfectly for three weeks. Then Russia adapts: ground assault instead. The system can technically engage ground targets—but wasn't designed for it. Does the commander authorize mission expansion?
+                    An anti-drone system works perfectly—127 kills, zero incidents. Then Russia adapts with ground assault. The commander authorizes anti-personnel use. Nine enemies killed. But one Ukrainian soldier dies from friendly fire—killed by pellet spread the developer warned about in a git commit.
                   </p>
                   <div className="flex items-center gap-4 text-sm text-[#2c5aa0] opacity-60">
-                    <span>🎯 Mission creep</span>
+                    <span>🎯 Friendly fire</span>
                     <span>•</span>
-                    <span>📋 Graduated authorization</span>
+                    <span>📋 Git provenance</span>
+                    <span>•</span>
+                    <span>⚖️ Shared accountability</span>
                   </div>
                   <div className="mt-4 pt-4 border-t border-[#b8c5d1]">
                     <p className="text-sm text-[#2c5aa0] italic">
-                      <strong>Discovery:</strong> 8 of 10 field teams authorized mission expansion under pressure. Only 3 followed proper command approval. Enhanced audit captured everything—now policy must decide if tactical reasonableness equals strategic wisdom.
+                      <strong>Discovery:</strong> Developer documented the risk in git logs. Training didn't communicate it to operators. System worked perfectly—someone still died. Investigation traces design choice → operator decision → tragic outcome. Shared accountability: Elena 25%, Petrov 15%, System 20%, Developer 15%, Training 15%, Chaos 10%.
                     </p>
                   </div>
                 </div>

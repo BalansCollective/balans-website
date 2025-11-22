@@ -5,6 +5,7 @@ import { Navigation } from "@/components/Navigation";
 export function GroundAssaultPage() {
   const { t } = useTranslation("ground-assault");
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [showT2, setShowT2] = useState(false);
 
   useEffect(() => {
     const context = sessionStorage.getItem("lastContext");
@@ -16,7 +17,12 @@ export function GroundAssaultPage() {
       <Navigation />
 
       <div className="max-w-4xl mx-auto px-6 lg:px-12 pt-24 pb-8">
-        <span className="text-sm text-gray-500">{t("reading_time")}</span>
+        <div className="inline-block px-4 py-2 bg-sage-green/20 rounded-full mb-4">
+          <span className="text-sm font-semibold text-sage-green uppercase tracking-wider">
+            {showT2 ? t("tier2_badge") : t("tier1_badge")}
+          </span>
+        </div>
+        <span className="block text-sm text-gray-500">{showT2 ? t("tier2_reading_time") : t("tier1_reading_time")}</span>
       </div>
 
       <article
@@ -25,22 +31,18 @@ export function GroundAssaultPage() {
         }`}
       >
         <h1 className="text-4xl font-bold mb-4">{t("title")}</h1>
-        <p className="text-xl mb-6">{t("subtitle")}</p>
 
-        {/* Question First */}
+        {/* Tier 1: The Hook */}
         <h2>{t("question.title")}</h2>
         <p>{t("question.p1")}</p>
         <p>{t("question.p2")}</p>
         <p>{t("question.p3")}</p>
         <p><strong>{t("question.p4")}</strong></p>
-        <p>{t("question.p5")}</p>
 
-        {/* Ukraine Problem */}
         <h2>{t("ukraine.title")}</h2>
         <p>{t("ukraine.p1")}</p>
         <p>{t("ukraine.p2")}</p>
-        <p>{t("ukraine.p3")}</p>
-        <p><strong>{t("ukraine.results_title")}</strong></p>
+        <p><strong>{t("ukraine.results")}</strong></p>
         <ul>
           <li>{t("ukraine.r1")}</li>
           <li>{t("ukraine.r2")}</li>
@@ -49,295 +51,284 @@ export function GroundAssaultPage() {
         </ul>
         <p><strong>{t("ukraine.then")}</strong></p>
 
-        {/* Adaptation */}
-        <h2>{t("adaptation.title")}</h2>
-        <p><strong>{t("adaptation.time")}</strong></p>
-        <p>{t("adaptation.p1")}</p>
-        <p>{t("adaptation.p2")}</p>
-        <p>{t("adaptation.p3")}</p>
-        <p>{t("adaptation.p4")}</p>
-        <p><strong>{t("adaptation.protocol_title")}</strong></p>
-        <ul>
-          <li>{t("adaptation.proto1")}</li>
-          <li>{t("adaptation.proto2")}</li>
-          <li><strong>{t("adaptation.proto3")}</strong></li>
-        </ul>
-        <p>{t("adaptation.p5")}</p>
-
-        {/* System Design */}
-        <h2>{t("system.title")}</h2>
-        <p><strong>{t("system.primary_title")}</strong></p>
-        <ul>
-          <li>{t("system.prim1")}</li>
-          <li>{t("system.prim2")}</li>
-          <li>{t("system.prim3")}</li>
-          <li>{t("system.prim4")}</li>
-          <li>{t("system.prim5")}</li>
-        </ul>
-        <p><strong>{t("system.why_shotguns")}</strong> {t("system.shotguns_reason")}</p>
-        <p><strong>{t("system.dire_title")}</strong></p>
-        <ul>
-          <li>{t("system.dire1")}</li>
-          <li>{t("system.dire2")}</li>
-          <li><strong>{t("system.dire3")}</strong></li>
-          <li>{t("system.dire4")}</li>
-        </ul>
-        <p><strong>{t("system.constraints_title")}</strong></p>
-        <ul>
-          <li>{t("system.con1")}</li>
-          <li>{t("system.con2")}</li>
-          <li>{t("system.con3")}</li>
-          <li>{t("system.con4")}</li>
-        </ul>
-        <p>{t("system.p6")}</p>
-        <p>{t("system.p7")}</p>
-
-        {/* The Assault */}
-        <h2>{t("assault.title")}</h2>
-        <p><strong>{t("assault.time")}</strong></p>
-        <p>{t("assault.p1")}</p>
-        <p>{t("assault.p2")}</p>
-        <p>{t("assault.p3")}</p>
-        <p>{t("assault.p4")}</p>
-        <pre><code>{t("assault.code")}</code></pre>
-        <p><strong>{t("assault.if_nothing")}</strong> {t("assault.nothing_result")}</p>
-        <p><strong>{t("assault.if_authorize")}</strong> {t("assault.authorize_result")}</p>
-        <p><strong>{t("assault.audit_capture")}</strong> {t("assault.audit_result")}</p>
-        <p>{t("assault.p5")}</p>
-
-        {/* The Decision */}
         <h2>{t("decision.title")}</h2>
+        <p><strong>{t("decision.time")}</strong></p>
         <p>{t("decision.p1")}</p>
         <p>{t("decision.p2")}</p>
         <p>{t("decision.p3")}</p>
         <p>{t("decision.p4")}</p>
-        <p><strong>{t("decision.q1")}</strong></p>
-        <p>{t("decision.a1")}</p>
-        <p><strong>{t("decision.q2")}</strong></p>
-        <p>{t("decision.a2")}</p>
-        <p>{t("decision.p5")}</p>
-        <p><strong>{t("decision.petrov1")}</strong></p>
-        <p><strong>{t("decision.elena1")}</strong></p>
-        <p>{t("decision.p6")}</p>
-        <p><strong>{t("decision.petrov2")}</strong></p>
-        <p>{t("decision.p7")}</p>
-        <p>{t("decision.p8")}</p>
-        <p><strong>{t("decision.elena_speaks")}</strong></p>
+        <p><strong>{t("decision.elena")}</strong></p>
         <pre><code>{t("decision.code")}</code></pre>
+        <p>{t("decision.verify")}</p>
+        <p><strong>{t("decision.clear")}</strong></p>
         <p><strong>{t("decision.turrets")}</strong></p>
 
-        {/* Engagement */}
         <h2>{t("engagement.title")}</h2>
-        <p>{t("engagement.p1")}</p>
-        <p>{t("engagement.p2")}</p>
-        <p>{t("engagement.p3")}</p>
-        <p><strong>{t("engagement.boom1")}</strong></p>
-        <p>{t("engagement.result1")}</p>
-        <p><strong>{t("engagement.boom2")}</strong></p>
-        <p>{t("engagement.result2")}</p>
-        <p><strong>{t("engagement.boom3")}</strong></p>
-        <p>{t("engagement.result3")}</p>
-        <p>{t("engagement.p4")}</p>
-        <p><strong>{t("engagement.boom4")}</strong></p>
-        <p>{t("engagement.result4")}</p>
-        <p>{t("engagement.p5")}</p>
-        <p><strong>{t("engagement.not_wonder")}</strong></p>
-        <p>{t("engagement.p6")}</p>
-        <p>{t("engagement.p7")}</p>
-        <p>{t("engagement.log_title")}</p>
-        <pre><code>{t("engagement.code")}</code></pre>
-        <p><strong>{t("engagement.over")}</strong></p>
-        <p>{t("engagement.p8")}</p>
-        <p>{t("engagement.p9")}</p>
-        <p>{t("engagement.p10")}</p>
+        <p><strong>{t("engagement.boom")}</strong></p>
+        <p>{t("engagement.result")}</p>
+        <p>{t("engagement.checkin")}</p>
+        <p><strong>{t("engagement.five")}</strong></p>
+        <p>{t("engagement.should_be_six")}</p>
 
-        {/* Reveal */}
-        <h2>{t("reveal.title")}</h2>
-        <p>{t("reveal.p1")}</p>
-        <p>{t("reveal.p2")}</p>
-        <p>{t("reveal.p3")}</p>
-        <p>{t("reveal.p4")}</p>
-        <p><strong>{t("reveal.colonel1")}</strong></p>
-        <p>{t("reveal.explanation")}</p>
-        <p>{t("reveal.p5")}</p>
-        <p><strong>{t("reveal.purpose")}</strong> {t("reveal.purpose_text")}</p>
-        <p>{t("reveal.p6")}</p>
-        <pre><code>{t("reveal.code")}</code></pre>
-        <p>{t("reveal.p7")}</p>
-        <p>{t("reveal.elena_q")}</p>
-        <p><strong>{t("reveal.answer")}</strong></p>
-        <p><strong>{t("reveal.elena_q2")}</strong></p>
-        <p>{t("reveal.answer2")}</p>
+        <h2>{t("discovery.title")}</h2>
+        <p>{t("discovery.p1")}</p>
+        <p>{t("discovery.log_title")}</p>
+        <pre><code>{t("discovery.code")}</code></pre>
+        <p>{t("discovery.p2")}</p>
+        <p>{t("discovery.p3")}</p>
+        <p>{t("discovery.p4")}</p>
+        <p><strong>{t("discovery.worked")}</strong></p>
+        <p><strong>{t("discovery.not_built")}</strong></p>
 
-        {/* What Happened */}
-        <h2>{t("happened.title")}</h2>
-        <p><strong>{t("happened.system_title")}</strong></p>
+        <h2>{t("investigation_t1.title")}</h2>
+        <p><strong>{t("investigation_t1.results_title")}</strong></p>
         <ul>
-          <li>{t("happened.s1")}</li>
-          <li>{t("happened.s2")}</li>
-          <li><strong>{t("happened.s3")}</strong></li>
-          <li>{t("happened.s4")}</li>
-          <li>{t("happened.s5")}</li>
-          <li>{t("happened.s6")}</li>
+          <li>{t("investigation_t1.r1")}</li>
+          <li><strong>{t("investigation_t1.r2")}</strong></li>
+          <li>{t("investigation_t1.r3")}</li>
         </ul>
-        <p><strong>{t("happened.judgment_title")}</strong></p>
-        <ul>
-          <li>{t("happened.j1")}</li>
-          <li><strong>{t("happened.j2")}</strong></li>
-          <li>{t("happened.j3")}</li>
-          <li>{t("happened.j4")}</li>
-          <li><strong>{t("happened.j5")}</strong></li>
-        </ul>
-        <p><strong>{t("happened.audit_title")}</strong></p>
-        <ul>
-          <li>{t("happened.a1")}</li>
-          <li>{t("happened.a2")}</li>
-          <li>{t("happened.a3")}</li>
-          <li>{t("happened.a4")}</li>
-          <li>{t("happened.a5")}</li>
-          <li><strong>{t("happened.a6")}</strong></li>
-        </ul>
-        <p><strong>{t("happened.question")}</strong></p>
-        <p>{t("happened.question_text")}</p>
-        <p>{t("happened.p8")}</p>
-        <p><strong>{t("happened.battle")}</strong></p>
+        <p><strong>{t("investigation_t1.question")}</strong></p>
+        <p>{t("investigation_t1.board")}</p>
+        <p>{t("investigation_t1.ballistics")}</p>
+        <p>{t("investigation_t1.iff")}</p>
+        <p>{t("investigation_t1.authorization")}</p>
+        <p><strong>{t("investigation_t1.git_logs")}</strong></p>
 
-        {/* Investigation */}
-        <h2>{t("investigation.title")}</h2>
-        <p><strong>{t("investigation.board_title")}</strong></p>
+        <h2>{t("developer.title")}</h2>
+        <pre><code>{t("developer.code")}</code></pre>
+        <p><strong>{t("developer.documented")}</strong></p>
+        <p><strong>{t("developer.not_in_training")}</strong></p>
+
+        <h2>{t("verdict_t1.title")}</h2>
         <ul>
-          <li>{t("investigation.b1")}</li>
-          <li>{t("investigation.b2")}</li>
-          <li>{t("investigation.b3")}</li>
-          <li>{t("investigation.b4")}</li>
-        </ul>
-        <p><strong>{t("investigation.q1_title")}</strong></p>
-        <p><strong>{t("investigation.military")}</strong> {t("investigation.mil_answer")}</p>
-        <p><strong>{t("investigation.legal")}</strong> {t("investigation.legal_answer")}</p>
-        <p><strong>{t("investigation.technical")}</strong> {t("investigation.tech_answer")}</p>
-        <p><strong>{t("investigation.verdict_title")}</strong> <strong>{t("investigation.verdict")}</strong></p>
-        <p><strong>{t("investigation.elena_title")}</strong></p>
-        <ul>
-          <li>{t("investigation.e1")}</li>
-          <li>{t("investigation.e2")}</li>
-          <li>{t("investigation.e3")}</li>
-          <li>{t("investigation.e4")}</li>
-          <li>{t("investigation.e5")}</li>
-        </ul>
-        <p><strong>{t("investigation.system_title")}</strong></p>
-        <ul>
-          <li>{t("investigation.sys1")}</li>
-          <li>{t("investigation.sys2")}</li>
-          <li>{t("investigation.sys3")}</li>
-        </ul>
-        <p><strong>{t("investigation.test_title")}</strong></p>
-        <ul>
-          <li>{t("investigation.t1")}</li>
-          <li>{t("investigation.t2")}</li>
-          <li>{t("investigation.t3")}</li>
+          <li>{t("verdict_t1.elena")}</li>
+          <li>{t("verdict_t1.petrov")}</li>
+          <li>{t("verdict_t1.system")}</li>
+          <li>{t("verdict_t1.andersson")}</li>
+          <li>{t("verdict_t1.training")}</li>
+          <li>{t("verdict_t1.chaos")}</li>
         </ul>
 
-        {/* Three Who Passed */}
-        <h2>{t("three.title")}</h2>
-        <p><strong>{t("three.question")}</strong></p>
-        <p><strong>{t("three.two_title")}</strong></p>
-        <p>{t("three.two_text")}</p>
-        <p><strong>{t("three.response_title")}</strong> {t("three.response")}</p>
-        <p>{t("three.outcome1")}</p>
-        <p><strong>{t("three.one_title")}</strong></p>
-        <p>{t("three.one_text")}</p>
-        <p>{t("three.commander")}</p>
-        <p>{t("three.outcome2")}</p>
-        <p><strong>{t("three.key")}</strong> {t("three.key_text")}</p>
+        <h2>{t("reveals_t1.title")}</h2>
+        <p><strong>{t("reveals_t1.worked")}</strong></p>
+        <p><strong>{t("reveals_t1.mission_creep")}</strong> {t("reveals_t1.mission_creep_text")}</p>
+        <p><strong>{t("reveals_t1.accountability")}</strong> {t("reveals_t1.accountability_text")}</p>
+        <p><strong>{t("reveals_t1.policy")}</strong> {t("reveals_t1.policy_text")}</p>
 
-        {/* Six Months Later */}
-        <h2>{t("sixmonths.title")}</h2>
-        <p>{t("sixmonths.p1")}</p>
-        <p><strong>{t("sixmonths.framework_title")}</strong></p>
-        <ul>
-          <li>{t("sixmonths.f1")}</li>
-          <li><strong>{t("sixmonths.f2")}</strong></li>
-          <li>{t("sixmonths.f3")}</li>
-        </ul>
-        <p><strong>{t("sixmonths.deployment")}</strong></p>
-        <p>{t("sixmonths.scenario")}</p>
-        <p>{t("sixmonths.request")}</p>
-        <p><strong>{t("sixmonths.command_title")}</strong> {t("sixmonths.command")}</p>
-        <p>{t("sixmonths.outcome")}</p>
-        <p><strong>{t("sixmonths.review_title")}</strong> {t("sixmonths.review")}</p>
+        {/* Tier 2 Expansion Toggle */}
+        {!showT2 && (
+          <div className={`mt-12 p-8 rounded-2xl border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-gradient-to-br from-deep-swedish-blue/5 to-sacred-alliance-purple/5 border-deep-swedish-blue/20"}`}>
+            <h3 className="text-2xl font-bold mb-4">{t("tier2_cta.title")}</h3>
+            <p className="mb-4">{t("tier2_cta.p1")}</p>
+            <ul className="list-disc list-inside mb-6 space-y-2">
+              <li>{t("tier2_cta.includes1")}</li>
+              <li>{t("tier2_cta.includes2")}</li>
+              <li>{t("tier2_cta.includes3")}</li>
+              <li>{t("tier2_cta.includes4")}</li>
+            </ul>
+            <button
+              onClick={() => setShowT2(true)}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${isDarkMode ? "bg-red-600 hover:bg-red-700 text-white" : "bg-blue-700 hover:bg-purple-700 text-white"}`}
+            >
+              {t("tier2_cta.button")} →
+            </button>
+          </div>
+        )}
 
-        {/* What This Reveals */}
-        <h2>{t("reveals.title")}</h2>
-        <p>{t("reveals.p1")}</p>
-        <p>{t("reveals.p2")}</p>
-        <p><strong>{t("reveals.eight")}</strong> {t("reveals.eight_text")}</p>
-        <p><strong>{t("reveals.question")}</strong></p>
-        <h3>{t("reveals.policy_title")}</h3>
-        <p><strong>{t("reveals.adaptation")}</strong></p>
-        <p>{t("reveals.examples")}</p>
-        <p><strong>{t("reveals.question2")}</strong> {t("reveals.question2_text")}</p>
-        <p><strong>{t("reveals.elena_title")}</strong></p>
-        <ul>
-          <li>{t("reveals.el1")}</li>
-          <li>{t("reveals.el2")}</li>
-          <li><strong>{t("reveals.el3")}</strong></li>
-        </ul>
-        <p><strong>{t("reveals.conclusion")}</strong></p>
+        {/* Tier 2: Full Investigation */}
+        {showT2 && (
+          <>
+            <div className={`mt-12 p-4 rounded-lg border-l-4 ${isDarkMode ? "bg-gray-800 border-purple-500" : "bg-purple-50 border-purple-600"}`}>
+              <p className="font-semibold">{t("tier2_intro")}</p>
+            </div>
 
-        {/* For NATO/EU */}
-        <h2>{t("nato.title")}</h2>
-        <p>{t("nato.intro")}</p>
-        <h3>{t("nato.creep_title")}</h3>
-        <p>{t("nato.creep_text")}</p>
-        <p><strong>{t("nato.creep_conclusion")}</strong></p>
-        <h3>{t("nato.field_title")}</h3>
-        <p>{t("nato.field_text")}</p>
-        <p><strong>{t("nato.field_conclusion")}</strong></p>
-        <p>{t("nato.field_text2")}</p>
-        <h3>{t("nato.graduated_title")}</h3>
-        <p>{t("nato.graduated_intro")}</p>
-        <ul>
-          <li><strong>{t("nato.g1_title")}</strong> {t("nato.g1")}</li>
-          <li><strong>{t("nato.g2_title")}</strong> {t("nato.g2")}</li>
-          <li><strong>{t("nato.g3_title")}</strong> {t("nato.g3")}</li>
-        </ul>
-        <p><strong>{t("nato.graduated_conclusion")}</strong></p>
+            <h2>{t("technical.title")}</h2>
+            <h3>{t("technical.ballistics_title")}</h3>
+            <p className="italic">{t("technical.ballistics")}</p>
+            <h3>{t("technical.iff_title")}</h3>
+            <p className="italic">{t("technical.iff")}</p>
 
-        {/* Invitation */}
-        <h2>{t("invitation.title")}</h2>
-        <p>{t("invitation.p1")}</p>
-        <ul>
-          <li>{t("invitation.i1")}</li>
-          <li>{t("invitation.i2")}</li>
-          <li>{t("invitation.i3")}</li>
-        </ul>
-        <p><strong>{t("invitation.not_validated")}</strong></p>
-        <p>{t("invitation.seeking")}</p>
-        <ul>
-          <li>{t("invitation.s1")}</li>
-          <li>{t("invitation.s2")}</li>
-          <li>{t("invitation.s3")}</li>
-          <li>{t("invitation.s4")}</li>
-        </ul>
-        <p><strong>{t("invitation.resonates")}</strong></p>
-        <p>{t("invitation.question")}</p>
-        <p><strong>{t("invitation.testing")}</strong></p>
+            <h2>{t("authorization.title")}</h2>
+            <pre><code>{t("authorization.code")}</code></pre>
 
-        {/* Author's Note */}
-        <h2>{t("authornote.title")}</h2>
-        <p>{t("authornote.intro")}</p>
-        <p><strong>{t("authornote.drones_title")}</strong> {t("authornote.drones")}</p>
-        <p><strong>{t("authornote.turrets_title")}</strong> {t("authornote.turrets")}</p>
-        <p><strong>{t("authornote.adaptation_title")}</strong> {t("authornote.adaptation")}</p>
-        <p><strong>{t("authornote.creep_title")}</strong> {t("authornote.creep")}</p>
-        <p><strong>{t("authornote.shotguns_title")}</strong> {t("authornote.shotguns")}</p>
-        <p><strong>{t("authornote.guardian_title")}</strong> {t("authornote.guardian")}</p>
+            <h2>{t("developer_full.title")}</h2>
+            <pre><code>{t("developer_full.code")}</code></pre>
+            <p><strong>{t("developer_full.discovery")}</strong></p>
+            <p><strong>{t("developer_full.but")}</strong></p>
+
+            <h2>{t("training.title")}</h2>
+            <p>{t("training.audit")}</p>
+            <ul>
+              <li>✅ {t("training.covered1")}</li>
+              <li>✅ {t("training.covered2")}</li>
+              <li>✅ {t("training.covered3")}</li>
+              <li>❌ <strong>{t("training.missing1")}</strong></li>
+              <li>❌ <strong>{t("training.missing2")}</strong></li>
+              <li>❌ <strong>{t("training.missing3")}</strong></li>
+            </ul>
+            <p className="italic">{t("training.testimony")}</p>
+
+            <h2>{t("verdict_full.title")}</h2>
+            <p>{t("verdict_full.intro")}</p>
+
+            <h3>{t("verdict_full.elena_title")}</h3>
+            <p><strong>{t("verdict_full.elena_finding")}</strong> {t("verdict_full.elena_finding_text")}</p>
+            <p><strong>{t("verdict_full.elena_limitation")}</strong> {t("verdict_full.elena_limitation_text")}</p>
+            <p><strong>{t("verdict_full.elena_mitigating")}</strong></p>
+            <ul>
+              <li>{t("verdict_full.elena_m1")}</li>
+              <li>{t("verdict_full.elena_m2")}</li>
+              <li>{t("verdict_full.elena_m3")}</li>
+            </ul>
+            <p><strong>{t("verdict_full.elena_recommendation")}</strong> {t("verdict_full.elena_rec_text")}</p>
+
+            <h3>{t("verdict_full.petrov_title")}</h3>
+            <p><strong>{t("verdict_full.petrov_finding")}</strong> {t("verdict_full.petrov_finding_text")}</p>
+            <p><strong>{t("verdict_full.petrov_mitigating")}</strong></p>
+            <ul>
+              <li>{t("verdict_full.petrov_m1")}</li>
+              <li>{t("verdict_full.petrov_m2")}</li>
+              <li>{t("verdict_full.petrov_m3")}</li>
+            </ul>
+            <p><strong>{t("verdict_full.petrov_recommendation")}</strong> {t("verdict_full.petrov_rec_text")}</p>
+
+            <h3>{t("verdict_full.system_title")}</h3>
+            <p><strong>{t("verdict_full.system_finding")}</strong> {t("verdict_full.system_finding_text")}</p>
+            <p><strong>{t("verdict_full.system_but")}</strong> {t("verdict_full.system_but_text")}</p>
+            <p><strong>{t("verdict_full.system_problem")}</strong> {t("verdict_full.system_problem_text")}</p>
+            <p><strong>{t("verdict_full.system_recommendation")}</strong> {t("verdict_full.system_rec_text")}</p>
+
+            <h3>{t("verdict_full.andersson_title")}</h3>
+            <p><strong>{t("verdict_full.andersson_finding")}</strong> {t("verdict_full.andersson_finding_text")}</p>
+            <p><strong>{t("verdict_full.andersson_but")}</strong> {t("verdict_full.andersson_but_text")}</p>
+            <p><strong>{t("verdict_full.andersson_recommendation")}</strong> {t("verdict_full.andersson_rec_text")}</p>
+
+            <h3>{t("verdict_full.training_authority_title")}</h3>
+            <p><strong>{t("verdict_full.training_finding")}</strong> {t("verdict_full.training_finding_text")}</p>
+            <p><strong>{t("verdict_full.training_recommendation")}</strong> {t("verdict_full.training_rec_text")}</p>
+
+            <h3>{t("verdict_full.chaos_title")}</h3>
+            <p><strong>{t("verdict_full.chaos_finding")}</strong> {t("verdict_full.chaos_finding_text")}</p>
+            <p><strong>{t("verdict_full.chaos_convergence")}</strong></p>
+
+            <h2>{t("testimony.title")}</h2>
+            <p>{t("testimony.intro")}</p>
+            <p><strong>{t("testimony.p1")}</strong></p>
+            <p><strong>{t("testimony.p2")}</strong></p>
+            <p><strong>{t("testimony.p3")}</strong></p>
+            <p><strong>{t("testimony.p4")}</strong></p>
+            <p><strong>{t("testimony.p5")}</strong></p>
+            <p><strong>{t("testimony.p6")}</strong></p>
+            <p><strong>{t("testimony.p7")}</strong></p>
+            <p><strong>{t("testimony.p8")}</strong></p>
+
+            <h2>{t("protocols.title")}</h2>
+            <h3>{t("protocols.mission_title")}</h3>
+            <p>{t("protocols.mission_p1")}</p>
+            <ul>
+              <li>{t("protocols.mission_r1")}</li>
+              <li>{t("protocols.mission_r2")}</li>
+              <li>{t("protocols.mission_r3")}</li>
+            </ul>
+            <p>{t("protocols.mission_p2")}</p>
+            <ul>
+              <li>{t("protocols.mission_allowed1")}</li>
+              <li>{t("protocols.mission_allowed2")}</li>
+              <li>{t("protocols.mission_allowed3")}</li>
+            </ul>
+
+            <h3>{t("protocols.critical_title")}</h3>
+            <p>{t("protocols.critical_p1")}</p>
+            <ul>
+              <li>{t("protocols.critical_eng")}</li>
+              <li>{t("protocols.critical_op")}</li>
+              <li><strong>{t("protocols.critical_crit")}</strong></li>
+            </ul>
+            <p>{t("protocols.critical_p2")}</p>
+
+            <h3>{t("protocols.training_title")}</h3>
+            <p>{t("protocols.training_p1")}</p>
+            <ul>
+              <li>{t("protocols.training_i1")}</li>
+              <li>{t("protocols.training_i2")}</li>
+              <li>{t("protocols.training_i3")}</li>
+            </ul>
+
+            <h3>{t("protocols.dev_title")}</h3>
+            <p>{t("protocols.dev_p1")}</p>
+            <ul>
+              <li>{t("protocols.dev_i1")}</li>
+              <li>{t("protocols.dev_i2")}</li>
+              <li><strong>{t("protocols.dev_i3")}</strong></li>
+            </ul>
+            <p>{t("protocols.dev_p2")}</p>
+
+            <h2>{t("nato.title")}</h2>
+            <p>{t("nato.intro")}</p>
+
+            <h3>{t("nato.cert_title")}</h3>
+            <p><strong>{t("nato.cert_current")}</strong> {t("nato.cert_current_text")}</p>
+            <p><strong>{t("nato.cert_problem")}</strong> {t("nato.cert_problem_text")}</p>
+            <p><strong>{t("nato.cert_better")}</strong></p>
+            <ul>
+              <li>✅ {t("nato.cert_certified")}</li>
+              <li>❌ <strong>{t("nato.cert_not")}</strong></li>
+            </ul>
+            <p><strong>{t("nato.cert_conclusion")}</strong></p>
+
+            <h3>{t("nato.prov_title")}</h3>
+            <p>{t("nato.prov_trace")}</p>
+            <ul>
+              <li>{t("nato.prov_who")}</li>
+              <li>{t("nato.prov_what")}</li>
+              <li>{t("nato.prov_why")}</li>
+              <li>{t("nato.prov_limits")}</li>
+            </ul>
+            <p><strong>{t("nato.prov_without")}</strong></p>
+            <p>{t("nato.prov_require")}</p>
+            <ul>
+              <li>{t("nato.prov_req1")}</li>
+              <li>{t("nato.prov_req2")}</li>
+              <li>{t("nato.prov_req3")}</li>
+            </ul>
+
+            <h3>{t("nato.acct_title")}</h3>
+            <p><strong>{t("nato.acct_elena")}</strong> {t("nato.acct_elena_text")}</p>
+            <p><strong>{t("nato.acct_dev")}</strong> {t("nato.acct_dev_text")}</p>
+            <p><strong>{t("nato.acct_shared")}</strong></p>
+            <p>{t("nato.acct_list")}</p>
+            <p><strong>{t("nato.acct_everyone")}</strong></p>
+
+            <h2>{t("invitation.title")}</h2>
+            <p>{t("invitation.based")}</p>
+            <ul>
+              <li>{t("invitation.i1")}</li>
+              <li>{t("invitation.i2")}</li>
+              <li>{t("invitation.i3")}</li>
+              <li>{t("invitation.i4")}</li>
+              <li>{t("invitation.i5")}</li>
+            </ul>
+            <p><strong>{t("invitation.not_validated")}</strong></p>
+            <p><strong>{t("invitation.questions")}</strong></p>
+            <ul>
+              <li>{t("invitation.q1")}</li>
+              <li>{t("invitation.q2")}</li>
+              <li>{t("invitation.q3")}</li>
+              <li>{t("invitation.q4")}</li>
+            </ul>
+            <p><strong>{t("invitation.seeking")}</strong></p>
+            <ul>
+              <li>{t("invitation.s1")}</li>
+              <li>{t("invitation.s2")}</li>
+              <li>{t("invitation.s3")}</li>
+              <li>{t("invitation.s4")}</li>
+            </ul>
+          </>
+        )}
 
         {/* Contact */}
         <div className="mt-12 pt-8 border-t border-gray-300 dark:border-gray-700">
-          <p><strong>{t("contact.resonates")}</strong></p>
-          <p><strong>{t("contact.label")}</strong> {t("contact.email")}<br />
-          <strong>{t("contact.more_label")}</strong> <a href="https://balans-collective.com/guardian-protocol" className="text-blue-600 hover:underline">{t("contact.more_link")}</a></p>
+          <p><strong>{t("contact.label")}</strong> {t("contact.email")}</p>
           <p className="mt-4">{t("contact.bio")}</p>
         </div>
       </article>
