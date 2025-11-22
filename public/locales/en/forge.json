@@ -1,23 +1,16 @@
 {
   "hero": {
     "title": "Forge Protocol",
-    "subtitle": "Classification-Aware AI Development",
+    "subtitle": "Development Accountability for AI Systems",
     "byline": "Balans | November 2025"
   },
   "summary": {
     "title": "Executive Summary",
-    "description": "Forge Protocol is a framework for building AI systems across security boundaries, developed to solve five critical problems preventing secure AI development in defense:",
-    "benefits": [
-      "Developers with different clearances can collaborate - without leaking secrets",
-      "Code can be built and tested - even when specifications are classified",
-      "Compliance is provable - automatic validation against standards",
-      "Audit is complete - full provenance from requirements to deployment",
-      "Innovation accelerated - no 6-month SÄPO wait for each startup"
-    ],
-    "sister_protocol": "Sister Protocol: Guardian Protocol handles operational security (deployed AI). Forge Protocol handles development-time security (building AI)."
+    "description": "Forge Protocol is a framework for building AI systems across security boundaries. It tracks every code change, every review, every approval - creating a complete provenance chain from requirements to deployment. When integrated with Guardian Protocol, it enables complete accountability: from the developer who wrote the code to the operator who made the lethal decision.",
+    "sister_protocol": "Sister Protocol: Guardian Protocol handles operational accountability (runtime decisions). Forge Protocol handles development accountability (who built this rule?)."
   },
   "problem": {
-    "title": "The Challenge: Why Classified AI Development Fails Today",
+    "title": "The Challenge: Who Built This Rule?",
     "items": [
       {
         "title": "Problem 1: Clearance Paradox",
@@ -36,8 +29,8 @@
         "description": "Security incident → Investigation needs to know 'Who changed this parameter? Why? Was it approved?' → Git log lacks context → Inconclusive investigation."
       },
       {
-        "title": "Problem 5: Startup Innovation Barrier",
-        "description": "NATO DIANA startup wants to build AI solution for defense → Needs SÄPO approval (€50K, 6 months) for classified development → Cannot iterate quickly → Loses contract to established player."
+        "title": "Problem 5: Operational Accountability Gap",
+        "description": "Wrongful kill occurs → Guardian Protocol shows operator authorized engagement → But WHO BUILT THE RULE the system used? Development provenance is missing."
       }
     ]
   },
@@ -57,43 +50,94 @@
         "description": "EU AI Act requirements stored as queryable graphs (Neo4j). Instead of manual PDF review, FMV auditors can run Cypher queries for immediate compliance validation. Automatic deployment gates prevent deployment without complete proof."
       },
       {
-        "title": "4. Git Provenance Tracking",
-        "description": "Every code change tracked with AI-contribution + human-review. MCP Git Tool captures: who changed what, why, confidence level, AI vs. human contribution percent, review cycles, compliance links."
+        "title": "4. Git Provenance Tracking (MCP Integration)",
+        "description": "Every code change tracked with complete context: who changed what, why, confidence level, AI vs. human contribution percentage, review cycles, compliance links. Cryptographically signed commits create immutable audit trail."
       },
       {
-        "title": "5. Data Diode Enforcement",
-        "description": "Information flows IN to Red Forge, never OUT (except metrics). Compliance Plugin intercepts ALL operations. Whitelist approach: only precision, recall, F1, latency, throughput metrics allowed out."
+        "title": "5. Guardian Protocol Integration",
+        "description": "When Guardian Protocol logs a lethal decision, it references the rule/code version (git commit hash). Forge provenance shows who authored, reviewed, approved that rule. Complete chain: developer → certifier → operator → commander."
       }
     ]
   },
+  "accountability": {
+    "title": "Development Accountability Chain",
+    "description": "Every rule, every algorithm, every parameter traces to named individuals:",
+    "example": {
+      "title": "Investigation Example",
+      "incident": "Guardian Protocol logs: Rule #47b engaged target",
+      "forge_traces": [
+        {
+          "step": "Authorship",
+          "data": "Rule #47b: 'Engage armed combatants <100m' → Dr. Andersson (Guardian Tech AB) → Commit a3f4e9c → 2025-11-23 14:32 UTC"
+        },
+        {
+          "step": "Review",
+          "data": "Military SME review: Maj. Bergström (added safety constraints) → 2025-11-24 → 'Reduced range to 100m, added IFF check'"
+        },
+        {
+          "step": "Legal Review",
+          "data": "JAG review: Lt. Kravchenko → 2025-11-25 → 'Compliant with ROE, proportionality assessment required'"
+        },
+        {
+          "step": "AI Contribution",
+          "data": "AI generated: 60% (Claude Sonnet 3.5) → Human modified: 40% (safety constraints, legal compliance)"
+        },
+        {
+          "step": "Certification",
+          "data": "FMV approval: 2025-12-01 → Linked to EU AI Act requirement #A4.2 → Certificate #FMV-SE-2025-1547"
+        }
+      ],
+      "guardian_traces": [
+        {
+          "step": "Deployment",
+          "data": "System deployed: Col. Petrov → 2026-01-10 08:23 → Sector 4, anti-drone mission"
+        },
+        {
+          "step": "Configuration",
+          "data": "Mission parameters: Capt. Volkov → 2026-01-10 06:15 → Rules #45-#52 active"
+        },
+        {
+          "step": "Operational Decision",
+          "data": "Dire circumstances override: Capt. Volkov → 2026-01-15 04:47:34 → Rule #47b invoked → Enhanced audit triggered"
+        }
+      ],
+      "complete_chain": "Dr. Andersson (author) → Maj. Bergström (reviewer) → Lt. Kravchenko (JAG) → FMV (certifier) → Col. Petrov (commander) → Capt. Volkov (operator)"
+    }
+  },
+  "integration": {
+    "title": "Forge + Guardian = Complete Accountability",
+    "forge": "Forge Protocol: Who built this rule? Who reviewed it? Who approved it?",
+    "guardian": "Guardian Protocol: Who deployed it? Who configured it? Who invoked it?",
+    "together": "Together: Complete audit trail from code authorship to operational lethal decision.",
+    "benefit": "No 'fog of war.' No 'the system did it.' Every decision traces to named individuals at every level."
+  },
   "value": {
-    "title": "Value for Swedish Industry",
+    "title": "Value for Defense Community",
     "sectors": [
       {
         "title": "For Defense Industry",
-        "problem": "Developing AI systems across security boundaries requires expensive, separate teams for each clearance level → Slow iteration, difficult collaboration.",
-        "solution": "Senior devs (CONFIDENTIAL) implement from filtered specs, SECRET spec writers write full detail in Red Forge, automatic compliance validation.",
-        "benefit": "Faster time-to-market, lower development costs, easier FMV certification."
+        "problem": "Developing AI systems across security boundaries requires expensive, separate teams for each clearance level → Slow iteration, difficult collaboration. No clear provenance for investigations.",
+        "solution": "Classification-aware development + complete git provenance + Guardian integration. Every rule traces from author to operator.",
+        "benefit": "Faster time-to-market, lower development costs, complete accountability for investigations."
       },
       {
         "title": "For NATO DIANA Startups",
-        "problem": "Need SÄPO approval (€50K, 6 months) for classified AI development → Cannot compete with established players.",
-        "solution": "Share Red Forge environment (Classified Development as a Service), no own SÄPO application, pay-per-use model (€5K/month vs. €50K capex).",
-        "benefit": "Faster innovation (iteration from day 1), lower entry cost, FMV access."
+        "problem": "Need SÄPO approval (€50K, 6 months) for classified AI development → Cannot compete with established players. No provenance tracking infrastructure.",
+        "solution": "Share Red Forge environment (Classified Development as a Service), built-in provenance tracking, Guardian integration ready.",
+        "benefit": "Faster innovation (iteration from day 1), lower entry cost (€5K/month vs. €50K capex), provable accountability."
       },
       {
-        "title": "For Defense Research",
-        "problem": "Research on classified threats requires secure environment → researchers cannot collaborate with external academics.",
-        "solution": "Write SECRET specs in Red Forge, external researchers implement from CONFIDENTIAL specs, Standards-as-Graphs enables publication (shares results, not secrets).",
-        "benefit": "Broader collaboration, faster publication, easier EU funding."
+        "title": "For Procurement Authorities (FMV, NATO)",
+        "problem": "Auditing autonomous weapons development requires manual correlation of requirements, code, tests, approvals → 4 hours per incident. Operational incidents lack development context.",
+        "solution": "Standards-as-Graphs + Git provenance + Guardian integration. Query 'Show me: who built Rule #47b, who reviewed it, when was it certified, where is it deployed?'",
+        "benefit": "Instant audit queries, complete accountability chain, faster procurement decisions."
       }
     ]
   },
   "cta": {
     "title": "Interested in Forge Protocol?",
-    "description": "Contact us for Red Forge access, pilot projects, or partnerships.",
+    "description": "Contact us for Red Forge access, pilot projects, or partnerships. Combined with Guardian Protocol for complete accountability.",
     "primary": "Contact Us",
     "secondary": "See Guardian Protocol"
   }
 }
-

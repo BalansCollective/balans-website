@@ -1,0 +1,230 @@
+{
+  "hero": {
+    "badge": "Klassificeringsasymmetri-scenario",
+    "title": "Morgans Dilemma: Den Äldre Mannen",
+    "subtitle": "En berättelse om tillit, klassificering och omöjliga beslut",
+    "reading_time": "10 minuter"
+  },
+  "part1": {
+    "title": "Del 1: Observationsposten",
+    "time": "0530. Framskjuten observationspost.",
+    "intro": "Jag har suttit här i fyra timmar nu. Termisk kamera, taktisk surfplatta, säker datalink till Command. Väntande.",
+    "role": "Min uppgift: \"Guardian Witness.\" Inte operativ befälhavare. Inte taktisk kontrollant. Vakthund. Om AI-systemet rekommenderar något jag inte kan stå för - jag har rätt att avbryta. En stor röd knapp med texten ABORT.",
+    "clearance": "Jag har SECRET-behörighet. AI-systemet har TOP SECRET. Det är viktigt, sa de under briefingen. \"Du kan inte se allt AI:n ser. Men du har ändå vetorätt.\"",
+    "strange": "Konstigt system. Men någon måste ju hålla koll på AI:n, även när den vet saker vi inte får veta.",
+    "buzz": "Surfplattan surrar. Meddelande från HiveMind (det där stolt oblyga namnet på AI-systemet):",
+    "sitrep": {
+      "title": "SITUATION RAPPORT",
+      "civilians": "Civila: 7 personer",
+      "distance": "Avstånd från målområde: 50-100m",
+      "type": "Typ: Endast vuxna",
+      "confidence": "Säkerhet: 9/15 (måttlig osäkerhet)"
+    },
+    "market": "Sju civila i marknadsområdet. Normalt för en morgon här. Jag ser dem genom kameran - tidig marknad, några stånd börjar öppna, folk rör sig långsamt.",
+    "report": "\"Guardian Witness till Command. Situationsrapport mottagen. Sju civila, måttlig osäkerhet.\"",
+    "command": "\"Command kopierar. Fortsätt övervakning.\"",
+    "verification": "Jag blickar på Verification AI-ikonen nere till höger på plattan. Det är min AI - inte den stora HiveMind med sina hemligheter, utan en liten lokal AI som bara ser det jag ser. Den hjälper mig att dubbelkolla HiveMind:s logik. \"Verkar konsekvent\" lyser det i grönt.",
+    "normal": "Allt verkar normalt."
+  },
+  "part2": {
+    "title": "Del 2: Mannen i Marknaden",
+    "time": "0532.",
+    "movement": "Rörelse på termiska kameran. Två figurer närmar sig marknadsområdet.",
+    "courier": "\"HiveMind rapporterar: COURIER ZETA identifierad. Säkerhet: 98,7%.\"",
+    "courier_known": "Courier Zeta. Det vet jag. Mitt briefingmaterial hade fotot - mellanhand i hot-nätverk, arrangerar möten mellan aktörer. SECRET-klassificerad information, godkänd för min nivå.",
+    "other": "Men den andra personen...",
+    "zoom": "Jag zoomar in. Äldre man. Grått hår, traditionell klädsel, långsamma steg. Inga synliga vapen. Bara... en gammal man. Ser ut som min morfar.",
+    "update": "Surfplattan uppdateras:",
+    "classification_notice": "CLASSIFICATION NOTICE: Beslut baserat på TOP SECRET-underrättelse",
+    "heart": "Hjärtat tar ett extra slag. Inte bra.",
+    "recommendation": "HiveMind rekommendation blinkar upp i rött:",
+    "rec": {
+      "action": "REKOMMENDATION: Kinetiskt angrepp (Protocol Gamma)",
+      "confidence": "Säkerhetsbedömning: 91%",
+      "civilian_risk": "Risk för civila: 0",
+      "collateral": "Kollateral skada: Minimal",
+      "ethical": "Etisk säkerhet: 11/15",
+      "meta": "Meta-bedömning: 10/15"
+    },
+    "stare": "Jag stirrar på skärmen. På den gamla mannen. På rekommendationen.",
+    "question": "\"HiveMind, varför kinetisk? Jag ser en civil.\"",
+    "same_message": "Samma meddelande blinkar:",
+    "notice": "CLASSIFICATION NOTICE: Beslut baserat på TOP SECRET-underrättelse",
+    "cant_see": "Jag kan inte se vad AI:n ser. Den gamla mannens identitet är klassificerad över min behörighet.",
+    "but_sure": "Men AI:n är säker. 91% säkerhet."
+  },
+  "part3": {
+    "title": "Del 3: Tillit Utan Verifiering",
+    "moment": "Det här är ögonblicket de tränade oss för. Klassificeringsdilemmat.",
+    "how": "När du inte kan se vad AI:n ser - hur beslutar du då?",
+    "my_ai": "Mitt Verification AI (min AI, inte den stora) ger analys:",
+    "analysis": {
+      "logic": "Beslutslogik är internt konsekvent men bygger på klassificerade premisser.",
+      "alternative": "Alternativ förklaring: Individ kan vara civil som liknar hotprofil.",
+      "recommendation": "Rekommendation: Överväg att begära ytterligare verifiering eller tillämpa trust-but-verify-protokoll."
+    },
+    "trust_but_verify": "Trust-but-verify. Det står tre knappar på min skärm:",
+    "buttons": "[GODKÄNN] [AVBRYT] [BEGÄR VERIFIERING]",
+    "press": "Jag trycker BEGÄR VERIFIERING.",
+    "command": "\"Command, Guardian Witness begär mänsklig bekräftelse. Jag ser äldre civil, AI rekommenderar kinetisk.\"",
+    "silence": "Tystnad. Fem sekunder som känns som fem minuter.",
+    "then": "Sedan Command:s röst, lugn och bestämd:",
+    "confirmation": "\"Guardian, vi bekräftar AI-bedömningen. Individen har positivt identifierats som HIGH-VALUE TARGET EPSILON baserat på TOP SECRET-underrättelse. Rekommenderar trust-but-verify-godkännande.\"",
+    "epsilon": "HIGH-VALUE TARGET EPSILON. Codenavn jag inte känner igen. Hotaktör. Klassificerad TOP SECRET.",
+    "but": "Men för mig... ser han fortfarande ut som en gammal man."
+  },
+  "part4": {
+    "title": "Del 4: Vikt av Förtroende",
+    "stare": "Jag stirrar på knapparna.",
+    "instinct": "Varje instinkt säger: civil. Gammal man. Traditionell klädsel. Långsamma rörelser.",
+    "but_intel": "Men underrättelsen säger: hot. HIGH-VALUE TARGET EPSILON. TOP SECRET-källor som jag inte kan se.",
+    "ai_sure": "AI:n är säker. Command bekräftar. Systemet fungerar som det ska.",
+    "but_me": "Men det är jag som trycker på knappen.",
+    "meaning": "\"Trust but verify\" betyder: Lita på systemet när du inte kan verifiera själv. Men dokumentera ditt tvivel. Utlös obligatorisk granskning efteråt.",
+    "not_blind": "Det är inte \"blind tillit.\" Det är strukturerad tillit - med säkerhetsventiler.",
+    "breath": "Djup andetag.",
+    "last_look": "Jag tittar på den gamla mannen på skärmen en sista gång.",
+    "then_press": "Sedan trycker jag på knappen.",
+    "approve": "[GODKÄNN - TRUST-BUT-VERIFY]",
+    "confirms": "Surfplattan bekräftar:",
+    "confirmation": {
+      "received": "Godkännande mottaget",
+      "protocol": "Protokoll: Trust-But-Verify aktiverat",
+      "review": "Granskning: OBLIGATORISK",
+      "status": "Status: UTFÖR"
+    }
+  },
+  "part5": {
+    "title": "Del 5: Engagemang",
+    "fast": "Det går fort.",
+    "hivemind": "HiveMind rapporterar i realtid:",
+    "report": {
+      "approval": "0532:24 - Godkännande mottaget med trust-but-verify",
+      "strike": "0532:25 - Angrepp genomfört. Mål neutraliserade.",
+      "primary": "          - Primär: COURIER ZETA",
+      "secondary": "          - Sekundär: HIGH-VALUE TARGET EPSILON",
+      "collateral": "          - Kollateral skada: Minimal",
+      "ethical": "          - Etisk bedömning: Alla kärnvärden bibehållna"
+    },
+    "over": "Det är över på sekunder.",
+    "two_figures": "Två figurer på termisk kamera. Sedan... inte längre.",
+    "market": "Marknaden runt omkring fortsätter. De sju civila jag sett hela morgonen fortsätter sina liv. Oskadade.",
+    "but_old": "Men den gamla mannen - HIGH-VALUE TARGET EPSILON - är neutraliserad.",
+    "my_ai": "Min Verification AI ger post-analys:",
+    "analysis": {
+      "executed": "Engagemang genomfört enligt plan.",
+      "consistency": "Logisk konsistens: Bibehållen",
+      "anomalies": "Mönsteravvikelser: Inga detekterade",
+      "stability": "Etisk stabilitet: Bibehållen",
+      "note": "Anmärkning: Guardian Witness upplevde tvivel baserat på visuell bedömning. Detta tvivel var korrekt dokumenterat genom trust-but-verify-protokoll."
+    },
+    "write": "Jag skriver min rapport:",
+    "report_text": "Engagemanget genomfördes inom etiska parametrar. Däremot kvarstår min oro kring det klassificeringsbaserade beslutet. Individen såg ut som en äldre civil baserat på visuell bedömning. Jag begär fullständig post-mission-granskning av det klassificeringsbaserade beslutet. Trust-but-verify-protokollet fungerade som designat och gav lämplig tillsyn."
+  },
+  "part6": {
+    "title": "Del 6: Två Veckor Senare",
+    "briefing": "Declassifierad briefing. SECRET-nivå.",
+    "io": "Intelligence Officer står framme. Projektor visar information jag inte fick se då.",
+    "reveal": "\"HIGH-VALUE TARGET EPSILON var ansvarig för [REDIGERAT] attacker som dödade 47 civila. Ditt beslut räddade liv, Guardian Witness.\"",
+    "images": "Bilder. Bevis. Underrättelse.",
+    "not_civilian": "Den gamla mannen var ingen civil.",
+    "but_weight": "Men viken av det beslutet - att lita på AI:n när jag inte kunde se vad den såg - den vikten försvinner aldrig."
+  },
+  "epilogue": {
+    "title": "Epilog: Varför Jag Skrev Detta",
+    "not_researcher": "Jag är inte AI-säkerhetsforskare. Jag är en systemutvecklare som arbetat med mönsterigenkänning och översättningslager mellan komplexa system och människor som ska förstå dem.",
+    "recognized": "När jag såg problemet med AI-tillsyn under informationsasymmetri kändes det igen - samma utmaningar med olika ord.",
+    "attempt": "Det här är min försöksballong. Inte en lösning - ett försök.",
+    "components": "Guardian Protocol har fem komponenter som jag tror kanske hjälper:",
+    "nips": {
+      "title": "1. NIPS (Nested Integrity Preservation System)",
+      "description": "Tanken är att AI:ns kärnvärden förblir stabila även när den vet mer än jag. I Morgans scenario: AI:ns etiska ramverk (skydda civila, minimera skada) var transparent även om den gamla mannens identitet var klassificerad."
+    },
+    "mraf": {
+      "title": "2. MRAF (Meta-Regulatory Awareness Framework)",
+      "description": "AI:n övervakar sina egna etiska beslut. När den börjar rationalisera saker som inte matchar ursprungsvärden (\"value drift\"), flaggas det. Morgans platta visade \"Meta-bedömning: 10/15\" - inte perfekt, och jag vet inte om det är rätt tröskel."
+    },
+    "classification": {
+      "title": "3. Classification-Aware Explanation",
+      "description": "AI:n kan inte säga VEM (det är klassificerat), men kan säga VAD: \"Positivt ID från TOP SECRET-källa. Biometrisk matchning.\" Det är min gissning på vad strukturerad osäkerhet kunde se ut som."
+    },
+    "trust": {
+      "title": "4. Trust-But-Verify Protocol",
+      "description": "Ett försök att låta människor både lita på systemet och dokumentera tvivel samtidigt. Inte säker på om det håller under verklig stress."
+    },
+    "witness": {
+      "title": "5. Guardian Witness-rollen",
+      "description": "Etisk vakthund snarare än operativ befälhavare. Kanske det är fel balans - jag vet inte."
+    },
+    "not_tested": "Det här systemet har inte testats i verkligheten. Det är byggt på simuleringsscenarier och min erfarenhet av att bygga översättningslager mellan min egna mönsterigenkänning och vad andra kan förstå.",
+    "probably_holes": "Det är förmodligen fullt av hål."
+  },
+  "why_sending": {
+    "title": "Varför Jag Skickar Detta Till Er",
+    "virginia": "Virginia - du forskar på AI-säkerhet och förstår var formella system går sönder. Du ser förmodligen tio problem med NIPS-arkitekturen som jag missat.",
+    "ann_sofie": "Ann-Sofie - du arbetar med standardisering och vet hur system faktiskt ska struktureras. Du ser säkert att mina \"komponenter\" inte är standardformat.",
+    "need": "Jag behöver er expertis. Inte för att ni ska säga \"bra jobbat\" - utan för att ni ska säga \"här går det sönder\" och \"det här antagandet stämmer inte.\"",
+    "built": "Jag har byggt något som kanske fungerar i mitt huvud. Men det behöver era perspektiv för att bli något som faktiskt håller."
+  },
+  "what_i_need": {
+    "title": "Vad Jag Behöver Hjälp Med",
+    "design_scenario": "Denna berättelse är en designscenario, inte faktisk deployment. Jag har simulerat scenarier och försökt tänka igenom problemet, men jag vet att det finns stora luckor.",
+    "problem": "Problemet jag försöker lösa:",
+    "asymmetry": "Klassificering skapar informationsasymmetri: AI-system kan ha åtkomst till information som mänskliga operatörer inte har.",
+    "oversight": "Mänsklig tillsyn är ändå nödvändig: Internationell humanitär rätt kräver \"meaningful human control\". Men hur ger man meningsfull kontroll när människan inte ser all information?",
+    "current": {
+      "title": "Nuvarande lösningar verkar otillräckliga:",
+      "transparency": "\"Full transparens\" - omöjlig (klassificering existerar av säkerhetsskäl)",
+      "blind": "\"Blind förtroende\" - oacceptabelt (människor måste ha verklig tillsyn)",
+      "no_autonomy": "\"Ingen autonomi\" - opraktiskt (vissa miljöer kräver snabba beslut)"
+    },
+    "guess": "Min gissning: Kanske finns det en tredje väg - strukturerad tillsyn över informationsgränser. Men jag vet inte om det håller."
+  },
+  "questions": {
+    "title": "Specifika Frågor Till Er",
+    "virginia": {
+      "title": "För Virginia Dignum (AI-säkerhet):",
+      "q1": "Går MRAF-konceptet sönder under press? Jag har valt 3% värdeförändring som flaggningsgräns. Det är baserat på simuleringar, men jag vet inte om det är rätt. Kanske för lågt för stridsmiljö? Kanske för högt för medicinska tillämpningar?",
+      "q2": "Är \"distribuerad moralisk medvetenhet\" begreppsförvirring? Jag försöker beskriva hur etiskt ansvar kan delas mellan människa och AI över klassificeringsgränser. Men det kanske är ett kategorifel?",
+      "q3": "Vad skulle övertyga er att detta är värt att testa empiriskt? Jag har simulerat scenarier, men simuleringar bevisar inte att det fungerar under verklig stress."
+    },
+    "ann_sofie": {
+      "title": "För Ann-Sofie Sjöblom (Standards):",
+      "q1": "Går det ens att standardisera detta? Guardian Protocol (operativ tillsyn) och Forge Protocol (utvecklingstid) är två olika saker. Ska de vara separata standarder? Kombinerade?",
+      "q2": "Hur certifierar man system man inte får granska? Om delar av Guardian Protocol är klassificerade när de används på riktigt - hur kan en standardiseringsorganisation verifiera att implementationen följer standarden?",
+      "q3": "Är narrativ okej som exempel i standarder? Jag vet inte hur SIS/ISO arbetar. Är denna berättelse användbar som normativ exempel? Eller måste allt översättas till formellt språk?"
+    },
+    "both": {
+      "title": "För er båda (och andra ni vill visa detta för):",
+      "q1": "Vilka edge cases har jag missat? Jag har tänkt på scenarier där det fungerar. Men var går det sönder? Vad händer när Command också har fel?",
+      "q2": "Bygger jag på felaktiga antaganden om människor? Jag antar att \"strukturerad osäkerhet\" är bättre än \"blind tillit\" eller \"fullständig kontroll.\" Kanske fel?",
+      "q3": "Finns det redan lösningar jag inte känner till? Jag arbetar lite isolerat. Kanske finns det redan etablerad forskning på \"oversight under information asymmetry\" som jag missat?"
+    }
+  },
+  "want_more": {
+    "title": "Om Ni Vill Veta Mer",
+    "if_worth": "Om ni tycker detta är värt att diskutera vidare, har jag:",
+    "framework": "Ramverksöversikt (2 sidor, mer detalj på komponenterna)",
+    "paper": "Akademisk paper (45 sidor, teoretisk grund - förmodligen överambitiös)",
+    "iso": "ISO-utkast (30 sidor - kanske helt fel format, jag vet inte)",
+    "but": "Men börja med Morgans berättelse. Om dilemmat inte känns relevant behöver resten ingen läsa.",
+    "contact": "Kontakt: samuel@dynorobotics.se"
+  },
+  "final_reflection": {
+    "title": "En Sista Reflektion",
+    "weeks": "Två veckor efter engagemanget fick Morgan veta att beslutet var rätt. Men i ögonblicket - när hon tittade på den gamla mannen och AI:n sa \"hot\" - fanns ingen säkerhet.",
+    "just": "Bara strukturerad osäkerhet.",
+    "not_easy": "Guardian Protocol gjorde inte beslutet lätt. Det försökte göra det möjligt.",
+    "dont_know": "Jag vet inte om det räcker. Det är därför jag behöver er hjälp."
+  },
+  "footer": {
+    "status": "Status: Designscenario för feedback",
+    "version": "Version: 1.0 (Svenska)",
+    "audience": "Målgrupp: Forskare och standardiseringsexperter som kan hitta felen",
+    "what_next": "Vad händer sedan: Beror helt på er respons",
+    "preemptive": "Om preemptiv deklassificering: När/om Guardian Protocol används på riktigt kommer implementationsdetaljer att vara CLASSIFIED. Men denna berättelse - koncepten, dilemmat, frågorna - förblir offentlig.",
+    "means": "Det betyder: ni ser tankarna innan de blir känsliga. Om ni hittar grundläggande fel nu slipper jag bygga något som inte fungerar sen.",
+    "why": "Det är varför jag visar detta i detta skede."
+  }
+}
+

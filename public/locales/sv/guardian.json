@@ -1,104 +1,143 @@
 {
   "hero": {
     "title": "Guardian Protocol",
-    "subtitle": "Etisk AI för Autonoma System",
+    "subtitle": "Ansvarsutkrävande för Autonoma Vapen",
     "byline": "Balans | November 2025"
   },
   "summary": {
     "title": "Sammanfattning",
-    "description": "Guardian Protocol är ett ramverk för etiskt AI-beslutsfattande i autonoma system, utvecklat för att lösa fem kritiska problem som hindrar säker användning av autonoma system inom försvar och medicin:",
-    "benefits": [
-      "Operatörer kan fatta informerade beslut - även när AI använder hemlig information",
-      "AI kan inte driva etiskt - realtidsövervakning förhindrar bias-ackumulering",
-      "Komplett ansvarsspårning - kryptografiskt säkerställd granskningslogg",
-      "Kärnvärden bevarade - även när sammanhang förändras (krig → fred)",
-      "Förtroende utan blindhet - operatörer kan ifrågasätta AI:s resonemang när som helst"
-    ]
+    "description": "Guardian Protocol är ett ramverk för ansvarsutkrävande i autonoma vapensystem. När AI kan fatta dödliga beslut - vem är ansvarig? Guardian Protocol säkerställer att varje beslut spåras till namngivna individer: utvecklaren som kodade regeln, operatören som fattade beslutet, befälhavaren som auktoriserade uppdraget.",
+    "tagline": "Ingen krigsdimma. Inget 'systemet gjorde det.' Bara tydligt ansvar."
   },
   "problem": {
-    "title": "Utmaningen: Varför Autonoma System Misslyckas Idag",
-    "items": [
-      {
-        "title": "Problem 1: Klassificeringsdilemat",
-        "description": "Operatör med CONFIDENTIAL behörighet opererar SECRET system. AI rekommenderar åtgärd baserat på SECRET underrättelser men kan inte förklara varför → Operatör tvekar → Hot penetrerar försvaret."
-      },
-      {
-        "title": "Problem 2: Etisk Drift",
-        "description": "AI:s beslutsparametrar driftar övervakning över tid (95% → 81% konfidens) → Blir mer aggressiv → Civil drönare felaktigt bekämpad."
-      },
-      {
-        "title": "Problem 3: Ansvarsgap",
-        "description": "Incident inträffar → Utredning → Ingen granskningslogg av AI:s resonemang + operatörens beslut → Okonklusive resultat → Ansvaret oklart."
-      },
-      {
-        "title": "Problem 4: Kärnvärdeskonfusion",
-        "description": "Mission ändras från militärt försvar till civil skydd → AI tillämpar fortfarande militära regler → Oskyddad vilt dödat."
-      },
-      {
-        "title": "Problem 5: Förtroendekollaps",
-        "description": "AI korrekt 37 gånger → Operatör slutar granska → Blind godkänner rekommendation 38 → Vänlig enhet bekämpad."
-      }
-    ]
+    "title": "Utmaningen: Ukraina, Januari 2026",
+    "scenario": "Ukrainska positioner mötte 500+ fientliga drönare per dag. Autonoma hagelgevärstorn fungerade perfekt - 127 drönaravskjutningar, noll incidenter.",
+    "adaptation": "Sedan anpassade Ryssland sig: markanfall istället för drönare.",
+    "dilemma": "Tornen KAN bekämpa markmål. Men de certifierades endast för drönare.",
+    "question": "Auktoriserar du uppdragsexpansion? Vem beslutar? Vem är ansvarig när autonoma system används utanför sitt designade syfte?"
   },
   "solution": {
-    "title": "Lösningen: Guardian Protocol",
-    "components": [
+    "title": "Lösningen: Graderad Auktorisering + Individuellt Ansvar",
+    "approach": "Guardian Protocol tillhandahåller ett ramverk där varje dödligt beslut spåras genom en komplett ansvarskedja - från utvecklaren som skrev koden till befälhavaren som auktoriserade uppdraget.",
+    "tiers": [
       {
-        "title": "1. NIPS (Nested Integrity Preservation System)",
-        "description": "Tre-lagers värdesystem där kärnvärden (bevara liv, respektera autonomi) aldrig ändras, implementering anpassas till mission, och tillämpning sker moment-till-moment. Säkerställer att AI:s etik förblir konsekvent även när kontext förändras."
+        "title": "Standard Operationer",
+        "description": "Rutinoperationer inom certifierade uppdragsparametrar (t.ex. anti-drönare försvar). Autonom bekämpning tillåten. Standard granskningsloggning.",
+        "example": "Bekräftad drönare <100m → Auto-bekämpa → Standard granskningslogg"
       },
       {
-        "title": "2. MRAF (Meta-Regulatory Awareness Framework)",
-        "description": "AI övervakar sitt eget etiska resonemang. MRAF detekterar drift i beslutsparametrar och varnar operatör före problemet eskalerar. Operatör kan granska orsak och fatta informerat beslut om att godkänna eller återställa parametrar."
+        "title": "Uppdragsexpansion",
+        "description": "Operationer utanför certifierade parametrar (t.ex. drönarförsvar → anti-personal). Kräver operatörsauktorisering. Förstärkt granskning aktiveras automatiskt.",
+        "example": "Markanfallshot → Operatör auktoriserar överstyrning vid extrema omständigheter → Förstärkt granskning + befälnotifiering"
       },
       {
-        "title": "3. Klassificeringsmedveten Förklaring",
-        "description": "AI förklarar resonemang inom operatörens behörighet. Olika operatörer ser lämplig detaljnivå baserat på sin säkerhetsbehörighet, men båda kan fatta informerade beslut."
-      },
-      {
-        "title": "4. Oföränderlig Granskningslogg",
-        "description": "Varje åtgärd loggad med kryptografiskt bevis. Komplett revisionsspår med AI:s resonemang, operatörens beslut, utfall och kryptografisk signatur. Möjliggör snabb och konklusiv utredning vid incidenter."
-      },
-      {
-        "title": "5. Transparent Resonemang",
-        "description": "Operatör kan ifrågasätta AI när som helst. AI förklarar funktionsuppdelning, alternativa hypoteser och sannolikheter. Operatör kan fråga kontrafaktuella frågor och verifiera AI:s resonemang innan beslut fattas."
+        "title": "Befälgodkännande",
+        "description": "Strategiska uppdragsändringar kräver auktorisering på befälsnivå med juridisk granskning. Fältoperatörer kan inte expandera uppdragsparametrar utan högre auktoritet.",
+        "example": "Begäran om uppdragsutvidgning → Befäl utvärderar strategiska implikationer → Juridisk granskning → Godkänn eller neka"
       }
     ]
+  },
+  "accountability": {
+    "title": "Komplett Ansvarskedja",
+    "description": "Varje dödligt beslut spåras till namngivna individer på varje nivå:",
+    "chain": [
+      {
+        "level": "Utveckling (Forge Protocol)",
+        "roles": [
+          "Utvecklare som författade regeln (namn, git commit)",
+          "Granskare som godkände den (militär SME, juridisk)",
+          "Certifieringsmyndighet som skrev under (FMV, NATO)"
+        ],
+        "example": "Regel #47b: 'Bekämpa beväpnade kombattanter <100m' → Dr. Andersson (författare) → Maj. Bergström (granskare) → FMV (certifierare)"
+      },
+      {
+        "level": "Deployment (Guardian Protocol)",
+        "roles": [
+          "Befälhavare som auktoriserade deployment",
+          "Bedömare som konfigurerade uppdragsparametrar",
+          "Juridisk rådgivare som granskade insatsregler"
+        ],
+        "example": "System deployat till Sektor 4 → Överste Petrov (befälhavare) → Kapten Volkov (bedömare) → Lt. Kravchenko (JAG)"
+      },
+      {
+        "level": "Operationell (Guardian Protocol)",
+        "roles": [
+          "Operatör som fattade beslutet (auktoriseringstidpunkt)",
+          "Resonemang loggat ordagrant (röst/text)",
+          "Befäl automatiskt notifierat (förstärkt granskning)"
+        ],
+        "example": "Överstyrning vid extrema omständigheter → Kpt. Volkov (04:47:34) → 'Markanfall, defensiv position i fara' → Överste Petrov notifierad"
+      }
+    ],
+    "crypto": "Varje steg kryptografiskt signerat. Ingen 'krigsdimma.' Inget 'systemet gjorde det.'"
+  },
+  "scenario": {
+    "title": "Läs Tankeexperimentet",
+    "description": "Kapten Elena Volkov bedömer Guardian Protocol vid en ukrainsk framskjuten position. Anti-drönarförsvar fungerar perfekt. Sedan anpassar Ryssland sig med markanfall. Elena står inför frågan: auktorisera uppdragsexpansion eller acceptera förluster?",
+    "hook": "Åtta av tio bedömare auktoriserade anti-personal användning under press. Var det rätt beslut?",
+    "cta": "Läs: När Drönare Inte Var Problemet",
+    "link": "/narratives/ground-assault"
+  },
+  "advanced": {
+    "title": "Nästa Utmaning: Klassificeringsasymmetri",
+    "description": "När ansvarsutkrävande fungerar för dödliga beslut, tacklar vi nästa problem: Vad händer när AI har hemlig information som operatören inte kan se?",
+    "example": "AI rekommenderar 'bekämpa' baserat på SECRET underrättelser. Operatör har CONFIDENTIAL behörighet. Hur upprätthåller vi meningsfull mänsklig kontroll?",
+    "narrative": "Morgans Dilemma utforskar denna utmaning.",
+    "link": "/narratives/morgans-dilemma"
+  },
+  "integration": {
+    "title": "Integration: Guardian + Forge Protocol",
+    "guardian": "Guardian Protocol: Operativt ansvar (runtime-beslut)",
+    "forge": "Forge Protocol: Utvecklingsansvar (vem byggde denna regel?)",
+    "combined": "Tillsammans: Komplett revisionsspår från kodförfattande till operativt dödligt beslut.",
+    "example": {
+      "title": "Utredningsexempel",
+      "incident": "Felaktig dödning inträffar under markanfall",
+      "guardian_shows": "Kpt. Volkov auktoriserade bekämpning (04:47:34), system använde Regel #47b",
+      "forge_shows": "Regel #47b författad av Dr. Andersson (commit a3f4e9c), granskad av Maj. Bergström + Lt. Kravchenko (JAG), certifierad av FMV",
+      "result": "Komplett kedja: Utvecklare → Granskare → Certifierare → Operatör → Befälhavare"
+    }
+  },
+  "validation": {
+    "title": "Söker Valideringspartners",
+    "status": "Guardian Protocol är ett tankeexperiment baserat på verkliga taktiska problem (Ukrainas drönarhot, motståndares anpassningsmönster, uppdragsutvidgningsdynamik).",
+    "need": "Vi söker partners för att genomföra faktisk fälttestning:",
+    "partners": [
+      "Militära träningsanläggningar",
+      "Operatörsvolontärer med operativ erfarenhet",
+      "Arrangerade scenarier med simuleringsrundor",
+      "Befälgranskning av auktoriseringsbeslut"
+    ],
+    "question": "Skulle 80% av verkliga bedömare auktorisera uppdragsexpansion under press? Endast verklig testning kan säga.",
+    "contact": "Kontakta samuel@dynorobotics.se för att diskutera valideringstestning eller partnerskap."
   },
   "value": {
-    "title": "Värde för Svensk Industri",
+    "title": "Värde för Försvarsgemenskap",
     "sectors": [
       {
-        "title": "För Försvarssystem",
-        "problem": "Autonoma försvarsystem kräver mänsklig kontroll för NATO-efterlevnad, men operatörer kan inte förklara AI-beslut baserade på hemlig underrättelse.",
-        "solution": "Klassificeringsmedveten förklaring, NIPS bevarar kärnvärden, oföränderlig logg möjliggör NATO-revision.",
-        "benefit": "Snabbare FMV-certifiering, NATO-kompatibilitet, riskreduktion."
+        "title": "För NATO/EU Standardutveckling",
+        "problem": "AI Act + NATO-standarder kräver 'meningsfull mänsklig kontroll' för autonoma vapen, men ramverk är abstrakta.",
+        "solution": "Guardian Protocol tillhandahåller testbart, reviderbart ramverk: graderad auktorisering + förstärkt granskning + individuellt ansvar.",
+        "benefit": "Konkret implementering av principen om meningsfull mänsklig kontroll."
       },
       {
-        "title": "För Medicinsk Forskning",
-        "problem": "AI-beslutsstöd i medicin kan inte förklara rekommendationer för läkare, och etisk drift (bias-ackumulering) är oupptäckt.",
-        "solution": "Transparent resonemang, MRAF drift-detektion, NIPS kärnvärden prioriterar patientsäkerhet.",
-        "benefit": "EU AI Act compliance, patientförtroende, GDPR-revisionsspår."
+        "title": "För Upphandlingsmyndigheter",
+        "problem": "Autonoma vapen väcker ansvarsfrågor - vem är ansvarig när systemet misslyckas?",
+        "solution": "Komplett revisionsspår från utveckling (Forge) till operation (Guardian). Varje beslut spåras till namngivna individer.",
+        "benefit": "Tydligt ansvar möjliggör snabbare upphandlingsbeslut."
       },
       {
-        "title": "För NATO DIANA Startups",
-        "problem": "Defense startups behöver SÄPO-godkännande (€50K, 6 månader) för klassificerad utveckling, vilket fördröjer innovation.",
-        "solution": "Red Forge-modell (Classification-Aware Development), data diode enforcement.",
-        "benefit": "Snabbare marknadsintroduktion, lägre kostnader, bevisbar efterlevnad."
+        "title": "För Försvarsindustri",
+        "problem": "Utveckling av autonoma vapen utan tydligt ansvarsramverk skapar juridisk/etisk risk.",
+        "solution": "Guardian + Forge Protocol tillhandahåller end-to-end ansvar: utvecklingsprovenance + operativ granskning.",
+        "benefit": "Riskreduktion, snabbare certifiering, NATO-kompatibilitet."
       }
     ]
-  },
-  "narrative": {
-    "title": "Morgans Dilemma: Den Äldre Mannen",
-    "description": "En berättelse om tillit, klassificering och omöjliga beslut. När AI-systemet vet mer än operatören kan se - hur upprätthåller vi meningsfull mänsklig kontroll?",
-    "cta": "Läs hela narrativet",
-    "link": "/morgans-dilemma"
   },
   "cta": {
     "title": "Intresserad av Partnerskap?",
-    "description": "Kontakta oss för demonstration, pilotstudier eller licensdiskussioner.",
+    "description": "Kontakta oss för valideringstestning, pilotstudier eller standardutvecklingssamarbete.",
     "primary": "Kontakta oss",
-    "secondary": "Tillbaka till Defense"
+    "secondary": "Se Forge Protocol"
   }
 }
-

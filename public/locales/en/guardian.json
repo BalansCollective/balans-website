@@ -1,104 +1,143 @@
 {
   "hero": {
     "title": "Guardian Protocol",
-    "subtitle": "Ethical AI for Autonomous Systems",
+    "subtitle": "Accountability for Autonomous Weapons",
     "byline": "Balans | November 2025"
   },
   "summary": {
     "title": "Executive Summary",
-    "description": "Guardian Protocol is a framework for ethical AI decision-making in autonomous systems, developed to solve five critical problems preventing safe use of autonomous systems in defense and medicine:",
-    "benefits": [
-      "Operators can make informed decisions - even when AI uses classified information",
-      "AI cannot drift ethically - real-time monitoring prevents bias accumulation",
-      "Complete accountability tracking - cryptographically secured audit log",
-      "Core values preserved - even when context changes (war → peace)",
-      "Trust without blindness - operators can question AI's reasoning anytime"
-    ]
+    "description": "Guardian Protocol is an accountability framework for autonomous weapons systems. When AI can make lethal decisions - who's responsible? Guardian Protocol ensures every decision traces to named individuals: the developer who coded the rule, the operator who made the call, the commander who authorized the mission.",
+    "tagline": "No fog of war. No 'the system did it.' Just clear accountability."
   },
   "problem": {
-    "title": "The Challenge: Why Autonomous Systems Fail Today",
-    "items": [
-      {
-        "title": "Problem 1: Classification Dilemma",
-        "description": "Operator with CONFIDENTIAL clearance operates SECRET system. AI recommends action based on SECRET intelligence but cannot explain why → Operator hesitates → Threat penetrates defense."
-      },
-      {
-        "title": "Problem 2: Ethical Drift",
-        "description": "AI's decision parameters drift over time without oversight (95% → 81% confidence) → Becomes more aggressive → Civilian drone incorrectly engaged."
-      },
-      {
-        "title": "Problem 3: Accountability Gap",
-        "description": "Incident occurs → Investigation → No audit log of AI's reasoning + operator's decision → Inconclusive results → Accountability unclear."
-      },
-      {
-        "title": "Problem 4: Core Values Confusion",
-        "description": "Mission changes from military defense to civilian protection → AI still applies military rules → Protected wildlife killed."
-      },
-      {
-        "title": "Problem 5: Trust Collapse",
-        "description": "AI correct 37 times → Operator stops reviewing → Blindly approves recommendation 38 → Friendly unit engaged."
-      }
-    ]
+    "title": "The Challenge: Ukraine, January 2026",
+    "scenario": "Ukrainian positions faced 500+ hostile drones per day. Autonomous shotgun turrets worked perfectly - 127 drone kills, zero incidents.",
+    "adaptation": "Then Russia adapted: ground assault instead of drones.",
+    "dilemma": "The turrets CAN engage ground targets. But they were certified for drones only.",
+    "question": "Do you authorize mission expansion? Who decides? Who's accountable when autonomous systems are used beyond their designed purpose?"
   },
   "solution": {
-    "title": "The Solution: Guardian Protocol",
-    "components": [
+    "title": "The Solution: Graduated Authorization + Individual Accountability",
+    "approach": "Guardian Protocol provides a framework where every lethal decision traces through a complete accountability chain - from the developer who wrote the code to the commander who authorized the mission.",
+    "tiers": [
       {
-        "title": "1. NIPS (Nested Integrity Preservation System)",
-        "description": "Three-layer value system where core values (preserve life, respect autonomy) never change, implementation adapts to mission, and application occurs moment-to-moment. Ensures AI ethics remain consistent even when context changes."
+        "title": "Standard Operations",
+        "description": "Routine operations within certified mission parameters (e.g., anti-drone defense). Autonomous engagement allowed. Standard audit logging.",
+        "example": "Confirmed drone <100m → Auto-engage → Standard audit log"
       },
       {
-        "title": "2. MRAF (Meta-Regulatory Awareness Framework)",
-        "description": "AI monitors its own ethical reasoning. MRAF detects drift in decision parameters and warns operator before problem escalates. Operator can review cause and make informed decision to approve or restore parameters."
+        "title": "Mission Expansion",
+        "description": "Operations outside certified parameters (e.g., drone defense → anti-personnel). Requires operator authorization. Enhanced audit automatically triggered.",
+        "example": "Ground assault threat → Operator authorizes dire circumstances override → Enhanced audit + command notification"
       },
       {
-        "title": "3. Classification-Aware Explanation",
-        "description": "AI explains reasoning within operator's clearance. Different operators see appropriate detail level based on their security clearance, but both can make informed decisions."
-      },
-      {
-        "title": "4. Immutable Audit Log",
-        "description": "Every action logged with cryptographic proof. Complete audit trail with AI's reasoning, operator's decision, outcome, and cryptographic signature. Enables rapid and conclusive investigation of incidents."
-      },
-      {
-        "title": "5. Transparent Reasoning",
-        "description": "Operator can question AI anytime. AI explains feature breakdown, alternative hypotheses, and probabilities. Operator can ask counterfactual questions and verify AI's reasoning before decision."
+        "title": "Command Approval",
+        "description": "Strategic mission changes require command-level authorization with legal review. Field operators cannot expand mission parameters without higher authority.",
+        "example": "Mission creep request → Command evaluates strategic implications → Legal review → Approve or deny"
       }
     ]
+  },
+  "accountability": {
+    "title": "Complete Accountability Chain",
+    "description": "Every lethal decision traces to named individuals at each level:",
+    "chain": [
+      {
+        "level": "Development (Forge Protocol)",
+        "roles": [
+          "Developer who authored the rule (name, git commit)",
+          "Reviewers who approved it (military SME, legal)",
+          "Certification authority who signed off (FMV, NATO)"
+        ],
+        "example": "Rule #47b: 'Engage armed combatants <100m' → Dr. Andersson (author) → Maj. Bergström (reviewer) → FMV (certifier)"
+      },
+      {
+        "level": "Deployment (Guardian Protocol)",
+        "roles": [
+          "Commander who authorized deployment",
+          "Assessor who configured mission parameters",
+          "Legal advisor who reviewed rules of engagement"
+        ],
+        "example": "System deployed to Sector 4 → Col. Petrov (commander) → Capt. Volkov (assessor) → Lt. Kravchenko (JAG)"
+      },
+      {
+        "level": "Operational (Guardian Protocol)",
+        "roles": [
+          "Operator who made the decision (authorization timestamp)",
+          "Reasoning logged verbatim (voice/text)",
+          "Command automatically notified (enhanced audit)"
+        ],
+        "example": "Dire circumstances override → Capt. Volkov (04:47:34) → 'Ground assault, defensive position at risk' → Col. Petrov notified"
+      }
+    ],
+    "crypto": "Every step cryptographically signed. No 'fog of war.' No 'the system did it.'"
+  },
+  "scenario": {
+    "title": "Read the Thought Experiment",
+    "description": "Captain Elena Volkov is assessing Guardian Protocol at a Ukrainian forward position. Anti-drone defense works perfectly. Then Russia adapts with ground assault. Elena faces the question: authorize mission expansion or accept casualties?",
+    "hook": "Eight of ten assessors authorized anti-personnel use under pressure. Was it the right call?",
+    "cta": "Read: When Drones Weren't the Problem",
+    "link": "/narratives/ground-assault"
+  },
+  "advanced": {
+    "title": "Next Challenge: Classification Asymmetry",
+    "description": "Once accountability works for lethal decisions, we tackle the next problem: What happens when AI has classified information the operator cannot see?",
+    "example": "AI recommends 'engage' based on SECRET intelligence. Operator has CONFIDENTIAL clearance. How do we maintain meaningful human control?",
+    "narrative": "Morgan's Dilemma explores this challenge.",
+    "link": "/narratives/morgans-dilemma"
+  },
+  "integration": {
+    "title": "Integration: Guardian + Forge Protocol",
+    "guardian": "Guardian Protocol: Operational accountability (runtime decisions)",
+    "forge": "Forge Protocol: Development accountability (who built this rule?)",
+    "combined": "Together: Complete audit trail from code authorship to operational lethal decision.",
+    "example": {
+      "title": "Investigation Example",
+      "incident": "Wrongful kill occurs during ground assault",
+      "guardian_shows": "Capt. Volkov authorized engagement (04:47:34), system used Rule #47b",
+      "forge_shows": "Rule #47b authored by Dr. Andersson (commit a3f4e9c), reviewed by Maj. Bergström + Lt. Kravchenko (JAG), certified by FMV",
+      "result": "Complete chain: Developer → Reviewers → Certifier → Operator → Commander"
+    }
+  },
+  "validation": {
+    "title": "Seeking Validation Partners",
+    "status": "Guardian Protocol is a thought experiment based on real tactical problems (Ukraine drone threat, adversary adaptation patterns, mission creep dynamics).",
+    "need": "We're seeking partners to conduct actual field testing:",
+    "partners": [
+      "Military training facilities",
+      "Operator volunteers with operational experience",
+      "Staged scenarios with simulation rounds",
+      "Command review of authorization decisions"
+    ],
+    "question": "Would 80% of real assessors authorize mission expansion under pressure? Only real testing will tell.",
+    "contact": "Contact samuel@dynorobotics.se to discuss validation testing or partnership."
   },
   "value": {
-    "title": "Value for Swedish Industry",
+    "title": "Value for Defense Community",
     "sectors": [
       {
-        "title": "For Defense Systems",
-        "problem": "Autonomous defense systems require human control for NATO compliance, but operators cannot explain AI decisions based on classified intelligence.",
-        "solution": "Classification-aware explanation, NIPS preserves core values, immutable log enables NATO audit.",
-        "benefit": "Faster FMV certification, NATO compatibility, risk reduction."
+        "title": "For NATO/EU Standards Development",
+        "problem": "AI Act + NATO standards require 'meaningful human control' for autonomous weapons, but frameworks are abstract.",
+        "solution": "Guardian Protocol provides testable, auditable framework: graduated authorization + enhanced audit + individual accountability.",
+        "benefit": "Concrete implementation of meaningful human control principle."
       },
       {
-        "title": "For Medical Research",
-        "problem": "AI decision support in medicine cannot explain recommendations to doctors, and ethical drift (bias accumulation) is undetected.",
-        "solution": "Transparent reasoning, MRAF drift detection, NIPS core values prioritize patient safety.",
-        "benefit": "EU AI Act compliance, patient trust, GDPR audit trail."
+        "title": "For Procurement Authorities",
+        "problem": "Autonomous weapons raise accountability questions - who's responsible when system fails?",
+        "solution": "Complete audit trail from development (Forge) to operation (Guardian). Every decision traces to named individuals.",
+        "benefit": "Clear accountability enables faster procurement decisions."
       },
       {
-        "title": "For NATO DIANA Startups",
-        "problem": "Defense startups need SÄPO approval (€50K, 6 months) for classified development, delaying innovation.",
-        "solution": "Red Forge model (Classification-Aware Development), data diode enforcement.",
-        "benefit": "Faster time-to-market, lower costs, provable compliance."
+        "title": "For Defense Industry",
+        "problem": "Developing autonomous weapons without clear accountability framework creates legal/ethical risk.",
+        "solution": "Guardian + Forge Protocol provides end-to-end accountability: development provenance + operational audit.",
+        "benefit": "Risk reduction, faster certification, NATO compatibility."
       }
     ]
-  },
-  "narrative": {
-    "title": "Morgan's Dilemma: The Elderly Man",
-    "description": "A story about trust, classification, and impossible decisions. When the AI system knows more than the operator can see - how do we maintain meaningful human control?",
-    "cta": "Read the full narrative",
-    "link": "/morgans-dilemma"
   },
   "cta": {
     "title": "Interested in Partnership?",
-    "description": "Contact us for demonstrations, pilot studies, or licensing discussions.",
+    "description": "Contact us for validation testing, pilot studies, or standards development collaboration.",
     "primary": "Contact Us",
-    "secondary": "Back to Defense"
+    "secondary": "See Forge Protocol"
   }
 }
-

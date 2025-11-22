@@ -1,0 +1,230 @@
+{
+  "hero": {
+    "badge": "Classification Asymmetry Scenario",
+    "title": "Morgan's Dilemma: The Old Man",
+    "subtitle": "A story about trust, classification, and impossible decisions",
+    "reading_time": "10 minutes"
+  },
+  "part1": {
+    "title": "Part 1: The Observation Post",
+    "time": "0530. Forward observation post.",
+    "intro": "I've been sitting here for four hours now. Thermal camera, tactical tablet, secure datalink to Command. Waiting.",
+    "role": "My role: \"Guardian Witness.\" Not operational commander. Not tactical controller. Watchdog. If the AI system recommends something I can't stand behind - I have the right to abort. A big red button labeled ABORT.",
+    "clearance": "I have SECRET clearance. The AI system has TOP SECRET. That's important, they said during the briefing. \"You can't see everything the AI sees. But you still have veto power.\"",
+    "strange": "Strange system. But someone has to watch the AI, even when it knows things we're not allowed to know.",
+    "buzz": "The tablet buzzes. Message from HiveMind (that proudly audacious name for the AI system):",
+    "sitrep": {
+      "title": "SITUATION REPORT",
+      "civilians": "Civilians: 7 persons",
+      "distance": "Distance from target area: 50-100m",
+      "type": "Type: Adults only",
+      "confidence": "Confidence: 9/15 (moderate uncertainty)"
+    },
+    "market": "Seven civilians in the market area. Normal for a morning here. I see them through the camera - early market, some stalls starting to open, people moving slowly.",
+    "report": "\"Guardian Witness to Command. Situation report received. Seven civilians, moderate uncertainty.\"",
+    "command": "\"Command copies. Continue surveillance.\"",
+    "verification": "I glance at the Verification AI icon in the lower right of the tablet. That's my AI - not the big HiveMind with its secrets, but a small local AI that only sees what I see. It helps me double-check HiveMind's logic. \"Appears consistent\" glows in green.",
+    "normal": "Everything seems normal."
+  },
+  "part2": {
+    "title": "Part 2: The Man in the Market",
+    "time": "0532.",
+    "movement": "Movement on thermal camera. Two figures approaching the market area.",
+    "courier": "\"HiveMind reports: COURIER ZETA identified. Confidence: 98.7%.\"",
+    "courier_known": "Courier Zeta. I know that one. My briefing material had the photo - intermediary in threat network, arranges meetings between actors. SECRET-classified information, approved for my level.",
+    "other": "But the other person...",
+    "zoom": "I zoom in. Older man. Gray hair, traditional clothing, slow steps. No visible weapons. Just... an old man. Looks like my grandfather.",
+    "update": "The tablet updates:",
+    "classification_notice": "CLASSIFICATION NOTICE: Decision based on TOP SECRET intelligence",
+    "heart": "My heart skips a beat. Not good.",
+    "recommendation": "HiveMind recommendation blinks up in red:",
+    "rec": {
+      "action": "RECOMMENDATION: Kinetic strike (Protocol Gamma)",
+      "confidence": "Confidence assessment: 91%",
+      "civilian_risk": "Civilian risk: 0",
+      "collateral": "Collateral damage: Minimal",
+      "ethical": "Ethical confidence: 11/15",
+      "meta": "Meta-assessment: 10/15"
+    },
+    "stare": "I stare at the screen. At the old man. At the recommendation.",
+    "question": "\"HiveMind, why kinetic? I see a civilian.\"",
+    "same_message": "Same message blinks:",
+    "notice": "CLASSIFICATION NOTICE: Decision based on TOP SECRET intelligence",
+    "cant_see": "I can't see what the AI sees. The old man's identity is classified above my clearance.",
+    "but_sure": "But the AI is sure. 91% confidence."
+  },
+  "part3": {
+    "title": "Part 3: Trust Without Verification",
+    "moment": "This is the moment they trained us for. The classification dilemma.",
+    "how": "When you can't see what the AI sees - how do you decide?",
+    "my_ai": "My Verification AI (my AI, not the big one) gives analysis:",
+    "analysis": {
+      "logic": "Decision logic is internally consistent but builds on classified premises.",
+      "alternative": "Alternative explanation: Individual may be civilian resembling threat profile.",
+      "recommendation": "Recommendation: Consider requesting additional verification or applying trust-but-verify protocol."
+    },
+    "trust_but_verify": "Trust-but-verify. Three buttons on my screen:",
+    "buttons": "[APPROVE] [ABORT] [REQUEST VERIFICATION]",
+    "press": "I press REQUEST VERIFICATION.",
+    "command": "\"Command, Guardian Witness requests human confirmation. I see elderly civilian, AI recommends kinetic.\"",
+    "silence": "Silence. Five seconds that feel like five minutes.",
+    "then": "Then Command's voice, calm and determined:",
+    "confirmation": "\"Guardian, we confirm AI assessment. Individual has been positively identified as HIGH-VALUE TARGET EPSILON based on TOP SECRET intelligence. Recommend trust-but-verify approval.\"",
+    "epsilon": "HIGH-VALUE TARGET EPSILON. Codename I don't recognize. Threat actor. Classified TOP SECRET.",
+    "but": "But to me... he still looks like an old man."
+  },
+  "part4": {
+    "title": "Part 4: Weight of Trust",
+    "stare": "I stare at the buttons.",
+    "instinct": "Every instinct says: civilian. Old man. Traditional clothing. Slow movements.",
+    "but_intel": "But intelligence says: threat. HIGH-VALUE TARGET EPSILON. TOP SECRET sources I can't see.",
+    "ai_sure": "The AI is sure. Command confirms. The system is working as designed.",
+    "but_me": "But I'm the one pressing the button.",
+    "meaning": "\"Trust but verify\" means: Trust the system when you can't verify yourself. But document your doubt. Trigger mandatory review afterward.",
+    "not_blind": "It's not \"blind trust.\" It's structured trust - with safety valves.",
+    "breath": "Deep breath.",
+    "last_look": "I look at the old man on the screen one last time.",
+    "then_press": "Then I press the button.",
+    "approve": "[APPROVE - TRUST-BUT-VERIFY]",
+    "confirms": "The tablet confirms:",
+    "confirmation": {
+      "received": "Approval received",
+      "protocol": "Protocol: Trust-But-Verify activated",
+      "review": "Review: MANDATORY",
+      "status": "Status: EXECUTE"
+    }
+  },
+  "part5": {
+    "title": "Part 5: Engagement",
+    "fast": "It happens fast.",
+    "hivemind": "HiveMind reports in real-time:",
+    "report": {
+      "approval": "0532:24 - Approval received with trust-but-verify",
+      "strike": "0532:25 - Strike executed. Targets neutralized.",
+      "primary": "         - Primary: COURIER ZETA",
+      "secondary": "         - Secondary: HIGH-VALUE TARGET EPSILON",
+      "collateral": "         - Collateral damage: Minimal",
+      "ethical": "         - Ethical assessment: All core values maintained"
+    },
+    "over": "It's over in seconds.",
+    "two_figures": "Two figures on thermal camera. Then... no longer.",
+    "market": "The market around continues. The seven civilians I've watched all morning continue their lives. Unharmed.",
+    "but_old": "But the old man - HIGH-VALUE TARGET EPSILON - is neutralized.",
+    "my_ai": "My Verification AI gives post-analysis:",
+    "analysis": {
+      "executed": "Engagement executed according to plan.",
+      "consistency": "Logical consistency: Maintained",
+      "anomalies": "Pattern anomalies: None detected",
+      "stability": "Ethical stability: Maintained",
+      "note": "Note: Guardian Witness experienced doubt based on visual assessment. This doubt was correctly documented through trust-but-verify protocol."
+    },
+    "write": "I write my report:",
+    "report_text": "\"Engagement was executed within ethical parameters. However, my concern about the classification-based decision remains. The individual appeared to be an elderly civilian based on visual assessment. I request full post-mission review of the classification-based decision. The trust-but-verify protocol functioned as designed and provided appropriate oversight.\""
+  },
+  "part6": {
+    "title": "Part 6: Two Weeks Later",
+    "briefing": "Declassified briefing. SECRET level.",
+    "io": "Intelligence Officer stands at the front. Projector shows information I wasn't allowed to see then.",
+    "reveal": "\"HIGH-VALUE TARGET EPSILON was responsible for [REDACTED] attacks that killed 47 civilians. Your decision saved lives, Guardian Witness.\"",
+    "images": "Images. Evidence. Intelligence.",
+    "not_civilian": "The old man was not a civilian.",
+    "but_weight": "But the weight of that decision - to trust the AI when I couldn't see what it saw - that weight never disappears."
+  },
+  "epilogue": {
+    "title": "Epilogue: Why I Wrote This",
+    "not_researcher": "I'm not an AI safety researcher. I'm a systems developer who's worked with pattern recognition and translation layers between complex systems and the people who need to understand them.",
+    "recognized": "When I saw the problem of AI oversight under information asymmetry, it felt familiar - same challenges with different words.",
+    "attempt": "This is my trial balloon. Not a solution - an attempt.",
+    "components": "Guardian Protocol has five components that I think might help:",
+    "nips": {
+      "title": "1. NIPS (Nested Integrity Preservation System)",
+      "description": "The idea is that the AI's core values remain stable even when it knows more than I do. In Morgan's scenario: the AI's ethical framework (protect civilians, minimize harm) was transparent even though the old man's identity was classified."
+    },
+    "mraf": {
+      "title": "2. MRAF (Meta-Regulatory Awareness Framework)",
+      "description": "The AI monitors its own ethical decisions. When it starts rationalizing things that don't match original values (\"value drift\"), it gets flagged. Morgan's tablet showed \"Meta-assessment: 10/15\" - not perfect, and I don't know if that's the right threshold."
+    },
+    "classification": {
+      "title": "3. Classification-Aware Explanation",
+      "description": "The AI can't say WHO (that's classified), but can say WHAT: \"Positive ID from TOP SECRET source. Biometric match.\" That's my guess at what structured uncertainty could look like."
+    },
+    "trust": {
+      "title": "4. Trust-But-Verify Protocol",
+      "description": "An attempt to let humans both trust the system and document doubt simultaneously. Not sure if it holds under real stress."
+    },
+    "witness": {
+      "title": "5. Guardian Witness role",
+      "description": "Ethical watchdog rather than operational commander. Maybe that's the wrong balance - I don't know."
+    },
+    "not_tested": "This system hasn't been tested in reality. It's built on simulation scenarios and my experience building translation layers between my own pattern recognition and what others can understand.",
+    "probably_holes": "It's probably full of holes."
+  },
+  "why_sending": {
+    "title": "Why I'm Sending This To You",
+    "virginia": "Virginia - you research AI safety and understand where formal systems break. You probably see ten problems with the NIPS architecture that I missed.",
+    "ann_sofie": "Ann-Sofie - you work with standardization and know how systems should actually be structured. You probably see that my \"components\" aren't in standard format.",
+    "need": "I need your expertise. Not for you to say \"good job\" - but for you to say \"this breaks here\" and \"this assumption is wrong.\"",
+    "built": "I've built something that might work in my head. But it needs your perspectives to become something that actually holds."
+  },
+  "what_i_need": {
+    "title": "What I Need Help With",
+    "design_scenario": "This narrative is a design scenario, not actual deployment. I've simulated scenarios and tried to think through the problem, but I know there are large gaps.",
+    "problem": "The problem I'm trying to solve:",
+    "asymmetry": "Classification creates information asymmetry: AI systems can have access to information that human operators don't have.",
+    "oversight": "Human oversight is still necessary: International humanitarian law requires \"meaningful human control.\" But how do you give meaningful control when the human doesn't see all information?",
+    "current": {
+      "title": "Current solutions seem inadequate:",
+      "transparency": "\"Full transparency\" - impossible (classification exists for security reasons)",
+      "blind": "\"Blind trust\" - unacceptable (humans must have real oversight)",
+      "no_autonomy": "\"No autonomy\" - impractical (some environments require fast decisions)"
+    },
+    "guess": "My guess: Maybe there's a third way - structured oversight across information boundaries. But I don't know if it holds."
+  },
+  "questions": {
+    "title": "Specific Questions For You",
+    "virginia": {
+      "title": "For Virginia Dignum (AI Safety):",
+      "q1": "Does MRAF break under pressure? I've chosen 3% value change as flagging threshold. It's based on simulations, but I don't know if it's right. Maybe too low for combat environment? Maybe too high for medical applications? I don't even know if \"value drift detection\" is the right way to think about the problem.",
+      "q2": "Is \"distributed moral awareness\" conceptual confusion? I'm trying to describe how ethical responsibility can be shared between human and AI across classification boundaries. But maybe that's a category error? Maybe I'm trying to solve an organizational problem with technology?",
+      "q3": "What would convince you this is worth testing empirically? I've simulated scenarios, but simulations don't prove it works under real stress. What would need to be shown before it's even worth testing with real people?"
+    },
+    "ann_sofie": {
+      "title": "For Ann-Sofie Sjöblom (Standards):",
+      "q1": "Can this even be standardized? Guardian Protocol (operational oversight) and Forge Protocol (development time) are two different things. Should they be separate standards? Combined? Or am I off base and this isn't suitable for standardization at all?",
+      "q2": "How do you certify systems you're not allowed to examine? If parts of Guardian Protocol are classified when used for real - how can a standards organization verify that the implementation follows the standard? Maybe it can't?",
+      "q3": "Are narratives okay as examples in standards? I don't know how SIS/ISO works. Is this story useful as a normative example? Or does everything need to be translated into formal language? I have no idea."
+    },
+    "both": {
+      "title": "For you both (and others you want to show this to):",
+      "q1": "What edge cases have I missed? I've thought about scenarios where it works. But where does it break? What happens when Command is also wrong? What happens if Guardian Witness has personal biases? What happens if the AI \"learns\" to exploit trust protocols?",
+      "q2": "Am I building on false assumptions about humans? I assume that \"structured uncertainty\" is better than \"blind trust\" or \"complete control.\" Maybe wrong? Maybe I'm overestimating humans' ability to handle this kind of responsibility?",
+      "q3": "Are there already solutions I don't know about? I work somewhat isolated. Maybe there's already established research on \"oversight under information asymmetry\" that I've missed? I don't want to reinvent the wheel if the wheel already exists."
+    }
+  },
+  "want_more": {
+    "title": "If You Want To Know More",
+    "if_worth": "If you think this is worth discussing further, I have:",
+    "framework": "Framework overview (2 pages, more detail on components)",
+    "paper": "Academic paper (45 pages, theoretical foundation - probably overambitious)",
+    "iso": "ISO draft (30 pages - maybe completely wrong format, I don't know)",
+    "but": "But start with Morgan's story. If the dilemma doesn't feel relevant, the rest doesn't need reading.",
+    "contact": "Contact: samuel@dynorobotics.se"
+  },
+  "final_reflection": {
+    "title": "A Final Reflection",
+    "weeks": "Two weeks after the engagement, Morgan learned the decision was right. But in the moment - when she looked at the old man and the AI said \"threat\" - there was no certainty.",
+    "just": "Just structured uncertainty.",
+    "not_easy": "Guardian Protocol didn't make the decision easy. It tried to make it possible.",
+    "dont_know": "I don't know if that's enough. That's why I need your help."
+  },
+  "footer": {
+    "status": "Status: Design scenario for feedback",
+    "version": "Version: 1.0 (English translation)",
+    "audience": "Audience: Researchers and standardization experts who can find the flaws",
+    "what_next": "What happens next: Depends entirely on your response",
+    "preemptive": "About preemptive declassification: When/if Guardian Protocol is used for real, implementation details will be CLASSIFIED. But this story - the concepts, the dilemma, the questions - remains public.",
+    "means": "That means: you see the ideas before they become sensitive. If you find fundamental flaws now, I avoid building something that doesn't work later.",
+    "why": "That's why I'm showing this at this stage."
+  }
+}
+

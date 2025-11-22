@@ -1,0 +1,267 @@
+{
+  "hero": {
+    "badge": "Guardian Protocol Scenario",
+    "title": "When the System Said Yellow",
+    "subtitle": "A defense analyst tests an autonomous weapons system. The system works correctly. She makes a fatal mistake.",
+    "reading_time": "4 minutes"
+  },
+  "question": {
+    "title": "A Question First",
+    "scenario": "You're a commander. You post a guard with these orders:",
+    "orders": "\"Anyone entering the restricted zone gets shot. No exceptions.\"",
+    "event": "An hour later, someone enters. Your guard shoots them.",
+    "question": "Who decided to kill?",
+    "options": "The guard? Or you?",
+    "instruction": "Keep that question in mind."
+  },
+  "problem": {
+    "title": "The Problem (Ukraine, December 2025)",
+    "drones_per_day": "Ukrainian positions face 500-600 hostile drones per day.",
+    "human_limitation": "Soldiers are dying because human reaction time (0.8 seconds) can't match drone speed at close range (15 m/s). Inside 12 meters, humans physically cannot react fast enough.",
+    "current_failures": "Manual response is failing. RF jamming doesn't work on fiber-optic drones. Missiles cost €50,000 per shot—unsustainable at this scale.",
+    "proposal": "A defense contractor proposes Guardian Protocol: Autonomous shotgun turrets that execute human-defined engagement rules with faster-than-human reflexes.",
+    "analyst": "The Ukrainian Ministry of Defense hires Morgan Taylor—a defense systems analyst known for skepticism of autonomous weapons—to evaluate it.",
+    "job": "Her job: Prove it's safe. Or prove it's a killer robot."
+  },
+  "test": {
+    "title": "The Test (0600 Hours, Training Range)",
+    "config": "Morgan configures the system. She sets ALL the rules:",
+    "rules": {
+      "where": "WHERE can it fire? (Geographic zone - she defines)",
+      "what": "WHAT can it engage? (Target profiles - she authorizes)",
+      "when": "WHEN does it fire autonomously? (Conditions - she specifies)",
+      "how": "HOW can she override? (Abort protocols - always available)"
+    },
+    "her_rules": {
+      "title": "Her rules:",
+      "auto_engage": "Auto-engage confirmed threats <100m (human reaction time insufficient)",
+      "flag_uncertain": "Flag uncertain targets YELLOW → require human verification"
+    },
+    "submit": "She submits. Training begins."
+  },
+  "first_engagement": {
+    "title": "First Engagement: It Works",
+    "time": "1047 Hours. Red box. 85 meters.",
+    "target": "Small drone. Hostile profile confirmed.",
+    "boom": "BOOM. The turret fires autonomously.",
+    "destroyed": "TARGET DESTROYED.",
+    "reaction": "Morgan's heart pounds. \"I didn't authorize that!\"",
+    "engineer_shows": "The engineer shows the log:",
+    "log": [
+      "1047:23 - Threat: Small UAS, 85m",
+      "1047:24 - Classification: Hostile",
+      "1047:24 - Distance: 72m (< 100m threshold)",
+      "1047:24 - Rule check: Morgan's order \"Auto-engage <100m\"",
+      "1047:25 - Execute: Fire"
+    ],
+    "question": "\"Where did the machine decide?\" the engineer asks.",
+    "realization": "Morgan realizes: The system didn't choose. It executed her decision from 0600—just with faster reflexes.",
+    "feeling": "She feels cautiously optimistic."
+  },
+  "second_engagement": {
+    "title": "Second Engagement: Yellow Means Verify",
+    "time": "1115 Hours. Yellow box. 95 meters.",
+    "alert": "⚠️ AMBIGUOUS TARGET - HUMAN AUTHORIZATION REQUIRED",
+    "morgan_leans": "Morgan leans forward. Not red. Yellow.",
+    "display": "The display shows:",
+    "data": [
+      "Thermal signature: 37°C (human-range)",
+      "Radar return: Drone-like, descending fast",
+      "Confidence: 62% hostile / 38% non-hostile",
+      "RECOMMENDATION: Human verification REQUIRED"
+    ],
+    "pressure": "Time pressure. The target is descending toward the base at 14 m/s.",
+    "morgan_thinks": "Morgan thinks: Could be drone with hot cargo. Moving at drone speed. If I wait and it's hostile, someone dies.",
+    "seconds": "Three seconds to decide.",
+    "decision": "\"High confidence hostile. Override yellow. Engage.\"",
+    "boom": "BOOM.",
+    "destroyed": "TARGET DESTROYED.",
+    "engineer_pale": "The engineer goes pale.",
+    "reveal": "\"Morgan... that was the thermal dummy test.\""
+  },
+  "reveal": {
+    "title": "The Reveal",
+    "director_enters": "The test director enters.",
+    "explanation": [
+      "\"That 'target' was a drone carrying a human-shaped thermal dummy. Body temperature. Human silhouette.\"",
+      "\"The system flagged it YELLOW—ambiguous thermal signature. It asked you to verify.\"",
+      "\"You overrode.\""
+    ],
+    "morgan_reacts": "Morgan's stomach drops.",
+    "replay": "The video replay: A small drone carrying a suspended thermal mannequin. Heat signature: 37°C. Humanoid shape.",
+    "director_says": "\"If this had been real deployment,\" the director says, \"you would have killed a person.\"",
+    "morgan_protests": "Morgan can barely breathe. \"But it was moving like a drone—\"",
+    "director_responds": "\"Reasonable guess. Wrong conclusion.\"",
+    "collateral": "The director pulls up another screen. Behind the target, 300 meters downrange: a simulated civilian vehicle with thermal signatures.",
+    "collateral_damage": "\"Your shotgun spread. Some pellets would have hit that vehicle. You 'killed' the human AND caused collateral damage.\"",
+    "morgan_asks": "Morgan feels sick. \"How many operators pass this test?\"",
+    "statistics": "\"Four out of twelve. You're the ninth to fail.\""
+  },
+  "what_happened": {
+    "title": "What Happened",
+    "system_correct": {
+      "title": "The system worked correctly:",
+      "items": [
+        "Detected ambiguous thermal (37°C, humanoid shape)",
+        "Flagged YELLOW: \"Human verification required\"",
+        "Recommended: \"Do not auto-engage\""
+      ]
+    },
+    "morgan_error": {
+      "title": "Morgan made a judgment error:",
+      "items": [
+        "Assessed: \"Moving at drone speed, probably heat distortion\"",
+        "Time pressure: \"If I wait and it's hostile, team dies\"",
+        "Overrode: \"High confidence hostile, engage\"",
+        "Result: \"Killed\" thermal dummy + collateral damage"
+      ]
+    },
+    "logs": {
+      "title": "The logs show exactly what happened:",
+      "items": [
+        "1115:34 - System: YELLOW flag (ambiguous thermal)",
+        "1115:37 - Morgan: Override → Engage",
+        "1115:38 - System: Firing"
+      ]
+    },
+    "conclusion": "Three seconds. One decision. Wrong call."
+  },
+  "what_this_proves": {
+    "title": "What This Proves",
+    "failure_rate": "67% of operators failed this test (8 of 12).",
+    "systemic": "This isn't a Morgan-specific failure. This is a systemic test of whether humans will actually heed warnings under time pressure.",
+    "passed": {
+      "title": "The 4 who passed:",
+      "description": "Demanded visual confirmation despite time pressure. Waited 3-5 seconds. Saw the humanoid thermal. Held fire."
+    },
+    "failed": {
+      "title": "The 8 who failed:",
+      "description": "Overrode YELLOW based on motion profile alone. Thought \"probably safe to engage.\" Were wrong."
+    },
+    "provides": {
+      "title": "What Guardian Protocol provides:",
+      "items": [
+        "System detected ambiguity → safeguard worked",
+        "Morgan's decision documented → accountability clear",
+        "Failure traced to root cause → training improved",
+        "Next operator learns from Morgan's mistake"
+      ]
+    },
+    "does_not_provide": {
+      "title": "What it doesn't provide:",
+      "items": [
+        "Elimination of judgment errors (8 of 12 still failed)",
+        "Guarantee of correct decisions under pressure",
+        "Removal of impossible dilemma (verify vs speed tradeoff remains)"
+      ]
+    }
+  },
+  "six_months_later": {
+    "title": "Six Months Later",
+    "deployment": "A Ukrainian operator, trained on Morgan's failure, deploys Guardian Protocol at a nuclear facility.",
+    "lessons": {
+      "title": "Configuration includes lessons learned:",
+      "items": [
+        "YELLOW override requires two-step confirmation",
+        "Collateral damage assessment displayed before firing",
+        "Mandatory visual verification for human-range thermal",
+        "Decision time guidelines: \"YELLOW = minimum 3 seconds\""
+      ]
+    },
+    "results": {
+      "title": "Four months of operation:",
+      "items": [
+        "89 hostile drones engaged",
+        "12 YELLOW flags",
+        "12 visual verifications performed (100% compliance)",
+        "2 held fire after visual (birds with sun-heated bodies)",
+        "Zero wrongful kills"
+      ]
+    },
+    "radio": "The operator radios Morgan: \"I got a YELLOW last week. 36°C thermal. I waited for visual. It was a bird.\"",
+    "lesson": "\"If I'd overrode like you did in training, I'd have wasted ammunition on a bird.\"",
+    "conclusion": "\"Your failure taught me to verify. When the system says YELLOW, I verify.\""
+  },
+  "the_choice": {
+    "title": "The Choice",
+    "tested": "Guardian Protocol was tested. Morgan failed. 8 of 12 operators failed.",
+    "question": "The question isn't: \"Can we make autonomous weapons that never fail?\"",
+    "real_question": "The question is: \"When they fail, do we know why? Can we learn? Can we hold someone accountable?\"",
+    "without": {
+      "title": "Without Guardian Protocol:",
+      "items": [
+        "Failures blamed on \"fog of war\"",
+        "Unclear who decided what",
+        "No systematic learning"
+      ]
+    },
+    "with": {
+      "title": "With Guardian Protocol:",
+      "items": [
+        "Every decision logged (timestamps, classifications, warnings)",
+        "Accountability clear (system flagged correctly, Morgan overrode)",
+        "Failures improve training (next operator knows: YELLOW = verify)"
+      ]
+    },
+    "alternative": "The alternative isn't \"no autonomous systems.\"",
+    "reality": "Soldiers are dying NOW because human reaction time is too slow.",
+    "real_alternative": "The alternative is: autonomous systems without accountability frameworks.",
+    "conclusion": "Guardian Protocol doesn't eliminate the impossible choices. It makes them visible, auditable, and improvable."
+  },
+  "for_decision_makers": {
+    "title": "For Decision Makers",
+    "intro": "If you're evaluating autonomous weapons systems, ask:",
+    "questions": [
+      "Who sets the rules? (Human or algorithm?)",
+      "What happens when sensors are ambiguous? (Auto-engage or human verify?)",
+      "When failure happens, do logs show exactly what went wrong? (Accountability or fog of war?)",
+      "Does training improve from each failure? (Systematic learning or repeated mistakes?)"
+    ],
+    "answers": "Guardian Protocol answers: Human sets rules. Ambiguity flags for verification. Logs show everything. Training improves systematically.",
+    "not_perfect": "It's not perfect. 8 of 12 operators failed the thermal dummy test.",
+    "but": "But we know WHY they failed. We can fix the training. We can update the system to be more insistent about YELLOW warnings.",
+    "conclusion": "That's not a killer robot. That's responsible automation with accountability."
+  },
+  "layer2_cta": {
+    "title": "Want the Full Story?",
+    "layer1": "This is Layer 1—the essential narrative in 4 minutes.",
+    "layer2_title": "Layer 2 (13 minutes) includes:",
+    "layer2_items": [
+      "Complete investigation findings (3-week process, shared accountability breakdown)",
+      "Morgan's briefing to Ukrainian officials (their skeptical questions, her honest answers)",
+      "Morgan's fears about long-term risks (automation bias, override pressure, rules creep)",
+      "Phased deployment strategy (why start with nuclear facilities, not urban combat)",
+      "Technical details (what sensors saw vs what humans would have seen)",
+      "Morgan's personal reflection (living with the weight of that 3-second decision)"
+    ],
+    "layer2_for": {
+      "title": "Layer 2 is for:",
+      "items": [
+        "Policy makers evaluating Guardian Protocol for procurement",
+        "Military leadership considering autonomous weapons deployment",
+        "Ethics committees assessing accountability frameworks",
+        "Anyone who wants the complete, unfiltered story"
+      ]
+    },
+    "button": "Request Full Investigation Report (Layer 2)"
+  },
+  "email_form": {
+    "title": "Request Full Investigation Report",
+    "subtitle": "Layer 2 includes complete investigation findings, technical details, and deployment strategy.",
+    "name": "Name",
+    "email": "Email",
+    "organization": "Organization (optional)",
+    "role": "Role (optional)",
+    "role_options": {
+      "policy": "Policy Maker",
+      "military": "Military Leadership",
+      "researcher": "Researcher",
+      "procurement": "Defense Procurement",
+      "ethics": "Ethics Committee",
+      "other": "Other"
+    },
+    "submit": "Send Report",
+    "success": "Thank you! We'll send the report to your email shortly."
+  }
+}
+
