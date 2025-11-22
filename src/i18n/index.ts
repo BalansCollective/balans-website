@@ -30,6 +30,9 @@ i18next
       lookupLocalStorage: 'balans-language',
     },
     
+    // Force Swedish as default even if browser prefers English
+    lng: 'sv',
+    
     // Development options
     debug: import.meta.env.DEV,
     
