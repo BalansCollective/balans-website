@@ -68,7 +68,7 @@
       "items": [
         "Phase 1: Physical access control, single-tenant",
         "Phase 2: Biometrics + intrusion protection",
-        "Data diodes: RED → ORANGE → YELLOW → GREEN",
+        "Data diodes: GREEN → YELLOW → ORANGE → RED (one-way in)",
         "Separate networks per classification level"
       ]
     },

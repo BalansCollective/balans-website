@@ -68,7 +68,7 @@
       "items": [
         "Phase 1: Fysisk access control, single-tenant",
         "Phase 2: Biometrics + intrångsskydd",
-        "Data diodes: RED → ORANGE → YELLOW → GREEN",
+        "Data diodes: GREEN → YELLOW → ORANGE → RED (one-way in)",
         "Separata nätverk per klassificeringsnivå"
       ]
     },
