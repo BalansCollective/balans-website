@@ -1,0 +1,104 @@
+{
+  "hero": {
+    "badge": "Design Methodology",
+    "title": "Narrative-Driven Design",
+    "subtitle": "Vi designar AI-säkerhetssystem genom berättelser om omöjliga beslut. Här är varför."
+  },
+  "why": {
+    "title": "Varför Narrativ?",
+    "paragraph1": "Traditionella AI-säkerhetssystem designas med specifikationer, test suites och formella metoder. Detta fungerar för tekniska krav. Men etiska dilemman existerar inte i specifikationer.",
+    "quote": "Hur vet du att ditt AI-säkerhetssystem fungerar när människan och AI:n har olika information? När klassificering skapar asymmetri? När tid tvingar beslut innan fullständig verifiering?",
+    "paragraph2": "Du testar det genom att sätta människor i scenariot - inte abstrakt, utan konkret. Vad ser de? Vad vet AI:n? Vad måste de besluta? Vad känner de?",
+    "paragraph3": "Detta är inte storytelling för marknadsföring. Detta är narrative stress-testing som design-metod. Vi bygger inte AI-system och testar dem sen. Vi skriver berättelser om omöjliga beslut först - och upptäcker vad systemet måste hantera."
+  },
+  "process": {
+    "title": "Processen: Från Narrativ till Ramverk",
+    "step1": {
+      "title": "Identifiera Det Omöjliga Beslutet",
+      "description": "Vad är situationen där både att godkänna AI:n och att stoppa AI:n känns fel? Var är informationsasymmetrin? Var är tidspressen? Var är de etiska spänningarna?",
+      "example_label": "Exempel",
+      "example": "Morgan ser en äldre civil. AI:n säger \"hot\" baserat på TOP SECRET-information. Vad beslutar Morgan när hon inte kan verifiera vad AI:n ser?"
+    },
+    "step2": {
+      "title": "Skriv Narrativet Från Människans Perspektiv",
+      "description": "Inte abstrakt \"Guardian Witness observerar.\" Utan: Vad ser Morgan på skärmen? Vad känner hon i kroppen? Vilka knappar finns? Vad säger Command? Konkret. Sensoriskt. Emotionellt.",
+      "example_label": "Varför",
+      "example": "Abstraktioner döljer design-problem. \"System provides transparency\" säger ingenting. \"Morgan ser 'CLASSIFICATION NOTICE' men inte VAD som är klassificerat\" visar exakt vad systemet måste kommunicera."
+    },
+    "step3": {
+      "title": "Extrahera System-Krav Från Narrativet",
+      "description": "Varje gång Morgan behöver något i berättelsen - det är ett system-krav. Varje tvivel hon känner - det är ett design-gap. Varje beslut hon måste ta - det är en interface-design-fråga.",
+      "example_label": "Upptäckt",
+      "example": "Morgan behöver sin egen Verification AI (inte bara HiveMind) för att dubbelkolla logisk konsistens. Detta blev MRAF-komponenten i Guardian Protocol."
+    },
+    "step4": {
+      "title": "Implementera Ramverket",
+      "description": "Nu - och först nu - skriver vi tekniska specifikationer. Men de är grundade i vad Morgan behövde i scenariot, inte i abstrakta \"best practices.\"",
+      "example_label": "Resultat",
+      "example": "Guardian Protocol (NIPS, MRAF, Classification-Aware Explanation, Trust-But-Verify, Guardian Witness-rollen) - alla extraherade från Morgans narrativ."
+    },
+    "step5": {
+      "title": "Stress-Testa Med Nya Narrativ",
+      "description": "Skriv fler omöjliga berättelser. Morgans gör rätt beslut - men vad händer när Guardian Witness har bias? När Command också har fel? När AI:n lär sig utnyttja protokoll? Varje ny berättelse hittar nya gaps.",
+      "example_label": "Iteration",
+      "example": "Detta är iterativ design. Narrativ → Ramverk → Nya narrativ → Uppdaterat ramverk. Vi publicerar båda - berättelserna OCH ramverken - så experter kan hitta felen vi missat."
+    }
+  },
+  "benefits": {
+    "title": "Varför Fungerar Detta?",
+    "benefit1": {
+      "icon": "🎯",
+      "title": "Exponerar Dolda Antaganden",
+      "description": "Specifikationer säger \"system shall provide transparency.\" Narrativ tvingar dig att definiera: Transparens till vem? Om vad? När? Antaganden som var implicita blir explicita."
+    },
+    "benefit2": {
+      "icon": "🧪",
+      "title": "Testbar Innan Implementation",
+      "description": "Du kan ge Morgans berättelse till en faktisk soldat och fråga: \"Skulle du kunna fatta det beslutet med denna information?\" Design-validering innan en rad kod skrivits."
+    },
+    "benefit3": {
+      "icon": "🤝",
+      "title": "Bjuder In Expertis",
+      "description": "AI-forskare ser formella hål. Soldater ser operativa gaps. Jurister ser legal exponering. Etiker ser moraliska dilemman. Narrativ gör din design granskbar av alla dessa perspektiv."
+    },
+    "benefit4": {
+      "icon": "📖",
+      "title": "Dokumenterar Designval",
+      "description": "När någon frågar \"varför har Guardian Protocol denna komponent?\" kan du svara: \"Läs Morgans Dilemma, Del 3.\" Designen är spårbar till de problem den löser."
+    }
+  },
+  "collection": {
+    "title": "Våra Design-Narrativ",
+    "subtitle": "Varje berättelse utforskar ett omöjligt beslut och extraherar design-krav från det.",
+    "coming_soon": "Kommer snart",
+    "morgans": {
+      "tag": "Guardian Protocol",
+      "reading_time": "10 min läsning",
+      "title": "Morgans Dilemma: Den Äldre Mannen",
+      "description": "När AI-systemet vet mer än operatören kan se - hur upprätthåller vi meningsfull mänsklig kontroll? Morgan står inför ett omöjligt beslut: lita på systemet eller lita på sina ögon.",
+      "theme": "🎯 Klassificering & Informationsasymmetri",
+      "classification": "📋 UNCLASSIFIED - Designscenario",
+      "discovery_label": "Design-Upptäckt",
+      "discovery": "Narrativet extraherade 5 Guardian Protocol-komponenter: NIPS, MRAF, Classification-Aware Explanation, Trust-But-Verify, Guardian Witness-rollen.",
+      "cta": "Läs hela narrativet"
+    },
+    "medical": {
+      "tag": "Medical Ethics",
+      "title": "Läkarens Protokoll: När AI Ser Mönster Patienten Inte Berättat",
+      "description": "AI detekterar tidiga tecken på bipolär episod baserat på subtila beteendemönster. Hur kommunicerar systemet detta utan att skapa självuppfyllande profetia?"
+    },
+    "family": {
+      "tag": "Family Communication",
+      "title": "Översättarens Dilemma: När AI Förstår Mer Än Ord",
+      "description": "Weaver AI översätter mellan neurodivergent tonåring och förälder. Men när översättningen är \"för bra\" - försvinner den autentiska rösten?"
+    }
+  },
+  "cta": {
+    "title": "Hjälp Oss Hitta Felen",
+    "subtitle": "Dessa narrativ är explorativ design, inte färdiga lösningar. Om du ser edge cases vi missat, antaganden som inte stämmer, eller design-gaps - vi vill höra från dig.",
+    "primary": "Ge Feedback",
+    "secondary": "Läs Guardian Protocol",
+    "note": "Särskilt intresserade av feedback från AI-säkerhetsforskare, militär etik-experter, standardiseringsorganisationer och folk som faktiskt måste använda system som dessa."
+  }
+}
+

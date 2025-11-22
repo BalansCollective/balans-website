@@ -12,7 +12,7 @@ i18next
     supportedLngs: ['en', 'sv', 'de', 'fr', 'es', 'pl', 'nl', 'fi', 'no', 'da'],
     
     // Namespaces for domain separation
-    ns: ['common', 'homepage', 'medical', 'family', 'defense', 'red-forge', 'guardian', 'forge', 'institutional'],
+    ns: ['common', 'homepage', 'medical', 'family', 'defense', 'red-forge', 'guardian', 'forge', 'institutional', 'narratives'],
     defaultNS: 'common',
     
     backend: {

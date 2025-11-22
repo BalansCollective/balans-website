@@ -1,0 +1,104 @@
+{
+  "hero": {
+    "badge": "Design Methodology",
+    "title": "Narrative-Driven Design",
+    "subtitle": "We design AI safety systems through stories about impossible decisions. Here's why."
+  },
+  "why": {
+    "title": "Why Narratives?",
+    "paragraph1": "Traditional AI safety systems are designed with specifications, test suites and formal methods. This works for technical requirements. But ethical dilemmas don't exist in specifications.",
+    "quote": "How do you know your AI safety system works when the human and AI have different information? When classification creates asymmetry? When time forces decisions before complete verification?",
+    "paragraph2": "You test it by putting people in the scenario - not abstractly, but concretely. What do they see? What does the AI know? What must they decide? What do they feel?",
+    "paragraph3": "This is not storytelling for marketing. This is narrative stress-testing as design method. We don't build AI systems and test them later. We write stories about impossible decisions first - and discover what the system must handle."
+  },
+  "process": {
+    "title": "The Process: From Narrative to Framework",
+    "step1": {
+      "title": "Identify The Impossible Decision",
+      "description": "What is the situation where both approving the AI and stopping the AI feels wrong? Where is the information asymmetry? Where is the time pressure? Where are the ethical tensions?",
+      "example_label": "Example",
+      "example": "Morgan sees an elderly civilian. The AI says \"threat\" based on TOP SECRET information. What does Morgan decide when she can't verify what the AI sees?"
+    },
+    "step2": {
+      "title": "Write The Narrative From Human Perspective",
+      "description": "Not abstract \"Guardian Witness observes.\" But: What does Morgan see on screen? What does she feel in her body? What buttons exist? What does Command say? Concrete. Sensory. Emotional.",
+      "example_label": "Why",
+      "example": "Abstractions hide design problems. \"System provides transparency\" says nothing. \"Morgan sees 'CLASSIFICATION NOTICE' but not WHAT is classified\" shows exactly what the system must communicate."
+    },
+    "step3": {
+      "title": "Extract System Requirements From Narrative",
+      "description": "Every time Morgan needs something in the story - it's a system requirement. Every doubt she feels - it's a design gap. Every decision she must make - it's an interface design question.",
+      "example_label": "Discovery",
+      "example": "Morgan needs her own Verification AI (not just HiveMind) to double-check logical consistency. This became the MRAF component in Guardian Protocol."
+    },
+    "step4": {
+      "title": "Implement The Framework",
+      "description": "Now - and only now - do we write technical specifications. But they are grounded in what Morgan needed in the scenario, not in abstract \"best practices.\"",
+      "example_label": "Result",
+      "example": "Guardian Protocol (NIPS, MRAF, Classification-Aware Explanation, Trust-But-Verify, Guardian Witness role) - all extracted from Morgan's narrative."
+    },
+    "step5": {
+      "title": "Stress-Test With New Narratives",
+      "description": "Write more impossible stories. Morgan makes the right decision - but what happens when Guardian Witness has bias? When Command is also wrong? When the AI learns to exploit protocols? Every new story finds new gaps.",
+      "example_label": "Iteration",
+      "example": "This is iterative design. Narrative → Framework → New narratives → Updated framework. We publish both - the stories AND the frameworks - so experts can find the flaws we missed."
+    }
+  },
+  "benefits": {
+    "title": "Why Does This Work?",
+    "benefit1": {
+      "icon": "🎯",
+      "title": "Exposes Hidden Assumptions",
+      "description": "Specifications say \"system shall provide transparency.\" Narrative forces you to define: Transparency to whom? About what? When? Assumptions that were implicit become explicit."
+    },
+    "benefit2": {
+      "icon": "🧪",
+      "title": "Testable Before Implementation",
+      "description": "You can give Morgan's story to an actual soldier and ask: \"Could you make that decision with this information?\" Design validation before a line of code is written."
+    },
+    "benefit3": {
+      "icon": "🤝",
+      "title": "Invites Expertise",
+      "description": "AI researchers see formal holes. Soldiers see operational gaps. Lawyers see legal exposure. Ethicists see moral dilemmas. Narrative makes your design reviewable by all these perspectives."
+    },
+    "benefit4": {
+      "icon": "📖",
+      "title": "Documents Design Choices",
+      "description": "When someone asks \"why does Guardian Protocol have this component?\" you can answer: \"Read Morgan's Dilemma, Part 3.\" The design is traceable to the problems it solves."
+    }
+  },
+  "collection": {
+    "title": "Our Design Narratives",
+    "subtitle": "Each story explores an impossible decision and extracts design requirements from it.",
+    "coming_soon": "Coming soon",
+    "morgans": {
+      "tag": "Guardian Protocol",
+      "reading_time": "10 min read",
+      "title": "Morgan's Dilemma: The Elderly Man",
+      "description": "When the AI system knows more than the operator can see - how do we maintain meaningful human control? Morgan faces an impossible decision: trust the system or trust her eyes.",
+      "theme": "🎯 Classification & Information Asymmetry",
+      "classification": "📋 UNCLASSIFIED - Design Scenario",
+      "discovery_label": "Design Discovery",
+      "discovery": "The narrative extracted 5 Guardian Protocol components: NIPS, MRAF, Classification-Aware Explanation, Trust-But-Verify, Guardian Witness role.",
+      "cta": "Read full narrative"
+    },
+    "medical": {
+      "tag": "Medical Ethics",
+      "title": "The Doctor's Protocol: When AI Sees Patterns The Patient Hasn't Told",
+      "description": "AI detects early signs of bipolar episode based on subtle behavioral patterns. How does the system communicate this without creating self-fulfilling prophecy?"
+    },
+    "family": {
+      "tag": "Family Communication",
+      "title": "The Translator's Dilemma: When AI Understands More Than Words",
+      "description": "Weaver AI translates between neurodivergent teenager and parent. But when the translation is \"too good\" - does the authentic voice disappear?"
+    }
+  },
+  "cta": {
+    "title": "Help Us Find The Flaws",
+    "subtitle": "These narratives are exploratory design, not finished solutions. If you see edge cases we missed, assumptions that don't hold, or design gaps - we want to hear from you.",
+    "primary": "Give Feedback",
+    "secondary": "Read Guardian Protocol",
+    "note": "Especially interested in feedback from AI safety researchers, military ethics experts, standardization organizations and people who actually have to use systems like these."
+  }
+}
+

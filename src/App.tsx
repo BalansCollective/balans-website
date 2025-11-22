@@ -5,6 +5,7 @@ import { DefensePage } from './pages/website/DefensePage';
 import RedForgePage from './pages/website/RedForgePage';
 import { GuardianProtocolPage } from './pages/website/GuardianProtocolPage';
 import { ForgeProtocolPage } from './pages/website/ForgeProtocolPage';
+import NarrativesPage from './pages/website/NarrativesPage';
 import { MedicalDashboardPage } from './pages/MedicalDashboardPage';
 import './i18n'; // Initialize i18n
 import './App.css';
@@ -19,6 +20,7 @@ function App() {
         <Route path="/red-forge" element={<RedForgePage />} />
         <Route path="/guardian-protocol" element={<GuardianProtocolPage />} />
         <Route path="/forge-protocol" element={<ForgeProtocolPage />} />
+        <Route path="/narratives" element={<NarrativesPage />} />
         <Route path="/medical-dashboard" element={<MedicalDashboardPage />} />
       </Routes>
     </Router>
