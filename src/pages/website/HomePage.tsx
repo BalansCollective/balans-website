@@ -215,33 +215,30 @@ export function HomePage() {
             </Card>
 
             {/* Medical Product */}
-            <Card variant="elevated" className="lagom-hover group overflow-hidden flex flex-col p-0 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(44,90,160,0.15)]">
-              <div className="bg-[#f8f6f0] transition-all duration-300 group-hover:bg-gradient-to-b group-hover:from-[rgba(143,170,139,0.05)] group-hover:to-[#f8f6f0]">
-                <img 
-                  src="/images/medIcal-domain.png" 
-                  alt="Medical domain"
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="p-6 flex-grow flex flex-col">
-                <CardHeader className="p-0 mb-4">
-                  <CardTitle>{t('products.medical.title')}</CardTitle>
-                </CardHeader>
-                <CardContent className="p-0 flex-grow flex flex-col">
-                  <p className="text-gray-700 mb-4 flex-grow">
-                    {t('products.medical.description')}
-                  </p>
-                  <a 
-                    href="https://balans-collective.com/demo"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center px-6 py-3 bg-alliance-purple hover:bg-alliance-purple/90 text-white font-medium rounded-lg transition-colors w-full"
-                  >
-                    {t('products.medical.cta')} →
-                  </a>
-                </CardContent>
-              </div>
-            </Card>
+            <a href="/medical" className="block">
+              <Card variant="elevated" className="lagom-hover group overflow-hidden flex flex-col p-0 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(44,90,160,0.15)]">
+                <div className="bg-[#f8f6f0] transition-all duration-300 group-hover:bg-gradient-to-b group-hover:from-[rgba(143,170,139,0.05)] group-hover:to-[#f8f6f0]">
+                  <img 
+                    src="/images/medIcal-domain.png" 
+                    alt="Medical domain"
+                    className="w-full h-auto"
+                  />
+                </div>
+                <div className="p-6 flex-grow flex flex-col">
+                  <CardHeader className="p-0 mb-4">
+                    <CardTitle>{t('products.medical.title')}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0 flex-grow flex flex-col">
+                    <p className="text-gray-700 mb-4 flex-grow">
+                      {t('products.medical.description')}
+                    </p>
+                    <div className="inline-flex items-center justify-center px-6 py-3 bg-alliance-purple hover:bg-alliance-purple/90 text-white font-medium rounded-lg transition-colors w-full">
+                      {t('products.medical.cta')} →
+                    </div>
+                  </CardContent>
+                </div>
+              </Card>
+            </a>
 
             {/* Defense Product */}
             <a href="/defense" className="block">
