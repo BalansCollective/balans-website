@@ -107,16 +107,16 @@ export default function FamilyPage() {
   };
 
   return (
-    <div className="min-h-screen bg-warm-birch-white text-gray-800">
+    <div className="min-h-screen bg-birch-white text-gray-800">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-warm-birch-white to-natural-birch-wood/30 py-20 lg:py-32">
+      <section className="relative overflow-hidden bg-gradient-to-br from-birch-white to-birch-wood/30 py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
-                <h1 className="text-4xl lg:text-6xl font-display font-bold text-deep-swedish-blue leading-tight">
+                <h1 className="text-4xl lg:text-6xl font-display font-bold text-swedish-blue leading-tight">
                   {t('hero.title')}
                 </h1>
                 <p className="text-xl lg:text-2xl text-gray-700 leading-relaxed">
@@ -127,13 +127,13 @@ export default function FamilyPage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="/prova-weaver"
-                  className="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-sacred-alliance-purple/90 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl"
+                  className="bg-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-alliance-purple/90 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl"
                 >
                   {t('hero.cta_primary')}
                 </a>
                 <button
                   onClick={() => document.getElementById('technology')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="border-2 border-deep-swedish-blue text-deep-swedish-blue px-8 py-4 rounded-full text-lg font-semibold hover:bg-deep-swedish-blue hover:text-white transition-all duration-300"
+                  className="border-2 border-swedish-blue text-swedish-blue px-8 py-4 rounded-full text-lg font-semibold hover:bg-swedish-blue hover:text-white transition-all duration-300"
                 >
                   {t('hero.cta_secondary')}
                 </button>
@@ -173,7 +173,7 @@ export default function FamilyPage() {
       <section id="problem" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+            <h2 className="text-3xl lg:text-4xl font-display font-bold text-swedish-blue mb-6">
               {t('problem.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -183,19 +183,19 @@ export default function FamilyPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[1, 2, 3].map((num) => (
-              <div key={num} className="bg-warm-birch-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div key={num} className="bg-birch-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-center mb-6">
-                  <div className={`${num === 1 ? 'bg-sage-green/20' : num === 2 ? 'bg-soft-thread-gold/20' : 'bg-truth-anchor-copper/20'} rounded-full p-3 mr-4`}>
+                  <div className={`${num === 1 ? 'bg-sage-green/20' : num === 2 ? 'bg-thread-gold/20' : 'bg-truth-copper/20'} rounded-full p-3 mr-4`}>
                     <span className="text-3xl">
                       {num === 1 ? '💬' : num === 2 ? '👥' : '⚠️'}
                     </span>
                   </div>
-                  <h3 className="text-xl font-semibold text-deep-swedish-blue">
+                  <h3 className="text-xl font-semibold text-swedish-blue">
                     {t(`problem.challenge${num}_title`)}
                   </h3>
                 </div>
                 <p className="text-gray-600 mb-4">{t(`problem.challenge${num}_description`)}</p>
-                <div className={`text-sm font-medium ${num === 1 ? 'text-sage-green' : num === 2 ? 'text-soft-thread-gold' : 'text-truth-anchor-copper'}`}>
+                <div className={`text-sm font-medium ${num === 1 ? 'text-sage-green' : num === 2 ? 'text-thread-gold' : 'text-truth-copper'}`}>
                   → {t(`problem.challenge${num}_tag`)}
                 </div>
               </div>
@@ -205,7 +205,7 @@ export default function FamilyPage() {
       </section>
 
       {/* Weaver Character Introduction */}
-      <section id="weaver" className="py-20 bg-gradient-to-br from-warm-birch-white to-sage-green/10">
+      <section id="weaver" className="py-20 bg-gradient-to-br from-birch-white to-sage-green/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
@@ -219,7 +219,7 @@ export default function FamilyPage() {
 
             <div className="order-1 lg:order-2 space-y-8">
               <div className="space-y-4">
-                <h2 className="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue">
+                <h2 className="text-3xl lg:text-4xl font-display font-bold text-swedish-blue">
                   {t('weaver.title')}
                 </h2>
                 <p className="text-xl text-gray-600">{t('weaver.subtitle')}</p>
@@ -228,13 +228,13 @@ export default function FamilyPage() {
               <div className="space-y-6">
                 {[1, 2, 3].map((num) => (
                   <div key={num} className="flex items-start space-x-4">
-                    <div className={`${num === 1 ? 'bg-sage-green/20' : num === 2 ? 'bg-soft-thread-gold/20' : 'bg-sacred-alliance-purple/20'} rounded-full p-3 flex-shrink-0`}>
+                    <div className={`${num === 1 ? 'bg-sage-green/20' : num === 2 ? 'bg-thread-gold/20' : 'bg-alliance-purple/20'} rounded-full p-3 flex-shrink-0`}>
                       <span className="text-2xl">
                         {num === 1 ? '💬' : num === 2 ? '❤️' : '👨‍👩‍👧‍👦'}
                       </span>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-deep-swedish-blue mb-2">
+                      <h3 className="text-lg font-semibold text-swedish-blue mb-2">
                         {t(`weaver.feature${num}_title`)}
                       </h3>
                       <p className="text-gray-600">{t(`weaver.feature${num}_description`)}</p>
@@ -246,7 +246,7 @@ export default function FamilyPage() {
               <div className="pt-4">
                 <a
                   href="/prova-weaver"
-                  className="inline-block bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-sacred-alliance-purple/90 transition-all duration-300 hover:-translate-y-1 shadow-lg"
+                  className="inline-block bg-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-alliance-purple/90 transition-all duration-300 hover:-translate-y-1 shadow-lg"
                 >
                   {t('weaver.cta')}
                 </a>
@@ -257,10 +257,10 @@ export default function FamilyPage() {
       </section>
 
       {/* Core Features Section */}
-      <section id="solution" className="py-24 bg-gradient-to-br from-warm-birch-white via-white to-sage-green/5">
+      <section id="solution" className="py-24 bg-gradient-to-br from-birch-white via-white to-sage-green/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-4xl lg:text-5xl font-display font-bold text-deep-swedish-blue mb-8 leading-tight">
+            <h2 className="text-4xl lg:text-5xl font-display font-bold text-swedish-blue mb-8 leading-tight">
               {t('solution.title')}
             </h2>
             <p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
@@ -276,7 +276,7 @@ export default function FamilyPage() {
                   <div className="bg-sage-green/20 rounded-full p-4">
                     <span className="text-4xl">💬</span>
                   </div>
-                  <h3 className="text-2xl font-semibold text-deep-swedish-blue">
+                  <h3 className="text-2xl font-semibold text-swedish-blue">
                     {t('solution.feature1_title')}
                   </h3>
                 </div>
@@ -297,10 +297,10 @@ export default function FamilyPage() {
                 <div ref={chatDemoRef} id="family-chat-demo" className="bg-white rounded-2xl p-6 shadow-lg">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-3 mb-4">
-                      <div className="bg-deep-swedish-blue rounded-full p-2">
+                      <div className="bg-swedish-blue rounded-full p-2">
                         <span className="text-white text-xl">👨‍👩‍👧‍👦</span>
                       </div>
-                      <span className="font-semibold text-deep-swedish-blue">
+                      <span className="font-semibold text-swedish-blue">
                         {t('solution.chat_title')}
                       </span>
                     </div>
@@ -319,10 +319,10 @@ export default function FamilyPage() {
                 <div className="bg-white rounded-2xl p-6 shadow-lg">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-3 mb-4">
-                      <div className="bg-truth-anchor-copper rounded-full p-2">
+                      <div className="bg-truth-copper rounded-full p-2">
                         <span className="text-white text-xl">🏠</span>
                       </div>
-                      <span className="font-semibold text-deep-swedish-blue">
+                      <span className="font-semibold text-swedish-blue">
                         {t('solution.feature2_demo_title')}
                       </span>
                     </div>
@@ -336,8 +336,8 @@ export default function FamilyPage() {
                         <p className="text-gray-800 text-sm">{t('solution.feature2_example2')}</p>
                       </div>
 
-                      <div className="bg-soft-thread-gold/10 rounded-lg p-3 border-l-4 border-soft-thread-gold">
-                        <div className="text-sm font-medium text-soft-thread-gold mb-1">
+                      <div className="bg-thread-gold/10 rounded-lg p-3 border-l-4 border-thread-gold">
+                        <div className="text-sm font-medium text-thread-gold mb-1">
                           🤝 {t('solution.weaver_suggests')}
                         </div>
                         <p className="text-gray-700 text-sm">{t('solution.feature2_suggestion')}</p>
@@ -349,10 +349,10 @@ export default function FamilyPage() {
 
               <div className="order-1 lg:order-2 space-y-6">
                 <div className="flex items-center space-x-4 mb-6">
-                  <div className="bg-truth-anchor-copper/20 rounded-full p-4">
+                  <div className="bg-truth-copper/20 rounded-full p-4">
                     <span className="text-4xl">🎤</span>
                   </div>
-                  <h3 className="text-2xl font-semibold text-deep-swedish-blue">
+                  <h3 className="text-2xl font-semibold text-swedish-blue">
                     {t('solution.feature2_title')}
                   </h3>
                 </div>
@@ -372,10 +372,10 @@ export default function FamilyPage() {
           </div>
 
           <div className="text-center mt-16">
-            <a
-              href="/prova-weaver"
-              className="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-sacred-alliance-purple/90 transition-all duration-300 hover:-translate-y-1 shadow-lg"
-            >
+              <a
+                href="/prova-weaver"
+                className="bg-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-alliance-purple/90 transition-all duration-300 hover:-translate-y-1 shadow-lg"
+              >
               {t('solution.cta')}
             </a>
           </div>
@@ -386,7 +386,7 @@ export default function FamilyPage() {
       <section id="technology" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+            <h2 className="text-3xl lg:text-4xl font-display font-bold text-swedish-blue mb-6">
               {t('technology.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -396,15 +396,15 @@ export default function FamilyPage() {
 
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Balans Hosted */}
-            <div className="bg-gradient-to-br from-sacred-alliance-purple/5 to-sacred-alliance-purple/10 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-sacred-alliance-purple/20">
+            <div className="bg-gradient-to-br from-alliance-purple/5 to-alliance-purple/10 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-alliance-purple/20">
               <div className="text-center mb-6">
-                <div className="bg-sacred-alliance-purple/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                <div className="bg-alliance-purple/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
                   <span className="text-4xl">☁️</span>
                 </div>
-                <h3 className="text-2xl font-semibold text-deep-swedish-blue mb-2">
+                <h3 className="text-2xl font-semibold text-swedish-blue mb-2">
                   {t('technology.option1_title')}
                 </h3>
-                <p className="text-sacred-alliance-purple font-medium">
+                <p className="text-alliance-purple font-medium">
                   {t('technology.option1_badge')}
                 </p>
               </div>
@@ -420,7 +420,7 @@ export default function FamilyPage() {
 
               <a
                 href="/prova-weaver"
-                className="block w-full text-center bg-sacred-alliance-purple text-white px-6 py-3 rounded-full font-semibold hover:bg-sacred-alliance-purple/90 transition-all duration-300"
+                className="block w-full text-center bg-alliance-purple text-white px-6 py-3 rounded-full font-semibold hover:bg-alliance-purple/90 transition-all duration-300"
               >
                 {t('technology.option1_cta')}
               </a>
@@ -432,7 +432,7 @@ export default function FamilyPage() {
                 <div className="bg-sage-green/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
                   <span className="text-4xl">💻</span>
                 </div>
-                <h3 className="text-2xl font-semibold text-deep-swedish-blue mb-2">
+                <h3 className="text-2xl font-semibold text-swedish-blue mb-2">
                   {t('technology.option2_title')}
                 </h3>
                 <p className="text-sage-green font-medium">{t('technology.option2_badge')}</p>
@@ -446,7 +446,7 @@ export default function FamilyPage() {
                   </div>
                 ))}
                 <div className="flex items-start space-x-3">
-                  <span className="text-soft-thread-gold text-xl mt-1">⚠</span>
+                  <span className="text-thread-gold text-xl mt-1">⚠</span>
                   <span className="text-gray-700">{t('technology.option2_warning')}</span>
                 </div>
               </div>
@@ -460,15 +460,15 @@ export default function FamilyPage() {
             </div>
 
             {/* Home Appliance */}
-            <div className="bg-gradient-to-br from-truth-anchor-copper/5 to-truth-anchor-copper/10 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-truth-anchor-copper/20">
+            <div className="bg-gradient-to-br from-truth-copper/5 to-truth-copper/10 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-truth-copper/20">
               <div className="text-center mb-6">
-                <div className="bg-truth-anchor-copper/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                <div className="bg-truth-copper/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
                   <span className="text-4xl">🏠</span>
                 </div>
-                <h3 className="text-2xl font-semibold text-deep-swedish-blue mb-2">
+                <h3 className="text-2xl font-semibold text-swedish-blue mb-2">
                   {t('technology.option3_title')}
                 </h3>
-                <p className="text-truth-anchor-copper font-medium">
+                <p className="text-truth-copper font-medium">
                   {t('technology.option3_badge')}
                 </p>
               </div>
@@ -484,7 +484,7 @@ export default function FamilyPage() {
 
               <a
                 href="/prova-weaver"
-                className="block w-full text-center bg-truth-anchor-copper text-white px-6 py-3 rounded-full font-semibold hover:bg-truth-anchor-copper/90 transition-all duration-300"
+                className="block w-full text-center bg-truth-copper text-white px-6 py-3 rounded-full font-semibold hover:bg-truth-copper/90 transition-all duration-300"
               >
                 {t('technology.option3_cta')}
               </a>
@@ -495,7 +495,7 @@ export default function FamilyPage() {
             <p className="text-gray-600 mb-6">{t('technology.help_text')}</p>
             <a
               href="/hjalp-mig-valja"
-              className="border-2 border-deep-swedish-blue text-deep-swedish-blue px-8 py-3 rounded-full font-semibold hover:bg-deep-swedish-blue hover:text-white transition-all duration-300"
+              className="border-2 border-swedish-blue text-swedish-blue px-8 py-3 rounded-full font-semibold hover:bg-swedish-blue hover:text-white transition-all duration-300"
             >
               {t('technology.help_cta')}
             </a>
@@ -507,7 +507,7 @@ export default function FamilyPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-display font-bold text-deep-swedish-blue mb-6">
+            <h2 className="text-3xl lg:text-4xl font-display font-bold text-swedish-blue mb-6">
               {t('trust.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -518,13 +518,13 @@ export default function FamilyPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {[1, 2, 3].map((num) => (
               <div key={num} className="text-center">
-                <div className="bg-warm-birch-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="bg-birch-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <img 
                     src={num === 1 ? '/images/the-shield.png' : num === 2 ? '/images/balance-point.png' : '/images/family-circle.png'} 
                     alt={num === 1 ? 'Säkerhet' : num === 2 ? 'Lagom' : 'Familj'} 
                     className="h-16 w-16 mx-auto mb-6" 
                   />
-                  <h3 className="text-xl font-semibold text-deep-swedish-blue mb-4">
+                  <h3 className="text-xl font-semibold text-swedish-blue mb-4">
                     {t(`trust.feature${num}_title`)}
                   </h3>
                   <p className="text-gray-600">{t(`trust.feature${num}_description`)}</p>
@@ -536,7 +536,7 @@ export default function FamilyPage() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-20 bg-deep-swedish-blue text-white">
+      <section className="py-20 bg-swedish-blue text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
             <h2 className="text-3xl lg:text-4xl font-display font-bold">
@@ -547,11 +547,11 @@ export default function FamilyPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/prova-weaver"
-                className="bg-sacred-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-sacred-alliance-purple/90 transition-all duration-300"
+                className="bg-alliance-purple text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-alliance-purple/90 transition-all duration-300"
               >
                 {t('cta.primary')}
               </a>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-deep-swedish-blue transition-all duration-300">
+              <button className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-swedish-blue transition-all duration-300">
                 {t('cta.secondary')}
               </button>
             </div>
