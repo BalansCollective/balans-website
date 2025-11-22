@@ -8,7 +8,7 @@ i18next
   .use(LanguageDetector) // Auto-detect browser language
   .use(initReactI18next)
   .init({
-    fallbackLng: 'en',
+    fallbackLng: 'sv',
     supportedLngs: ['en', 'sv', 'de', 'fr', 'es', 'pl', 'nl', 'fi', 'no', 'da'],
     
     // Namespaces for domain separation
