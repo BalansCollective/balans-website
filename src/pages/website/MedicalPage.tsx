@@ -9,6 +9,15 @@ export function MedicalPage() {
   const [showDemo, setShowDemo] = useState(false);
   const [activeTab, setActiveTab] = useState<'timeline' | 'medicine'>('timeline');
 
+  const handleStartDemo = () => {
+    setShowDemo(true);
+    setActiveTab('timeline'); // Start with timeline
+    // Scroll to demo section after state updates
+    setTimeout(() => {
+      document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  };
+
   return (
     <div className="min-h-screen bg-birch-white">
       {/* Hero Section */}
@@ -37,7 +46,11 @@ export function MedicalPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-start">
                 <a 
                   href="#demo"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-alliance-purple hover:bg-alliance-purple/90 text-white font-medium rounded-lg transition-colors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleStartDemo();
+                  }}
+                  className="inline-flex items-center justify-center px-6 py-3 bg-sage-green hover:bg-sage-green/90 text-white font-medium rounded-lg transition-all duration-300 hover:scale-105"
                 >
                   {t('demo.start_button')}
                 </a>
@@ -136,8 +149,8 @@ export function MedicalPage() {
           {!showDemo ? (
             <div className="text-center">
               <button
-                onClick={() => setShowDemo(true)}
-                className="px-8 py-4 bg-sage-green text-white rounded-full font-bold text-lg hover:bg-sage-green/90 transition-colors shadow-lg"
+                onClick={handleStartDemo}
+                className="px-8 py-4 bg-sage-green text-white rounded-full font-bold text-lg hover:bg-sage-green/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
               >
                 {t('demo.start_button')}
               </button>
