@@ -10,24 +10,38 @@ export function MedicalPage() {
   return (
     <div className="min-h-screen bg-birch-white">
       {/* Hero Section */}
-      <section className="pt-24 py-16 px-4 bg-gradient-to-br from-birch-white to-sage-green/10">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+      <section className="alliance-pattern py-20 lg:py-32 bg-birch-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Text Left */}
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-swedish-blue mb-6">
+            <div className="space-y-8">
+              <h1 className="text-5xl lg:text-7xl font-display font-bold text-swedish-blue dark:text-swedish-blue-dark leading-tight">
                 {t('hero.title')}
               </h1>
-              <p className="text-xl text-birch-wood mb-4">
+              <p className="text-xl lg:text-2xl text-swedish-blue dark:text-swedish-blue-dark leading-relaxed opacity-80">
                 {t('hero.subtitle')}
               </p>
-              <p className="text-lg text-gray-600">
+              <p className="text-lg text-gray-700 leading-relaxed">
                 {t('hero.description')}
               </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+                <a 
+                  href="#demo"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-alliance-purple hover:bg-alliance-purple/90 text-white font-medium rounded-lg transition-colors"
+                >
+                  {t('demo.start_button')}
+                </a>
+                <a 
+                  href="mailto:samuel@dynorobotics.se?subject=Betatest BalansAI"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-transparent hover:bg-white/5 text-truth-copper border-2 border-truth-copper font-medium rounded-lg transition-colors"
+                >
+                  {t('cta.buttons.betatest')}
+                </a>
+              </div>
             </div>
             
             {/* Hero Image Right */}
-            <div>
+            <div className="relative">
               <img 
                 src="/images/medical-hero.png" 
                 alt={t('hero.title')}
@@ -35,7 +49,12 @@ export function MedicalPage() {
               />
             </div>
           </div>
+        </div>
+      </section>
 
+      {/* Quick Facts + Share Section */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
           {/* Quick Facts */}
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
             <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 text-center">
