@@ -135,7 +135,7 @@ export function MedicalPage() {
       </section>
 
       {/* Interactive Demo Section */}
-      <section className="py-20 px-4 bg-white">
+      <section id="demo" className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-swedish-blue mb-6">
