@@ -29,7 +29,7 @@ interface ChartDataPoint {
 }
 
 interface TimelineEvent {
-  type: 'protocol' | 'session' | 'medication' | 'observation';
+  type: 'anchor' | 'session' | 'medication' | 'observation';
   date: string;
   description: string;
   data: ActivationEvent | MedicationLog | FamilyObservation | TherapeuticSession;
@@ -45,25 +45,25 @@ interface TimelineDay {
 }
 
 const EVENT_PRIORITY = {
-  protocol: 10,
+  anchor: 10,
   session: 7,
   medication: 5,
   observation: 3,
 };
 
 const EVENT_COLORS = {
-  protocol: '#dc2626',
-  session: '#8b5cf6',
-  medication: '#22c55e',
-  observation: '#3b82f6',
+  anchor: '#8b5cf6', // Purple - anchoring/grounding
+  session: '#22c55e', // Green - conversation/connection  
+  medication: '#3b82f6', // Blue - biomarkers
+  observation: '#f59e0b', // Amber - awareness
 };
 
 const MEDICAL_TERMINOLOGY = {
   eventTypes: {
-    protocol: {
-      icon: '🚨',
-      label: 'BalansAI Protokoll',
-      description: 'AI-stödda interventionsprotokoll aktiverat',
+    anchor: {
+      icon: '🔗',
+      label: 'Weaver Ankare',
+      description: 'Förankringsregler aktiverade baserat på dina förvalda gränser',
     },
     session: {
       icon: '💬',
@@ -102,9 +102,9 @@ function groupEventsByDay(
     
     if (ae.level >= 8) {
       eventsByDate.get(dateStr)!.push({
-        type: 'protocol',
+        type: 'anchor',
         date: dateStr,
-        description: `BalansAI Protokoll aktiverat (nivå ${ae.level})`,
+        description: `Weaver Ankare aktiverat (nivå ${ae.level})`,
         data: ae,
       });
     }
