@@ -1,7 +1,7 @@
 {
   "hero": {
-    "title": "Familjens Vårdportal",
-    "subtitle": "Dela vårdplaner, protokoll och medicinspårning säkert inom familjen",
+    "title": "Håll Koll På Mediciner Tillsammans",
+    "subtitle": "Dela vårdplaner och spårning säkert inom familjen. Del av Balans Familj.",
     "description": "Kör lokalt på era enheter eller använd Balans Hosted backup. Familjen ser samma information i realtid."
   },
   "facts": {
@@ -22,7 +22,7 @@
     }
   },
   "share": {
-    "title": "Vad Kan Ni Dela?",
+    "title": "Vad Familjen Håller Koll På Tillsammans",
     "medication": {
       "title": "Medicinspårning",
       "description": "Tagit medicin, biverkningar, dosjusteringar"
@@ -159,7 +159,7 @@
       "item3": "Hjälpa oss förbättra verktyget för framtida användare"
     },
     "buttons": {
-      "demo": "Prova Demo Direkt",
+      "family": "Läs Om Balans Familj",
       "betatest": "Ansök Som Betatestare"
     },
     "benefits": {

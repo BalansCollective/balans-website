@@ -1,7 +1,7 @@
 {
   "hero": {
-    "title": "Family Care Portal",
-    "subtitle": "Share care plans, protocols, and medication tracking securely within the family",
+    "title": "Keep Track of Medicines Together",
+    "subtitle": "Share care plans and tracking securely within the family. Part of Balans Familj.",
     "description": "Run locally on your devices or use Balans Hosted backup. The family sees the same information in real-time."
   },
   "facts": {
@@ -22,7 +22,7 @@
     }
   },
   "share": {
-    "title": "What Can You Share?",
+    "title": "What The Family Keeps Track Of Together",
     "medication": {
       "title": "Medication Tracking",
       "description": "Taken medication, side effects, dose adjustments"
@@ -159,7 +159,7 @@
       "item3": "Help us improve the tool for future users"
     },
     "buttons": {
-      "demo": "Try Demo Now",
+      "family": "Learn About Balans Familj",
       "betatest": "Apply as Beta Tester"
     },
     "benefits": {

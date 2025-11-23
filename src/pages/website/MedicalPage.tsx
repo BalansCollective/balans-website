@@ -33,13 +33,6 @@ export function MedicalPage() {
                 {t('hero.subtitle')}
               </p>
               
-              {/* Context Banner */}
-              <div className="p-4 rounded-xl bg-sage-green/10 border-2 border-sage-green/30">
-                <p className="text-sm text-swedish-blue">
-                  💡 <strong>Del av <a href="/family" className="underline font-bold hover:opacity-80">Balans Familj</a></strong> - inte en fristående tjänst. Hjälper familjen hålla koll på vårdplaner och mediciner tillsammans.
-                </p>
-              </div>
-
               <p className="text-lg text-gray-700 leading-relaxed">
                 {t('hero.description')}
               </p>
@@ -80,17 +73,17 @@ export function MedicalPage() {
         <div className="max-w-6xl mx-auto">
           {/* Quick Facts */}
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
-            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 text-center">
+            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 text-center border-l-4 border-sage-green">
               <div className="text-3xl font-bold text-sage-green mb-2">🏠 {t('facts.local.title')}</div>
               <div className="text-gray-600">{t('facts.local.subtitle')}</div>
               <div className="text-sm text-gray-500 mt-1">{t('facts.local.description')}</div>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 text-center">
+            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 text-center border-l-4 border-swedish-blue">
               <div className="text-3xl font-bold text-swedish-blue mb-2">👨‍👩‍👧 {t('facts.family.title')}</div>
               <div className="text-gray-600">{t('facts.family.subtitle')}</div>
               <div className="text-sm text-gray-500 mt-1">{t('facts.family.description')}</div>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 text-center">
+            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 text-center border-l-4 border-truth-copper">
               <div className="text-3xl font-bold text-truth-copper mb-2">🔒 {t('facts.secure.title')}</div>
               <div className="text-gray-600">{t('facts.secure.subtitle')}</div>
               <div className="text-sm text-gray-500 mt-1">{t('facts.secure.description')}</div>
@@ -221,12 +214,10 @@ export function MedicalPage() {
           </ul>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <a 
-              href="https://balans-collective.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
+              href="/family"
               className="bg-white text-sage-green px-8 py-4 rounded-full font-bold text-lg hover:bg-birch-white transition-all duration-300 shadow-md hover:shadow-lg"
             >
-              {t('cta.buttons.demo')}
+              {t('cta.buttons.family')}
             </a>
             <a 
               href="mailto:samuel@dynorobotics.se?subject=Betatest BalansAI" 
