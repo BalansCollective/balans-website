@@ -146,28 +146,9 @@
   },
   "demo": {
     "title": "Prova BalansAI Demo",
-    "description": "Interaktiv tidslinje med verklig data från juni 2025. Se hur AI-assisterad spårning fungerar i praktiken.",
+    "description": "Interaktiv tidslinje med exempeldata. Se hur AI-assisterad spårning fungerar i praktiken.",
     "start_button": "Starta Interaktiv Demo",
-    "close_button": "Stäng Demo",
-    "quick_buttons": {
-      "title": "Snabbknappar",
-      "description": "Tryck för att logga medicin, arbete eller varningssignaler."
-    },
-    "how_it_works": {
-      "title": "Hur det fungerar",
-      "realtime": {
-        "title": "Realtidsspårning",
-        "description": "Tidslinje uppdateras automatiskt när du trycker på knappar"
-      },
-      "ai": {
-        "title": "AI-analys",
-        "description": "Mönsterigenkänning identifierar tidiga varningssignaler"
-      },
-      "shareable": {
-        "title": "Delbar med läkare",
-        "description": "Exportera data för samtal med vårdteam"
-      }
-    }
+    "close_button": "Stäng Demo"
   },
   "cta": {
     "title": "Vill Du Prova BalansAI?",

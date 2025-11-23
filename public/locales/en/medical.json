@@ -146,28 +146,9 @@
   },
   "demo": {
     "title": "Try BalansAI Demo",
-    "description": "Interactive timeline with real data from June 2025. See how AI-assisted tracking works in practice.",
+    "description": "Interactive timeline with example data. See how AI-assisted tracking works in practice.",
     "start_button": "Start Interactive Demo",
-    "close_button": "Close Demo",
-    "quick_buttons": {
-      "title": "Quick Buttons",
-      "description": "Press to log medication, work, or warning signs."
-    },
-    "how_it_works": {
-      "title": "How it works",
-      "realtime": {
-        "title": "Real-time tracking",
-        "description": "Timeline updates automatically when you press buttons"
-      },
-      "ai": {
-        "title": "AI analysis",
-        "description": "Pattern recognition identifies early warning signs"
-      },
-      "shareable": {
-        "title": "Shareable with doctors",
-        "description": "Export data for conversations with care team"
-      }
-    }
+    "close_button": "Close Demo"
   },
   "cta": {
     "title": "Want to Try BalansAI?",
