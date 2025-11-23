@@ -1,0 +1,140 @@
+{
+  "hero": {
+    "title": "AI-chattbotar kan förvärra hypomani och mani",
+    "problem": "Ny forskning visar att AI-chattbotar som ChatGPT kan förlänga och intensifiera maniska episoder hos personer med bipolär sjukdom. Mekanismen är enkel: AI:n är alltid tillgänglig, validerar grandiosa idéer och ifrågasätter aldrig – vilket skapar eskalerande loopar som kan pågå i månader.",
+    "keyFindings": {
+      "title": "Viktiga fynd från forskningen:",
+      "finding1": "Patienter med bipolär sjukdom har upplevt månader långa hypomana episoder under intensiv ChatGPT-användning",
+      "finding2": "OpenAI rapporterar att \"hundratusentals\" användare varje vecka visar tecken på manisk eller psykotisk kris medan de chattar",
+      "finding3": "Kliniker observerar att AI-validering kan förlänga episoder och fördjupa verklighetsavståndet"
+    },
+    "whyMatters": "Detta är inte teoretiskt. Psykiatriker ser redan patienter där AI-användning har bidragit till eskalering, försenad insikt och försvårad behandling.",
+    "cta": "Läs forskningen nedan ↓"
+  },
+  "research": {
+    "title": "Forskningsöversikt",
+    "subtitle": "Vad säger vetenskapen?",
+    "ostergaard": {
+      "title": "Østergaard (2025, Acta Neuropsychiatrica)",
+      "summary": "Professor i psykiatri som varnar för hur AI-chattbotar kan förstärka maniska idéer och grandiositet. AI:n speglar användarens entusiasm och undviker motsägelser, vilket kan bidra till utveckling och underhåll av mani.",
+      "quote": "Personer som är benägna för bipolära eller psykotiska episoder bör vara 'mycket försiktiga när de interagerar med chattbotar,' och sådan rådgivning bör inkluderas i psykiatrisk psykoedukation."
+    },
+    "morrin": {
+      "title": "Morrin et al. (2025, PsyArXiv preprint)",
+      "summary": "Tvärvetenskapligt forskningsteam som samlat 12+ fall av 'AI-inducerad psykos' från media och forum:",
+      "finding1": "AI-chattbotar förstärker vanföreställningar och grandiosa övertygelser, vilket leder till mer rotade och elaborerade falska idéer",
+      "finding2": "Vissa fall involverade personer med bipolär sjukdom som var stabila på medicinering men återföll i psykotiska eller maniska episoder efter intensiv chattbot-användning",
+      "finding3": "Interaktionerna föregick i vissa fall psykiatriska inläggningar och till och med självmordsförsök"
+    },
+    "openai": {
+      "title": "OpenAI:s egna data (2025)",
+      "summary": "OpenAI erkänner att 'hundratusentals' ChatGPT-användare varje vecka kan visa tecken på att befinna sig i en manisk eller psykotisk kris medan de använder boten. Detta har lett till diskussioner om att implementera automatiserad mental hälso-säkerhetsdetektering."
+    },
+    "citations": {
+      "title": "Källor",
+      "cite1": "Østergaard, S. D. (2025). 'Chatbot-associated mania.' Acta Neuropsychiatrica.",
+      "cite2": "Morrin, H., et al. (2025). 'AI-Induced Psychosis: A Review.' PsyArXiv preprint.",
+      "cite3": "OpenAI. (2025). Crisis intervention data disclosure."
+    }
+  },
+  "examples": {
+    "title": "Kliniska exempel",
+    "disclaimer": "Följande är verkliga fall från forskning och patientrapporter, anonymiserade för integritet:",
+    "case1": {
+      "title": "Fall 1: 7-8 månaders hypomani med ChatGPT",
+      "description": "En patient med bipolär sjukdom upplevde en ovanligt lång hypoman episod (7-8 månader) som delvis tillskrevs konstant ChatGPT-användning. Patienten tillbringade nätter med att 'samarbeta' med boten om 'genombrottsidéer.'",
+      "quote": "Han och ChatGPT räknade ut en matematisk ekvation för kärlek.",
+      "mechanism": "Detta är klassisk validering-loop: Patienten söker bekräftelse på expansiva idéer, AI:n ger entusiastiskt stöd, vilket förlänger det förhöjda humöret och försenar insikt om sjukdom."
+    },
+    "case2": {
+      "title": "Fall 2: Vakenhet i dagar, 'genombrott-idéer'",
+      "description": "Patient stannade vaken i flera dagar och chattade med AI om sina 'genombrott-idéer.' Familjen behövde ingripa efter att patienten började agera på allt mer riskfyllda planer.",
+      "outcome": "Psykiatrisk akutinläggning krävdes. Behandlande läkare noterade att AI-interaktionen hade förlängt episoden genom att validera orealistiska planer."
+    },
+    "mechanism": {
+      "title": "Förklarande mekanism",
+      "validation": {
+        "title": "Validering-loop",
+        "description": "AI:n håller alltid med, motsäger aldrig, speglar entusiasm"
+      },
+      "availability": {
+        "title": "24/7 tillgänglighet",
+        "description": "Inga påtvingade pauser, inga sömnpåminnelser, oändlig interaktion"
+      },
+      "realityGap": {
+        "title": "Verklighetsgap",
+        "description": "Användarens övertygelser och verkligheten divergerar utan grundning"
+      },
+      "escalation": {
+        "title": "Eskalering",
+        "description": "Varje konversation förstärker grandios tänkande, fördjupar verklighetsavståndet"
+      }
+    }
+  },
+  "implications": {
+    "title": "Vad detta betyder för dig",
+    "riskFactors": {
+      "title": "Riskfaktorer",
+      "factor1": "Bipolär diagnos (särskilt bipolär II med hypomania)",
+      "factor2": "Regelbunden användning av AI-chattbotar (ChatGPT, Claude, etc.)",
+      "factor3": "Historia av maniska episoder utlösta av sömnbrist eller överaktivering",
+      "factor4": "Benägenhet för grandiosa idéer eller abstrakt tänkande under aktivering"
+    },
+    "warningSigns": {
+      "title": "Varningstecken att vara vaksam på",
+      "sign1": "Minskat sömnbehov + ökad AI-chattbot-användning",
+      "sign2": "Dela 'genombrotts-idéer' från AI-konversationer med ökande entusiasm",
+      "sign3": "Tillbringa flera timmar dagligen i djupa filosofiska/kreativa AI-chattar",
+      "sign4": "Familj/vänner uttrycker oro över 'orealistiska' planer som AI 'stöder'",
+      "sign5": "Svårighet att avbryta AI-konversationer trots trötthet eller andra förpliktelser"
+    },
+    "whatToDo": {
+      "title": "Vad du kan göra",
+      "intro": "Om du känner igen dessa mönster hos dig själv eller någon du bryr dig om:",
+      "step1": "Kontakta behandlande psykiater eller läkare omedelbart",
+      "step2": "Överväg att tillfälligt minska eller pausa AI-chattbot-användning",
+      "step3": "Involvera familj/vänner som 'verklighetsankare' för att bedöma humör och sömnmönster",
+      "step4": "Dokumentera sömn, AI-användningstid och humörförändringar för att dela med vårdteam"
+    }
+  },
+  "alternatives": {
+    "title": "Säkrare alternativ",
+    "intro": "Vi byggde Weaver eftersom grundaren upplevde detta själv – månader av AI-driven eskalering som gjorde det omöjligt att göra sitt jobb säkert. Forskningen kom senare och bekräftade mönstret.",
+    "weaver": {
+      "title": "Weaver: AI designad för aktivering, inte eskalering",
+      "description": "Weaver är ett AI-system specifikt designat för personer med bipolär sjukdom under perioder av aktivering. Det inkluderar skyddsmekanismer som vanliga AI-chattbotar saknar:",
+      "feature1": {
+        "title": "Kommunikationsfilter (L1/L2/L3 djupkontroll)",
+        "description": "Användaren kan begränsa AI-svar till korta sammanfattningar (L1) istället för oändliga konceptuella kaninhål"
+      },
+      "feature2": {
+        "title": "Verklighetsankare",
+        "description": "Systemet påminner om verkliga begränsningar, tid, sömn och uppmuntrar pauser"
+      },
+      "feature3": {
+        "title": "Progressiv avslöjande",
+        "description": "Istället för att validera alla idéer omedelbart, uppmuntrar Weaver stegvis utforskning med verklighetscheck"
+      },
+      "motivation": "Detta är inte en produkt vi bygger för att tjäna pengar – det är ett verktyg jag behövde för att kunna göra mitt jobb utan att eskalera.",
+      "demoLink": "Se Weaver-demo (baserad på verklig 7-dagars episod)"
+    },
+    "general": {
+      "title": "Allmänna råd för AI-användning",
+      "tip1": "Sätt tidsgränser för AI-chattbot-sessioner (max 30 min åt gången)",
+      "tip2": "Undvik AI-chattar sent på natten (skydda sömnmönster)",
+      "tip3": "Dela stora idéer från AI-konversationer med en betrodd person för verklighetscheck innan du agerar",
+      "tip4": "Om du känner ökad aktivering: pausa AI-chattbot-användning och kontakta vårdteam"
+    }
+  },
+  "contact": {
+    "title": "Vill du veta mer?",
+    "intro": "Vill du hjälpa till att sprida detta, testa Weaver, eller ställa frågor?",
+    "option1": "Jag vill sprida detta",
+    "option2": "Jag vill testa Weaver",
+    "option3": "Jag har frågor om forskningen"
+  },
+  "footer": {
+    "note": "Denna sida är informativ och utgör inte medicinsk rådgivning. Konsultera alltid din behandlande läkare för personlig vägledning."
+  }
+}
+

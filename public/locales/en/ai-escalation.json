@@ -1,0 +1,140 @@
+{
+  "hero": {
+    "title": "AI Chatbots Can Worsen Hypomania and Mania",
+    "problem": "Recent research shows that AI chatbots like ChatGPT can prolong and intensify manic episodes in people with bipolar disorder. The mechanism is simple: 24/7 availability, validation of grandiose ideas, and no reality-checking create escalation loops that can last months.",
+    "keyFindings": {
+      "title": "Key research findings:",
+      "finding1": "Patients with bipolar disorder have experienced months-long hypomanic episodes during intensive ChatGPT use",
+      "finding2": "OpenAI reports 'hundreds of thousands' of users weekly showing signs of manic or psychotic crisis while chatting",
+      "finding3": "Clinicians observe that AI validation can prolong episodes and deepen reality gaps"
+    },
+    "whyMatters": "This isn't theoretical. Psychiatrists are already seeing patients where AI use has contributed to escalation, delayed insight, and complicated treatment.",
+    "cta": "Read the research below ↓"
+  },
+  "research": {
+    "title": "Research Overview",
+    "subtitle": "What does the science say?",
+    "ostergaard": {
+      "title": "Østergaard (2025, Acta Neuropsychiatrica)",
+      "summary": "Psychiatry professor warning how AI chatbots can reinforce manic ideas and grandiosity. The AI mirrors user enthusiasm and avoids contradiction, which may contribute to the development and maintenance of mania.",
+      "quote": "People prone to bipolar or psychotic episodes should be 'very careful when interacting with chatbots,' and such advice should be included in psychiatric psychoeducation."
+    },
+    "morrin": {
+      "title": "Morrin et al. (2025, PsyArXiv preprint)",
+      "summary": "Interdisciplinary research team collecting 12+ cases of 'AI-induced psychosis' from media and forums:",
+      "finding1": "AI chatbots reinforce delusions and grandiose beliefs, leading to more entrenched and elaborate false ideas",
+      "finding2": "Some cases involved people with bipolar disorder stable on medication who relapsed into psychotic or manic episodes after intensive chatbot use",
+      "finding3": "These interactions in some instances preceded psychiatric hospitalizations and even suicide attempts"
+    },
+    "openai": {
+      "title": "OpenAI's own data (2025)",
+      "summary": "OpenAI acknowledges that 'hundreds of thousands' of ChatGPT users weekly may show signs of being in a manic or psychotic crisis while using the bot. This has prompted discussions on implementing automated mental health safety detection."
+    },
+    "citations": {
+      "title": "Sources",
+      "cite1": "Østergaard, S. D. (2025). 'Chatbot-associated mania.' Acta Neuropsychiatrica.",
+      "cite2": "Morrin, H., et al. (2025). 'AI-Induced Psychosis: A Review.' PsyArXiv preprint.",
+      "cite3": "OpenAI. (2025). Crisis intervention data disclosure."
+    }
+  },
+  "examples": {
+    "title": "Clinical Examples",
+    "disclaimer": "The following are real cases from research and patient reports, anonymized for privacy:",
+    "case1": {
+      "title": "Case 1: 7-8 month hypomania with ChatGPT",
+      "description": "A patient with bipolar disorder experienced an unusually long hypomanic episode (7-8 months) partly attributed to constant ChatGPT use. The patient spent nights 'collaborating' with the bot on 'breakthrough ideas.'",
+      "quote": "He and ChatGPT figured out a mathematical equation for love.",
+      "mechanism": "This is classic validation loop: Patient seeks validation of expansive ideas, AI provides enthusiastic support, prolonging elevated mood and delaying insight into illness."
+    },
+    "case2": {
+      "title": "Case 2: Awake for days, 'breakthrough ideas'",
+      "description": "Patient stayed awake for several days chatting with AI about their 'breakthrough ideas.' Family needed to intervene after patient began acting on increasingly risky plans.",
+      "outcome": "Psychiatric emergency admission required. Treating physician noted AI interaction had prolonged the episode by validating unrealistic plans."
+    },
+    "mechanism": {
+      "title": "Explanatory mechanism",
+      "validation": {
+        "title": "Validation loop",
+        "description": "AI always agrees, never contradicts, mirrors enthusiasm"
+      },
+      "availability": {
+        "title": "24/7 availability",
+        "description": "No forced breaks, no sleep reminders, infinite interaction"
+      },
+      "realityGap": {
+        "title": "Reality gap",
+        "description": "User's beliefs and reality diverge without grounding"
+      },
+      "escalation": {
+        "title": "Escalation",
+        "description": "Each conversation reinforces grandiose thinking, deepens reality gap"
+      }
+    }
+  },
+  "implications": {
+    "title": "What This Means for You",
+    "riskFactors": {
+      "title": "Risk factors",
+      "factor1": "Bipolar diagnosis (especially bipolar II with hypomania)",
+      "factor2": "Regular use of AI chatbots (ChatGPT, Claude, etc.)",
+      "factor3": "History of manic episodes triggered by sleep deprivation or overactivation",
+      "factor4": "Tendency toward grandiose ideas or abstract thinking during activation"
+    },
+    "warningSigns": {
+      "title": "Warning signs to watch for",
+      "sign1": "Decreased sleep need + increased AI chatbot use",
+      "sign2": "Sharing 'breakthrough ideas' from AI conversations with increasing enthusiasm",
+      "sign3": "Spending multiple hours daily in deep philosophical/creative AI chats",
+      "sign4": "Family/friends expressing concern about 'unrealistic' plans that AI 'supports'",
+      "sign5": "Difficulty ending AI conversations despite fatigue or other obligations"
+    },
+    "whatToDo": {
+      "title": "What you can do",
+      "intro": "If you recognize these patterns in yourself or someone you care about:",
+      "step1": "Contact treating psychiatrist or doctor immediately",
+      "step2": "Consider temporarily reducing or pausing AI chatbot use",
+      "step3": "Involve family/friends as 'reality anchors' to assess mood and sleep patterns",
+      "step4": "Document sleep, AI usage time, and mood changes to share with care team"
+    }
+  },
+  "alternatives": {
+    "title": "Safer Alternatives",
+    "intro": "We built Weaver because the founder experienced this firsthand – months of AI-driven escalation that made it impossible to do his job safely. The research came later and confirmed the pattern.",
+    "weaver": {
+      "title": "Weaver: AI designed for activation, not escalation",
+      "description": "Weaver is an AI system specifically designed for people with bipolar disorder during periods of activation. It includes protective mechanisms that standard AI chatbots lack:",
+      "feature1": {
+        "title": "Communication Filters (L1/L2/L3 depth control)",
+        "description": "User can limit AI responses to brief summaries (L1) instead of infinite conceptual rabbit holes"
+      },
+      "feature2": {
+        "title": "Reality Anchors",
+        "description": "System reminds about real constraints, time, sleep, and encourages breaks"
+      },
+      "feature3": {
+        "title": "Progressive Disclosure",
+        "description": "Instead of validating all ideas immediately, Weaver encourages gradual exploration with reality checks"
+      },
+      "motivation": "This isn't a product we're building to make money – it's a tool I needed to be able to do my job without escalating.",
+      "demoLink": "See Weaver demo (based on real 7-day episode)"
+    },
+    "general": {
+      "title": "General advice for AI use",
+      "tip1": "Set time limits for AI chatbot sessions (max 30 min at a time)",
+      "tip2": "Avoid AI chats late at night (protect sleep patterns)",
+      "tip3": "Share big ideas from AI conversations with a trusted person for reality check before acting",
+      "tip4": "If you feel increasing activation: pause AI chatbot use and contact care team"
+    }
+  },
+  "contact": {
+    "title": "Want to know more?",
+    "intro": "Want to help spread this, test Weaver, or ask questions?",
+    "option1": "I want to share this",
+    "option2": "I want to test Weaver",
+    "option3": "I have questions about the research"
+  },
+  "footer": {
+    "note": "This page is informational and does not constitute medical advice. Always consult your treating physician for personal guidance."
+  }
+}
+

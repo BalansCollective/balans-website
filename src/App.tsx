@@ -13,6 +13,8 @@ import FamilyPage from './pages/website/FamilyPage';
 import { MedicalPage } from './pages/website/MedicalPage';
 import { MedicalDashboardPage } from './pages/MedicalDashboardPage';
 import { RedForgeIDEPage } from './pages/RedForgeIDEPage';
+import AIEscalationPage from './pages/website/AIEscalationPage';
+import { ContactPage } from './pages/website/ContactPage';
 import './i18n'; // Initialize i18n
 import './App.css';
 
@@ -25,8 +27,10 @@ function AppContent() {
       {!hideNavigation && <Navigation />}
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/family" element={<FamilyPage />} />
         <Route path="/medical" element={<MedicalPage />} />
+        <Route path="/ai-escalation" element={<AIEscalationPage />} />
         <Route path="/defense" element={<DefensePage />} />
         <Route path="/red-forge" element={<RedForgePage />} />
         <Route path="/guardian-protocol" element={<GuardianProtocolPage />} />

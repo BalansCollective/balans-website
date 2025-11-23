@@ -127,6 +127,49 @@ export function MedicalPage() {
         </div>
       </section>
 
+      {/* AI Escalation Research Section */}
+      <section className="py-16 px-4 bg-gradient-to-br from-amber-50 to-orange-50 border-t-4 border-amber-400">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white p-8 rounded-xl shadow-lg">
+            <div className="flex items-start gap-4 mb-6">
+              <div className="text-4xl">⚠️</div>
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">
+                  {t('research.title')}
+                </h2>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  {t('research.description')}
+                </p>
+              </div>
+            </div>
+            
+            <div className="space-y-3 mb-6 pl-12">
+              <p className="flex items-start gap-2 text-gray-700">
+                <span className="text-amber-600 font-bold">→</span>
+                <span>{t('research.finding1')}</span>
+              </p>
+              <p className="flex items-start gap-2 text-gray-700">
+                <span className="text-amber-600 font-bold">→</span>
+                <span>{t('research.finding2')}</span>
+              </p>
+              <p className="flex items-start gap-2 text-gray-700">
+                <span className="text-amber-600 font-bold">→</span>
+                <span>{t('research.finding3')}</span>
+              </p>
+            </div>
+
+            <div className="pl-12">
+              <a 
+                href="/ai-escalation"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
+              >
+                {t('research.link_text')} →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Interactive Demo Section */}
       <section id="demo" className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">

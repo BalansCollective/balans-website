@@ -21,6 +21,14 @@
       "description": "Du sätter gränserna när du har clarity"
     }
   },
+  "research": {
+    "title": "Varför är AI riskabelt under hypomania?",
+    "description": "Ny forskning visar att AI-chattbotar som ChatGPT kan förlänga och intensifiera maniska episoder. Weaver är designad för att motverka dessa risker.",
+    "finding1": "Patienter har upplevt månader långa hypomana episoder under intensiv ChatGPT-användning",
+    "finding2": "OpenAI rapporterar 'hundratusentals' användare varje vecka i manisk/psykotisk kris",
+    "finding3": "AI-validering kan förlänga episoder och fördjupa verklighetsavstånd",
+    "link_text": "Läs forskningen"
+  },
   "share": {
     "title": "Vad Weaver Väver Samman",
     "work": {

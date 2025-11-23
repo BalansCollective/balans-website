@@ -21,6 +21,14 @@
       "description": "You set boundaries when you have clarity"
     }
   },
+  "research": {
+    "title": "Why is AI risky during hypomania?",
+    "description": "New research shows AI chatbots like ChatGPT can prolong and intensify manic episodes. Weaver is designed to counter these risks.",
+    "finding1": "Patients have experienced months-long hypomanic episodes during intensive ChatGPT use",
+    "finding2": "OpenAI reports 'hundreds of thousands' of users weekly in manic/psychotic crisis",
+    "finding3": "AI validation can prolong episodes and deepen reality gaps",
+    "link_text": "Read the research"
+  },
   "share": {
     "title": "What Weaver Weaves Together",
     "work": {
