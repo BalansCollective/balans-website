@@ -34,7 +34,7 @@ export function MedicalPage() {
               </p>
               
               {/* Context Banner */}
-              <div className="p-4 rounded-xl bg-alliance-purple/10 border-2 border-alliance-purple/30">
+              <div className="p-4 rounded-xl bg-sage-green/10 border-2 border-sage-green/30">
                 <p className="text-sm text-swedish-blue">
                   💡 <strong>Del av <a href="/family" className="underline font-bold hover:opacity-80">Balans Familj</a></strong> - inte en fristående tjänst. Hjälper familjen hålla koll på vårdplaner och mediciner tillsammans.
                 </p>
