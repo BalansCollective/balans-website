@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MedicalTimelineDemo } from '../../components/MedicalTimelineDemo';
+import { GenericMedicineLog } from '../../components/GenericMedicineLog';
 import { ButtonPanel } from '../../components/ButtonPanel';
 
 export function MedicalPage() {
   const { t } = useTranslation('medical');
   const [showDemo, setShowDemo] = useState(false);
+  const [activeTab, setActiveTab] = useState<'timeline' | 'medicine'>('timeline');
 
   return (
     <div className="min-h-screen bg-birch-white">
@@ -134,9 +136,40 @@ export function MedicalPage() {
             </div>
           ) : (
             <div className="space-y-8">
-              <div className="bg-gray-50 rounded-2xl border-2 border-sage-green">
-                <MedicalTimelineDemo />
+              {/* Tab Selector */}
+              <div className="flex justify-center gap-4">
+                <button
+                  onClick={() => setActiveTab('timeline')}
+                  className={`px-6 py-3 rounded-full font-medium transition-colors ${
+                    activeTab === 'timeline'
+                      ? 'bg-sage-green text-white'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  📊 Tidslinje & Mönster
+                </button>
+                <button
+                  onClick={() => setActiveTab('medicine')}
+                  className={`px-6 py-3 rounded-full font-medium transition-colors ${
+                    activeTab === 'medicine'
+                      ? 'bg-sage-green text-white'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                >
+                  💊 Medicin-logg
+                </button>
               </div>
+
+              {/* Demo Content */}
+              {activeTab === 'timeline' ? (
+                <div className="bg-gray-50 rounded-2xl border-2 border-sage-green">
+                  <MedicalTimelineDemo />
+                </div>
+              ) : (
+                <div className="bg-gray-50 rounded-2xl p-6 border-2 border-sage-green" style={{ maxHeight: '800px' }}>
+                  <GenericMedicineLog />
+                </div>
+              )}
               
               <div className="text-center">
                 <button
