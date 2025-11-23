@@ -125,6 +125,7 @@ export function GenericMedicineLog() {
   const [showAddMedication, setShowAddMedication] = useState(false);
   const [longPressTimer, setLongPressTimer] = useState<number | null>(null);
   const [isLongPressing, setIsLongPressing] = useState(false);
+  const [showDetails, setShowDetails] = useState(false); // TRICKLE: T1 vs T2
   
   // Manual log state
   const [manualTime, setManualTime] = useState(formatCurrentTime());
@@ -154,7 +155,7 @@ export function GenericMedicineLog() {
         source: 'app' as const,
       };
 
-      setLastLog(logEntry);
+      setLastLog({ medications: scheduledMeds, time: formatCurrentTime() });
       setJustLogged(true);
 
       // Reset after 3 seconds
@@ -795,58 +796,92 @@ export function GenericMedicineLog() {
         {justLogged ? '✅ Loggat!' : isLongPressing ? '⏳ Håll för anpassad...' : '📟 Tagit medicin nu'}
       </button>
 
-      {/* Info Box */}
-      <div
-        className="mt-6 p-4 rounded-lg text-xs"
-        style={{
-          backgroundColor: COLORS.gentleSilver + '30',
-          color: COLORS.swedishBlue,
-        }}
-      >
-        <p className="font-bold mb-2">💡 Hur det fungerar:</p>
-        <ul className="space-y-1 list-disc list-inside">
-          <li>Systemet kollar klockan mot vårdplanen</li>
-          <li>Loggar automatiskt rätt medicin (±2h window)</li>
-          <li>Synligt i dashboarden direkt</li>
-          <li>Fysisk knapp (📟) planeras!</li>
-        </ul>
-      </div>
-
-      {/* Vårdplan Reference */}
-      <div
-        className="mt-4 p-4 rounded-lg text-xs"
-        style={{
-          backgroundColor: COLORS.alliancePurple + '10',
-          border: `1px solid ${COLORS.alliancePurple}`,
-          color: COLORS.swedishBlue,
-        }}
-      >
-        <p className="font-bold mb-2">📋 Exempel vårdplan (schemalagda tider):</p>
-        {VARDPLAN.medications.map((med) => (
-          <div key={med.name} className="mb-2">
-            <p className="font-medium">{med.name}:</p>
-            <ul className="list-disc list-inside ml-4">
-              {med.doses.map((dose, idx) => (
-                <li key={idx}>
-                  {dose.time} - {dose.amount}
-                </li>
-              ))}
+      {/* TRICKLE Tier 2: Details (collapsed by default) */}
+      {!showDetails ? (
+        <div className="mt-6 text-center">
+          <button
+            onClick={() => setShowDetails(true)}
+            className="px-6 py-3 rounded-full font-medium transition-colors"
+            style={{
+              backgroundColor: COLORS.gentleSilver + '40',
+              color: COLORS.swedishBlue,
+              border: `2px solid ${COLORS.gentleSilver}`,
+            }}
+          >
+            📖 Visa hur det fungerar + vårdplan
+          </button>
+        </div>
+      ) : (
+        <>
+          {/* Info Box */}
+          <div
+            className="mt-6 p-4 rounded-lg text-xs"
+            style={{
+              backgroundColor: COLORS.gentleSilver + '30',
+              color: COLORS.swedishBlue,
+            }}
+          >
+            <p className="font-bold mb-2">💡 Hur det fungerar:</p>
+            <ul className="space-y-1 list-disc list-inside">
+              <li>Systemet kollar klockan mot vårdplanen</li>
+              <li>Loggar automatiskt rätt medicin (±2h window)</li>
+              <li>Synligt i dashboarden direkt</li>
+              <li>Fysisk knapp (📟) planeras!</li>
             </ul>
           </div>
-        ))}
-      </div>
 
-      {/* Medical Disclaimer */}
-      <div
-        className="mt-6 p-4 rounded-lg text-xs text-center"
-        style={{
-          backgroundColor: COLORS.gentleSilver + '30',
-          color: COLORS.swedishBlue,
-        }}
-      >
-        <p>⚕️ Detta är ett exempel på loggverktyg, inte medicinsk rådgivning.</p>
-        <p className="mt-1">Ändra aldrig medicindoser utan att rådgöra med läkare eller vårdpersonal.</p>
-      </div>
+          {/* Vårdplan Reference */}
+          <div
+            className="mt-4 p-4 rounded-lg text-xs"
+            style={{
+              backgroundColor: COLORS.alliancePurple + '10',
+              border: `1px solid ${COLORS.alliancePurple}`,
+              color: COLORS.swedishBlue,
+            }}
+          >
+            <p className="font-bold mb-2">📋 Exempel vårdplan (schemalagda tider):</p>
+            {VARDPLAN.medications.map((med) => (
+              <div key={med.name} className="mb-2">
+                <p className="font-medium">{med.name}:</p>
+                <ul className="list-disc list-inside ml-4">
+                  {med.doses.map((dose, idx) => (
+                    <li key={idx}>
+                      {dose.time} - {dose.amount}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* Medical Disclaimer */}
+          <div
+            className="mt-6 p-4 rounded-lg text-xs text-center"
+            style={{
+              backgroundColor: COLORS.gentleSilver + '30',
+              color: COLORS.swedishBlue,
+            }}
+          >
+            <p>⚕️ Detta är ett exempel på loggverktyg, inte medicinsk rådgivning.</p>
+            <p className="mt-1">Ändra aldrig medicindoser utan att rådgöra med läkare eller vårdpersonal.</p>
+          </div>
+
+          {/* Collapse Button */}
+          <div className="mt-4 text-center">
+            <button
+              onClick={() => setShowDetails(false)}
+              className="px-6 py-3 rounded-full font-medium transition-colors"
+              style={{
+                backgroundColor: COLORS.gentleSilver + '40',
+                color: COLORS.swedishBlue,
+                border: `2px solid ${COLORS.gentleSilver}`,
+              }}
+            >
+              ▲ Dölj detaljer
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }
