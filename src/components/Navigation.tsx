@@ -89,12 +89,6 @@ export function Navigation() {
                   {t('navigation.products')}
                 </button>
                 <a
-                  href="/family"
-                  className="text-gray-700 hover:text-swedish-blue transition-colors"
-                >
-                  {t('navigation.family', 'För Familjer')}
-                </a>
-                <a
                   href="/narratives"
                   className="text-gray-700 hover:text-swedish-blue transition-colors"
                 >

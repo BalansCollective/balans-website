@@ -5,28 +5,29 @@ import { ButtonPanel } from '../../components/ButtonPanel';
 
 export function MedicalPage() {
   const { t } = useTranslation('medical');
-  const [showFullStory, setShowFullStory] = useState(false);
-  const [showProtocols, setShowProtocols] = useState(false);
   const [showDemo, setShowDemo] = useState(false);
 
   return (
     <div className="min-h-screen bg-birch-white">
       {/* Hero Section */}
       <section className="pt-24 py-16 px-4 bg-gradient-to-br from-birch-white to-sage-green/10">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-swedish-blue mb-6">
-              {t('hero.title')}
-            </h1>
-            <p className="text-xl text-birch-wood mb-4 max-w-3xl mx-auto">
-              {t('hero.subtitle')}
-            </p>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-              {t('hero.description')}
-            </p>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+            {/* Text Left */}
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold text-swedish-blue mb-6">
+                {t('hero.title')}
+              </h1>
+              <p className="text-xl text-birch-wood mb-4">
+                {t('hero.subtitle')}
+              </p>
+              <p className="text-lg text-gray-600">
+                {t('hero.description')}
+              </p>
+            </div>
             
-            {/* Hero Image */}
-            <div className="max-w-4xl mx-auto mb-12">
+            {/* Hero Image Right */}
+            <div>
               <img 
                 src="/images/medical-hero.png" 
                 alt={t('hero.title')}
@@ -85,183 +86,6 @@ export function MedicalPage() {
                   <p className="font-semibold">{t('share.warnings.title')}</p>
                   <p className="text-sm">{t('share.warnings.description')}</p>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Case Study */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-swedish-blue mb-4 text-center">
-            {t('case_study.title')}
-          </h2>
-          <p className="text-xl text-gray-600 mb-12 text-center">
-            {t('case_study.subtitle')}
-          </p>
-
-          <div className="max-w-4xl mx-auto space-y-8">
-            {/* Quick Summary Cards */}
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-gradient-to-br from-birch-white to-truth-copper/10 p-6 rounded-xl shadow-md text-center">
-                <div className="text-4xl mb-3">❌</div>
-                <h3 className="font-bold text-truth-copper mb-2">{t('case_study.summary.problem.title')}</h3>
-                <p className="text-sm text-gray-700">{t('case_study.summary.problem.description')}</p>
-              </div>
-              <div className="bg-gradient-to-br from-birch-white to-swedish-blue/10 p-6 rounded-xl shadow-md text-center">
-                <div className="text-4xl mb-3">🤖</div>
-                <h3 className="font-bold text-swedish-blue mb-2">{t('case_study.summary.solution.title')}</h3>
-                <p className="text-sm text-gray-700">{t('case_study.summary.solution.description')}</p>
-              </div>
-              <div className="bg-gradient-to-br from-birch-white to-sage-green/10 p-6 rounded-xl shadow-md text-center">
-                <div className="text-4xl mb-3">✅</div>
-                <h3 className="font-bold text-sage-green mb-2">{t('case_study.summary.result.title')}</h3>
-                <p className="text-sm text-gray-700">{t('case_study.summary.result.description')}</p>
-              </div>
-            </div>
-
-            {/* Collapsible: Full Story */}
-            <div className="mb-8">
-              <button
-                onClick={() => setShowFullStory(!showFullStory)}
-                className="w-full text-center cursor-pointer font-bold text-2xl text-swedish-blue hover:text-alliance-purple transition-colors duration-300"
-              >
-                📖 {showFullStory ? t('case_study.full_story.hide') : t('case_study.full_story.show')}
-              </button>
-              
-              {showFullStory && (
-                <div className="space-y-8 mt-6">
-                  {/* The Problem */}
-                  <div className="bg-gradient-to-br from-birch-white to-truth-copper/10 p-8 rounded-2xl shadow-md">
-                    <h3 className="text-2xl font-bold text-truth-copper mb-4">
-                      {t('case_study.problem.title')}
-                    </h3>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <p className="font-bold text-lg mb-2">{t('case_study.problem.patient.title')}:</p>
-                        <ul className="space-y-2 text-gray-700">
-                          <li>• {t('case_study.problem.patient.symptom1')}</li>
-                          <li>• {t('case_study.problem.patient.symptom2')}</li>
-                          <li>• {t('case_study.problem.patient.symptom3')}</li>
-                          <li>• {t('case_study.problem.patient.symptom4')}</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <p className="font-bold text-lg mb-2">{t('case_study.problem.family.title')}:</p>
-                        <ul className="space-y-2 text-gray-700">
-                          <li>• {t('case_study.problem.family.issue1')}</li>
-                          <li>• {t('case_study.problem.family.issue2')}</li>
-                          <li>• {t('case_study.problem.family.issue3')}</li>
-                          <li>• {t('case_study.problem.family.issue4')}</li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="mt-6 p-4 bg-white border-l-4 border-truth-copper rounded">
-                      <p className="text-gray-700">
-                        <strong>{t('case_study.problem.result.label')}:</strong> {t('case_study.problem.result.text')}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* AI-Generated Protocols */}
-                  <div className="bg-gradient-to-br from-birch-white to-swedish-blue/10 p-8 rounded-2xl shadow-md">
-                    <h3 className="text-2xl font-bold text-swedish-blue mb-4">
-                      {t('case_study.solution.title')}
-                    </h3>
-                    <p className="text-gray-700 mb-6">
-                      {t('case_study.solution.description')}
-                    </p>
-                    
-                    {/* Protocol Examples */}
-                    <button
-                      onClick={() => setShowProtocols(!showProtocols)}
-                      className="font-bold text-lg text-swedish-blue mb-3 hover:text-alliance-purple transition-colors duration-300"
-                    >
-                      📋 {showProtocols ? t('case_study.protocols.hide') : t('case_study.protocols.show')}
-                    </button>
-                    
-                    {showProtocols && (
-                      <div className="grid md:grid-cols-2 gap-6 mt-4">
-                        <div className="border-2 border-sage-green rounded-lg p-4 bg-white">
-                          <h4 className="font-bold text-sage-green mb-3">{t('case_study.protocols.family.title')}</h4>
-                          <ul className="space-y-2 text-sm text-gray-700">
-                            <li>✅ {t('case_study.protocols.family.item1')}</li>
-                            <li>✅ {t('case_study.protocols.family.item2')}</li>
-                            <li>✅ {t('case_study.protocols.family.item3')}</li>
-                            <li>✅ {t('case_study.protocols.family.item4')}</li>
-                          </ul>
-                        </div>
-                        <div className="border-2 border-alliance-purple rounded-lg p-4 bg-white">
-                          <h4 className="font-bold text-alliance-purple mb-3">{t('case_study.protocols.colleague.title')}</h4>
-                          <ul className="space-y-2 text-sm text-gray-700">
-                            <li>✅ {t('case_study.protocols.colleague.item1')}</li>
-                            <li>✅ {t('case_study.protocols.colleague.item2')}</li>
-                            <li>✅ {t('case_study.protocols.colleague.item3')}</li>
-                            <li>✅ {t('case_study.protocols.colleague.item4')}</li>
-                          </ul>
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="p-4 bg-sage-green/20 border-l-4 border-sage-green rounded mt-4">
-                      <p className="text-gray-700">
-                        <strong>{t('case_study.solution.key_point.label')}:</strong> {t('case_study.solution.key_point.text')}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Juni 2025 Validation (Always Visible) */}
-            <div className="bg-gradient-to-br from-birch-white to-sage-green/10 p-8 rounded-2xl shadow-md">
-              <h3 className="text-2xl font-bold text-truth-copper mb-4">
-                {t('case_study.validation.title')}
-              </h3>
-              <p className="text-gray-700 mb-4">
-                <strong>{t('case_study.validation.what_happened.label')}:</strong> {t('case_study.validation.what_happened.text')}
-              </p>
-              <p className="text-gray-700 mb-6">
-                <strong>{t('case_study.validation.hypothesis.label')}:</strong> {t('case_study.validation.hypothesis.text')}
-              </p>
-              
-              <div className="space-y-3 mb-6">
-                {[
-                  { title: t('case_study.validation.results.stabilization.title'), subtitle: t('case_study.validation.results.stabilization.subtitle') },
-                  { title: t('case_study.validation.results.adherence.title'), subtitle: t('case_study.validation.results.adherence.subtitle') },
-                  { title: t('case_study.validation.results.empowerment.title'), subtitle: t('case_study.validation.results.empowerment.subtitle') },
-                  { title: t('case_study.validation.results.autonomy.title'), subtitle: t('case_study.validation.results.autonomy.subtitle') }
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <span className="text-2xl">✅</span>
-                    <div>
-                      <p className="font-bold">{item.title}</p>
-                      <p className="text-gray-600 text-sm">{item.subtitle}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Comparison Timeline Image */}
-              <div className="mb-6">
-                <img 
-                  src="/images/medical-june-2025-activation-timeline.png" 
-                  alt={t('case_study.validation.timeline_alt')}
-                  className="w-full rounded-xl shadow-md"
-                />
-                <p className="text-sm text-gray-600 mt-2 text-center italic">
-                  {t('case_study.validation.timeline_caption')}
-                </p>
-              </div>
-
-              <div className="p-4 bg-blue-100 border-2 border-swedish-blue rounded-lg">
-                <p className="font-bold text-swedish-blue text-lg mb-2">
-                  {t('case_study.validation.proven.title')}
-                </p>
-                <p className="text-gray-700 text-sm">
-                  {t('case_study.validation.proven.description')}
-                </p>
               </div>
             </div>
           </div>
