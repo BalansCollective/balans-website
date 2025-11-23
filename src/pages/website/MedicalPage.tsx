@@ -166,8 +166,10 @@ export function MedicalPage() {
                   <MedicalTimelineDemo />
                 </div>
               ) : (
-                <div className="bg-gray-50 rounded-2xl p-6 border-2 border-sage-green" style={{ maxHeight: '800px' }}>
-                  <GenericMedicineLog />
+                <div className="bg-gray-50 rounded-2xl border-2 border-sage-green overflow-hidden" style={{ maxHeight: '800px' }}>
+                  <div className="h-full overflow-y-auto">
+                    <GenericMedicineLog />
+                  </div>
                 </div>
               )}
               
