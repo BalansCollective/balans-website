@@ -16,6 +16,15 @@ export function Navigation() {
       sessionStorage.setItem('lastContext', 'dark');
     } else if (location.pathname === '/') {
       sessionStorage.setItem('lastContext', 'light');
+      
+      // Handle hash navigation on homepage
+      if (location.hash) {
+        setTimeout(() => {
+          const id = location.hash.replace('#', '');
+          const element = document.getElementById(id);
+          element?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
     }
     
     // For protocol pages, check where we came from
@@ -25,7 +34,7 @@ export function Navigation() {
     } else {
       setThemeContext(null);
     }
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
   
   // Determine if we're on a dark-themed page
   const isDarkPage = location.pathname === '/defense' 
@@ -33,8 +42,14 @@ export function Navigation() {
     || ((location.pathname === '/guardian-protocol' || location.pathname === '/forge-protocol') && themeContext === 'dark');
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    // Only scroll if we're on the homepage
+    if (location.pathname === '/') {
+      const element = document.getElementById(id);
+      element?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Navigate to homepage with hash
+      window.location.href = `/#${id}`;
+    }
   };
 
   const toggleLanguage = () => {

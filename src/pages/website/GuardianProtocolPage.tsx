@@ -131,7 +131,7 @@ export function GuardianProtocolPage() {
               {t('cta.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="mailto:samuel@dynorobotics.se" className={`inline-flex items-center justify-center px-6 py-3 text-lg font-medium rounded-lg transition-all duration-200 ${isDarkMode ? 'bg-red-600 text-white hover:bg-red-700' : 'bg-[#2c5aa0] text-white hover:bg-[#234a85]'}`}>
+              <a href="/contact" className={`inline-flex items-center justify-center px-6 py-3 text-lg font-medium rounded-lg transition-all duration-200 ${isDarkMode ? 'bg-red-600 text-white hover:bg-red-700' : 'bg-[#2c5aa0] text-white hover:bg-[#234a85]'}`}>
                 {t('cta.primary')}
               </a>
               <a href="/defense" className={`inline-flex items-center justify-center px-6 py-3 text-lg font-medium rounded-lg border-2 transition-all duration-200 ${isDarkMode ? 'border-red-600 text-red-400 hover:bg-red-600 hover:text-white' : 'border-[#2c5aa0] text-[#2c5aa0] hover:bg-[#2c5aa0] hover:text-white'}`}>

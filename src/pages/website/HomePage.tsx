@@ -20,7 +20,7 @@ export function HomePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-start">
                 <a 
-                  href="mailto:samuel@dynorobotics.se"
+                  href="/contact"
                   className="inline-flex items-center justify-center px-6 py-3 bg-alliance-purple hover:bg-alliance-purple/90 text-white font-medium rounded-lg transition-colors"
                 >
                   {t('hero.cta_primary')}
@@ -340,7 +340,7 @@ export function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="mailto:samuel@dynorobotics.se"
+              href="/contact"
               className="inline-flex items-center justify-center px-6 py-3 bg-birch-white hover:bg-birch-white/90 text-swedish-blue font-medium rounded-lg transition-colors"
             >
               {t('cta.primary')}

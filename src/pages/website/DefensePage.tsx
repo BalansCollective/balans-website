@@ -360,7 +360,7 @@ export function DefensePage() {
             {t('cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="mailto:samuel@dynorobotics.se?subject=Red Cell förfrågan" className="inline-flex items-center justify-center gap-2 px-6 py-3 text-lg font-medium rounded-lg bg-red-600 text-white hover:bg-red-700 transition-all duration-200">
+            <a href="/contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 text-lg font-medium rounded-lg bg-red-600 text-white hover:bg-red-700 transition-all duration-200">
               {t('cta.primary')}
             </a>
             <a href="/" className="inline-flex items-center justify-center gap-2 px-6 py-3 text-lg font-medium rounded-lg bg-transparent border-2 border-red-600 text-red-400 hover:bg-red-600 hover:text-white transition-all duration-200">

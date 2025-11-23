@@ -11,15 +11,17 @@ import {
   ComposedChart,
 } from 'recharts';
 import {
-  genericActivationEvents,
-  genericMedicationLogs,
-  genericFamilyObservations,
-  genericTherapeuticSessions,
+  morganActivationEvents as genericActivationEvents,
+  morganMedicationLogs as genericMedicationLogs,
+  morganFamilyObservations as genericFamilyObservations,
+  morganTherapeuticSessions as genericTherapeuticSessions,
+  morganWeaverAnchors,
   ActivationEvent,
   MedicationLog,
   FamilyObservation,
   TherapeuticSession,
-} from '../data/genericDemoEpisode';
+  WeaverAnchor,
+} from '../data/morganSkellefteaEpisode';
 
 // Types
 interface ChartDataPoint {
@@ -83,6 +85,18 @@ const MEDICAL_TERMINOLOGY = {
   },
 };
 
+// Helper: Format date in Swedish
+function formatSwedishDate(date: Date): string {
+  const days = ['Söndag', 'Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag'];
+  const months = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
+  
+  const dayName = days[date.getDay()];
+  const day = date.getDate();
+  const month = months[date.getMonth()];
+  
+  return `${dayName} ${day} ${month}`;
+}
+
 // Helper: Group events by day
 function groupEventsByDay(
   activationEvents: ActivationEvent[],
@@ -97,7 +111,7 @@ function groupEventsByDay(
   // Collect activation events
   activationEvents.forEach(ae => {
     const date = new Date(ae.timestamp);
-    const dateStr = date.toDateString();
+    const dateStr = formatSwedishDate(date);
     if (!eventsByDate.has(dateStr)) eventsByDate.set(dateStr, []);
     
     if (ae.level >= 8) {
@@ -113,7 +127,7 @@ function groupEventsByDay(
   // Collect medications
   medicationLogs.forEach(med => {
     const date = new Date(med.timestamp);
-    const dateStr = date.toDateString();
+    const dateStr = formatSwedishDate(date);
     if (!eventsByDate.has(dateStr)) eventsByDate.set(dateStr, []);
     eventsByDate.get(dateStr)!.push({
       type: 'medication',
@@ -126,7 +140,7 @@ function groupEventsByDay(
   // Collect sessions
   therapeuticSessions.forEach(session => {
     const date = new Date(session.timestamp);
-    const dateStr = date.toDateString();
+    const dateStr = formatSwedishDate(date);
     if (!eventsByDate.has(dateStr)) eventsByDate.set(dateStr, []);
     eventsByDate.get(dateStr)!.push({
       type: 'session',
@@ -139,7 +153,7 @@ function groupEventsByDay(
   // Collect observations
   familyObservations.forEach(obs => {
     const date = new Date(obs.timestamp);
-    const dateStr = date.toDateString();
+    const dateStr = formatSwedishDate(date);
     if (!eventsByDate.has(dateStr)) eventsByDate.set(dateStr, []);
     eventsByDate.get(dateStr)!.push({
       type: 'observation',
@@ -155,10 +169,10 @@ function groupEventsByDay(
   const end = new Date(endDate);
   
   for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
-    const dateStr = d.toDateString();
+    const dateStr = formatSwedishDate(new Date(d));
     const events = eventsByDate.get(dateStr) || [];
     const activation = activationEvents.find(
-      ae => new Date(ae.timestamp).toDateString() === dateStr
+      ae => formatSwedishDate(new Date(ae.timestamp)) === dateStr
     );
     
     const sortedEvents = events.sort(
@@ -180,16 +194,40 @@ function groupEventsByDay(
 
 function translateMarker(marker: string): string {
   const map: Record<string, string> = {
+    // Morgan episode markers
+    'analyzing_others_behavior': 'Analyserar andras beteenden',
+    'thought_loops': 'Tankesnurror',
+    'withdrawing_from_activities': 'Drar sig undan aktiviteter',
+    'circular_walking': 'Cirkulärt gående',
+    'early_morning': 'Tidig morgon',
+    'no_sleep': 'Ingen sömn',
+    'multiple_showers': 'Flera duschar',
+    'urgent_publication_desire': 'Brådskande publiceringsvilja',
+    'reduced_sleep': 'Minskad sömn',
+    'completely_absorbed': 'Helt uppslukad',
+    'promise_breaking': 'Bryter löften',
+    'unable_to_stop': 'Kan inte sluta',
+    'cognitive_fog': 'Kognitiv dimma',
+    'remorseful': 'Ångerfull',
+    'still_elevated': 'Fortfarande förhöjd',
+    'clear_headed_enough': 'Tillräckligt klar i huvudet',
+    'wants_to_help': 'Vill hjälpa',
+    'methodical_work': 'Metodiskt arbete',
+    'accepting_boundaries': 'Accepterar gränser',
+    'present_for_family': 'Närvarande för familjen',
+    'middle_state': 'Mellanläge',
+    'aware_of_pattern': 'Medveten om mönstret',
+    'choosing_presence': 'Väljer närvaro',
+    
+    // Generic markers (fallback)
     'early_waking': 'Tidigt uppvaknande',
     'increased_energy': 'Ökad energi',
-    'reduced_sleep': 'Minskad sömn',
     'racing_thoughts': 'Rusande tankar',
     'increased_activity': 'Ökad aktivitet',
     'minimal_sleep': 'Minimal sömn',
     'rapid_speech': 'Snabbt tal',
     'difficulty_focusing': 'Svårt att fokusera',
     'multiple_projects': 'Flera projekt samtidigt',
-    'still_elevated': 'Fortfarande förhöjd',
     'responding_to_structure': 'Svarar på struktur',
     'improving': 'Förbättras',
     'better_sleep': 'Bättre sömn',
@@ -213,8 +251,8 @@ export function MedicalTimelineDemo() {
       genericMedicationLogs,
       genericTherapeuticSessions,
       genericFamilyObservations,
-      '2024-01-15',
-      '2024-01-21'
+      '2025-06-22',
+      '2025-06-29'
     ),
     []
   );
@@ -270,11 +308,17 @@ export function MedicalTimelineDemo() {
       {/* Header */}
       <div className="p-6 bg-white border-b border-gray-200">
         <h2 className="text-2xl font-bold text-swedish-blue mb-2">
-          Exempel: 7-dagars Hypomani Episode
+          Morgan's 7-dagars Hypomani Episode
         </h2>
         <p className="text-sm text-gray-600">
-          Generisk demo som visar hur BalansAI hjälper familjer hantera hypomaniska episoder. 
-          Klicka på en dag för detaljer.
+          Verkliga aktiverings-mönster och Weaver Ankare. Fiktionaliserad karaktär baserad på verklig erfarenhet (juni 2025).
+          Klicka på en dag för detaljer.{' '}
+          <a 
+            href="/narratives/skelleftea-protocol" 
+            className="text-alliance-purple hover:text-deep-swedish-blue underline font-medium"
+          >
+            Läs hela historien →
+          </a>
         </p>
       </div>
       
@@ -401,7 +445,18 @@ export function MedicalTimelineDemo() {
                       {evt.type === 'observation' && (
                         <div className="mt-2 text-xs text-gray-600">
                           <div><strong>Beteende:</strong> {(evt.data as FamilyObservation).behavior}</div>
-                          <div className="mt-1">{(evt.data as FamilyObservation).context}</div>
+                          <div className="mt-1"><strong>Kontext:</strong> {(evt.data as FamilyObservation).context}</div>
+                        </div>
+                      )}
+                      
+                      {evt.type === 'anchor' && (
+                        <div className="mt-2 text-xs text-gray-600">
+                          <div><strong>Markörer:</strong></div>
+                          <ul className="list-disc list-inside mt-1">
+                            {(evt.data as ActivationEvent).markers.map((marker, i) => (
+                              <li key={i}>{translateMarker(marker)}</li>
+                            ))}
+                          </ul>
                         </div>
                       )}
                       

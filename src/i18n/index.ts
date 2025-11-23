@@ -11,9 +11,9 @@ i18next
     fallbackLng: 'sv',
     supportedLngs: ['en', 'sv', 'de', 'fr', 'es', 'pl', 'nl', 'fi', 'no', 'da'],
     
-    // Namespaces for domain separation
-    ns: ['common', 'homepage', 'medical', 'family', 'defense', 'red-forge', 'guardian', 'forge', 'institutional', 'narratives', 'ground-assault', 'morgans-dilemma'],
-    defaultNS: 'common',
+  // Namespaces for domain separation
+  ns: ['common', 'homepage', 'medical', 'family', 'defense', 'red-forge', 'guardian', 'forge', 'institutional', 'narratives', 'ground-assault', 'morgans-dilemma', 'skelleftea-protocol', 'contact'],
+  defaultNS: 'common',
     
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json',

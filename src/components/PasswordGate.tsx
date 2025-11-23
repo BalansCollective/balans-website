@@ -10,7 +10,6 @@ const COLORS = {
 
 // Simple password gate - client-side only (demo purposes)
 const DEMO_PASSWORD = 'pia'; // Password for Pia's demo access
-const DISABLE_PASSWORD_IN_DEV = import.meta.env.DEV; // Disable in development mode
 
 const SpiralIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +28,7 @@ interface PasswordGateProps {
 
 export function PasswordGate({ children }: PasswordGateProps) {
   const [password, setPassword] = useState('');
-  const [isUnlocked, setIsUnlocked] = useState(DISABLE_PASSWORD_IN_DEV);
+  const [isUnlocked, setIsUnlocked] = useState(false);
   const [error, setError] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {

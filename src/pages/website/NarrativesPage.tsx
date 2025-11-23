@@ -239,6 +239,51 @@ export default function NarrativesPage() {
               </div>
             </a>
 
+            {/* Skellefteå Protocol (Medical AI Safety) */}
+            <a 
+              href="/narratives/skelleftea-protocol"
+              className="group bg-white rounded-xl p-8 shadow-[0_4px_6px_-1px_rgba(44,90,160,0.1)] hover:shadow-[0_10px_15px_-3px_rgba(44,90,160,0.2)] transition-all duration-300 hover:-translate-y-1 border border-[#b8c5d1]"
+            >
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0 w-20 h-20 bg-[#8faa8b]/20 rounded-lg flex items-center justify-center">
+                  <span className="text-4xl">🔗</span>
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="px-3 py-1 bg-[#8faa8b]/10 text-[#8faa8b] text-sm font-semibold rounded-full">
+                      Medical AI Safety
+                    </span>
+                    <span className="px-3 py-1 bg-[#8faa8b]/10 text-[#8faa8b] text-sm font-semibold rounded-full">
+                      5 min (T1) / 20 min (T2)
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-display font-bold text-[#2c5aa0] mb-3 group-hover:text-[#6b5b95] transition-colors">
+                    The Skellefteå Protocol
+                  </h3>
+                  <p className="text-[#2c5aa0] leading-relaxed mb-4 opacity-75">
+                    A family vacation becomes a crucible. Morgan, brilliant but hypomanic, finds her AI tools amplifying her spiraling thoughts. Her parents watch with alarm. But amidst tension—broken promises, strained conversations, emergency medication—a new path emerges. Morgan re-engineers her AI from mirror to anchor.
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-[#2c5aa0] opacity-60">
+                    <span>🔗 AI anchoring</span>
+                    <span>•</span>
+                    <span>👨‍👩‍👧 Family system</span>
+                    <span>•</span>
+                    <span>🛠️ Tool building during crisis</span>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-[#b8c5d1]">
+                    <p className="text-sm text-[#2c5aa0] italic">
+                      <strong>Discovery:</strong> AI designed for engagement can amplify hypomania. But AI designed with structured friction—L1-first explanations, forced prioritization, reality anchoring—can serve as governor instead of fuel. This is the story of building safety while living crisis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 flex justify-end">
+                <span className="text-[#c9a96e] font-semibold group-hover:text-[#6b5b95] transition-colors">
+                  Read narrative →
+                </span>
+              </div>
+            </a>
+
             {/* Coming Soon Placeholders */}
             <div className="bg-white rounded-xl p-8 border border-[#b8c5d1] opacity-60">
               <div className="flex items-start gap-6">
@@ -302,7 +347,7 @@ export default function NarrativesPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="mailto:samuel@dynorobotics.se?subject=Feedback på Design-Narrativ" 
+              href="/contact" 
               className="px-8 py-4 bg-[#b87333] text-[#f8f6f0] rounded-lg hover:bg-[#c9a96e] transition-colors shadow-lg font-semibold"
             >
               {t('cta.primary')}

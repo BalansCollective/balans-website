@@ -1,0 +1,141 @@
+{
+  "title": "Skellefteåprotokollet",
+  "subtitle": "Att Bygga Säkerhet Mitt I Krisen",
+  "tier1_badge": "Nivå 1: Kärnan",
+  "tier2_badge": "Nivå 2: Full Berättelse",
+  "tier1_reading_time": "5 min läsning",
+  "tier2_reading_time": "20 min läsning",
+  
+  "reading_guide": {
+    "title": "Läsguide",
+    "ai_risk": "⚠️ AI-risk kontext (2 min): Varför detta spelar roll—förstärkning vs förankring",
+    "tier1": "Nivå 1 (5 min): Kärnberättelsen—Morgan bygger ett verktyg under en hypoman episod",
+    "tier2": "Nivå 2 (20 min): Fullständig berättelse—Sju scener som visar hur hon gjorde det",
+    "if_you_are": "Om du är:",
+    "new_to_hypomania": "Ny till hypomani: Läs AI-risk + Nivå 1—förstå mönstret",
+    "family_member": "Familjemedlem: Läs alla sektioner—fullständig kontext",
+    "medical_professional": "Läkare/vårdpersonal: Nivå 2 har kliniska detaljer + medicinska korrekthetsnoteringar",
+    "ai_researcher": "AI-forskare: Fokusera på AI-risk + Designprinciper (efter N2)"
+  },
+
+  "ai_risk": {
+    "title": "⚠️ Förstå AI-risken",
+    "p1": "De flesta AI-verktyg är designade för att maximera engagemang—ge dig fler idéer, djupare kopplingar, snabbare insikter. För de flesta användare, för det mesta, är detta hjälpsamt.",
+    "p2": "Men för vissa tillstånd blir engagemang förstärkning.",
+    "p3": "Under hypomana episoder är hjärnans saliencenätverk (som bestämmer 'viktighet') hyperaktivt. Varje tanke känns kritiskt brådskande. Normal AI-interaktion kan trigga förklaringskaskader—där en idé genererar fem till, som genererar tjugofem till, vilket skapar en självförstärkande cykel som gör reglering nästan omöjlig.",
+    "both_sides": "Denna berättelse visar BÅDA sidorna av AI:",
+    "amplification": "22-24 juni (Förstärkning): Morgan använder AI-verktyg 'normalt'—ber om insikter, utforskar kopplingar, genererar ramverk. AI:n är hjälpsam, engagerande, produktiv. Men den föder det hypomana mönstret, gör det svårare att sluta, svårare att sova, svårare att vara närvarande för familjen.",
+    "anchoring": "27-28 juni (Förankring): Morgan bygger en annan sorts AI-verktyg—ett designat för att motstå förstärkning under förhöjda tillstånd. L1-först-förklaringar (inga konceptuella kaninhål). Tvingad prioritering ('Vilken EN idé är viktigast?'). Verklighetsförankrande prompter (omdirigera till konkreta mål). Synliga överstyrningar (transparens när man korsar för-committade gränser). AI:n blir en regulator istället för bränsle.",
+    "countermeasure": "Motmedlet är inte 'sluta använda AI.' Det är 'designa AI för att förankra när du behöver det.'",
+    
+    "prerequisites": {
+      "title": "Kritiska Förutsättningar",
+      "intro": "Detta tillvägagångssätt fungerade för Morgan i detta specifika sammanhang. Det kräver:",
+      "medical": "✅ Medicinskt stöd: Psykiater, medicinprotokoll, professionell diagnos",
+      "family": "✅ Familjesystem: Människor som känner igen mönster och upprätthåller gränser",
+      "technical": "✅ Teknisk kapacitet: Förmåga att konfigurera och använda verktyg effektivt",
+      "insight": "✅ Insikt: Igenkänning (även motvillig) när man är förhöjd",
+      "stability": "✅ Stabilitet: Baslinjefunktion tillräcklig för att sätta klarttänkta regler",
+      "warning": "Om någon av dessa saknas, kan detta tillvägagångssätt inte fungera. Försök inte utan professionell psykiatrisk vård."
+    },
+    
+    "what_this_shows": {
+      "title": "Vad Detta Visar",
+      "intro": "Detta är en medicinsk fallstudie (fiktionaliserad för att skydda integriteten), inte en stresstestberättelse. Det visar:",
+      "point1": "Hur standard AI-verktyg kan förstärka problematiska mönster",
+      "point2": "Hur medvetna designval skapar förankring istället",
+      "point3": "Varför verktyg ensamma är otillräckliga (medicin + familj kritiskt)",
+      "point4": "Hur det ser ut att bygga säkerhet under krisen, inte efteråt"
+    },
+    
+    "disclaimer": "Medicinsk disclaimer: Denna berättelse beskriver en persons upplevelse av bipolär II-hypomani. Varje persons tillstånd är annorlunda. Sök alltid professionell psykiatrisk vård. Verktygen som beskrivs här stödjer behandling men ersätter den aldrig."
+  },
+
+  "tier1": {
+    "title": "Nivå 1: Kärnan 🔗",
+    "meta": "5 minuter • 280 tokens",
+    
+    "recognition": {
+      "title": "Igenkänningen (23 juni)",
+      "content": [
+        "Eleanor såg Morgan gå samma 50-meters slinga för tredje gången den morgonen. Cirkulärt gående. Flera duschar. Ingen sömn. Hon hade sett detta mönster förut.",
+        "Vid lunch frågade Marcus: 'Hur mycket sömn i natt?'",
+        "'Fyra timmar. Jag vaknade med en lösning—'",
+        "'Du har duschat tre gånger idag.'",
+        "Morgan pausade. Igenkänning flimrade. 'Åh.'",
+        "Dr. Andersson på högtalartelefon: 'Vad kom vi överens om i det här scenariot?'",
+        "'Att om de ser mönstret, bör jag lyssna.' Morgans röst tyst. 'Även om jag inte håller med.'",
+        "Eleanor: '22:00 medicin. Tills dess kan du jobba.'",
+        "'Okej. 22:00.'"
+      ]
+    },
+    
+    "break": {
+      "title": "Brottet (24 juni, 21:45)",
+      "content": [
+        "Marcus i dörröppningen. Morgan skriver, fördjupad.",
+        "'Det är snart 22.'",
+        "'Bara fem minuter till—'",
+        "'Det är vad du sa klockan 21:30.'",
+        "'Detta är viktigt.'",
+        "'Så är det att hålla ditt ord.'",
+        "Morgan tittade upp. 'Jag är ledsen. Jag slutar.'",
+        "'Det sa du igår också.'",
+        "Lång tystnad. 'Jag vet inte hur jag ska sluta.'"
+      ]
+    },
+    
+    "cost": {
+      "title": "Kostnaden (25 juni)",
+      "content": [
+        "Morgonpromenad. Eleanor: 'Marcus känner att han förlorade dig igen. Vi planerar resor för att återansluta, och du var inte närvarande.'",
+        "Orden landade tungt. Morgan hade tillbringat veckan försjunken i AI-arbete, brutit löften, valt produktivitet framför närvaro.",
+        "'Tänk om jag byggde ett verktyg? Något som hjälper mig se mönstret UNDER?'"
+      ]
+    },
+    
+    "build": {
+      "title": "Byggandet (28 juni)",
+      "content": [
+        "Morgan vid laptop. Eleanor nyfiken: 'Vad jobbar du med?'",
+        "'Lär AI:n att säga nej till mig.'",
+        "'Hur?'",
+        "'L1-förklaringar först. När jag är förhöjd vill jag NYA idéer, djupare ramverk, esoteriska kopplingar. AI:n säger: 'Låt oss börja enkelt. Vad är den ENA saken du försöker lösa?''",
+        "Marcus tittar på testet. AI på skärmen:",
+        "🎯 OMDIRIGERA: Du har utforskat 5 tangenter. Vilken EN idé är viktigast just nu?",
+        "Morgan: 'Jag... vet inte. De känns alla kritiska.'",
+        "> Det är en signal. När allt känns kritiskt, är inget det.",
+        "Marcus: 'Det fungerar?'",
+        "Morgan (förvånad, irriterad): 'Det gör det faktiskt.'"
+      ]
+    },
+    
+    "resolution": {
+      "title": "Lösningen (29 juni)",
+      "content": [
+        "Sista promenaden. Eleanor: 'Hur känner du dig?'",
+        "'Mittemellan. Inte förhöjd, inte baslinje. Mellan.' Morgan pausade. 'Verktyget spårar detta—valpunkterna. När jag fortfarande kan välja närvaro över att pressa.'",
+        "'Och idag?'",
+        "'Idag valde jag den här promenaden. Med dig. Det kändes rätt.'"
+      ]
+    },
+    
+    "pattern": "Mönstret: Hypomani → Familj känner igen → Medicinprotokoll → Relationsskada → Verktygsbyggande UNDER episod → AI som ankare, inte förstärkare → Stabilisering genom system (medicin + familj + verktyg)."
+  },
+
+  "expand_t2": "Expandera för Nivå 2: Fullständig Berättelse (20 min)",
+  "collapse_t2": "Dölj Nivå 2",
+  
+  "tier2": {
+    "title": "Nivå 2: Fullständig Berättelse 🔍",
+    "note": "Fullständig berättelse med sju scener, kliniska detaljer och teknisk kontext.",
+    "coming_soon": "Fullständig Nivå 2-berättelse kommer snart. Prototypverktyget testas fortfarande med verkliga användare."
+  },
+
+  "contact": {
+    "title": "Vill du testa Weaver-verktyget?",
+    "p1": "Detta är tidigt prototyptestning. Om du har bipolär II med produktiv hypomani och är intresserad av att hjälpa till att designa verktyg som faktiskt fungerar, kontakta Samuel.",
+    "button": "Kontakta Oss"
+  }
+}
+

@@ -146,9 +146,10 @@
   },
   "demo": {
     "title": "See Weaver In Action",
-    "description": "Interactive demo with example data. Discover how structured intensity works.",
+    "description": "Interactive demo based on real 7-day hypomanic episode (June 2025). Discover how structured intensity works.",
     "start_button": "Explore Demo",
-    "close_button": "Close Demo"
+    "close_button": "Close Demo",
+    "read_full_story": "📖 Read The Full Story: The Skellefteå Protocol"
   },
   "cta": {
     "title": "Build With Us",
@@ -160,7 +161,7 @@
     },
     "buttons": {
       "family": "Learn About Balans Familj",
-      "betatest": "Email Samuel"
+      "betatest": "Contact Us"
     },
     "benefits": {
       "honest": "Honest about what works and doesn't",

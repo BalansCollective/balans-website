@@ -5,16 +5,13 @@ import { PiaDashboard } from '../components/PiaDashboard'
 import FamilyDashboard from '../components/FamilyDashboard'
 import { SamMedicineLog } from '../components/SamMedicineLog'
 import { PasswordGate } from '../components/PasswordGate'
-import { WeaverStream } from '../components/WeaverStream'
-import { ThemeToggle } from '../components/ThemeToggle'
-import { GoldenThreadsTest } from './GoldenThreadsTest'
 
 export function MedicalDashboardPage() {
-  const [activeTab, setActiveTab] = useState<'timeline' | 'vardplan' | 'pia' | 'family' | 'sam' | 'weaver' | 'threads'>('threads');
+  const [activeTab, setActiveTab] = useState<'timeline' | 'vardplan' | 'pia' | 'family' | 'sam'>('sam');
   
   return (
     <PasswordGate>
-      <div className="w-full h-screen flex flex-col bg-birch-white dark:bg-bg-main transition-colors duration-300">
+      <div className="w-full h-screen flex flex-col bg-birch-white dark:bg-bg-main transition-colors duration-300 pt-16">
       {/* Tab Navigation */}
       <div className="bg-white dark:bg-bg-surface border-b border-gentle-silver/20 dark:border-border-medium">
         <nav className="flex flex-wrap px-2 sm:px-6 items-center">
@@ -87,39 +84,6 @@ export function MedicalDashboardPage() {
               <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-swedish-blue dark:bg-swedish-blue-dark" />
             )}
           </button>
-          
-          <button
-            onClick={() => setActiveTab('weaver')}
-            className={`px-2 sm:px-4 py-3 text-sm sm:text-base font-medium transition-colors relative ${
-              activeTab === 'weaver'
-                ? 'text-swedish-blue dark:text-swedish-blue-dark'
-                : 'text-gray-600 dark:text-birch-white-dark/70 hover:text-gray-900 dark:hover:text-birch-white-dark'
-            }`}
-          >
-            🧠 Weaver CLI
-            {activeTab === 'weaver' && (
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-swedish-blue dark:bg-swedish-blue-dark" />
-            )}
-          </button>
-          
-          <button
-            onClick={() => setActiveTab('threads')}
-            className={`px-2 sm:px-4 py-3 text-sm sm:text-base font-medium transition-colors relative ${
-              activeTab === 'threads'
-                ? 'text-thread-gold dark:text-thread-gold-dark'
-                : 'text-gray-600 dark:text-birch-white-dark/70 hover:text-gray-900 dark:hover:text-birch-white-dark'
-            }`}
-          >
-            ✨ Golden Threads
-            {activeTab === 'threads' && (
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-thread-gold dark:bg-thread-gold-dark" />
-            )}
-          </button>
-          
-          {/* Theme Toggle */}
-          <div className="ml-auto py-3">
-            <ThemeToggle />
-          </div>
         </nav>
       </div>
       
@@ -130,8 +94,6 @@ export function MedicalDashboardPage() {
         {activeTab === 'vardplan' && <Vardplan />}
         {activeTab === 'pia' && <PiaDashboard />}
         {activeTab === 'family' && <FamilyDashboard />}
-        {activeTab === 'weaver' && <WeaverStream />}
-        {activeTab === 'threads' && <GoldenThreadsTest />}
       </div>
 
       {/* Demo Disclaimer Footer */}

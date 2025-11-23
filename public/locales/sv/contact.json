@@ -1,0 +1,27 @@
+{
+  "title": "Kontakta Samuel",
+  "subtitle": "Frågor om Balans? Maila mig direkt.",
+  "email": {
+    "title": "Email"
+  },
+  "sections": {
+    "family": {
+      "title": "🏠 Balans Familj",
+      "description": "Intresserad av smart familjechat med AI-stöd? Skriv 'Balans Familj' i ämnesraden."
+    },
+    "medical": {
+      "title": "🩺 Weaver Medical Pattern",
+      "description": "Vill testa verktyg för hypomanihantering? Skriv 'Weaver Medical' i ämnesraden. (Kräver psykiatrisk diagnos + medicinsk uppföljning.)"
+    },
+    "defense": {
+      "title": "🔐 Red Forge / Försvar",
+      "description": "Intresserad av säker AI-utveckling för försvarssektorn? Skriv 'Red Forge' i ämnesraden."
+    },
+    "other": {
+      "title": "💬 Annat",
+      "description": "Feedback på narrativer? Filosofiska frågor? Samarbetsförslag? Skriv vad det gäller i ämnesraden."
+    }
+  },
+  "response_time": "⏱️ Jag svarar normalt inom 24-48 timmar. Vid akuta medicinska frågor, kontakta din läkare direkt."
+}
+

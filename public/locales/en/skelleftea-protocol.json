@@ -1,0 +1,141 @@
+{
+  "title": "The Skellefteå Protocol",
+  "subtitle": "Building Safety While Living Crisis",
+  "tier1_badge": "Tier 1: The Hook",
+  "tier2_badge": "Tier 2: Full Investigation",
+  "tier1_reading_time": "5 min read",
+  "tier2_reading_time": "20 min read",
+  
+  "reading_guide": {
+    "title": "Reading Guide",
+    "ai_risk": "⚠️ AI Risk Context (2 min): Why this matters—amplification vs anchoring",
+    "tier1": "Tier 1 (5 min): The core story—Morgan builds a tool during a hypomanic episode",
+    "tier2": "Tier 2 (20 min): Full narrative—Seven scenes showing how she did it",
+    "if_you_are": "If you are:",
+    "new_to_hypomania": "New to hypomania: Read AI Risk + Tier 1—understand the pattern",
+    "family_member": "Family member: Read all sections—complete context",
+    "medical_professional": "Medical professional: Tier 2 has clinical details + medical accuracy notes",
+    "ai_researcher": "AI researcher: Focus on AI Risk + Design Principles (after T2)"
+  },
+
+  "ai_risk": {
+    "title": "⚠️ Understanding the AI Risk",
+    "p1": "Most AI tools are designed to maximize engagement—to give you more ideas, deeper connections, faster insights. For most users, most of the time, this is helpful.",
+    "p2": "But for certain conditions, engagement becomes amplification.",
+    "p3": "During hypomanic episodes, the brain's salience network (what determines 'importance') is hyperactive. Every thought feels critically urgent. Normal AI interaction can trigger explanation cascades—where one idea generates five more, which generate twenty-five more, creating a self-reinforcing cycle that makes regulation nearly impossible.",
+    "both_sides": "This narrative shows BOTH sides of AI:",
+    "amplification": "June 22-24 (Amplification): Morgan uses AI tools 'normally'—asking for insights, exploring connections, generating frameworks. The AI is helpful, engaging, productive. But it feeds the hypomanic pattern, making it harder to stop, harder to sleep, harder to be present for family.",
+    "anchoring": "June 27-28 (Anchoring): Morgan builds a different kind of AI tool—one designed to resist amplification during elevated states. L1-first explanations (no conceptual rabbit holes). Forced prioritization ('Which ONE idea matters?'). Reality anchoring prompts (redirect to concrete goals). Visible overrides (transparency when crossing pre-committed boundaries). The AI becomes a governor instead of fuel.",
+    "countermeasure": "The countermeasure isn't 'stop using AI.' It's 'design AI to anchor when you need it.'",
+    
+    "prerequisites": {
+      "title": "Critical Prerequisites",
+      "intro": "This approach worked for Morgan in this specific context. It requires:",
+      "medical": "✅ Medical support: Psychiatrist, medication protocol, professional diagnosis",
+      "family": "✅ Family system: People who recognize patterns and enforce boundaries",
+      "technical": "✅ Technical capacity: Ability to configure and use tools effectively",
+      "insight": "✅ Insight: Recognition (even reluctant) when you're elevated",
+      "stability": "✅ Stability: Baseline functioning sufficient to set clear-headed rules",
+      "warning": "If any of these are missing, this approach may not work. Do not attempt without professional psychiatric care."
+    },
+    
+    "what_this_shows": {
+      "title": "What This Shows",
+      "intro": "This is a medical case study (fictionalized to protect privacy), not a stress-test narrative. It shows:",
+      "point1": "How standard AI tools can amplify problematic patterns",
+      "point2": "How deliberate design choices create anchoring instead",
+      "point3": "Why tools alone are insufficient (medication + family critical)",
+      "point4": "What it looks like to build safety during crisis, not after"
+    },
+    
+    "disclaimer": "Medical Disclaimer: This narrative describes one person's experience with bipolar II hypomania. Every person's condition is different. Always seek professional psychiatric care. The tools described here support treatment but never replace it."
+  },
+
+  "tier1": {
+    "title": "Tier 1: The Hook 🔗",
+    "meta": "5 minutes • 280 tokens",
+    
+    "recognition": {
+      "title": "The Recognition (June 23)",
+      "content": [
+        "Eleanor watched Morgan walk the same 50-meter loop for the third time that morning. Circular walking. Multiple showers. No sleep. She'd seen this pattern before.",
+        "At lunch, Marcus asked: 'How much sleep last night?'",
+        "'Four hours. I woke up with a solution—'",
+        "'You've showered three times today.'",
+        "Morgan paused. Recognition flickered. 'Oh.'",
+        "Dr. Andersson on speakerphone: 'What did we agree about this scenario?'",
+        "'That if they see the pattern, I should listen.' Morgan's voice quiet. 'Even if I don't agree.'",
+        "Eleanor: '10pm medication. Until then, you can work.'",
+        "'Okay. 10pm.'"
+      ]
+    },
+    
+    "break": {
+      "title": "The Break (June 24, 9:45pm)",
+      "content": [
+        "Marcus in doorway. Morgan typing, absorbed.",
+        "'It's almost 10.'",
+        "'Just five more minutes—'",
+        "'That's what you said at 9:30.'",
+        "'This is important.'",
+        "'So is keeping your word.'",
+        "Morgan looked up. 'I'm sorry. I'll stop.'",
+        "'You said that yesterday too.'",
+        "Long silence. 'I don't know how to stop.'"
+      ]
+    },
+    
+    "cost": {
+      "title": "The Cost (June 25)",
+      "content": [
+        "Morning walk. Eleanor: 'Marcus feels like he lost you again. We plan trips to reconnect, and you weren't present.'",
+        "The words landed heavy. Morgan had spent the week absorbed in AI work, breaking promises, choosing productivity over presence.",
+        "'What if I built a tool? Something that helps me see the pattern DURING?'"
+      ]
+    },
+    
+    "build": {
+      "title": "The Build (June 28)",
+      "content": [
+        "Morgan at laptop. Eleanor curious: 'What are you working on?'",
+        "'Teaching the AI to say no to me.'",
+        "'How?'",
+        "'L1 explanations first. When I'm elevated, I want NEW ideas, deeper frameworks, esoteric connections. The AI says: Let's start simple. What's the ONE thing you're trying to solve?'",
+        "Marcus watching the test. AI on screen:",
+        "🎯 REDIRECT: You've explored 5 tangents. Which ONE idea is most critical right now?",
+        "Morgan: 'I... don't know. They all feel critical.'",
+        "> That's a signal. When everything feels critical, nothing is.",
+        "Marcus: 'It works?'",
+        "Morgan (surprised, annoyed): 'It kind of does.'"
+      ]
+    },
+    
+    "resolution": {
+      "title": "The Resolution (June 29)",
+      "content": [
+        "Final walk. Eleanor: 'How are you feeling?'",
+        "'In between. Not elevated, not baseline. Middle.' Morgan paused. 'The tool tracks this—the choice points. When I can still choose presence over pushing.'",
+        "'And today?'",
+        "'Today I chose this walk. With you. It felt right.'"
+      ]
+    },
+    
+    "pattern": "The Pattern: Hypomania → Family recognizes → Medication protocol → Relationship damage → Tool building DURING episode → AI as anchor, not amplifier → Stabilization through system (medication + family + tool)."
+  },
+
+  "expand_t2": "Expand for Tier 2: Full Investigation (20 min)",
+  "collapse_t2": "Collapse Tier 2",
+  
+  "tier2": {
+    "title": "Tier 2: Full Investigation 🔍",
+    "note": "Full narrative with seven scenes, clinical details, and technical context.",
+    "coming_soon": "Full Tier 2 narrative coming soon. The prototype tool is still being tested with real users."
+  },
+
+  "contact": {
+    "title": "Want to test the Weaver tool?",
+    "p1": "This is early prototype testing. If you have bipolar II with productive hypomania and are interested in helping design tools that actually work, contact Samuel.",
+    "button": "Contact Us"
+  }
+}
+

@@ -1,0 +1,27 @@
+{
+  "title": "Contact Samuel",
+  "subtitle": "Questions about Balans? Email me directly.",
+  "email": {
+    "title": "Email"
+  },
+  "sections": {
+    "family": {
+      "title": "🏠 Balans Family",
+      "description": "Interested in smart family chat with AI support? Write 'Balans Family' in the subject line."
+    },
+    "medical": {
+      "title": "🩺 Weaver Medical Pattern",
+      "description": "Want to test tools for hypomania management? Write 'Weaver Medical' in the subject line. (Requires psychiatric diagnosis + medical follow-up.)"
+    },
+    "defense": {
+      "title": "🔐 Red Forge / Defense",
+      "description": "Interested in secure AI development for defense sector? Write 'Red Forge' in the subject line."
+    },
+    "other": {
+      "title": "💬 Other",
+      "description": "Feedback on narratives? Philosophical questions? Collaboration proposals? Write what it's about in the subject line."
+    }
+  },
+  "response_time": "⏱️ I normally respond within 24-48 hours. For urgent medical questions, contact your doctor directly."
+}
+

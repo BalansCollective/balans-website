@@ -48,7 +48,7 @@ export function MedicalPage() {
                   {t('demo.start_button')}
                 </a>
                 <a 
-                  href="mailto:samuel@dynorobotics.se?subject=Betatest BalansAI"
+                  href="/contact"
                   className="inline-flex items-center justify-center px-6 py-3 bg-transparent hover:bg-white/5 text-truth-copper border-2 border-truth-copper font-medium rounded-lg transition-colors"
                 >
                   {t('cta.buttons.betatest')}
@@ -185,10 +185,16 @@ export function MedicalPage() {
                 </div>
               )}
               
-              <div className="text-center">
+              <div className="text-center space-y-4">
+                <a
+                  href="/narratives/skelleftea-protocol"
+                  className="inline-block px-8 py-4 bg-alliance-purple text-white rounded-full font-bold text-lg hover:bg-deep-swedish-blue transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                >
+                  {t('demo.read_full_story')}
+                </a>
                 <button
                   onClick={() => setShowDemo(false)}
-                  className="px-6 py-3 border-2 border-sage-green text-sage-green rounded-full font-medium hover:bg-sage-green/10 transition-colors"
+                  className="block mx-auto px-6 py-3 border-2 border-sage-green text-sage-green rounded-full font-medium hover:bg-sage-green/10 transition-colors"
                 >
                   {t('demo.close_button')}
                 </button>
@@ -220,7 +226,7 @@ export function MedicalPage() {
               {t('cta.buttons.family')}
             </a>
             <a 
-              href="mailto:samuel@dynorobotics.se?subject=Weaver Betatest" 
+              href="/contact" 
               className="bg-white text-sage-green px-8 py-4 rounded-full font-bold text-lg hover:bg-birch-white transition-all duration-300 shadow-md hover:shadow-lg"
             >
               {t('cta.buttons.betatest')}

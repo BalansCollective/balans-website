@@ -25,7 +25,7 @@ export default function RedForgePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="mailto:samuel@dynorobotics.se"
+                  href="/contact"
                   className="inline-flex items-center justify-center px-6 py-3 bg-red-700 hover:bg-red-600 text-white border-red-600 font-medium rounded-lg transition-colors"
                 >
                   {t('hero.cta_primary')}
@@ -364,7 +364,7 @@ export default function RedForgePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:samuel@dynorobotics.se"
+              href="/contact"
               className="inline-flex items-center justify-center px-6 py-3 bg-red-700 hover:bg-red-600 text-white border-red-600 font-medium rounded-lg transition-colors"
             >
               {t('cta.primary')}

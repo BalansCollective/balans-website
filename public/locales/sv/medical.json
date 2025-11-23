@@ -146,9 +146,10 @@
   },
   "demo": {
     "title": "Se Weaver I Praktiken",
-    "description": "Interaktiv demo med exempeldata. Upptäck hur strukturerad intensitet fungerar.",
+    "description": "Interaktiv demo baserad på verklig 7-dagars hypomani-episod (juni 2025). Upptäck hur strukturerad intensitet fungerar.",
     "start_button": "Utforska Demo",
-    "close_button": "Stäng Demo"
+    "close_button": "Stäng Demo",
+    "read_full_story": "📖 Läs Hela Historien: Skellefteåprotokollet"
   },
   "cta": {
     "title": "Bygg Med Oss",
@@ -160,7 +161,7 @@
     },
     "buttons": {
       "family": "Läs Om Balans Familj",
-      "betatest": "Mejla Samuel"
+      "betatest": "Kontakta Oss"
     },
     "benefits": {
       "honest": "Ärlig om vad som fungerar och inte",
