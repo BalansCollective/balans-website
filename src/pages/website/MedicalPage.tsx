@@ -156,7 +156,7 @@ export function MedicalPage() {
                       : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                   }`}
                 >
-                  💊 Medicin-logg
+                  💊 Logga medicin
                 </button>
               </div>
 

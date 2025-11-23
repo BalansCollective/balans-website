@@ -682,7 +682,7 @@ export function GenericMedicineLog() {
             <BridgeIcon className="w-6 h-6 sm:w-8 sm:h-8" />
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold" style={{ color: COLORS.swedishBlue }}>
-            Medicin-logg
+            Logga medicin
           </h1>
         </div>
         <p className="text-xs sm:text-sm mb-3" style={{ color: COLORS.swedishBlue }}>
