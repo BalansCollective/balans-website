@@ -685,14 +685,9 @@ export function GenericMedicineLog() {
             Logga medicin
           </h1>
         </div>
-        <p className="text-xs sm:text-sm mb-3" style={{ color: COLORS.swedishBlue }}>
+        <p className="text-xs sm:text-sm" style={{ color: COLORS.swedishBlue }}>
           <strong>Kort tryck:</strong> Logga enligt plan • <strong>Håll inne (vibration):</strong> Anpassad logg
         </p>
-        <div className="p-3 rounded-lg" style={{ backgroundColor: COLORS.alliancePurple + '15', border: `1px solid ${COLORS.alliancePurple}` }}>
-          <p className="text-xs" style={{ color: COLORS.swedishBlue }}>
-            💡 <strong>Medicin-loggen är en del av <a href="/family" className="underline font-bold hover:opacity-80">Balans Familj</a></strong> - inte en fristående tjänst. Den hjälper familjen hålla koll på mediciner tillsammans.
-          </p>
-        </div>
       </div>
 
       {/* Current Time & Date */}

@@ -23,6 +23,14 @@ export function MedicalPage() {
               <p className="text-xl lg:text-2xl text-swedish-blue dark:text-swedish-blue-dark leading-relaxed opacity-80">
                 {t('hero.subtitle')}
               </p>
+              
+              {/* Context Banner */}
+              <div className="p-4 rounded-xl bg-alliance-purple/10 border-2 border-alliance-purple/30">
+                <p className="text-sm text-swedish-blue">
+                  💡 <strong>Del av <a href="/family" className="underline font-bold hover:opacity-80">Balans Familj</a></strong> - inte en fristående tjänst. Hjälper familjen hålla koll på vårdplaner och mediciner tillsammans.
+                </p>
+              </div>
+
               <p className="text-lg text-gray-700 leading-relaxed">
                 {t('hero.description')}
               </p>
