@@ -66,8 +66,8 @@ const MEDICAL_TERMINOLOGY = {
       description: 'AI-stödda interventionsprotokoll aktiverat',
     },
     session: {
-      icon: '📞',
-      label: 'Förankringssamtal',
+      icon: '💬',
+      label: 'Samtal',
       description: 'Verklighetsförankring med familj och AI',
     },
     medication: {
