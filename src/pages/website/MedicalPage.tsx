@@ -21,9 +21,18 @@ export function MedicalPage() {
             <p className="text-xl text-birch-wood mb-4 max-w-3xl mx-auto">
               {t('hero.subtitle')}
             </p>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
               {t('hero.description')}
             </p>
+            
+            {/* Hero Image */}
+            <div className="max-w-4xl mx-auto mb-12">
+              <img 
+                src="/images/medical-hero.png" 
+                alt={t('hero.title')}
+                className="w-full h-auto rounded-2xl shadow-lg"
+              />
+            </div>
           </div>
 
           {/* Quick Facts */}
