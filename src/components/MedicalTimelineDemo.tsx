@@ -284,7 +284,15 @@ export function MedicalTimelineDemo() {
           <ComposedChart 
             data={episodeData}
             onClick={(data) => {
-              if (data?.activePayload?.[0]) {
+              // Always try to find a day, even if clicking between points
+              if (data?.activeLabel) {
+                // activeLabel is the date string of nearest point
+                const day = episodeData.find(d => d.date === data.activeLabel);
+                if (day) {
+                  setSelectedDay(day);
+                }
+              } else if (data?.activePayload?.[0]) {
+                // Fallback to direct hit
                 setSelectedDay(data.activePayload[0].payload as TimelineDay);
               }
             }}
