@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MedicalTimeline } from '../../components/MedicalTimeline';
+import { MedicalTimelineDemo } from '../../components/MedicalTimelineDemo';
 import { ButtonPanel } from '../../components/ButtonPanel';
 
 export function MedicalPage() {
@@ -134,43 +134,8 @@ export function MedicalPage() {
             </div>
           ) : (
             <div className="space-y-8">
-              <div className="bg-gray-50 rounded-2xl p-6 border-2 border-sage-green">
-                <MedicalTimeline />
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white rounded-xl shadow-lg p-6 border-2 border-sage-green">
-                  <h3 className="text-2xl font-bold text-swedish-blue mb-4">{t('demo.quick_buttons.title')}</h3>
-                  <p className="text-gray-600 mb-6">{t('demo.quick_buttons.description')}</p>
-                  <ButtonPanel />
-                </div>
-                
-                <div className="bg-gradient-to-br from-sage-green/10 to-white rounded-xl shadow-lg p-6 border-2 border-sage-green">
-                  <h3 className="text-2xl font-bold text-swedish-blue mb-4">{t('demo.how_it_works.title')}</h3>
-                  <div className="space-y-4 text-gray-700">
-                    <div className="flex items-start gap-3">
-                      <span className="text-2xl">📊</span>
-                      <div>
-                        <p className="font-semibold">{t('demo.how_it_works.realtime.title')}</p>
-                        <p className="text-sm">{t('demo.how_it_works.realtime.description')}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <span className="text-2xl">🤖</span>
-                      <div>
-                        <p className="font-semibold">{t('demo.how_it_works.ai.title')}</p>
-                        <p className="text-sm">{t('demo.how_it_works.ai.description')}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <span className="text-2xl">👨‍⚕️</span>
-                      <div>
-                        <p className="font-semibold">{t('demo.how_it_works.shareable.title')}</p>
-                        <p className="text-sm">{t('demo.how_it_works.shareable.description')}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="bg-gray-50 rounded-2xl border-2 border-sage-green">
+                <MedicalTimelineDemo />
               </div>
               
               <div className="text-center">
