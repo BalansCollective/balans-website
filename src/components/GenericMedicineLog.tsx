@@ -850,7 +850,7 @@ export function GenericMedicineLog() {
         }}
       >
         <p>⚕️ Detta är ett exempel på loggverktyg, inte medicinsk rådgivning.</p>
-        <p className="mt-1">Använd alltid verktyg som ordinerats av vårdpersonal.</p>
+        <p className="mt-1">Ändra aldrig medicindoser utan att rådgöra med läkare eller vårdpersonal.</p>
       </div>
     </div>
   );
