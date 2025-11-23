@@ -1,43 +1,43 @@
 {
   "hero": {
-    "title": "Håll Koll På Mediciner Tillsammans",
-    "subtitle": "Dela vårdplaner och spårning säkert inom familjen. Del av Balans Familj.",
-    "description": "Kör lokalt på era enheter eller använd Balans Hosted backup. Familjen ser samma information i realtid."
+    "title": "Weaver Medical",
+    "subtitle": "Strukturera intensitet. Bevara relationer. Leverera ditt bästa arbete.",
+    "description": "För personer med bipolär som skapar värde under hypomana perioder. Weaver hjälper dig väva samman arbete, relationer och hälsa - utan att tappa kontrollen."
   },
   "facts": {
-    "local": {
-      "title": "Lokal",
-      "subtitle": "Körs på era enheter",
-      "description": "Max integritet, ingen molnlagring"
+    "intensity": {
+      "title": "Strukturerad Intensitet",
+      "subtitle": "Inte eliminera, utan kanalisera",
+      "description": "Hypomana perioder kan vara produktiva - med rätt struktur"
     },
-    "family": {
-      "title": "Familj",
-      "subtitle": "Synkroniserad vy",
-      "description": "Alla ser samma vårdplan & tidslinje"
+    "relationships": {
+      "title": "Relationer Intakta",
+      "subtitle": "Arbeta intensivt, förbli närvarande",
+      "description": "Familjen ser din plan, inte bara din eskalering"
     },
-    "secure": {
-      "title": "Säker",
-      "subtitle": "GDPR-första design",
-      "description": "Du äger och kontrollerar all data"
+    "autonomy": {
+      "title": "Dina Regler",
+      "subtitle": "Pre-commitment, inte paternalism",
+      "description": "Du sätter gränserna när du har clarity"
     }
   },
   "share": {
-    "title": "Vad Familjen Håller Koll På Tillsammans",
-    "medication": {
-      "title": "Medicinspårning",
-      "description": "Tagit medicin, biverkningar, dosjusteringar"
+    "title": "Vad Weaver Väver Samman",
+    "work": {
+      "title": "Arbetsintensitet",
+      "description": "Spåra produktiva perioder, sätt stop-regler, leverera utan att bränna ut"
     },
-    "care_plans": {
-      "title": "Vårdplaner & Protokoll",
-      "description": "\"Gör X när Y\" instruktioner från läkare"
+    "health": {
+      "title": "Biomarkörer",
+      "description": "Sömn, medicin, mat - grunderna som låter dig prestera"
     },
-    "timelines": {
-      "title": "Tidslinjer",
-      "description": "Sömn, aktivitet, välmående över tid"
+    "relationships": {
+      "title": "Relationer",
+      "description": "Schemalagda check-ins, synlighet för familj, förbli närvarande"
     },
-    "warnings": {
-      "title": "Varningssignaler",
-      "description": "Tidiga tecken som familjen kan känna igen"
+    "insights": {
+      "title": "Mönsterigenkänning",
+      "description": "När eskalerar du? Vad är dina tidiga varningssignaler?"
     }
   },
   "case_study": {
@@ -145,27 +145,27 @@
     }
   },
   "demo": {
-    "title": "Prova BalansAI Demo",
-    "description": "Interaktiv tidslinje med exempeldata. Se hur AI-assisterad spårning fungerar i praktiken.",
-    "start_button": "Starta Interaktiv Demo",
+    "title": "Se Weaver I Praktiken",
+    "description": "Interaktiv demo med exempeldata. Upptäck hur strukturerad intensitet fungerar.",
+    "start_button": "Utforska Demo",
     "close_button": "Stäng Demo"
   },
   "cta": {
-    "title": "Vill Du Prova BalansAI?",
-    "subtitle": "Vi söker betatesters som vill:",
+    "title": "Bygg Med Oss",
+    "subtitle": "Vi söker personer med bipolär som:",
     "list": {
-      "item1": "Spåra medicin, sömn och välmående dagligen",
-      "item2": "Ge feedback på AI-analys och mönsterigenkänning",
-      "item3": "Hjälpa oss förbättra verktyget för framtida användare"
+      "item1": "Skapar värde (kod, forskning, konst, business) under hypomana perioder",
+      "item2": "Vill maximera output utan att förstöra relationer",
+      "item3": "Är uttråkade på 'bara ta medicin och var normal'-råd"
     },
     "buttons": {
       "family": "Läs Om Balans Familj",
-      "betatest": "Ansök Som Betatestare"
+      "betatest": "Ansök Betatest"
     },
     "benefits": {
-      "free": "Gratis under betatest",
-      "gdpr": "GDPR-säker svensk lagring",
-      "ownership": "Du äger all din data"
+      "honest": "Ärlig om vad som fungerar och inte",
+      "autonomy": "Dina regler, inte samhällets",
+      "evidence": "Data-backat, inte buzzwords"
     }
   }
 }

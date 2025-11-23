@@ -1,43 +1,43 @@
 {
   "hero": {
-    "title": "Keep Track of Medicines Together",
-    "subtitle": "Share care plans and tracking securely within the family. Part of Balans Familj.",
-    "description": "Run locally on your devices or use Balans Hosted backup. The family sees the same information in real-time."
+    "title": "Weaver Medical",
+    "subtitle": "Structure intensity. Preserve relationships. Deliver your best work.",
+    "description": "For people with bipolar who create value during hypomanic periods. Weaver helps you weave together work, relationships, and health - without losing control."
   },
   "facts": {
-    "local": {
-      "title": "Local",
-      "subtitle": "Runs on your devices",
-      "description": "Maximum privacy, no cloud storage"
+    "intensity": {
+      "title": "Structured Intensity",
+      "subtitle": "Not eliminate, but channel",
+      "description": "Hypomanic periods can be productive - with right structure"
     },
-    "family": {
-      "title": "Family",
-      "subtitle": "Synchronized view",
-      "description": "Everyone sees the same care plan & timeline"
+    "relationships": {
+      "title": "Relationships Intact",
+      "subtitle": "Work intensely, stay present",
+      "description": "Family sees your plan, not just your escalation"
     },
-    "secure": {
-      "title": "Secure",
-      "subtitle": "GDPR-first design",
-      "description": "You own and control all data"
+    "autonomy": {
+      "title": "Your Rules",
+      "subtitle": "Pre-commitment, not paternalism",
+      "description": "You set boundaries when you have clarity"
     }
   },
   "share": {
-    "title": "What The Family Keeps Track Of Together",
-    "medication": {
-      "title": "Medication Tracking",
-      "description": "Taken medication, side effects, dose adjustments"
+    "title": "What Weaver Weaves Together",
+    "work": {
+      "title": "Work Intensity",
+      "description": "Track productive periods, set stop-rules, deliver without burning out"
     },
-    "care_plans": {
-      "title": "Care Plans & Protocols",
-      "description": "\"Do X when Y\" instructions from doctors"
+    "health": {
+      "title": "Biomarkers",
+      "description": "Sleep, medication, food - foundations that let you perform"
     },
-    "timelines": {
-      "title": "Timelines",
-      "description": "Sleep, activity, well-being over time"
+    "relationships": {
+      "title": "Relationships",
+      "description": "Scheduled check-ins, family visibility, stay present"
     },
-    "warnings": {
-      "title": "Warning Signs",
-      "description": "Early signs the family can recognize"
+    "insights": {
+      "title": "Pattern Recognition",
+      "description": "When do you escalate? What are your early warning signs?"
     }
   },
   "case_study": {
@@ -145,27 +145,27 @@
     }
   },
   "demo": {
-    "title": "Try BalansAI Demo",
-    "description": "Interactive timeline with example data. See how AI-assisted tracking works in practice.",
-    "start_button": "Start Interactive Demo",
+    "title": "See Weaver In Action",
+    "description": "Interactive demo with example data. Discover how structured intensity works.",
+    "start_button": "Explore Demo",
     "close_button": "Close Demo"
   },
   "cta": {
-    "title": "Want to Try BalansAI?",
-    "subtitle": "We're looking for beta testers who want to:",
+    "title": "Build With Us",
+    "subtitle": "We're looking for people with bipolar who:",
     "list": {
-      "item1": "Track medication, sleep, and well-being daily",
-      "item2": "Provide feedback on AI analysis and pattern recognition",
-      "item3": "Help us improve the tool for future users"
+      "item1": "Create value (code, research, art, business) during hypomanic periods",
+      "item2": "Want to maximize output without destroying relationships",
+      "item3": "Are tired of 'just take meds and be normal' advice"
     },
     "buttons": {
       "family": "Learn About Balans Familj",
-      "betatest": "Apply as Beta Tester"
+      "betatest": "Apply for Beta"
     },
     "benefits": {
-      "free": "Free during beta",
-      "gdpr": "GDPR-safe Swedish storage",
-      "ownership": "You own all your data"
+      "honest": "Honest about what works and doesn't",
+      "autonomy": "Your rules, not society's",
+      "evidence": "Data-backed, not buzzwords"
     }
   }
 }
