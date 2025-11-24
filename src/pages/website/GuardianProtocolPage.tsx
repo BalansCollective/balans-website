@@ -37,14 +37,9 @@ export function GuardianProtocolPage() {
           <p className="text-lg mb-6 opacity-90">
             {t('summary.description')}
           </p>
-          <ul className="space-y-3 text-lg opacity-90">
-            {(t('summary.benefits', { returnObjects: true }) as string[]).map((benefit, i) => (
-              <li key={i} className="flex items-start gap-2">
-                <span className="text-green-400">✅</span>
-                <span>{benefit}</span>
-              </li>
-            ))}
-          </ul>
+          <p className="text-xl font-semibold text-green-400 mt-6">
+            {t('summary.tagline')}
+          </p>
         </div>
       </section>
 
@@ -56,17 +51,19 @@ export function GuardianProtocolPage() {
           <section className="mb-16">
             <h2 className={`text-4xl font-bold ${isDarkMode ? 'text-blue-400' : 'text-[#2c5aa0]'} mb-8`}>{t('problem.title')}</h2>
             
-            <div className="space-y-8">
-              {(t('problem.items', { returnObjects: true }) as Array<{title: string, description: string}>).map((item, i) => (
-                <Card key={i} variant="flat" className={`border-l-4 border-[#b87333] ${isDarkMode ? 'bg-gray-800 border-gray-700' : ''}`}>
-                  <CardHeader>
-                    <CardTitle className={`text-xl ${isDarkMode ? 'text-blue-300' : 'text-[#2c5aa0]'}`}>{item.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className={isDarkMode ? 'text-gray-300' : 'text-gray-700'}>{item.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
+            <div className="space-y-6">
+              <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                {t('problem.scenario')}
+              </p>
+              <p className={`text-lg font-semibold ${isDarkMode ? 'text-orange-300' : 'text-[#b87333]'}`}>
+                {t('problem.adaptation')}
+              </p>
+              <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                {t('problem.dilemma')}
+              </p>
+              <p className={`text-xl font-bold ${isDarkMode ? 'text-blue-300' : 'text-[#2c5aa0]'} mt-6`}>
+                {t('problem.question')}
+              </p>
             </div>
           </section>
 
@@ -74,11 +71,18 @@ export function GuardianProtocolPage() {
           <section className="mb-16">
             <h2 className={`text-4xl font-bold ${isDarkMode ? 'text-blue-400' : 'text-[#2c5aa0]'} mb-8`}>{t('solution.title')}</h2>
             
+            <p className={`text-lg mb-8 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+              {t('solution.approach')}
+            </p>
+            
             <div className="space-y-6">
-              {(t('solution.components', { returnObjects: true }) as Array<{title: string, description: string}>).map((component, i) => (
+              {(t('solution.tiers', { returnObjects: true }) as Array<{title: string, description: string, example: string}>).map((tier, i) => (
                 <div key={i} className="border-l-4 border-[#6b5b95] pl-6">
-                  <h3 className={`text-2xl font-bold ${isDarkMode ? 'text-blue-300' : 'text-[#2c5aa0]'} mb-3`}>{component.title}</h3>
-                  <p className={`leading-relaxed ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{component.description}</p>
+                  <h3 className={`text-2xl font-bold ${isDarkMode ? 'text-blue-300' : 'text-[#2c5aa0]'} mb-3`}>{tier.title}</h3>
+                  <p className={`leading-relaxed mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{tier.description}</p>
+                  <p className={`text-sm italic ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <strong>Example:</strong> {tier.example}
+                  </p>
                 </div>
               ))}
             </div>

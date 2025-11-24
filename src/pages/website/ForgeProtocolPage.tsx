@@ -37,14 +37,6 @@ export function ForgeProtocolPage() {
           <p className="text-lg mb-6 opacity-90">
             {t('summary.description')}
           </p>
-          <ul className="space-y-3 text-lg opacity-90 mb-8">
-            {(t('summary.benefits', { returnObjects: true }) as string[]).map((benefit, i) => (
-              <li key={i} className="flex items-start gap-2">
-                <span className="text-green-400">✅</span>
-                <span>{benefit}</span>
-              </li>
-            ))}
-          </ul>
           <p className="text-lg opacity-90">
             <strong>{t('summary.sister_protocol')}</strong>
           </p>
