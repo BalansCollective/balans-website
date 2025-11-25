@@ -39,6 +39,8 @@ jobs:
       
       - name: Build website
         run: pnpm build
+        env:
+          VITE_OPENROUTER_KEY: ${{ secrets.VITE_OPENROUTER_KEY }}
       
       - name: Copy CNAME to dist
         run: cp CNAME dist/CNAME
