@@ -1,0 +1,45 @@
+{
+  "name": "@weaver/patch-parser",
+  "version": "0.1.0",
+  "description": "Cline V4A patch format parser - browser-compatible TypeScript for AI-assisted file editing",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "patch",
+    "diff",
+    "cline",
+    "v4a",
+    "ai-assisted",
+    "file-editing",
+    "weaver"
+  ],
+  "author": "Weaver Project",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/weavermesh",
+    "directory": "weaver/typescript/patch-parser"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
+

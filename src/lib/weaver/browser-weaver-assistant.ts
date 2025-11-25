@@ -308,7 +308,7 @@ ${file.content}
         .trim();
 
       // Parse V4A patch using Cline's parser
-      const { PatchParser, applyPatch } = await import('@weaver/patch-parser');
+      const { PatchParser, applyPatch } = await import('@/lib/patch-parser');
       
       const lines = fullResponse.split('\n');
       const parser = new PatchParser(lines, { [file.title]: file.content });

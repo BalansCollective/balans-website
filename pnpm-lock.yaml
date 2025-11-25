@@ -35,9 +35,6 @@ importers:
       '@types/react-syntax-highlighter':
         specifier: ^15.5.13
         version: 15.5.13
-      '@weaver/patch-parser':
-        specifier: file:../weaver/typescript/patch-parser
-        version: file:../weaver/typescript/patch-parser
       buffer:
         specifier: ^6.0.3
         version: 6.0.3
@@ -1177,9 +1174,6 @@ packages:
 
   '@vitest/utils@4.0.14':
     resolution: {integrity: sha512-hLqXZKAWNg8pI+SQXyXxWCTOpA3MvsqcbVeNgSi8x/CSN2wi26dSzn1wrOhmCmFjEvN9p8/kLFRHa6PI8jHazw==}
-
-  '@weaver/patch-parser@file:../weaver/typescript/patch-parser':
-    resolution: {directory: ../weaver/typescript/patch-parser, type: directory}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -3791,8 +3785,6 @@ snapshots:
     dependencies:
       '@vitest/pretty-format': 4.0.14
       tinyrainbow: 3.0.3
-
-  '@weaver/patch-parser@file:../weaver/typescript/patch-parser': {}
 
   acorn-jsx@5.3.2(acorn@8.15.0):
     dependencies:
