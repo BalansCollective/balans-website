@@ -21,7 +21,8 @@ import './App.css';
 
 function AppContent() {
   const location = useLocation();
-  const hideNavigation = location.pathname === '/red-forge-demo' || location.pathname === '/red-forge-advanced';
+  // Match both with and without trailing slash
+  const hideNavigation = location.pathname.startsWith('/red-forge-demo') || location.pathname.startsWith('/red-forge-advanced');
 
   return (
     <>
