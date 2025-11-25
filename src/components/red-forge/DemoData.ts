@@ -1,4 +1,61 @@
-import { ClassifiedFile } from '../lib/red-forge/types';
+import { ClassifiedFile } from '../../lib/red-forge/types';
+import type { DemoFileTree, DemoFile } from './DemoDataLoader';
+
+// Import BirdTurret demo content
+import birdturretV2Content from '../../../public/demo/birdturret-v2-tagged.md?raw';
+import birdturretV35Content from '../../../public/demo/birdturret-v3.5-tagged.md?raw';
+import birdturretV4Content from '../../../public/demo/birdturret-v4-tagged.md?raw';
+
+// Type for simplified file tree (used by KISS demo page)
+export interface SimpleFile {
+  id: string;
+  name: string;
+  classification: 'oklassificerad' | 'begransad-hemlig' | 'konfidentiell' | 'hemlig';
+}
+
+export interface FileTreeFolder {
+  name: string;
+  path: string;
+  files: SimpleFile[];
+  subfolders?: FileTreeFolder[];
+}
+
+/**
+ * Convert DemoFileTree to FileTreeFolder for simplified file tree rendering
+ * (Used by RedForgeDemoPage.tsx)
+ */
+export function convertToFileTree(demoFiles: DemoFileTree): FileTreeFolder {
+  const root: FileTreeFolder = {
+    name: 'Red Forge Demo',
+    path: '/',
+    files: [],
+    subfolders: []
+  };
+
+  // Helper to convert DemoFile to SimpleFile
+  const toSimpleFile = (file: DemoFile): SimpleFile => ({
+    id: file.path,
+    name: file.title,
+    classification: file.classification
+  });
+
+  // Add each classification level as a subfolder
+  const levels = [
+    { key: 'oklassificerad', name: 'Oklassificerad (OPEN)' },
+    { key: 'begransad-hemlig', name: 'Begränsad Hemlig (BH)' },
+    { key: 'konfidentiell', name: 'Konfidentiell (K)' },
+    { key: 'hemlig', name: 'Hemlig (H)' }
+  ] as const;
+
+  root.subfolders = levels.map(level => ({
+    name: level.name,
+    path: `/${level.key}`,
+    files: demoFiles[level.key].map(toSimpleFile),
+    subfolders: []
+  }));
+
+  return root;
+}
 
 export const DEMO_FILES: ClassifiedFile[] = [
   {
@@ -56,39 +113,34 @@ Designed for Swedish defense startups working on CONFIDENTIAL projects. Enables 
     dualClassification: { what: 'UNCLASSIFIED', how: 'SECRET' },
     language: 'typescript',
     lastModified: new Date(),
-    content: `// Publisher API - Classified Component
-// WHAT: UNCLASSIFIED (public interface)
-// HOW: SECRET (implementation details)
+    content: `/**
+ * @classification WHAT:UNCLASSIFIED HOW:SECRET
+ * @file publisher.ts
+ * @description Publisher API for message publishing with QoS support
+ */
 
 /**
- * <What>
  * Publisher allows sending messages to topics with automatic serialization.
  * Supports QoS configuration for reliability guarantees.
- * </What>
  */
 export interface Publisher<T> {
   /**
-   * <What>
    * Publish a message to the configured topic.
    * Returns a promise that resolves when delivery is confirmed.
-   * </What>
    */
   publish(msg: T): Promise<void>;
   
   /**
-   * <What>
    * Close the publisher and release resources.
-   * </What>
    */
   close(): Promise<void>;
 }
 
 /**
- * <How>
- * Internal implementation uses Zenoh PUT operation with MessagePack serialization.
+ * Internal implementation - SECRET
+ * Uses Zenoh PUT operation with MessagePack serialization.
  * Custom priority queue handles QoS=Reliable with 3-retry exponential backoff.
  * Buffer size: 1000 messages. Encryption: AES-256 with per-topic key derivation.
- * </How>
  */
 class PublisherImpl<T> implements Publisher<T> {
   private zenohSession: ZenohSession;
@@ -96,45 +148,43 @@ class PublisherImpl<T> implements Publisher<T> {
   private priorityQueue: PriorityQueue<T>;
   
   constructor(topic: string, qos: QoS) {
-    // <How>
     // Custom key derivation: HKDF-SHA256(topic, salt=deployment_id)
     this.cryptoKey = deriveTopicKey(topic);
+    
     // Zenoh session with custom congestion control
     this.zenohSession = openZenohSession({ cc: 'custom', buffer: 1000 });
+    
     // Priority queue with exponential backoff retry strategy
     this.priorityQueue = new PriorityQueue(qos);
-    // </How>
   }
   
   async publish(msg: T): Promise<void> {
-    // <How>
     // 1. Serialize with MessagePack (faster than JSON, smaller payloads)
     const serialized = msgpack.encode(msg);
+    
     // 2. Encrypt with AES-256-GCM
     const encrypted = await aes256Encrypt(serialized, this.cryptoKey);
+    
     // 3. Route through priority queue if QoS=Reliable
     if (this.qos === 'reliable') {
       await this.priorityQueue.enqueue(encrypted);
     }
+    
     // 4. Zenoh PUT with retry logic (3 attempts, exponential backoff)
     await this.zenohSession.put(this.topic, encrypted, { retries: 3 });
-    // </How>
   }
   
   async close(): Promise<void> {
-    // <How>
     await this.priorityQueue.flush();
     await this.zenohSession.close();
+    
     // Securely wipe crypto key from memory
     this.cryptoKey.fill(0);
-    // </How>
   }
 }
 
 /**
- * <What>
  * Create a new publisher for the specified topic.
- * </What>
  */
 export function createPublisher<T>(topic: string, qos?: QoS): Publisher<T> {
   return new PublisherImpl<T>(topic, qos ?? 'besteffort');
@@ -192,6 +242,125 @@ The IDE will warn you if it detects HOW keywords in WHAT sections:
 6. Sent to on-prem AI (Yellow Network)
 7. Response imported with classification tags
 `
+  },
+  
+  // BirdTurret V2 (Early Prototype - Fully Unclassified)
+  {
+    id: 'birdturret-v2',
+    name: 'birdturret-v2-field-test.md',
+    dualClassification: { what: 'UNCLASSIFIED', how: 'UNCLASSIFIED' },
+    language: 'markdown',
+    lastModified: new Date(),
+    content: birdturretV2Content
+  },
+  
+  // BirdTurret V3.5 (Production - Mixed Classification)
+  {
+    id: 'birdturret-v3.5',
+    name: 'birdturret-v3.5-field-test.md',
+    dualClassification: { what: 'UNCLASSIFIED', how: 'CONFIDENTIAL' },
+    language: 'markdown',
+    lastModified: new Date(),
+    content: birdturretV35Content
+  },
+  
+  // BirdTurret V4 (Combat-Proven Ukraine - SECRET Implementation)
+  {
+    id: 'birdturret-v4',
+    name: 'birdturret-v4-guardian-protocol.md',
+    dualClassification: { what: 'CONFIDENTIAL', how: 'SECRET' },
+    language: 'markdown',
+    lastModified: new Date(),
+    content: birdturretV4Content
+  },
+  
+  // Placeholder files (user doesn't have clearance to see)
+  {
+    id: 'classified-1',
+    name: '[REDACTED]',
+    classification: 'SECRET',
+    language: 'markdown',
+    lastModified: new Date(),
+    showPlaceholder: true,
+    showFilename: false, // Completely hidden
+    content: `# Access Denied
+
+You do not have sufficient clearance to view this document.
+
+**Required Clearance:** SECRET  
+**Your Clearance:** CONFIDENTIAL
+
+Contact your security officer to request access.`
+  },
+  
+  {
+    id: 'classified-2',
+    name: '[REDACTED]',
+    classification: 'TOP_SECRET',
+    language: 'markdown',
+    lastModified: new Date(),
+    showPlaceholder: true,
+    showFilename: false, // Completely hidden
+    content: `# Access Denied
+
+You do not have sufficient clearance to view this document.
+
+**Required Clearance:** TOP_SECRET  
+**Your Clearance:** CONFIDENTIAL
+
+Contact your security officer to request access.`
   }
 ];
+
+// File tree structure for hierarchical display
+export interface FileTreeFolder {
+  name: string;
+  path: string;
+  files: ClassifiedFile[];
+  subfolders?: FileTreeFolder[];
+}
+
+export const FILE_TREE: FileTreeFolder = {
+  name: 'root',
+  path: '/',
+  files: [],
+  subfolders: [
+    {
+      name: 'demos',
+      path: '/demos',
+      files: [
+        DEMO_FILES.find(f => f.id === 'birdturret-v2')!,
+        DEMO_FILES.find(f => f.id === 'birdturret-v3.5')!,
+        DEMO_FILES.find(f => f.id === 'birdturret-v4')!,
+      ].filter(Boolean),
+      subfolders: []
+    },
+    {
+      name: 'docs',
+      path: '/docs',
+      files: [
+        DEMO_FILES.find(f => f.id === 'lumen-1')!,
+        DEMO_FILES.find(f => f.id === 'spec-1')!, // classification-guide.md
+      ].filter(Boolean),
+      subfolders: []
+    },
+    {
+      name: 'src',
+      path: '/src',
+      files: [
+        DEMO_FILES.find(f => f.id === 'pub-1')!, // publisher.ts
+      ].filter(Boolean),
+      subfolders: []
+    },
+    {
+      name: 'classified',
+      path: '/classified',
+      files: [
+        DEMO_FILES.find(f => f.id === 'classified-1')!,
+        DEMO_FILES.find(f => f.id === 'classified-2')!,
+      ].filter(Boolean),
+      subfolders: []
+    }
+  ]
+};
 

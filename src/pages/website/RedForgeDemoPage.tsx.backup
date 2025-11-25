@@ -1,0 +1,704 @@
+import React, { useState, useMemo, useEffect } from 'react';
+import Editor from '@monaco-editor/react';
+import { ClassifiedFile, SecurityLevel } from '../lib/red-forge/types';
+import { DEMO_FILES, FILE_TREE } from '../components/red-forge-advanced/DemoData';
+import { NETWORK_ZONE_COLORS } from '../lib/red-forge/design-tokens';
+import { MDXRenderer } from '../components/red-forge/MDXRenderer';
+import { ComplianceProvider, useCompliance } from '../hooks/useComplianceContext';
+import { WeaverAssistant } from '../components/red-forge-advanced/WeaverAssistantAdvanced';
+import { AuditTrailPanel } from '../components/red-forge/AuditTrailPanel';
+import { SendToAIButton } from '../components/red-forge/SendToAIButton';
+import { FileTreeItem } from '../components/red-forge/FileTreeItem';
+import { DemoSafetyModal, DemoSafetyBanner } from '../components/red-forge/DemoSafetyModal';
+
+type ViewMode = 'code' | 'preview' | 'split';
+type RightPanelTab = 'weaver' | 'audit';
+
+function RedForgeIDEContent() {
+  const { userContext, setUserContext, selectedAIService, contextManager, sendMessage, auditDB } = useCompliance();
+  
+  // Demo safety modal state
+  const [showSafetyModal, setShowSafetyModal] = useState(false);
+  
+  useEffect(() => {
+    // Check if user has seen the safety modal
+    const hasSeenSafetyModal = localStorage.getItem('red-forge-safety-accepted');
+    if (!hasSeenSafetyModal) {
+      setShowSafetyModal(true);
+    }
+  }, []);
+  
+  const handleAcceptSafety = () => {
+    localStorage.setItem('red-forge-safety-accepted', 'true');
+    setShowSafetyModal(false);
+  };
+  
+  // Filter files based on user clearance (show placeholders for restricted files)
+  const visibleFiles = useMemo(() => {
+    const clearanceLevels = ['UNCLASSIFIED', 'CONFIDENTIAL', 'SECRET', 'TOP_SECRET'];
+    const userClearanceIndex = clearanceLevels.indexOf(userContext.clearance);
+    
+    return DEMO_FILES.map(file => {
+      const fileLevel = file.classification || file.dualClassification?.how || 'UNCLASSIFIED';
+      const fileLevelIndex = clearanceLevels.indexOf(fileLevel);
+      
+      // User has sufficient clearance - show real file
+      if (fileLevelIndex <= userClearanceIndex) {
+        return file;
+      }
+      
+      // User doesn't have clearance - show placeholder
+      return {
+        ...file,
+        name: file.name.includes('[REDACTED]') ? file.name : `[REDACTED] ${file.name.split('.')[0]}`,
+        content: `# Access Denied
+
+You do not have sufficient clearance to view this document.
+
+**Required Clearance:** ${fileLevel}  
+**Your Clearance:** ${userContext.clearance}
+
+To access this document:
+1. Switch to ${fileLevel} clearance in the top bar
+2. Or contact your security officer for access upgrade
+
+This placeholder demonstrates Red Forge's access control system.`
+      };
+    });
+  }, [userContext.clearance]);
+  
+  const [activeFileId, setActiveFileId] = useState<string>(DEMO_FILES[0].id);
+  const [rightPanelTab, setRightPanelTab] = useState<RightPanelTab>('weaver');
+  const [fileEdits, setFileEdits] = useState<Record<string, string>>({}); // Track edits per file
+  
+  // Default to preview for markdown, code for other files
+  const activeFile = visibleFiles.find((f) => f.id === activeFileId);
+  
+  // Get current content (edited or original)
+  const getCurrentContent = (file: ClassifiedFile) => {
+    return fileEdits[file.id] ?? file.content;
+  };
+  
+  const activeFileContent = activeFile ? getCurrentContent(activeFile) : '';
+  
+  // Get tab border color based on most restrictive classification (HOW) - RED FORGE AESTHETIC
+  const getTabBorderColor = () => {
+    if (!activeFile) return 'border-gray-500';
+    const howLevel = activeFile.dualClassification?.how || activeFile.classification || 'UNCLASSIFIED';
+    switch (howLevel) {
+      case 'TOP_SECRET': return 'border-red-700';
+      case 'SECRET': return 'border-red-500';
+      case 'CONFIDENTIAL': return 'border-orange-500'; // Ember glow for RED FORGE
+      case 'UNCLASSIFIED': return 'border-green-500';
+      default: return 'border-blue-500';
+    }
+  };
+  
+  const defaultViewMode: ViewMode = activeFile?.language === 'markdown' ? 'preview' : 'code';
+  const [viewMode, setViewMode] = useState<ViewMode>(defaultViewMode);
+  
+  // Handle editor content change
+  const handleEditorChange = (value: string | undefined) => {
+    if (activeFile && value !== undefined) {
+      setFileEdits(prev => ({
+        ...prev,
+        [activeFile.id]: value
+      }));
+    }
+  };
+
+  // Handle sending file to AI
+  const handleSendFileToAI = async (file: ClassifiedFile, skipAIReview: boolean = false) => {
+    try {
+      // CRITICAL: Scan for real classified data before ANY processing
+      const { scanForSecrets, getSecretScanBlockMessage } = await import('../lib/red-forge/secret-scanner');
+      const secretScanResult = scanForSecrets(file.content, file.name);
+      
+      if (secretScanResult.hasSecrets) {
+        // HARD BLOCK - Cannot proceed
+        // Log to audit trail
+        if (auditDB) {
+          await auditDB.add({
+            timestamp: new Date(),
+            operation: 'chat',
+            resource: `weaver://fs/${file.name}`,
+            decision: 'blocked',
+            reason: `Real classified data detected: ${secretScanResult.detectedPatterns.map(p => p.pattern).join(', ')}`,
+            user: userContext
+          });
+        }
+        
+        contextManager.addSystemMessage(
+          getSecretScanBlockMessage(secretScanResult),
+          'TOP_SECRET' // Use highest classification for security warnings
+        );
+        setRightPanelTab('weaver');
+        return;
+      }
+      
+      // Switch to Weaver tab immediately
+      setRightPanelTab('weaver');
+      
+      // Get AI clearance
+      const { getAIServiceConfig, canAIAccessClassification } = await import('../lib/red-forge/ai-service-config');
+      const aiConfig = getAIServiceConfig(selectedAIService);
+      if (!aiConfig) return;
+
+      // Check if AI can access ANY content from this file
+      const fileWhatLevel = file.dualClassification?.what || file.classification || 'UNCLASSIFIED';
+      const fileHowLevel = file.dualClassification?.how || file.classification || 'UNCLASSIFIED';
+      
+      const canAccessWhat = canAIAccessClassification(selectedAIService, fileWhatLevel);
+      const canAccessHow = canAIAccessClassification(selectedAIService, fileHowLevel);
+
+      // If AI cannot access ANY content, show blocking message
+      if (!canAccessWhat && !canAccessHow) {
+        // Log to audit trail
+        if (auditDB) {
+          await auditDB.add({
+            timestamp: new Date(),
+            operation: 'chat',
+            resource: `weaver://fs/${file.name}`,
+            decision: 'blocked',
+            reason: `AI clearance insufficient: File requires W:${fileWhatLevel}/H:${fileHowLevel}, AI max: ${aiConfig.maxClassification}`,
+            user: userContext
+          });
+        }
+        
+        const blockMessage = `🚫 Cannot send ${file.name} to ${aiConfig.displayName}
+
+File classification: W:${fileWhatLevel} / H:${fileHowLevel}
+AI clearance: ${aiConfig.maxClassification}
+
+This file requires higher clearance than ${aiConfig.displayName} can access.
+
+${userContext.networkZone !== 'red' && fileHowLevel === 'SECRET' ? 
+  `💡 Tip: SECRET content requires Red Forge Air-gapped (only available in Red Room)\n   Change network to 🔴 Red to simulate air-gapped deployment.` :
+  `💡 Try switching to an AI with higher clearance.`}`;
+        
+        contextManager.addSystemMessage(blockMessage, fileWhatLevel);
+        return;
+      }
+
+      // Show immediate "reviewing" feedback (NOT "sharing" yet - we don't know if it'll pass!)
+      const fileClassificationDisplay = file.dualClassification 
+        ? `W:${file.dualClassification.what} / H:${file.dualClassification.how}`
+        : file.classification || 'UNCLASSIFIED';
+      
+      const reviewMessage = contextManager.addSystemMessage(
+        `🔍 Granskar ${file.name} [${fileClassificationDisplay}] för ${aiConfig.displayName}...`, 
+        fileWhatLevel
+      );
+
+      // ============================================================
+      // DEFENSE IN DEPTH: Multi-Layer Security
+      // ============================================================
+      
+      // --- LAYER 1: Hardcoded Filter (fast, deterministic) ---
+      let contentToSend = file.content;
+      let filterNote = '';
+      let removedSections = 0;
+
+      if (file.language === 'markdown') {
+        const { filterMDXContent } = await import('../lib/red-forge/mdx-filter');
+        const result = filterMDXContent(file.content, aiConfig.maxClassification);
+        contentToSend = result.filtered;
+        removedSections = result.removedSections;
+        
+        if (removedSections > 0) {
+          filterNote = `\n\n[FILTERED: ${removedSections} HOW section(s) removed - above ${aiConfig.maxClassification} clearance]`;
+        }
+      }
+
+      // --- LAYER 2: AI Safety Review (cache-aware) ---
+      const { fileHashCache } = await import('../lib/red-forge/file-hash-cache');
+      const cached = fileHashCache.getCached(file.content);
+      
+      let aiReviewMessage = '';
+      let safetyResult: any = null; // Declare in wider scope for audit logging
+      
+      if (cached && cached.aiApproved && fileHashCache.isApproved(file.content, selectedAIService)) {
+        // File was previously reviewed - skip AI check
+        const timeSince = Math.floor((Date.now() - cached.timestamp.getTime()) / 1000 / 60);
+        aiReviewMessage = `✓ Previously reviewed ${timeSince}min ago (cached)`;
+        
+        contextManager.updateSystemMessage(
+          reviewMessage.id,
+          `📄 ${file.name} [${fileClassificationDisplay}]\n${aiReviewMessage}`
+        );
+      } else {
+        // NEW or MODIFIED file - AI safety review (unless skipped)
+        if (skipAIReview) {
+          // Skip AI review - show instant basic check feedback
+          contextManager.setIsTyping(true);
+          contextManager.updateSystemMessage(
+            reviewMessage.id,
+            `⚡ Basic checks för ${file.name}...`
+          );
+          
+          // Very brief delay (just enough to show typing indicator)
+          await new Promise(resolve => setTimeout(resolve, 100));
+          
+          contextManager.setIsTyping(false);
+          aiReviewMessage = `✓ Basic checks passed (AI review skipped)`;
+          contextManager.updateSystemMessage(
+            reviewMessage.id,
+            `📄 ${file.name} [${fileClassificationDisplay}]\n${aiReviewMessage}`
+          );
+        } else {
+          // Full AI safety review
+          contextManager.setIsTyping(true);
+          contextManager.updateSystemMessage(
+            reviewMessage.id,
+            `🔍 ${aiConfig.displayName} granskar ${file.name}...`
+          );
+          
+          // Simulate review delay for UX
+          await new Promise(resolve => setTimeout(resolve, 1500));
+          
+          // Perform AI-powered safety review
+          const { performAISafetyReview } = await import('../lib/red-forge/ai-safety-review');
+          const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY || null;
+          
+          safetyResult = await performAISafetyReview(
+            file.content,
+            file.name,
+            { what: fileWhatLevel, how: fileHowLevel },
+            selectedAIService,
+            apiKey
+          );
+          
+          // Stop typing indicator
+          contextManager.setIsTyping(false);
+          
+          if (!safetyResult.approved && safetyResult.warnings.some((w: any) => w.severity === 'high')) {
+          // HIGH severity warnings - block with clear message (NO fake override button)
+          const mainIssue = safetyResult.warnings.find((w: any) => w.severity === 'high')?.message || 'Classification error detected';
+          const suggestedFix = safetyResult.warnings.find((w: any) => w.severity === 'high')?.suggestedFix || 'Review and fix the content.';
+          
+          // Log to audit trail
+          if (auditDB) {
+            await auditDB.add({
+              timestamp: new Date(),
+              operation: 'chat',
+              resource: `weaver://fs/${file.name}`,
+              decision: 'blocked',
+              reason: mainIssue,
+              warnings: safetyResult.warnings.map((w: any) => ({ type: 'classification', message: w.message, severity: w.severity })),
+              user: userContext
+            });
+          }
+          
+          contextManager.updateSystemMessage(
+            reviewMessage.id,
+            `🚫 BLOCKERAD: ${mainIssue}
+
+${suggestedFix}
+
+Du måste fixa innehållet innan du kan dela det med AI.`
+          );
+          return;
+        }
+        
+        // Approved (or only low/medium warnings)
+        const warningCount = safetyResult.warnings.length;
+        if (warningCount > 0) {
+          const warningSummary = safetyResult.warnings
+            .map((w: any) => `   ⚠️ ${w.severity.toUpperCase()}: ${w.message}`)
+            .join('\n');
+          
+          aiReviewMessage = `⚠️ Granskad med ${warningCount} varning(ar):\n${warningSummary}\n\n${safetyResult.reasoning}`;
+        } else {
+          aiReviewMessage = `✅ Granskad & godkänd - inga säkerhetsproblem\n   ${safetyResult.reasoning}`;
+        }
+        
+        contextManager.updateSystemMessage(reviewMessage.id, aiReviewMessage);
+        
+        // Cache this approval
+        fileHashCache.markApproved(
+          file.content,
+          file.name,
+          selectedAIService,
+          { what: fileWhatLevel, how: fileHowLevel }
+        );
+        }
+      }
+
+      // --- LAYER 3: Human Override (implicit via context) ---
+      // Add file context block
+      const fileLevel = file.classification || file.dualClassification?.what || 'UNCLASSIFIED';
+      contextManager.addFileContext(contentToSend + filterNote, fileLevel, file.name);
+      
+      // Log to audit trail (ALLOWED)
+      if (auditDB) {
+        await auditDB.add({
+          timestamp: new Date(),
+          operation: 'chat',
+          resource: `weaver://fs/${file.name}`,
+          decision: 'allowed',
+          reason: `Sent to ${aiConfig.displayName}: ${removedSections > 0 ? `WHAT only (${removedSections} HOW sections filtered)` : 'Full content'}`,
+          warnings: safetyResult ? safetyResult.warnings.map((w: any) => ({ type: 'classification', message: w.message, severity: w.severity })) : undefined,
+          user: userContext
+        });
+      }
+      
+      // Final success message
+      const successMessage = removedSections > 0
+        ? `📎 Fil laddad i kontext: ${file.name}\n\n` +
+          `✓ WHAT sections (${file.dualClassification?.what || 'UNCLASSIFIED'}) → skickas till AI\n` +
+          `✗ HOW sections (${file.dualClassification?.how || 'UNCLASSIFIED'}) → ej tillgänglig för denna AI\n\n` +
+          `⚠️ Används när du ställer nästa fråga`
+        : `📎 Fil laddad i kontext: ${file.name}\n\n` +
+          (file.dualClassification 
+            ? `✓ WHAT sections (${file.dualClassification.what}) → skickas till AI\n✓ HOW sections (${file.dualClassification.how}) → skickas till AI`
+            : `✓ Fullt innehåll (${file.classification || 'UNCLASSIFIED'}) → skickas till AI`) +
+          `\n\n⚠️ Används när du ställer nästa fråga`;
+      
+      contextManager.updateSystemMessage(reviewMessage.id, successMessage);
+      
+      // Log success
+      console.log(`✓ Added ${file.name} to AI context (${removedSections > 0 ? 'FILTERED' : 'full'}, AI reviewed: ${!cached})`);
+    } catch (error) {
+      console.error('Error sending file to AI:', error);
+      contextManager.addSystemMessage(`❌ Error sharing file: ${error instanceof Error ? error.message : 'Unknown error'}`, 'UNCLASSIFIED');
+    }
+  };
+
+  // Update view mode when switching files
+  const handleFileSelect = (fileId: string) => {
+    setActiveFileId(fileId);
+    const newFile = visibleFiles.find((f) => f.id === fileId);
+    if (newFile?.language === 'markdown') {
+      setViewMode('preview');
+    } else {
+      setViewMode('code');
+    }
+  };
+
+  const isMarkdown = activeFile?.language === 'markdown';
+
+  return (
+    <div className="h-screen bg-[#0a0e14] flex flex-col overflow-hidden">
+      {/* Demo Safety Modal */}
+      {showSafetyModal && <DemoSafetyModal onAccept={handleAcceptSafety} />}
+      
+      {/* Demo Safety Banner */}
+      <DemoSafetyBanner />
+      
+      {/* Top Bar */}
+      <div className="h-12 bg-[#0d1117] border-b border-gray-800 flex items-center justify-between px-4">
+        <div className="flex items-center space-x-4">
+          <h1 className="text-lg font-semibold text-red-400">Red Forge</h1>
+          <span className="text-sm text-gray-500">Classification-Aware Development</span>
+        </div>
+        
+        {/* Network Zone & Clearance Selectors */}
+        <div className="flex items-center space-x-4">
+          {/* Network Zone Selector */}
+          <div className="flex items-center space-x-2">
+            <span className="text-xs text-gray-500 font-medium">Network:</span>
+            <select
+              value={userContext.networkZone}
+              onChange={(e) => setUserContext({ ...userContext, networkZone: e.target.value as any })}
+              className="bg-gray-800 text-gray-300 px-3 py-1 rounded text-sm border border-gray-700 focus:outline-none focus:ring-1 focus:ring-red-500"
+            >
+              <option value="white">🌐 Internet (Cloud AI OK)</option>
+              <option value="yellow">🏢 On-Prem (Local AI Only)</option>
+              <option value="red">🔒 Air-Gapped (No AI)</option>
+            </select>
+          </div>
+          
+          {/* Clearance Selector */}
+          <div className="flex items-center space-x-2">
+            <span className="text-xs text-gray-500 font-medium">Clearance:</span>
+            <select
+              value={userContext.clearance}
+              onChange={(e) => setUserContext({ ...userContext, clearance: e.target.value as SecurityLevel })}
+              className="bg-gray-800 text-gray-300 px-3 py-1 rounded text-sm border border-gray-700 focus:outline-none focus:ring-1 focus:ring-red-500"
+            >
+              <option value="UNCLASSIFIED">UNCLASSIFIED (Public)</option>
+              <option value="CONFIDENTIAL">CONFIDENTIAL (Internal)</option>
+              <option value="SECRET">SECRET (Restricted)</option>
+              <option value="TOP_SECRET">TOP SECRET (Highly Restricted)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex-1 flex overflow-hidden">
+        {/* Sidebar - File Tree */}
+        <div className="w-64 bg-[#0d1117] border-r border-gray-800 overflow-y-auto">
+          <div className="p-4">
+            <h2 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+              Files
+            </h2>
+            
+            <div className="space-y-0">
+              {FILE_TREE.subfolders?.map((subfolder) => (
+                <FileTreeItem
+                  key={subfolder.path}
+                  folder={subfolder}
+                  level={1}
+                  activeFileId={activeFileId}
+                  onFileSelect={handleFileSelect}
+                  visibleFiles={visibleFiles}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Main Editor Area */}
+        <div className="flex-1 flex flex-col min-h-0">
+          {/* Document Tabs Bar (Top Level - Chrome-style tabs) */}
+          <div className="h-10 bg-[#0d1117] border-b border-gray-800 flex items-center px-2">
+            {activeFile && (
+              <div className="flex items-center space-x-1">
+                {/* Active Document Tab */}
+                <div className={`px-4 py-2 bg-[#161b22] border-t-2 ${getTabBorderColor()} rounded-t text-sm text-gray-200 flex items-center space-x-2 relative`}>
+                  <span>{activeFile.name}</span>
+                  {activeFile.dualClassification && (
+                    <span className="text-xs text-yellow-400">
+                      W:{activeFile.dualClassification.what.charAt(0)} / H:{activeFile.dualClassification.how.charAt(0)}
+                    </span>
+                  )}
+                  {/* Close button */}
+                  <button className="ml-2 text-gray-500 hover:text-gray-300 hover:bg-gray-700 rounded px-1">
+                    ×
+                  </button>
+                </div>
+                {/* Placeholder for additional tabs (shows we could have more) */}
+                <div className="px-3 py-2 text-gray-600 text-xs hover:text-gray-400 cursor-not-allowed">
+                  +
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Document Toolbar (Actions for current document) */}
+          <div className="h-12 bg-[#161b22] border-b border-gray-700 flex items-center justify-between px-4">
+            <div className="flex items-center space-x-3">
+              {activeFile && (
+                <>
+                  <span className="text-xs text-gray-500">
+                    {activeFile.language.toUpperCase()}
+                  </span>
+                  
+                  {/* View Mode Toggles (for markdown files) */}
+                  {isMarkdown && (
+                    <>
+                      <div className="h-6 w-px bg-gray-700"></div>
+                      <div className="flex items-center space-x-2">
+                        <button
+                          onClick={() => setViewMode('code')}
+                          className={`px-3 py-1 rounded text-sm ${
+                            viewMode === 'code'
+                              ? 'bg-gray-700 text-white'
+                              : 'text-gray-400 hover:text-gray-200'
+                          }`}
+                        >
+                          Code
+                        </button>
+                        <button
+                          onClick={() => setViewMode('split')}
+                          className={`px-3 py-1 rounded text-sm ${
+                            viewMode === 'split'
+                              ? 'bg-gray-700 text-white'
+                              : 'text-gray-400 hover:text-gray-200'
+                          }`}
+                        >
+                          Split
+                        </button>
+                        <button
+                          onClick={() => setViewMode('preview')}
+                          className={`px-3 py-1 rounded text-sm ${
+                            viewMode === 'preview'
+                              ? 'bg-gray-700 text-white'
+                              : 'text-gray-400 hover:text-gray-200'
+                          }`}
+                        >
+                          Preview
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </>
+              )}
+            </div>
+            
+            {/* Send to AI Button - Right side, points to chat */}
+            {activeFile && !activeFile.name.includes('[REDACTED]') && (
+              <div className="flex items-center space-x-3">
+                <span className="text-xs text-gray-400">
+                  {activeFile.name}
+                  {fileEdits[activeFile.id] && <span className="ml-1 text-blue-400">●</span>}
+                  {activeFile.dualClassification && (
+                    <span className="ml-2 text-yellow-400">
+                      W:{activeFile.dualClassification.what.charAt(0)} / H:{activeFile.dualClassification.how.charAt(0)}
+                    </span>
+                  )}
+                </span>
+                <SendToAIButton
+                  file={{...activeFile, content: activeFileContent}}
+                  selectedAIService={selectedAIService}
+                  onSendToAI={handleSendFileToAI}
+                />
+              </div>
+            )}
+            
+            {/* Redacted file indicator */}
+            {activeFile && activeFile.name.includes('[REDACTED]') && (
+              <div className="flex items-center space-x-3">
+                <span className="text-xs text-red-400">
+                  🔒 {activeFile.name} - Insufficient Clearance
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Editor/Preview Area */}
+          <div className="flex-1 flex min-h-0">
+            {viewMode !== 'preview' && (
+              <div className={`flex-1 ${viewMode === 'split' ? 'border-r border-gray-700' : ''} min-h-0 relative`}>
+                {/* Classification indicator for code files */}
+                {activeFile && activeFile.language !== 'markdown' && activeFile.dualClassification && (
+                  <div 
+                    className="absolute left-0 top-0 bottom-0 w-1 cursor-help group"
+                    style={{ 
+                      backgroundColor: activeFile.dualClassification.how === 'SECRET' ? '#f87171' : 
+                                     activeFile.dualClassification.how === 'CONFIDENTIAL' ? '#facc15' : '#60a5fa'
+                    }}
+                  >
+                    <div className="absolute -top-8 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-gray-900 border border-gray-700 rounded px-3 py-1.5 text-xs font-medium whitespace-nowrap z-10">
+                      <span className="text-gray-300">
+                        File classification: {activeFile.dualClassification.how}
+                      </span>
+                      <span className="text-gray-400 mx-2">→</span>
+                      <span style={{ 
+                        color: activeFile.dualClassification.how === 'SECRET' ? '#f87171' : 
+                               activeFile.dualClassification.how === 'CONFIDENTIAL' ? '#facc15' : '#60a5fa'
+                      }}>
+                        {activeFile.dualClassification.how === 'SECRET' ? 'Red Forge on-site' :
+                         activeFile.dualClassification.how === 'CONFIDENTIAL' ? 'Red Forge SaaS' : 'OpenAI (cloud)'}
+                      </span>
+                    </div>
+                  </div>
+                )}
+                <div className="h-full overflow-hidden bg-[#0a0e14]">
+                  <Editor
+                    height="100%"
+                    language={activeFile?.language === 'typescript' ? 'typescript' : 
+                             activeFile?.language === 'python' ? 'python' : 
+                             activeFile?.language === 'rust' ? 'rust' : 'markdown'}
+                    value={activeFileContent}
+                    onChange={handleEditorChange}
+                    theme="vs-dark"
+                    options={{
+                      readOnly: false,
+                      minimap: { enabled: false },
+                      fontSize: 13,
+                      lineNumbers: 'on',
+                      scrollBeyondLastLine: false,
+                      automaticLayout: true,
+                      padding: { top: 10, bottom: 10 },
+                      wordWrap: 'on'
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+            
+            {viewMode !== 'code' && activeFile?.language === 'markdown' && (
+              <div className="flex-1 min-h-0">
+                <MDXRenderer content={activeFileContent} />
+              </div>
+            )}
+          </div>
+
+          {/* Status Bar */}
+          <div className="h-8 bg-[#0d1117] border-t border-gray-800 flex items-center justify-between px-4 text-xs">
+            <div className="flex items-center space-x-4">
+              <span className="text-gray-500">
+                {activeFile?.language.toUpperCase() || 'TEXT'}
+              </span>
+              {fileEdits[activeFileId] && (
+                <span className="text-blue-400 flex items-center space-x-1">
+                  <span className="w-2 h-2 rounded-full bg-blue-400"></span>
+                  <span>Modified</span>
+                </span>
+              )}
+              {activeFile?.dualClassification && (
+                <span className={`font-medium ${
+                  activeFile.dualClassification.how === 'SECRET' ? 'text-red-400' :
+                  activeFile.dualClassification.how === 'CONFIDENTIAL' ? 'text-yellow-400' :
+                  'text-green-400'
+                }`}>
+                  WHAT: {activeFile.dualClassification.what} / HOW: {activeFile.dualClassification.how}
+                </span>
+              )}
+              {activeFile?.classification && !activeFile?.dualClassification && (
+                <span className={`font-medium ${
+                  activeFile.classification === 'SECRET' ? 'text-red-400' :
+                  activeFile.classification === 'CONFIDENTIAL' ? 'text-yellow-400' :
+                  'text-green-400'
+                }`}>
+                  {activeFile.classification}
+                </span>
+              )}
+            </div>
+            <div className="flex items-center space-x-4">
+              <span className="text-gray-500">
+                Red Forge v0.1.0 | Browser Demo
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Panel - Weaver AI + Audit Trail */}
+        <div className="w-96 border-l border-gray-800 flex flex-col bg-[#0d1117]">
+          {/* Tab Buttons */}
+          <div className="flex border-b border-gray-800">
+            <button
+              onClick={() => setRightPanelTab('weaver')}
+              className={`flex-1 py-3 px-4 text-sm font-medium transition-colors ${
+                rightPanelTab === 'weaver'
+                  ? 'bg-[#0a0e14] text-red-400 border-b-2 border-red-500'
+                  : 'text-gray-500 hover:text-gray-300'
+              }`}
+            >
+              Weaver
+            </button>
+            <button
+              onClick={() => setRightPanelTab('audit')}
+              className={`flex-1 py-3 px-4 text-sm font-medium transition-colors ${
+                rightPanelTab === 'audit'
+                  ? 'bg-[#0a0e14] text-red-400 border-b-2 border-red-500'
+                  : 'text-gray-500 hover:text-gray-300'
+              }`}
+            >
+              Audit Trail
+            </button>
+          </div>
+
+          {/* Tab Content */}
+          <div className="flex-1 min-h-0">
+            {rightPanelTab === 'weaver' && (
+              <WeaverAssistant currentFile={activeFile?.name} />
+            )}
+            {rightPanelTab === 'audit' && <AuditTrailPanel />}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function RedForgeIDEPage() {
+  return (
+    <ComplianceProvider>
+      <RedForgeIDEContent />
+    </ComplianceProvider>
+  );
+}
+
+export default RedForgeIDEPage;

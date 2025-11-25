@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# OpenRouter API Key
+.env
+.env.local
+openrouter-key.txt

@@ -1,0 +1,231 @@
+/* Red Forge FlexLayout Dark Theme */
+
+/* Override FlexLayout dark theme with Red Forge colors */
+.flexlayout__layout {
+  background-color: #0d1117;
+  color: #e6edf3;
+}
+
+/* AGGRESSIVELY HIDE tab headers (single tab per panel = bloat) */
+/* Only on desktop where we have single-tab panels */
+@media (min-width: 1024px) {
+  .flexlayout__tabset_header,
+  .flexlayout__tabset_header_content,
+  .flexlayout__tabset_header_outer,
+  .flexlayout__tab_header_outer {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    visibility: hidden !important;
+  }
+
+  .flexlayout__tabset-selected .flexlayout__tabset_header {
+    display: none !important;
+    height: 0 !important;
+    visibility: hidden !important;
+  }
+}
+
+/* Ensure tabset doesn't reserve space for header */
+.flexlayout__tabset {
+  background-color: #0d1117 !important;
+}
+
+.flexlayout__tabset-selected {
+  background-color: #0d1117 !important;
+}
+
+.flexlayout__splitter {
+  background-color: #21262d !important;
+  transition: background-color 0.2s;
+}
+
+.flexlayout__splitter:hover {
+  background-color: #dc2626 !important;
+}
+
+.flexlayout__splitter_drag {
+  background-color: #dc2626 !important;
+  z-index: 1000;
+}
+
+.flexlayout__tab_button {
+  color: #8b949e !important;
+  padding: 0 12px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+.flexlayout__tab_button_content {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.flexlayout__tab_button:hover {
+  color: #e6edf3 !important;
+}
+
+.flexlayout__tab_button--selected {
+  color: #dc2626 !important;
+}
+
+/* Border (collapsible panel) styling */
+.flexlayout__border {
+  background-color: #161b22 !important;
+  border: 1px solid #30363d !important;
+}
+
+.flexlayout__border_top {
+  border-bottom: 1px solid #30363d !important;
+}
+
+.flexlayout__border_bottom {
+  border-top: 1px solid #30363d !important;
+}
+
+.flexlayout__border_left {
+  border-right: 1px solid #30363d !important;
+}
+
+.flexlayout__border_right {
+  border-left: 1px solid #30363d !important;
+}
+
+.flexlayout__border_button {
+  background-color: #161b22 !important;
+  color: #8b949e !important;
+  border: none !important;
+  padding: 8px 12px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.flexlayout__border_button:hover {
+  background-color: #21262d !important;
+  color: #dc2626 !important;
+}
+
+.flexlayout__border_button--selected {
+  background-color: #0d1117 !important;
+  color: #dc2626 !important;
+  border-bottom: 2px solid #dc2626 !important;
+}
+
+/* Tab content area */
+.flexlayout__tab_content {
+  background-color: #0d1117 !important;
+  overflow: hidden !important;
+}
+
+/* Popup menu styling */
+.flexlayout__popup_menu {
+  background-color: #161b22 !important;
+  border: 1px solid #30363d !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+}
+
+.flexlayout__popup_menu_item {
+  color: #e6edf3 !important;
+  padding: 8px 16px !important;
+}
+
+.flexlayout__popup_menu_item:hover {
+  background-color: #21262d !important;
+  color: #dc2626 !important;
+}
+
+/* Edge markers */
+.flexlayout__edge_rect {
+  background-color: rgba(220, 38, 38, 0.2) !important;
+  border: 2px solid #dc2626 !important;
+}
+
+/* Drag rectangle */
+.flexlayout__drag_rect {
+  background-color: rgba(220, 38, 38, 0.1) !important;
+  border: 2px dashed #dc2626 !important;
+}
+
+/* Tab overflow button */
+.flexlayout__tab_toolbar_button {
+  color: #8b949e !important;
+  background: none !important;
+  border: none !important;
+}
+
+.flexlayout__tab_toolbar_button:hover {
+  color: #dc2626 !important;
+  background-color: #161b22 !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 1023px) {
+  .flexlayout__splitter {
+    width: 2px !important;
+    height: 2px !important;
+  }
+  
+  .flexlayout__tabset_header {
+    height: 44px !important;
+    min-height: 44px !important;
+    padding: 0 8px !important;
+  }
+  
+  .flexlayout__tab_button {
+    padding: 0 12px !important;
+    font-size: 14px !important;
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .flexlayout__border_button {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    min-height: 44px !important;
+  }
+  
+  /* Larger touch targets for mobile toolbar buttons */
+  .mobile-toolbar-btn {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 12px !important;
+    font-size: 13px !important;
+  }
+  
+  /* Hide classification badge text on very small screens, show only letter */
+  @media (max-width: 400px) {
+    .classification-badge-full {
+      display: none;
+    }
+  }
+  
+  /* Scrollbar styling for mobile */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #0d1117;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #21262d;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #30363d;
+  }
+}
+

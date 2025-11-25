@@ -13,6 +13,7 @@ import FamilyPage from './pages/website/FamilyPage';
 import { MedicalPage } from './pages/website/MedicalPage';
 import { MedicalDashboardPage } from './pages/MedicalDashboardPage';
 import { RedForgeIDEPage } from './pages/RedForgeIDEPage';
+import { RedForgeDemoPage } from './pages/website/RedForgeDemoPage';
 import AIEscalationPage from './pages/website/AIEscalationPage';
 import { ContactPage } from './pages/website/ContactPage';
 import './i18n'; // Initialize i18n
@@ -20,7 +21,7 @@ import './App.css';
 
 function AppContent() {
   const location = useLocation();
-  const hideNavigation = location.pathname === '/red-forge-ide';
+  const hideNavigation = location.pathname === '/red-forge-demo' || location.pathname === '/red-forge-advanced';
 
   return (
     <>
@@ -42,6 +43,10 @@ function AppContent() {
         <Route path="/medical-dashboard" element={<MedicalDashboardPage />} />
         {/* TEMPORARY: /demo alias for doctor's research group link - remove after a few weeks (2025-12-15) */}
         <Route path="/demo" element={<MedicalDashboardPage />} />
+        {/* Red Forge: Simple demo for SAAB, advanced IDE for internal (no link from demo) */}
+        <Route path="/red-forge-demo" element={<RedForgeDemoPage />} />
+        <Route path="/red-forge-advanced" element={<RedForgeIDEPage />} />
+        {/* Legacy alias for old bookmarks */}
         <Route path="/red-forge-ide" element={<RedForgeIDEPage />} />
       </Routes>
     </>

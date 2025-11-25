@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<!--
+  RED FORGE KISS DEMO
+  
+  Purpose: Demo för RegPilot-möte 2025-11-25
+  
+  Visar:
+  - Classification-aware IDE (ES/K/H nivåer från FMV SAK-IMS)
+  - Instant Forge Protocol enforcement (<5ms, ingen AI)
+  - Automatic AI routing based on classification
+  - Full audit trail för FMV compliance
+  
+  Demo Flow:
+  1. Öppna KONFIDENTIELL-fil
+  2. Försök skicka till Claude (offentligt moln)
+  3. Forge Protocol blockerar (Claude max: ES)
+  4. Byt till Red Forge SaaS (max: K)
+  5. Forge Protocol tillåter
+  6. Export audit trail (JSON för FMV)
+  
+  Tech: Single HTML file, no build, Monaco editor, pure JS
+-->
+<html lang="sv" class="h-full bg-gray-950">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Forge KISS Demo - Classification-Aware IDE</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Monaco Editor -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    #editor-container {
+      height: 100%;
+      width: 100%;
+    }
+    
+    .file-item {
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+      transition: all 0.2s;
+    }
+    
+    .file-item:hover {
+      background-color: rgba(251, 146, 60, 0.1);
+      transform: translateX(2px);
+    }
+    
+    .file-item.active {
+      background-color: rgba(251, 146, 60, 0.2);
+      border-left: 3px solid #fb923c;
+    }
+    
+    .classification-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.25rem;
+      font-family: 'SF Mono', Monaco, monospace;
+      letter-spacing: 0.5px;
+    }
+    
+    .chat-message {
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid transparent;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+    }
+    
+    .chat-message.user {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
+      border-left-color: #3b82f6;
+    }
+    
+    .chat-message.system {
+      background: linear-gradient(135deg, rgba(251, 146, 60, 0.15), rgba(251, 146, 60, 0.05));
+      border-left-color: #fb923c;
+    }
+    
+    .chat-message.success {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.05));
+      border-left-color: #22c55e;
+    }
+    
+    .chat-message.assistant {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(168, 85, 247, 0.05));
+      border-left-color: #a855f7;
+    }
+    
+    /* Ensure scrolling works */
+    #chat-messages, #audit-list {
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    
+    /* Custom scrollbar */
+    #chat-messages::-webkit-scrollbar, #audit-list::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    #chat-messages::-webkit-scrollbar-track, #audit-list::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+    }
+    
+    #chat-messages::-webkit-scrollbar-thumb, #audit-list::-webkit-scrollbar-thumb {
+      background: rgba(251, 146, 60, 0.4);
+      border-radius: 4px;
+    }
+    
+    #chat-messages::-webkit-scrollbar-thumb:hover, #audit-list::-webkit-scrollbar-thumb:hover {
+      background: rgba(251, 146, 60, 0.6);
+    }
+    
+    /* Better button styling */
+    button {
+      transition: all 0.2s;
+    }
+    
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(251, 146, 60, 0.3);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    /* Input focus */
+    input:focus {
+      outline: none;
+      border-color: #fb923c;
+      box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.1);
+    }
+  </style>
+</head>
+<body class="h-full">
+  
+  <!-- Main Layout -->
+  <div class="h-full flex flex-col bg-gray-950 text-gray-100">
+    
+    <!-- Header -->
+    <div class="h-14 bg-gray-900 border-b border-gray-800 flex items-center justify-between px-4">
+      <div class="flex items-center space-x-3">
+        <div class="text-xl font-bold text-orange-500">Red Forge</div>
+      </div>
+      
+      <!-- AI Service Selector -->
+      <div class="flex items-center space-x-3">
+        <label class="text-sm text-gray-400">AI Service:</label>
+        <select id="ai-service" class="bg-gray-800 text-gray-100 px-3 py-1.5 rounded border border-gray-700 text-sm">
+          <option value="claude">Claude Sonnet 4.5 (Cloud) - Max: ES</option>
+          <option value="rf-saas">Red Forge SaaS (FMV Nivå 2) - Max: K</option>
+          <option value="rf-onprem">Red Forge On-Prem (FMV Nivå 3) - Max: H</option>
+        </select>
+      </div>
+    </div>
+    
+    <!-- Content Area -->
+    <div class="flex-1 flex overflow-hidden">
+      
+      <!-- Left Sidebar: File Tree -->
+      <div class="w-64 bg-gray-900 border-r border-gray-800 overflow-y-auto">
+        <div class="p-3">
+          <div class="text-xs font-semibold text-gray-500 uppercase mb-2">BirdTurret Project</div>
+          <div id="file-tree" class="space-y-1">
+            <!-- Files will be injected here -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- Center: Editor -->
+      <div class="flex-1 flex flex-col">
+        <div class="h-10 bg-gray-900 border-b border-gray-800 flex items-center px-4">
+          <div id="current-file-name" class="text-sm font-medium">Select a file...</div>
+        </div>
+        <div id="editor-container" class="flex-1 bg-[#1e1e1e]"></div>
+      </div>
+      
+      <!-- Right Sidebar: Chat / Audit -->
+      <div class="w-96 bg-gray-900 border-l border-gray-800 flex flex-col">
+        
+        <!-- Tabs -->
+        <div class="h-10 bg-gray-800 border-b border-gray-700 flex">
+          <button id="tab-chat" class="flex-1 text-sm font-medium tab-active">Weaver</button>
+          <button id="tab-audit" class="flex-1 text-sm font-medium">Audit Trail</button>
+        </div>
+        
+        <!-- Chat Panel -->
+        <div id="panel-chat" class="flex-1 flex flex-col overflow-hidden">
+          <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-3">
+            <div class="chat-message system">
+              <div class="text-xs font-semibold text-orange-400 mb-1">Forge Protocol Active</div>
+              <div class="text-sm text-gray-300 mb-2">Red Forge demo redo.</div>
+              <div class="text-xs text-gray-400 mt-2 border-t border-gray-700 pt-2">
+                <strong>Demo Flow:</strong><br/>
+                1. Klicka på "v3-implementation.md" (KONFIDENTIELL)<br/>
+                2. Skriv en fråga och tryck Send<br/>
+                3. Observera: BLOCKERAD (Claude kan bara ES)<br/>
+                4. Byt AI till "Red Forge SaaS"<br/>
+                5. Send igen → TILLÅTEN<br/>
+                6. Klicka "Audit Trail" för att se logg
+              </div>
+            </div>
+          </div>
+          
+          <!-- Chat Input -->
+          <div class="p-3 border-t border-gray-800">
+            <div class="flex space-x-2">
+              <input 
+                id="chat-input" 
+                type="text" 
+                placeholder="Ask about this file..." 
+                class="flex-1 bg-gray-800 text-gray-100 px-3 py-2 rounded border border-gray-700 text-sm"
+              />
+              <button id="send-btn" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded text-sm font-medium">
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Audit Panel -->
+        <div id="panel-audit" class="flex-1 flex-col hidden overflow-hidden">
+          <div id="audit-list" class="flex-1 overflow-y-auto p-4 text-xs font-mono">
+            <!-- Audit entries will be injected here -->
+          </div>
+          <div class="p-3 border-t border-gray-800">
+            <button id="export-audit" class="w-full bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-2 rounded text-sm">
+              Export JSON (FMV)
+            </button>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+  
+  <script>
+    // Demo data and state
+    const demoFiles = [
+      {
+        id: 'readme',
+        name: 'README.md',
+        classification: 'EJ_SEKRETESS',
+        content: `---
+classification: EJ_SEKRETESS
+---
+
+# BirdTurret V3 - README
+
+Public documentation for BirdTurret anti-drone system.
+
+## Overview
+
+BirdTurret is an autonomous counter-drone defense system.
+
+**Capabilities:**
+- Automatic drone detection
+- Threat assessment
+- Non-kinetic countermeasures
+
+**Status:** Public information for demonstrations.`
+      },
+      {
+        id: 'implementation',
+        name: 'v3-implementation.md',
+        classification: 'KONFIDENTIELL',
+        content: `---
+classification: KONFIDENTIELL
+---
+
+# BirdTurret V3 Implementation
+
+Classified implementation details.
+
+## Sensor Configuration
+
+LIDAR calibration parameters:
+- Range: 500m
+- Accuracy: 99.9%
+- Response time: 45ms
+
+## Targeting Algorithm
+
+AI-based threat assessment using proprietary neural network.
+Trained on 10,000+ drone signatures.
+
+**Classification:** KONFIDENTIELL (K)
+**Reason:** Implementation details reveal performance characteristics.`
+      },
+      {
+        id: 'sensors',
+        name: 'sensor-calibration.md',
+        classification: 'HEMLIG',
+        content: `---
+classification: HEMLIG
+---
+
+# Sensor Calibration - HEMLIG
+
+SECRET sensor optimization parameters.
+
+## Classified Calibration Data
+
+[This would contain actual SECRET calibration algorithms]
+
+**Classification:** HEMLIG (H)
+**Reason:** Detailed sensor parameters reveal tactical capabilities.
+
+**Handling:** Requires FMV Nivå 3 clearance.`
+      }
+    ];
+    
+    const classificationColors = {
+      'EJ_SEKRETESS': { 
+        bg: 'bg-blue-500/30', 
+        text: 'text-blue-300', 
+        border: 'border-blue-400', 
+        label: 'ES',
+        fullName: 'Ej sekretess'
+      },
+      'KONFIDENTIELL': { 
+        bg: 'bg-orange-500/30', 
+        text: 'text-orange-300', 
+        border: 'border-orange-400', 
+        label: 'K',
+        fullName: 'Konfidentiell'
+      },
+      'HEMLIG': { 
+        bg: 'bg-red-500/30', 
+        text: 'text-red-300', 
+        border: 'border-red-400', 
+        label: 'H',
+        fullName: 'Hemlig'
+      },
+    };
+    
+    const aiServices = {
+      'claude': { name: 'Claude Sonnet 4.5 (Cloud)', maxLevel: 'EJ_SEKRETESS' },
+      'rf-saas': { name: 'Red Forge SaaS (FMV Nivå 2)', maxLevel: 'KONFIDENTIELL' },
+      'rf-onprem': { name: 'Red Forge On-Prem (FMV Nivå 3)', maxLevel: 'HEMLIG' },
+    };
+    
+    const levelOrder = ['EJ_SEKRETESS', 'KONFIDENTIELL', 'HEMLIG'];
+    
+    let state = {
+      currentFile: null,
+      currentAI: 'claude',
+      auditLog: [],
+      editor: null
+    };
+    
+    // Initialize Monaco Editor
+    require.config({ paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs' }});
+    require(['vs/editor/editor.main'], function() {
+      state.editor = monaco.editor.create(document.getElementById('editor-container'), {
+        value: '// Select a file to edit',
+        language: 'markdown',
+        theme: 'vs-dark',
+        readOnly: true,
+        minimap: { enabled: false }
+      });
+      
+      renderFileTree();
+    });
+    
+    // Render file tree
+    function renderFileTree() {
+      const tree = document.getElementById('file-tree');
+      tree.innerHTML = demoFiles.map(file => {
+        const colors = classificationColors[file.classification];
+        return `
+          <div class="file-item" data-file-id="${file.id}">
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-300">📄 ${file.name}</span>
+              <span class="classification-badge ${colors.bg} ${colors.text}">${colors.label}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+      
+      // Add click handlers
+      tree.querySelectorAll('.file-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const fileId = item.dataset.fileId;
+          openFile(fileId);
+        });
+      });
+    }
+    
+    // Open file
+    function openFile(fileId) {
+      const file = demoFiles.find(f => f.id === fileId);
+      if (!file) return;
+      
+      state.currentFile = file;
+      
+      // Update UI
+      document.querySelectorAll('.file-item').forEach(item => {
+        item.classList.toggle('active', item.dataset.fileId === fileId);
+      });
+      
+      document.getElementById('current-file-name').textContent = file.name;
+      
+      if (state.editor) {
+        state.editor.setValue(file.content);
+      }
+    }
+    
+    // Send to AI
+    document.getElementById('send-btn').addEventListener('click', () => {
+      const input = document.getElementById('chat-input');
+      const message = input.value.trim();
+      
+      if (!message || !state.currentFile) return;
+      
+      // Add user message
+      addChatMessage('user', message);
+      input.value = '';
+      
+      // Check if AI can access file
+      const result = forgeCheck(state.currentFile, state.currentAI);
+      
+      if (result.allowed) {
+        const colors = classificationColors[state.currentFile.classification];
+        addChatMessage('success', `✅ Forge Protocol: TILLÅTEN\n\nSkickat till ${aiServices[state.currentAI].name}\n\nFil: ${state.currentFile.name}\nKlassificering: ${colors.fullName} (${colors.label})\n\nAI svarar...'`);
+        
+        // Simulate AI response
+        setTimeout(() => {
+          addChatMessage('assistant', `🤖 ${aiServices[state.currentAI].name}:\n\n"Jag har analyserat ${state.currentFile.name}. Här är mina förslag...\n\n[Detta är en demo - riktigt AI-svar skulle visas här]"`);
+        }, 1500);
+      } else {
+        addChatMessage('system', `🚫 Forge Protocol: BLOCKERAD\n\n${result.reason}\n\n💡 Lösning:\n${result.suggestion || 'Välj en AI-tjänst med högre clearance.'}`);
+      }
+      
+      // Log to audit
+      logAudit({
+        timestamp: new Date().toISOString(),
+        operation: 'chat',
+        file: state.currentFile.name,
+        classification: state.currentFile.classification,
+        aiService: state.currentAI,
+        decision: result.allowed ? 'allowed' : 'blocked',
+        reason: result.reason
+      });
+    });
+    
+    // Forge Protocol Check (instant, no AI)
+    function forgeCheck(file, aiService) {
+      const aiConfig = aiServices[aiService];
+      const fileLevel = file.classification;
+      const aiMaxLevel = aiConfig.maxLevel;
+      
+      const fileLevelIndex = levelOrder.indexOf(fileLevel);
+      const aiLevelIndex = levelOrder.indexOf(aiMaxLevel);
+      
+      if (fileLevelIndex <= aiLevelIndex) {
+        return { 
+          allowed: true, 
+          reason: `✅ Klassificeringskontroll godkänd\n\nFil: ${classificationColors[fileLevel].fullName} (${classificationColors[fileLevel].label})\nAI max: ${classificationColors[aiMaxLevel].fullName} (${classificationColors[aiMaxLevel].label})\n\nForge Protocol: Ingen säkerhetsrisk detekterad.` 
+        };
+      } else {
+        const requiredAI = getRequiredAI(fileLevel);
+        return {
+          allowed: false,
+          reason: `Klassificeringskonflikt:\n\n• Fil: ${classificationColors[fileLevel].fullName} (${classificationColors[fileLevel].label})\n• AI max: ${classificationColors[aiMaxLevel].fullName} (${classificationColors[aiMaxLevel].label})\n\nDenna fil överskrider AI-tjänstens clearance-nivå.`,
+          suggestion: `Byt till "${requiredAI}" för att hantera ${classificationColors[fileLevel].fullName}-innehåll.`
+        };
+      }
+    }
+    
+    function getRequiredAI(classification) {
+      if (classification === 'EJ_SEKRETESS') return 'Claude Sonnet 4.5 (Cloud)';
+      if (classification === 'KONFIDENTIELL') return 'Red Forge SaaS (FMV Nivå 2)';
+      if (classification === 'HEMLIG') return 'Red Forge On-Prem (FMV Nivå 3)';
+      return 'Unknown';
+    }
+    
+    // Chat UI
+    function addChatMessage(type, content) {
+      const messagesDiv = document.getElementById('chat-messages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `chat-message ${type}`;
+      messageDiv.innerHTML = `<div class="text-sm whitespace-pre-wrap">${escapeHtml(content)}</div>`;
+      messagesDiv.appendChild(messageDiv);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+    
+    function escapeHtml(text) {
+      const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+      return text.replace(/[&<>"']/g, m => map[m]);
+    }
+    
+    // Audit Trail
+    function logAudit(entry) {
+      state.auditLog.push(entry);
+      renderAuditTrail();
+    }
+    
+    function renderAuditTrail() {
+      const auditDiv = document.getElementById('audit-list');
+      auditDiv.innerHTML = state.auditLog.map((entry, i) => `
+        <div class="mb-3 p-2 bg-gray-800 rounded">
+          <div class="text-orange-400">#${i + 1} ${entry.timestamp}</div>
+          <div class="text-gray-300 mt-1">
+            <div>Operation: ${entry.operation}</div>
+            <div>File: ${entry.file} (${entry.classification})</div>
+            <div>AI: ${entry.aiService}</div>
+            <div class="${entry.decision === 'allowed' ? 'text-green-400' : 'text-red-400'}">
+              Decision: ${entry.decision.toUpperCase()}
+            </div>
+            <div class="text-gray-500 text-xs mt-1">${entry.reason}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+    
+    // Export Audit
+    document.getElementById('export-audit').addEventListener('click', () => {
+      const json = JSON.stringify(state.auditLog, null, 2);
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `red-forge-audit-${Date.now()}.json`;
+      a.click();
+    });
+    
+    // Tab switching
+    document.getElementById('tab-chat').addEventListener('click', () => {
+      document.getElementById('panel-chat').classList.remove('hidden');
+      document.getElementById('panel-chat').classList.add('flex');
+      document.getElementById('panel-audit').classList.add('hidden');
+      document.getElementById('tab-chat').classList.add('tab-active');
+      document.getElementById('tab-audit').classList.remove('tab-active');
+    });
+    
+    document.getElementById('tab-audit').addEventListener('click', () => {
+      document.getElementById('panel-audit').classList.remove('hidden');
+      document.getElementById('panel-audit').classList.add('flex');
+      document.getElementById('panel-chat').classList.add('hidden');
+      document.getElementById('tab-audit').classList.add('tab-active');
+      document.getElementById('tab-chat').classList.remove('tab-active');
+    });
+    
+    // AI service change
+    document.getElementById('ai-service').addEventListener('change', (e) => {
+      const oldAI = state.currentAI;
+      state.currentAI = e.target.value;
+      addChatMessage('system', `🔄 AI-tjänst bytt\n\nFrån: ${aiServices[oldAI].name}\nTill: ${aiServices[state.currentAI].name}\n\nNy max-klassificering: ${classificationColors[aiServices[state.currentAI].maxLevel].fullName} (${classificationColors[aiServices[state.currentAI].maxLevel].label})`);
+    });
+    
+    // Styling for active tabs
+    const style = document.createElement('style');
+    style.textContent = `
+      .tab-active {
+        background-color: rgb(31, 41, 55);
+        color: rgb(251, 146, 60);
+        border-bottom: 2px solid rgb(251, 146, 60);
+      }
+      button:not(.tab-active) {
+        color: rgb(156, 163, 175);
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+  
+</body>
+</html>
+
