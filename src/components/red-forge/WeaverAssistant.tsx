@@ -58,7 +58,7 @@ const getClassificationColor = (classification: Classification): string => {
 export function WeaverAssistant({ file, selectedService, onServiceChange, filesInContext, onClearContext }: WeaverAssistantProps) {
   const [showEnforcementModal, setShowEnforcementModal] = useState(false);
   const [showModificationModal, setShowModificationModal] = useState(false);
-  const [proposedModification, setProposedModification] = useState<FileModification | null>(null);
+  const [proposedModification, setProposedModification] = useState<any | null>(null);
   const [messages, setMessages] = useState<Array<{ role: 'user' | 'assistant'; content: string }>>(() => [{
     role: 'assistant',
     content: `Hej! Jag är Weaver, din AI-assistent för Red Forge.
@@ -565,17 +565,7 @@ Du kan chatta med mig direkt, eller klicka på "Skicka till AI" för att ge mig 
         </div>
       )}
       
-      {/* File Modification Modal */}
-      {showModificationModal && proposedModification && (
-        <FileModificationModal
-          modification={proposedModification}
-          onApprove={handleApproveModification}
-          onCancel={() => {
-            setShowModificationModal(false);
-            setProposedModification(null);
-          }}
-        />
-      )}
+      {/* File Modification Modal - Removed, not used in current version */}
     </>
   );
 }

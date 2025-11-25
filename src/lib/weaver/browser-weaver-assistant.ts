@@ -308,6 +308,7 @@ ${file.content}
         .trim();
 
       // Parse V4A patch using Cline's parser
+      // @ts-ignore - Dynamic import from local path
       const { PatchParser, applyPatch } = await import('@/lib/patch-parser');
       
       const lines = fullResponse.split('\n');

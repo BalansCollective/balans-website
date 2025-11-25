@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { X, Save, Edit, AlertTriangle } from 'lucide-react';
 import { DiffViewer } from './DiffViewer';
-import type { Classification } from './DemoDataLoader';
+
+type Classification = 'oklassificerad' | 'begransad-hemlig' | 'konfidentiell' | 'hemlig';
 
 interface FileModification {
   originalFile: {

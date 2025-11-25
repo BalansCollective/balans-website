@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+// @ts-ignore - monaco-editor loaded via CDN in index.html
 import * as monaco from 'monaco-editor';
 
 interface DiffViewerProps {

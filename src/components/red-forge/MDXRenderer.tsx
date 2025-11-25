@@ -5,7 +5,8 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkGfm from 'remark-gfm';
 import mermaid from 'mermaid';
 import { MermaidDiagram } from './MermaidDiagram';
-import type { Classification } from './DemoDataLoader';
+
+type Classification = 'oklassificerad' | 'begransad-hemlig' | 'konfidentiell' | 'hemlig';
 
 interface MDXRendererProps {
   content: string;
