@@ -57,6 +57,8 @@ const getClassificationColor = (classification: Classification): string => {
 
 export function WeaverAssistant({ file, selectedService, onServiceChange, filesInContext, onClearContext }: WeaverAssistantProps) {
   const [showEnforcementModal, setShowEnforcementModal] = useState(false);
+  const [showModificationModal, setShowModificationModal] = useState(false);
+  const [proposedModification, setProposedModification] = useState<FileModification | null>(null);
   const [messages, setMessages] = useState<Array<{ role: 'user' | 'assistant'; content: string }>>(() => [{
     role: 'assistant',
     content: `Hej! Jag är Weaver, din AI-assistent för Red Forge.
@@ -125,18 +127,25 @@ ${filesInContext.length > 0
     prevFilesInContext.current = currentFileNames;
   }, [filesInContext, weaver]);
 
-  // Check if AI service can access this file
+  // Check if AI service can access files IN CONTEXT (not just open file!)
   const serviceLevel = AI_SERVICE_LEVELS[selectedService].level;
-  const fileLevel = CLASSIFICATION_LEVELS[file.classification];
-  const canAccess = serviceLevel >= fileLevel;
   
-  // Find minimum required AI service for this file
+  // Find highest classification in context
+  const highestClassInContext = filesInContext.length > 0
+    ? Math.max(...filesInContext.map(f => CLASSIFICATION_LEVELS[f.classification]))
+    : -1; // No files in context
+  
+  const canAccess = highestClassInContext === -1 || serviceLevel >= highestClassInContext;
+  
+  // Find minimum required AI service for files in context
   const getRequiredService = (): AIService | null => {
+    if (filesInContext.length === 0) return null;
+    
     const services = Object.entries(AI_SERVICE_LEVELS)
       .sort((a, b) => a[1].level - b[1].level);
     
     for (const [key, info] of services) {
-      if (info.level >= fileLevel) {
+      if (info.level >= highestClassInContext) {
         return key as AIService;
       }
     }
@@ -157,6 +166,8 @@ ${filesInContext.length > 0
     const userMessage = inputValue;
     setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
     setInputValue('');
+    
+    // Normal chat flow - just answer questions about files
     setIsStreaming(true);
     
     // Stream AI response - buffer in streamingContent
@@ -193,6 +204,27 @@ ${filesInContext.length > 0
       setStreamingContent(''); // Clear streaming buffer
       setIsStreaming(false);
     }
+  };
+  
+  const handleApproveModification = (modifiedContent: string, newFilename: string, newClassification: Classification) => {
+    // In browser demo, we'll just download the file
+    const blob = new Blob([modifiedContent], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = newFilename;
+    a.click();
+    URL.revokeObjectURL(url);
+    
+    // Log to audit
+    setMessages(prev => [...prev, {
+      role: 'assistant',
+      content: `✅ File modification approved and saved as **${newFilename}** (${newClassification})`
+    }]);
+    
+    // Close modal
+    setShowModificationModal(false);
+    setProposedModification(null);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -233,7 +265,8 @@ ${filesInContext.length > 0
               className="bg-[#161b22] border border-gray-700 rounded px-2 py-1 text-xs text-gray-300 hover:border-red-500 transition-colors"
             >
               {Object.entries(AI_SERVICE_LEVELS)
-                .filter(([_, info]) => info.level >= CLASSIFICATION_LEVELS[file.classification])
+                // Filter based on HIGHEST classification IN CONTEXT, not open file
+                .filter(([_, info]) => filesInContext.length === 0 || info.level >= highestClassInContext)
                 .map(([key, info]) => (
                   <option key={key} value={key}>{info.name}</option>
                 ))}
@@ -242,7 +275,10 @@ ${filesInContext.length > 0
             {/* Single "Rensa" button - clears both chat AND context */}
             <button
               onClick={() => {
-                // Clear chat history
+                // Step 1: Clear AI context (files) FIRST
+                onClearContext();
+                
+                // Step 2: Clear chat history
                 setMessages([{
                   role: 'assistant',
                   content: `Hej! Jag är Weaver, din AI-assistent för Red Forge.
@@ -253,8 +289,11 @@ Du kan chatta med mig direkt, eller klicka på "Skicka till AI" för att ge mig 
                 }]);
                 setStreamingContent('');
                 
-                // Clear AI context (files)
-                onClearContext();
+                // Step 3: Reset to Claude Cloud (now that context is cleared)
+                // Use setTimeout to ensure parent state has updated
+                setTimeout(() => {
+                  onServiceChange('claude-cloud');
+                }, 0);
               }}
               className="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-red-400 hover:bg-red-900/20 rounded transition-colors"
               title="Rensa chat och AI-kontext"
@@ -270,9 +309,18 @@ Du kan chatta med mig direkt, eller klicka på "Skicka till AI" för att ge mig 
                 ? `${filesInContext.length} fil${filesInContext.length > 1 ? 'er' : ''} i AI-kontext: ${filesInContext.map(f => f.name).join(', ')}` 
                 : 'Ingen fil skickad ännu'}
             </span>
-            {file.classification && (
-              <span className={`text-xs font-mono font-semibold ${getClassificationColor(file.classification)}`}>
-                {file.classification.toUpperCase()}
+            {filesInContext.length > 0 && (
+              <span className={`text-xs font-mono font-semibold ${getClassificationColor(
+                // Show highest classification in context
+                filesInContext.reduce((highest, f) => {
+                  const levels: Classification[] = ['oklassificerad', 'begransad-hemlig', 'konfidentiell', 'hemlig'];
+                  return levels.indexOf(f.classification) > levels.indexOf(highest) ? f.classification : highest;
+                }, filesInContext[0].classification)
+              )}`}>
+                {filesInContext.reduce((highest, f) => {
+                  const levels: Classification[] = ['oklassificerad', 'begransad-hemlig', 'konfidentiell', 'hemlig'];
+                  return levels.indexOf(f.classification) > levels.indexOf(highest) ? f.classification : highest;
+                }, filesInContext[0].classification).toUpperCase()}
               </span>
             )}
           </div>
@@ -455,13 +503,22 @@ Du kan chatta med mig direkt, eller klicka på "Skicka till AI" för att ge mig 
 
             <div className="space-y-4 text-sm text-gray-300">
               <p>
-                <strong>{AI_SERVICE_LEVELS[selectedService].name}</strong> kan inte komma åt{' '}
-                <strong className="text-red-400">{file.classification}</strong> innehåll.
+                <strong>{AI_SERVICE_LEVELS[selectedService].name}</strong> kan inte komma åt filer med{' '}
+                <strong className="text-red-400">
+                  {filesInContext.length > 0 
+                    ? filesInContext.map(f => f.classification).join(', ')
+                    : 'högre'
+                  }
+                </strong> klassificering i AI-kontext.
               </p>
 
               <div className="bg-gray-900 border border-gray-700 rounded p-3">
-                <div className="text-xs text-gray-400 mb-2">Filklassificering:</div>
-                <div className="text-red-400 font-semibold uppercase">{file.classification}</div>
+                <div className="text-xs text-gray-400 mb-2">Filer i AI-kontext:</div>
+                {filesInContext.map(f => (
+                  <div key={f.name} className="text-red-400 font-semibold uppercase text-xs">
+                    {f.name}: {f.classification}
+                  </div>
+                ))}
 
                 <div className="text-xs text-gray-400 mt-3 mb-2">Nuvarande AI-tjänst:</div>
                 <div className="text-yellow-400 font-semibold">
@@ -506,6 +563,18 @@ Du kan chatta med mig direkt, eller klicka på "Skicka till AI" för att ge mig 
             </div>
           </div>
         </div>
+      )}
+      
+      {/* File Modification Modal */}
+      {showModificationModal && proposedModification && (
+        <FileModificationModal
+          modification={proposedModification}
+          onApprove={handleApproveModification}
+          onCancel={() => {
+            setShowModificationModal(false);
+            setProposedModification(null);
+          }}
+        />
       )}
     </>
   );

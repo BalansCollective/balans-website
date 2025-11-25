@@ -1,98 +1,126 @@
 ---
 classification: BEGRÄNSAT HEMLIG
 project: BirdTurret V2
-summary: Multi-tower coordinated defense with sector management
+summary: Multi-torn koordinerat försvar med sektorhantering
 date: 2025-11-20
 ---
 
-# BirdTurret V2: Multi-Tower Coordinated Defense
+# BirdTurret V2: Multi-Torn Koordinerat Försvar
 
-## Classification: BEGRÄNSAT HEMLIG (Restricted Secret)
+## Klassificering: BEGRÄNSAD HEMLIG
 
-## Mission Summary
+## Uppdragssummering
 
-**Goal**: Operational deployment - 360° coverage, blue-force coordination, kinetic backup
+**Mål**: Operativ utplacering - 360° täckning, blå-styrka-koordination, kinetisk backup
 
-**Core Innovation**: Multi-tower sector management enables RF jamming WITHOUT friendly interference
+**Kärninnovation**: Multi-torn sektorhantering möjliggör RF-störning UTAN vänlig interferens
 
-## What Changed from V1
+## Vad Ändrades från V1
 
-- **1 tower → 4 towers** (360° coverage, operator switches)
-- **Omnidirectional jam → Directional 30° beam** (10× blue-on-blue reduction)
-- **RF only → RF + kinetic** (nets at 50m for momentum threats)
-- **No coordination → Sector management** (time/frequency corridors for friendlies)
-- **Single operator → Network integration** (APIs with friendly drone C2)
+- **1 torn → 4 torn** (360° täckning, operatör växlar)
+- **Omnidirektionell störning → Riktad 30° stråle** (10× blå-på-blå reduktion)
+- **Endast RF → RF + kinetisk** (nät vid 50m för momentumhot)
+- **Ingen koordination → Sektorhantering** (tid/frekvenskorridorer för vänliga)
+- **Enkel operatör → Nätverksintegration** (API:er med vänlig drönare C2)
 
-## Field Test Results (48 Hours)
+## Fälttestresultat (48 Timmar)
 
-### Engagement Statistics
+### Engagemangsstatistik
 
-**Total Contacts**: 47 drones
-- 18 DJI-class recon drones (slow, 15 m/s)
-- 22 FPV kamikaze drones (fast, 40-60 m/s)
-- 4 Fast FPV (extreme, 70+ m/s)
-- 2 Fiber-optic FPVs (SEAD-type, immune to RF)
-- 1 Unknown civilian drone
+**Totala Kontakter**: 47 drönare
+- 18 DJI-klass spaningsdrönare (långsam, 15 m/s)
+- 22 FPV kamikazedrönare (snabb, 40-60 m/s)
+- 4 Snabb FPV (extrem, 70+ m/s)
+- 2 Fiberoptiska FPVs (SEAD-typ, immun mot RF)
+- 1 Okänd civil drönare
 
-### Success Rates
+### Framgångsfrekvenser
 
-| Threat Type | Count | RF Jammed | Kinetic | Success Rate |
-|-------------|-------|-----------|---------|--------------|
-| DJI recon | 18 | 18 | 0 | 100% |
+| Hottyp | Antal | RF Störd | Kinetisk | Framgångsfrekvens |
+|--------|-------|----------|----------|-------------------|
+| DJI spaning | 18 | 18 | 0 | 100% |
 | FPV (40-60 m/s) | 22 | 19 | 2 | 95% |
-| Fast FPV (70+ m/s) | 4 | 3 | 1 | 100% |
-| Fiber-optic | 2 | 0 | 1 | 50% |
-| **TOTAL** | **47** | **40** | **4** | **93.6%** |
+| Snabb FPV (70+ m/s) | 4 | 3 | 1 | 100% |
+| Fiberoptisk | 2 | 0 | 1 | 50% |
+| **TOTALT** | **47** | **40** | **4** | **93.6%** |
 
-### Key Achievements
+### Nyckelresultat
 
-✅ **Zero blue-on-blue incidents** (sector management validated)  
-✅ **95% RF jamming success** (vs Ukraine baseline 60-80%)  
-✅ **517ms tower switching** (vs 5s target)  
-✅ **Friendly operations enabled** (7 relay events, 100% success)
+✅ **Noll blå-på-blå incidenter** (sektorhantering validerad)  
+✅ **95% RF-störningsframgång** (vs Ukraina baslinje 60-80%)  
+✅ **517ms tornväxling** (vs 5s mål)  
+✅ **Vänliga operationer möjliggjorda** (7 relähändelser, 100% framgång)
 
-## Multi-Tower Coordination
+## Multi-Torn Koordination
 
-**Operator Experience**: RTS-style UI
-- 4 camera feeds (North, East, South, West)
-- Hotkey switching (1/2/3/4)
-- Minimap tactical overlay
-- Color-coded sectors (🟢 friendly, 🔴 hostile)
+**Operatörsupplevelse**: RTS-stil UI
+- 4 kameraflöden (Nord, Öst, Syd, Väst)
+- Snabbtangenters växling (1/2/3/4)
+- Minikarta taktisk overlay
+- Färgkodade sektorer (🟢 vänlig, 🔴 fientlig)
 
-**Switching Performance**:
-- Average latency: 517ms
-- Operator fatigue: 24-hour single-operator limit
-- Training: 2 days (V1 veteran baseline)
+```mermaid
+graph TD
+    classDef tower fill:#4a90e2,stroke:#0057b7,stroke-width:2px,color:#ffffff
+    classDef operator fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#ffffff
+    classDef friendly fill:#00b894,stroke:#00916a,stroke-width:2px,color:#ffffff
+    classDef threat fill:#ff6b6b,stroke:#c73866,stroke-width:2px,color:#ffffff
+    
+    A[Operatör<br/>RTS UI] --> B[Torn Nord<br/>0-90°]
+    A --> C[Torn Öst<br/>90-180°]
+    A --> D[Torn Syd<br/>180-270°]
+    A --> E[Torn Väst<br/>270-360°]
+    
+    B --> F{Hot<br/>Detekterat?}
+    C --> F
+    D --> F
+    E --> F
+    
+    F -->|Ja| G[RF Störning<br/>30° Stråle]
+    F -->|Fiber-optisk| H[Kinetisk<br/>Nät 50m]
+    F -->|Nej| I[Fortsätt<br/>Övervakning]
+    
+    J[Vänliga<br/>Drönare] -.->|Säker Sektor| A
+    
+    class A operator
+    class B,C,D,E tower
+    class G,H threat
+    class I,J friendly
+```
 
-## Sector Management
+**Växlingsprestanda**:
+- Genomsnittlig latens: 517ms
+- Operatörstötthet: 24-timmars enkelsoperatörsgräns
+- Träning: 2 dagar (V1 veteran baslinje)
 
-**Time-Based Coordination**:
-- Friendly drones pre-announce flight plans
-- BirdTurret respects safe sectors (automated enforcement)
-- 10-15 min windows for ISR missions
-- Manual coordination in V2 (API integration planned for V3)
+## Sektorhantering
 
-**Spatial Coordination (Directional Jamming)**:
-- 30° beam vs 360° omnidirectional
-- 12 dBi gain = 16× effective power in beam
-- Blue-on-blue risk: 10× reduced (30°/360° = 8%)
+**Tidsbaserad Koordination**:
+- Vänliga drönare förannonserar flygplaner
+- BirdTurret respekterar säkra sektorer (automatiserad efterlevnad)
+- 10-15 min fönster för ISR-uppdrag
+- Manuell koordination i V2 (API-integration planerad för V3)
 
-## Cost Analysis
+**Rumslig Koordination (Riktad Störning)**:
+- 30° stråle vs 360° omnidirektionell
+- 12 dBi förstärkning = 16× effektiv kraft i stråle
+- Blå-på-blå risk: 10× reducerad (30°/360° = 8%)
 
-**V2 Budget**: €10,800 (4 towers)
-**Cost per engagement**: €0.059 (€3.52 / 60 engagements)
+## Kostnadsanalys
 
-## Limitations Discovered
+**V2 Budget**: €10,800 (4 torn)
+**Kostnad per engagemang**: €0.059 (€3.52 / 60 engagemang)
 
-1. **Fiber-optic bypass**: 50% success (need longer-range kinetic)
-2. **Net capacity**: 12 nets insufficient for sustained defense
-3. **Operator cognitive load**: 24-hour single-operator limit
-4. **Manual coordination**: Fragile (need API integration)
+## Begränsningar Upptäckta
 
-## V3 Requirements
+1. **Fiberoptisk bypass**: 50% framgång (behöver längre räckvidd kinetisk)
+2. **Nätkapacitet**: 12 nät otillräckligt för hållbart försvar
+3. **Operatörskognitiv belastning**: 24-timmars enkelsoperatörsgräns
+4. **Manuell koordination**: Sårbar (behöver API-integration)
 
-- Full auto-tracking (AI engages, operator authorizes)
-- API integration (friendly drone telemetry)
-- Longer-range kinetic (shotguns 100m or interceptors)
-- Multi-operator mode (8 towers, shift work)
+## V3 Krav
 
+- Full auto-spårning (AI engagerar, operatör auktoriserar)
+- API-integration (vänlig drönare telemetri)
+- Längre räckvidd kinetisk (hagelgevär 100m eller interceptorer)
+- Multi-operatörsläge (8 torn, skiftarbete)

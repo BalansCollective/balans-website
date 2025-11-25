@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import Editor from '@monaco-editor/react';
+import Editor, { DiffEditor } from '@monaco-editor/react';
 import { Download } from 'lucide-react';
 import { loadDemoFiles } from '@/components/red-forge/DemoDataLoader';
 import type { DemoFile, DemoFileTree } from '@/components/red-forge/DemoDataLoader';
@@ -37,6 +37,24 @@ function RedForgeDemoContent() {
   // Right panel tab state
   const [rightPanelTab, setRightPanelTab] = useState<'weaver' | 'audit'>('weaver');
   
+  // Context menu state
+  const [contextMenu, setContextMenu] = useState<{
+    x: number;
+    y: number;
+    fileId: string;
+    classification: Classification;
+  } | null>(null);
+  
+  // Declassification modal state
+  const [showDeclassifyModal, setShowDeclassifyModal] = useState(false);
+  const [declassifyData, setDeclassifyData] = useState<{
+    originalFile: DemoFile;
+    targetClassification: Classification;
+    modifiedContent?: string;
+    isProcessing: boolean;
+    approved?: boolean;
+  } | null>(null);
+  
   // Context tracking: files currently in AI context
   const [filesInContext, setFilesInContext] = useState<Set<string>>(new Set());
   
@@ -71,6 +89,15 @@ function RedForgeDemoContent() {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+  
+  // Close context menu when clicking elsewhere
+  useEffect(() => {
+    const handleClick = () => setContextMenu(null);
+    if (contextMenu) {
+      window.addEventListener('click', handleClick);
+      return () => window.removeEventListener('click', handleClick);
+    }
+  }, [contextMenu]);
   
   useEffect(() => {
     const hasSeenSafetyModal = localStorage.getItem('red-forge-safety-accepted');
@@ -259,6 +286,85 @@ function RedForgeDemoContent() {
     }
   };
   
+  // Handle declassification request
+  const handleDeclassifyRequest = async (fileId: string, targetClassification: Classification) => {
+    const file = allFiles.find(f => f.id === fileId);
+    if (!file) return;
+    
+    // Open modal immediately with editable diff (original on left, copy on right)
+    setDeclassifyData({
+      originalFile: file,
+      targetClassification,
+      modifiedContent: file.content, // Start with copy of original
+      isProcessing: false,
+      approved: false
+    });
+    setShowDeclassifyModal(true);
+  };
+  
+  const handleAIAssistDeclassify = async () => {
+    if (!declassifyData) return;
+    
+    setDeclassifyData(prev => prev ? { ...prev, isProcessing: true } : null);
+    
+    try {
+      // Call AI to suggest redactions
+      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${import.meta.env.VITE_OPENROUTER_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'anthropic/claude-3.5-sonnet',
+          messages: [{
+            role: 'user',
+            content: `Redaktera detta ${declassifyData.originalFile.classification.toUpperCase()} klassificerade dokument till ${declassifyData.targetClassification.toUpperCase()} nivå.
+
+UPPGIFT: Ta bort eller generalisera känslig information för att möta målklassificeringsnivån.
+
+REGLER:
+1. Ta bort specifika tekniska detaljer (exakta specifikationer, interna kodnamn, känsliga kapaciteter)
+2. Generalisera beskrivningar (t.ex. "avancerat målsystem" istället för "millimetervågsradararray")
+3. Ta bort operativa detaljer (utplaceringsplatser, specifika prestandamått)
+4. Behåll övergripande struktur och syfte klart
+5. Markera redaktioner med [REDAKTERAD] där det behövs
+6. Behåll markdown-formatering
+
+MÅLKLASSIFICERING: ${declassifyData.targetClassification.toUpperCase()}
+- Oklassificerad (O): Endast offentlig information
+- Begränsad Hemlig (BH): Begränsad distribution, inga operativa detaljer
+- Konfidentiell (K): Intern användning, vissa tekniska detaljer OK
+- Hemlig (H): Begränsad åtkomst, fullständiga operativa detaljer
+
+ORIGINALDOKUMENT (${declassifyData.originalFile.classification.toUpperCase()}):
+${declassifyData.originalFile.content}
+
+Returnera ENDAST det redakterade dokumentinnehållet, inga förklaringar.`
+          }],
+          stream: false
+        })
+      });
+      
+      const data = await response.json();
+      const modifiedContent = data.choices[0].message.content;
+      
+      setDeclassifyData(prev => prev ? {
+        ...prev,
+        modifiedContent,
+        isProcessing: false
+      } : null);
+      
+    } catch (error) {
+      console.error('AI-assisterad deklassificering misslyckades:', error);
+      setDeclassifyData(prev => prev ? {
+        ...prev,
+        isProcessing: false
+      } : null);
+      alert('AI-hjälp misslyckades. Se konsolen för detaljer.');
+    }
+  };
+  
   // FlexLayout factory - renders components for each tab
   const factory = (node: TabNode) => {
     const component = node.getComponent();
@@ -285,6 +391,18 @@ function RedForgeDemoContent() {
                       <button
                         key={file.path}
                         onClick={() => handleFileSelect(file.path)}
+                        onContextMenu={(e) => {
+                          e.preventDefault();
+                          // Only show context menu for K or H files
+                          if (file.classification === 'konfidentiell' || file.classification === 'hemlig') {
+                            setContextMenu({
+                              x: e.clientX,
+                              y: e.clientY,
+                              fileId: file.path,
+                              classification: file.classification
+                            });
+                          }
+                        }}
                         className={`
                           w-full text-left px-2 py-1 rounded text-xs flex items-center justify-between gap-2
                           ${activeFileId === file.path 
@@ -356,6 +474,28 @@ function RedForgeDemoContent() {
             </div>
             
             <div className="flex items-center gap-1 md:gap-2">
+              {/* Download button (only for Oklassificerad files) */}
+              {activeFile && activeFile.classification === 'oklassificerad' && (
+                <button
+                  onClick={() => {
+                    const blob = new Blob([activeFile.content], { type: 'text/markdown' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = activeFile.name;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                  }}
+                  className="px-2 md:px-3 py-1 text-xs md:text-sm text-gray-400 hover:text-white hover:bg-gray-800 rounded flex items-center gap-1 transition-colors"
+                  title="Ladda ner oklassificerad fil"
+                >
+                  <Download className="w-3 h-3 md:w-4 md:h-4" />
+                  <span className="hidden md:inline">Ladda Ner</span>
+                </button>
+              )}
+              
               <button
                 onClick={() => setViewMode('code')}
                 className={`px-2 md:px-3 py-1 rounded text-xs mobile-toolbar-btn ${
@@ -543,7 +683,9 @@ function RedForgeDemoContent() {
                     const oldLevel = selectedAIService === 'claude-cloud' ? 0 : selectedAIService === 'saas-lumen' ? 1 : selectedAIService === 'forge-local' ? 2 : 3;
                     const newLevel = newService === 'claude-cloud' ? 0 : newService === 'saas-lumen' ? 1 : newService === 'forge-local' ? 2 : 3;
                     
-                    if (newLevel < oldLevel) {
+                    // Allow downgrade if no files in context (e.g., after clearing)
+                    if (newLevel < oldLevel && filesInContext.size > 0) {
+                      // Only block downgrade if there are files in context
                       setFilesInContext(new Set());
                       setAuditLog(prev => [{
                         timestamp: new Date(),
@@ -566,11 +708,15 @@ function RedForgeDemoContent() {
                   }).filter((f): f is { name: string; content: string; classification: Classification } => f !== null)}
                   onClearContext={() => {
                     setFilesInContext(new Set());
+                    
+                    // Reset AI service to Claude Cloud when all context is cleared
+                    setSelectedAIService('claude-cloud');
+                    
                     setAuditLog(prev => [{
                       timestamp: new Date(),
                       filename: '[SYSTEM]',
                       classification: 'oklassificerad' as Classification,
-                      aiService: 'Context manually cleared',
+                      aiService: 'Context manually cleared, reset to Claude Cloud',
                       result: 'allowed' as const
                     }, ...prev].slice(0, 50));
                   }}
@@ -780,6 +926,228 @@ function RedForgeDemoContent() {
       <div className="flex-1 overflow-hidden">
         <Layout model={layoutModel} factory={factory} />
       </div>
+      
+      {/* Declassification Modal */}
+      {showDeclassifyModal && declassifyData && (
+        <div className="fixed inset-0 bg-black/90 z-[9999] flex items-center justify-center p-4">
+          <div className="bg-[#0d1117] border border-gray-700 rounded-lg w-full max-w-6xl h-[90vh] flex flex-col">
+            {/* Header */}
+            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-700 flex-shrink-0">
+              <div>
+                <h2 className="text-lg font-semibold text-white">Granskning av Deklassificering</h2>
+                <p className="text-sm text-gray-400 mt-1">
+                  {declassifyData.originalFile.classification.toUpperCase()} → {declassifyData.targetClassification.toUpperCase()}
+                </p>
+              </div>
+              <button
+                onClick={() => {
+                  setShowDeclassifyModal(false);
+                  setDeclassifyData(null);
+                }}
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 min-h-0 flex flex-col overflow-hidden">
+              {declassifyData.modifiedContent !== undefined ? (
+                <>
+                  {/* Toolbar */}
+                  <div className="bg-[#161b22] border-b border-gray-700 px-4 py-2 flex items-center justify-between flex-shrink-0">
+                    <p className="text-sm text-gray-400">
+                      {declassifyData.isProcessing ? (
+                        <span className="flex items-center gap-2">
+                          <span className="w-4 h-4 border-2 border-gray-600 border-t-red-500 rounded-full animate-spin"></span>
+                          AI redakterar känslig information...
+                        </span>
+                      ) : (
+                        <span>
+                          <strong>💡 Tips:</strong> Redigera fritt i högra panelen eller använd AI-hjälp
+                        </span>
+                      )}
+                    </p>
+                    {!declassifyData.isProcessing && (
+                      <button
+                        onClick={handleAIAssistDeclassify}
+                        className="px-3 py-1 text-sm bg-purple-600 hover:bg-purple-700 text-white rounded flex items-center gap-2 transition-colors"
+                      >
+                        🤖 AI-hjälp
+                      </button>
+                    )}
+                  </div>
+                  
+                  {/* Monaco Diff Editor */}
+                  <div className="flex-1 min-h-0 bg-[#1e1e1e]">
+                    <DiffEditor
+                      height="100%"
+                      language="markdown"
+                      theme="vs-dark"
+                      original={declassifyData.originalFile.content}
+                      modified={declassifyData.modifiedContent}
+                      options={{
+                        readOnly: false,
+                        renderSideBySide: true,
+                        enableSplitViewResizing: true,
+                        minimap: { enabled: false },
+                        fontSize: 13,
+                        wordWrap: 'on',
+                        scrollBeyondLastLine: false,
+                        diffWordWrap: 'on',
+                        automaticLayout: true,
+                        originalEditable: false, // Left side (original) read-only
+                        // Right side (modified) is editable by default
+                      }}
+                      onMount={(editor) => {
+                        console.log('DiffEditor mounted:', editor);
+                        // Update modified content if user edits the right side
+                        const modifiedEditor = editor.getModifiedEditor();
+                        if (modifiedEditor) {
+                          const model = modifiedEditor.getModel();
+                          if (model) {
+                            model.onDidChangeContent(() => {
+                              setDeclassifyData(prev => prev ? {
+                                ...prev,
+                                modifiedContent: model.getValue()
+                              } : null);
+                            });
+                          }
+                        }
+                      }}
+                    />
+                  </div>
+                </>
+              ) : (
+                <div className="flex items-center justify-center h-full">
+                  <div className="text-center text-red-400">
+                    <p className="text-lg mb-2">❌ Kunde inte ladda fil</p>
+                    <p className="text-sm text-gray-400">Prova igen</p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Footer */}
+            <div className="flex items-center justify-between px-4 py-3 border-t border-gray-700 bg-[#161b22] flex-shrink-0">
+              <button
+                onClick={() => {
+                  setShowDeclassifyModal(false);
+                  setDeclassifyData(null);
+                }}
+                className="px-4 py-2 text-sm bg-gray-700 hover:bg-gray-600 text-white rounded transition-colors"
+              >
+                Avbryt
+              </button>
+              
+              {!declassifyData.isProcessing && declassifyData.modifiedContent !== undefined && (
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => {
+                      // Add declassified file to demo workspace
+                      const newFileName = declassifyData.originalFile.name.replace(/\.(md|txt)$/, `-${declassifyData.targetClassification}.$1`);
+                      const newFile: DemoFile = {
+                        id: `declassified-${Date.now()}`,
+                        name: newFileName,
+                        title: newFileName,
+                        content: declassifyData.modifiedContent!,
+                        classification: declassifyData.targetClassification,
+                        language: 'markdown'
+                      };
+                      
+                      // Add to demo files
+                      setDemoFiles(prev => ({
+                        ...prev,
+                        [declassifyData.targetClassification]: [
+                          ...(prev[declassifyData.targetClassification] || []),
+                          newFile
+                        ]
+                      }));
+                      
+                      // Log to audit
+                      setAuditLog(prev => [{
+                        timestamp: new Date(),
+                        filename: newFileName,
+                        classification: declassifyData.targetClassification,
+                        aiService: selectedAIService,
+                        result: 'allowed' as const
+                      }, ...prev].slice(0, 50));
+                      
+                      setShowDeclassifyModal(false);
+                      setDeclassifyData(null);
+                    }}
+                    className="px-4 py-2 text-sm bg-green-600 hover:bg-green-700 text-white rounded transition-colors"
+                  >
+                    💾 Spara till Arbetsyta
+                  </button>
+                  
+                  <button
+                    onClick={() => {
+                      const blob = new Blob([declassifyData.modifiedContent!], { type: 'text/markdown' });
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = declassifyData.originalFile.name.replace(/\.(md|txt)$/, `-${declassifyData.targetClassification}.$1`);
+                      document.body.appendChild(a);
+                      a.click();
+                      document.body.removeChild(a);
+                      URL.revokeObjectURL(url);
+                    }}
+                    className="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded flex items-center gap-2 transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    Ladda Ner
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {/* Context Menu for Declassification */}
+      {contextMenu && (
+        <div
+          className="fixed bg-[#1f2937] border border-gray-700 rounded shadow-lg py-1 z-[10000]"
+          style={{ left: contextMenu.x, top: contextMenu.y }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="px-3 py-1 text-xs text-gray-400 border-b border-gray-700">
+            Deklassificera till:
+          </div>
+          {contextMenu.classification === 'hemlig' && (
+            <button
+              onClick={() => {
+                handleDeclassifyRequest(contextMenu.fileId, 'konfidentiell');
+                setContextMenu(null);
+              }}
+              className="w-full text-left px-3 py-2 text-sm text-white hover:bg-gray-700 transition-colors"
+            >
+              <span className="text-orange-400">K</span> Konfidentiell
+            </button>
+          )}
+          {(contextMenu.classification === 'hemlig' || contextMenu.classification === 'konfidentiell') && (
+            <button
+              onClick={() => {
+                handleDeclassifyRequest(contextMenu.fileId, 'begransad-hemlig');
+                setContextMenu(null);
+              }}
+              className="w-full text-left px-3 py-2 text-sm text-white hover:bg-gray-700 transition-colors"
+            >
+              <span className="text-yellow-400">BH</span> Begränsad Hemlig
+            </button>
+          )}
+          <button
+            onClick={() => {
+              handleDeclassifyRequest(contextMenu.fileId, 'oklassificerad');
+              setContextMenu(null);
+            }}
+            className="w-full text-left px-3 py-2 text-sm text-white hover:bg-gray-700 transition-colors"
+          >
+            <span className="text-green-400">O</span> Oklassificerad
+          </button>
+        </div>
+      )}
     </div>
   );
 }

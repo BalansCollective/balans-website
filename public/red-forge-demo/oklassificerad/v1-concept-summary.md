@@ -2,48 +2,67 @@
 classification: OPEN
 classification_swedish: ÖPPEN
 project: BirdTurret V1
-summary: Proof-of-concept single-tower micro-assist targeting system
+summary: Proof-of-concept enkelttorn mikro-assist målföljningssystem
 date: 2025-11-18
 ---
 
-# BirdTurret V1: Micro-Assist Proof of Concept
+# BirdTurret V1: Mikro-Assist Proof of Concept
 
-## Classification: OPEN (Öppen - Unclassified)
+## Klassificering: ÖPPEN (Oklassificerad)
 
-## Mission Summary
+## Uppdragssummering
 
-**Goal**: Prove FPS interface + micro-assist enables fast reactive defense
+**Mål**: Bevisa att FPS-gränssnitt + mikro-assist möjliggör snabbt reaktivt försvar
 
-**Core Innovation**: Operator aims coarse (±5°), AI fine-tunes (±0.5°), predictive lead compensation
+**Kärninnovation**: Operatör siktar grovt (±5°), AI finjusterar (±0.5°), prediktiv lead-kompensation
 
-## System Architecture
+## Systemarkitektur
 
-- **1 tower operator** (elevated position)
-- **1 ground turret** (80m forward, fiber optic link)
-- **Camera ON gimbal** (FPS interface - operator sees what turret sees)
-- **Micro-assist only** (AI corrects operator's aim, doesn't replace it)
-- **Low-latency focus** (150ms target: detection → fire)
+- **1 tornoperatör** (upphöjd position)
+- **1 marktorn** (80m framåt, fiberoptisk länk)
+- **Kamera PÅ gimbal** (FPS-gränssnitt - operatör ser vad tornet ser)
+- **Endast mikro-assist** (AI korrigerar operatörens sikte, ersätter inte det)
+- **Låg latens-fokus** (150ms mål: detektion → eld)
 
-## Success Criteria (Public Results)
+```mermaid
+graph LR
+    classDef operator fill:#4a90e2,stroke:#0057b7,stroke-width:2px,color:#ffffff
+    classDef hardware fill:#00b894,stroke:#00916a,stroke-width:2px,color:#ffffff
+    classDef ai fill:#9b59b6,stroke:#8e44ad,stroke-width:2px,color:#ffffff
+    
+    A[Operatör<br/>FPS Gränssnitt] --> B[Grov Sikte<br/>±5°]
+    B --> C[AI Mikro-Assist]
+    C --> D[Fin Justering<br/>±0.5°]
+    D --> E[Gimbal Torn]
+    E --> F[RF Störning]
+    
+    class A operator
+    class B,D hardware
+    class C ai
+    class E,F hardware
+```
 
-1. ✅ FPS gamers effective in 2 hours (not 6 weeks traditional training)
-2. ✅ Micro-assist reduces aim error to <0.5°
-3. ✅ Sub-200ms reaction time achieved (153ms measured)
-4. ✅ RF jamming limitations documented (forms basis for V2)
+## Framgångskriterier (Offentliga Resultat)
 
-## Key Findings
+1. ✅ FPS-spelare effektiva på 2 timmar (inte 6 veckors traditionell träning)
+2. ✅ Mikro-assist minskar siktfel till <0.5°
+3. ✅ Under 200ms reaktionstid uppnådd (153ms uppmätt)
+4. ✅ RF-störningsbegränsningar dokumenterade (utgör bas för V2)
 
-- Training time: **252× faster** than traditional turret operators
-- Reaction time: **153ms** average (detection to fire)
-- Engagement success: **85%** for RF-controlled drones
-- Human-in-loop: **Critical** for threat discrimination (prevented pigeon engagement)
+## Nyckelresultat
+
+- Trän
+
+ingstid: **252× snabbare** än traditionella tornoperatörer
+- Reaktionstid: **153ms** genomsnitt (detektion till eld)
+- Engagemangsframgång: **85%** för RF-kontrollerade drönare
+- Människa-i-loopen: **Kritisk** för hotdiskriminering (förhindrade duvengagemang)
 
 ## Budget
 
-- V1 System Cost: €2,350
-- Cost per engagement: ~€0.01 (RF jamming power)
+- V1 Systemkostnad: €2,350
+- Kostnad per engagemang: ~€0.01 (RF-störningseffekt)
 
-## Next Steps
+## Nästa Steg
 
-V1 proved interface viability. V2 adds multi-tower coordination and kinetic backup.
-
+V1 bevisade gränssnittsviabilitet. V2 lägger till multi-torn-koordination och kinetisk backup.

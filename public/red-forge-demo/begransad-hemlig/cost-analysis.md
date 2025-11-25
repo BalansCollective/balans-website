@@ -1,130 +1,171 @@
 ---
 classification: BEGRÄNSAT HEMLIG
 project: BirdTurret
-summary: Economic comparison vs traditional anti-drone systems
+summary: Ekonomisk jämförelse vs traditionella anti-drönar system
 date: 2025-11-24
 ---
 
-# BirdTurret Cost Analysis
+# BirdTurret Kostnadsanalys
 
-## Classification: BEGRÄNSAT HEMLIG (Restricted Secret)
+## Klassificering: BEGRÄNSAD HEMLIG
 
-## System Costs by Version
+## Systemkostnader per Version
 
-| Version | Hardware Cost | Cost/Engagement | Capacity | Training Time |
-|---------|---------------|-----------------|----------|---------------|
-| **V1** | €2,350 | €0.01 | Unlimited (RF) | 2 hours |
-| **V2** | €10,800 | €0.059 | 12 kinetic + unlimited RF | 2 days |
-| **V3.5** | €15,000 | €0.50 | 800 shots + unlimited RF | 4 hours |
-| **V4** | €25,000 | €0.50 | 800 shots + unlimited RF | 1 week |
+```mermaid
+graph TD
+    classDef v1 fill:#4a90e2,stroke:#0057b7,stroke-width:3px,color:#ffffff
+    classDef v2 fill:#9b59b6,stroke:#8e44ad,stroke-width:3px,color:#ffffff
+    classDef v3 fill:#f0b429,stroke:#e09f1f,stroke-width:3px,color:#000000
+    classDef v4 fill:#00b894,stroke:#00916a,stroke-width:3px,color:#ffffff
+    
+    A[V1: €2,350<br/>€0.01/engagemang<br/>RF Endast<br/>2h träning] --> B[V2: €10,800<br/>€0.059/engagemang<br/>12 kinetisk + RF<br/>2 dagar träning]
+    B --> C[V3.5: €15,000<br/>€0.50/engagemang<br/>800 skott + RF<br/>4h träning]
+    C --> D[V4: €25,000<br/>€0.50/engagemang<br/>800 skott + RF<br/>1 vecka träning]
+    
+    class A v1
+    class B v2
+    class C v3
+    class D v4
+```
 
-## Comparison to Alternatives
+**Jämförelsetabell:**
 
-### Traditional Missile Systems
+| Kategori | V1 | V2 | V3.5 | V4 |
+|----------|----|----|------|-----|
+| **Hårdvara** | €2,350 | €10,800 | €15,000 | €25,000 |
+| **Per Engagemang** | €0.01 | €0.059 | €0.50 | €0.50 |
+| **Kapacitet** | Obegränsad RF | 12 kinetisk + RF | 800 skott + RF | 800 skott + RF |
+| **Träningstid** | 2 timmar | 2 dagar | 4 timmar | 1 vecka |
+| **Autonomi** | Ingen | Ingen | Delvis | Full |
 
-**Stinger Missile**:
-- Cost per shot: €50,000
-- Effective range: 4.8 km
-- Training time: 6 weeks
-- **BirdTurret advantage**: 100,000× cheaper per engagement
+## Jämförelse med Alternativ
+
+```mermaid
+graph LR
+    classDef birdturret fill:#00b894,stroke:#00916a,stroke-width:3px,color:#ffffff
+    classDef traditional fill:#ff6b6b,stroke:#c73866,stroke-width:3px,color:#ffffff
+    classDef neutral fill:#4a90e2,stroke:#0057b7,stroke-width:2px,color:#ffffff
+    
+    A[30 Dagars<br/>Drönarförsvar] --> B[Traditionella<br/>Missiler]
+    A --> C[BirdTurret<br/>V3.5]
+    
+    B --> D[4,500 × €50,000<br/>= €225M]
+    C --> E[RF: €39<br/>Hagel: €300<br/>= €339]
+    
+    D --> F[Besparing:<br/>€224,999,661]
+    E --> F
+    
+    class C,E,F birdturret
+    class B,D traditional
+    class A neutral
+```
+
+### Traditionella Missilsystem
+
+**Stinger Missil**:
+- Kostnad per skott: €50,000
+- Effektiv räckvidd: 4.8 km
+- Träningstid: 6 veckor
+- **BirdTurret fördel**: 100,000× billigare per engagemang
 
 **Crotale NG**:
-- System cost: €60M
-- Cost per missile: €400,000
-- Effective range: 11 km
-- **BirdTurret advantage**: 800,000× cheaper per engagement
+- Systemkostnad: €60M
+- Kostnad per missil: €400,000
+- Effektiv räckvidd: 11 km
+- **BirdTurret fördel**: 800,000× billigare per engagemang
 
-### RF Jamming Only Systems
+### Endast RF-Störningssystem
 
 **SkyWall 300**:
-- System cost: €50,000
-- Cost per net: €500
-- Effective range: 100m
-- Capacity: 8 shots
-- **BirdTurret advantage**: 3.3× cheaper system, 100× more capacity
+- Systemkostnad: €50,000
+- Kostnad per nät: €500
+- Effektiv räckvidd: 100m
+- Kapacitet: 8 skott
+- **BirdTurret fördel**: 3.3× billigare system, 100× mer kapacitet
 
-## Ukraine Context Economics
+## Ukraina Kontext Ekonomi
 
-**Ukraine Drone Threat Scale** (Nov 2025):
-- 500-600 drones/day
-- ~30% engagement rate (150-180 engagements/day)
+**Ukraina Drönar Hotskala** (Nov 2025):
+- 500-600 drönare/dag
+- ~30% engagemangsfrekvens (150-180 engagemang/dag)
 
-### Cost Comparison (30-day period)
+### Kostnadsjämförelse (30-dagarsperiod)
 
-**Traditional Missiles** (4,500 engagements):
-- Cost: 4,500 × €50,000 = **€225,000,000** (€225M)
+**Traditionella Missiler** (4,500 engagemang):
+- Kostnad: 4,500 × €50,000 = **€225,000,000** (€225M)
 
-**BirdTurret V3.5** (4,500 engagements):
-- Primary (RF): 3,900 × €0.01 = €39
-- Secondary (shotgun): 600 × €0.50 = €300
-- **Total: €339**
+**BirdTurret V3.5** (4,500 engagemang):
+- Primär (RF): 3,900 × €0.01 = €39
+- Sekundär (hagelgevär): 600 × €0.50 = €300
+- **Totalt: €339**
 
-**Savings**: €224,999,661 per month per FOB
+**Besparingar**: €224,999,661 per månad per FOB
 
-**BirdTurret systems needed** (assuming 100m perimeter coverage):
-- 30 FOBs × 1 system = 30 systems
-- System cost: 30 × €15,000 = €450,000
-- **Payback period: 2 days** (vs missile costs)
+**BirdTurret system behövda** (förutsatt 100m perimetertäckning):
+- 30 FOBs × 1 system = 30 system
+- Systemkostnad: 30 × €15,000 = €450,000
+- **Återbetalningstid: 2 dagar** (vs missilkostnader)
 
-## Operational Cost Analysis
+## Operativ Kostnadsanalys
 
-### Personnel Costs (Eliminated in V4)
+### Personalkostnader (Eliminerade i V4)
 
-**Traditional Air Defense**:
-- 24/7 coverage: 4 operators × 3 shifts = 12 personnel
-- Annual salary: 12 × €40,000 = €480,000/year
+**Traditionellt Luftförsvar**:
+- 24/7 täckning: 4 operatörer × 3 skift = 12 personal
+- Årslön: 12 × €40,000 = €480,000/år
 
-**BirdTurret V4 (Autonomous)**:
-- 24/7 coverage: 1 supervisor
-- Annual salary: €40,000/year
-- **Savings**: €440,000/year per system
+**BirdTurret V4 (Autonom)**:
+- 24/7 täckning: 1 övervakare
+- Årslön: €40,000/år
+- **Besparingar**: €440,000/år per system
 
-### Maintenance Costs
+### Underhållskostnader
 
 **BirdTurret**:
-- Annual: €2,000 (software updates, calibration)
-- Component replacement: €500/year average
+- Årligen: €2,000 (mjukvaruuppdateringar, kalibrering)
+- Komponentersättning: €500/år genomsnitt
 
-**Traditional Systems**:
-- Annual: €50,000+ (missile storage, guidance updates)
+**Traditionella System**:
+- Årligen: €50,000+ (missillagring, vägledningsuppdateringar)
 
-## ROI Calculation
+## ROI Kalkyl
 
-**BirdTurret V4 Investment**:
+**BirdTurret V4 Investering**:
 - Initial: €25,000 (system)
-- Annual: €42,000 (1 operator + maintenance)
-- **Total Year 1**: €67,000
+- Årligen: €42,000 (1 operatör + underhåll)
+- **Total År 1**: €67,000
 
-**Traditional System**:
+**Traditionellt System**:
 - Initial: €60M (Crotale NG)
-- Annual: €480,000 (12 operators) + €50,000 (maintenance) = €530,000
-- **Total Year 1**: €60,530,000
+- Årligen: €480,000 (12 operatörer) + €50,000 (underhåll) = €530,000
+- **Total År 1**: €60,530,000
 
-**Break-even**: Immediate (system cost difference pays for itself with first engagement)
+**Break-even**: Omedelbart (systemkostnadsskillnad betalar sig själv med första engagemanget)
 
-## Scalability
+## Skalbarhet
 
-**1,000 FOB Deployment** (Ukraine scale):
+**1,000 FOB Utplac
+
+ering** (Ukraina skala):
 
 **BirdTurret V4**:
-- Systems: 1,000 × €25,000 = €25M
-- Operators: 1,000 × €40,000 = €40M/year
-- **Total 5-year**: €225M
+- System: 1,000 × €25,000 = €25M
+- Operatörer: 1,000 × €40,000 = €40M/år
+- **Total 5-år**: €225M
 
-**Traditional Missiles**:
-- Systems: 1,000 × €60M = €60,000M (€60B)
-- Operators: 1,000 × €480K = €480M/year
-- **Total 5-year**: €62,400M (€62.4B)
+**Traditionella Missiler**:
+- System: 1,000 × €60M = €60,000M (€60B)
+- Operatörer: 1,000 × €480K = €480M/år
+- **Total 5-år**: €62,400M (€62.4B)
 
-**Savings**: €62,175M (€62.2B) over 5 years
+**Besparingar**: €62,175M (€62.2B) över 5 år
 
-## Conclusion
+## Slutsats
 
-BirdTurret represents a **structural cost advantage** in drone defense:
-- 100,000× cheaper per engagement (shotgun vs missile)
-- Unlimited RF jamming capacity (no per-shot cost)
-- Autonomous operation reduces personnel 12:1
-- Payback period: Days (not years)
+BirdTurret representerar en **strukturell kostnadsfördel** i drönarförsvar:
+- 100,000× billigare per engagemang (hagelgevär vs missil)
+- Obegränsad RF-störningskapacitet (ingen kostnad per skott)
+- Autonom drift minskar personal 12:1
+- Återbetalningstid: Dagar (inte år)
 
-**Strategic Implication**: At Ukraine threat scale, cost-effective defense becomes economically viable. Traditional missile-based systems are unsustainable at 500-600 drones/day.
-
+**Strategisk Implikation**: Vid Ukraina hotskala blir kostnadseffektivt försvar ekonomiskt genomförbart. Traditionella missilbaserade system är ohållbara vid 500-600 drönare/dag.

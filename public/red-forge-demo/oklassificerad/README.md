@@ -6,41 +6,40 @@ version: 1.0.0
 date: 2025-11-24
 ---
 
-# BirdTurret Project - Public Overview
+# BirdTurret-Projektet - Offentlig Översikt
 
-## Classification: OPEN (Öppen - Unclassified)
+## Klassificering: ÖPPEN (Oklassificerad)
 
-**Project Goal:** Cost-effective autonomous drone defense system for military installations.
+**Projektmål:** Kostnadseffektivt autonomt drönarförsvarssystem för militära installationer.
 
-## System Overview
+## Systemöversikt
 
-BirdTurret is a multi-tower drone defense system designed to protect against small unmanned aerial systems (sUAS) threats. The system combines:
+BirdTurret är ett multi-torn drönarförsvarssystem designat för att skydda mot små obemannade flygsystem (sUAS) hot. Systemet kombinerar:
 
-- **RF Jamming** (primary defense)
-- **Kinetic Intercept** (backup defense)
-- **AI-Assisted Targeting** (operator support)
-- **Guardian Protocol** (ethical AI safety)
+- **RF-Störning** (primärt försvar)
+- **Kinetisk Avlyssning** (backup-försvar)
+- **AI-Assisterad Målföljning** (operatörsstöd)
+- **Guardian-Protokoll** (etisk AI-säkerhet)
 
-## Key Features
+## Nyckelfunktioner
 
-- **360° Coverage**: Multiple towers provide complete perimeter defense
-- **Cost-Effective**: €0.50 per engagement (vs €50,000 for missiles)
-- **Operator-Friendly**: FPS-style interface, 2-hour training time
-- **Scalable**: 1-8 towers depending on perimeter size
+- **360° Täckning**: Flera torn ger komplett perimeterförsvar
+- **Kostnadseffektivt**: €0.50 per engagemang (vs €50,000 för missiler)
+- **Operatörsvänligt**: FPS-stil gränssnitt, 2 timmars träning
+- **Skalbart**: 1-8 torn beroende på perimeterstorlek
 
-## Project Versions
+## Projektversioner
 
-- **V1**: Single tower proof-of-concept (micro-assist targeting)
-- **V2**: Multi-tower coordinated defense (sector management)
-- **V3**: Autonomous operation (AI integration)
-- **V3.5**: Shotgun integration (kinetic backup)
-- **V4**: Guardian Protocol (ethical AI)
+- **V1**: Enkelttorn proof-of-concept (mikro-assist målföljning)
+- **V2**: Multi-torn koordinerat försvar (sektorhantering)
+- **V3**: Autonom drift (AI-integration)
+- **V3.5**: Hagelgevärsintegration (kinetisk backup)
+- **V4**: Guardian-Protokoll (etisk AI)
 
-## Public Contact
+## Offentlig Kontakt
 
-For partnership inquiries: [contact information redacted for demo]
+För partnerskapsfrågor: [kontaktinformation redakterad för demo]
 
-## Media Resources
+## Mediaresurser
 
-See `media-kit/` for public images and fact sheets.
-
+Se `media-kit/` för offentliga bilder och faktablad.
