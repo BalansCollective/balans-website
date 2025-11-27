@@ -1,12 +1,12 @@
 {
   "hero": {
-    "badge": "Classification-Aware AI Development",
+    "badge": "Infrastructure for Secure AI Development",
     "title": "Red Forge",
-    "subtitle_line1": "Secure AI development for defense. Without bunker vibes.",
-    "subtitle_line2": "What vs. How – share capability, protect implementation.",
+    "subtitle_line1": "Unlocking defense innovation.",
+    "subtitle_line2": "Develop classified AI securely. Use AI tools in sensitive projects.",
     "cta_primary": "Explore Red Forge",
     "cta_secondary": "View Protocols",
-    "image_alt": "Red Forge Classification-Aware Development"
+    "image_alt": "Red Forge - Infrastructure for Secure AI Development"
   },
   "classification": {
     "title": "Dual Classification",
@@ -44,10 +44,14 @@
     "phase2_description": "Full YELLOW/RED-certified facility when demand proven",
     "classification_ide": {
       "title": "Classification-Aware IDE",
-      "description": "LLM-accelerated development environment that understands classification levels and enforces WHAT/HOW separation.",
+      "description": "Use ChatGPT, Swedish SaaS LLMs, or on-prem AI tools securely in sensitive projects.",
       "items": [
-        "AI assistance that detects classification from context",
-        "Automatic validation of WHAT/HOW boundaries",
+        "Tracks AI-generated vs manual code",
+        "Supports classification levels in your dev environment",
+        "Suggests safe downgrade paths",
+        "Provenance tracking for accountability"
+      ]
+    },
         "Suggests safe downgrade paths",
         "Integrated with Guardian Protocol"
       ]
@@ -93,8 +97,7 @@
     "demo": {
       "title": "See Red Forge in Action",
       "description": "Interactive in-browser IDE with LLM integration showing classification-aware design in practice.",
-      "cta": "Open Interactive Demo",
-      "note": "Demo coming soon – register interest via contact"
+      "cta": "Open Interactive Demo"
     }
   },
   "protocols": {

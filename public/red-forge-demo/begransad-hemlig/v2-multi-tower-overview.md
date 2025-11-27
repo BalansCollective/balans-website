@@ -1,5 +1,6 @@
 ---
-classification: BEGRÄNSAT HEMLIG
+classification: begransad-hemlig
+classification_level: BH
 project: BirdTurret V2
 summary: Multi-torn koordinerat försvar med sektorhantering
 date: 2025-11-20

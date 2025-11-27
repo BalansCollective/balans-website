@@ -1,12 +1,12 @@
 {
   "hero": {
     "title": "Guardian Protocol",
-    "subtitle": "Ansvarsutkrävande för Autonoma Vapen",
+    "subtitle": "Spårbarhet & Accountability för AI i Kritiska System",
     "byline": "Balans | November 2025"
   },
   "summary": {
     "title": "Sammanfattning",
-    "description": "Guardian Protocol är ett ramverk för ansvarsutkrävande i autonoma vapensystem. När AI kan fatta dödliga beslut - vem är ansvarig? Guardian Protocol säkerställer att varje beslut spåras till namngivna individer: utvecklaren som kodade regeln, operatören som fattade beslutet, befälhavaren som auktoriserade uppdraget.",
+    "description": "Guardian Protocol är ett ramverk för spårbarhet och accountability i AI-baserade kritiska system. När AI fattar beslut som påverkar liv eller säkerhet - vem är ansvarig? Guardian Protocol säkerställer att varje beslut spåras till namngivna individer: utvecklaren som kodade regeln, operatören som fattade beslutet, befälhavaren som auktoriserade uppdraget. Uppfyller EU AI Act-krav för high-risk AI.",
     "tagline": "Ingen krigsdimma. Inget 'systemet gjorde det.' Bara tydligt ansvar."
   },
   "problem": {
@@ -78,6 +78,12 @@
     "cta": "Läs: När Drönare Inte Var Problemet",
     "link": "/narratives/ground-assault"
   },
+  "narrative": {
+    "title": "Läs Tankeexperimentet",
+    "description": "Kapten Elena Volkov bedömer Guardian Protocol vid en ukrainsk framskjuten position. Anti-drönarförsvar fungerar perfekt. Sedan anpassar Ryssland sig med markanfall.",
+    "cta": "Läs: När Drönare Inte Var Problemet",
+    "link": "/narratives/ground-assault"
+  },
   "advanced": {
     "title": "Nästa Utmaning: Klassificeringsasymmetri",
     "description": "När ansvarsutkrävande fungerar för dödliga beslut, tacklar vi nästa problem: Vad händer när AI har hemlig information som operatören inte kan se?",
@@ -112,25 +118,25 @@
     "contact": "Kontakta samuel@dynorobotics.se för att diskutera valideringstestning eller partnerskap."
   },
   "value": {
-    "title": "Värde för Försvarsgemenskap",
+    "title": "Värde för Försvarsgemenskap & Kritisk Infrastruktur",
     "sectors": [
       {
         "title": "För NATO/EU Standardutveckling",
-        "problem": "AI Act + NATO-standarder kräver 'meningsfull mänsklig kontroll' för autonoma vapen, men ramverk är abstrakta.",
-        "solution": "Guardian Protocol tillhandahåller testbart, reviderbart ramverk: graderad auktorisering + förstärkt granskning + individuellt ansvar.",
-        "benefit": "Konkret implementering av principen om meningsfull mänsklig kontroll."
+        "problem": "EU AI Act + NATO-standarder kräver 'meningsfull mänsklig kontroll' för high-risk AI-system, men ramverk är abstrakta.",
+        "solution": "Guardian Protocol tillhandahåller testbart, reviderbart ramverk: graderad auktorisering + förstärkt granskning + individuellt ansvar + EU AI Act-compliance.",
+        "benefit": "Konkret implementering av principen om meningsfull mänsklig kontroll. Compliance-by-design."
       },
       {
         "title": "För Upphandlingsmyndigheter",
-        "problem": "Autonoma vapen väcker ansvarsfrågor - vem är ansvarig när systemet misslyckas?",
+        "problem": "AI-system i kritiska tillämpningar väcker ansvarsfrågor - vem är ansvarig när systemet misslyckas?",
         "solution": "Komplett revisionsspår från utveckling (Forge) till operation (Guardian). Varje beslut spåras till namngivna individer.",
-        "benefit": "Tydligt ansvar möjliggör snabbare upphandlingsbeslut."
+        "benefit": "Tydligt ansvar möjliggör snabbare upphandlingsbeslut. Uppfyller EU AI Act-krav."
       },
       {
-        "title": "För Försvarsindustri",
-        "problem": "Utveckling av autonoma vapen utan tydligt ansvarsramverk skapar juridisk/etisk risk.",
-        "solution": "Guardian + Forge Protocol tillhandahåller end-to-end ansvar: utvecklingsprovenance + operativ granskning.",
-        "benefit": "Riskreduktion, snabbare certifiering, NATO-kompatibilitet."
+        "title": "För Försvarsindustri & Startups",
+        "problem": "Utveckling av high-risk AI utan tydligt ansvarsramverk skapar juridisk/etisk risk. EU AI Act-compliance är komplex.",
+        "solution": "Guardian + Forge Protocol tillhandahåller end-to-end ansvar: utvecklingsprovenance + operativ granskning + automatisk compliance-dokumentation.",
+        "benefit": "Riskreduktion, snabbare certifiering, NATO-kompatibilitet, EU AI Act-ready."
       }
     ]
   },

@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import Editor from '@monaco-editor/react';
-import { Download } from 'lucide-react';
+import Editor, { DiffEditor } from '@monaco-editor/react';
+import { Download, Save } from 'lucide-react';
 import { loadDemoFiles } from '@/components/red-forge/DemoDataLoader';
 import type { DemoFile, DemoFileTree } from '@/components/red-forge/DemoDataLoader';
 import { MDXRenderer } from '@/components/red-forge/MDXRenderer';
@@ -9,17 +9,27 @@ import { FileTreeItem } from '@/components/red-forge/FileTreeItem';
 import { DemoSafetyModal } from '@/components/red-forge/DemoSafetyModal';
 import { convertToFileTree } from '@/components/red-forge/DemoData';
 import { Layout, Model, TabNode, IJsonModel } from 'flexlayout-react';
+import { BrowserWeaverAssistant } from '@/lib/weaver';
+import { CLASSIFICATION_LEVELS, AI_SERVICE_LEVELS, type Classification, type AIService } from '@/components/red-forge/classification-constants';
+import { validateFrontmatter, extractClassification, type ValidationContext } from '@/components/red-forge/frontmatter-validator';
 import 'flexlayout-react/style/dark.css';
 import './RedForgeDemoPage.css';
 
 type ViewMode = 'code' | 'preview';
-type Classification = 'oklassificerad' | 'begransad-hemlig' | 'konfidentiell' | 'hemlig';
+
+// Toast notification interface
+interface Toast {
+  id: string;
+  message: string;
+  type: 'success' | 'info' | 'warning' | 'error';
+}
 
 // Simple file interface for demo
 interface SimpleFile {
   id: string;
   name: string;
-  content: string;
+  content: string; // Full content WITH frontmatter (for Code view)
+  contentWithoutFrontmatter: string; // Parsed content WITHOUT frontmatter (for Preview view)
   classification: Classification;
   language?: string;
 }
@@ -31,8 +41,17 @@ function RedForgeDemoContent() {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
   
+  // Shared Weaver instance for both chat and declassification
+  const [weaver] = useState(() => new BrowserWeaverAssistant({
+    openrouterKey: import.meta.env.VITE_OPENROUTER_KEY || 'DEMO_KEY_NOT_SET',
+    userClearance: 'hemlig'
+  }));
+  
   // AI service state
   const [selectedAIService, setSelectedAIService] = useState<'claude-cloud' | 'saas-lumen' | 'forge-local' | 'forge-airgap'>('claude-cloud');
+  
+  // Toast notifications state
+  const [toasts, setToasts] = useState<Toast[]>([]);
   
   // Right panel tab state
   const [rightPanelTab, setRightPanelTab] = useState<'weaver' | 'audit'>('weaver');
@@ -44,6 +63,30 @@ function RedForgeDemoContent() {
     fileId: string;
     classification: Classification;
   } | null>(null);
+  
+  // Declassification state (embedded in center panel, not modal)
+  const [declassificationData, setDeclassificationData] = useState<{
+    fileId: string;
+    fileName: string;
+    originalContent: string;
+    originalClassification: Classification;
+    targetClassification: Classification;
+    modifiedContent: string;
+    approved: boolean;
+  } | null>(null);
+  
+  // AI processing state
+  const [isAIProcessing, setIsAIProcessing] = useState(false);
+  
+  // Split-pane collapse state for declassification
+  const [showOriginal, setShowOriginal] = useState(true);
+  const [showModified, setShowModified] = useState(true);
+  
+  // Auto-detect if center panel is too narrow for split view
+  const [centerPanelWidth, setCenterPanelWidth] = useState(1200);
+  
+  // Smart mode: Switch to target-only before DiffEditor's inline mode kicks in
+  const effectiveDiffMode = centerPanelWidth < 1000 ? 'target' : 'split';
   
   // Context tracking: files currently in AI context
   const [filesInContext, setFilesInContext] = useState<Set<string>>(new Set());
@@ -73,6 +116,38 @@ function RedForgeDemoContent() {
   const [showFiles, setShowFiles] = useState(true);
   const [showWeaver, setShowWeaver] = useState(true);
   
+  // Convert to flat array of files - MUST be before file state that uses it
+  const allFiles = useMemo((): SimpleFile[] => {
+    const files: SimpleFile[] = [];
+    Object.entries(demoFiles).forEach(([classification, demoFileList]: [string, DemoFile[]]) => {
+      demoFileList.forEach(file => {
+        files.push({
+          id: file.path,
+          name: file.title,
+          content: file.content, // Full content WITH frontmatter
+          contentWithoutFrontmatter: file.contentWithoutFrontmatter, // Parsed content WITHOUT frontmatter
+          classification: classification as Classification,
+          language: 'markdown'
+        });
+      });
+    });
+    return files;
+  }, [demoFiles]);
+  
+  // File state and edits - MUST be before useEffects that depend on them
+  const [activeFileId, setActiveFileId] = useState<string | null>(null);
+  const [fileEdits, setFileEdits] = useState<Record<string, string>>({});
+  
+  // Derived values from file state - MUST be after fileEdits but before useEffects
+  const activeFile = allFiles.find((f) => f.id === activeFileId);
+  
+  const getCurrentContent = (file: SimpleFile) => {
+    return fileEdits[file.id] ?? file.content;
+  };
+  
+  const activeFileContent = activeFile ? getCurrentContent(activeFile) : '';
+  const hasUnsavedChanges = activeFile ? !!fileEdits[activeFile.id] : false;
+  
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
     checkMobile();
@@ -82,12 +157,35 @@ function RedForgeDemoContent() {
   
   // Close context menu when clicking elsewhere
   useEffect(() => {
-    const handleClick = () => setContextMenu(null);
+    const handleClick = (e: MouseEvent) => {
+      // Only close if clicking outside the context menu
+      const target = e.target as HTMLElement;
+      if (!target.closest('.context-menu')) {
+        setContextMenu(null);
+      }
+    };
     if (contextMenu) {
-      window.addEventListener('click', handleClick);
-      return () => window.removeEventListener('click', handleClick);
+      // Use mousedown to catch before onClick handlers
+      window.addEventListener('mousedown', handleClick);
+      return () => window.removeEventListener('mousedown', handleClick);
     }
   }, [contextMenu]);
+  
+  // Keyboard shortcut: Cmd+S / Ctrl+S to save
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Cmd+S (Mac) or Ctrl+S (Windows/Linux)
+      if ((e.metaKey || e.ctrlKey) && e.key === 's') {
+        e.preventDefault();
+        if (hasUnsavedChanges) {
+          handleSave();
+        }
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [hasUnsavedChanges, activeFile, activeFileContent]);
   
   useEffect(() => {
     const hasSeenSafetyModal = localStorage.getItem('red-forge-safety-accepted');
@@ -109,44 +207,257 @@ function RedForgeDemoContent() {
       });
   }, []);
   
+  // Toast notification helper
+  const showToast = (message: string, type: Toast['type'] = 'success') => {
+    const id = `toast-${Date.now()}`;
+    setToasts(prev => [...prev, { id, message, type }]);
+    
+    // Auto-remove after 3 seconds
+    setTimeout(() => {
+      setToasts(prev => prev.filter(t => t.id !== id));
+    }, 3000);
+  };
+  
   const handleAcceptSafety = () => {
     localStorage.setItem('red-forge-safety-accepted', 'true');
     setShowSafetyModal(false);
   };
   
-  // Convert to flat array of files
-  const allFiles = useMemo((): SimpleFile[] => {
-    const files: SimpleFile[] = [];
-    Object.entries(demoFiles).forEach(([classification, demoFileList]: [string, DemoFile[]]) => {
-      demoFileList.forEach(file => {
-        files.push({
-          id: file.path,
-          name: file.title,
-          content: file.content,
-          classification: classification as Classification,
-          language: 'markdown'
-        });
-      });
+  // Handle declassification request (show split-pane in center panel)
+  const handleDeclassifyRequest = (targetClassification: Classification) => {
+    if (!contextMenu) return;
+    
+    const file = allFiles.find(f => f.id === contextMenu.fileId);
+    if (!file) return;
+    
+    // Log declassification start to audit trail
+    setAuditLog(prev => [{
+      timestamp: new Date(),
+      filename: file.name,
+      classification: file.classification,
+      aiService: `Deklassificering startad: ${file.classification.toUpperCase()} → ${targetClassification.toUpperCase()}`,
+      result: 'allowed' as const
+    }, ...prev].slice(0, 50));
+    
+    // Set declassification data (will render split-pane in center)
+    setDeclassificationData({
+      fileId: file.id,
+      fileName: file.name,
+      originalContent: file.content,
+      originalClassification: file.classification,
+      targetClassification,
+      modifiedContent: file.content, // Start with copy of original
+      approved: false,
     });
-    return files;
-  }, [demoFiles]);
+    setContextMenu(null);
+  };
   
-  const [activeFileId, setActiveFileId] = useState<string | null>(null);
-  const [fileEdits, setFileEdits] = useState<Record<string, string>>({}); 
+  // Handle AI-assisted declassification (called from "AI-hjälp" button)
+  const handleAIAssistDeclassify = async () => {
+    if (!declassificationData || isAIProcessing) return;
+    
+    setIsAIProcessing(true);
+    
+    try {
+      // Get service name for logging
+      const serviceNames = {
+        'claude-cloud': 'Claude Cloud',
+        'saas-lumen': 'SaaS Lumen',
+        'forge-local': 'Red Forge Local',
+        'forge-airgap': 'Red Forge Air-Gap'
+      };
+      
+      // Verify the selected AI service can handle the source classification
+      const classLevels = {
+        'oklassificerad': 0,
+        'begransad-hemlig': 1,
+        'konfidentiell': 2,
+        'hemlig': 3
+      };
+      
+      const requiredLevel = classLevels[declassificationData.originalClassification];
+      const currentLevel = classLevels[
+        selectedAIService === 'claude-cloud' ? 'oklassificerad' :
+        selectedAIService === 'saas-lumen' ? 'begransad-hemlig' :
+        selectedAIService === 'forge-local' ? 'konfidentiell' : 'hemlig'
+      ];
+      
+      // Safety check: Prevent using a service with insufficient clearance
+      if (currentLevel < requiredLevel) {
+        showToast(`${serviceNames[selectedAIService]} kan inte läsa ${declassificationData.originalClassification.toUpperCase()}-filer. Välj en högre AI-tjänst.`, 'error');
+        setIsAIProcessing(false);
+        return;
+      }
+      
+      // Call BrowserWeaverAssistant for AI declassification
+      const request = `Deklassificera denna fil från ${declassificationData.originalClassification.toUpperCase()} till ${declassificationData.targetClassification.toUpperCase()}. Redigera eller ta bort känslig information så att filen är lämplig för den lägre klassificeringsnivån.`;
+      
+      console.log('🤖 Calling AI for declassification...', {
+        file: declassificationData.fileName,
+        from: declassificationData.originalClassification,
+        to: declassificationData.targetClassification,
+        aiService: selectedAIService
+      });
+      
+      const result = await weaver.proposeFileModifications(
+        {
+          name: declassificationData.fileName,
+          classification: declassificationData.originalClassification,
+          content: declassificationData.originalContent
+        },
+        request,
+        selectedAIService
+      );
+      
+      console.log('🤖 AI result:', result);
+      
+      // FileModification always returns originalFile/modifiedFile structure
+      if (result.modifiedFile) {
+        // Update declassification data with AI suggestions
+        setDeclassificationData(prev => prev ? {
+          ...prev,
+          modifiedContent: result.modifiedFile.content
+        } : null);
+        
+        // Log AI assistance to audit trail
+        setAuditLog(prev => [{
+          timestamp: new Date(),
+          filename: declassificationData.fileName,
+          classification: declassificationData.originalClassification,
+          aiService: `AI förslag mottaget (${serviceNames[selectedAIService]})`,
+          result: 'allowed' as const
+        }, ...prev].slice(0, 50));
+      } else {
+        showToast('AI-hjälp misslyckades: Ingen modifierad innehåll returnerad', 'error');
+      }
+      
+    } catch (error: any) {
+      console.error('AI declassification error:', error);
+      showToast(`AI-hjälp misslyckades: ${error.message || 'Okänt fel'}. Kontrollera att OpenRouter API-nyckel är konfigurerad.`, 'error');
+    } finally {
+      setIsAIProcessing(false);
+    }
+  };
+  
+  // Handle download declassified file
+  
+  // Handle save to workspace (create new file in target classification folder)
+  const handleSaveToWorkspace = () => {
+    if (!declassificationData || !declassificationData.approved) return;
+    
+    // Generate new filename with suffix
+    const baseName = declassificationData.fileName.replace('.md', '');
+    const newFileName = `${baseName}-deklassificerad.md`;
+    
+    // Determine target folder based on classification
+    const targetFolder = declassificationData.targetClassification === 'oklassificerad' ? 'oklassificerad' :
+                        declassificationData.targetClassification === 'begransad-hemlig' ? 'begransad-hemlig' :
+                        declassificationData.targetClassification === 'konfidentiell' ? 'konfidentiell' : 'hemlig';
+    
+    const newFilePath = `${targetFolder}/${newFileName}`;
+    
+    // Check if file already exists
+    const existingFileIndex = demoFiles[targetFolder]?.findIndex(f => f.path === newFilePath);
+    const fileExists = existingFileIndex !== undefined && existingFileIndex >= 0;
+    
+    // Map classification to level string
+    const classificationLevels: Record<Classification, string> = {
+      'oklassificerad': 'O',
+      'begransad-hemlig': 'BH',
+      'eu-restricted': 'EU-R',  // 🇪🇺
+      'konfidentiell': 'K',
+      'hemlig': 'H'
+    };
+    
+    // Add classification frontmatter to content
+    const frontmatterLines = [
+      '---',
+      `classification: ${declassificationData.targetClassification}`,
+      `classification_level: ${classificationLevels[declassificationData.targetClassification]}`,
+      `declassified_from: ${declassificationData.originalClassification}`,
+      `declassified_date: ${new Date().toISOString().split('T')[0]}`,
+      `original_file: ${declassificationData.fileName}`,
+      '---',
+      ''
+    ];
+    
+    const contentWithFrontmatter = frontmatterLines.join('\n') + declassificationData.modifiedContent;
+    
+    // Create new file object matching DemoFile structure
+    const newFile: DemoFile = {
+      path: newFilePath,
+      name: newFileName,
+      classification: declassificationData.targetClassification,
+      classificationLevel: classificationLevels[declassificationData.targetClassification],
+      title: newFileName,
+      summary: `Deklassificerad version av ${declassificationData.fileName}`,
+      content: contentWithFrontmatter, // Use content with frontmatter
+      frontmatter: {
+        classification: declassificationData.targetClassification,
+        classification_level: classificationLevels[declassificationData.targetClassification],
+        declassified_from: declassificationData.originalClassification,
+        declassified_date: new Date().toISOString().split('T')[0],
+        original_file: declassificationData.fileName
+      }
+    };
+    
+    // Add or update file in demoFiles state
+    setDemoFiles(prev => {
+      const folderFiles = prev[targetFolder] || [];
+      
+      if (fileExists) {
+        // Replace existing file
+        return {
+          ...prev,
+          [targetFolder]: folderFiles.map((f, i) => 
+            i === existingFileIndex ? newFile : f
+          )
+        };
+      } else {
+        // Add new file
+        return {
+          ...prev,
+          [targetFolder]: [...folderFiles, newFile]
+        };
+      }
+    });
+    
+    // Show success toast
+    showToast(
+      fileExists 
+        ? `Fil uppdaterad: ${targetFolder}/${newFileName}` 
+        : `Fil sparad: ${targetFolder}/${newFileName}`, 
+      'success'
+    );
+    
+    // Log save to audit trail
+    setAuditLog(prev => [{
+      timestamp: new Date(),
+      filename: newFileName,
+      classification: declassificationData.targetClassification,
+      aiService: fileExists 
+        ? `Deklassificerad fil uppdaterad i ${targetFolder}/`
+        : `Deklassificerad fil skapad i ${targetFolder}/`,
+      result: 'allowed' as const
+    }, ...prev].slice(0, 50));
+    
+    // Close declassification view and open the new file
+    setDeclassificationData(null);
+    setActiveFileId(newFilePath);
+  };
+  
+  // Downgrade block modal state
+  const [showDowngradeBlockModal, setShowDowngradeBlockModal] = useState<{
+    from: Classification;
+    to: Classification;
+    fileName: string;
+  } | null>(null);
   
   useEffect(() => {
     if (allFiles.length > 0 && !activeFileId) {
       setActiveFileId(allFiles[0].id);
     }
   }, [allFiles, activeFileId]);
-  
-  const activeFile = allFiles.find((f) => f.id === activeFileId);
-  
-  const getCurrentContent = (file: SimpleFile) => {
-    return fileEdits[file.id] ?? file.content;
-  };
-  
-  const activeFileContent = activeFile ? getCurrentContent(activeFile) : '';
   
   const defaultViewMode: ViewMode = activeFile?.language === 'markdown' ? 'preview' : 'code';
   const [viewMode, setViewMode] = useState<ViewMode>(defaultViewMode);
@@ -270,10 +581,89 @@ function RedForgeDemoContent() {
   
   const handleFileSelect = (fileId: string) => {
     setActiveFileId(fileId);
-    const file = allFiles.find(f => f.id === fileId);
-    if (file) {
-      setViewMode(file.language === 'markdown' ? 'preview' : 'code');
+    // Don't auto-switch view mode - let user keep their preference
+  };
+  
+  // Save file with frontmatter validation
+  const handleSave = () => {
+    if (!activeFile) return;
+    
+    const currentContent = activeFileContent;
+    const originalFile = allFiles.find(f => f.id === activeFile.id);
+    const originalClassification = originalFile ? extractClassification(originalFile.content) : null;
+    
+    // Validate frontmatter
+    const validation = validateFrontmatter({
+      content: currentContent,
+      filePath: activeFile.id,
+      originalClassification: originalClassification || undefined,
+      isNewFile: false
+    });
+    
+    // If validation failed
+    if (!validation.valid) {
+      // Check for downgrade attempt
+      if (validation.suggestedAction?.type === 'declassify') {
+        setShowDowngradeBlockModal({
+          from: validation.suggestedAction.from,
+          to: validation.suggestedAction.to,
+          fileName: activeFile.name
+        });
+        
+        // Log blocked downgrade
+        setAuditLog(prev => [{
+          timestamp: new Date(),
+          filename: activeFile.name,
+          classification: validation.suggestedAction.from,
+          aiService: 'SYSTEM',
+          result: 'blocked' as const
+        }, ...prev].slice(0, 50));
+        
+        return;
+      }
+      
+      // Other validation errors
+      showToast(
+        `Validering misslyckades:\n${validation.errors.join('\n')}`,
+        'error'
+      );
+      return;
     }
+    
+    // Show warnings if any (but allow save)
+    if (validation.warnings.length > 0) {
+      showToast(
+        `Varningar:\n${validation.warnings.slice(0, 3).join('\n')}`,
+        'warning'
+      );
+    }
+    
+    // Log classification upgrade if detected
+    if (originalClassification) {
+      const newClassification = extractClassification(currentContent);
+      if (newClassification && newClassification !== originalClassification) {
+        const originalLevel = CLASSIFICATION_LEVELS[originalClassification];
+        const newLevel = CLASSIFICATION_LEVELS[newClassification];
+        
+        if (newLevel > originalLevel) {
+          setAuditLog(prev => [{
+            timestamp: new Date(),
+            filename: activeFile.name,
+            classification: newClassification,
+            aiService: 'SYSTEM',
+            result: 'allowed' as const
+          }, ...prev].slice(0, 50));
+        }
+      }
+    }
+    
+    // Clear unsaved changes for this file
+    setFileEdits(prev => {
+      const { [activeFile.id]: _, ...rest } = prev;
+      return rest;
+    });
+    
+    showToast('Fil sparad (endast i browser-session)', 'success');
   };
   
   // FlexLayout factory - renders components for each tab
@@ -296,7 +686,15 @@ function RedForgeDemoContent() {
                       classification === 'hemlig' ? 'bg-red-900/30 text-red-400 border-red-700' :
                       classification === 'konfidentiell' ? 'bg-red-900/20 text-red-400 border-red-500' :
                       classification === 'begransad-hemlig' ? 'bg-orange-900/20 text-orange-400 border-orange-500' :
+                      classification === 'eu-restricted' ? 'bg-blue-900/20 text-blue-400 border-blue-500' : // 🇪🇺
                       'bg-green-900/20 text-green-400 border-green-500';
+                    
+                    const badgeLabel = 
+                      classification === 'hemlig' ? 'H' :
+                      classification === 'konfidentiell' ? 'K' :
+                      classification === 'begransad-hemlig' ? 'BH' :
+                      classification === 'eu-restricted' ? '🇪🇺 EU-R' :
+                      'O';
                     
                     return (
                       <button
@@ -304,8 +702,9 @@ function RedForgeDemoContent() {
                         onClick={() => handleFileSelect(file.path)}
                         onContextMenu={(e) => {
                           e.preventDefault();
-                          // Only show context menu for K or H files
-                          if (file.classification === 'konfidentiell' || file.classification === 'hemlig') {
+                          e.stopPropagation(); // Prevent bubbling
+                          // Show context menu for BH, K, or H files (all except O)
+                          if (file.classification !== 'oklassificerad') {
                             setContextMenu({
                               x: e.clientX,
                               y: e.clientY,
@@ -326,9 +725,7 @@ function RedForgeDemoContent() {
                           <span className="truncate">{file.title}</span>
                         </span>
                         <span className={`px-1.5 py-0.5 rounded text-[10px] font-medium border flex-shrink-0 ${badgeColor}`}>
-                          {classification === 'oklassificerad' ? 'O' :
-                           classification === 'begransad-hemlig' ? 'BH' :
-                           classification === 'konfidentiell' ? 'K' : 'H'}
+                          {badgeLabel}
                         </span>
                       </button>
                     );
@@ -342,6 +739,236 @@ function RedForgeDemoContent() {
     }
     
     if (component === 'editor') {
+      // If declassification is active, show split-pane editor
+      if (declassificationData) {
+        return (
+          <div className="h-full flex flex-col bg-[#0d1117] overflow-hidden">
+            {/* Toolbar for Declassification */}
+            <div className="h-10 bg-[#161b22] border-b border-gray-700 flex items-center px-3 flex-shrink-0">
+              {/* Left: Files toggle */}
+              {!isMobile && (
+                <button
+                  onClick={() => setShowFiles(!showFiles)}
+                  className={`w-8 h-8 rounded flex items-center justify-center text-base transition-colors mr-3 ${
+                    showFiles
+                      ? 'bg-red-500/20 text-red-400'
+                      : 'text-gray-500 hover:bg-[#1f2937] hover:text-gray-300'
+                  }`}
+                  title={showFiles ? 'Dölj filer' : 'Visa filer'}
+                >
+                  📁
+                </button>
+              )}
+              
+              {/* Center: Title */}
+              <div className="flex items-center gap-3 flex-1">
+                <span className="text-sm text-white font-medium">📝 Deklassificering</span>
+                <span className="text-xs text-gray-400">
+                  {declassificationData.fileName}: 
+                  <span className="text-red-400 ml-1">{declassificationData.originalClassification.toUpperCase()}</span>
+                  <span className="mx-1">→</span>
+                  <span className="text-green-400">{declassificationData.targetClassification.toUpperCase()}</span>
+                </span>
+                
+                {/* AI Service Selector for Declassification */}
+                <div className="flex items-center gap-2 ml-4">
+                  <span className="text-xs text-gray-500">AI-tjänst:</span>
+                  <select
+                    value={selectedAIService}
+                    onChange={(e) => setSelectedAIService(e.target.value as AIService)}
+                    className="bg-[#161b22] border border-gray-700 rounded px-2 py-0.5 text-xs text-gray-300 hover:border-red-500 transition-colors"
+                    disabled={isAIProcessing}
+                  >
+                    {Object.entries(AI_SERVICE_LEVELS)
+                      .filter(([_, info]) => {
+                        // Only show services that can handle the source classification
+                        const sourceLevel = CLASSIFICATION_LEVELS[declassificationData.originalClassification];
+                        return info.level >= sourceLevel;
+                      })
+                      .map(([key, info]) => (
+                        <option key={key} value={key}>
+                          {info.name}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+                
+                {/* Auto mode indicator */}
+                {centerPanelWidth < 1000 && (
+                  <span className="text-xs text-yellow-400 ml-2">
+                    (Kompakt läge)
+                  </span>
+                )}
+              </div>
+              
+              {/* Right: Weaver toggle + Close */}
+              <div className="flex items-center gap-1">
+                {!isMobile && (
+                  <button
+                    onClick={() => setShowWeaver(!showWeaver)}
+                    className={`w-8 h-8 rounded flex items-center justify-center text-base transition-colors ${
+                      showWeaver
+                        ? 'bg-red-500/20 text-red-400'
+                        : 'text-gray-500 hover:bg-[#1f2937] hover:text-gray-300'
+                    }`}
+                    title={showWeaver ? 'Dölj Weaver' : 'Visa Weaver'}
+                  >
+                    🤖
+                  </button>
+                )}
+                <button
+                  onClick={() => setDeclassificationData(null)}
+                  className="text-gray-400 hover:text-white px-2"
+                  title="Stäng deklassificering"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+            
+            {/* Editor: DiffEditor (split) or normal Editor (target-only) */}
+            <div 
+              className="flex-1 overflow-hidden"
+              ref={(el) => {
+                if (el) {
+                  // Measure panel width for smart layout
+                  const observer = new ResizeObserver((entries) => {
+                    for (const entry of entries) {
+                      setCenterPanelWidth(entry.contentRect.width);
+                    }
+                  });
+                  observer.observe(el);
+                  return () => observer.disconnect();
+                }
+              }}
+            >
+              {effectiveDiffMode === 'split' ? (
+                <DiffEditor
+                  key={`diff-${declassificationData.originalContent.length}-${declassificationData.modifiedContent.length}`} // Force remount on content change
+                  height="100%"
+                  language="markdown"
+                  theme="vs-dark"
+                  original={declassificationData.originalContent}
+                  modified={declassificationData.modifiedContent}
+                  onMount={(editor) => {
+                    // Make modified (right) side editable
+                    const modifiedEditor = editor.getModifiedEditor();
+                    modifiedEditor.onDidChangeModelContent(() => {
+                      const value = modifiedEditor.getValue();
+                      setDeclassificationData(prev => prev ? { ...prev, modifiedContent: value } : null);
+                    });
+                  }}
+                  options={{
+                    readOnly: false, // Modified side is editable
+                    originalEditable: false, // Original side is read-only
+                    renderSideBySide: true,
+                    enableSplitViewResizing: false, // Force 50/50 split, no user resize
+                    minimap: { enabled: false },
+                    fontSize: 13,
+                    lineNumbers: 'on',
+                    scrollBeyondLastLine: false,
+                    automaticLayout: true,
+                    renderOverviewRuler: false,
+                    // Better split sizing
+                    diffWordWrap: 'on',
+                    wordWrap: 'on',
+                    // Allow more space for modified side
+                    renderIndicators: true,
+                    ignoreTrimWhitespace: true,
+                  }}
+                />
+              ) : (
+                // Target-only view: Just the modified file
+                <Editor
+                  key={`editor-${declassificationData.modifiedContent.length}`} // Force remount on content change
+                  height="100%"
+                  language="markdown"
+                  theme="vs-dark"
+                  value={declassificationData.modifiedContent}
+                  onChange={(value) => {
+                    if (value !== undefined) {
+                      setDeclassificationData(prev => prev ? { ...prev, modifiedContent: value } : null);
+                    }
+                  }}
+                  options={{
+                    minimap: { enabled: false },
+                    fontSize: 13,
+                    lineNumbers: 'on',
+                    scrollBeyondLastLine: false,
+                    automaticLayout: true,
+                    wordWrap: 'on',
+                  }}
+                />
+              )}
+            </div>
+            
+            {/* Footer with Actions */}
+            <div className="h-12 bg-[#161b22] border-t border-gray-700 px-3 flex items-center justify-between flex-shrink-0">
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={handleAIAssistDeclassify}
+                  disabled={isAIProcessing}
+                  className={`px-3 py-1.5 rounded transition-colors text-sm font-medium ${
+                    isAIProcessing
+                      ? 'bg-purple-800 text-purple-300 cursor-wait'
+                      : 'bg-purple-600 hover:bg-purple-700 text-white'
+                  }`}
+                >
+                  {isAIProcessing ? (
+                    <>
+                      <span className="inline-block animate-spin mr-2">⚙️</span>
+                      Arbetar...
+                    </>
+                  ) : (
+                    '🤖 AI-hjälp'
+                  )}
+                </button>
+                {declassificationData.approved && (
+                  <span className="text-green-400 text-sm">✓ Godkänd</span>
+                )}
+                {isAIProcessing && (
+                  <span className="text-purple-400 text-xs animate-pulse">
+                    AI analyserar och föreslår redaktioner...
+                  </span>
+                )}
+              </div>
+              
+              <div className="flex gap-2">
+                {!declassificationData.approved ? (
+                  <button
+                    onClick={() => {
+                      setDeclassificationData(prev => prev ? { ...prev, approved: true } : null);
+                      
+                      // Log approval to audit trail
+                      if (declassificationData) {
+                        setAuditLog(prevLog => [{
+                          timestamp: new Date(),
+                          filename: declassificationData.fileName,
+                          classification: declassificationData.originalClassification,
+                          aiService: `Redigeringar godkända av användare`,
+                          result: 'allowed' as const
+                        }, ...prevLog].slice(0, 50));
+                      }
+                    }}
+                    className="px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white rounded transition-colors text-sm font-medium"
+                  >
+                    Godkänn Redigeringar
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleSaveToWorkspace}
+                    className="px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white rounded transition-colors text-sm font-medium"
+                  >
+                    💾 Spara till Workspace
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      }
+      
+      // Normal editor view (when not declassifying)
       return (
         <div className="h-full flex flex-col bg-[#0d1117] overflow-hidden">
           {/* Toolbar */}
@@ -385,8 +1012,24 @@ function RedForgeDemoContent() {
             </div>
             
             <div className="flex items-center gap-1 md:gap-2">
-              {/* Download button (only for O and B files) */}
-              {activeFile && (activeFile.classification === 'oklassificerad' || activeFile.classification === 'begransad-hemlig') && (
+              {/* Save button (shows when file has unsaved changes) */}
+              <button
+                onClick={handleSave}
+                disabled={!hasUnsavedChanges}
+                className={`px-2 md:px-3 py-1 text-xs md:text-sm rounded flex items-center gap-1 transition-colors border ${
+                  hasUnsavedChanges
+                    ? 'bg-blue-600 hover:bg-blue-700 text-white border-blue-500'
+                    : 'bg-gray-800 text-gray-500 border-gray-700 cursor-not-allowed'
+                }`}
+                title={hasUnsavedChanges ? "Spara (⌘S)" : "Inga ändringar att spara"}
+              >
+                <Save className="w-3 h-3 md:w-4 md:h-4" />
+                <span className="hidden md:inline">Spara</span>
+                {hasUnsavedChanges && <span className="text-[10px] opacity-70">⌘S</span>}
+              </button>
+              
+              {/* Download button (only for Oklassificerad files) */}
+              {activeFile && activeFile.classification === 'oklassificerad' && (
                 <button
                   onClick={() => {
                     const blob = new Blob([activeFile.content], { type: 'text/markdown' });
@@ -399,11 +1042,11 @@ function RedForgeDemoContent() {
                     document.body.removeChild(a);
                     URL.revokeObjectURL(url);
                   }}
-                  className="px-2 md:px-3 py-1 text-xs md:text-sm text-gray-400 hover:text-white hover:bg-gray-800 rounded flex items-center gap-1 transition-colors"
-                  title="Download file"
+                  className="px-2 md:px-3 py-1 text-xs md:text-sm text-green-400 hover:text-white hover:bg-green-900/30 rounded flex items-center gap-1 transition-colors border border-green-500/30"
+                  title="Ladda ner oklassificerad fil"
                 >
                   <Download className="w-3 h-3 md:w-4 md:h-4" />
-                  <span className="hidden md:inline">Download</span>
+                  <span className="hidden md:inline">Ladda ner</span>
                 </button>
               )}
               
@@ -543,7 +1186,7 @@ function RedForgeDemoContent() {
             {viewMode === 'preview' && activeFile && (
               <div className="h-full bg-[#0d1117]">
                 <MDXRenderer 
-                  content={activeFileContent} 
+                  content={activeFile.contentWithoutFrontmatter} 
                   classification={activeFile.classification}
                 />
               </div>
@@ -625,6 +1268,7 @@ function RedForgeDemoContent() {
                       result: 'allowed' as const
                     }, ...prev].slice(0, 50));
                   }}
+                  weaver={weaver}
                 />
               ) : (
                 <div className="p-4 text-gray-500 text-sm text-center">
@@ -641,7 +1285,7 @@ function RedForgeDemoContent() {
                       try {
                         const chronicleData = localStorage.getItem('weaver-chronicle');
                         if (!chronicleData) {
-                          alert('Inga Chronicle-loggar att exportera');
+                          showToast('Inga Chronicle-loggar att exportera', 'info');
                           return;
                         }
                         
@@ -656,7 +1300,7 @@ function RedForgeDemoContent() {
                         URL.revokeObjectURL(url);
                       } catch (error) {
                         console.error('Failed to export chronicle:', error);
-                        alert('Kunde inte exportera Chronicle-loggar');
+                        showToast('Kunde inte exportera Chronicle-loggar', 'error');
                       }
                     }}
                     className="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-white transition-colors rounded hover:bg-gray-800"
@@ -835,20 +1479,15 @@ function RedForgeDemoContent() {
       {/* Context Menu for Declassification */}
       {contextMenu && (
         <div
-          className="fixed bg-[#1f2937] border border-gray-700 rounded shadow-lg py-1 z-[10000]"
+          className="context-menu fixed bg-[#1f2937] border border-gray-700 rounded shadow-lg py-1 z-[10000]"
           style={{ left: contextMenu.x, top: contextMenu.y }}
-          onClick={(e) => e.stopPropagation()}
         >
           <div className="px-3 py-1 text-xs text-gray-400 border-b border-gray-700">
-            Declassify to:
+            Deklassificera till:
           </div>
           {contextMenu.classification === 'hemlig' && (
             <button
-              onClick={() => {
-                // TODO: Trigger declassification to K
-                console.log('Declassify H → K:', contextMenu.fileId);
-                setContextMenu(null);
-              }}
+              onClick={() => handleDeclassifyRequest('konfidentiell')}
               className="w-full text-left px-3 py-2 text-sm text-white hover:bg-gray-700 transition-colors"
             >
               <span className="text-orange-400">K</span> Konfidentiell
@@ -856,28 +1495,105 @@ function RedForgeDemoContent() {
           )}
           {(contextMenu.classification === 'hemlig' || contextMenu.classification === 'konfidentiell') && (
             <button
-              onClick={() => {
-                // TODO: Trigger declassification to B
-                console.log('Declassify → B:', contextMenu.fileId);
-                setContextMenu(null);
-              }}
+              onClick={() => handleDeclassifyRequest('begransad-hemlig')}
               className="w-full text-left px-3 py-2 text-sm text-white hover:bg-gray-700 transition-colors"
             >
-              <span className="text-yellow-400">B</span> Begränsad
+              <span className="text-yellow-400">BH</span> Begränsad Hemlig
             </button>
           )}
           <button
-            onClick={() => {
-              // TODO: Trigger declassification to O
-              console.log('Declassify → O:', contextMenu.fileId);
-              setContextMenu(null);
-            }}
+            onClick={() => handleDeclassifyRequest('oklassificerad')}
             className="w-full text-left px-3 py-2 text-sm text-white hover:bg-gray-700 transition-colors"
           >
             <span className="text-green-400">O</span> Oklassificerad
           </button>
         </div>
       )}
+      
+      {/* Downgrade Block Modal */}
+      {showDowngradeBlockModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-[#0d1117] border border-red-500 rounded-lg p-6 max-w-md mx-auto">
+            <h2 className="text-xl font-bold text-red-400 mb-4 flex items-center gap-2">
+              🚨 Säkerhetsvarning
+            </h2>
+            
+            <p className="text-gray-300 mb-4">
+              Du försöker sänka klassificeringen från{' '}
+              <strong className="text-red-400">
+                {showDowngradeBlockModal.from.toUpperCase()}
+              </strong>
+              {' '}till{' '}
+              <strong className="text-yellow-400">
+                {showDowngradeBlockModal.to.toUpperCase()}
+              </strong>
+            </p>
+            
+            <div className="bg-gray-900 border border-gray-700 rounded p-3 mb-4">
+              <p className="text-sm text-gray-400 mb-2">
+                ✅ <strong>Rätt metod:</strong>
+              </p>
+              <ol className="text-sm text-gray-300 space-y-1 list-decimal list-inside">
+                <li>Stäng denna dialog</li>
+                <li>Högerklicka på filen i filträdet</li>
+                <li>Välj "Deklassificera till {showDowngradeBlockModal.to.toUpperCase()}"</li>
+                <li>Granska AI-föreslagna redigeringar</li>
+                <li>Godkänn ändringar</li>
+              </ol>
+            </div>
+            
+            <div className="flex gap-2">
+              <button
+                onClick={() => {
+                  const targetFile = allFiles.find(f => f.name === showDowngradeBlockModal.fileName);
+                  if (targetFile) {
+                    setShowDowngradeBlockModal(null);
+                    handleDeclassifyRequest(
+                      { id: targetFile.id, name: targetFile.name, content: targetFile.content, classification: targetFile.classification },
+                      showDowngradeBlockModal.to
+                    );
+                  }
+                }}
+                className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors"
+              >
+                🤖 Starta Deklassificering
+              </button>
+              <button
+                onClick={() => setShowDowngradeBlockModal(null)}
+                className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded transition-colors"
+              >
+                Avbryt
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {/* Toast Notifications */}
+      <div className="fixed bottom-4 right-4 z-[10001] flex flex-col gap-2">
+        {toasts.map(toast => (
+          <div
+            key={toast.id}
+            className={`
+              px-4 py-3 rounded-lg shadow-lg border backdrop-blur-sm
+              transform transition-all duration-300 ease-in-out
+              animate-in slide-in-from-right
+              ${toast.type === 'success' ? 'bg-green-900/90 border-green-500/50 text-green-100' : ''}
+              ${toast.type === 'info' ? 'bg-blue-900/90 border-blue-500/50 text-blue-100' : ''}
+              ${toast.type === 'warning' ? 'bg-yellow-900/90 border-yellow-500/50 text-yellow-100' : ''}
+              ${toast.type === 'error' ? 'bg-red-900/90 border-red-500/50 text-red-100' : ''}
+            `}
+          >
+            <div className="flex items-center gap-2">
+              {toast.type === 'success' && <span className="text-xl">✅</span>}
+              {toast.type === 'info' && <span className="text-xl">ℹ️</span>}
+              {toast.type === 'warning' && <span className="text-xl">⚠️</span>}
+              {toast.type === 'error' && <span className="text-xl">❌</span>}
+              <span className="text-sm font-medium">{toast.message}</span>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

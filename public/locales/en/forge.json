@@ -1,13 +1,13 @@
 {
   "hero": {
     "title": "Forge Protocol",
-    "subtitle": "Development Accountability for AI Systems",
+    "subtitle": "Use AI Tools Securely in Sensitive Projects",
     "byline": "Balans | November 2025"
   },
   "summary": {
     "title": "Executive Summary",
-    "description": "Forge Protocol is a framework for building AI systems across security boundaries. It tracks every code change, every review, every approval - creating a complete provenance chain from requirements to deployment. When integrated with Guardian Protocol, it enables complete accountability: from the developer who wrote the code to the operator who made the lethal decision.",
-    "sister_protocol": "Sister Protocol: Guardian Protocol handles operational accountability (runtime decisions). Forge Protocol handles development accountability (who built this rule?)."
+    "description": "Forge Protocol is a framework for using AI tools (ChatGPT, Swedish SaaS LLMs, on-prem solutions) securely in sensitive projects. It tracks which code is AI-generated vs manual, every review, every approval - creating a complete provenance chain from requirements to deployment. IDE integration (VSCode, Cursor via MCP) makes tracking automatic. When integrated with Guardian Protocol, it enables complete accountability: from the developer who wrote the code to the operator who made the critical decision.",
+    "sister_protocol": "Sister Protocol: Guardian Protocol handles operational accountability (runtime decisions). Forge Protocol handles development accountability (who built this rule? how much is AI-generated?)."
   },
   "problem": {
     "title": "The Challenge: Who Built This Rule?",

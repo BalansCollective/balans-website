@@ -7,12 +7,13 @@ import { describe, it, expect } from 'vitest';
  * the highest classification level in the file context.
  */
 
-type Classification = 'oklassificerad' | 'begransad-hemlig' | 'konfidentiell' | 'hemlig';
+type Classification = 'oklassificerad' | 'begransad-hemlig' | 'eu-restricted' | 'konfidentiell' | 'hemlig';
 type AIService = 'claude-cloud' | 'saas-lumen' | 'forge-local' | 'forge-air-gap';
 
 const CLASSIFICATION_LEVELS: Record<Classification, number> = {
   'oklassificerad': 0,
   'begransad-hemlig': 1,
+  'eu-restricted': 1,  // 🇪🇺 Same handling level as BH
   'konfidentiell': 2,
   'hemlig': 3
 };
@@ -125,6 +126,38 @@ describe('Classification-based AI Service Routing', () => {
       const available = getAvailableServices(files);
       expect(available).toHaveLength(3); // Claude Cloud blocked
       expect(available).not.toContain('claude-cloud');
+    });
+    
+    it('should require SaaS Lumen for eu-restricted file (🇪🇺)', () => {
+      const files: FileInContext[] = [
+        { name: 'eu-nato-training.md', classification: 'eu-restricted', content: 'test' }
+      ];
+      
+      const required = getRequiredService(files);
+      expect(required).toBe('saas-lumen');
+      
+      const available = getAvailableServices(files);
+      expect(available).toHaveLength(3); // Same as BH - Claude Cloud blocked
+      expect(available).not.toContain('claude-cloud');
+    });
+    
+    it('should treat EU RESTRICTED same as BH for access control', () => {
+      const euFile: FileInContext[] = [
+        { name: 'eu.md', classification: 'eu-restricted', content: 'test' }
+      ];
+      const bhFile: FileInContext[] = [
+        { name: 'bh.md', classification: 'begransad-hemlig', content: 'test' }
+      ];
+      
+      const euRequired = getRequiredService(euFile);
+      const bhRequired = getRequiredService(bhFile);
+      
+      expect(euRequired).toBe(bhRequired); // Both require SaaS Lumen
+      
+      const euAvailable = getAvailableServices(euFile);
+      const bhAvailable = getAvailableServices(bhFile);
+      
+      expect(euAvailable).toEqual(bhAvailable); // Same available services
     });
     
     it('should require Red Forge Local for konfidentiell file', () => {

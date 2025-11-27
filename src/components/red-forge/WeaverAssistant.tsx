@@ -15,10 +15,11 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import mermaid from 'mermaid';
 import { MermaidDiagram } from './MermaidDiagram';
-import { BrowserWeaverAssistant, type AIService, type Classification } from '../../lib/weaver';
+import { BrowserWeaverAssistant } from '../../lib/weaver';
+import { CLASSIFICATION_LEVELS, AI_SERVICE_LEVELS, type Classification, type AIService } from './classification-constants';
 
 interface WeaverAssistantProps {
-  file: {
+  file?: {
     classification: Classification;
     title: string;
     content: string;
@@ -27,22 +28,8 @@ interface WeaverAssistantProps {
   onServiceChange: (service: AIService) => void;
   filesInContext: Array<{ name: string; content: string; classification: Classification }>; // Full file data!
   onClearContext: () => void;
+  weaver?: BrowserWeaverAssistant; // Pass weaver instance for declassification
 }
-
-// AI service security levels
-const AI_SERVICE_LEVELS = {
-  'claude-cloud': { level: 0, name: 'Claude Cloud', maxClass: 'oklassificerad' },
-  'saas-lumen': { level: 1, name: 'SaaS Lumen', maxClass: 'begransad-hemlig' },
-  'forge-local': { level: 2, name: 'Red Forge Local', maxClass: 'konfidentiell' },
-  'forge-airgap': { level: 3, name: 'Red Forge Air-Gap', maxClass: 'hemlig' }
-};
-  
-const CLASSIFICATION_LEVELS = {
-  'oklassificerad': 0,
-  'begransad-hemlig': 1,
-  'konfidentiell': 2,
-  'hemlig': 3
-};
 
 // Get classification color
 const getClassificationColor = (classification: Classification): string => {
@@ -55,7 +42,7 @@ const getClassificationColor = (classification: Classification): string => {
   }
 };
 
-export function WeaverAssistant({ file, selectedService, onServiceChange, filesInContext, onClearContext }: WeaverAssistantProps) {
+export function WeaverAssistant({ file, selectedService, onServiceChange, filesInContext = [], onClearContext, weaver: externalWeaver }: WeaverAssistantProps) {
   const [showEnforcementModal, setShowEnforcementModal] = useState(false);
   const [showModificationModal, setShowModificationModal] = useState(false);
   const [proposedModification, setProposedModification] = useState<any | null>(null);
@@ -66,8 +53,10 @@ export function WeaverAssistant({ file, selectedService, onServiceChange, filesI
 📝 **Audit Log:** Aktiv (alla AI-interaktioner loggas)
 
 ${filesInContext.length > 0 
-  ? `Jag har åtkomst till ${filesInContext.length} fil${filesInContext.length > 1 ? 'er' : ''}:\n\n${filesInContext.map(f => `• ${f}`).join('\n')}\n\nVad vill du veta?`
-  : `Du kan chatta med mig direkt, eller klicka på "Skicka till AI" för att ge mig åtkomst till **${file.title}**.`
+  ? `Jag har åtkomst till ${filesInContext.length} fil${filesInContext.length > 1 ? 'er' : ''}:\n\n${filesInContext.map(f => `• ${f.name}`).join('\n')}\n\nVad vill du veta?`
+  : file 
+    ? `Du kan chatta med mig direkt, eller klicka på "Skicka till AI" för att ge mig åtkomst till **${file.title}**.`
+    : `Du kan chatta med mig direkt, eller öppna en fil och klicka "Skicka till AI" för att ge mig åtkomst.`
 }`
   }]);
   const [inputValue, setInputValue] = useState('');
@@ -75,8 +64,8 @@ ${filesInContext.length > 0
   const [streamingContent, setStreamingContent] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
-  // Initialize Weaver Assistant (DEMO: using placeholder API key - won't work without real key)
-  const [weaver] = useState(() => new BrowserWeaverAssistant({
+  // Initialize Weaver Assistant (use external if provided, otherwise create local)
+  const [weaver] = useState(() => externalWeaver || new BrowserWeaverAssistant({
     openrouterKey: import.meta.env.VITE_OPENROUTER_KEY || 'DEMO_KEY_NOT_SET',
     userClearance: 'hemlig' // Demo: full clearance
   }));
@@ -128,7 +117,7 @@ ${filesInContext.length > 0
   }, [filesInContext, weaver]);
 
   // Check if AI service can access files IN CONTEXT (not just open file!)
-  const serviceLevel = AI_SERVICE_LEVELS[selectedService].level;
+  const serviceLevel = AI_SERVICE_LEVELS[selectedService]?.level ?? 0;
   
   // Find highest classification in context
   const highestClassInContext = filesInContext.length > 0
@@ -285,7 +274,7 @@ ${filesInContext.length > 0
 
 📝 **Audit Log:** Aktiv (alla AI-interaktioner loggas)
 
-Du kan chatta med mig direkt, eller klicka på "Skicka till AI" för att ge mig åtkomst till **${file.title}**.`
+Du kan chatta med mig direkt${file ? `, eller klicka på "Skicka till AI" för att ge mig åtkomst till **${file.title}**` : ''}.`
                 }]);
                 setStreamingContent('');
                 
@@ -444,12 +433,12 @@ Du kan chatta med mig direkt, eller klicka på "Skicka till AI" för att ge mig 
         </div>
         
         {/* Access warning if blocked - OUTSIDE SCROLL */}
-        {!canAccess && (
+        {!canAccess && file && (
           <div className="px-4 pb-2">
             <div className="bg-red-900/20 border border-red-500/30 rounded p-2 text-xs text-red-300 flex items-start gap-2">
               <AlertTriangle className="w-3 h-3 flex-shrink-0 mt-0.5" />
               <div>
-                <strong>Begränsad åtkomst:</strong> {AI_SERVICE_LEVELS[selectedService].name} kan inte komma åt {file.classification} innehåll.
+                <strong>Begränsad åtkomst:</strong> {AI_SERVICE_LEVELS[selectedService]?.name ?? 'AI-tjänst'} kan inte komma åt {file.classification} innehåll.
               </div>
             </div>
           </div>
@@ -503,7 +492,7 @@ Du kan chatta med mig direkt, eller klicka på "Skicka till AI" för att ge mig 
 
             <div className="space-y-4 text-sm text-gray-300">
               <p>
-                <strong>{AI_SERVICE_LEVELS[selectedService].name}</strong> kan inte komma åt filer med{' '}
+                <strong>{AI_SERVICE_LEVELS[selectedService]?.name ?? 'AI-tjänst'}</strong> kan inte komma åt filer med{' '}
                 <strong className="text-red-400">
                   {filesInContext.length > 0 
                     ? filesInContext.map(f => f.classification).join(', ')
@@ -522,14 +511,14 @@ Du kan chatta med mig direkt, eller klicka på "Skicka till AI" för att ge mig 
 
                 <div className="text-xs text-gray-400 mt-3 mb-2">Nuvarande AI-tjänst:</div>
                 <div className="text-yellow-400 font-semibold">
-                  {AI_SERVICE_LEVELS[selectedService].name} (max: {AI_SERVICE_LEVELS[selectedService].maxClass})
+                  {AI_SERVICE_LEVELS[selectedService]?.name ?? 'Okänd'} (max: {AI_SERVICE_LEVELS[selectedService]?.maxClass ?? 'oklassificerad'})
                 </div>
                 
                 {requiredService && (
                   <>
                     <div className="text-xs text-gray-400 mt-3 mb-2">Minsta tillåtna AI-tjänst:</div>
                     <div className="text-green-400 font-semibold">
-                      {AI_SERVICE_LEVELS[requiredService].name}
+                      {AI_SERVICE_LEVELS[requiredService]?.name ?? 'Okänd'}
                     </div>
                   </>
                 )}

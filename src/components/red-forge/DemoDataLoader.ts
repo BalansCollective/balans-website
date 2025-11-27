@@ -23,17 +23,19 @@ if (typeof window !== 'undefined') {
 export interface DemoFile {
   path: string;
   name: string; // Actual filename (e.g., "v2-multi-tower-overview.md")
-  classification: 'oklassificerad' | 'begransad-hemlig' | 'konfidentiell' | 'hemlig';
+  classification: 'oklassificerad' | 'begransad-hemlig' | 'eu-restricted' | 'konfidentiell' | 'hemlig';
   classificationLevel: string;
   title: string; // Display title (now same as name for clarity)
   summary: string;
-  content: string;
+  content: string; // Full content WITH frontmatter (for Code view)
+  contentWithoutFrontmatter: string; // Parsed content WITHOUT frontmatter (for Preview view)
   frontmatter: Record<string, any>;
 }
 
 export interface DemoFileTree {
   oklassificerad: DemoFile[];
   'begransad-hemlig': DemoFile[];
+  'eu-restricted': DemoFile[];  // 🇪🇺 EU RESTRICTED folder
   konfidentiell: DemoFile[];
   hemlig: DemoFile[];
 }
@@ -48,9 +50,10 @@ export interface DemoFileTree {
  * NOTE: When adding new demo files, update this manifest manually.
  * This is KISS approach for 6 files — if >10 files, implement auto-discovery.
  */
-const FILE_MANIFEST: Record<'oklassificerad' | 'begransad-hemlig' | 'konfidentiell' | 'hemlig', string[]> = {
+const FILE_MANIFEST: Record<'oklassificerad' | 'begransad-hemlig' | 'eu-restricted' | 'konfidentiell' | 'hemlig', string[]> = {
   oklassificerad: ['README.md', 'v1-concept-summary.md'],
   'begransad-hemlig': ['cost-analysis.md', 'v2-multi-tower-overview.md'],
+  'eu-restricted': ['eu-nato-joint-training.md'],  // 🇪🇺 EU RESTRICTED files
   konfidentiell: ['v3-5-shotgun-integration-specs.md'],
   hemlig: ['v4-guardian-protocol-implementation.md']
 };
@@ -90,7 +93,7 @@ async function loadDemoFile(
       const rawContent = await response.text();
       
       // Parse frontmatter using gray-matter
-      const { data: frontmatter, content } = matter(rawContent);
+      const { data: frontmatter, content: contentWithoutFrontmatter } = matter(rawContent);
       
       return {
         path: `${folder}/${filename}`,
@@ -99,7 +102,8 @@ async function loadDemoFile(
         classificationLevel: frontmatter.classification_level || folder,
         title: filename, // Use actual filename for clarity
         summary: frontmatter.summary || '',
-        content, // Clean markdown (no frontmatter)
+        content: rawContent, // Full content WITH frontmatter (for Code view)
+        contentWithoutFrontmatter, // Parsed content WITHOUT frontmatter (for Preview view)
         frontmatter
       };
     } catch (error) {
@@ -121,6 +125,7 @@ async function loadDemoFile(
     title: `[Missing File] ${filename}`,
     summary: 'File could not be loaded',
     content: `# File Not Found\n\nThis demo file is missing or could not be loaded.\n\n**Error:** ${lastError?.message}`,
+    contentWithoutFrontmatter: `# File Not Found\n\nThis demo file is missing or could not be loaded.\n\n**Error:** ${lastError?.message}`,
     frontmatter: {}
   };
 }
@@ -149,6 +154,7 @@ export async function loadDemoFiles(): Promise<DemoFileTree> {
   const tree: DemoFileTree = {
     oklassificerad: [],
     'begransad-hemlig': [],
+    'eu-restricted': [],  // 🇪🇺 EU RESTRICTED folder
     konfidentiell: [],
     hemlig: []
   };

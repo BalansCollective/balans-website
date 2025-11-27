@@ -45,8 +45,11 @@ export class OpenRouterClient {
     options?: {
       temperature?: number;
       max_tokens?: number;
+      model?: string; // Allow per-request model override
     }
   ): AsyncGenerator<string, void, unknown> {
+    const modelToUse = options?.model || this.config.model; // Use override if provided
+    
     const response = await fetch(`${this.config.baseURL}/chat/completions`, {
       method: 'POST',
       headers: {
@@ -56,7 +59,7 @@ export class OpenRouterClient {
         'X-Title': 'Red Forge Demo - Weaver Assistant'
       },
       body: JSON.stringify({
-        model: this.config.model,
+        model: modelToUse, // Use per-request model
         messages,
         stream: true,
         temperature: options?.temperature ?? 0.7,

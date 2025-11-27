@@ -1,5 +1,6 @@
 ---
-classification: BEGRÄNSAT HEMLIG
+classification: begransad-hemlig
+classification_level: BH
 project: BirdTurret
 summary: Ekonomisk jämförelse vs traditionella anti-drönar system
 date: 2025-11-24

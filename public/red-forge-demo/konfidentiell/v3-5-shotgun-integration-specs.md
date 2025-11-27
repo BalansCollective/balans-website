@@ -1,6 +1,6 @@
 ---
-classification: K
-classification_level: CONFIDENTIAL
+classification: konfidentiell
+classification_level: K
 project: BirdTurret V3.5
 summary: Hagelgevärsintegrationsspecifikationer och fälttestresultat
 date: 2025-12-01

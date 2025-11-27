@@ -1,6 +1,6 @@
 ---
-classification: OPEN
-classification_swedish: ÖPPEN
+classification: oklassificerad
+classification_level: O
 project: BirdTurret V1
 summary: Proof-of-concept enkelttorn mikro-assist målföljningssystem
 date: 2025-11-18

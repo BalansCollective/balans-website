@@ -1,6 +1,6 @@
 ---
-classification: OPEN
-classification_swedish: ÖPPEN
+classification: oklassificerad
+classification_level: O
 project: BirdTurret
 version: 1.0.0
 date: 2025-11-24

@@ -1,39 +1,39 @@
 {
   "hero": {
-    "badge": "Classification-Aware AI Development",
+    "badge": "Infrastruktur för säker AI-utveckling",
     "title": "Red Forge",
-    "subtitle_line1": "Säker AI-utveckling för försvar. Utan bunker-känsla.",
-    "subtitle_line2": "What vs. How – dela kapabilitet, skydda implementering.",
+    "subtitle_line1": "Låser upp försvarsinnovation.",
+    "subtitle_line2": "Utveckla klassificerad AI säkert. Använd AI-verktyg i känsliga projekt.",
     "cta_primary": "Utforska Red Forge",
     "cta_secondary": "Se Protokollen",
-    "image_alt": "Red Forge Classification-Aware Development"
+    "image_alt": "Red Forge - Infrastruktur för säker AI-utveckling"
   },
   "classification": {
-    "title": "Dual Classification",
-    "subtitle_part1": "Innovation kräver att vi delar",
+    "title": "Stöd för Dual Classification",
+    "subtitle_part1": "Vi hjälper er dela",
     "what": "vad",
     "subtitle_part2": "system kan göra",
-    "subtitle_part3": "medan vi skyddar",
+    "subtitle_part3": "medan ni skyddar",
     "how": "hur",
     "subtitle_part4": "de gör det",
     "what_title": "Kapabilitet:",
-    "what_description": "Vad systemet kan göra",
+    "what_description": "Vad systemet kan göra (delbart)",
     "what_items": [
       "Funktionella krav",
       "API-specifikationer",
       "Prestanda-garantier",
       "Säkerhetsegenskaper"
     ],
-    "what_classification": "Kan delas (UNCLASSIFIED)",
+    "what_classification": "Kan ofta delas (UNCLASSIFIED)",
     "how_title": "Implementering:",
-    "how_description": "Hur systemet gör det",
+    "how_description": "Hur systemet gör det (skyddas)",
     "how_items": [
       "Källkod & algoritmer",
       "Träningsdata",
       "Modellarkitektur",
       "Deployment-detaljer"
     ],
-    "how_classification": "Måste skyddas (SECRET)"
+    "how_classification": "Ofta hemlig (SECRET)"
   },
   "redcell": {
     "title": "Red Forge: Komplett Säker Utvecklingsstack",
@@ -44,12 +44,12 @@
     "phase2_description": "Full GUL/RÖD-certifierad anläggning vid bevisad efterfrågan",
     "classification_ide": {
       "title": "Classification-Aware IDE",
-      "description": "LLM-accelererad miljö som förstår klassificeringsnivåer och tvingar WHAT/HOW-separation.",
+      "description": "Använd ChatGPT, svenska SaaS-LLM, eller on-prem AI-verktyg säkert i känsliga projekt.",
       "items": [
-        "AI-assistans som känner av klassificering från kontext",
-        "Automatisk validering av WHAT/HOW-gränser",
+        "Spårar vilken kod som är AI-genererad vs manuell",
+        "Stödjer klassificeringsnivåer i din utvecklingsmiljö",
         "Föreslår säkra nedgraderingsvägar",
-        "Integrerad med Guardian Protocol"
+        "Provenance tracking för accountability"
       ]
     },
     "secure_llm": {
@@ -93,42 +93,41 @@
     "demo": {
       "title": "Se Red Forge i Aktion",
       "description": "Interaktiv in-browser IDE med LLM-integration som visar classification-aware design i praktiken.",
-      "cta": "Öppna Interactive Demo",
-      "note": "Demo kommer snart – registrera intresse via kontakt"
+      "cta": "Öppna Interactive Demo"
     }
   },
   "protocols": {
     "title": "Säkerhetsprotokoll",
-    "subtitle": "Två kompletterande protokoll för säker AI-utveckling",
+    "subtitle": "Två kompletterande protokoll som låser upp för säker AI-innovation",
     "guardian": {
-      "description": "Granska AI-beslut innan de får konsekvenser. Dokumenterar vad AI kan se, vad den föreslår, och hur människan behåller kontrollen.",
+      "description": "Spårbarhet och accountability för AI-beslut i kritiska system. Varje beslut loggat med fullständig provenance. Uppfyller EU AI Act-krav för high-risk AI.",
       "cta": "Läs mer"
     },
     "forge": {
-      "description": "Bygg klassificerad AI med öppna verktyg. Automatisk downgrading från SECRET-kod till UNCLASSIFIED specifikationer.",
+      "description": "Utveckla med AI-verktyg i känsliga projekt. Spårar vilken kod som är AI-genererad vs manuell. IDE-integration för automatisk provenance tracking.",
       "cta": "Läs mer"
     }
   },
   "usecases": {
-    "title": "Tillämpningar",
+    "title": "Vem behöver detta?",
     "items": [
       {
-        "title": "🎯 Försvarsindustri",
-        "description": "Utveckla AI för vapensystem där WHAT (träffsäkerhet) kan delas men HOW (sensordata, algoritmer) är SECRET."
-      },
-      {
-        "title": "🔬 Säkerhetsforskning",
-        "description": "Försvarsforskning kan samarbeta med akademiker genom att dela CONFIDENTIAL specs medan SECRET implementation stannar intern."
+        "title": "🎯 iMUGS2 & NATO-projekt",
+        "description": "Utveckla klassificerad AI för försvarsprojekt. Spårbarhet och accountability från dag ett."
       },
       {
         "title": "🚀 NATO DIANA Startups",
-        "description": "Snabb innovation utan egen clearance. Utveckla i Red Forge, deploy när klart."
+        "description": "Behöver infrastruktur för klassificerad utveckling och EU AI Act-compliance. Vi bygger verktyg som låser upp för er innovation."
+      },
+      {
+        "title": "🔧 Totalförsvaret",
+        "description": "Civil och militär samverkan kräver spårbar AI. Guardian Protocol för kritiska beslut. Forge Protocol för säker utveckling."
       }
     ]
   },
   "cta": {
-    "title": "Intresserad av Red Forge?",
-    "subtitle": "Vi bygger det här om det behövs. Kontakta oss för demonstration eller pilot.",
+    "title": "Låser upp för försvarsinnovation",
+    "subtitle": "Vi bygger infrastruktur som andra innoverar på. Kontakta oss för demonstration eller samarbete.",
     "primary": "Kontakta oss",
     "secondary": "Tillbaka till startsidan"
   }

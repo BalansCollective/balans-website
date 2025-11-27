@@ -1,6 +1,6 @@
 ---
-classification: H
-classification_level: SECRET
+classification: hemlig
+classification_level: H
 project: BirdTurret V4
 summary: Guardian Protocol etisk AI-implementation
 date: 2025-11-21

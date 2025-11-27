@@ -5,8 +5,7 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkGfm from 'remark-gfm';
 import mermaid from 'mermaid';
 import { MermaidDiagram } from './MermaidDiagram';
-
-type Classification = 'oklassificerad' | 'begransad-hemlig' | 'konfidentiell' | 'hemlig';
+import type { Classification } from './classification-constants';
 
 interface MDXRendererProps {
   content: string;
@@ -20,6 +19,7 @@ export function MDXRenderer({ content, classification }: MDXRendererProps) {
       case 'hemlig': return 'bg-red-700';
       case 'konfidentiell': return 'bg-red-500';
       case 'begransad-hemlig': return 'bg-orange-500';
+      case 'eu-restricted': return 'bg-blue-500';  // 🇪🇺 EU blue
       case 'oklassificerad': return 'bg-green-500';
       default: return 'bg-gray-500';
     }
@@ -30,6 +30,7 @@ export function MDXRenderer({ content, classification }: MDXRendererProps) {
       case 'hemlig': return 'HEMLIG';
       case 'konfidentiell': return 'KONFIDENTIELL';
       case 'begransad-hemlig': return 'BEGRÄNSAD HEMLIG';
+      case 'eu-restricted': return '🇪🇺 EU RESTRICTED';
       case 'oklassificerad': return 'OKLASSIFICERAD';
       default: return classification.toUpperCase();
     }

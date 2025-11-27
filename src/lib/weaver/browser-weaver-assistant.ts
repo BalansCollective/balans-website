@@ -187,14 +187,116 @@ export class BrowserWeaverAssistant {
   }
   
   /**
+   * Get OpenRouter model for AI service
+   */
+  private getModelForAIService(aiService: AIService): string {
+    switch (aiService) {
+      case 'claude-cloud':
+        return 'anthropic/claude-3.5-sonnet'; // Public cloud
+      case 'saas-lumen':
+        return 'google/gemini-pro'; // Domain-specific SaaS
+      case 'forge-local':
+        return 'mistralai/mixtral-8x7b-instruct'; // Local classified
+      case 'forge-airgap':
+        return 'meta-llama/llama-3-70b-instruct'; // Air-gapped
+      default:
+        return 'anthropic/claude-3.5-sonnet';
+    }
+  }
+  
+  /**
+   * Declassify file content (simpler direct rewrite, no patch format)
+   */
+  async declassifyFile(
+    file: FileMetadata & { content: string },
+    request: string,
+    aiService: AIService
+  ): Promise<FileModification> {
+    const systemPrompt = `Du är en expert på att deklassificera dokument. Din uppgift är att ta bort eller redigera känslig information från dokument så att de kan delas på en lägre klassificeringsnivå.
+
+INSTRUKTIONER:
+1. Läs hela dokumentet noggrant
+2. Identifiera känslig information baserat på målklassificeringen
+3. Skriv OM hela dokumentet med redaktioner
+4. Använd [REDACTED] för borttagen information
+5. Behåll dokumentets struktur och flöde
+6. Svara BARA med den nya, deklassificerade texten - ingen förklaring, ingen markdown wrapper, bara den rena texten
+
+VIKTIGT: Svara med HELA den nya dokumenttexten, inte bara ändringar.`;
+
+    const userPrompt = `${request}
+
+FIL: ${file.name}
+KLASSIFICERING: ${file.classification}
+
+INNEHÅLL:
+${file.content}
+
+Svara med den kompletta deklassificerade texten:`;
+
+    try {
+      const messages = [
+        { role: 'system' as const, content: systemPrompt },
+        { role: 'user' as const, content: userPrompt }
+      ];
+      
+      let fullResponse = '';
+      
+      // Get model for the AI service
+      const model = this.getModelForAIService(aiService);
+      
+      // Use same OpenRouter streaming as proposeFileModifications
+      for await (const chunk of this.openrouter.streamChat(messages, { model })) {
+        fullResponse += chunk;
+      }
+      
+      if (!fullResponse.trim()) {
+        return {
+          success: false,
+          error: 'No content returned from AI'
+        };
+      }
+      
+      // AI returned the full rewritten content - convert to FileModification format
+      return {
+        originalFile: {
+          name: file.name,
+          content: file.content,
+          classification: file.classification
+        },
+        modifiedFile: {
+          name: file.name,
+          content: fullResponse.trim(),
+          classification: file.classification // Keep same for now, UI can change this
+        },
+        changes: [], // No line-by-line changes for full rewrite
+        classificationImpact: {
+          original: file.classification,
+          proposed: file.classification,
+          reasoning: 'Content declassified by AI'
+        }
+      };
+      
+    } catch (error: any) {
+      throw new Error(`Declassification failed: ${error.message}`);
+    }
+  }
+
+  /**
    * Propose file modifications based on user request using Cline V4A patch format
    */
   async proposeFileModifications(
     file: FileMetadata & { content: string },
-    request: string
+    request: string,
+    aiService: AIService
   ): Promise<FileModification> {
-    // Detect if user explicitly requests declassification
-    const isDeclassifyRequest = /declassif|downgrad|lower.*classification|reduce.*classification/i.test(request);
+    // Detect if user explicitly requests declassification (Swedish or English)
+    const isDeclassifyRequest = /declassif|deklassific|downgrad|nedgrad|lower.*classification|reduce.*classification/i.test(request);
+    
+    // For declassification, use simpler direct rewrite method
+    if (isDeclassifyRequest) {
+      return this.declassifyFile(file, request, aiService);
+    }
     
     // Use Cline's exact apply_patch tool description
     const systemPrompt = `This is a custom utility that makes it more convenient to add, remove, move, or edit code in a single file. \`apply_patch\` effectively allows you to execute a diff/patch against a file, but the format of the diff specification is unique to this task, so pay careful attention to these instructions.
@@ -272,10 +374,13 @@ ${file.content}
       let fullResponse = '';
       let retries = 0;
       const maxRetries = 2;
+      
+      // Get model for the AI service
+      const model = this.getModelForAIService(aiService);
 
       while (retries <= maxRetries) {
         try {
-          for await (const chunk of this.openrouter.streamChat(messages)) {
+          for await (const chunk of this.openrouter.streamChat(messages, { model })) {
             fullResponse += chunk;
           }
           break; // Success, exit retry loop
@@ -403,9 +508,12 @@ ${file.content}
     
     let fullResponse = '';
     
+    // Get model for the AI service
+    const model = this.getModelForAIService(aiService);
+    
     try {
       // Stream from OpenRouter
-      for await (const chunk of this.openrouter.streamChat(messages)) {
+      for await (const chunk of this.openrouter.streamChat(messages, { model })) {
         fullResponse += chunk;
         yield {
           type: 'text',

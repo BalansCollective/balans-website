@@ -1,20 +1,20 @@
 {
   "hero": {
     "title": "Forge Protocol",
-    "subtitle": "Utvecklingsansvar för AI-System",
+    "subtitle": "Använd AI-verktyg säkert i känsliga projekt",
     "byline": "Balans | November 2025"
   },
   "summary": {
     "title": "Sammanfattning",
-    "description": "Forge Protocol är ett ramverk för att bygga AI-system över säkerhetsgränser. Det spårar varje kodändring, varje granskning, varje godkännande - skapar en komplett provenance-kedja från krav till deployment. När integrerat med Guardian Protocol möjliggör det komplett ansvarsutkrävande: från utvecklaren som skrev koden till operatören som fattade det dödliga beslutet.",
-    "sister_protocol": "Sister Protocol: Guardian Protocol hanterar operativt ansvar (runtime-beslut). Forge Protocol hanterar utvecklingsansvar (vem byggde denna regel?)."
+    "description": "Forge Protocol är ett ramverk för att använda AI-verktyg (ChatGPT, svenska SaaS-LLM, on-prem lösningar) säkert i känsliga projekt. Det spårar vilken kod som är AI-genererad vs manuell, varje granskning, varje godkännande - skapar en komplett provenance-kedja från krav till deployment. IDE-integration (VSCode, Cursor via MCP) gör spårning automatisk. När integrerat med Guardian Protocol möjliggör det komplett ansvarsutkrävande: från utvecklaren som skrev koden till operatören som fattade det kritiska beslutet.",
+    "sister_protocol": "Sister Protocol: Guardian Protocol hanterar operativt ansvar (runtime-beslut). Forge Protocol hanterar utvecklingsansvar (vem byggde denna regel? hur mycket är AI-genererat?)."
   },
   "problem": {
     "title": "Utmaningen: Vem Byggde Denna Regel?",
     "items": [
       {
-        "title": "Problem 1: Behörighetsparadoxen",
-        "description": "Senior utvecklare (CONFIDENTIAL behörighet) får krav: 'Implementera SECRET algoritm från specifikation doc-00423.' Kan inte läsa spec → Kan inte implementera korrekt → Systemet är osäkert."
+        "title": "Problem 1: AI-verktyg i känsliga projekt",
+        "description": "Utvecklare vill använda ChatGPT, svenska SaaS-LLM eller on-prem AI för att koda snabbare. Men säkerhetsteam säger NEJ - ingen spårbarhet, ingen kontroll, risk för dataläckage. Resultat: långsammare utveckling eller gömd användning."
       },
       {
         "title": "Problem 2: Data Diode-gapet",
@@ -42,16 +42,16 @@
         "description": "Säker miljö för klassificerad AI-utveckling. SECRET data lämnar aldrig Red Forge (data diode IN endast), testmetrik kan exporteras (inga hemligheter), utvecklare får feedback för iteration utan att se hemlig data."
       },
       {
-        "title": "2. Classification-Aware Development",
-        "description": "Utvecklare med olika behörigheter samarbetar utan läckage. CONFIDENTIAL utvecklare ser filtrerade specifikationer med SECRET sektioner borttagna. SECRET spec-författare arbetar i Red Forge med full detalj."
+        "title": "2. IDE-Integration (MCP Protocol)",
+        "description": "Automatisk spårning av AI-genererad vs manuell kod direkt i din utvecklingsmiljö (VSCode, Cursor). Ingen manuell rapportering. Fungerar med ChatGPT, svenska SaaS-LLM (t.ex. AI Sweden), eller on-prem lösningar (Llama, Mistral). Kryptografiskt signerade commits skapar oföränderligt revisionsspår."
       },
       {
         "title": "3. Standards-as-Graphs",
         "description": "EU AI Act-krav lagras som frågebara grafer (Neo4j). Istället för manuell PDF-granskning kan FMV-revisorer köra Cypher-queries för omedelbar efterlevnadsvalidering. Automatiska deployment gates förhindrar deployment utan komplett bevis."
       },
       {
-        "title": "4. Git Provenance Tracking (MCP Integration)",
-        "description": "Varje kodändring spårad med komplett kontext: vem ändrade vad, varför, konfidensnivå, AI vs. mänsklig contribution procent, granskningscykler, efterlevnadslänkar. Kryptografiskt signerade commits skapar oföränderligt revisionsspår."
+        "title": "4. Provenance Tracking",
+        "description": "Varje kodändring spårad med komplett kontext: vem ändrade vad, varför, konfidensnivå, AI vs. mänsklig contribution procent (t.ex. 60% ChatGPT, 40% manuell), granskningscykler, efterlevnadslänkar. Möjliggör svar på: 'Hur mycket av denna kod är AI-genererad? Vilket AI-verktyg användes? Vem granskade AI-outputen?'"
       },
       {
         "title": "5. Guardian Protocol Integration",
@@ -112,25 +112,25 @@
     "benefit": "Ingen 'krigsdimma.' Inget 'systemet gjorde det.' Varje beslut spåras till namngivna individer på varje nivå."
   },
   "value": {
-    "title": "Värde för Försvarsgemenskap",
+    "title": "Värde för Utvecklingsteam & Organisationer",
     "sectors": [
       {
-        "title": "För Försvarsindustri",
-        "problem": "Utveckla AI-system över säkerhetsgränser kräver dyra, separata team för varje behörighetsnivå → Långsam iteration, svårt samarbete. Ingen tydlig provenance för utredningar.",
-        "solution": "Klassificeringsmedveten utveckling + komplett git provenance + Guardian integration. Varje regel spåras från författare till operatör.",
-        "benefit": "Snabbare marknadsintroduktion, lägre utvecklingskostnader, komplett ansvarsutkrävande för utredningar."
+        "title": "För Försvarsindustri & Startups",
+        "problem": "Vill använda AI-verktyg (ChatGPT, svenska SaaS) för snabbare utveckling, men säkerhet säger NEJ. Resultat: långsammare innovation eller gömd användning. Utveckla över säkerhetsgränser kräver dyra, separata team. Ingen tydlig provenance för utredningar.",
+        "solution": "IDE-integrerad spårning av AI-genererad kod + klassificeringsmedveten utveckling + komplett git provenance + Guardian integration. Säkert använda ChatGPT/SaaS/on-prem med full accountability.",
+        "benefit": "Snabbare utveckling med AI-verktyg (säkert), lägre utvecklingskostnader, komplett ansvarsutkrävande för utredningar."
       },
       {
-        "title": "För NATO DIANA Startups",
-        "problem": "Behöver SÄPO-godkännande (€50K, 6 månader) för klassificerad AI-utveckling → Kan inte konkurrera med etablerade aktörer. Ingen provenance tracking-infrastruktur.",
-        "solution": "Dela Red Forge-miljö (Classified Development as a Service), inbyggd provenance tracking, Guardian integration redo.",
-        "benefit": "Snabbare innovation (iteration från dag 1), lägre entry cost (€5K/månad vs. €50K capex), bevisbart ansvarsutkrävande."
+        "title": "För NATO DIANA Startups & Innovatörer",
+        "problem": "Behöver infrastruktur för klassificerad AI-utveckling + AI-verktyg + provenance tracking. SÄPO-godkännande kostar €50K och 6 månader → Kan inte konkurrera.",
+        "solution": "Dela Red Forge-miljö (Classified Development as a Service), inbyggd IDE-integration för AI-verktyg, automatisk provenance tracking, Guardian integration redo.",
+        "benefit": "Snabbare innovation (AI-verktyg från dag 1), lägre entry cost (€5K/månad vs. €50K capex), bevisbart ansvarsutkrävande, EU AI Act-compliance."
       },
       {
         "title": "För Upphandlingsmyndigheter (FMV, NATO)",
-        "problem": "Revision av autonoma vapensutveckling kräver manuell korrelation av krav, kod, tester, godkännanden → 4 timmar per incident. Operativa incidenter saknar utvecklingskontext.",
-        "solution": "Standards-as-Graphs + Git provenance + Guardian integration. Query 'Visa mig: vem byggde Regel #47b, vem granskade den, när certifierades den, var är den deployad?'",
-        "benefit": "Omedelbara revisionsqueries, komplett ansvarskedja, snabbare upphandlingsbeslut."
+        "problem": "Behöver veta: 'Hur mycket av denna kod är AI-genererad? Vilket verktyg användes? Vem granskade outputen?' Revision kräver manuell korrelation av krav, kod, tester → 4 timmar per incident.",
+        "solution": "Standards-as-Graphs + Git provenance + IDE-integration. Query 'Visa mig: vem byggde Regel #47b, hur mycket är AI-genererat, vem granskade den, när certifierades den?'",
+        "benefit": "Omedelbara revisionsqueries, komplett ansvarskedja (inklusive AI-contribution), snabbare upphandlingsbeslut."
       }
     ]
   },

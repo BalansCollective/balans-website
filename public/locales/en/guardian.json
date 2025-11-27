@@ -1,12 +1,12 @@
 {
   "hero": {
     "title": "Guardian Protocol",
-    "subtitle": "Accountability for Autonomous Weapons",
+    "subtitle": "Traceability & Accountability for AI in Critical Systems",
     "byline": "Balans | November 2025"
   },
   "summary": {
     "title": "Executive Summary",
-    "description": "Guardian Protocol is an accountability framework for autonomous weapons systems. When AI can make lethal decisions - who's responsible? Guardian Protocol ensures every decision traces to named individuals: the developer who coded the rule, the operator who made the call, the commander who authorized the mission.",
+    "description": "Guardian Protocol is a framework for traceability and accountability in AI-based critical systems. When AI makes decisions affecting life or safety - who's responsible? Guardian Protocol ensures every decision traces to named individuals: the developer who coded the rule, the operator who made the call, the commander who authorized the mission. Meets EU AI Act requirements for high-risk AI.",
     "tagline": "No fog of war. No 'the system did it.' Just clear accountability."
   },
   "problem": {
@@ -75,6 +75,12 @@
     "title": "Read the Thought Experiment",
     "description": "Captain Elena Volkov is assessing Guardian Protocol at a Ukrainian forward position. Anti-drone defense works perfectly. Then Russia adapts with ground assault. Elena faces the question: authorize mission expansion or accept casualties?",
     "hook": "Eight of ten assessors authorized anti-personnel use under pressure. Was it the right call?",
+    "cta": "Read: When Drones Weren't the Problem",
+    "link": "/narratives/ground-assault"
+  },
+  "narrative": {
+    "title": "Read the Thought Experiment",
+    "description": "Captain Elena Volkov is assessing Guardian Protocol at a Ukrainian forward position. Anti-drone defense works perfectly. Then Russia adapts with ground assault.",
     "cta": "Read: When Drones Weren't the Problem",
     "link": "/narratives/ground-assault"
   },
