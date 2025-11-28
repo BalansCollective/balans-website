@@ -194,7 +194,7 @@ export class BrowserWeaverAssistant {
       case 'claude-cloud':
         return 'anthropic/claude-3.5-sonnet'; // Public cloud
       case 'saas-lumen':
-        return 'google/gemini-pro'; // Domain-specific SaaS
+        return 'anthropic/claude-3-haiku'; // Domain-specific SaaS (cheaper/faster)
       case 'forge-local':
         return 'mistralai/mixtral-8x7b-instruct'; // Local classified
       case 'forge-airgap':
