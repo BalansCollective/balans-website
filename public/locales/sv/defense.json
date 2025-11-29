@@ -1,93 +1,125 @@
 {
   "hero": {
-    "badge": "Infrastruktur för säker AI-utveckling",
+    "badge": "AI-Utveckling för Klassificerade Projekt",
     "title": "Red Forge",
-    "subtitle_line1": "Låser upp försvarsinnovation.",
-    "subtitle_line2": "Utveckla klassificerad AI säkert. Använd AI-verktyg i känsliga projekt.",
-    "cta_primary": "Utforska Red Forge",
+    "subtitle": "Använd AI-verktyg säkert med klassificerad kod. Levereras idag.",
+    "problem": "Defense-utvecklare står fast:",
+    "problems": [
+      "Kan inte använda ChatGPT med klassificerad kod (ISM-2022)",
+      "Dual-PC setup (2 tangentbord, manuella USB-överföringar)",
+      "3-5 dagars setup-tid för varje nytt projekt"
+    ],
+    "cta_primary": "Boka Demo",
     "cta_secondary": "Se Protokollen",
-    "image_alt": "Red Forge - Infrastruktur för säker AI-utveckling"
+    "image_alt": "Red Forge - AI-utveckling för försvarsprojekt"
   },
-  "classification": {
-    "title": "Stöd för Dual Classification",
-    "subtitle_part1": "Vi hjälper er dela",
-    "what": "vad",
-    "subtitle_part2": "system kan göra",
-    "subtitle_part3": "medan ni skyddar",
-    "how": "hur",
-    "subtitle_part4": "de gör det",
-    "what_title": "Kapabilitet:",
-    "what_description": "Vad systemet kan göra (delbart)",
-    "what_items": [
-      "Funktionella krav",
-      "API-specifikationer",
-      "Prestanda-garantier",
-      "Säkerhetsegenskaper"
-    ],
-    "what_classification": "Kan ofta delas (UNCLASSIFIED)",
-    "how_title": "Implementering:",
-    "how_description": "Hur systemet gör det (skyddas)",
-    "how_items": [
-      "Källkod & algoritmer",
-      "Träningsdata",
-      "Modellarkitektur",
-      "Deployment-detaljer"
-    ],
-    "how_classification": "Ofta hemlig (SECRET)"
+  "product": {
+    "title": "Red Forge Produkter & Priser",
+    "subtitle": "Från hårdvara till konsulttjänster – allt för säker AI-utveckling",
+    "tiers": {
+      "starter": {
+        "name": "Zenoh USB Diode Kit",
+        "frequency": "engångsköp",
+        "features": [
+          "Zenoh USB Diode KVM hårdvara",
+          "EN tangentbord/mus för dual-PC setup",
+          "Red Forge Sender/Receiver mjukvara",
+          "ISM-2022 compliance dokumentation"
+        ],
+        "target": "Defense-startups, proof of concept"
+      },
+      "complete": {
+        "name": "Red Forge Workstation",
+        "badge": "POPULÄRAST",
+        "frequency": "engångsköp",
+        "features": [
+          "Yellow PC (RTX 4090, 128GB RAM, 2TB NVMe)",
+          "Zenoh USB Diode KVM inkluderad",
+          "Curated stack pre-installerad (ros2-zenoh, Bevy, Tauri)",
+          "3 demo-projekt redo att köra",
+          "1 års support + uppdateringar"
+        ],
+        "target": "SAAB, BAE Bofors, större defense-företag"
+      },
+      "enterprise": {
+        "name": "Consulting & Enterprise",
+        "frequency": "projektbaserat",
+        "features": [
+          "Setup consulting (€5k-€15k)",
+          "Architecture design (€25k-€100k)",
+          "Team training (€5k/dag)",
+          "Lumen fine-tuning (€20k-€100k)",
+          "Managed colocation (€2k-€10k/månad)"
+        ],
+        "target": "Multi-team deployments, myndigheter"
+      }
+    },
+    "note": "Alla priser exkl. moms. Kontakta oss för enterprise-priser.",
+    "cta": "Kontakta Försäljning"
   },
-  "redcell": {
+  "redforge": {
     "title": "Red Forge: Komplett Säker Utvecklingsstack",
-    "description": "Klassificerad AI-utveckling från verktyg till fysisk anläggning. Tre lager av säkerhet för försvarsinnovation.",
-    "phase1_label": "Phase 1:",
-    "phase1_description": "UNCLASSIFIED showroom för demos och kundvalidering",
-    "phase2_label": "Phase 2:",
-    "phase2_description": "Full GUL/RÖD-certifierad anläggning vid bevisad efterfrågan",
-    "classification_ide": {
-      "title": "Classification-Aware IDE",
-      "description": "Använd ChatGPT, svenska SaaS-LLM, eller on-prem AI-verktyg säkert i känsliga projekt.",
+    "description": "Allt du behöver för klassificerad AI-utveckling. Stödjer samtliga ISM-2022 klassificeringsnivåer.",
+    "classification_levels": {
+      "title": "ISM-2022 Klassificeringsnivåer",
+      "black_pc": {
+        "name": "Svart Dator",
+        "level": "EJ SEKRETESS",
+        "usage": "Internet-ansluten, AI-assistans, public documentation",
+        "zenoh": "Skickar data EN väg → Gul/Röd dator"
+      },
+      "yellow_pc": {
+        "name": "Gul Dator",
+        "level": "KONFIDENTIELLT (K) eller BEGRÄNSAT HEMLIG (BH)",
+        "usage": "Air-gapped, klassificerad utveckling",
+        "export": "Via krypterad USB efter declassification review"
+      },
+      "red_pc": {
+        "name": "Röd Dator",
+        "level": "HEMLIG (H) eller KVALIFICERAT HEMLIG (KH)",
+        "usage": "Högst klassificerad utveckling",
+        "export": "Säkerhetschef + physical courier"
+      }
+    },
+    "zenoh_kvm": {
+      "title": "Zenoh KVM – EN Tangentbord/Mus",
+      "description": "Kontrollera både Svart och Gul/Röd dator med EN tangentbord/mus. Data flödar bara EN väg (Svart → Gul/Röd).",
       "items": [
-        "Spårar vilken kod som är AI-genererad vs manuell",
-        "Stödjer klassificeringsnivåer i din utvecklingsmiljö",
-        "Föreslår säkra nedgraderingsvägar",
-        "Provenance tracking för accountability"
+        "Fysiskt one-way data diode",
+        "Seamless tangentbord/mus switching (Ctrl+Shift+→)",
+        "Optional one-way clipboard (säkert)",
+        "5ms latency (imperceptible)"
       ]
     },
-    "secure_llm": {
-      "title": "Secure LLM Servers",
-      "description": "On-prem språkmodeller. Ingen data lämnar din miljö. Isolerat från internet när det behövs.",
+    "curated_stack": {
+      "title": "Curated Utvecklingsstack",
+      "description": "Moderna verktyg, pre-konfigurerade och redo att använda. Inte generisk mjukvara. Vi installerar efter kundbehov om ni vill ha andra verktyg.",
       "items": [
-        "Lokalt hostade modeller (ingen molndata)",
-        "Air-gapped från internet",
-        "Audit logs för alla LLM-interaktioner",
-        "Custom fine-tuning på klassificerad data"
+        "ros2-zenoh för signal-denied mesh networking",
+        "Bevy för GPU-accelererad simulation i 60 FPS",
+        "Tauri + React för lightweight UI-utveckling",
+        "TypeScript LLM stack med AI SDK, Zod och Qdrant"
       ]
     },
-    "physical_facility": {
-      "title": "Physical Secure Facility",
-      "description": "Dedikerad lokal i Linköping med proper kaffe och access control. Phase 2: Full certifiering vid bevisad efterfrågan.",
+    "declassification": {
+      "title": "AI-Assisterad Declassification",
+      "description": "Red Forge AI scannar automatiskt filer för klassificerad information enligt ISM-2022. Säkerhetschef granskar och godkänner.",
       "items": [
-        "Phase 1: Fysisk access control, single-tenant",
-        "Phase 2: Biometrics + intrångsskydd",
-        "Data diodes: GREEN → YELLOW → ORANGE → RED (one-way in)",
-        "Separata nätverk per klassificeringsnivå"
-      ]
+        "Identifierar IP-adresser, API-nycklar, proprietär info",
+        "Föreslår redaktioner enligt ISM-2022 Del 5 & 6",
+        "Säkerhetschef granskar (5-15 min istället för 2-3 dagar)",
+        "Komplett audit trail i Chronicle"
+      ],
+      "benefit": "95% snabbare declassification, säkerhetschef inte trångsektor"
     },
-    "data_diode": {
-      "title": "Data Diode Enforcement",
-      "description": "Hårdvaru-tvingad informationsflöde: GREEN → YELLOW → ORANGE → RED. One-way street in, no ICE required.",
-      "red": "SECRET implementation",
-      "orange": "CONFIDENTIAL specs",
-      "yellow": "COMPANY INTERNAL",
-      "green": "UNCLASSIFIED (public)"
-    },
-    "llm_awareness": {
-      "title": "LLM Classification Awareness",
-      "description": "AI-assistenter som förstår när de arbetar med hemlig information och justerar sitt beteende.",
+    "consulting": {
+      "title": "Consulting Services",
+      "description": "Från setup till arkitektur – vi hjälper er hela vägen. Expertis i ISM-2022 compliance.",
       "items": [
-        "Känner av klassificeringsnivå från kontext",
-        "Föreslår automatiskt korrekta nedgraderingsvägar",
-        "Validerar att WHAT/HOW-separationen bibehålls",
-        "Vägrar generera output med högre klassificering än input"
+        "Setup & Integration (1-3 veckor)",
+        "Custom Architecture (3 månader)",
+        "FMV Compliance Documentation",
+        "Team Training & Enablement"
       ]
     },
     "demo": {

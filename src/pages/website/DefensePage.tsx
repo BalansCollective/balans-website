@@ -25,9 +25,22 @@ export function DefensePage() {
               </h1>
               
               <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed">
-                {t('hero.subtitle_line1')}<br />
-                <span className="text-red-400">{t('hero.subtitle_line2')}</span>
+                {t('hero.subtitle')}
               </p>
+              
+              <div className="bg-gray-900/50 border border-red-900/50 rounded-xl p-6">
+                <p className="text-lg text-gray-300 mb-4">
+                  {t('hero.problem')}
+                </p>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  {(t('hero.problems', { returnObjects: true }) as string[]).map((problem, i) => (
+                    <li key={i} className="flex items-start space-x-2">
+                      <span className="text-red-400 mt-1">✗</span>
+                      <span>{problem}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-6">
                 <a href="#red-cell" className="inline-flex items-center justify-center gap-2 px-6 py-3 text-lg font-medium rounded-lg bg-red-600 text-white hover:bg-red-700 transition-all duration-200">
@@ -42,7 +55,7 @@ export function DefensePage() {
             <div>
               <a href="#red-cell" className="block cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(220,38,38,0.4)] rounded-2xl">
                 <img 
-                  src="/images/defence-hero.png" 
+                  src="/images/defense-hero.jpeg" 
                   alt={t('hero.image_alt')}
                   className="rounded-2xl shadow-2xl"
                   style={{boxShadow: '0 0 40px rgba(220, 38, 38, 0.3)'}}
@@ -53,92 +66,317 @@ export function DefensePage() {
         </div>
       </section>
 
-      {/* Dual Classification Section */}
+      {/* ISM-2022 Classification Levels Section */}
       <section className="py-16 bg-gray-900/50">
-        <div className="max-w-4xl mx-auto px-6 lg:px-12">
+        <div className="max-w-6xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-12">
-            <h2 className="font-display text-4xl font-bold text-white mb-6">{t('classification.title')}</h2>
-            <p className="text-xl text-gray-300">
-              {t('classification.subtitle_part1')} <span className="text-blue-400">{t('classification.what')}</span> {t('classification.subtitle_part2')},<br />
-              {t('classification.subtitle_part3')} <span className="text-red-400">{t('classification.how')}</span> {t('classification.subtitle_part4')}.
+            <h2 className="font-display text-4xl font-bold text-white mb-6">{t('redforge.classification_levels.title')}</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Red Forge stödjer samtliga ISM-2022 klassificeringsnivåer för svensk försvarsindustri
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* WHAT Card - Cold steel front, glowing red back */}
-            <div className="relative group cursor-pointer">
-              {/* Red hot glow behind card (visible on lift) */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#dc143c]/60 via-[#ff4500]/80 to-[#8b0000]/70 rounded-lg blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-110"></div>
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,20,60,0.8),rgba(255,69,0,0.4),transparent_70%)] rounded-lg blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Black PC - Ej Sekretess */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
               
-              <Card variant="flat" className="relative z-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-2 border-[#0066cc]/50 transition-all duration-300 group-hover:bg-[#0066cc]/20 group-hover:border-[#0066cc] group-hover:-translate-y-2 group-hover:shadow-[0_8px_30px_rgba(0,102,204,0.3)]">
+              <Card variant="flat" className="relative z-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-gray-700 transition-all duration-300 group-hover:border-gray-500 group-hover:-translate-y-2">
                 <CardHeader>
-                  <div className="flex items-center space-x-3">
-                    <svg className="w-8 h-8 text-[#0066cc]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    <CardTitle className="text-2xl text-[#0066cc]">WHAT</CardTitle>
+                  <div className="text-center mb-4">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-800 border-2 border-gray-600 flex items-center justify-center">
+                      <span className="text-3xl">⚫</span>
+                    </div>
+                    <CardTitle className="text-2xl text-gray-300">{t('redforge.classification_levels.black_pc.name')}</CardTitle>
+                    <p className="text-sm text-gray-500 mt-2">{t('redforge.classification_levels.black_pc.level')}</p>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-300 mb-4">
-                    <strong>{t('classification.what_title')}</strong> {t('classification.what_description')}
+                  <p className="text-sm text-gray-400 mb-4">
+                    <strong className="text-gray-300">Användning:</strong><br />
+                    {t('redforge.classification_levels.black_pc.usage')}
                   </p>
-                  <ul className="space-y-2 text-sm text-gray-400">
-                    <li>• {t('classification.what_items.0')}</li>
-                    <li>• {t('classification.what_items.1')}</li>
-                    <li>• {t('classification.what_items.2')}</li>
-                    <li>• {t('classification.what_items.3')}</li>
-                  </ul>
-                  <p className="text-xs text-[#0066cc] mt-4 font-mono">→ {t('classification.what_classification')}</p>
+                  <p className="text-xs text-gray-500">
+                    <strong>Zenoh Diode:</strong><br />
+                    {t('redforge.classification_levels.black_pc.zenoh')}
+                  </p>
                 </CardContent>
               </Card>
             </div>
 
-            {/* HOW Card - Cold steel front, INTENSE glowing red back */}
-            <div className="relative group cursor-pointer">
-              {/* INTENSE red hot glow behind card (visible on lift) */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#dc143c]/60 via-[#ff4500]/80 to-[#8b0000]/70 rounded-lg blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-110"></div>
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,20,60,0.8),rgba(255,69,0,0.4),transparent_70%)] rounded-lg blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+            {/* Yellow PC - K/BH */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/40 to-yellow-800/40 rounded-lg blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
               
-              <Card variant="flat" className="relative z-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-2 border-[#dc143c]/60 transition-all duration-300 group-hover:border-[#dc143c] group-hover:-translate-y-2 group-hover:shadow-[0_8px_60px_rgba(220,20,60,0.6)]">
+              <Card variant="flat" className="relative z-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-yellow-900/50 transition-all duration-300 group-hover:border-yellow-700 group-hover:-translate-y-2">
                 <CardHeader>
-                  <div className="flex items-center space-x-3">
-                    <svg className="w-8 h-8 text-[#dc143c] group-hover:text-[#ff4500] transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                    </svg>
-                    <CardTitle className="text-2xl text-[#dc143c] group-hover:text-[#ff4500] transition-colors duration-300">HOW</CardTitle>
+                  <div className="text-center mb-4">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-yellow-900/30 border-2 border-yellow-700 flex items-center justify-center">
+                      <span className="text-3xl">🟡</span>
+                    </div>
+                    <CardTitle className="text-2xl text-yellow-400">{t('redforge.classification_levels.yellow_pc.name')}</CardTitle>
+                    <p className="text-sm text-yellow-600 mt-2">{t('redforge.classification_levels.yellow_pc.level')}</p>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-300 mb-4">
-                    <strong>{t('classification.how_title')}</strong> {t('classification.how_description')}
+                  <p className="text-sm text-gray-400 mb-4">
+                    <strong className="text-gray-300">Användning:</strong><br />
+                    {t('redforge.classification_levels.yellow_pc.usage')}
                   </p>
-                  <ul className="space-y-2 text-sm text-gray-400">
-                    <li>• {t('classification.how_items.0')}</li>
-                    <li>• {t('classification.how_items.1')}</li>
-                    <li>• {t('classification.how_items.2')}</li>
-                    <li>• {t('classification.how_items.3')}</li>
-                  </ul>
-                  <p className="text-xs text-[#dc143c] group-hover:text-[#ff4500] mt-4 font-mono transition-colors duration-300">→ {t('classification.how_classification')}</p>
+                  <p className="text-xs text-gray-500">
+                    <strong>Export:</strong><br />
+                    {t('redforge.classification_levels.yellow_pc.export')}
+                  </p>
                 </CardContent>
               </Card>
+            </div>
+
+            {/* Red PC - H/KH */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-600/40 to-red-800/40 rounded-lg blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+              
+              <Card variant="flat" className="relative z-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-red-900/50 transition-all duration-300 group-hover:border-red-700 group-hover:-translate-y-2">
+                <CardHeader>
+                  <div className="text-center mb-4">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-red-900/30 border-2 border-red-700 flex items-center justify-center">
+                      <span className="text-3xl">🔴</span>
+                    </div>
+                    <CardTitle className="text-2xl text-red-400">{t('redforge.classification_levels.red_pc.name')}</CardTitle>
+                    <p className="text-sm text-red-600 mt-2">{t('redforge.classification_levels.red_pc.level')}</p>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-400 mb-4">
+                    <strong className="text-gray-300">Användning:</strong><br />
+                    {t('redforge.classification_levels.red_pc.usage')}
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    <strong>Export:</strong><br />
+                    {t('redforge.classification_levels.red_pc.export')}
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-sm text-gray-500">
+              Enligt <strong>ISM-2022</strong> (Industrisäkerhetsskyddsmanual) från FMV
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* AI-Assisted Declassification Section */}
+      <section className="py-16 bg-gradient-to-br from-gray-950 to-gray-900">
+        <div className="max-w-6xl mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="font-display text-4xl font-bold text-white mb-6">{t('redforge.declassification.title')}</h2>
+              <p className="text-xl text-gray-300 mb-8">
+                {t('redforge.declassification.description')}
+              </p>
+              
+              <ul className="space-y-4 mb-8">
+                {(t('redforge.declassification.items', { returnObjects: true }) as string[]).map((item, i) => (
+                  <li key={i} className="flex items-start space-x-3">
+                    <svg className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-gray-300">{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="bg-red-900/20 border border-red-800/50 rounded-lg p-6">
+                <p className="text-lg font-semibold text-red-400 mb-2">
+                  {t('redforge.declassification.benefit')}
+                </p>
+                <p className="text-sm text-gray-400">
+                  Säkerhetschef granskar AI-förslag istället för manuell läsning av 500+ rader kod. 
+                  Human final approval alltid krävs – AI är ett verktyg, inte decision-maker.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 to-red-800/20 rounded-2xl blur-3xl"></div>
+              <div className="relative bg-gray-900 border border-red-900/50 rounded-2xl p-8">
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 rounded-full bg-red-900/30 border border-red-700 flex items-center justify-center flex-shrink-0">
+                      <span className="text-red-400 text-sm font-bold">1</span>
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold">Utvecklare begär export</p>
+                      <p className="text-sm text-gray-400">AI scannar filer automatiskt (30 sek)</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 rounded-full bg-red-900/30 border border-red-700 flex items-center justify-center flex-shrink-0">
+                      <span className="text-red-400 text-sm font-bold">2</span>
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold">AI identifierar risker</p>
+                      <p className="text-sm text-gray-400">IP-adresser, API-nycklar, proprietär info</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 rounded-full bg-red-900/30 border border-red-700 flex items-center justify-center flex-shrink-0">
+                      <span className="text-red-400 text-sm font-bold">3</span>
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold">Säkerhetschef granskar</p>
+                      <p className="text-sm text-gray-400">Dedicated UI, 5-15 min istället för 2-3 dagar</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 rounded-full bg-green-900/30 border border-green-700 flex items-center justify-center flex-shrink-0">
+                      <span className="text-green-400 text-sm font-bold">✓</span>
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold">Godkänd för export</p>
+                      <p className="text-sm text-gray-400">Krypterad USB, Chronicle audit trail</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Red Cell Section */}
+      {/* Product & Pricing Section */}
+      <section className="py-16 bg-gray-900/50">
+        <div className="max-w-6xl mx-auto px-6 lg:px-12">
+          <div className="text-center mb-12">
+            <h2 className="font-display text-4xl font-bold text-white mb-6">{t('product.title')}</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              {t('product.subtitle')}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* USB Diode Tier */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#dc143c]/60 via-[#ff4500]/80 to-[#8b0000]/70 rounded-lg blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-110"></div>
+              
+              <Card variant="flat" className="relative z-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-gray-700 transition-all duration-300 group-hover:border-red-600 group-hover:-translate-y-2">
+                <CardHeader>
+                  <div className="text-center mb-4">
+                    <span className="inline-block px-3 py-1 text-xs font-mono bg-gray-800 text-gray-400 rounded-full mb-3">
+                      STARTER
+                    </span>
+                    <div className="text-4xl font-bold text-white mb-2">€499</div>
+                    <p className="text-sm text-gray-400">{t('product.tiers.starter.frequency')}</p>
+                  </div>
+                  <CardTitle className="text-xl text-center text-red-400">{t('product.tiers.starter.name')}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-sm text-gray-400 mb-6">
+                    {(t('product.tiers.starter.features', { returnObjects: true }) as string[]).map((feature, i) => (
+                      <li key={i} className="flex items-start space-x-2">
+                        <svg className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-xs text-gray-500 text-center">{t('product.tiers.starter.target')}</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Complete Workstation Tier */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#dc143c]/60 via-[#ff4500]/80 to-[#8b0000]/70 rounded-lg blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-110"></div>
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span className="px-4 py-1 bg-red-600 text-white text-xs font-bold rounded-full uppercase">
+                  {t('product.tiers.complete.badge')}
+                </span>
+              </div>
+              
+              <Card variant="flat" className="relative z-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-2 border-red-600 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_8px_60px_rgba(220,20,60,0.6)]">
+                <CardHeader>
+                  <div className="text-center mb-4">
+                    <span className="inline-block px-3 py-1 text-xs font-mono bg-red-900/30 text-red-400 rounded-full mb-3">
+                      TURNKEY
+                    </span>
+                    <div className="text-4xl font-bold text-white mb-2">€9,999</div>
+                    <p className="text-sm text-gray-400">{t('product.tiers.complete.frequency')}</p>
+                  </div>
+                  <CardTitle className="text-xl text-center text-red-400">{t('product.tiers.complete.name')}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-sm text-gray-400 mb-6">
+                    {(t('product.tiers.complete.features', { returnObjects: true }) as string[]).map((feature, i) => (
+                      <li key={i} className="flex items-start space-x-2">
+                        <svg className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-xs text-gray-500 text-center">{t('product.tiers.complete.target')}</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Enterprise Tier */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#dc143c]/60 via-[#ff4500]/80 to-[#8b0000]/70 rounded-lg blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-110"></div>
+              
+              <Card variant="flat" className="relative z-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-gray-700 transition-all duration-300 group-hover:border-red-600 group-hover:-translate-y-2">
+                <CardHeader>
+                  <div className="text-center mb-4">
+                    <span className="inline-block px-3 py-1 text-xs font-mono bg-gray-800 text-gray-400 rounded-full mb-3">
+                      ENTERPRISE
+                    </span>
+                    <div className="text-4xl font-bold text-white mb-2">Från €25k</div>
+                    <p className="text-sm text-gray-400">{t('product.tiers.enterprise.frequency')}</p>
+                  </div>
+                  <CardTitle className="text-xl text-center text-red-400">{t('product.tiers.enterprise.name')}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-sm text-gray-400 mb-6">
+                    {(t('product.tiers.enterprise.features', { returnObjects: true }) as string[]).map((feature, i) => (
+                      <li key={i} className="flex items-start space-x-2">
+                        <svg className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-xs text-gray-500 text-center">{t('product.tiers.enterprise.target')}</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-sm text-gray-500 mb-4">
+              {t('product.note')}
+            </p>
+            <a href="/contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 text-lg font-medium rounded-lg bg-red-600 text-white hover:bg-red-700 transition-all duration-200">
+              {t('product.cta')}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Red Forge Stack Section */}
       <section id="red-cell" className="py-20">
         <div className="max-w-6xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-white mb-6">{t('redcell.title')}</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-white mb-6">{t('redforge.title')}</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              {t('redcell.description')}
-            </p>
-            <p className="text-sm text-gray-500 mt-4">
-              <span className="font-mono text-red-400">{t('redcell.phase1_label')}</span> {t('redcell.phase1_description')}<br />
-              <span className="font-mono text-red-400">{t('redcell.phase2_label')}</span> {t('redcell.phase2_description')}
+              {t('redforge.description')}
             </p>
           </div>
 
@@ -154,15 +392,15 @@ export function DefensePage() {
                     <svg className="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                     </svg>
-                    <CardTitle className="text-2xl text-red-400 group-hover:text-[#ff4500] transition-colors duration-300">{t('redcell.classification_ide.title')}</CardTitle>
+                    <CardTitle className="text-2xl text-red-400 group-hover:text-[#ff4500] transition-colors duration-300">{t('redforge.zenoh_kvm.title')}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-300 mb-6">
-                    {t('redcell.classification_ide.description')}
+                    {t('redforge.zenoh_kvm.description')}
                   </p>
                   <ul className="space-y-3 text-sm text-gray-400">
-                    {(t('redcell.classification_ide.items', { returnObjects: true }) as string[]).map((item, i) => (
+                    {(t('redforge.zenoh_kvm.items', { returnObjects: true }) as string[]).map((item, i) => (
                       <li key={i} className="flex items-start space-x-2">
                         <svg className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -186,15 +424,15 @@ export function DefensePage() {
                     <svg className="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
                     </svg>
-                    <CardTitle className="text-2xl text-red-400 group-hover:text-[#ff4500] transition-colors duration-300">{t('redcell.secure_llm.title')}</CardTitle>
+                    <CardTitle className="text-2xl text-red-400 group-hover:text-[#ff4500] transition-colors duration-300">{t('redforge.curated_stack.title')}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-300 mb-6">
-                    {t('redcell.secure_llm.description')}
+                    {t('redforge.curated_stack.description')}
                   </p>
                   <ul className="space-y-3 text-sm text-gray-400">
-                    {(t('redcell.secure_llm.items', { returnObjects: true }) as string[]).map((item, i) => (
+                    {(t('redforge.curated_stack.items', { returnObjects: true }) as string[]).map((item, i) => (
                       <li key={i} className="flex items-start space-x-2">
                         <svg className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -207,8 +445,8 @@ export function DefensePage() {
               </Card>
             </div>
 
-            {/* Physical Facility Card */}
-            <a href="/red-forge" className="relative group cursor-pointer block">
+            {/* Consulting Services Card */}
+            <a href="/contact" className="relative group cursor-pointer block">
               <div className="absolute inset-0 bg-gradient-to-br from-[#dc143c]/60 via-[#ff4500]/80 to-[#8b0000]/70 rounded-lg blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-110"></div>
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,20,60,0.8),rgba(255,69,0,0.4),transparent_70%)] rounded-lg blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
               
@@ -217,21 +455,18 @@ export function DefensePage() {
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center space-x-3">
                       <svg className="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
-                      <CardTitle className="text-2xl text-red-400 group-hover:text-[#ff4500] transition-colors duration-300">{t('redcell.physical_facility.title')}</CardTitle>
+                      <CardTitle className="text-2xl text-red-400 group-hover:text-[#ff4500] transition-colors duration-300">{t('redforge.consulting.title')}</CardTitle>
                     </div>
-                    <span className="px-3 py-1 text-xs font-mono font-semibold bg-orange-900/30 border border-orange-700/50 text-orange-400 rounded-full">
-                      KOMMER SNART
-                    </span>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-300 mb-6">
-                    {t('redcell.physical_facility.description')}
+                    {t('redforge.consulting.description')}
                   </p>
                   <ul className="space-y-3 text-sm text-gray-400">
-                    {(t('redcell.physical_facility.items', { returnObjects: true }) as string[]).map((item, i) => (
+                    {(t('redforge.consulting.items', { returnObjects: true }) as string[]).map((item, i) => (
                       <li key={i} className="flex items-start space-x-2">
                         <svg className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -247,12 +482,12 @@ export function DefensePage() {
 
           {/* Interactive Demo CTA */}
           <div className="bg-gradient-to-br from-red-900/30 to-gray-900/30 border-2 border-red-700/50 rounded-2xl p-8 text-center">
-            <h3 className="text-3xl font-bold text-white mb-4">{t('redcell.demo.title')}</h3>
+            <h3 className="text-3xl font-bold text-white mb-4">{t('redforge.demo.title')}</h3>
             <p className="text-gray-300 mb-6">
-              {t('redcell.demo.description')}
+              {t('redforge.demo.description')}
             </p>
             <a href="/red-forge-demo" className="inline-flex items-center justify-center gap-2 px-6 py-3 text-lg font-medium rounded-lg bg-red-600 text-white hover:bg-red-700 transition-all duration-200">
-              <span>{t('redcell.demo.cta')}</span>
+              <span>{t('redforge.demo.cta')}</span>
               <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>

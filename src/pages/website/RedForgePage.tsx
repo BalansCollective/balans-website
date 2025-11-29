@@ -12,10 +12,17 @@ export default function RedForgePage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <div className="inline-block px-4 py-2 bg-red-900/30 rounded-full border border-red-800">
-                <span className="text-sm font-semibold text-red-400 uppercase tracking-wider">
-                  {t('hero.badge')}
-                </span>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <div className="inline-block px-4 py-2 bg-red-900/30 rounded-full border border-red-800">
+                  <span className="text-sm font-semibold text-red-400 uppercase tracking-wider">
+                    {t('hero.badge')}
+                  </span>
+                </div>
+                <div className="inline-block px-4 py-2 bg-orange-900/30 rounded-full border border-orange-700">
+                  <span className="text-sm font-semibold text-orange-400 uppercase tracking-wider">
+                    Kommer 2026
+                  </span>
+                </div>
               </div>
               <h1 className="text-5xl lg:text-7xl font-display font-bold text-birch-white leading-tight">
                 {t('hero.title')}
@@ -23,6 +30,17 @@ export default function RedForgePage() {
               <p className="text-xl lg:text-2xl text-birch-white/80 leading-relaxed">
                 {t('hero.subtitle')}
               </p>
+              <div className="bg-gray-900/50 border border-red-900/50 rounded-xl p-6">
+                <p className="text-sm text-gray-400 mb-2">
+                  <strong className="text-red-400">Behöver du workstation IDAG?</strong>
+                </p>
+                <p className="text-sm text-gray-400 mb-4">
+                  Se <a href="/defense" className="text-red-400 hover:text-red-300 underline">Red Forge Workstation</a> - vårt turnkey-produkterbjudande som levereras omedelbart.
+                </p>
+                <p className="text-sm text-gray-400">
+                  Denna sida beskriver vår <strong>framtida fysiska facility</strong> (2026+).
+                </p>
+              </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="/contact"

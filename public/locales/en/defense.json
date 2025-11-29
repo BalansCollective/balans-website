@@ -1,97 +1,125 @@
 {
   "hero": {
-    "badge": "Infrastructure for Secure AI Development",
+    "badge": "AI Development for Classified Projects",
     "title": "Red Forge",
-    "subtitle_line1": "Unlocking defense innovation.",
-    "subtitle_line2": "Develop classified AI securely. Use AI tools in sensitive projects.",
-    "cta_primary": "Explore Red Forge",
-    "cta_secondary": "View Protocols",
-    "image_alt": "Red Forge - Infrastructure for Secure AI Development"
-  },
-  "classification": {
-    "title": "Dual Classification",
-    "subtitle_part1": "Innovation requires sharing",
-    "what": "what",
-    "subtitle_part2": "systems can do",
-    "subtitle_part3": "while protecting",
-    "how": "how",
-    "subtitle_part4": "they do it",
-    "what_title": "Capability:",
-    "what_description": "What the system can do",
-    "what_items": [
-      "Functional requirements",
-      "API specifications",
-      "Performance guarantees",
-      "Security properties"
+    "subtitle": "Use AI tools safely with classified code. Available today.",
+    "problem": "Defense developers are stuck:",
+    "problems": [
+      "Can't use ChatGPT with classified code (ISM-2022)",
+      "Dual-PC setup (2 keyboards, manual USB stick transfers)",
+      "3-5 days setup time for each new project"
     ],
-    "what_classification": "Can be shared (UNCLASSIFIED)",
-    "how_title": "Implementation:",
-    "how_description": "How the system does it",
-    "how_items": [
-      "Source code & algorithms",
-      "Training data",
-      "Model architecture",
-      "Deployment details"
-    ],
-    "how_classification": "Must be protected (SECRET)"
+    "cta_primary": "Book Demo",
+    "cta_secondary": "See Protocols",
+    "image_alt": "Red Forge - AI development for defense projects"
   },
-  "redcell": {
+  "product": {
+    "title": "Red Forge Products & Pricing",
+    "subtitle": "From hardware to consulting – everything for secure AI development",
+    "tiers": {
+      "starter": {
+        "name": "Zenoh USB Diode Kit",
+        "frequency": "one-time purchase",
+        "features": [
+          "Zenoh USB Diode KVM hardware",
+          "ONE keyboard/mouse for dual-PC setup",
+          "Red Forge Sender/Receiver software",
+          "ISM-2022 compliance documentation"
+        ],
+        "target": "Defense startups, proof of concept"
+      },
+      "complete": {
+        "name": "Red Forge Workstation",
+        "badge": "MOST POPULAR",
+        "frequency": "one-time purchase",
+        "features": [
+          "Yellow PC (RTX 4090, 128GB RAM, 2TB NVMe)",
+          "Zenoh USB Diode KVM included",
+          "Curated stack pre-installed (ros2-zenoh, Bevy, Tauri)",
+          "3 demo projects ready to run",
+          "1 year support + updates"
+        ],
+        "target": "SAAB, BAE Bofors, large defense contractors"
+      },
+      "enterprise": {
+        "name": "Consulting & Enterprise",
+        "frequency": "project-based",
+        "features": [
+          "Setup consulting (€5k-€15k)",
+          "Architecture design (€25k-€100k)",
+          "Team training (€5k/day)",
+          "Lumen fine-tuning (€20k-€100k)",
+          "Managed colocation (€2k-€10k/month)"
+        ],
+        "target": "Multi-team deployments, government agencies"
+      }
+    },
+    "note": "All prices excl. VAT. Contact us for enterprise pricing.",
+    "cta": "Contact Sales"
+  },
+  "redforge": {
     "title": "Red Forge: Complete Secure Development Stack",
-    "description": "Classified AI development from tools to physical facility. Three layers of security for defense innovation.",
-    "phase1_label": "Phase 1:",
-    "phase1_description": "UNCLASSIFIED showroom for demos and customer validation",
-    "phase2_label": "Phase 2:",
-    "phase2_description": "Full YELLOW/RED-certified facility when demand proven",
-    "classification_ide": {
-      "title": "Classification-Aware IDE",
-      "description": "Use ChatGPT, Swedish SaaS LLMs, or on-prem AI tools securely in sensitive projects.",
+    "description": "Everything you need for classified AI development. Supports all ISM-2022 classification levels.",
+    "classification_levels": {
+      "title": "ISM-2022 Classification Levels",
+      "black_pc": {
+        "name": "Black Computer",
+        "level": "UNCLASSIFIED (Ej Sekretess)",
+        "usage": "Internet-connected, AI assistance, public documentation",
+        "zenoh": "Sends data ONE way → Yellow/Red computer"
+      },
+      "yellow_pc": {
+        "name": "Yellow Computer",
+        "level": "CONFIDENTIAL (K) or RESTRICTED (BH)",
+        "usage": "Air-gapped, classified development",
+        "export": "Via encrypted USB after declassification review"
+      },
+      "red_pc": {
+        "name": "Red Computer",
+        "level": "SECRET (H) or TOP SECRET (KH)",
+        "usage": "Highest classified development",
+        "export": "Security Chief + physical courier"
+      }
+    },
+    "zenoh_kvm": {
+      "title": "Zenoh KVM – ONE Keyboard/Mouse",
+      "description": "Control both Black and Yellow/Red computer with ONE keyboard/mouse. Data flows only ONE way (Black → Yellow/Red).",
       "items": [
-        "Tracks AI-generated vs manual code",
-        "Supports classification levels in your dev environment",
-        "Suggests safe downgrade paths",
-        "Provenance tracking for accountability"
+        "Physical one-way data diode",
+        "Seamless keyboard/mouse switching (Ctrl+Shift+→)",
+        "Optional one-way clipboard (secure)",
+        "5ms latency (imperceptible)"
       ]
     },
-        "Suggests safe downgrade paths",
-        "Integrated with Guardian Protocol"
+    "curated_stack": {
+      "title": "Curated Development Stack",
+      "description": "Modern tools, pre-configured and ready to use. Not generic software. We install according to customer needs if you want other tools.",
+      "items": [
+        "ros2-zenoh for signal-denied mesh networking",
+        "Bevy for GPU-accelerated simulation at 60 FPS",
+        "Tauri + React for lightweight UI development",
+        "TypeScript LLM stack with AI SDK, Zod and Qdrant"
       ]
     },
-    "secure_llm": {
-      "title": "Secure LLM Servers",
-      "description": "On-prem language models. No data leaves your environment. Isolated from internet when needed.",
+    "declassification": {
+      "title": "AI-Assisted Declassification",
+      "description": "Red Forge AI automatically scans files for classified information according to ISM-2022. Security Chief reviews and approves.",
       "items": [
-        "Locally hosted models (no cloud data)",
-        "Air-gapped from internet",
-        "Audit logs for all LLM interactions",
-        "Custom fine-tuning on classified data"
-      ]
+        "Identifies IP addresses, API keys, proprietary info",
+        "Suggests redactions according to ISM-2022 Part 5 & 6",
+        "Security Chief reviews (5-15 min instead of 2-3 days)",
+        "Complete audit trail in Chronicle"
+      ],
+      "benefit": "95% faster declassification, Security Chief not a bottleneck"
     },
-    "physical_facility": {
-      "title": "Physical Secure Facility",
-      "description": "Dedicated location in Linköping with proper coffee and access control. Phase 2: Full certification when demand proven.",
+    "consulting": {
+      "title": "Consulting Services",
+      "description": "From setup to architecture – we help you all the way. Expertise in ISM-2022 compliance.",
       "items": [
-        "Phase 1: Physical access control, single-tenant",
-        "Phase 2: Biometrics + intrusion protection",
-        "Data diodes: GREEN → YELLOW → ORANGE → RED (one-way in)",
-        "Separate networks per classification level"
-      ]
-    },
-    "data_diode": {
-      "title": "Data Diode Enforcement",
-      "description": "Hardware-enforced information flow: GREEN → YELLOW → ORANGE → RED. One-way street in, no ICE required.",
-      "red": "SECRET implementation",
-      "orange": "CONFIDENTIAL specs",
-      "yellow": "COMPANY INTERNAL",
-      "green": "UNCLASSIFIED (public)"
-    },
-    "llm_awareness": {
-      "title": "LLM Classification Awareness",
-      "description": "AI assistants that understand when working with classified information and adjust their behavior.",
-      "items": [
-        "Detects classification level from context",
-        "Automatically suggests correct downgrade paths",
-        "Validates WHAT/HOW separation is maintained",
-        "Refuses to generate output with higher classification than input"
+        "Setup & Integration (1-3 weeks)",
+        "Custom Architecture (3 months)",
+        "FMV Compliance Documentation",
+        "Team Training & Enablement"
       ]
     },
     "demo": {
@@ -102,36 +130,36 @@
   },
   "protocols": {
     "title": "Security Protocols",
-    "subtitle": "Two complementary protocols for secure AI development",
+    "subtitle": "Two complementary protocols that enable secure AI innovation",
     "guardian": {
-      "description": "Review AI decisions before they have consequences. Documents what AI can see, what it proposes, and how humans retain control.",
-      "cta": "Read more"
+      "description": "Traceability and accountability for AI decisions in critical systems. Every decision logged with complete provenance. Meets EU AI Act requirements for high-risk AI.",
+      "cta": "Learn more"
     },
     "forge": {
-      "description": "Build classified AI with open tools. Automatic downgrading from SECRET code to UNCLASSIFIED specifications.",
-      "cta": "Read more"
+      "description": "Develop with AI tools in sensitive projects. Tracks which code is AI-generated vs manual. IDE integration for automatic provenance tracking.",
+      "cta": "Learn more"
     }
   },
   "usecases": {
-    "title": "Applications",
+    "title": "Who needs this?",
     "items": [
       {
-        "title": "🎯 Defense Industry",
-        "description": "Develop AI for weapon systems where WHAT (accuracy) can be shared but HOW (sensor data, algorithms) is SECRET."
-      },
-      {
-        "title": "🔬 Security Research",
-        "description": "Defense research can collaborate with academics by sharing CONFIDENTIAL specs while SECRET implementation stays internal."
+        "title": "🎯 iMUGS2 & NATO projects",
+        "description": "Develop classified AI for defense projects. Traceability and accountability from day one."
       },
       {
         "title": "🚀 NATO DIANA Startups",
-        "description": "Rapid innovation without own clearance. Develop in Red Forge, deploy when ready."
+        "description": "Need infrastructure for classified development and EU AI Act compliance. We build tools that unlock your innovation."
+      },
+      {
+        "title": "🔧 Total Defense",
+        "description": "Civil and military cooperation requires traceable AI. Guardian Protocol for critical decisions. Forge Protocol for secure development."
       }
     ]
   },
   "cta": {
-    "title": "Interested in Red Forge?",
-    "subtitle": "We'll build this if it's needed. Contact us for demonstration or pilot.",
+    "title": "Unlocking defense innovation",
+    "subtitle": "We build infrastructure that others innovate on. Contact us for demonstration or collaboration.",
     "primary": "Contact us",
     "secondary": "Back to homepage"
   }
