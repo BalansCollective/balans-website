@@ -30,7 +30,6 @@
       },
       "complete": {
         "name": "Red Forge Workstation",
-        "badge": "POPULÄRAST",
         "frequency": "engångsköp",
         "features": [
           "Yellow PC (RTX 4090, 128GB RAM, 2TB NVMe)",
@@ -45,11 +44,11 @@
         "name": "Consulting & Enterprise",
         "frequency": "projektbaserat",
         "features": [
-          "Setup consulting (€5k-€15k)",
-          "Architecture design (€25k-€100k)",
-          "Team training (€5k/dag)",
-          "Lumen fine-tuning (€20k-€100k)",
-          "Managed colocation (€2k-€10k/månad)"
+          "Setup consulting (50k-150k SEK)",
+          "Architecture design (250k-1M SEK)",
+          "Team training (50k SEK/dag)",
+          "Lumen fine-tuning (200k-1M SEK)",
+          "Managed colocation (20k-100k SEK/månad)"
         ],
         "target": "Multi-team deployments, myndigheter"
       }
