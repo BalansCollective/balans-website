@@ -28,13 +28,31 @@
         ],
         "target": "Defense-startups, proof of concept"
       },
+      "early_adopter": {
+        "name": "Early Adopter Package",
+        "frequency": "engångsköp",
+        "price": "60 000 kr",
+        "original_price": "115 000 kr",
+        "features": [
+          "Yellow PC (RTX 4090, 128GB RAM, 2TB NVMe)",
+          "Zenoh USB Diode KVM inkluderad",
+          "Curated stack pre-installerad (ros2-zenoh, Bevy, Tauri, PyTorch)",
+          "Lokal LLM (Llama 70B) för air-gapped AI-assistans",
+          "3 demo-projekt redo att köra",
+          "6 månaders support",
+          "On-site installation & setup",
+          "1 dags hands-on workshop med teamet"
+        ],
+        "target": "Defense-startups, kräver case study-medverkan"
+      },
       "complete": {
         "name": "Red Forge Workstation",
         "frequency": "engångsköp",
         "features": [
           "Yellow PC (RTX 4090, 128GB RAM, 2TB NVMe)",
           "Zenoh USB Diode KVM inkluderad",
-          "Curated stack pre-installerad (ros2-zenoh, Bevy, Tauri)",
+          "Curated stack pre-installerad (ros2-zenoh, Bevy, Tauri, PyTorch)",
+          "Lokal LLM (Llama 70B) för air-gapped AI-assistans",
           "3 demo-projekt redo att köra",
           "1 års support + uppdateringar"
         ],
@@ -44,11 +62,11 @@
         "name": "Consulting & Enterprise",
         "frequency": "projektbaserat",
         "features": [
-          "Setup consulting (50k-150k SEK)",
-          "Architecture design (250k-1M SEK)",
-          "Team training (50k SEK/dag)",
-          "Lumen fine-tuning (200k-1M SEK)",
-          "Managed colocation (20k-100k SEK/månad)"
+          "Setup-konsulting (50k-150k SEK)",
+          "Arkitekturdesign (250k-1M SEK)",
+          "Teamutbildning (50k SEK/dag)",
+          "Custom AI-modellträning (200k-1M SEK)",
+          "Hanterad colocation (20k-100k SEK/månad)"
         ],
         "target": "Multi-team deployments, myndigheter"
       }

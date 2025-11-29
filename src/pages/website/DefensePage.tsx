@@ -259,27 +259,27 @@ export function DefensePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* USB Diode Tier */}
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#dc143c]/60 via-[#ff4500]/80 to-[#8b0000]/70 rounded-lg blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-110"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
               
-              <Card variant="flat" className="relative z-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-gray-700 transition-all duration-300 group-hover:border-red-600 group-hover:-translate-y-2">
+              <Card variant="flat" className="relative z-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-gray-700 transition-all duration-300 group-hover:border-gray-500 group-hover:-translate-y-2">
                 <CardHeader>
                   <div className="text-center mb-4">
                     <span className="inline-block px-3 py-1 text-xs font-mono bg-gray-800 text-gray-400 rounded-full mb-3">
                       STARTER
                     </span>
-                    <div className="text-4xl font-bold text-white mb-2">€499</div>
+                    <div className="text-4xl font-bold text-white mb-2">5 990 kr</div>
                     <p className="text-sm text-gray-400">{t('product.tiers.starter.frequency')}</p>
                   </div>
-                  <CardTitle className="text-xl text-center text-red-400">{t('product.tiers.starter.name')}</CardTitle>
+                  <CardTitle className="text-xl text-center text-gray-300">{t('product.tiers.starter.name')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 text-sm text-gray-400 mb-6">
                     {(t('product.tiers.starter.features', { returnObjects: true }) as string[]).map((feature, i) => (
                       <li key={i} className="flex items-start space-x-2">
-                        <svg className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                         </svg>
                         <span>{feature}</span>
@@ -291,22 +291,51 @@ export function DefensePage() {
               </Card>
             </div>
 
-            {/* Complete Workstation Tier */}
+            {/* Early Adopter Tier */}
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-[#dc143c]/60 via-[#ff4500]/80 to-[#8b0000]/70 rounded-lg blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-110"></div>
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <span className="px-4 py-1 bg-red-600 text-white text-xs font-bold rounded-full uppercase">
-                  {t('product.tiers.complete.badge')}
-                </span>
-              </div>
               
-              <Card variant="flat" className="relative z-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-2 border-red-600 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_8px_60px_rgba(220,20,60,0.6)]">
+              <Card variant="flat" className="relative z-10 bg-gradient-to-br from-gray-900 via-[#1a0505] to-gray-900 border-2 border-red-600/50 transition-all duration-300 group-hover:border-red-500 group-hover:-translate-y-2 shadow-[0_0_50px_rgba(220,38,38,0.3)]">
                 <CardHeader>
                   <div className="text-center mb-4">
                     <span className="inline-block px-3 py-1 text-xs font-mono bg-red-900/30 text-red-400 rounded-full mb-3">
+                      LIMITED
+                    </span>
+                    <div className="space-y-1">
+                      <div className="text-4xl font-bold text-white">{t('product.tiers.early_adopter.price')}</div>
+                      <div className="text-lg text-gray-500 line-through">{t('product.tiers.early_adopter.original_price')}</div>
+                    </div>
+                    <p className="text-sm text-gray-400 mt-2">{t('product.tiers.early_adopter.frequency')}</p>
+                  </div>
+                  <CardTitle className="text-xl text-center text-red-400">{t('product.tiers.early_adopter.name')}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-sm text-gray-400 mb-6">
+                    {(t('product.tiers.early_adopter.features', { returnObjects: true }) as string[]).map((feature, i) => (
+                      <li key={i} className="flex items-start space-x-2">
+                        <svg className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-xs text-gray-500 text-center">{t('product.tiers.early_adopter.target')}</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Complete Workstation Tier */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#dc143c]/40 via-[#ff4500]/40 to-[#8b0000]/40 rounded-lg blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+              
+              <Card variant="flat" className="relative z-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-red-600/30 transition-all duration-300 group-hover:border-red-600 group-hover:-translate-y-2">
+                <CardHeader>
+                  <div className="text-center mb-4">
+                    <span className="inline-block px-3 py-1 text-xs font-mono bg-red-900/20 text-red-400 rounded-full mb-3">
                       TURNKEY
                     </span>
-                    <div className="text-4xl font-bold text-white mb-2">€9,999</div>
+                    <div className="text-4xl font-bold text-white mb-2">115 000 kr</div>
                     <p className="text-sm text-gray-400">{t('product.tiers.complete.frequency')}</p>
                   </div>
                   <CardTitle className="text-xl text-center text-red-400">{t('product.tiers.complete.name')}</CardTitle>
@@ -337,7 +366,7 @@ export function DefensePage() {
                     <span className="inline-block px-3 py-1 text-xs font-mono bg-gray-800 text-gray-400 rounded-full mb-3">
                       ENTERPRISE
                     </span>
-                    <div className="text-4xl font-bold text-white mb-2">Från €25k</div>
+                    <div className="text-4xl font-bold text-white mb-2">Från 50k kr</div>
                     <p className="text-sm text-gray-400">{t('product.tiers.enterprise.frequency')}</p>
                   </div>
                   <CardTitle className="text-xl text-center text-red-400">{t('product.tiers.enterprise.name')}</CardTitle>
