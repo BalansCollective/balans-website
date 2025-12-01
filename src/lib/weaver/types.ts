@@ -6,7 +6,11 @@
 
 export type Classification = 'oklassificerad' | 'begransad-hemlig' | 'konfidentiell' | 'hemlig';
 
-export type AIService = 'claude-cloud' | 'saas-lumen' | 'forge-local' | 'forge-airgap';
+export type AIService = 
+  | 'forge-llama-3.3-70b'
+  | 'forge-qwen-32b'
+  | 'forge-deepseek-33b'
+  | 'forge-lumen';
 
 export interface WeaverConfig {
   openrouterKey: string;

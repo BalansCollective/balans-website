@@ -187,20 +187,20 @@ export class BrowserWeaverAssistant {
   }
   
   /**
-   * Get OpenRouter model for AI service
+   * Get model ID for AI service (all air-gapped local models)
    */
   private getModelForAIService(aiService: AIService): string {
     switch (aiService) {
-      case 'claude-cloud':
-        return 'anthropic/claude-3.5-sonnet'; // Public cloud
-      case 'saas-lumen':
-        return 'anthropic/claude-3-haiku'; // Domain-specific SaaS (cheaper/faster)
-      case 'forge-local':
-        return 'mistralai/mixtral-8x7b-instruct'; // Local classified
-      case 'forge-airgap':
-        return 'meta-llama/llama-3-70b-instruct'; // Air-gapped
+      case 'forge-llama-3.3-70b':
+        return 'meta-llama/llama-3.3-70b-instruct'; // Best general-purpose
+      case 'forge-qwen-32b':
+        return 'qwen/qwen2.5-coder-32b-instruct'; // Code-specialized
+      case 'forge-deepseek-33b':
+        return 'deepseek-ai/deepseek-coder-33b-instruct'; // Alternative code model
+      case 'forge-lumen':
+        return 'forge/lumen-v1'; // Internal domain-tuned
       default:
-        return 'anthropic/claude-3.5-sonnet';
+        return 'meta-llama/llama-3.3-70b-instruct';
     }
   }
   

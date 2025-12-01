@@ -281,7 +281,7 @@ Du kan chatta med mig direkt${file ? `, eller klicka på "Skicka till AI" för a
                 // Step 3: Reset to Claude Cloud (now that context is cleared)
                 // Use setTimeout to ensure parent state has updated
                 setTimeout(() => {
-                  onServiceChange('claude-cloud');
+                  onServiceChange('forge-llama-3.3-70b');
                 }, 0);
               }}
               className="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-red-400 hover:bg-red-900/20 rounded transition-colors"

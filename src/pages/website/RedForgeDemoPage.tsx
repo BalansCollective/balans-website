@@ -48,7 +48,7 @@ function RedForgeDemoContent() {
   }));
   
   // AI service state
-  const [selectedAIService, setSelectedAIService] = useState<'claude-cloud' | 'saas-lumen' | 'forge-local' | 'forge-airgap'>('claude-cloud');
+  const [selectedAIService, setSelectedAIService] = useState<AIService>('forge-llama-3.3-70b');
   
   // Toast notifications state
   const [toasts, setToasts] = useState<Toast[]>([]);
@@ -106,7 +106,7 @@ function RedForgeDemoContent() {
     filename: string;
     fileClassification: Classification;
     currentService: string;
-    suggestedService: 'saas-lumen' | 'forge-local' | 'forge-airgap';
+    suggestedService: AIService;
   } | null>(null);
   
   // Responsive layout detection
@@ -260,11 +260,11 @@ function RedForgeDemoContent() {
     
     try {
       // Get service name for logging
-      const serviceNames = {
-        'claude-cloud': 'Claude Cloud',
-        'saas-lumen': 'SaaS Lumen',
-        'forge-local': 'Red Forge Local',
-        'forge-airgap': 'Red Forge Air-Gap'
+      const serviceNames: Record<AIService, string> = {
+        'forge-llama-3.3-70b': 'Llama 3.3 70B',
+        'forge-qwen-32b': 'Qwen2.5-Coder 32B',
+        'forge-deepseek-33b': 'DeepSeek Coder 33B',
+        'forge-lumen': 'Red Forge Lumen'
       };
       
       // Verify the selected AI service can handle the source classification
@@ -276,15 +276,12 @@ function RedForgeDemoContent() {
       };
       
       const requiredLevel = classLevels[declassificationData.originalClassification];
-      const currentLevel = classLevels[
-        selectedAIService === 'claude-cloud' ? 'oklassificerad' :
-        selectedAIService === 'saas-lumen' ? 'begransad-hemlig' :
-        selectedAIService === 'forge-local' ? 'konfidentiell' : 'hemlig'
-      ];
+      // RED PC: All models handle all classifications (level 1)
+      const currentLevel = 1;
       
-      // Safety check: Prevent using a service with insufficient clearance
+      // Safety check: All services can handle all classifications on RED PC
       if (currentLevel < requiredLevel) {
-        showToast(`${serviceNames[selectedAIService]} kan inte läsa ${declassificationData.originalClassification.toUpperCase()}-filer. Välj en högre AI-tjänst.`, 'error');
+        showToast(`Model kan inte läsa ${declassificationData.originalClassification.toUpperCase()}-filer.`, 'error');
         setIsAIProcessing(false);
         return;
       }
@@ -1076,49 +1073,7 @@ function RedForgeDemoContent() {
                   {!filesInContext.has(activeFile.id) ? (
                     <button
                       onClick={() => {
-                        const AI_LEVELS = {
-                          'claude-cloud': 0,
-                          'saas-lumen': 1,
-                          'forge-local': 2,
-                          'forge-airgap': 3
-                        };
-                        const CLASS_LEVELS = {
-                          'oklassificerad': 0,
-                          'begransad-hemlig': 1,
-                          'konfidentiell': 2,
-                          'hemlig': 3
-                        };
-                        
-                        const aiLevel = AI_LEVELS[selectedAIService];
-                        const fileLevel = CLASS_LEVELS[activeFile.classification];
-                        
-                        if (aiLevel < fileLevel) {
-                          const suggestedService = 
-                            fileLevel === 1 ? 'saas-lumen' :
-                            fileLevel === 2 ? 'forge-local' : 'forge-airgap';
-                          
-                          setEnforcementData({
-                            filename: activeFile.name,
-                            fileClassification: activeFile.classification,
-                            currentService: selectedAIService === 'claude-cloud' ? 'Claude Cloud (O)' :
-                                           selectedAIService === 'saas-lumen' ? 'SaaS Lumen (BH)' :
-                                           selectedAIService === 'forge-local' ? 'Red Forge Local (K)' : 'Red Forge Air-Gap (H)',
-                            suggestedService
-                          });
-                          setShowEnforcementModal(true);
-                          
-                          setAuditLog(prev => [{
-                            timestamp: new Date(),
-                            filename: activeFile.name,
-                            classification: activeFile.classification,
-                            aiService: selectedAIService === 'claude-cloud' ? 'Claude Cloud' :
-                                       selectedAIService === 'saas-lumen' ? 'SaaS Lumen' :
-                                       selectedAIService === 'forge-local' ? 'Red Forge Local' : 'Red Forge Air-Gap',
-                            result: 'blocked' as const
-                          }, ...prev].slice(0, 50));
-                          return;
-                        }
-                        
+                        // RED PC: All models can handle all classifications
                         setFilesInContext(prev => new Set(prev).add(activeFile.id));
                         
                         setAuditLog(prev => [{
